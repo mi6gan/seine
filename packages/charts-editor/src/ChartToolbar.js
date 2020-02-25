@@ -9,7 +9,11 @@ import type {
 } from '@seine/core';
 import { chartTypes } from '@seine/core';
 import { Toolbar } from '@seine/ui';
-import { defaultBarChartFormat, defaultChartFormat } from '@seine/charts';
+import {
+  defaultBarChartFormat,
+  defaultChartFormat,
+  useChartFormatDefaults,
+} from '@seine/charts';
 
 import ColumnChartToolbar from './ColumnChartToolbar';
 import BarChartToolbar from './BarChartToolbar';
@@ -39,6 +43,7 @@ export default function ChartToolbar({
   ...toolbarProps
 }: Props) {
   format = format || {};
+  format = useChartFormatDefaults(format.kind, format);
 
   return format.kind === chartTypes.BAR ? (
     <BarChartToolbar
