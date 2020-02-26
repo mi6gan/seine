@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
-import { BootstrapTypography } from '@seine/styles';
 
+import BootstrapTypography from './BootstrapTypography';
 import BootstrapContainer from './BootstrapContainer';
 import BootstrapRow from './BootstrapRow';
 import ThemePaper from './ThemePaper';
