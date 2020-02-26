@@ -124,7 +124,6 @@ export default function SuiteLogsBCGLayout({
               variant={'h4'}
               width={'100%'}
               paddingX={5}
-              textAlign={'center'}
             >
               {subtitle}
             </BootstrapBox>
