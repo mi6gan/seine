@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20">
+<defs>
+    <style>.a{fill:#c0d4e2;}.b{fill:#fff;font-size:16px;font-family:PTSerif-BoldItalic, PT
+        Serif;font-weight:700;font-style:italic;}
+    </style>
+</defs>
+<g transform="translate(-1403 -170)">
+    <circle class="a" cx="10" cy="10" r="10" transform="translate(1403 170)"/>
+    <text class="b" transform="translate(1412.5 186)">
+        <tspan x="-2.432" y="0">i</tspan>
+    </text>
+</g>
+</svg>

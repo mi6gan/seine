@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #71a2ff;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="Group_146" data-name="Group 146" transform="translate(-780 -904)">
+    <circle id="Ellipse_10" data-name="Ellipse 10" class="cls-1" cx="8.5" cy="8.5" r="8.5" transform="translate(780 904)"/>
+    <path id="Union_3" data-name="Union 3" class="cls-2" d="M6.425,0,2.5,5.435ZM0,3.072,2.5,5.435Z" transform="translate(785.5 909.5)"/>
+  </g>
+</svg>

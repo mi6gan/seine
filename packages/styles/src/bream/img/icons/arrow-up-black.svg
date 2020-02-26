@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg"   width="12" height="6" viewBox="0 0 14 7.998">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <path id="Union_12" data-name="Union 12" class="cls-1" d="M1428-4340l-6,6Zm-12,0,6,6Z" transform="translate(1429 -4333.002) rotate(180)"/>
+</svg>

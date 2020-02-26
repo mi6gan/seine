@@ -1,9 +1,8 @@
 // @flow
 import * as React from 'react';
 
-import shareIcon from '../../dist/bream/img/icons/ico-share-white.svg';
-import exclamationMarkBlueIcon from '../../dist/bream/img/icons/exclamation-mark-blue.svg';
-
+import shareIcon from './img/icons/ico-share-white.svg';
+import exclamationMarkBlueIcon from './img/icons/exclamation-mark-blue.svg';
 import BootstrapBox from './BootstrapBox';
 import BootstrapButton from './BootstrapButton';
 import BootstrapColumn from './BootstrapColumn';

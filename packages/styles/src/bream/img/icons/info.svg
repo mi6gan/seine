@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 16 17">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #71a2ff;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-size: 12px;
+        font-family: SegoeUI-BoldItalic, Segoe UI;
+        font-weight: 700;
+        font-style: italic;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_7_1" data-name="Symbol 7 – 1" transform="translate(-843 -216)">
+    <circle id="Ellipse_11" data-name="Ellipse 11" class="cls-1" cx="8" cy="8" r="8" transform="translate(843 217)"/>
+    <text id="i" class="cls-2" transform="translate(851 229)"><tspan x="-1.904" y="0">i</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="9" height="25" viewBox="0 0 11 27.001">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #cbcbcb;
+        stroke-width: 2px;
+      }
+
+      .cls-1 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="Group_239" data-name="Group 239" transform="translate(-1269 -582)">
+    <path id="Union_9" data-name="Union 9" class="cls-1" d="M9,0,4.5,4.294ZM0,0,4.5,4.294Z" transform="translate(1270 603.706)"/>
+    <path id="Union_22" data-name="Union 22" class="cls-1" d="M9,0,4.5,4.294ZM0,0,4.5,4.294Z" transform="translate(1279 587.294) rotate(180)"/>
+    <line id="Line_861" data-name="Line 861" class="cls-2" y1="25" transform="translate(1274.5 583)"/>
+  </g>
+</svg>

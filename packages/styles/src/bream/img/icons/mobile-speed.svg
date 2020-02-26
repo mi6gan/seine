@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+    <defs>
+        <style>
+            .a,.b{fill:none;stroke:#acbecb;stroke-linecap:round;}.a{stroke-width:3px;}.b{stroke-miterlimit:10;stroke-width:2px;}.c{fill:#acbecb;}
+        </style>
+    </defs>
+    <g transform="translate(-155.892 -50.16)">
+        <path class="a" d="M16,0A16,16,0,1,1,0,16,16,16,0,0,1,16,0Z" transform="translate(157.391 51.661)"/>
+        <circle class="b" cx="3.608" cy="3.608" r="3.608" transform="translate(169.783 71.266)"/>
+        <line class="b" x1="9.939" transform="translate(177.736 74.874)"/>
+        <line class="b" x1="9.882" transform="translate(159.108 74.874)"/>
+        <line class="b" y1="5.072" transform="translate(173.391 51.661)"/>
+        <path class="c"
+              d="M173.136,70.089l8.039-8.977-6.049,10.425a1.242,1.242,0,1,1-2.186-1.18A1.265,1.265,0,0,1,173.136,70.089Z"
+              transform="translate(1.593 0.855)"/>
+        <line class="b" x1="3.586" y1="3.586" transform="translate(162.078 56.347)"/>
+        <line class="b" x1="5.072" transform="translate(157.391 67.661)"/>
+        <line class="b" x2="5.072" transform="translate(184.32 67.661)"/>
+        <line class="b" y1="3.586" x2="3.586" transform="translate(181.119 56.347)"/>
+    </g>
+</svg>
