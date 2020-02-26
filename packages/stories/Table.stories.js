@@ -4,7 +4,7 @@ import { actions } from '@storybook/addon-actions';
 import { Content } from '@seine/content';
 import { Editor } from '@seine/editor';
 
-export default { title: 'Single.Table' };
+export default { title: 'Default.Single.Table' };
 
 export const Table3x3 = ({
   as: Component = Content,

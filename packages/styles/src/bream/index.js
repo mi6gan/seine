@@ -18,5 +18,5 @@ export { default as SuiteLogsSummaryPreview } from './SuiteLogsSummaryPreview';
 
 export { default as breamTheme } from './theme';
 export { default as ThemeSvgIcon } from './ThemeSvgIcon';
-export { default as ThemeWhiteBackingLoader } from './ThemeWhiteBackingLoader';
-export { default as ThemeWhiteBackingTwo } from './ThemeWhiteBackingTwo';
+export { default as SuiteLogsBCGLayout } from './SuiteLogsBCGLayout';
+export { default as useBreamStoryEffect } from './useBreamStoryEffect';

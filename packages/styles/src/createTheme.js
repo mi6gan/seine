@@ -1,6 +1,4 @@
 // @flow
-import { default as createBreakpoints } from '@material-ui/core/styles/createBreakpoints';
-
 import createTypography from './createTypography';
 import {
   defaultBreakpoints,
@@ -8,6 +6,7 @@ import {
   defaultThemeOptions,
   defaultTypography,
 } from './constants';
+import createBreakpoints from './createBreakpoints';
 
 /**
  * @description create content theme
@@ -27,7 +26,7 @@ export default function createTheme({
     fontWeightRegular = defaultTypography.fontWeightRegular,
     fontWeightLight = defaultTypography.fontWeightLight,
     htmlFontSize = defaultTypography.htmlFontSize,
-  } = defaultBreakpoints,
+  } = defaultTypography,
   palette: {
     action = defaultPalette.action,
     background = defaultPalette.background,

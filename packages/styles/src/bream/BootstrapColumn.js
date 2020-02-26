@@ -49,7 +49,7 @@ const breakpointStyle = (
   }
 ) =>
   css`
-    ${size ? breakpoints.up(key) : '&&'} {
+    ${breakpoints.up(key)} {
       flex: 0 0 ${maxWidth}%;
       max-width: ${maxWidth}%;
     }

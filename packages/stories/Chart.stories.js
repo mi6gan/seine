@@ -9,7 +9,7 @@ import { Editor } from '@seine/editor';
 import { ChartLayout, ChartLegend, defaultChartPalette } from '@seine/charts';
 import { defaultTheme, ThemeProvider } from '@seine/styles';
 
-export default { title: 'Single.Chart' };
+export default { title: 'Default.Single.Chart' };
 
 export const DummyChartLayout = () => (
   <ThemeProvider theme={defaultTheme}>

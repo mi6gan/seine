@@ -1,5 +1,0 @@
-html.bream {
-  font-size: 10px;
-  @import '../styles/src/bream/styles/css/base.css';
-  @import '../styles/src/bream/styles/css/theme.css';
-}

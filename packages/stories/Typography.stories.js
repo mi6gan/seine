@@ -2,7 +2,7 @@ import * as React from 'react';
 import { defaultTheme, SvgTypography, Typography } from '@seine/styles';
 import { ThemeProvider } from 'styled-components/macro';
 
-export default { title: 'Single.SvgText' };
+export default { title: 'Default.Single.SvgText' };
 
 export const HTMLTextInSVG = ({
   children = 'html document text',

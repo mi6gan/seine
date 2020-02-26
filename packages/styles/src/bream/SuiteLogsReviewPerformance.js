@@ -6,7 +6,7 @@ import BootstrapBox from './BootstrapBox';
 import BootstrapFlex from './BootstrapFlex';
 import BootstrapProgress from './BootstrapProgress';
 import BootstrapTypography from './BootstrapTypography';
-import ThemeWhiteBackingLoader from './ThemeWhiteBackingLoader';
+import ThemePaper from './ThemePaper';
 
 const OuterProgress = styled(BootstrapProgress).attrs(
   ({ width = '100%', height = '100%', position = 'relative' }) => ({
@@ -51,7 +51,8 @@ type Props = {
  */
 export default function SuiteLogsReviewPerformance({ children }: Props) {
   return (
-    <ThemeWhiteBackingLoader
+    <ThemePaper
+      variant={'loader'}
       as={BootstrapFlex}
       height={'100%'}
       width={'100%'}
@@ -84,6 +85,6 @@ export default function SuiteLogsReviewPerformance({ children }: Props) {
           </BootstrapFlex>
         </OuterProgress>
       </BootstrapBox>
-    </ThemeWhiteBackingLoader>
+    </ThemePaper>
   );
 }

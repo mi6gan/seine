@@ -3,4 +3,4 @@ import requireContext from 'require-context.macro';
 
 import './index.css';
 
-configure(requireContext('../packages/stories', true, /\.stories.js$/), module);
+configure(requireContext('../packages/', true, /\.stories.js$/), module);

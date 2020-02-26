@@ -57,9 +57,9 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-export default { title: 'App' };
+export default { title: 'Admin' };
 
-export const EditorInAdminAppLayout = () => {
+export const EditorInLayout = ({ children }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -145,7 +145,9 @@ export const EditorInAdminAppLayout = () => {
               parent_id: null,
             }}
             {...actions('onChange')}
-          />
+          >
+            {children}
+          </Editor>
         </div>
       </main>
     </div>

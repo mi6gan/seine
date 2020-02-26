@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react';
 
-import shareIcon from './img/icons/ico-share-white.svg';
-import exclamationMarkBlueIcon from './img/icons/exclamation-mark-blue.svg';
+import shareIcon from '../../dist/bream/img/icons/ico-share-white.svg';
+import exclamationMarkBlueIcon from '../../dist/bream/img/icons/exclamation-mark-blue.svg';
+
 import BootstrapBox from './BootstrapBox';
 import BootstrapButton from './BootstrapButton';
 import BootstrapColumn from './BootstrapColumn';
@@ -10,7 +11,7 @@ import BootstrapFlex from './BootstrapFlex';
 import BootstrapRow from './BootstrapRow';
 import BootstrapTypography from './BootstrapTypography';
 import ThemeSvgIcon from './ThemeSvgIcon';
-import ThemeWhiteBackingTwo from './ThemeWhiteBackingTwo';
+import ThemePaper from './ThemePaper';
 
 type Props = {
   children: string,
@@ -28,7 +29,8 @@ export default function SuiteLogsReviewGreeting({
   modalId = Math.random() < 0.5 ? 'shareResults' : 'shareResultsRocket',
 }: Props) {
   return (
-    <ThemeWhiteBackingTwo
+    <ThemePaper
+      variant={'two'}
       as={BootstrapFlex}
       forwardedAs={BootstrapBox}
       height={'100%'}
@@ -110,6 +112,6 @@ export default function SuiteLogsReviewGreeting({
           </BootstrapColumn>
         )}
       </BootstrapRow>
-    </ThemeWhiteBackingTwo>
+    </ThemePaper>
   );
 }

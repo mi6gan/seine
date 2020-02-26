@@ -3,8 +3,8 @@ import React from 'react';
 
 import BootstrapFlex from './BootstrapFlex';
 import BootstrapTypography from './BootstrapTypography';
-import ThemeWhiteBackingTwo from './ThemeWhiteBackingTwo';
 import Duration from './Duration';
+import ThemePaper from './ThemePaper';
 
 type Props = {
   children: string | number,
@@ -17,7 +17,8 @@ type Props = {
  */
 export default function SuiteLogsReviewTime({ children }: Props) {
   return (
-    <ThemeWhiteBackingTwo
+    <ThemePaper
+      variant={'two'}
       as={BootstrapFlex}
       height={'100%'}
       width={'100%'}
@@ -31,6 +32,6 @@ export default function SuiteLogsReviewTime({ children }: Props) {
       <BootstrapTypography variant={'h1'} fontWeight={'bold'} noMargin>
         <Duration>{children}</Duration>
       </BootstrapTypography>
-    </ThemeWhiteBackingTwo>
+    </ThemePaper>
   );
 }

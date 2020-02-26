@@ -6,7 +6,7 @@ import {
   createTitleIdentityBlockElements,
 } from '@seine/core';
 
-export default { title: 'Multiple.Content' };
+export default { title: 'Default.Multiple.Content' };
 
 export const InitialContent = ({
   as: Container = Content,

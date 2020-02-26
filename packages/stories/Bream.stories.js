@@ -1,24 +1,24 @@
 // @flow
 import React from 'react';
-import { breamTheme, ThemeProvider } from '@seine/styles';
+import {
+  breamTheme,
+  SuiteLogsBCGLayout,
+  ThemeProvider,
+  useBreamStoryEffect,
+} from '@seine/styles';
 
 import {
   ContentOfPieAndBarSiblingCharts,
   InitialContent,
 } from './Content.stories';
-import useBreamStoryEffect from './useBreamStoryEffect';
-
-import './bream.css';
 
 type Props = {
   children?: any,
 };
 
-export default {
-  title: 'Bream',
-};
+export default { title: 'Bream' };
 
-export const ThemedInitialContent = ({ children, ...contentProps }: Props) => {
+export const ThemedContent = ({ children, ...contentProps }: Props) => {
   useBreamStoryEffect(...document.children);
 
   return (
@@ -32,7 +32,25 @@ export const ThemedContentOfPieAndBarSiblingCharts = ({
   children,
   ...contentProps
 }: Props) => (
-  <ThemedInitialContent {...contentProps} as={ContentOfPieAndBarSiblingCharts}>
+  <ThemedContent {...contentProps} as={ContentOfPieAndBarSiblingCharts}>
     {children}
-  </ThemedInitialContent>
+  </ThemedContent>
+);
+
+export const ThemedContentInBCGLayout = ({
+  title = 'BCG layout title',
+  subtitle = 'BCG layout subtitle',
+  description = 'BCG layout description',
+  children = 'BCG layout content',
+  ...props
+}) => (
+  <ThemedContent
+    as={SuiteLogsBCGLayout}
+    title={title}
+    subtitle={subtitle}
+    description={description}
+    {...props}
+  >
+    {children}
+  </ThemedContent>
 );

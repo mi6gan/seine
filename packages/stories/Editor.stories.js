@@ -11,7 +11,7 @@ import {
   InitialContent,
 } from './Content.stories';
 
-export default { title: 'Multiple.Editor' };
+export default { title: 'Default.Multiple.Editor' };
 
 export const InitialEditor = () => <InitialContent as={Editor} />;
 

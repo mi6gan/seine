@@ -3,7 +3,7 @@ import { actions } from '@storybook/addon-actions';
 import { Content } from '@seine/content';
 import { Editor } from '@seine/editor';
 
-export default { title: 'Single.RichText' };
+export default { title: 'Default.Single.RichText' };
 
 export const SingleLineContent = ({ as: Component = Content, ...props }) => (
   <Component
