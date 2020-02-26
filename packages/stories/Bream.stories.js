@@ -14,7 +14,7 @@ type Props = {
 
 export default { title: 'Bream' };
 
-const Themed = ({ children }: Props) => {
+const Themed = ({ children = null }: Props) => {
   useBreamStoryEffect(...document.children);
 
   return <ThemeProvider theme={breamTheme}>{children}</ThemeProvider>;
