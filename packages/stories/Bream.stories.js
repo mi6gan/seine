@@ -7,10 +7,7 @@ import {
   useBreamStoryEffect,
 } from '@seine/styles';
 
-import {
-  ContentOfPieAndBarSiblingCharts,
-  InitialContent,
-} from './Content.stories';
+import { BarChart, ColumnChart, LineChart, PieChart } from './Chart.stories';
 
 type Props = {
   children?: any,
@@ -18,39 +15,41 @@ type Props = {
 
 export default { title: 'Bream' };
 
-export const ThemedContent = ({ children, ...contentProps }: Props) => {
+const Themed = ({ children }: Props) => {
   useBreamStoryEffect(...document.children);
 
-  return (
-    <ThemeProvider theme={breamTheme}>
-      <InitialContent {...contentProps}>{children}</InitialContent>
-    </ThemeProvider>
-  );
+  return <ThemeProvider theme={breamTheme}>{children}</ThemeProvider>;
 };
 
-export const ThemedContentOfPieAndBarSiblingCharts = ({
-  children,
-  ...contentProps
-}: Props) => (
-  <ThemedContent {...contentProps} as={ContentOfPieAndBarSiblingCharts}>
-    {children}
-  </ThemedContent>
-);
-
-export const ThemedContentInBCGLayout = ({
+export const ContentInBCGLayout = ({
   title = 'BCG layout title',
   subtitle = 'BCG layout subtitle',
   description = 'BCG layout description',
   children = 'BCG layout content',
-  ...props
 }) => (
-  <ThemedContent
-    as={SuiteLogsBCGLayout}
-    title={title}
-    subtitle={subtitle}
-    description={description}
-    {...props}
-  >
-    {children}
-  </ThemedContent>
+  <Themed>
+    <SuiteLogsBCGLayout
+      title={title}
+      subtitle={subtitle}
+      description={description}
+    >
+      {children}
+    </SuiteLogsBCGLayout>
+  </Themed>
+);
+
+export const BarChartInBCGLayout = (props) => (
+  <ContentInBCGLayout {...props} description={<BarChart />} />
+);
+
+export const ColumnChartInBCGLayout = (props) => (
+  <ContentInBCGLayout {...props} description={<ColumnChart />} />
+);
+
+export const PieChartInBCGLayout = (props) => (
+  <ContentInBCGLayout {...props} description={<PieChart />} />
+);
+
+export const LineChartInBCGLayout = (props) => (
+  <ContentInBCGLayout {...props} description={<LineChart />} />
 );

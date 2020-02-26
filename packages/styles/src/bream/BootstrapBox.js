@@ -64,8 +64,6 @@ const BootstrapBox = styled.div.attrs(
   ${({ width }: Props) => width && { width }};
   ${({ height }: Props) => height && { height }};
 
-  ${({ flexShrink }) => flexShrink && { flexShrink }};
-
   ${({ theme: { bootstrap }, ...props }) =>
     map((spacer) => bootstrap.spacers[spacer], filterSpacerProperties(props))}
 `;

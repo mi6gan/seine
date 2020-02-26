@@ -11,8 +11,8 @@ import BootstrapBox from './BootstrapBox';
 import BootstrapFlex from './BootstrapFlex';
 
 type Props = {
-  children?: any,
   title: React.Node,
+  subtitle: React.Node,
   description: React.Node,
   children: React.Node,
 };
@@ -70,6 +70,7 @@ const SubtitleRuler = styled(BootstrapBox).attrs(
       display: none;
     }
     background-color: ${bootstrap.borderColor};
+    border: none;
   `}
 `;
 
@@ -94,7 +95,6 @@ export default function SuiteLogsBCGLayout({
           marginBottom={3}
           paddingY={7}
           width={'100%'}
-          flexShrink={10}
           forwardedAs={TitleTypography}
           variant={'h3'}
           fontWeight={600}
@@ -128,7 +128,7 @@ export default function SuiteLogsBCGLayout({
             >
               {subtitle}
             </BootstrapBox>
-            <SubtitleRuler marginTop={7} />
+            <SubtitleRuler forwardedAs={'hr'} marginTop={7} />
 
             <BootstrapBox as={BootstrapTypography} marginY={7} paddingX={5}>
               {description}
