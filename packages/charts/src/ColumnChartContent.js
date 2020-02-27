@@ -67,7 +67,7 @@ export default function ColumnChartContent({
   const scaledTextHeight = methods.getScaledHeight();
 
   const groupWidth = (VIEWPORT_WIDTH - 2 * GUTTER_WIDTH) / groups.length;
-  const columnHeight = VIEWPORT_HEIGHT;
+  const columnHeight = VIEWPORT_HEIGHT - scaledTextHeight;
 
   return [
     ...groups.map(([group, groupElements], groupIndex) => {
@@ -93,7 +93,7 @@ export default function ColumnChartContent({
                     groupWidth * groupIndex +
                     (index + 0.5) * columnWidth
                   }
-                  y={columnHeight - rectHeight}
+                  y={VIEWPORT_HEIGHT - rectHeight}
                   key={`selection.${index}`}
                   meta={{ ...groupElements[index], index }}
                 />,
@@ -108,7 +108,7 @@ export default function ColumnChartContent({
                     groupWidth * groupIndex +
                     (index + 1) * columnWidth
                   }
-                  y={columnHeight - rectHeight}
+                  y={VIEWPORT_HEIGHT - rectHeight}
                   key={`value.${groupElements.length * groupIndex + index}`}
                   meta={groupElements[index]}
                 >
@@ -149,7 +149,7 @@ export default function ColumnChartContent({
           finite
           direction={'up'}
           key={'axis'}
-          length={VIEWPORT_HEIGHT}
+          length={columnHeight}
           max={maxValue}
           step={dy}
           units={units}

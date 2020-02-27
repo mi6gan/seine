@@ -423,12 +423,14 @@ export const TwoPieChartsInBCGLayout = (props) => (
             body: {
               title: 'Car dealership sales in 2012 (number of cars sold)',
               elements: [
-                { title: 'Luxury cars', value: 2349 },
-                { title: 'SUVs', value: 6423 },
+                { title: 'Luxury cars', value: 4349 },
+                { title: 'Mid-class cars', value: 4423 },
+                { title: 'SUVs', value: 3423 },
+                { title: 'Others', value: 4423 },
                 {
                   id: 'ee83f39d-03bc-4878-9c78-0edef43e936b',
                   title: 'Hatchbacks',
-                  value: 8234,
+                  value: 4234,
                 },
               ],
             },
