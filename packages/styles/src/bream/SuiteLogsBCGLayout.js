@@ -129,7 +129,12 @@ export default function SuiteLogsBCGLayout({
             </BootstrapBox>
             <SubtitleRuler forwardedAs={'hr'} marginTop={7} />
 
-            <BootstrapBox as={BootstrapTypography} marginY={7} paddingX={5}>
+            <BootstrapBox
+              as={BootstrapTypography}
+              forwardedAs={'div'}
+              marginY={7}
+              paddingX={5}
+            >
               {description}
             </BootstrapBox>
           </BootstrapFlex>

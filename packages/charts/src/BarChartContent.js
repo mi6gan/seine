@@ -70,8 +70,10 @@ export default function BarChartContent({
     valueTypographyMethodsRef,
   ] = useTypographyChildrenMethods(elements.length);
   const valueWidth = legend ? 0 : valueMethods.getScaledWidth();
+  const valueHeight = valueMethods.getScaledHeight();
 
-  const barHeight = VIEWPORT_HEIGHT / Math.max(elements.length, 4);
+  const barHeight =
+    (VIEWPORT_HEIGHT - valueHeight) / Math.max(elements.length, 4);
   const barWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
 
   return (
@@ -79,7 +81,8 @@ export default function BarChartContent({
       {elements.map(({ title, value }, index) => {
         const width = (barWidth * value) / maxValue;
         const color = palette[index % palette.length];
-        const y = VIEWPORT_HEIGHT - barHeight * (elements.length - index);
+        const y =
+          VIEWPORT_HEIGHT - valueHeight - barHeight * (elements.length - index);
         const meta = { ...elements[index], index };
 
         return [
@@ -135,7 +138,7 @@ export default function BarChartContent({
           step={dx}
           units={units}
           x={titleWidth}
-          y={VIEWPORT_HEIGHT}
+          y={VIEWPORT_HEIGHT - valueHeight}
         />
       )}
     </g>

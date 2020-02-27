@@ -28,7 +28,7 @@ type Props = {
   yAxis?: boolean,
 };
 
-const GUTTER_WIDTH = VIEWPORT_WIDTH / 10;
+const GUTTER_SIZE = VIEWPORT_WIDTH / 10;
 
 /**
  * @description Column chart content block renderer.
@@ -68,14 +68,15 @@ export default function LineChartContent({
     valueMethods,
     valueTypographyMethodsRef,
   ] = useTypographyChildrenMethods(elements.length);
-  const height = VIEWPORT_HEIGHT - GUTTER_WIDTH;
 
-  const x = GUTTER_WIDTH;
-  const y = GUTTER_WIDTH;
+  const x = GUTTER_SIZE;
+  const y = GUTTER_SIZE;
 
   const valueHeight = valueMethods.getScaledHeight();
 
-  const graphWidth = VIEWPORT_WIDTH - 2 * GUTTER_WIDTH;
+  const height = VIEWPORT_HEIGHT - GUTTER_SIZE - valueHeight;
+
+  const graphWidth = VIEWPORT_WIDTH - 2 * GUTTER_SIZE;
 
   return (
     <g strokeWidth={valueHeight / 40}>
@@ -119,7 +120,7 @@ export default function LineChartContent({
           length={height}
           max={maxValue}
           min={minValue}
-          maxWidth={GUTTER_WIDTH}
+          maxWidth={GUTTER_SIZE}
           step={Math.max(dy, valueHeight)}
           y={y + height}
         />

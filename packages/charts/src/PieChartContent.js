@@ -105,68 +105,64 @@ export default function PieChartContent({
       .slice(1)
   );
 
-  return (
-    <g>
-      {[
-        ...slices.map(({ startX, startY, length, endX, endY, meta }, index) => (
-          <ElementPath
+  return [
+    ...slices.map(({ startX, startY, length, endX, endY, meta }, index) => (
+      <ElementPath
+        {...metaProps}
+        meta={meta}
+        d={[
+          `M ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${CENTER +
+            RADIUS * endY}`,
+          `A ${RADIUS} ${RADIUS} 0 ${+(length > Math.PI)} 0 ${GUTTER_WIDTH +
+            CENTER +
+            RADIUS * startX} ${CENTER + RADIUS * startY}`,
+          `L ${GUTTER_WIDTH + CENTER} ${CENTER}`,
+          `L ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${CENTER +
+            RADIUS * endY}`,
+        ].join(' ')}
+        fill={palette[index % palette.length]}
+        key={`slice.${index}`}
+      />
+    )),
+    ...slices.map(({ title, value, textX, textY, meta }, index) => {
+      const textColor = value >= quarter || legend ? 'white' : 'black';
+
+      return [
+        <ElementValue
+          {...metaProps}
+          meta={meta}
+          fill={textColor}
+          key={`value.${index}`}
+          dominantBaseline={legend ? 'middle' : 'baseline'}
+          textAnchor={'middle'}
+          variant={'h4'}
+          fontWeight={400}
+          x={GUTTER_WIDTH + textX}
+          y={textY}
+          width={value < quarter && !legend ? GUTTER_WIDTH : RADIUS}
+        >
+          {value}
+          {units}
+        </ElementValue>,
+
+        !legend && (
+          <ElementTitle
             {...metaProps}
             meta={meta}
-            d={[
-              `M ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${CENTER +
-                RADIUS * endY}`,
-              `A ${RADIUS} ${RADIUS} 0 ${+(length > Math.PI)} 0 ${GUTTER_WIDTH +
-                CENTER +
-                RADIUS * startX} ${CENTER + RADIUS * startY}`,
-              `L ${GUTTER_WIDTH + CENTER} ${CENTER}`,
-              `L ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${CENTER +
-                RADIUS * endY}`,
-            ].join(' ')}
-            fill={palette[index % palette.length]}
-            key={`slice.${index}`}
-          />
-        )),
-        ...slices.map(({ title, value, textX, textY, meta }, index) => {
-          const textColor = value >= quarter || legend ? 'white' : 'black';
-
-          return [
-            <ElementValue
-              {...metaProps}
-              meta={meta}
-              fill={textColor}
-              key={`value.${index}`}
-              dominantBaseline={legend ? 'middle' : 'baseline'}
-              textAnchor={'middle'}
-              variant={'h4'}
-              fontWeight={400}
-              x={GUTTER_WIDTH + textX}
-              y={textY}
-              width={value < quarter && !legend ? GUTTER_WIDTH : RADIUS}
-            >
-              {value}
-              {units}
-            </ElementValue>,
-
-            !legend && (
-              <ElementTitle
-                {...metaProps}
-                meta={meta}
-                dominantBaseline={'hanging'}
-                fill={textColor}
-                key={`title.${index}`}
-                textAnchor={'middle'}
-                variant={'h5'}
-                fontWeight={400}
-                x={GUTTER_WIDTH + textX}
-                y={textY}
-                width={value < quarter && !legend ? GUTTER_WIDTH : RADIUS}
-              >
-                {title}
-              </ElementTitle>
-            ),
-          ];
-        }),
-      ]}
-    </g>
-  );
+            dominantBaseline={'hanging'}
+            fill={textColor}
+            key={`title.${index}`}
+            textAnchor={'middle'}
+            variant={'h5'}
+            fontWeight={400}
+            x={GUTTER_WIDTH + textX}
+            y={textY}
+            width={value < quarter && !legend ? GUTTER_WIDTH : RADIUS}
+          >
+            {title}
+          </ElementTitle>
+        ),
+      ];
+    }),
+  ];
 }

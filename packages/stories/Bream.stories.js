@@ -462,11 +462,13 @@ export const TwoPieChartsInBCGLayout = (props) => (
               elements: [
                 { title: 'Luxury cars', value: 2584 },
                 { title: 'SUVs', value: 7065 },
+                { title: 'Mid-class cars', value: 1000 },
                 {
                   id: 'd2b4cd22-be07-4bb4-bc62-8b48279dee25',
                   title: 'Hatchbacks',
                   value: 9222,
                 },
+                { title: 'Others', value: 1584 },
               ],
             },
             format: {
