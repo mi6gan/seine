@@ -1,6 +1,6 @@
 {
   "name": "@seine/draft",
-  "version": "0.3.196",
+  "version": "0.3.197",
   "description": "Seine draft.js renderer.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
