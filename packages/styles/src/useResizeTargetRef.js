@@ -12,17 +12,14 @@ export default function useResizeTargetRef() {
   const { observer: resizeObserver } = React.useContext(ResizeObserverContext);
 
   const resizeTargetRef = React.useRef<HTMLElement>(null);
-  const { current: resizeTarget } = resizeTargetRef;
 
   useAutoEffect(() => {
-    const { current: currentResizeTarget } = resizeTargetRef;
-    if (resizeTarget !== currentResizeTarget) {
-      if (resizeTarget) {
+    const { current: resizeTarget } = resizeTargetRef;
+    if (resizeTarget) {
+      resizeObserver.observe(resizeTarget);
+      return () => {
         resizeObserver.unobserve(resizeTarget);
-      }
-      if (currentResizeTarget) {
-        resizeObserver.observe(currentResizeTarget);
-      }
+      };
     }
   });
 
