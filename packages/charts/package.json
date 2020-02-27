@@ -1,6 +1,6 @@
 {
   "name": "@seine/charts",
-  "version": "0.3.198",
+  "version": "0.3.199",
   "description": "Seine charts renderer.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
