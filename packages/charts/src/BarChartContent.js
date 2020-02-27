@@ -62,14 +62,14 @@ export default function BarChartContent({
     titleMethods,
     titleTypographyMethodsRef,
   ] = useTypographyChildrenMethods(elements.length);
-  const titleWidth = titleMethods.getScaledWidth();
+  const titleWidth = legend ? 0 : titleMethods.getScaledWidth();
   const titleHeight = titleMethods.getScaledHeight();
 
   const [
     valueMethods,
     valueTypographyMethodsRef,
   ] = useTypographyChildrenMethods(elements.length);
-  const valueWidth = legend ? 0 : valueMethods.getScaledWidth();
+  const valueWidth = valueMethods.getScaledWidth();
   const valueHeight = valueMethods.getScaledHeight();
 
   const barHeight =
@@ -133,7 +133,7 @@ export default function BarChartContent({
       })}
       {!!xAxis && (
         <ChartAxis
-          length={VIEWPORT_WIDTH - titleWidth}
+          length={VIEWPORT_WIDTH - titleWidth - valueWidth}
           max={maxValue}
           step={dx}
           units={units}

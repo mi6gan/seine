@@ -26,6 +26,9 @@ const ChartLayoutContainer = styled.div`
   width: 100%;
   box-sizing: content-box;
   position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
   ${ChartLayoutTitle},
   ${ChartLayoutContent},
   ${ChartLayoutDescription} {
