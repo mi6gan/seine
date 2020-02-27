@@ -14,7 +14,7 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ResizeObserverProvider({ children }: Props) {
+export default function ResizeObserverProvider({ children = null }: Props) {
   const [count, setCount] = React.useState(0);
 
   const observer = useAutoMemo(

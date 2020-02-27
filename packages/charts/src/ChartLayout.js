@@ -17,11 +17,9 @@ const ChartLayoutDescription = styled.div`
   justify-content: ${({ textAlignment }) => textAlignment};
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: start;
   min-height: 12.5%;
   height: auto;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
 `;
 
 const ChartLayoutContainer = styled.div`

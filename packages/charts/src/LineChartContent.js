@@ -28,7 +28,7 @@ type Props = {
   yAxis?: boolean,
 };
 
-const GUTTER_SIZE = VIEWPORT_WIDTH / 10;
+const GUTTER_WIDTH = VIEWPORT_WIDTH / 10;
 
 /**
  * @description Column chart content block renderer.

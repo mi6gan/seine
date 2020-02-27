@@ -26,7 +26,7 @@ type Props = {
  * @returns {React.Node}
  */
 export default function OffscreenCanvasProvider({
-  children,
+  children = null,
   ...canvasProps
 }: Props) {
   const [canvas, setCanvas] = React.useState(defaultOffscreenCanvas);

@@ -464,13 +464,11 @@ export const TwoPieChartsInBCGLayout = (props) => (
               elements: [
                 { title: 'Luxury cars', value: 2584 },
                 { title: 'SUVs', value: 7065 },
-                { title: 'Mid-class cars', value: 1000 },
                 {
                   id: 'd2b4cd22-be07-4bb4-bc62-8b48279dee25',
                   title: 'Hatchbacks',
                   value: 9222,
                 },
-                { title: 'Others', value: 1584 },
               ],
             },
             format: {
@@ -1095,8 +1093,46 @@ export const ColumnPieBarAndLineChartsInBCGLayout = (props) => (
             body: {
               title: 'Bar chart in BCG Layout',
               elements: [
-                { title: 'Promenade', value: 35 },
-                { title: 'San jose', value: 70 },
+                {
+                  id: 'copy-01a88822-295d-41a7-b1c4-e4b0c376f7ff',
+                  title: 'Copy of Promenade',
+                  value: 35,
+                },
+                {
+                  id: 'copy-5d569158-4798-48d7-bf42-3558cbe3e483',
+                  title: 'Copy of San jose',
+                  value: 70,
+                },
+                {
+                  id: 'copy-8ddb8338-e17b-4b9a-8feb-b3d3d4107c39',
+                  title: 'Copy of Arlington',
+                  value: 32,
+                },
+                {
+                  id: 'copy-7c61fa33-6e45-4256-abbd-af80077d6e35',
+                  title: 'Copy of Virginia',
+                  value: 72,
+                },
+                {
+                  id: 'copy-ab04ad71-2e97-4ba0-92cc-be0dd63e4b75',
+                  title: 'Copy of Isthmus',
+                  value: 42,
+                },
+                {
+                  id: 'copy-b3705829-002b-414d-90f8-762643045c1d',
+                  title: 'Copy of Austin',
+                  value: 102,
+                },
+                {
+                  id: '01a88822-295d-41a7-b1c4-e4b0c376f7ff',
+                  title: 'Promenade',
+                  value: 35,
+                },
+                {
+                  id: '5d569158-4798-48d7-bf42-3558cbe3e483',
+                  title: 'San jose',
+                  value: 70,
+                },
                 {
                   id: '8ddb8338-e17b-4b9a-8feb-b3d3d4107c39',
                   title: 'Arlington',
@@ -1119,44 +1155,7 @@ export const ColumnPieBarAndLineChartsInBCGLayout = (props) => (
                 },
               ],
             },
-            format: { kind: 'bar' },
-            schema: null,
-          },
-          {
-            id: 'cd271f11-75a5-4bff-ab2b-266f7eb4418d',
-            type: 'chart',
-            parent_id: '2636d441-6d48-4101-9061-ce4064c5ce84',
-            body: {
-              title: 'Car dealership sales in 2012 (number of cars sold)',
-              elements: [
-                { title: 'Luxury cars', value: 2349 },
-                { title: 'SUVs', value: 6423 },
-                {
-                  id: 'ee83f39d-03bc-4878-9c78-0edef43e936b',
-                  title: 'Hatchbacks',
-                  value: 8234,
-                },
-              ],
-            },
-            format: {
-              kind: 'pie',
-              units: ' ',
-              palette: [
-                'rgba(97,139,219,1)',
-                'rgba(172,190,203,1)',
-                'rgba(138,219,150,1)',
-                '#e57878',
-                '#8adb96',
-                '#6895eb',
-                '#b8c8d8',
-                '#ebebeb',
-                '#ff7171',
-                '#fdc91d',
-                '#618bdb',
-                '#acbecb',
-                '#707070',
-              ],
-            },
+            format: { kind: 'bar', legend: true },
             schema: null,
           },
           {
@@ -1265,6 +1264,43 @@ export const ColumnPieBarAndLineChartsInBCGLayout = (props) => (
               maxValue: 14000,
               minValue: 0,
               verticalAlignment: 'start',
+            },
+            schema: null,
+          },
+          {
+            id: 'cd271f11-75a5-4bff-ab2b-266f7eb4418d',
+            type: 'chart',
+            parent_id: '2636d441-6d48-4101-9061-ce4064c5ce84',
+            body: {
+              title: 'Car dealership sales in 2012 (number of cars sold)',
+              elements: [
+                { title: 'Luxury cars', value: 2349 },
+                { title: 'SUVs', value: 6423 },
+                {
+                  id: 'ee83f39d-03bc-4878-9c78-0edef43e936b',
+                  title: 'Hatchbacks',
+                  value: 8234,
+                },
+              ],
+            },
+            format: {
+              kind: 'pie',
+              units: ' ',
+              palette: [
+                'rgba(97,139,219,1)',
+                'rgba(172,190,203,1)',
+                'rgba(138,219,150,1)',
+                '#e57878',
+                '#8adb96',
+                '#6895eb',
+                '#b8c8d8',
+                '#ebebeb',
+                '#ff7171',
+                '#fdc91d',
+                '#618bdb',
+                '#acbecb',
+                '#707070',
+              ],
             },
             schema: null,
           },

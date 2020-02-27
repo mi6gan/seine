@@ -19,13 +19,6 @@ type Props = {
   units?: string,
 };
 
-const RADIUS = VIEWPORT_HEIGHT / 2;
-const INNER_RADIUS = RADIUS / 2;
-const CENTER = RADIUS;
-const GUTTER_WIDTH = Math.max(0, VIEWPORT_WIDTH - VIEWPORT_HEIGHT) / 2;
-const OUTER_RADIUS = RADIUS + GUTTER_WIDTH / 2;
-const START = (3 * Math.PI) / 4;
-
 /**
  * @description Pie chart content block renderer.
  * @param {Props}: props
@@ -52,6 +45,14 @@ export default function PieChartContent({
 
   ...metaProps
 }): Props {
+  const radius = VIEWPORT_HEIGHT / 2;
+  const innerRadius = radius / 2;
+
+  const center = VIEWPORT_HEIGHT / 2;
+  const gutter = Math.max(0, VIEWPORT_WIDTH - VIEWPORT_HEIGHT) / 2;
+  const outerRadius = radius + gutter / 2;
+  const offset = (3 * Math.PI) / 4;
+
   const sum = useAutoMemo(elements.reduce((acc, { value }) => acc + value, 0));
   const quarter = useAutoMemo(sum / 4);
 
@@ -76,20 +77,20 @@ export default function PieChartContent({
               endY: Math.sin(end),
 
               textX:
-                CENTER +
+                center +
                 (legend
-                  ? RADIUS / 2
+                  ? radius / 2
                   : value >= quarter
-                  ? INNER_RADIUS
-                  : OUTER_RADIUS) *
+                  ? innerRadius
+                  : outerRadius) *
                   Math.cos(start + (end - start) / 2),
               textY:
-                CENTER +
+                center +
                 (legend
-                  ? RADIUS / 2
+                  ? radius / 2
                   : value >= quarter
-                  ? INNER_RADIUS
-                  : OUTER_RADIUS) *
+                  ? innerRadius
+                  : outerRadius) *
                   Math.sin(start + (end - start) / 2),
 
               title,
@@ -99,7 +100,7 @@ export default function PieChartContent({
             ...acc,
           ];
         },
-        [{ end: START, endX: Math.cos(START), endY: Math.sin(START) }]
+        [{ end: offset, endX: Math.cos(offset), endY: Math.sin(offset) }]
       )
       .reverse()
       .slice(1)
@@ -111,14 +112,12 @@ export default function PieChartContent({
         {...metaProps}
         meta={meta}
         d={[
-          `M ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${CENTER +
-            RADIUS * endY}`,
-          `A ${RADIUS} ${RADIUS} 0 ${+(length > Math.PI)} 0 ${GUTTER_WIDTH +
-            CENTER +
-            RADIUS * startX} ${CENTER + RADIUS * startY}`,
-          `L ${GUTTER_WIDTH + CENTER} ${CENTER}`,
-          `L ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${CENTER +
-            RADIUS * endY}`,
+          `M ${gutter + center + radius * endX} ${center + radius * endY}`,
+          `A ${radius} ${radius} 0 ${+(length > Math.PI)} 0 ${gutter +
+            center +
+            radius * startX} ${center + radius * startY}`,
+          `L ${gutter + center} ${center}`,
+          `L ${gutter + center + radius * endX} ${center + radius * endY}`,
         ].join(' ')}
         fill={palette[index % palette.length]}
         key={`slice.${index}`}
@@ -137,9 +136,9 @@ export default function PieChartContent({
           textAnchor={'middle'}
           variant={'h4'}
           fontWeight={400}
-          x={GUTTER_WIDTH + textX}
+          x={gutter + textX}
           y={textY}
-          width={value < quarter && !legend ? GUTTER_WIDTH : RADIUS}
+          width={value < quarter && !legend ? gutter : radius}
         >
           {value}
           {units}
@@ -155,9 +154,9 @@ export default function PieChartContent({
             textAnchor={'middle'}
             variant={'h5'}
             fontWeight={400}
-            x={GUTTER_WIDTH + textX}
+            x={gutter + textX}
             y={textY}
-            width={value < quarter && !legend ? GUTTER_WIDTH : RADIUS}
+            width={value < quarter && !legend ? gutter : radius}
           >
             {title}
           </ElementTitle>
