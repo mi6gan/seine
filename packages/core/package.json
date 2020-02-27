@@ -1,6 +1,6 @@
 {
   "name": "@seine/core",
-  "version": "0.3.197",
+  "version": "0.3.198",
   "description": "Seine core utils and types.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
