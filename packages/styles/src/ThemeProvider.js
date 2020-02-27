@@ -1,11 +1,9 @@
 // @flow
 import * as React from 'react';
-import {
-  ThemeContext,
-  ThemeProvider as StyledThemeProvider,
-} from 'styled-components/macro';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components/macro';
 
 import defaultTheme from './defaultTheme';
+import useTheme from './useTheme';
 
 type Props = {
   children: React.Node,
@@ -21,7 +19,7 @@ export default function ThemeProvider({
   children,
   theme = defaultTheme,
 }: Props) {
-  return React.useContext(ThemeContext) ? (
+  return useTheme() ? (
     children
   ) : (
     <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>

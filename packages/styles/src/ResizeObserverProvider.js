@@ -6,7 +6,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import ResizeObserverContext from './ResizeObserverContext';
 
 type Props = {
-  children?: any,
+  children: React.Node,
 };
 
 /**
@@ -14,7 +14,7 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ResizeObserverProvider({ children = null }: Props) {
+export default function ResizeObserverProvider({ children }: Props) {
   const [count, setCount] = React.useState(0);
 
   const observer = useAutoMemo(

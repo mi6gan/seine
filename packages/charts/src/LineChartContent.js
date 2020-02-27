@@ -69,14 +69,10 @@ export default function LineChartContent({
     valueTypographyMethodsRef,
   ] = useTypographyChildrenMethods(elements.length);
 
-  const x = GUTTER_SIZE;
-  const y = GUTTER_SIZE;
-
   const valueHeight = valueMethods.getScaledHeight();
 
-  const height = VIEWPORT_HEIGHT - GUTTER_SIZE - valueHeight;
-
-  const graphWidth = VIEWPORT_WIDTH - 2 * GUTTER_SIZE;
+  const height = VIEWPORT_HEIGHT - valueHeight;
+  const graphWidth = VIEWPORT_WIDTH - 2 * GUTTER_WIDTH;
 
   return (
     <g strokeWidth={valueHeight / 40}>
@@ -88,8 +84,8 @@ export default function LineChartContent({
               dominantBaseline={'hanging'}
               key={'group'}
               textAnchor={'middle'}
-              x={x + (index * graphWidth) / (length - 1)}
-              y={y + height}
+              x={GUTTER_WIDTH + (index * graphWidth) / (length - 1)}
+              y={height}
               width={graphWidth / length}
               meta={group}
             >
@@ -104,8 +100,7 @@ export default function LineChartContent({
             (_, index, { length }) =>
               !!((xAxis && index === 0) || (yAxis && index > 0)) && (
                 <path
-                  d={`m${x}  ${y +
-                    height -
+                  d={`m${GUTTER_WIDTH}  ${height -
                     (index * height) / length} ${graphWidth} 0`}
                   key={['grid', index]}
                   stroke={index > 0 ? '#f0f0f0' : 'black'}
@@ -120,9 +115,9 @@ export default function LineChartContent({
           length={height}
           max={maxValue}
           min={minValue}
-          maxWidth={GUTTER_SIZE}
+          maxWidth={GUTTER_WIDTH}
           step={Math.max(dy, valueHeight)}
-          y={y + height}
+          y={height}
         />
       )}
       {titles.map(({ id, title }, titleIndex) => [
@@ -146,9 +141,8 @@ export default function LineChartContent({
             (acc, [, elements], index) =>
               [
                 acc,
-                x + (index * graphWidth) / (groups.length - 1),
-                y +
-                  height -
+                GUTTER_WIDTH + (index * graphWidth) / (groups.length - 1),
+                height -
                   ((elements
                     .filter((element) => element.id === id)
                     .map(({ value }) => value)[0] || 0) *
@@ -180,9 +174,8 @@ export default function LineChartContent({
                     ? 'middle'
                     : 'start'
                 }
-                x={x + (groupIndex * graphWidth) / (length - 1)}
+                x={GUTTER_WIDTH + (groupIndex * graphWidth) / (length - 1)}
                 y={
-                  y +
                   height -
                   ((groupElements
                     .filter((element) => element.id === id)

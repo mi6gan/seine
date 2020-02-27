@@ -1,14 +1,13 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import type { ThemeStyle } from '@material-ui/core/styles/createTypography';
 import { useAutoMemo } from 'hooks.macro';
 
-import SvgTypographyCanvas from './SvgTypographyCanvas';
 import SvgTypographyForeign from './SvgTypographyForeign';
 import Typography from './Typography';
-import defaultTheme from './defaultTheme';
 import useTypographyChildren from './useTypographyChildren';
+import OffscreenCanvasContext from './OffscreenCanvasContext';
+import useTheme from './useTheme';
 
 export type SvgTypographyProps = {
   fill?: string,
@@ -53,7 +52,7 @@ export type SvgTypographyMethods = typeof defaultTypographyMethods;
 
 export type Props = {
   children?: string,
-  variant?: ThemeStyle,
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2',
   x?: number,
   y?: number,
 } & SvgTypographyProps;
@@ -63,9 +62,9 @@ export type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default React.forwardRef(function SvgTypography(
+const SvgTypography = React.forwardRef(function SvgTypography(
   {
-    as: Container = StyledTypography,
+    meta,
     children,
     dominantBaseline = 'baseline',
     variant = 'body1',
@@ -74,47 +73,47 @@ export default React.forwardRef(function SvgTypography(
     x = 0,
     y = 0,
     textAnchor = 'start',
-    meta,
-    ...typography
+    as: Text = StyledTypography,
+    ...textProps
   }: Props,
   ref
 ) {
   const isWebkit = useAutoMemo(navigator.vendor === 'Apple Computer, Inc.');
-  const isBlink = useAutoMemo(
-    !isWebkit && /applewebkit/i.test(navigator.userAgent)
-  );
 
   const foreignObjectRef = React.useRef(null);
   const { current: foreignElement } = foreignObjectRef;
 
-  const canvasElementRef = React.useRef(null);
-  const { current: canvasElement } = canvasElementRef;
+  const canvasElement = React.useContext(OffscreenCanvasContext);
+
+  const theme = useTheme();
 
   const text = useTypographyChildren(children);
-  const { fontWeight = 400, fontSize, fontFamily, lineHeight } = useAutoMemo(
-    canvasElement
-      ? getComputedStyle(canvasElement)
-      : defaultTheme.typography[variant]
+  const { fontWeight, fontSize, fontFamily, lineHeight } = useAutoMemo(
+    foreignElement
+      ? getComputedStyle(foreignElement)
+      : theme.typography[variant]
   );
   const methods: SvgTypographyMethods = useAutoMemo(() => {
-    if (foreignElement && canvasElement) {
-      const getHeight = () => parseFloat(lineHeight);
+    if (foreignElement) {
+      const getHeight = () => theme.typography.round(parseFloat(lineHeight));
       const getXScale = (value = 1) =>
-        ((isWebkit || window.devicePixelRatio) *
-          value *
-          foreignElement.getBBox().width) /
-        foreignElement.getBoundingClientRect().width;
+        theme.typography.round(
+          ((isWebkit || window.devicePixelRatio) *
+            value *
+            foreignElement.getBBox().width) /
+            foreignElement.getBoundingClientRect().width
+        );
       const getYScale = (value = 1) =>
-        ((isWebkit || window.devicePixelRatio) *
-          value *
-          foreignElement.getBBox().height) /
-        foreignElement.getBoundingClientRect().height;
+        theme.typography.round(
+          ((isWebkit || window.devicePixelRatio) *
+            value *
+            foreignElement.getBBox().height) /
+            foreignElement.getBoundingClientRect().height
+        );
       const getWidth = () => {
         const context = canvasElement.getContext('2d');
         context.font = `${fontWeight} ${fontSize} '${fontFamily}'`;
-        return (
-          context.measureText(text).width * (isWebkit || isBlink ? 1.25 : 1)
-        );
+        return context.measureText(text).width + 2;
       };
       const getScaledWidth = () => getXScale(getWidth());
       const getScaledHeight = () => getYScale(getHeight());
@@ -132,57 +131,58 @@ export default React.forwardRef(function SvgTypography(
 
   React.useImperativeHandle(ref, () => methods, [methods]);
 
-  const scaledTextWidth = methods.getScaledWidth();
-  const scaledTextHeight = methods.getScaledHeight();
+  const scaledWidth = methods.getScaledWidth();
+  const scaledHeight = methods.getScaledHeight();
 
   const condensedFactor = Math.min(
-    typeof height === 'number' && height < scaledTextHeight
-      ? height / scaledTextHeight
+    typeof height === 'number' && height < scaledHeight
+      ? height / scaledHeight
       : Infinity,
-    typeof width === 'number' && width < scaledTextWidth
-      ? width / scaledTextWidth
+    typeof width === 'number' && width < scaledWidth
+      ? width / scaledWidth
       : Infinity
   );
+
+  const textWidth = isWebkit
+    ? methods.getWidth() / methods.getXScale()
+    : methods.getWidth();
+  const textXScale = isWebkit ? 1 : methods.getXScale();
+  const textYScale = isWebkit ? 1 : methods.getYScale();
+  const scaledTextWidth = methods.getXScale(textWidth);
 
   return (
     <SvgTypographyForeign
       ref={foreignObjectRef}
-      height={'100%'}
-      width={'100%'}
-      x={
+      width={scaledWidth}
+      height={scaledHeight}
+      x={theme.typography.round(
         x -
-        (textAnchor === 'start'
-          ? 0
-          : scaledTextWidth / (textAnchor === 'end' ? 1 : 2))
-      }
-      y={
+          (textAnchor === 'start'
+            ? 0
+            : scaledTextWidth / (textAnchor === 'end' ? 1 : 2))
+      )}
+      y={theme.typography.round(
         y -
-        (dominantBaseline === 'hanging'
-          ? 0
-          : scaledTextHeight / (dominantBaseline === 'baseline' ? 1 : 2))
-      }
+          (dominantBaseline === 'hanging'
+            ? 0
+            : scaledHeight / (dominantBaseline === 'baseline' ? 1 : 2))
+      )}
     >
-      <SvgTypographyCanvas
-        ref={canvasElementRef}
+      <Text
         variant={variant}
-        height={methods.getHeight()}
-        width={methods.getWidth()}
-      />
-      <Container
-        variant={variant}
-        {...typography}
+        {...textProps}
         textAnchor={textAnchor}
-        width={methods.getWidth()}
-        transform={`scale(${isWebkit ? 1 : methods.getXScale()}, ${
-          isWebkit ? 1 : methods.getYScale()
-        })`}
+        width={textWidth}
+        transform={`scale(${textXScale}, ${textYScale})`}
       >
         {condensedFactor !== Infinity ? (
           <CondensedText factor={condensedFactor}>{children}</CondensedText>
         ) : (
           children
         )}
-      </Container>
+      </Text>
     </SvgTypographyForeign>
   );
 });
+
+export default SvgTypography;

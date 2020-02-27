@@ -1,14 +1,17 @@
 // @flow
-import styled, { css } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 
 const Typography = styled.p`
+  margin: 0;
+  ${({ width }) => width && { width }};
+  ${({ height }) => height && { height }};
+
+  ${({ inline }) => inline && { display: 'inline' }};
+  ${({ overflow = 'hidden' }) => overflow && { overflow }};
+
+  ${({ color }) => color && { color }};
   ${({
-    color,
-    inline = false,
-    overflow = 'hidden',
     variant = 'body1',
-    width,
-    height,
     theme: {
       typography: {
         [variant]: {
@@ -21,46 +24,12 @@ const Typography = styled.p`
     },
     fontSize = defaultFontSize,
     fontWeight = defaultFontWeight,
-  }) => css`
-    font-weight: ${fontWeight};
-    font-family: ${fontFamily};
-    font-size: ${fontSize};
-    line-height: ${lineHeight};
-    margin: 0;
-    overflow: ${overflow};
-
-    ${color &&
-      css`
-        color: ${color};
-      `};
-
-    ${fontWeight &&
-      css`
-        font-weight: ${fontWeight};
-      `};
-
-    ${typeof height === 'number' &&
-      css`
-        height: ${height}px;
-      `}
-    ${typeof height === 'string' &&
-      css`
-        height: ${height};
-      `}
-
-    ${typeof width === 'number' &&
-      css`
-        width: ${width}px;
-      `}
-    ${typeof width === 'string' &&
-      css`
-        width: ${width};
-      `}
-    ${inline &&
-      css`
-        display: inline;
-      `}
-  `}
+  }) => ({
+    fontWeight,
+    fontFamily,
+    fontSize,
+    lineHeight,
+  })}
 `;
 
 export default Typography;

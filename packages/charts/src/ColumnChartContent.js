@@ -67,7 +67,7 @@ export default function ColumnChartContent({
   const scaledTextHeight = methods.getScaledHeight();
 
   const groupWidth = (VIEWPORT_WIDTH - 2 * GUTTER_WIDTH) / groups.length;
-  const columnHeight = VIEWPORT_HEIGHT - 2 * scaledTextHeight;
+  const columnHeight = VIEWPORT_HEIGHT - scaledTextHeight;
 
   return [
     ...groups.map(([group, groupElements], groupIndex) => {
@@ -93,7 +93,7 @@ export default function ColumnChartContent({
                     groupWidth * groupIndex +
                     (index + 0.5) * columnWidth
                   }
-                  y={columnHeight - rectHeight + scaledTextHeight}
+                  y={VIEWPORT_HEIGHT - rectHeight}
                   key={`selection.${index}`}
                   meta={{ ...groupElements[index], index }}
                 />,
@@ -108,7 +108,7 @@ export default function ColumnChartContent({
                     groupWidth * groupIndex +
                     (index + 1) * columnWidth
                   }
-                  y={columnHeight - rectHeight + scaledTextHeight}
+                  y={VIEWPORT_HEIGHT - rectHeight}
                   key={`value.${groupElements.length * groupIndex + index}`}
                   meta={groupElements[index]}
                 >
@@ -120,8 +120,8 @@ export default function ColumnChartContent({
             <path
               d={`m${GUTTER_WIDTH +
                 groupIndex * groupWidth +
-                columnWidth / 4} ${VIEWPORT_HEIGHT -
-                scaledTextHeight}h${columnWidth * groupElements.length +
+                columnWidth / 4} ${VIEWPORT_HEIGHT}h${columnWidth *
+                groupElements.length +
                 columnWidth / 2}`}
               stroke={'black'}
               key={'line'}
@@ -132,7 +132,7 @@ export default function ColumnChartContent({
               dominantBaseline={'hanging'}
               key={'group'}
               x={GUTTER_WIDTH + groupIndex * groupWidth + groupWidth / 2}
-              y={VIEWPORT_HEIGHT - scaledTextHeight}
+              y={VIEWPORT_HEIGHT}
               width={columnWidth * groupElements.length}
               meta={group}
             >
@@ -153,7 +153,7 @@ export default function ColumnChartContent({
           max={maxValue}
           step={dy}
           units={units}
-          y={VIEWPORT_HEIGHT - scaledTextHeight}
+          y={VIEWPORT_HEIGHT}
           maxWidth={GUTTER_WIDTH}
         />
       </g>
