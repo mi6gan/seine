@@ -16,6 +16,8 @@ export type { Props as ChartLegendProps } from './ChartLegend';
 
 export { default as ChartLayout } from './ChartLayout';
 
+export { default as ChartSvgDefs } from './ChartSvgDefs';
+
 export { default as useChartFormatDefaults } from './useChartFormatDefaults';
 
 export * from './constants';

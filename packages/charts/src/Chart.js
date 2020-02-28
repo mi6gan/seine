@@ -10,6 +10,7 @@ import LineChartContent from './LineChartContent';
 import PieChartContent from './PieChartContent';
 import type { ChartProps as Props } from './types';
 import ChartSvg from './ChartSvg';
+import ChartSvgDefs from './ChartSvgDefs';
 import ColumnChartDescription from './ColumnChartDescription';
 import LineChartDescription from './LineChartDescription';
 import PieChartDescription from './PieChartDescription';
@@ -42,6 +43,7 @@ export default function Chart({ children, kind, ...chartProps }: Props) {
       textAlignment={chartProps.textAlignment}
     >
       <ChartSvg>
+        <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent {...chartProps} />
         ) : kind === chartTypes.COLUMN ? (

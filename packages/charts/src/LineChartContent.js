@@ -14,7 +14,7 @@ import {
   VIEWPORT_WIDTH,
 } from './constants';
 import { useGroupedElements } from './helpers';
-import ChartAxis from './ChartAxis';
+import ChartYAxis from './ChartYAxis';
 
 type Props = {
   elements: ChartElement[],
@@ -109,10 +109,9 @@ export default function LineChartContent({
           )
         : null}
       {!!yAxis && (
-        <ChartAxis
+        <ChartYAxis
           arrow
-          direction={'up'}
-          length={height}
+          length={height - valueHeight}
           max={maxValue}
           min={minValue}
           maxWidth={GUTTER_WIDTH}

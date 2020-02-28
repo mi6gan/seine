@@ -14,6 +14,7 @@ import {
   Chart,
   ChartLayout,
   ChartSvg,
+  ChartSvgDefs,
   ColumnChartContent,
   defaultChartLegend,
   LineChartContent,
@@ -22,14 +23,12 @@ import {
 } from '@seine/charts';
 import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
-import stringify from 'virtual-dom-stringify';
 
 import type { ChartEditorProps as Props } from './types';
 import ChartGroupsDescriptionEditor from './ChartGroupsDescriptionEditor';
 import BarChartElementTitleInput from './BarChartElementTitleInput';
 import BarChartElementValueInput from './BarChartElementValueInput';
 import BarChartElementRect from './BarChartElementRect';
-import { chartEditorFillPattern } from './constants';
 import PieChartElementPath from './PieChartElementPath';
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
@@ -132,11 +131,7 @@ export default function ChartEditor({
       textAlignment={chartProps.textAlignment}
     >
       <ChartSvg>
-        <defs
-          dangerouslySetInnerHTML={{
-            __html: stringify(chartEditorFillPattern),
-          }}
-        />
+        <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent
             {...chartProps}
