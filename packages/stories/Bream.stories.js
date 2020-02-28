@@ -1155,7 +1155,7 @@ export const ColumnPieBarAndLineChartsInBCGLayout = (props) => (
                 },
               ],
             },
-            format: { kind: 'bar', legend: true },
+            format: { kind: 'bar', legend: true, units: '%' },
             schema: null,
           },
           {

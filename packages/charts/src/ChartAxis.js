@@ -33,7 +33,7 @@ export default function ChartAxis({
   max,
   min = 0,
   step,
-  units,
+  units = '',
   x = 0,
   y,
 }: Props) {
@@ -41,7 +41,7 @@ export default function ChartAxis({
   const offset = length / count;
   const total = count + !!finite;
   const [
-    { getScaledWidth, getYScale },
+    { getScaledWidth, getYScale, getXScale },
     textMethodsRef,
   ] = useTypographyChildrenMethods(total - 1);
   const textWidth = Math.max(maxWidth, getScaledWidth());
@@ -65,16 +65,21 @@ export default function ChartAxis({
             ref={textMethodsRef}
             x={x + (direction === 'right' ? offset * index : textWidth)}
             y={y - (direction === 'up' && offset * index)}
-            {...(direction === 'right' && { dominantBaseline: 'hanging' })}
+            {...(direction === 'right' && {
+              dominantBaseline: 'hanging',
+              textAnchor: 'center',
+              width: getXScale(offset),
+            })}
             {...(direction === 'up' && {
               dominantBaseline: 'end',
               textAnchor: 'end',
               height: length / total,
+              width: textWidth,
               ...(maxWidth !== null && { width: maxWidth }),
             })}
           >
-            {`${parseInt(min + (index * (max - min)) / count)} `}
-            {units}
+            {`${parseInt(min + (index * (max - min)) / count)}${units}`}
+            {direction === 'up' && ' '}
           </SvgTypography>
         ),
       ])}

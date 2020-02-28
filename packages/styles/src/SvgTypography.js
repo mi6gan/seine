@@ -113,7 +113,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
       const getWidth = () => {
         const context = canvasElement.getContext('2d');
         context.font = `${fontWeight} ${fontSize} '${fontFamily}'`;
-        return context.measureText(text).width + 2 * isWebkit;
+        return context.measureText(text).width;
       };
       const getScaledWidth = () => getXScale(getWidth());
       const getScaledHeight = () => getYScale(getHeight());
