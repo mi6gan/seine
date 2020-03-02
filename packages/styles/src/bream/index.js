@@ -11,6 +11,7 @@ export { default as BootstrapTypography } from './BootstrapTypography';
 export { default as Duration } from './Duration';
 export * from './Duration.helpers';
 
+export { default as SuiteLogsBCGLayout } from './SuiteLogsBCGLayout';
 export { default as SuiteLogsReviewGreeting } from './SuiteLogsReviewGreeting';
 export { default as SuiteLogsReviewHeader } from './SuiteLogsReviewHeader';
 export { default as SuiteLogsReviewPerformance } from './SuiteLogsReviewPerformance';
@@ -18,6 +19,6 @@ export { default as SuiteLogsReviewTime } from './SuiteLogsReviewTime';
 export { default as SuiteLogsSummaryPreview } from './SuiteLogsSummaryPreview';
 
 export { default as breamTheme } from './theme';
+export { default as ThemePaper } from './ThemePaper';
 export { default as ThemeSvgIcon } from './ThemeSvgIcon';
-export { default as SuiteLogsBCGLayout } from './SuiteLogsBCGLayout';
 export { default as useBreamStoryEffect } from './useBreamStoryEffect';
