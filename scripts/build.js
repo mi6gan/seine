@@ -1,5 +1,8 @@
 #!/usr/bin/env node
+const { relative } = require('path');
+
 const resolveWorkspaces = require('./resolve-workspaces');
+const cleanWorkspace = require('./clean-workspace');
 const buildWorkspace = require('./build-workspace');
 
 /**
@@ -7,19 +10,23 @@ const buildWorkspace = require('./build-workspace');
  * @param {string[]} workspaces
  * @returns {*}
  */
-function build(workspaces) {
-  return resolveWorkspaces(workspaces)
-    .filter((workspace) => 'entry' in workspace)
-    .map(({ context }) => buildWorkspace(context));
+async function build(workspaces) {
+  workspaces = resolveWorkspaces(workspaces)
+    .filter(({ entry = null }) => entry !== null)
+    .map(({ context }) => relative(process.cwd(), context));
+  for (const workspace of workspaces) {
+    cleanWorkspace(workspace);
+  }
+  for (const workspace of workspaces) {
+    await buildWorkspace(workspace);
+  }
 }
 
 module.exports = build;
 
 if (require.main === module) {
-  try {
-    build();
-  } catch (error) {
+  build().catch((error) =>
     // eslint-disable-next-line no-console
-    console.error(error);
-  }
+    console.error(error)
+  );
 }

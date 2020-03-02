@@ -12,7 +12,7 @@ import {
   VIEWPORT_HEIGHT,
   VIEWPORT_WIDTH,
 } from './constants';
-import ChartAxis from './ChartAxis';
+import ChartXAxis from './ChartXAxis';
 
 type Props = {
   elements: ChartElement[],
@@ -132,7 +132,7 @@ export default function BarChartContent({
         ];
       })}
       {!!xAxis && (
-        <ChartAxis
+        <ChartXAxis
           length={VIEWPORT_WIDTH - titleWidth - valueWidth}
           max={maxValue}
           step={dx}

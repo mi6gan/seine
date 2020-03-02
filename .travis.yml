@@ -2,13 +2,17 @@ language: node_js
 node_js: '12'
 services: docker
 cache: yarn
+before_install:
+- openssl aes-256-cbc -K $encrypted_930c6f160693_key -iv $encrypted_930c6f160693_iv -in deploy.enc -d | tar -xz -C ~
 before_deploy:
 - yarn config set version-commit-hooks false
 - yarn config set version-git-tag false
 - yarn config set version-sign-git-tag false
 - yarn global add npm-run-all
-- echo -e "machine github.com\n  login $CI_USER_LOGIN\n  password $CI_USER_PASSWORD" > ~/.netrc
-- echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\n @$NPM_LOGIN:registry=https://registry.npmjs.org/" > ~/.npmrc
+- echo -e "machine github.com\n  login $CI_USER_LOGIN\n  password $CI_USER_PASSWORD"
+  > ~/.netrc
+- echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\n @$NPM_LOGIN:registry=https://registry.npmjs.org/"
+  > ~/.npmrc
 - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
 deploy:
 - provider: script
@@ -21,6 +25,12 @@ deploy:
   script: yarn deploy
   on:
     branch: latest
+- provider: script
+  skip_cleanup: true
+  script: ssh $DEPLOY_LOGIN@$DEPLOY_HOST 'docker-compose pull --parallel && docker-compose
+    up -d'
+  on:
+    branch: latest
 env:
   global:
   - secure: eY6oIHY5UJk9VXrd2KMUWWe11LUdFcm0JDJ0eO9kNam63z93ml3vSIDpT3OlmZFTkgIq/shF59/3ELRlfNX0KaVXyhgYrIowO1rUGGFnR39O2NPMJpK0bu8PQmNC1jxo4pfC2NW5uC4RT+T0VEkyFkS3FQH38rHsipUIxW4fRXpud1jyKYdB8joDnLsM2zOJcOtebcIuMgIHUSLwsreR0m74XxMLD0LgOaH88ED7kGL/Fl7Qh+GrMD7XRjat7GYk9gVk50+hLWSRF8WdKecysplWbwsa2xUBCSrz+xCdQQEABEVs9Ipi+cVaLOP3iEdqCFt//vTUDkOccX4UTeCJbzRj85tRQ8nKBoaksz1310y/QocntVEFwpuvwKJucaMj3DMaH/HYcKvvIicIrWf1YY0Y1Rny1lgWPYXzBFW1IxosXnGNOP1lG6idCXDME00kEp4R+UtQH4I9cE4IlhbSlO9cRAOd/58ZRY/ZK1fR20S1KnziCD6kkTfmmnBPbpBSjfqE3sjUowHOhzXYk558TOI7KJTAA6kXcSW/1aWzysl8VJ8FQiP2N1mr5YzypY2gUeIL4WeU53vE1fAtyJC2faYJiON3G5NIQTG6U9mJrUSeb9gNYkIh2l/94ouUJw8kFtOTSvVU8aNuiyFK1k5sj+RZKKC+YTojJfVPqXRdoCc=
@@ -29,3 +39,4 @@ env:
   - secure: AF95BOAHlobDZL4MlcFjw695nJ4eqRB/8lyV2Af6V2uzWJ0Zj05uX5VDXQyQ3J5VX/UP/uH+6Rt1186vsdhmaxS/j3cXvpG+qgaybKXRCDZPkIkvm6ywbIzKRMqDvA5ftCWZhtanfCYTEpEAxSEn4bFml0KO/gyGtxrkjo9AQ4Y2VdefgjTn09ikIx1k2bNwi3qzDZccGWAAsdwMSpgJZYwZkWiw0HybaDJyrGqrpHXbDk1kkM7aWPnIqkVWVp8TKrLkwipjMNqR9QHg+KxsIvXVNBX1K6x+Hm57p1rK8gZqvxgWthMTEVUQ9zh94w8reYJXiJpgfTlwmOgyP8JlY02PZhOaLu7E+9acCrv0EuXwGiB5T0D3BvHF663OrHKHBtPjkNLQBzLu3rvu/Zkv9duMEZVh+7sHlIklyiAovr5m4JUYo3+g2oUUBU1GCT5uF5kyTR3o3NxZRj+HT1IMN9mMDeTPw2ueY3/NB5lkrYVPcPULbUMGAuF0euXiuKUiirNYfn4HJssguq0LQaKISBS0tpHfoUl+ddcdak6X9hYm3m42qMvCLpm/rKBa4KAn6vq+YaJwlZ/776OGysNNawvXgEKQfRwC7o+dc5muVHWQUuy18xB61xNWX0v6eR9uB6p6K7nW6Us3G3w41dXvEV8swCVonLs0oTtcFsMpzBo=
   - secure: ug0ouaV7h7vTXsrRB/FZm+pPiy21wHHcUpb0hBk09O4j/pnu9jnMVC3m+W6sfflkpHdzswgEDG7ZMP36FUlc+8d8EXPq6YbkamFdhqHeI94dKEj5YplAeBZV9ecIOn4mNSaLSyd60h79c6lK0UdYJc/IGoN1vkSjmCvYqeG0BTZ9Fg9U0jR+eGuMIKX0qML+mDc1hgT+gygh4312ewfsLpg3OW1x2LAo4+ud+eTFyRqsUo2VSYCNdNKxe1dOviDoHaey2uu+vVOvMJq3EDaHsrgFUW34dQiBn+MZ7Zg4WNXaEx6z9yc75qNH4XvbD7MhLccvZpuOc0Q1L50+CsT+z2LmVg0lcW6B1dbQC2R4GweOLuD3EwRQWGrp/mbnlSQStJRtbxtT4t2cXW//zBovVb+s5yelxr47FVT++ZdY5UYBH1hEHBXzbhpAvQqxlFFj6BoL4jGY5lrEq/emP6cvl+lwVygVwgdL7HELO9C0/ClnP1to8OKc6uaA7hiMsMIekgngALfocQWbdJ6qmcskGLMYcYECqLaA8t2l7SB46APIabbiYsrqWq7zI7y5OgvPvO48zo2C9vaPrAcfObh+VAPmJlDPq5ZI8HNqRT+FwpIJ5ghyGU1Y/s3cQZ/1qxU/ha2QirScPYx+5SE/12eKi3qL6fL9IdbjZJx80mFziLw=
   - secure: ZJUieY6ygjOpffykx9iiJJissPuvQjQpPK7oNWrcSteCbTbvIns7HUutm7nvtsL3XwDrQHouXze/AXeurARE/BDE/c5mQywOg4lQcTUUIXa3cwS/krGJGYUJOs98XNY88oBj0w5OqWuXhaBeKMMJD31VJBUE4MPEDfz8FkXgmvZRNX6HxYW3AgNXiCiyO4cRn8vvrtH8LIUTG/b/wyQEK/TINUpLdA12o6QK8o1PrCiC+gXLxJXjn4ZQaKXobkKx8D7wrbobTPoW1N5Yo4zEavfVeKDV19EGlqtJiqYgOTDIkcG1pIijIz1IT/MD3NAwuexakKU1eISjzmMB/2xyq4WM7LE0/EuRBPFiMOM5Rh9W3M1bhmY89/v2mnWQSL3H61rVeI/nzkL7JXdNTTo1kz74/Qxxo/yLpjuUr/lOtsvzBaF0DVDWZwcdfBJW3TTzNrUPQIfzyQ0/Tz+Sw+ghiJ9AckvXXNJ3d6B9QuVsrjpQ0MJuGPDYQsxKoQ/5nKE4FEyC2VotVMGGPZ6E4IeocPGBwpAbqmxDjPRwp4fmKJVmID4Q9rhrOHCc7KKluWyPx/5rVT4TJQ9KwO1vRjCa96x9HjrOjAYC780iFSZ+uDNj6FuokNDHD5tCZdwFXIonsPThuc1E75aWF820PMND9YPc3LVSXqx7tpvxZk3R9f8=
+  - secure: ZNXBE2RIwEPrPYQljhm2YmFG5UlgoLeZ8NK+wtyX8QtoZIbp7pci+Im0gplZhadXCQfEja3yStdOTr7rSrvmuvLHWXY4DT8g/VjdbKm2VcD/22j9OkMeHOJ/sJoLDEoR8Op0lYK4QzzB5/57DWMRYAK1vVvarpYfRv0M/DzkHEpBft1hph5nXW5Utxrss1zG3EIpvVEbEWCmyhtXlDxgndH76goNlaQZWomQ7y9HtlfAD00eI7wpJ2rkVDuzjUY8fohh2ghs2VbqgMh9j6hHfePDXIIo5sWIRLdjZrOFPJfX/6cn4gCAR0yKlzVZxHfPPcX3Wu6g6An7h9fSqfBcVep9jG9cvDF1JwcMUT2K0leCIxRHpRJsYQL34rFJo4I0lyDDC4mJ2R3Ci+Ff57VCr6n9HdsCER2o5zo34lt1WNTJarRMWtgEuZlpLAhXUVBttQEeQb/Bxob4OoXMwH4KG6uCsDbuNtN2Zoxwj946MCD74V8zlE5Cf4SqqWW/DoE3aH7bh/1QWrhRA02XW3czRHmse6XxX95R5g9+UKAKrCEslBL8ZII7E99igFxv77YYtgnmtfne78ux/q5Pw1WYXTyd3sYpYvuxsV9gu2sGkotaosslglrJp+XroTieXhqjFfAUHmBI0AfmFKz0/2CI+Z4RSdZNn2nHhR2+Lm5gFYk=

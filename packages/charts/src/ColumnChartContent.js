@@ -13,7 +13,7 @@ import {
   VIEWPORT_WIDTH,
 } from './constants';
 import { useGroupedElements } from './helpers';
-import ChartAxis from './ChartAxis';
+import ChartYAxis from './ChartYAxis';
 
 type Props = {
   elements: ChartElement[],
@@ -144,10 +144,9 @@ export default function ColumnChartContent({
     }),
     !!yAxis && (
       <g key={'axis'} strokeWidth={scaledTextHeight / 40}>
-        <ChartAxis
+        <ChartYAxis
           arrow
           finite
-          direction={'up'}
           key={'axis'}
           length={columnHeight}
           max={maxValue}

@@ -22,7 +22,7 @@ const StyledTypography = styled(Typography).attrs(({ fill }) => ({
   transform-origin: left top;
   position: fixed;
   ${({ transform }) => transform && { transform }};
-  white-space: pre-wrap;
+  white-space: pre;
   text-align: ${({ textAnchor }) =>
     textAnchor === 'end'
       ? 'right'
@@ -113,7 +113,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
       const getWidth = () => {
         const context = canvasElement.getContext('2d');
         context.font = `${fontWeight} ${fontSize} '${fontFamily}'`;
-        return context.measureText(text).width + 2;
+        return context.measureText(text).width * 1.05;
       };
       const getScaledWidth = () => getXScale(getWidth());
       const getScaledHeight = () => getYScale(getHeight());
@@ -143,23 +143,16 @@ const SvgTypography = React.forwardRef(function SvgTypography(
       : Infinity
   );
 
-  const textWidth = isWebkit
-    ? methods.getWidth() / methods.getXScale()
-    : methods.getWidth();
-  const textXScale = isWebkit ? 1 : methods.getXScale();
-  const textYScale = isWebkit ? 1 : methods.getYScale();
-  const scaledTextWidth = methods.getXScale(textWidth);
-
   return (
     <SvgTypographyForeign
       ref={foreignObjectRef}
-      width={scaledWidth}
-      height={scaledHeight}
+      width={foreignElement ? scaledWidth : '100%'}
+      height={foreignElement ? scaledHeight : '100%'}
       x={theme.typography.round(
         x -
           (textAnchor === 'start'
             ? 0
-            : scaledTextWidth / (textAnchor === 'end' ? 1 : 2))
+            : scaledWidth / (textAnchor === 'end' ? 1 : 2))
       )}
       y={theme.typography.round(
         y -
@@ -172,8 +165,10 @@ const SvgTypography = React.forwardRef(function SvgTypography(
         variant={variant}
         {...textProps}
         textAnchor={textAnchor}
-        width={textWidth}
-        transform={`scale(${textXScale}, ${textYScale})`}
+        width={methods.getWidth()}
+        {...(!isWebkit && {
+          transform: `scale(${methods.getXScale()}, ${methods.getYScale()})`,
+        })}
       >
         {condensedFactor !== Infinity ? (
           <CondensedText factor={condensedFactor}>{children}</CondensedText>

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { dirname, join } = require('path');
 const { inspect } = require('util');
 

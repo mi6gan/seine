@@ -11,6 +11,7 @@ export { default as useTypographyChildrenMethods } from './useTypographyChildren
 export { default as ResizeObserverProvider } from './ResizeObserverProvider';
 export { default as OffscreenCanvasProvider } from './OffscreenCanvasProvider';
 export { default as useResizeTargetRef } from './useResizeTargetRef';
+
 export * from './utils';
 export * from './bream';
 

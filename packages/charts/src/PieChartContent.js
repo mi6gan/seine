@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { SvgTypography } from '@seine/styles';
+import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import { useAutoMemo } from 'hooks.macro';
 import type { ChartElement } from '@seine/core';
 
@@ -9,7 +9,6 @@ import {
   defaultPieChartLegend,
   defaultPieChartUnits,
   VIEWPORT_HEIGHT,
-  VIEWPORT_WIDTH,
 } from './constants';
 
 type Props = {
@@ -45,12 +44,17 @@ export default function PieChartContent({
 
   ...metaProps
 }): Props {
-  const radius = VIEWPORT_HEIGHT / 2;
+  const [textMethods, textMethodsRef] = useTypographyChildrenMethods(
+    elements.length * (!legend + 1)
+  );
+
+  const gutter = textMethods.getScaledWidth();
+  const radius = (VIEWPORT_HEIGHT - gutter) / 2;
   const innerRadius = radius / 2;
 
-  const center = VIEWPORT_HEIGHT / 2;
-  const gutter = Math.max(0, VIEWPORT_WIDTH - VIEWPORT_HEIGHT) / 2;
-  const outerRadius = radius + gutter / 2;
+  const centerX = (VIEWPORT_HEIGHT - gutter) / 2;
+  const centerY = VIEWPORT_HEIGHT / 2;
+  const outerRadius = radius + gutter / 3;
   const offset = (3 * Math.PI) / 4;
 
   const sum = useAutoMemo(elements.reduce((acc, { value }) => acc + value, 0));
@@ -77,7 +81,7 @@ export default function PieChartContent({
               endY: Math.sin(end),
 
               textX:
-                center +
+                centerX +
                 (legend
                   ? radius / 2
                   : value >= quarter
@@ -85,7 +89,7 @@ export default function PieChartContent({
                   : outerRadius) *
                   Math.cos(start + (end - start) / 2),
               textY:
-                center +
+                centerY +
                 (legend
                   ? radius / 2
                   : value >= quarter
@@ -112,12 +116,12 @@ export default function PieChartContent({
         {...metaProps}
         meta={meta}
         d={[
-          `M ${gutter + center + radius * endX} ${center + radius * endY}`,
+          `M ${gutter + centerX + radius * endX} ${centerY + radius * endY}`,
           `A ${radius} ${radius} 0 ${+(length > Math.PI)} 0 ${gutter +
-            center +
-            radius * startX} ${center + radius * startY}`,
-          `L ${gutter + center} ${center}`,
-          `L ${gutter + center + radius * endX} ${center + radius * endY}`,
+            centerX +
+            radius * startX} ${centerY + radius * startY}`,
+          `L ${gutter + centerX} ${centerY}`,
+          `L ${gutter + centerX + radius * endX} ${centerY + radius * endY}`,
         ].join(' ')}
         fill={palette[index % palette.length]}
         key={`slice.${index}`}
@@ -129,6 +133,7 @@ export default function PieChartContent({
       return [
         <ElementValue
           {...metaProps}
+          ref={textMethodsRef}
           meta={meta}
           fill={textColor}
           key={`value.${index}`}
@@ -147,6 +152,7 @@ export default function PieChartContent({
         !legend && (
           <ElementTitle
             {...metaProps}
+            ref={textMethodsRef}
             meta={meta}
             dominantBaseline={'hanging'}
             fill={textColor}

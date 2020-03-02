@@ -1,8 +1,6 @@
 // @flow
-import * as React from 'react';
-
 export type TableCell = {
-  text: React.Node,
+  text: React$Node,
   align?: 'left' | 'center' | 'right',
   bold?: boolean,
   italic?: boolean,
