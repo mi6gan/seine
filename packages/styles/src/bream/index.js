@@ -9,6 +9,7 @@ export { default as BootstrapRow } from './BootstrapRow';
 export { default as BootstrapTypography } from './BootstrapTypography';
 
 export { default as Duration } from './Duration';
+export * from './Duration.helpers';
 
 export { default as SuiteLogsReviewGreeting } from './SuiteLogsReviewGreeting';
 export { default as SuiteLogsReviewHeader } from './SuiteLogsReviewHeader';
