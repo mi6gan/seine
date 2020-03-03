@@ -25,11 +25,11 @@ export const defaultPalette = {
 };
 export const defaultTypography = {
   fontFamily:
-    '"Nunito Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
+    '"Montserrat", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
   fontSize: 14,
-  fontWeightBold: 800,
-  fontWeightLight: 300,
-  fontWeightMedium: 600,
+  fontWeightBold: 600,
+  fontWeightLight: 400,
+  fontWeightMedium: 500,
   fontWeightRegular: 400,
   htmlFontSize: 16,
 };

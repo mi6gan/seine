@@ -24,7 +24,7 @@ export default function createTypography(palette, typography) {
     htmlFontSize,
 
     // bootstrap theme variables
-    headingsFontWeight = 600,
+    headingsFontWeight = 500,
     headingsLineHeight = 1.5,
     headingsMarginBottom = '0.5em',
     displayLineHeight = 1.5,
