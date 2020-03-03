@@ -15,15 +15,17 @@ const Typography = styled.p`
     theme: {
       typography: {
         [variant]: {
-          fontFamily,
+          fontFamily: defaultFontFamily,
           fontSize: defaultFontSize,
           fontWeight: defaultFontWeight,
-          lineHeight,
+          lineHeight: defaultLineHeight,
         },
       },
     },
+    fontFamily = defaultFontFamily,
     fontSize = defaultFontSize,
     fontWeight = defaultFontWeight,
+    lineHeight = defaultLineHeight,
   }) => ({
     fontWeight,
     fontFamily,

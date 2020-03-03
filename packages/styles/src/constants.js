@@ -24,7 +24,8 @@ export const defaultPalette = {
   },
 };
 export const defaultTypography = {
-  fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+  fontFamily:
+    '"Nunito Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
   fontSize: 14,
   fontWeightBold: 700,
   fontWeightLight: 300,
