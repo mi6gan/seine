@@ -18,7 +18,6 @@ const ChartSvg = styled.svg.attrs(
     ...(height && { height }),
   })
 )`
-  transform: translateZ(0);
   ${({ overflow }) => ({ overflow })};
   ${({ width = 'auto' }) => ({ width })};
   ${({ height = 'auto' }) => ({ height })};

@@ -15,7 +15,7 @@ type Props = {
 };
 
 const ThemeGlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,800');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,800');
 `;
 
 /**

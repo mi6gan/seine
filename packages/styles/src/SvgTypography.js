@@ -123,7 +123,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
           actualBoundingBoxDescent: descent = 0,
           width,
         } = context.measureText(text);
-        return Math.max(1.05 * width, right - left + (ascent - descent));
+        return Math.max((16 * width) / 14, right - left + (ascent - descent));
       };
       const getScaledWidth = () => getXScale(getWidth());
       const getScaledHeight = () => getYScale(getHeight());
@@ -181,7 +181,9 @@ const SvgTypography = React.forwardRef(function SvgTypography(
         })}
       >
         {condensedFactor !== Infinity ? (
-          <CondensedText factor={condensedFactor}>{children}</CondensedText>
+          <CondensedText factor={theme.typography.round(condensedFactor)}>
+            {children}
+          </CondensedText>
         ) : (
           children
         )}

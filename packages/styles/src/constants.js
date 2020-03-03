@@ -27,9 +27,9 @@ export const defaultTypography = {
   fontFamily:
     '"Nunito Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
   fontSize: 14,
-  fontWeightBold: 700,
+  fontWeightBold: 800,
   fontWeightLight: 300,
-  fontWeightMedium: 500,
+  fontWeightMedium: 600,
   fontWeightRegular: 400,
   htmlFontSize: 16,
 };
