@@ -34,9 +34,7 @@ export default function ChartXAxis({
   const count = Math.floor((max - min) / step);
   const offset = length / count;
   const total = count + !!finite;
-  const [{ getXScale }, textMethodsRef] = useTypographyChildrenMethods(
-    total - 1
-  );
+  const [textMethodsRef] = useTypographyChildrenMethods(total - 1);
 
   return Array.from({ length: total }).map((_, index) => [
     !noLine && index !== count && (
@@ -57,7 +55,7 @@ export default function ChartXAxis({
         y={y}
         dominantBaseline={'hanging'}
         textAnchor={'center'}
-        width={getXScale(offset)}
+        width={offset}
       >
         {`${parseInt(min + (index * (max - min)) / count)}${units}`}
       </SvgTypography>

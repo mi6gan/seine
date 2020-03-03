@@ -79,6 +79,9 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   ref
 ) {
   const isWebkit = useAutoMemo(navigator.vendor === 'Apple Computer, Inc.');
+  const isBlink = useAutoMemo(
+    !isWebkit && /applewebkit/i.test(navigator.userAgent)
+  );
 
   const foreignObjectRef = React.useRef(null);
   const { current: foreignElement } = foreignObjectRef;
@@ -88,7 +91,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   const theme = useTheme();
 
   const text = useTypographyChildren(children);
-  const { fontWeight, fontSize, fontFamily, lineHeight } = useAutoMemo(
+  const { fontWeight = 400, fontSize, fontFamily, lineHeight } = useAutoMemo(
     foreignElement
       ? getComputedStyle(foreignElement)
       : theme.typography[variant]
@@ -98,14 +101,14 @@ const SvgTypography = React.forwardRef(function SvgTypography(
       const getHeight = () => theme.typography.round(parseFloat(lineHeight));
       const getXScale = (value = 1) =>
         theme.typography.round(
-          ((isWebkit || window.devicePixelRatio) *
+          ((isWebkit || !isBlink || window.devicePixelRatio) *
             value *
             foreignElement.getBBox().width) /
             foreignElement.getBoundingClientRect().width
         );
       const getYScale = (value = 1) =>
         theme.typography.round(
-          ((isWebkit || window.devicePixelRatio) *
+          ((isWebkit || !isBlink || window.devicePixelRatio) *
             value *
             foreignElement.getBBox().height) /
             foreignElement.getBoundingClientRect().height
@@ -113,7 +116,14 @@ const SvgTypography = React.forwardRef(function SvgTypography(
       const getWidth = () => {
         const context = canvasElement.getContext('2d');
         context.font = `${fontWeight} ${fontSize} '${fontFamily}'`;
-        return context.measureText(text).width * 1.05;
+        const {
+          actualBoundingBoxRight: right = 0,
+          actualBoundingBoxLeft: left = 0,
+          actualBoundingBoxAscent: ascent = 0,
+          actualBoundingBoxDescent: descent = 0,
+          width,
+        } = context.measureText(text);
+        return Math.max(1.05 * width, right - left + (ascent - descent));
       };
       const getScaledWidth = () => getXScale(getWidth());
       const getScaledHeight = () => getYScale(getHeight());
