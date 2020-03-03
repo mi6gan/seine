@@ -73,7 +73,7 @@ export default function BarChartContent({
   const valueHeight = valueMethods.getScaledHeight();
 
   const barHeight =
-    (VIEWPORT_HEIGHT - valueHeight) / Math.max(elements.length, 4);
+    (VIEWPORT_HEIGHT - valueHeight) / Math.max(elements.length, 8);
   const barWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
 
   return (
@@ -95,6 +95,7 @@ export default function BarChartContent({
             meta={meta}
             x={0}
             y={y + barHeight / 2}
+            height={titleHeight}
           >
             {legend ? '' : title}{' '}
           </ElementTitle>,
@@ -119,6 +120,7 @@ export default function BarChartContent({
             meta={meta}
             x={titleWidth + width}
             y={y + barHeight / 2}
+            height={valueHeight}
           >
             {' '}
             {value}
