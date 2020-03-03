@@ -115,7 +115,7 @@ exports[`Storyshots Default.Single.RichText Single Line Content 1`] = `null`;
 exports[`Storyshots Default.Single.SvgText HTML Text In SVG 1`] = `
 <div>
   <p
-    className="Typography-sc-1b4huth-0 hlXPhu"
+    className="Typography-sc-1b4huth-0 fpCSor"
     id="default-single-svgtext--html-text-in-svg"
     kind="Default.Single.SvgText"
     name="HTML Text In SVG"
@@ -145,7 +145,7 @@ exports[`Storyshots Default.Single.SvgText HTML Text In SVG 1`] = `
       y={-1}
     >
       <p
-        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 gLtBpJ"
+        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 eoXpap"
         id="default-single-svgtext--html-text-in-svg"
         kind="Default.Single.SvgText"
         name="HTML Text In SVG"
@@ -162,7 +162,7 @@ exports[`Storyshots Default.Single.SvgText HTML Text In SVG 1`] = `
 exports[`Storyshots Default.Single.SvgText SVG Text Width Property 1`] = `
 <div>
   <p
-    className="Typography-sc-1b4huth-0 jtblyv"
+    className="Typography-sc-1b4huth-0 cjcbpY"
     width={200}
   >
     text width is 200, extra is hidden
@@ -189,7 +189,7 @@ exports[`Storyshots Default.Single.SvgText SVG Text Width Property 1`] = `
       y={-1}
     >
       <p
-        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 gLtBpJ"
+        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 eoXpap"
         textAnchor="start"
         width={1}
       >

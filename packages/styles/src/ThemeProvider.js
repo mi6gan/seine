@@ -15,7 +15,7 @@ type Props = {
 };
 
 const ThemeGlobalStyles = createGlobalStyle`
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600&amp;subset=cyrillic);
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600&amp;subset=cyrillic');
 `;
 
 /**
