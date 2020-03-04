@@ -1,6 +1,6 @@
 {
   "name": "@seine/charts",
-  "version": "0.3.211",
+  "version": "0.3.212",
   "description": "Seine charts renderer.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -17,7 +17,6 @@
   },
   "peerDependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"
   }
 }
