@@ -15,7 +15,7 @@ type Props = {
 
 const ChartLayoutTitleText = styled.span`
   display: inline-block;
-  transform-origin: 0 0;
+  transform-origin: left bottom;
   transform: scale(${({ scale }) => scale});
   white-space: pre;
 `;

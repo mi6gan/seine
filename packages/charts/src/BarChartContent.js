@@ -95,7 +95,7 @@ export default function BarChartContent({
             meta={meta}
             x={0}
             y={y + barHeight / 2}
-            height={titleHeight}
+            height={barHeight}
           >
             {legend ? '' : title}{' '}
           </ElementTitle>,
@@ -120,7 +120,7 @@ export default function BarChartContent({
             meta={meta}
             x={titleWidth + width}
             y={y + barHeight / 2}
-            height={valueHeight}
+            height={barHeight}
           >
             {' '}
             {value}
