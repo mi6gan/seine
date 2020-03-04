@@ -2,10 +2,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import BootstrapBox from './BootstrapBox';
-import BootstrapFlex from './BootstrapFlex';
-import BootstrapProgress from './BootstrapProgress';
-import BootstrapTypography from './BootstrapTypography';
+import BootstrapBox from '../BootstrapBox';
+import BootstrapFlex from '../BootstrapFlex';
+import BootstrapProgress from '../BootstrapProgress';
+import BootstrapTypography from '../BootstrapTypography';
+
 import ThemePaper from './ThemePaper';
 
 const OuterProgress = styled(BootstrapProgress).attrs(

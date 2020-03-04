@@ -1,22 +1,21 @@
 import * as React from 'react';
+import { BreamThemeProvider } from '@seine/testbox';
 
-import ThemeProvider from '../ThemeProvider';
+import BootstrapContainer from '../BootstrapContainer';
 
 import useBreamStoryEffect from './useBreamStoryEffect';
-import BootstrapContainer from './BootstrapContainer';
 import SuiteLogsReviewHeader from './SuiteLogsReviewHeader';
-import theme from './theme';
 
 export default { title: 'Bream.Review summary header' };
 
 const ThemedSuiteLogsHeader = (props) => {
   useBreamStoryEffect(...document.children);
   return (
-    <ThemeProvider theme={theme}>
+    <BreamThemeProvider>
       <BootstrapContainer>
         <SuiteLogsReviewHeader {...props} />
       </BootstrapContainer>
-    </ThemeProvider>
+    </BreamThemeProvider>
   );
 };
 

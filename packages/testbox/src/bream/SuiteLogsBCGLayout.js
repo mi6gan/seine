@@ -2,13 +2,14 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
 
-import BootstrapTypography from './BootstrapTypography';
-import BootstrapContainer from './BootstrapContainer';
-import BootstrapRow from './BootstrapRow';
+import BootstrapTypography from '../BootstrapTypography';
+import BootstrapContainer from '../BootstrapContainer';
+import BootstrapRow from '../BootstrapRow';
+import BootstrapColumn from '../BootstrapColumn';
+import BootstrapBox from '../BootstrapBox';
+import BootstrapFlex from '../BootstrapFlex';
+
 import ThemePaper from './ThemePaper';
-import BootstrapColumn from './BootstrapColumn';
-import BootstrapBox from './BootstrapBox';
-import BootstrapFlex from './BootstrapFlex';
 
 type Props = {
   title: React.Node,

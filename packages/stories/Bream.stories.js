@@ -1,11 +1,10 @@
 // @flow
 import React from 'react';
 import {
-  breamTheme,
   SuiteLogsBCGLayout,
-  ThemeProvider,
   useBreamStoryEffect,
-} from '@seine/styles';
+  BreamThemeProvider,
+} from '@seine/testbox';
 import { Content } from '@seine/content';
 
 type Props = {
@@ -17,7 +16,7 @@ export default { title: 'Bream' };
 const Themed = ({ children = null }: Props) => {
   useBreamStoryEffect(...document.children);
 
-  return <ThemeProvider theme={breamTheme}>{children}</ThemeProvider>;
+  return <BreamThemeProvider>{children}</BreamThemeProvider>;
 };
 
 export const ContentInBCGLayout = ({

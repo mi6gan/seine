@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
 
-import BootstrapBox from './BootstrapBox';
-import BootstrapColumn from './BootstrapColumn';
-import BootstrapRow from './BootstrapRow';
+import BootstrapBox from '../BootstrapBox';
+import BootstrapColumn from '../BootstrapColumn';
+import BootstrapRow from '../BootstrapRow';
+
 import SuiteLogsReviewPerformance from './SuiteLogsReviewPerformance';
 import SuiteLogsReviewTime from './SuiteLogsReviewTime';
 import SuiteLogsReviewGreeting from './SuiteLogsReviewGreeting';

@@ -1,5 +1,6 @@
 const { basename, dirname, resolve, join } = require('path');
 
+const alias = require('@rollup/plugin-alias');
 const babel = require('rollup-plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const nodeResolve = require('@rollup/plugin-node-resolve');
@@ -56,23 +57,29 @@ function rollupConfig(
       ...(format === 'umd' && {
         name: camelCase(packageName),
         banner: `window.process = {env: {NODE_ENV: '${NODE_ENV}'}};`,
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'styled-components/macro': 'styled',
-          crypto: 'crypto',
-          ...externalModuleIds.reduce(
-            (acc, name) => ({
-              ...acc,
-              [name]: camelCase(name),
-            }),
-            {}
-          ),
-        },
+        globals: externalModuleIds.reduce(
+          (acc, name) => ({
+            ...acc,
+            [name]: camelCase(name),
+          }),
+          {}
+        ),
       }),
       sourcemap: !!file,
     },
     plugins: [
+      ...(format === 'umd'
+        ? [
+            alias({
+              entries: [
+                {
+                  find: /@seine\/(.*)/,
+                  replacement: resolve('packages/$1/src'),
+                },
+              ],
+            }),
+          ]
+        : []),
       visualize({
         filename: join(
           context,

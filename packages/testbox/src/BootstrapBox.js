@@ -2,7 +2,7 @@
 import { reject, map, mapObjIndexed, o, test, isNil } from 'ramda';
 import styled from 'styled-components/macro';
 
-import type { Spacer } from './theme';
+import type { Spacer } from './bream';
 
 export type SpacerProps = {
   marginTop: Spacer,

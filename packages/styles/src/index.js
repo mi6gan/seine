@@ -16,6 +16,5 @@ export { default as useTypographyChildren } from './useTypographyChildren';
 export { default as useTheme } from './useTheme';
 
 export * from './utils';
-export * from './bream';
 
 export * from './constants';

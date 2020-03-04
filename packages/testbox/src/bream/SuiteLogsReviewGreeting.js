@@ -1,14 +1,15 @@
 // @flow
 import * as React from 'react';
 
-import shareIcon from './img/icons/ico-share-white.svg';
+import BootstrapBox from '../BootstrapBox';
+import BootstrapButton from '../BootstrapButton';
+import BootstrapColumn from '../BootstrapColumn';
+import BootstrapFlex from '../BootstrapFlex';
+import BootstrapRow from '../BootstrapRow';
+import BootstrapTypography from '../BootstrapTypography';
+
 import exclamationMarkBlueIcon from './img/icons/exclamation-mark-blue.svg';
-import BootstrapBox from './BootstrapBox';
-import BootstrapButton from './BootstrapButton';
-import BootstrapColumn from './BootstrapColumn';
-import BootstrapFlex from './BootstrapFlex';
-import BootstrapRow from './BootstrapRow';
-import BootstrapTypography from './BootstrapTypography';
+import shareIcon from './img/icons/ico-share-white.svg';
 import ThemeSvgIcon from './ThemeSvgIcon';
 import ThemePaper from './ThemePaper';
 

@@ -1,8 +1,9 @@
 // @flow
 import React from 'react';
 
-import BootstrapFlex from './BootstrapFlex';
-import BootstrapTypography from './BootstrapTypography';
+import BootstrapFlex from '../BootstrapFlex';
+import BootstrapTypography from '../BootstrapTypography';
+
 import Duration from './Duration';
 import ThemePaper from './ThemePaper';
 
