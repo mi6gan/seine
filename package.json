@@ -2,7 +2,7 @@
   "name": "seine",
   "description": "Seine is a Javascript library of React components and utilities to view and edit structured content.",
   "homepage": "https://seine.wanttobe.online",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "keywords": [
     "react",
     "richtext"
