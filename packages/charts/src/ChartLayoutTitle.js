@@ -13,7 +13,7 @@ type Props = {
   children: React.Node,
 };
 
-const StyledChartLayoutTitle = styled.span`
+const ChartLayoutTitleText = styled.span`
   display: inline-block;
   transform-origin: 0 0;
   transform: scale(${({ scale }) => scale});
@@ -61,7 +61,7 @@ export default styled(function ChartLayoutTitle({
 
   return (
     <Container {...titleProps} ref={titleElementRef}>
-      <StyledChartLayoutTitle scale={scale}>{children}</StyledChartLayoutTitle>
+      <ChartLayoutTitleText scale={scale}>{children}</ChartLayoutTitleText>
     </Container>
   );
 })`
