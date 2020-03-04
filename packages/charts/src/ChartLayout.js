@@ -3,11 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import type { TextAlignment } from '@seine/core';
 
-const ChartLayoutTitle = styled.h3`
-  ${({ theme: { typography } }) => typography.h3};
-  text-align: ${({ textAlignment }) => textAlignment};
-  height: 3.5rem;
-`;
+import ChartLayoutTitle from './ChartLayoutTitle';
 
 const ChartLayoutContent = styled.div`
   height: 75%;
