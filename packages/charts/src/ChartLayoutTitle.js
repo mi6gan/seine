@@ -28,7 +28,7 @@ const ChartLayoutTitleText = styled.span`
 export default styled(function ChartLayoutTitle({
   as: Container = 'h3',
   children,
-  ...titleProps
+  ...containerProps
 }: Props) {
   const canvas = useOffscreenCanvas();
   const titleElementRef = useResizeTargetRef();
@@ -60,7 +60,7 @@ export default styled(function ChartLayoutTitle({
   });
 
   return (
-    <Container {...titleProps} ref={titleElementRef}>
+    <Container {...containerProps} ref={titleElementRef}>
       <ChartLayoutTitleText scale={scale}>{children}</ChartLayoutTitleText>
     </Container>
   );
