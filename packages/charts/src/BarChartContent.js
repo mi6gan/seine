@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import type { ChartElement } from '@seine/core';
+import invert from 'invert-color';
 
 import {
   defaultBarChartLegend,
@@ -26,6 +27,8 @@ type Props = {
   elementValueAs: React.ComponentType,
   elementRectAs: React.ComponentType,
 };
+
+const MIN_BAR_WIDTH = VIEWPORT_WIDTH / 2;
 
 /**
  * @description Bar chart content block renderer.
@@ -74,32 +77,25 @@ export default function BarChartContent({
 
   const barHeight =
     (VIEWPORT_HEIGHT - valueHeight) / Math.max(elements.length, 8);
-  const barWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
+
+  const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
+  const barWidth =
+    paddedBarWidth > MIN_BAR_WIDTH ? paddedBarWidth : VIEWPORT_WIDTH;
 
   return (
     <g strokeWidth={titleHeight / 40}>
       {elements.map(({ title, value }, index) => {
         const width = (barWidth * value) / maxValue;
         const color = palette[index % palette.length];
+        const textColor =
+          barWidth === paddedBarWidth
+            ? color
+            : invert(color, { threshold: 0.5 });
         const y =
           VIEWPORT_HEIGHT - valueHeight - barHeight * (elements.length - index);
         const meta = { ...elements[index], index };
 
         return [
-          <ElementTitle
-            {...metaProps}
-            dominantBaseline={'middle'}
-            fill={color}
-            ref={titleTypographyMethodsRef}
-            key={`title.${index}`}
-            meta={meta}
-            x={0}
-            y={y + barHeight / 2}
-            height={barHeight}
-          >
-            {legend ? '' : title}{' '}
-          </ElementTitle>,
-
           <ElementRect
             {...metaProps}
             fill={color}
@@ -107,34 +103,52 @@ export default function BarChartContent({
             width={width}
             key={`selection.${index}`}
             meta={meta}
-            x={titleWidth}
+            x={barWidth === paddedBarWidth ? titleWidth : 0}
             y={y}
           />,
+          <ElementTitle
+            {...metaProps}
+            dominantBaseline={'middle'}
+            fill={textColor}
+            ref={titleTypographyMethodsRef}
+            key={`title.${index}`}
+            meta={meta}
+            x={0}
+            y={y + barHeight / 2}
+            height={barHeight}
+            width={
+              barWidth === paddedBarWidth ? titleWidth : titleWidth - valueWidth
+            }
+          >
+            {' '}
+            {legend ? '' : title}{' '}
+          </ElementTitle>,
 
           <ElementValue
             {...metaProps}
             dominantBaseline={'middle'}
             ref={valueTypographyMethodsRef}
-            fill={color}
+            fill={textColor}
             key={`value.${index}`}
             meta={meta}
-            x={titleWidth + width}
+            textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
+            x={barWidth === paddedBarWidth ? titleWidth + width : width}
             y={y + barHeight / 2}
             height={barHeight}
           >
             {' '}
             {value}
-            {units}
+            {units}{' '}
           </ElementValue>,
         ];
       })}
       {!!xAxis && (
         <ChartXAxis
-          length={VIEWPORT_WIDTH - titleWidth - valueWidth}
+          length={barWidth}
           max={maxValue}
           step={dx}
           units={units}
-          x={titleWidth}
+          x={barWidth === paddedBarWidth ? titleWidth : 0}
           y={VIEWPORT_HEIGHT - valueHeight}
         />
       )}

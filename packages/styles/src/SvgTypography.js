@@ -34,8 +34,6 @@ const StyledTypography = styled(Typography).attrs(({ fill }) => ({
 const CondensedText = styled.span`
   && {
     font-size: ${({ factor }) => factor}em;
-    height: 100%;
-    width: 100%;
   }
 `;
 
