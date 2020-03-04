@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { useAutoEffect, useAutoMemo } from 'hooks.macro';
+import { useAutoMemo } from 'hooks.macro';
 import {
   useOffscreenCanvas,
   useResizeTargetRef,
@@ -33,17 +33,15 @@ export default styled(function ChartLayoutTitle({
   const canvas = useOffscreenCanvas();
   const titleElementRef = useResizeTargetRef();
   const { current: titleElement } = titleElementRef;
-  const titleElementWidth =
-    titleElement && titleElement.getBoundingClientRect().width;
   const theme = useTheme();
   const { fontWeight = 400, fontSize, fontFamily } = useAutoMemo(
     titleElement ? getComputedStyle(titleElement) : theme.typography.h3
   );
 
-  const [scale, setScale] = React.useState(1);
+  const titleElementWidth =
+    titleElement && titleElement.getBoundingClientRect().width;
   const text = useTypographyChildren(children);
-
-  useAutoEffect(() => {
+  const scale = useAutoMemo(() => {
     if (titleElementWidth) {
       const context = canvas.getContext('2d');
       context.font = `${fontWeight} ${fontSize} '${fontFamily}'`;
@@ -55,8 +53,11 @@ export default styled(function ChartLayoutTitle({
         width,
       } = context.measureText(text);
       const textWidth = Math.max(width, right - left + (ascent - descent));
-      setScale(Math.min(titleElementWidth / textWidth, 1));
+      if (titleElementWidth < textWidth) {
+        return titleElementWidth / textWidth;
+      }
     }
+    return 1;
   });
 
   return (
