@@ -18,6 +18,7 @@ const StyledCanvas = styled(Typography).attrs(
   z-index: -1;
   left: 0;
   top: 0;
+  word-spacing: 1em;
 `;
 
 type Props = {

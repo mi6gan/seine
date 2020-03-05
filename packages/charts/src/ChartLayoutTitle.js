@@ -17,7 +17,8 @@ const ChartLayoutTitleText = styled.span`
   display: inline-block;
   transform-origin: left bottom;
   transform: scale(${({ scale }) => scale});
-  white-space: pre;
+  white-space: nowrap;
+  width: 100%;
 `;
 
 /**
