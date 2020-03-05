@@ -1,6 +1,6 @@
 {
   "name": "@seine/testbox",
-  "version": "0.3.216",
+  "version": "0.3.217",
   "description": "UI, style and content components packed for testbox.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -11,8 +11,8 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/core": "0.3",
     "@seine/content": "0.3",
+    "@seine/core": "0.3",
     "@seine/styles": "0.3"
   },
   "devDependencies": {
