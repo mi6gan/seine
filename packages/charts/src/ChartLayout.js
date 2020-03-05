@@ -14,16 +14,14 @@ const ChartLayoutDescription = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: start;
-  min-height: 12.5%;
-  height: auto;
 `;
 
 const ChartLayoutContainer = styled.div`
   width: 100%;
-  position: relative;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  overflow: hidden;
   ${ChartLayoutTitle},
   ${ChartLayoutContent},
   ${ChartLayoutDescription} {

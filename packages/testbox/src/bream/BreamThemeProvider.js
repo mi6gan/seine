@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components/macro';
+import { ThemeProvider } from '@seine/styles';
 
 import breamTheme from './breamTheme';
 
@@ -14,7 +14,5 @@ type Props = {
  * @returns {React.Node}
  */
 export default function BreamThemeProvider({ children = null }: Props) {
-  return (
-    <StyledThemeProvider theme={breamTheme}>{children}</StyledThemeProvider>
-  );
+  return <ThemeProvider theme={breamTheme}>{children}</ThemeProvider>;
 }
