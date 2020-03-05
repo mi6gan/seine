@@ -1,4 +1,5 @@
-import { defaultTheme } from '@seine/styles/src';
+// @flow
+import { defaultTheme } from '@seine/styles';
 
 export type Spacer =
   | 1
