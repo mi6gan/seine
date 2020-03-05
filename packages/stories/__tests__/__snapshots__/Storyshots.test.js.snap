@@ -829,7 +829,7 @@ exports[`Storyshots Bream Column And Line Charts In BCG Layout 1`] = `
             width="100%"
           />
           <div
-            className="Grid-sc-1m9mzof-0 hxnbAN"
+            className="Grid-sc-1m9mzof-0 eRDmHr"
             id="2636d441-6d48-4101-9061-ce4064c5ce84"
             type="grid"
           >
@@ -3879,7 +3879,7 @@ exports[`Storyshots Bream Column Pie And Line Charts In BCG Layout 1`] = `
             width="100%"
           />
           <div
-            className="Grid-sc-1m9mzof-0 hxnbAN"
+            className="Grid-sc-1m9mzof-0 eRDmHr"
             id="2636d441-6d48-4101-9061-ce4064c5ce84"
             type="grid"
           >
@@ -6182,7 +6182,7 @@ exports[`Storyshots Bream Column Pie Bar And Line Charts In BCG Layout 1`] = `
             width="100%"
           />
           <div
-            className="Grid-sc-1m9mzof-0 hxnbAN"
+            className="Grid-sc-1m9mzof-0 eRDmHr"
             id="2636d441-6d48-4101-9061-ce4064c5ce84"
             type="grid"
           >
@@ -10931,7 +10931,7 @@ exports[`Storyshots Bream Pie Chart In BCG Layout 1`] = `
             width="100%"
           />
           <div
-            className="Grid-sc-1m9mzof-0 hxnbAN"
+            className="Grid-sc-1m9mzof-0 eRDmHr"
             id="6fbf9072-e107-476d-8300-642b13bf39d2"
             type="grid"
           >
@@ -11278,7 +11278,7 @@ exports[`Storyshots Bream Two Pie Charts In BCG Layout 1`] = `
             width="100%"
           />
           <div
-            className="Grid-sc-1m9mzof-0 hxnbAN"
+            className="Grid-sc-1m9mzof-0 eRDmHr"
             id="6fbf9072-e107-476d-8300-642b13bf39d2"
             type="grid"
           >
