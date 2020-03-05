@@ -87,10 +87,11 @@ export default function BarChartContent({
       {elements.map(({ title, value }, index) => {
         const width = (barWidth * value) / maxValue;
         const color = palette[index % palette.length];
+        const rgb = color.startsWith('rgb') && color.match(/\d+/g);
         const textColor =
           barWidth === paddedBarWidth
             ? color
-            : invert(color, { threshold: 0.5 });
+            : invert(rgb ? rgb.slice(0, 3) : color, { threshold: 0.5 });
         const y =
           VIEWPORT_HEIGHT - valueHeight - barHeight * (elements.length - index);
         const meta = { ...elements[index], index };
