@@ -34,7 +34,7 @@ export default function ChartXAxis({
   const count = Math.floor((max - min) / step);
   const offset = length / count;
   const total = count + !!finite;
-  const [textMethodsRef] = useTypographyChildrenMethods(total - 1);
+  const [, textMethodsRef] = useTypographyChildrenMethods(total - 1);
 
   return Array.from({ length: total }).map((_, index) => [
     !noLine && index !== count && (
