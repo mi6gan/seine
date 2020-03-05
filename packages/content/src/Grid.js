@@ -7,7 +7,7 @@ export type Props = (GridBody & GridFormat) & {
   children: React.ChildrenArray<React.Node>,
 };
 
-export const defaultGridColumns = 'repeat(auto-fit, minmax(200px, 1fr))';
+export const defaultGridColumns = 'repeat(auto-fit, minmax(100px, 1fr))';
 export const defaultGridColumnGap = 50;
 export const defaultGridRowGap = 50;
 export const defaultGridRows = '';
