@@ -3,10 +3,10 @@ const { join, resolve } = require('path');
 const { inspect } = require('util');
 const crypto = require('crypto');
 
-const { hashElement } = require('folder-hash');
 const findCacheDir = require('find-cache-dir');
 
 const parseWorkspaces = require('./parse-workspaces');
+const workspaceMemo = require('./workspace-memo');
 
 /**
  * @description Resolve each workspaces to its context path, entry module and
@@ -34,7 +34,7 @@ function resolveWorkspaces(workspaces) {
               packageJson.name,
               crypto
                 .createHash('md5')
-                .update((await hashElement(join(context, 'src'))).toString())
+                .update(JSON.stringify(await workspaceMemo(workspace)))
                 .digest('hex'),
               name
             ),
