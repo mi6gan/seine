@@ -8,6 +8,7 @@ const postcss = require('rollup-plugin-postcss');
 const flowEntry = require('rollup-plugin-flow-entry');
 const cleanup = require('rollup-plugin-cleanup');
 const visualize = require('rollup-plugin-visualizer');
+const { terser } = require('rollup-plugin-terser');
 const camelCase = require('lodash/camelCase');
 
 const resolveWorkspaces = require('./resolve-workspaces');
@@ -45,7 +46,7 @@ function rollupConfig(
   const peerModuleIds = Object.keys(peerDependencies);
   const externalModuleIds = [
     ...peerModuleIds,
-    ...workspaceModuleIds,
+    ...(format === 'umd' ? [] : workspaceModuleIds),
     ...external.split(','),
   ].filter((id) => id.trim());
 
@@ -99,6 +100,7 @@ function rollupConfig(
       commonjs(),
       postcss({ modules: true }),
       cleanup(),
+      ...(format === 'umd' ? [terser()] : []),
     ],
     external: (id) =>
       externalModuleIds.some(

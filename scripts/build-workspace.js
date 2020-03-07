@@ -7,6 +7,8 @@ const tc = require('colorette');
 const prettyMs = require('pretty-ms');
 
 const rollupConfig = require('./rollup-config');
+const loadCache = require('./load-cache');
+const saveCache = require('./save-cache');
 const {
   workspace: defaultWorkspace,
   ...defaultOptions
@@ -57,19 +59,22 @@ async function buildWorkspace(
   stderr(tc.cyan(`building ${inputInfo} → ${outputInfo}...`));
 
   try {
-    const bundle = await rollup.rollup({ ...config, cache });
-    cache = {
-      modules: [
-        ...(cache
-          ? cache.modules.filter((current) =>
-              bundle.cache.modules.every((next) => next.id !== current.id)
-            )
-          : []),
-        ...bundle.cache.modules,
-      ],
-      plugins: bundle.cache.plugins,
-    };
-    await bundle.write(output);
+    if (!(await loadCache(workspace, output.file))) {
+      const bundle = await rollup.rollup({ ...config, cache });
+      cache = {
+        modules: [
+          ...(cache
+            ? cache.modules.filter((current) =>
+                bundle.cache.modules.every((next) => next.id !== current.id)
+              )
+            : []),
+          ...bundle.cache.modules,
+        ],
+        plugins: bundle.cache.plugins,
+      };
+      await bundle.write(output);
+      await saveCache(workspace, output.file);
+    }
     stderr(tc.green(` done in ${tc.bold(prettyMs(Date.now() - start))}.`));
     stderr('\n');
   } catch (err) {
