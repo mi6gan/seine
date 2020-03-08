@@ -91,7 +91,7 @@ export default function LineChartContent({
             textAnchor={'middle'}
             x={GUTTER_WIDTH + (index * graphWidth) / (length - 1)}
             y={height}
-            width={graphWidth / length}
+            width={(graphWidth + 2 * GUTTER_WIDTH) / length}
             meta={group}
           >
             {group}
