@@ -9,8 +9,6 @@ export type { SvgTypographyMethods } from './SvgTypography';
 export { default as Typography } from './Typography';
 export { default as useTypographyChildrenMethods } from './useTypographyChildrenMethods';
 export { default as ResizeObserverProvider } from './ResizeObserverProvider';
-export { default as OffscreenCanvasProvider } from './OffscreenCanvasProvider';
-export { default as useOffscreenCanvas } from './useOffscreenCanvas';
 export { default as useResizeTargetRef } from './useResizeTargetRef';
 export { default as useTypographyChildren } from './useTypographyChildren';
 export { default as useTheme } from './useTheme';

@@ -6,11 +6,7 @@ import { Draft } from '@seine/draft';
 import { Chart } from '@seine/charts';
 import type { Theme } from '@material-ui/core';
 import { Table } from '@seine/tables';
-import {
-  OffscreenCanvasProvider,
-  ResizeObserverProvider,
-  ThemeProvider,
-} from '@seine/styles';
+import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 
 import Grid from './Grid';
 import Image from './Image';
@@ -83,9 +79,7 @@ type ProviderProps = {
 function Provider({ children = null }: ProviderProps) {
   return (
     <ThemeProvider>
-      <ResizeObserverProvider>
-        <OffscreenCanvasProvider>{children}</OffscreenCanvasProvider>
-      </ResizeObserverProvider>
+      <ResizeObserverProvider>{children}</ResizeObserverProvider>
     </ThemeProvider>
   );
 }

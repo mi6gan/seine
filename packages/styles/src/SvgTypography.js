@@ -5,8 +5,6 @@ import { useAutoMemo } from 'hooks.macro';
 
 import SvgTypographyForeign from './SvgTypographyForeign';
 import Typography from './Typography';
-import useTypographyChildren from './useTypographyChildren';
-import OffscreenCanvasContext from './OffscreenCanvasContext';
 import useTheme from './useTheme';
 
 export type SvgTypographyProps = {
@@ -29,6 +27,13 @@ const StyledTypography = styled(Typography).attrs(({ fill }) => ({
       : textAnchor === 'middle'
       ? 'center'
       : 'left'};
+`;
+
+const TextBox = styled(StyledTypography)`
+  position: absolute;
+  visibility: hidden;
+  width: auto;
+  z-index: -1;
 `;
 
 const CondensedText = styled.span`
@@ -99,19 +104,13 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   const foreignObjectRef = React.useRef(null);
   const { current: foreignElement } = foreignObjectRef;
 
-  const canvasElement = React.useContext(OffscreenCanvasContext);
+  const textBoxRef = React.useRef(null);
+  const { current: textBox } = textBoxRef;
 
   const theme = useTheme();
 
-  const text = useTypographyChildren(children);
-  const { fontWeight = 400, fontSize, fontFamily, lineHeight } = useAutoMemo(
-    foreignElement
-      ? getComputedStyle(foreignElement)
-      : theme.typography[variant]
-  );
   const methods: SvgTypographyMethods = useAutoMemo(() => {
     if (foreignElement) {
-      const getHeight = () => theme.typography.round(parseFloat(lineHeight));
       const getXScale = (value = 1) =>
         theme.typography.round(
           ((isBlink ? window.devicePixelRatio : 1) *
@@ -126,18 +125,8 @@ const SvgTypography = React.forwardRef(function SvgTypography(
             foreignElement.getBBox().height) /
             foreignElement.getBoundingClientRect().height
         );
-      const getWidth = () => {
-        const context = canvasElement.getContext('2d');
-        context.font = `${fontWeight} ${fontSize} '${fontFamily}'`;
-        const {
-          actualBoundingBoxRight: right = 0,
-          actualBoundingBoxLeft: left = 0,
-          actualBoundingBoxAscent: ascent = 0,
-          actualBoundingBoxDescent: descent = 0,
-          width,
-        } = context.measureText(text);
-        return Math.max((16 * width) / 14, right - left + (ascent - descent));
-      };
+      const getWidth = () => textBox && textBox.offsetWidth;
+      const getHeight = () => textBox && textBox.offsetHeight;
       const getScaledWidth = () => getXScale(getWidth());
       const getScaledHeight = () => getYScale(getHeight());
       return {
@@ -169,7 +158,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   return (
     <SvgTypographyForeign
       ref={foreignObjectRef}
-      width={foreignElement ? scaledWidth : '100%'}
+      width={foreignElement ? Math.ceil(scaledWidth) : '100%'}
       height={foreignElement ? scaledHeight : '100%'}
       x={theme.typography.round(
         x -
@@ -184,28 +173,43 @@ const SvgTypography = React.forwardRef(function SvgTypography(
             : scaledHeight / (dominantBaseline === 'baseline' ? 1 : 2))
       )}
     >
-      <Text
+      <TextBox
+        ref={textBoxRef}
         variant={variant}
         {...textProps}
         textAnchor={textAnchor}
-        width={methods.getWidth()}
+        dominantBaseline={dominantBaseline}
         {...(!isWebkit && {
           transform: `scale(${methods.getXScale()}, ${methods.getYScale()})`,
         })}
       >
-        {condensedFactor !== Infinity ? (
-          <CondensedText
-            factor={condensedFactor}
-            textAnchor={textAnchor}
-            dominantBaseline={dominantBaseline}
-            width={methods.getWidth()}
-          >
-            {children}
-          </CondensedText>
-        ) : (
-          children
-        )}
-      </Text>
+        {children}
+      </TextBox>
+      {textBox && (
+        <Text
+          variant={variant}
+          {...textProps}
+          textAnchor={textAnchor}
+          dominantBaseline={dominantBaseline}
+          width={methods.getWidth()}
+          {...(!isWebkit && {
+            transform: `scale(${methods.getXScale()}, ${methods.getYScale()})`,
+          })}
+        >
+          {condensedFactor !== Infinity ? (
+            <CondensedText
+              factor={condensedFactor}
+              textAnchor={textAnchor}
+              dominantBaseline={dominantBaseline}
+              width={methods.getWidth()}
+            >
+              {children}
+            </CondensedText>
+          ) : (
+            children
+          )}
+        </Text>
+      )}
     </SvgTypographyForeign>
   );
 });
