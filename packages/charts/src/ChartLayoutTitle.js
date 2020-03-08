@@ -64,7 +64,6 @@ export default styled(function ChartLayoutTitle({
         right - left + (ascent - descent)
       );
       canvas.style.letterSpacing = '';
-      canvas.style.wordSpacing = '';
 
       if (titleElementWidth < textWidth) {
         return titleElementWidth / textWidth;
