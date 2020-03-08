@@ -68,30 +68,34 @@ export default function LineChartContent({
     valueMethods,
     valueTypographyMethodsRef,
   ] = useTypographyChildrenMethods(elements.length);
-
   const valueHeight = valueMethods.getScaledHeight();
 
-  const height = VIEWPORT_HEIGHT - valueHeight;
+  const [
+    titleMethods,
+    titleTypographyMethodsRef,
+  ] = useTypographyChildrenMethods(groups.length);
+  const titleHeight = titleMethods.getHeight();
+
+  const height = VIEWPORT_HEIGHT - titleHeight;
   const graphWidth = VIEWPORT_WIDTH - 2 * GUTTER_WIDTH;
 
   return (
     <g strokeWidth={valueHeight / 40}>
       {!!xAxis &&
         groups.map(([group], index, { length }) => (
-          <React.Fragment key={index}>
-            <GroupTitle
-              {...metaProps}
-              dominantBaseline={'hanging'}
-              key={'group'}
-              textAnchor={'middle'}
-              x={GUTTER_WIDTH + (index * graphWidth) / (length - 1)}
-              y={height}
-              width={graphWidth / length}
-              meta={group}
-            >
-              {group}
-            </GroupTitle>
-          </React.Fragment>
+          <GroupTitle
+            {...metaProps}
+            ref={titleTypographyMethodsRef}
+            dominantBaseline={'hanging'}
+            key={index}
+            textAnchor={'middle'}
+            x={GUTTER_WIDTH + (index * graphWidth) / (length - 1)}
+            y={height}
+            width={graphWidth / length}
+            meta={group}
+          >
+            {group}
+          </GroupTitle>
         ))}
       {xAxis || yAxis
         ? Array.from({
@@ -101,7 +105,7 @@ export default function LineChartContent({
               !!((xAxis && index === 0) || (yAxis && index > 0)) && (
                 <path
                   d={`m${GUTTER_WIDTH}  ${height -
-                    (index * height) / length} ${graphWidth} 0`}
+                    (index * (height - titleHeight)) / length} ${graphWidth} 0`}
                   key={['grid', index]}
                   stroke={index > 0 ? '#f0f0f0' : 'black'}
                 />
@@ -111,7 +115,7 @@ export default function LineChartContent({
       {!!yAxis && (
         <ChartYAxis
           arrow
-          length={height - valueHeight}
+          length={height - titleHeight}
           max={maxValue}
           min={minValue}
           maxWidth={GUTTER_WIDTH}
@@ -145,7 +149,7 @@ export default function LineChartContent({
                   ((elements
                     .filter((element) => element.id === id)
                     .map(({ value }) => value)[0] || 0) *
-                    height) /
+                    (height - titleHeight)) /
                     (maxValue - minValue),
               ].join(' '),
             'M'
@@ -179,7 +183,7 @@ export default function LineChartContent({
                   ((groupElements
                     .filter((element) => element.id === id)
                     .map(({ value }) => value)[0] || 0) *
-                    height) /
+                    (height - titleHeight)) /
                     (maxValue - minValue) -
                   1
                 }
