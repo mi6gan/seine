@@ -145,12 +145,12 @@ exports[`Storyshots Default.Single.SvgText HTML Text In SVG 1`] = `
       y={-1}
     >
       <p
-        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 eoXpap"
+        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 iOfcLF"
+        dominantBaseline="baseline"
         id="default-single-svgtext--html-text-in-svg"
         kind="Default.Single.SvgText"
         name="HTML Text In SVG"
         textAnchor="start"
-        width={1}
       >
         html document text
       </p>
@@ -189,9 +189,9 @@ exports[`Storyshots Default.Single.SvgText SVG Text Width Property 1`] = `
       y={-1}
     >
       <p
-        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 eoXpap"
+        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 iOfcLF"
+        dominantBaseline="baseline"
         textAnchor="start"
-        width={1}
       >
         text width is 200, extra is hidden
       </p>
