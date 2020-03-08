@@ -1,9 +1,6 @@
 // @flow
 import * as React from 'react';
-import {
-  ThemeProvider as StyledThemeProvider,
-  createGlobalStyle,
-} from 'styled-components/macro';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components/macro';
 import { useAutoEffect } from 'hooks.macro';
 
 import defaultTheme from './defaultTheme';
@@ -13,10 +10,6 @@ type Props = {
   children: React.Node,
   theme?: any,
 };
-
-const ThemeGlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600&amp;subset=cyrillic');
-`;
 
 /**
  * @description Provide a default for an empty theme context.
@@ -45,14 +38,9 @@ export default function ThemeProvider({
       cancelled = true;
     };
   });
-  return useTheme() ? (
-    children
-  ) : (
-    <>
-      <ThemeGlobalStyles />
-      {ready && (
+  return useTheme()
+    ? children
+    : ready && (
         <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
-      )}
-    </>
-  );
+      );
 }

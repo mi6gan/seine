@@ -3,9 +3,8 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 
 import Typography from './Typography';
-import OffscreenCanvasContext, {
-  defaultOffscreenCanvas,
-} from './OffscreenCanvasContext';
+import OffscreenCanvasContext from './OffscreenCanvasContext';
+import useResizeTargetRef from './useResizeTargetRef';
 
 const StyledCanvas = styled(Typography).attrs(
   ({ as = 'canvas', width = '100%', height = '100%' }) => ({
@@ -18,7 +17,8 @@ const StyledCanvas = styled(Typography).attrs(
   z-index: -1;
   left: 0;
   top: 0;
-  word-spacing: 1em;
+  word-spacing: 0;
+  white-space: nowrap;
 `;
 
 type Props = {
@@ -34,12 +34,18 @@ export default function OffscreenCanvasProvider({
   children,
   ...canvasProps
 }: Props) {
-  const [canvas, setCanvas] = React.useState(defaultOffscreenCanvas);
+  const canvasRef = useResizeTargetRef();
+  const { current: canvas } = canvasRef;
 
   return (
     <OffscreenCanvasContext.Provider value={canvas}>
-      <StyledCanvas ref={setCanvas} {...canvasProps} />
-      {children}
+      <StyledCanvas
+        ref={canvasRef}
+        width={canvas && canvas.parentElement.offsetWidth}
+        height={canvas && canvas.parentElement.offsetHeight}
+        {...canvasProps}
+      />
+      {canvas && children}
     </OffscreenCanvasContext.Provider>
   );
 }

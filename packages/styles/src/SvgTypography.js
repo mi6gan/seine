@@ -33,7 +33,22 @@ const StyledTypography = styled(Typography).attrs(({ fill }) => ({
 
 const CondensedText = styled.span`
   && {
-    font-size: ${({ factor }) => factor}em;
+    display: inline-block;
+    transform-origin: ${({ textAnchor, dominantBaseline }) =>
+      `${
+        textAnchor === 'end'
+          ? 'right'
+          : textAnchor === 'middle'
+          ? 'center'
+          : 'left'
+      } ${
+        dominantBaseline === 'middle'
+          ? 'center'
+          : dominantBaseline === 'hanging'
+          ? 'top'
+          : 'bottom'
+      }`};
+    transform: scale(${({ factor }) => factor});
   }
 `;
 
@@ -77,6 +92,9 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   ref
 ) {
   const isWebkit = useAutoMemo(navigator.vendor === 'Apple Computer, Inc.');
+  const isBlink = useAutoMemo(
+    !isWebkit && /applewebkit/i.test(navigator.userAgent)
+  );
 
   const foreignObjectRef = React.useRef(null);
   const { current: foreignElement } = foreignObjectRef;
@@ -95,11 +113,19 @@ const SvgTypography = React.forwardRef(function SvgTypography(
     if (foreignElement) {
       const getHeight = () => theme.typography.round(parseFloat(lineHeight));
       const getXScale = (value = 1) =>
-        theme.typography.round(value * foreignElement.getBBox().width) /
-        foreignElement.getBoundingClientRect().width;
+        theme.typography.round(
+          ((isBlink ? window.devicePixelRatio : 1) *
+            value *
+            foreignElement.getBBox().width) /
+            foreignElement.getBoundingClientRect().width
+        );
       const getYScale = (value = 1) =>
-        theme.typography.round(value * foreignElement.getBBox().height) /
-        foreignElement.getBoundingClientRect().height;
+        theme.typography.round(
+          ((isBlink ? window.devicePixelRatio : 1) *
+            value *
+            foreignElement.getBBox().height) /
+            foreignElement.getBoundingClientRect().height
+        );
       const getWidth = () => {
         const context = canvasElement.getContext('2d');
         context.font = `${fontWeight} ${fontSize} '${fontFamily}'`;
@@ -110,7 +136,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
           actualBoundingBoxDescent: descent = 0,
           width,
         } = context.measureText(text);
-        return Math.max(width, right - left + (ascent - descent));
+        return Math.max((16 * width) / 14, right - left + (ascent - descent));
       };
       const getScaledWidth = () => getXScale(getWidth());
       const getScaledHeight = () => getYScale(getHeight());
@@ -168,7 +194,12 @@ const SvgTypography = React.forwardRef(function SvgTypography(
         })}
       >
         {condensedFactor !== Infinity ? (
-          <CondensedText factor={theme.typography.round(condensedFactor)}>
+          <CondensedText
+            factor={condensedFactor}
+            textAnchor={textAnchor}
+            dominantBaseline={dominantBaseline}
+            width={methods.getWidth()}
+          >
             {children}
           </CondensedText>
         ) : (
