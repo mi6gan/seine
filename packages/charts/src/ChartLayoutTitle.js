@@ -38,13 +38,18 @@ export default styled(function ChartLayoutTitle({
   const { fontWeight = 400, fontSize, fontFamily } = useAutoMemo(
     titleElement ? getComputedStyle(titleElement) : theme.typography.h3
   );
+  const isWebkit = useAutoMemo(navigator.vendor === 'Apple Computer, Inc.');
+  const isBlink = useAutoMemo(
+    !isWebkit && /applewebkit/i.test(navigator.userAgent)
+  );
 
   const titleElementWidth =
     titleElement && titleElement.getBoundingClientRect().width;
   const text = useTypographyChildren(children);
   const scale = useAutoMemo(() => {
     if (titleElementWidth) {
-      canvas.style.wordSpacing = '1em';
+      canvas.style.letterSpacing =
+        isBlink && window.devicePixelRatio === 1 ? '0.075em' : '0px';
       const context = canvas.getContext('2d');
       context.font = `${fontWeight} ${fontSize} '${fontFamily}'`;
       const {
@@ -54,8 +59,13 @@ export default styled(function ChartLayoutTitle({
         actualBoundingBoxDescent: descent = 0,
         width,
       } = context.measureText(text);
+      const textWidth = Math.max(
+        (16 * width) / 14,
+        right - left + (ascent - descent)
+      );
+      canvas.style.letterSpacing = '';
       canvas.style.wordSpacing = '';
-      const textWidth = Math.max(width, right - left + (ascent - descent));
+
       if (titleElementWidth < textWidth) {
         return titleElementWidth / textWidth;
       }
