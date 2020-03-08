@@ -1,6 +1,6 @@
 {
   "name": "@seine/tables",
-  "version": "0.3.223",
+  "version": "0.3.224",
   "description": "Seine tables renderer.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
