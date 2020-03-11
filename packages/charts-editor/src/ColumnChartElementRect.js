@@ -20,10 +20,14 @@ export default function ColumnChartElementRect({
   meta: { index },
   ...rectProps
 }: Props) {
+  const groupRef = React.useRef(null);
+
   return (
     <ClickAwayListener
       onClickAway={(event) =>
-        !(event.target instanceof HTMLButtonElement) &&
+        groupRef.current &&
+        (event.currentTarget !== groupRef.current ||
+          groupRef.current.contains(event.currentTarget)) &&
         dispatchElements({
           type: DESELECT_BLOCK_ELEMENT,
           index,
