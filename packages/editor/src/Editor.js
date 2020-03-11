@@ -167,41 +167,35 @@ export default function Editor({
     }))
   );
 
+  const deselectClickHandler = useAutoCallback(
+    (event) =>
+      event.target === event.currentTarget &&
+      dispatch({
+        type: DESELECT_ALL_BLOCKS,
+      })
+  );
+
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container>
-        <BlockToolbar
-          {...block}
-          blocks={blocks}
-          addButtonRenderMap={addButtonRenderMap}
-          dispatch={dispatch}
-          selection={selection}
-        >
-          <BlockDeleteButton dispatch={dispatch} selection={selection} />
-        </BlockToolbar>
-        <ClickAwayListener
-          onClickAway={(event) => {
-            if (
-              !(
-                event.target === document.body ||
-                event.target instanceof HTMLButtonElement ||
-                event.target instanceof HTMLInputElement ||
-                (event.target instanceof HTMLDivElement &&
-                  event.target.parentElement instanceof HTMLSpanElement) ||
-                (event.target instanceof HTMLSpanElement &&
-                  event.target.parentElement instanceof HTMLButtonElement) ||
-                event.target.style.position === 'absolute' ||
-                event.target.getAttribute('role') === 'option'
-              ) &&
-              contentChildren.length > 0
-            ) {
-              dispatch({
-                type: DESELECT_ALL_BLOCKS,
-              });
-            }
-          }}
-        >
-          <ContentPaper>
+      <ClickAwayListener
+        onClickAway={useAutoCallback(() =>
+          dispatch({
+            type: DESELECT_ALL_BLOCKS,
+          })
+        )}
+      >
+        <Container>
+          <BlockToolbar
+            {...block}
+            onClick={deselectClickHandler}
+            blocks={blocks}
+            addButtonRenderMap={addButtonRenderMap}
+            dispatch={dispatch}
+            selection={selection}
+          >
+            <BlockDeleteButton dispatch={dispatch} selection={selection} />
+          </BlockToolbar>
+          <ContentPaper onClick={deselectClickHandler}>
             <Content
               {...contentProps}
               parent={parent}
@@ -210,8 +204,8 @@ export default function Editor({
               {contentChildren}
             </Content>
           </ContentPaper>
-        </ClickAwayListener>
-      </Container>
+        </Container>
+      </ClickAwayListener>
     </ThemeProvider>
   );
 }

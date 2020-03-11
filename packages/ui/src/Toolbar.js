@@ -41,6 +41,10 @@ type Props = {
  */
 export default function Toolbar({
   position = 'relative',
+
+  addButtonRenderMap,
+  blocks,
+
   ...toolbarProps
 }: Props) {
   return (
