@@ -3,6 +3,7 @@ import * as React from 'react';
 import type { ElementsAction } from '@seine/core';
 import {
   chartTypes,
+  DESELECT_BLOCK_ELEMENT,
   initialElementsState,
   reduceElements,
   UPDATE_BLOCK_BODY,
@@ -104,6 +105,17 @@ export default function ChartEditor({
 
   const metaProps = { editor, dispatch, dispatchElements };
 
+  const deselectClickHandler = useAutoCallback(
+    (event) =>
+      editor.selection > -1 &&
+      (event.target === event.currentTarget ||
+        event.target instanceof HTMLHtmlElement) &&
+      dispatchElements({
+        type: DESELECT_BLOCK_ELEMENT,
+        index: editor.selection,
+      })
+  );
+
   return selection.length === 1 && selection[0] === chartProps.id ? (
     <ChartLayout
       ref={resizeTargetRef}
@@ -130,7 +142,7 @@ export default function ChartEditor({
       }
       textAlignment={chartProps.textAlignment}
     >
-      <ChartSvg>
+      <ChartSvg onClick={deselectClickHandler}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent
