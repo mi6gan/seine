@@ -169,21 +169,14 @@ export default function Editor({
 
   const deselectClickHandler = useAutoCallback(
     (event) =>
-      event.target === event.currentTarget &&
-      dispatch({
-        type: DESELECT_ALL_BLOCKS,
-      })
+      (event.target === event.currentTarget ||
+        event.target instanceof HTMLHtmlElement) &&
+      dispatch({ type: DESELECT_ALL_BLOCKS })
   );
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ClickAwayListener
-        onClickAway={useAutoCallback(() =>
-          dispatch({
-            type: DESELECT_ALL_BLOCKS,
-          })
-        )}
-      >
+      <ClickAwayListener onClickAway={deselectClickHandler}>
         <Container>
           <BlockToolbar
             {...block}
