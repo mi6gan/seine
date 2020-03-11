@@ -7,6 +7,8 @@ import {
 } from '@seine/testbox';
 import { Content } from '@seine/content';
 
+import { ListsContent } from './RichText.stories';
+
 type Props = {
   children?: any,
 };
@@ -1307,4 +1309,8 @@ export const ColumnPieBarAndLineChartsInBCGLayout = (props) => (
       </Content>
     }
   />
+);
+
+export const RichTextInBCGLayout = (props) => (
+  <ContentInBCGLayout {...props} description={<ListsContent as={Content} />} />
 );

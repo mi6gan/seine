@@ -65,7 +65,21 @@ export const DraftStyle = createGlobalStyle`
     h6 {
       ${h6}
     }
+    ul,
+    ol {
+      ${{
+        ...body1,
+        marginTop: 0,
+      }}
+      & > li {
+        display: list-item;
+        ${{
+          ...body1,
+          marginBottom: null,
+        }}
+      }
   `}
+  }
 `;
 
 /**
