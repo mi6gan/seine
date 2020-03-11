@@ -17,9 +17,6 @@ const InlineInput = styled(Input).attrs(() => ({
     display: inline-block;
     margin: 0;
     padding: 0;
-    transform-origin: left top;
-    overflow: visible;
-    white-space: pre-wrap;
   }
   ::-webkit-outer-spin-button,
   ::-webkit-inner-spin-button {

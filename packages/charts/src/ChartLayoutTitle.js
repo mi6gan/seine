@@ -13,13 +13,14 @@ const ChartLayoutTitleText = styled.span`
   transform-origin: left bottom;
   transform: scale(${({ scale }) => scale});
   white-space: nowrap;
+  width: 100%;
 `;
 
 const TextBox = styled(ChartLayoutTitleText)`
   position: absolute;
   visibility: hidden;
   z-index: -1;
-  width: auto;
+  width: 100%;
 `;
 
 /**

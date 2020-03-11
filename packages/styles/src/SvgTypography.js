@@ -6,6 +6,7 @@ import { useAutoMemo } from 'hooks.macro';
 import SvgTypographyForeign from './SvgTypographyForeign';
 import Typography from './Typography';
 import useTheme from './useTheme';
+import useTypographyChildren from './useTypographyChildren';
 
 export type SvgTypographyProps = {
   fill?: string,
@@ -155,6 +156,8 @@ const SvgTypography = React.forwardRef(function SvgTypography(
       : Infinity
   );
 
+  const text = useTypographyChildren(children);
+
   return (
     <SvgTypographyForeign
       ref={foreignObjectRef}
@@ -183,7 +186,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
           transform: `scale(${methods.getXScale()}, ${methods.getYScale()})`,
         })}
       >
-        {children}
+        {text}
       </TextBox>
       {textBox && (
         <Text

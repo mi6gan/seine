@@ -188,6 +188,8 @@ export default function Editor({
                 event.target instanceof HTMLInputElement ||
                 (event.target instanceof HTMLDivElement &&
                   event.target.parentElement instanceof HTMLSpanElement) ||
+                (event.target instanceof HTMLSpanElement &&
+                  event.target.parentElement instanceof HTMLButtonElement) ||
                 event.target.style.position === 'absolute' ||
                 event.target.getAttribute('role') === 'option'
               ) &&
