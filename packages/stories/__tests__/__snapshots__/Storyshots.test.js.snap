@@ -16,6 +16,8 @@ exports[`Storyshots Bream Line Chart In BCG Layout 1`] = `null`;
 
 exports[`Storyshots Bream Pie Chart In BCG Layout 1`] = `null`;
 
+exports[`Storyshots Bream Rich Text In BCG Layout 1`] = `null`;
+
 exports[`Storyshots Bream Two Pie Charts In BCG Layout 1`] = `null`;
 
 exports[`Storyshots Bream.Review summary header Bad Performance 1`] = `null`;
@@ -107,6 +109,8 @@ exports[`Storyshots Default.Single.Image Image Content 1`] = `null`;
 exports[`Storyshots Default.Single.RichText Editor Of Multiline Content 1`] = `null`;
 
 exports[`Storyshots Default.Single.RichText Editor Of Single Line Content 1`] = `null`;
+
+exports[`Storyshots Default.Single.RichText Lists Content 1`] = `null`;
 
 exports[`Storyshots Default.Single.RichText Multiline Content 1`] = `null`;
 
