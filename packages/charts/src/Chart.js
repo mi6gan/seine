@@ -16,6 +16,7 @@ import LineChartDescription from './LineChartDescription';
 import PieChartDescription from './PieChartDescription';
 import BarChartDescription from './BarChartDescription';
 import useChartFormatDefaults from './useChartFormatDefaults';
+import useChartSvgProps from './useChartSvgProps';
 
 /**
  * @description Switch to chart render components by its kind.
@@ -42,7 +43,7 @@ export default function Chart({ children, kind, ...chartProps }: Props) {
       }
       textAlignment={chartProps.textAlignment}
     >
-      <ChartSvg>
+      <ChartSvg {...useChartSvgProps(kind, chartProps)}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent {...chartProps} />

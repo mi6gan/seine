@@ -21,6 +21,7 @@ import {
   LineChartContent,
   PieChartContent,
   useChartFormatDefaults,
+  useChartSvgProps,
 } from '@seine/charts';
 import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
@@ -116,6 +117,8 @@ export default function ChartEditor({
       })
   );
 
+  const svgProps = useChartSvgProps(kind, chartProps);
+
   return selection.length === 1 && selection[0] === chartProps.id ? (
     <ChartLayout
       ref={resizeTargetRef}
@@ -142,7 +145,7 @@ export default function ChartEditor({
       }
       textAlignment={chartProps.textAlignment}
     >
-      <ChartSvg onClick={deselectClickHandler}>
+      <ChartSvg onClick={deselectClickHandler} {...svgProps}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent

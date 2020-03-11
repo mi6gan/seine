@@ -51,6 +51,7 @@ function Content({
           return (
             <ContentBlock
               key={block.id}
+              parentType={parent.type}
               {...(format ? format : {})}
               {...(body ? body : {})}
               {...block}
