@@ -18,7 +18,7 @@ export default function useChartSvgProps(
   chart: {
     ...ChartFormat,
     ...ChartBody,
-    parentType: string,
+    ...{ parentType: string },
   }
 ) {
   if (chart.parentType === 'grid') {
