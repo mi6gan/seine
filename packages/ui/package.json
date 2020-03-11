@@ -1,6 +1,6 @@
 {
   "name": "@seine/ui",
-  "version": "0.3.228",
+  "version": "0.3.229",
   "description": "Seine UI library.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
