@@ -160,6 +160,7 @@ export default function LineChartContent({
           markerMid={`url(#${['point', titleIndex]})`}
           markerStart={`url(#${['point', titleIndex]})`}
           stroke={palette[titleIndex % palette.length]}
+          strokeWidth={valueHeight / 20}
           meta={{ ...titles[titleIndex], index: titleIndex }}
         />,
 
