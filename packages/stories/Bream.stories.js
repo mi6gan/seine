@@ -8,6 +8,8 @@ import {
 import { Content } from '@seine/content';
 
 import { ListsContent } from './RichText.stories';
+import { Table3x3 } from './Table.stories';
+import { InitialContent } from './Content.stories';
 
 type Props = {
   children?: any,
@@ -1312,5 +1314,76 @@ export const ColumnPieBarAndLineChartsInBCGLayout = (props) => (
 );
 
 export const RichTextInBCGLayout = (props) => (
-  <ContentInBCGLayout {...props} description={<ListsContent as={Content} />} />
+  <ContentInBCGLayout {...props} description={<ListsContent />} />
+);
+
+export const TableInBCGLayout = (props) => (
+  <ContentInBCGLayout {...props} description={<Table3x3 />} />
+);
+
+export const TwoTablesGridInBCGLayout = (props) => (
+  <ContentInBCGLayout
+    {...props}
+    description={
+      <InitialContent>
+        {[
+          {
+            id: 'a48cf588-b402-471a-9dc9-e9b68d2706f8',
+            type: 'grid',
+            parent_id: null,
+            body: {},
+            format: {},
+            schema: null,
+          },
+          {
+            id: '59f5f62d-fee2-49e4-ad47-0b3503cd7f38',
+            type: 'table',
+            parent_id: 'a48cf588-b402-471a-9dc9-e9b68d2706f8',
+            body: {
+              rows: [
+                [{ text: 'Kuzun' }, { text: '0.8' }],
+                [{ text: 'OLV' }, { text: '2.0' }],
+                [{ text: '' }, { text: '' }],
+              ],
+              header: [
+                { text: 'Productivity per employee in 2020' },
+                { text: '(in thousand of trucks)' },
+              ],
+            },
+            format: {},
+            schema: null,
+          },
+          {
+            id: '1a560aa2-d342-4e3a-9cf5-22f6a5120041',
+            type: 'table',
+            parent_id: 'a48cf588-b402-471a-9dc9-e9b68d2706f8',
+            body: {
+              rows: [
+                [
+                  { text: '2016' },
+                  { text: '74%' },
+                  { text: '45' },
+                  { text: '76' },
+                ],
+                [
+                  { text: '2017' },
+                  { text: '34%' },
+                  { text: '21' },
+                  { text: '36' },
+                ],
+              ],
+              header: [
+                { text: 'Year' },
+                { text: 'Capacity utilization' },
+                { text: 'Trucks sold, thousands' },
+                { text: 'Trucks produced, thousands' },
+              ],
+            },
+            format: {},
+            schema: null,
+          },
+        ]}
+      </InitialContent>
+    }
+  />
 );

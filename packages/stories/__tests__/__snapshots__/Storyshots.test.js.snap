@@ -18,7 +18,11 @@ exports[`Storyshots Bream Pie Chart In BCG Layout 1`] = `null`;
 
 exports[`Storyshots Bream Rich Text In BCG Layout 1`] = `null`;
 
+exports[`Storyshots Bream Table In BCG Layout 1`] = `null`;
+
 exports[`Storyshots Bream Two Pie Charts In BCG Layout 1`] = `null`;
+
+exports[`Storyshots Bream Two Tables Grid In BCG Layout 1`] = `null`;
 
 exports[`Storyshots Bream.Review summary header Bad Performance 1`] = `null`;
 
