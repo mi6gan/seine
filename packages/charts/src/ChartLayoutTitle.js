@@ -20,7 +20,7 @@ const TextBox = styled(ChartLayoutTitleText)`
   position: absolute;
   visibility: hidden;
   z-index: -1;
-  width: 100%;
+  width: auto;
 `;
 
 /**
