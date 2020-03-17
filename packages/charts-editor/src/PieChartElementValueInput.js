@@ -13,16 +13,20 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function BarChartElementValueInput({
-  dispatch,
-  dispatchElements,
-  editor,
-  meta: { index, value },
-  ...inputProps
-}: Props) {
+export default React.forwardRef(function BarChartElementValueInput(
+  {
+    dispatch,
+    dispatchElements,
+    editor,
+    meta: { index, value },
+    ...inputProps
+  }: Props,
+  ref
+) {
   return (
     <SvgInput
       {...inputProps}
+      ref={ref}
       type={'number'}
       value={value}
       onChange={useAutoCallback(({ currentTarget }) =>
@@ -34,4 +38,4 @@ export default function BarChartElementValueInput({
       )}
     />
   );
-}
+});

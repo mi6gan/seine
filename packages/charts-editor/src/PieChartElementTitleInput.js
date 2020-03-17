@@ -13,16 +13,20 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function PieChartElementTitleInput({
-  dispatch,
-  dispatchElements,
-  editor,
-  meta: { index, title },
-  ...inputProps
-}: Props) {
+export default React.forwardRef(function PieChartElementTitleInput(
+  {
+    dispatch,
+    dispatchElements,
+    editor,
+    meta: { index, title },
+    ...inputProps
+  }: Props,
+  ref
+) {
   return (
     <SvgInput
       {...inputProps}
+      ref={ref}
       value={title}
       onChange={useAutoCallback(({ currentTarget }) =>
         dispatchElements({
@@ -33,4 +37,4 @@ export default function PieChartElementTitleInput({
       )}
     />
   );
-}
+});

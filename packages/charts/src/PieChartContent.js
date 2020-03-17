@@ -16,6 +16,10 @@ type Props = {
 
   palette?: string[],
   units?: string,
+
+  elementPathAs?: React.ElementType,
+  elementTitleAs?: React.ElementType,
+  elementValueAs?: React.ElementType,
 };
 
 /**
