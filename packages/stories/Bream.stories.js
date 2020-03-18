@@ -191,7 +191,7 @@ export const ColumnChartInBCGLayout = (props) => (
                 },
               ],
             },
-            format: { kind: 'column' },
+            format: { kind: 'column', dy: 1 },
             schema: null,
           },
         ]}

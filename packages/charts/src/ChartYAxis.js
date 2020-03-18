@@ -35,26 +35,30 @@ export default function ChartYAxis({
   y,
 }: Props) {
   const count = Math.floor((max - min) / step);
-  const offset = length / count;
   const total = count + !!finite;
-  const [{ getScaledWidth }, textMethodsRef] = useTypographyChildrenMethods(
-    total - 1
-  );
+  const [
+    { getScaledHeight, getScaledWidth },
+    textMethodsRef,
+  ] = useTypographyChildrenMethods(total - 1);
   const textWidth = maxWidth || getScaledWidth();
+  const textHeight = getScaledHeight();
+  const offset = Math.max(length / count, textHeight);
 
   return (
     <>
       {Array.from({ length: total }).map((_, index) => [
-        !noLine && index !== count && (
-          <line
-            key={'line'}
-            x1={x + textWidth}
-            x2={x + textWidth}
-            y1={y - offset * index}
-            y2={y - offset * (index + 1)}
-            stroke={'black'}
-          />
-        ),
+        !noLine &&
+          index !== count &&
+          (offset !== textHeight || index <= length / offset) && (
+            <line
+              key={'line'}
+              x1={x + textWidth}
+              x2={x + textWidth}
+              y1={y - offset * index}
+              y2={y - offset * (index + 1)}
+              stroke={'black'}
+            />
+          ),
         index > 0 && (
           <SvgTypography
             key={'value'}
@@ -63,10 +67,15 @@ export default function ChartYAxis({
             y={y - offset * index}
             dominantBaseline={'end'}
             textAnchor={'end'}
-            height={length / total}
             width={textWidth}
+            {...(offset === textHeight &&
+              index > length / offset && { style: { visibility: 'hidden' } })}
           >
-            {`${parseInt(min + (index * (max - min)) / count)}${units}  `}
+            {`${parseInt(
+              min +
+                (index * (max - min)) /
+                  (offset === textHeight ? Math.floor(length / offset) : count)
+            )}${units}  `}
           </SvgTypography>
         ),
       ])}

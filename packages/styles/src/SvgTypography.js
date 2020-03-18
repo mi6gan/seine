@@ -161,7 +161,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   return (
     <SvgTypographyForeign
       ref={foreignObjectRef}
-      width={foreignElement ? Math.ceil(scaledWidth) : '100%'}
+      width={foreignElement ? scaledWidth + 2 : '100%'}
       height={foreignElement ? scaledHeight : '100%'}
       x={theme.typography.round(
         x -
@@ -196,7 +196,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
           dominantBaseline={dominantBaseline}
           width={methods.getWidth()}
           {...(!isWebkit && {
-            transform: `scale(${methods.getXScale()}, ${methods.getYScale()})`,
+            transform: `scale(${methods.getXScale()}, ${methods.getYScale()}) translateX(2px)`,
           })}
         >
           {condensedFactor !== Infinity ? (

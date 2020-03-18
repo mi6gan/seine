@@ -3,13 +3,11 @@ import styled from 'styled-components/macro';
 
 const Typography = styled.p`
   margin: 0;
+
   ${({ width }) => width && { width }};
   ${({ height }) => height && { height }};
-
-  ${({ inline }) => inline && { display: 'inline' }};
-  ${({ overflow = 'hidden' }) => overflow && { overflow }};
-
   ${({ color }) => color && { color }};
+  ${({ overflow = 'hidden' }) => overflow && { overflow }};
   ${({
     variant = 'body1',
     theme: {
