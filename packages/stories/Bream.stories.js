@@ -266,6 +266,77 @@ export const PieChartInBCGLayout = (props) => (
   />
 );
 
+export const PieChartLegendInBCGLayout = (props) => (
+  <ContentInBCGLayout
+    {...props}
+    description={
+      <Content
+        parent={{
+          id: '044d4dca-4924-4a9d-9e6b-55b9be006b70',
+          type: 'page',
+          parent_id: null,
+          body: {},
+          format: {},
+          schema: null,
+        }}
+      >
+        {[
+          {
+            id: '6fbf9072-e107-476d-8300-642b13bf39d2',
+            type: 'grid',
+            parent_id: '044d4dca-4924-4a9d-9e6b-55b9be006b70',
+            body: {},
+            format: {},
+            schema: null,
+          },
+          {
+            id: 'cd271f11-75a5-4bff-ab2b-266f7eb4418d',
+            type: 'chart',
+            parent_id: '6fbf9072-e107-476d-8300-642b13bf39d2',
+            body: {
+              title: 'Car dealership sales in 2012 (number of cars sold)',
+              elements: [
+                { title: 'Luxury cars', value: 30 },
+                { title: 'SUVs', value: 70 },
+                {
+                  title: 'Hatchbacks',
+                  value: 40,
+                },
+                {
+                  title: 'Hatchbacks',
+                  value: 40,
+                },
+              ],
+            },
+            format: {
+              kind: 'pie',
+              units: ' ',
+              legend: true,
+              palette: [
+                'rgba(97,139,219,1)',
+                'rgba(172,190,203,1)',
+                'rgba(138,219,150,1)',
+                '#e57878',
+                '#8adb96',
+                '#6895eb',
+                '#b8c8d8',
+                '#ebebeb',
+                '#ff7171',
+                '#fdc91d',
+                '#618bdb',
+                '#acbecb',
+                '#707070',
+              ],
+            },
+            schema: null,
+            units: '%',
+          },
+        ]}
+      </Content>
+    }
+  />
+);
+
 export const LineChartInBCGLayout = (props) => (
   <ContentInBCGLayout
     {...props}

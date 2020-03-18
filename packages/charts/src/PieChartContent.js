@@ -87,7 +87,7 @@ export default function PieChartContent({
               textX:
                 centerX +
                 (legend
-                  ? radius / 2
+                  ? (1.75 * radius) / 3
                   : value >= quarter
                   ? innerRadius
                   : outerRadius) *
@@ -95,7 +95,7 @@ export default function PieChartContent({
               textY:
                 centerY +
                 (legend
-                  ? radius / 2
+                  ? (1.75 * radius) / 3
                   : value >= quarter
                   ? innerRadius
                   : outerRadius) *
@@ -147,7 +147,7 @@ export default function PieChartContent({
           fontWeight={400}
           x={gutter + textX}
           y={textY}
-          width={value < quarter && !legend ? gutter : radius}
+          width={value < quarter && !legend ? gutter : (2 * radius) / 3}
         >
           {value}
           {units}
