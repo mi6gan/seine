@@ -78,7 +78,7 @@ export default function LineChartContent({
     titleMethods,
     titleTypographyMethodsRef,
   ] = useTypographyChildrenMethods(groups.length);
-  const titleHeight = titleMethods.getHeight();
+  const titleHeight = titleMethods.getScaledHeight();
 
   const height = VIEWPORT_HEIGHT - titleHeight;
   const graphWidth = VIEWPORT_WIDTH - 2 * GUTTER_WIDTH;
@@ -98,7 +98,7 @@ export default function LineChartContent({
             width={(graphWidth + 2 * GUTTER_WIDTH) / length}
             meta={group}
           >
-            {group}
+            {`${group} `}
           </GroupTitle>
         ))}
       {xAxis || yAxis
