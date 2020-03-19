@@ -43,19 +43,20 @@ export default function ChartYAxis({
   const textWidth = maxWidth || getScaledWidth();
   const textHeight = getScaledHeight();
   const offset = Math.max(length / count, textHeight);
+  const visibleCount = Math.round(length / offset);
 
   return (
     <>
       {Array.from({ length: total }).map((_, index) => [
         !noLine &&
           index !== count &&
-          (offset !== textHeight || index <= length / offset) && (
+          (offset !== textHeight || index <= visibleCount) && (
             <line
               key={'line'}
               x1={x + textWidth}
               x2={x + textWidth}
               y1={y - offset * index}
-              y2={y - offset * (index + 1)}
+              y2={y - Math.min(length, offset * (index + 1))}
               stroke={'black'}
             />
           ),
@@ -69,12 +70,12 @@ export default function ChartYAxis({
             textAnchor={'end'}
             width={textWidth}
             {...(offset === textHeight &&
-              index > length / offset && { style: { visibility: 'hidden' } })}
+              index > visibleCount && { style: { visibility: 'hidden' } })}
           >
             {`${parseInt(
               min +
                 (index * (max - min)) /
-                  (offset === textHeight ? Math.floor(length / offset) : count)
+                  (offset === textHeight ? visibleCount : count)
             )}${units}  `}
           </SvgTypography>
         ),

@@ -86,7 +86,7 @@ export const BarChartInBCGLayout = (props) => (
                 },
               ],
             },
-            format: { kind: 'bar' },
+            format: { kind: 'bar', dx: 5 },
             schema: null,
           },
         ]}
