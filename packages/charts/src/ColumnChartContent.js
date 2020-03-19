@@ -99,7 +99,6 @@ export default function ColumnChartContent({
                 />,
                 <ElementValue
                   {...metaProps}
-                  fill={fill}
                   ref={childMethodsRef}
                   textAnchor={'middle'}
                   width={columnWidth}
