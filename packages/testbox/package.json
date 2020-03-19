@@ -1,6 +1,6 @@
 {
   "name": "@seine/testbox",
-  "version": "0.3.239",
+  "version": "0.3.240",
   "description": "UI, style and content components packed for testbox.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
