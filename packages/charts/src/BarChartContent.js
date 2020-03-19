@@ -129,6 +129,7 @@ export default function BarChartContent({
             {...metaProps}
             dominantBaseline={'middle'}
             ref={valueTypographyMethodsRef}
+            {...(barWidth !== paddedBarWidth && { fill: textColor })}
             key={`value.${index}`}
             meta={meta}
             textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
