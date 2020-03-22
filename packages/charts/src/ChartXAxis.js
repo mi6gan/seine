@@ -63,7 +63,7 @@ export default function ChartXAxis({
         textAnchor={'center'}
         width={offset}
         {...(offset === textWidth &&
-          index > visibleCount && { style: { visibility: 'hidden' } })}
+          index >= visibleCount && { style: { visibility: 'hidden' } })}
       >
         {`${parseInt(
           min +
