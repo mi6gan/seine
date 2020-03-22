@@ -27,7 +27,7 @@ import useChartSvgProps from './useChartSvgProps';
 export default function Chart({ children, kind, ...initialChartProps }: Props) {
   initialChartProps = useChartFormatDefaults(kind, initialChartProps);
   const [chartProps, setChartProps] = React.useState(initialChartProps);
-  const handleFormat = useAutoCallback((format) =>
+  const handleAutoFormat = useAutoCallback((format) =>
     setChartProps({ ...initialChartProps, ...format })
   );
 
@@ -57,7 +57,7 @@ export default function Chart({ children, kind, ...initialChartProps }: Props) {
         ) : kind === chartTypes.LINE ? (
           <LineChartContent {...chartProps} />
         ) : kind === chartTypes.PIE ? (
-          <PieChartContent {...chartProps} onFormat={handleFormat} />
+          <PieChartContent {...chartProps} onAutoFormat={handleAutoFormat} />
         ) : null}
       </ChartSvg>
       {children}

@@ -22,7 +22,7 @@ type Props = {
   elementTitleAs?: React.ElementType,
   elementValueAs?: React.ElementType,
 
-  onFormat: ($Shape<Props>) => any,
+  onAutoFormat: ($Shape<Props>) => any,
 };
 
 /**
@@ -45,7 +45,7 @@ export default function PieChartContent({
   yAxis,
   textAlignment,
 
-  onFormat,
+  onAutoFormat,
 
   elementPathAs: ElementPath = 'path',
   elementTitleAs: ElementTitle = SvgTypography,
@@ -121,7 +121,7 @@ export default function PieChartContent({
 
   useAutoEffect(() => {
     if (legend !== initialLegend) {
-      onFormat && onFormat({ legend });
+      onAutoFormat && onAutoFormat({ legend });
     }
   });
 

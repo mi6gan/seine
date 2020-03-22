@@ -94,7 +94,7 @@ export default function ChartEditor({
     })
   );
 
-  const handleFormat = useAutoCallback((format) =>
+  const handleAutoFormat = useAutoCallback((format) =>
     dispatch({
       type: UPDATE_BLOCK_FORMAT,
       format,
@@ -184,7 +184,7 @@ export default function ChartEditor({
             elementPathAs={PieChartElementPath}
             elementTitleAs={PieChartElementTitleInput}
             elementValueAs={PieChartElementValueInput}
-            onFormat={handleFormat}
+            onAutoFormat={handleAutoFormat}
           />
         ) : null}
       </ChartSvg>
