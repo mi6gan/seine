@@ -21,7 +21,7 @@ const StyledTypography = styled(Typography).attrs(({ fill }) => ({
   transform-origin: left top;
   position: fixed;
   ${({ transform }) => transform && { transform }};
-  white-space: pre;
+  ${({ whiteSpace = 'pre' }) => whiteSpace && { whiteSpace }};
   text-align: ${({ textAnchor }) =>
     textAnchor === 'end'
       ? 'right'
@@ -35,6 +35,9 @@ const TextBox = styled(StyledTypography)`
   visibility: hidden;
   width: auto;
   z-index: -1;
+  ${({ whiteSpace = 'pre' }) => whiteSpace && { whiteSpace }};
+  ${({ whiteSpace = 'pre', width }) =>
+    whiteSpace !== 'pre' && width && { width }};
 `;
 
 const CondensedText = styled.span`
@@ -74,6 +77,7 @@ export type Props = {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2',
   x?: number,
   y?: number,
+  whiteSpace: 'pre' | 'pre-wrap',
 } & SvgTypographyProps;
 
 /**
@@ -93,6 +97,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
     y = 0,
     textAnchor = 'start',
     as: Text = StyledTypography,
+    whiteSpace = 'pre',
     ...textProps
   }: Props,
   ref
@@ -126,7 +131,8 @@ const SvgTypography = React.forwardRef(function SvgTypography(
             foreignElement.getBBox().height) /
             foreignElement.getBoundingClientRect().height
         );
-      const getWidth = () => textBox && textBox.offsetWidth;
+      const getWidth = () =>
+        whiteSpace === 'pre' && textBox ? textBox.offsetWidth : width;
       const getHeight = () => textBox && textBox.offsetHeight;
       const getScaledWidth = () => getXScale(getWidth());
       const getScaledHeight = () => getYScale(getHeight());
@@ -147,14 +153,17 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   const scaledWidth = methods.getScaledWidth();
   const scaledHeight = methods.getScaledHeight();
 
-  const condensedFactor = Math.min(
-    typeof height === 'number' && height < scaledHeight
-      ? height / scaledHeight
-      : Infinity,
-    typeof width === 'number' && width < scaledWidth
-      ? width / scaledWidth
-      : Infinity
-  );
+  const condensedFactor =
+    whiteSpace === 'pre'
+      ? Math.min(
+          typeof height === 'number' && height < scaledHeight
+            ? height / scaledHeight
+            : Infinity,
+          typeof width === 'number' && width < scaledWidth
+            ? width / scaledWidth
+            : Infinity
+        )
+      : Infinity;
 
   const text = useTypographyChildren(children);
 
@@ -182,6 +191,8 @@ const SvgTypography = React.forwardRef(function SvgTypography(
         {...textProps}
         textAnchor={textAnchor}
         dominantBaseline={dominantBaseline}
+        width={methods.getWidth()}
+        whiteSpace={whiteSpace}
         {...(!isWebkit && {
           transform: `scale(${methods.getXScale()}, ${methods.getYScale()})`,
         })}
@@ -195,6 +206,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
           textAnchor={textAnchor}
           dominantBaseline={dominantBaseline}
           width={methods.getWidth()}
+          whiteSpace={whiteSpace}
           {...(!isWebkit && {
             transform: `scale(${methods.getXScale()}, ${methods.getYScale()})`,
           })}

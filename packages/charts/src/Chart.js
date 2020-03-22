@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { chartTypes } from '@seine/core';
 import { useResizeTargetRef } from '@seine/styles';
+import { useAutoCallback } from 'hooks.macro';
 
 import ChartLayout from './ChartLayout';
 import BarChartContent from './BarChartContent';
@@ -23,8 +24,12 @@ import useChartSvgProps from './useChartSvgProps';
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Chart({ children, kind, ...chartProps }: Props) {
-  chartProps = useChartFormatDefaults(kind, chartProps);
+export default function Chart({ children, kind, ...initialChartProps }: Props) {
+  initialChartProps = useChartFormatDefaults(kind, initialChartProps);
+  const [chartProps, setChartProps] = React.useState(initialChartProps);
+  const handleFormat = useAutoCallback((format) =>
+    setChartProps({ ...initialChartProps, ...format })
+  );
 
   return (
     <ChartLayout
@@ -52,7 +57,7 @@ export default function Chart({ children, kind, ...chartProps }: Props) {
         ) : kind === chartTypes.LINE ? (
           <LineChartContent {...chartProps} />
         ) : kind === chartTypes.PIE ? (
-          <PieChartContent {...chartProps} />
+          <PieChartContent {...chartProps} onFormat={handleFormat} />
         ) : null}
       </ChartSvg>
       {children}

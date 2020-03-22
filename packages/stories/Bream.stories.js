@@ -230,11 +230,20 @@ export const PieChartInBCGLayout = (props) => (
             body: {
               title: 'Car dealership sales in 2012 (number of cars sold)',
               elements: [
-                { title: 'Luxury cars', value: 2349 },
-                { title: 'SUVs', value: 6423 },
+                {
+                  title:
+                    'Large titles fit by using space at the bottom if needed',
+                  value: 2349,
+                },
+                {
+                  title:
+                    'Large titles fit by using space at the bottom if needed',
+                  value: 6423,
+                },
                 {
                   id: 'ee83f39d-03bc-4878-9c78-0edef43e936b',
-                  title: 'Hatchbacks',
+                  title:
+                    'There is no space at the top. But big slices have enough space to contain text inside',
                   value: 8234,
                 },
               ],

@@ -8,6 +8,7 @@ import {
   reduceElements,
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
+  UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
 import { BlockActions, InlineInput } from '@seine/ui';
 import {
@@ -90,6 +91,13 @@ export default function ChartEditor({
     dispatch({
       type: UPDATE_BLOCK_BODY,
       body: { title: currentTarget.value },
+    })
+  );
+
+  const handleFormat = useAutoCallback((format) =>
+    dispatch({
+      type: UPDATE_BLOCK_FORMAT,
+      format,
     })
   );
 
@@ -176,6 +184,7 @@ export default function ChartEditor({
             elementPathAs={PieChartElementPath}
             elementTitleAs={PieChartElementTitleInput}
             elementValueAs={PieChartElementValueInput}
+            onFormat={handleFormat}
           />
         ) : null}
       </ChartSvg>

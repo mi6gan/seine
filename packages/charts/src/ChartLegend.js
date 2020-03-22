@@ -7,8 +7,7 @@ import { defaultChartPalette } from './constants';
 
 const LegendBox = styled.div`
   background-color: ${({ color }) => color};
-  width: 1.5rem;
-  height: 1.5rem;
+  padding: 0.75rem;
 `;
 
 const LegendLabel = styled.div`
