@@ -116,7 +116,6 @@ export const PieChartOnSmallScreens = (props) => (
   <PieChart
     {...props}
     body={{
-      title: 'Each slice 15% minimum',
       elements: [
         {
           title: 'use only 3-digit or smaller values',
@@ -137,6 +136,6 @@ export const PieChartOnSmallScreens = (props) => (
         },
       ],
     }}
-    format={{ units: ' ' }}
+    format={{ title: 'Each slice 15% minimum', units: ' ' }}
   />
 );
