@@ -244,7 +244,7 @@ export const LineChartOnSmallScreens = (props) => (
       format={{
         dy: 5,
         maxValue: 99,
-        title: '6 groups maximum',
+        title: '6 points maximum',
       }}
     />
   </Themed>
