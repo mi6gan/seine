@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { chartTypes } from '@seine/core';
-import { useResizeTargetRef } from '@seine/styles';
+import { useResizeObserver, useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
 
 import ChartLayout from './ChartLayout';
@@ -31,6 +31,8 @@ export default function Chart({ children, kind, ...initialChartProps }: Props) {
     setChartProps({ ...initialChartProps, ...format })
   );
 
+  const { isResizing } = useResizeObserver();
+
   return (
     <ChartLayout
       ref={useResizeTargetRef()}
@@ -47,6 +49,7 @@ export default function Chart({ children, kind, ...initialChartProps }: Props) {
         ) : null
       }
       textAlignment={chartProps.textAlignment}
+      {...(isResizing && { visibility: 'hidden' })}
     >
       <ChartSvg {...useChartSvgProps(kind)}>
         <ChartSvgDefs />

@@ -31,6 +31,7 @@ const ChartLayoutContainer = styled.div`
     margin-left: auto;
     margin-right: auto
   }
+  ${({ visibility }) => visibility && { visibility }}
 `;
 
 type Props = {
@@ -46,13 +47,13 @@ type Props = {
  * @returns {React.Node}
  */
 export default React.forwardRef(function ChartLayout(
-  { title, children, description, textAlignment }: Props,
+  { title, children, description, textAlignment, ...props }: Props,
   ref
 ) {
   const [content, ...extensions] = React.Children.toArray(children);
 
   return (
-    <ChartLayoutContainer ref={ref}>
+    <ChartLayoutContainer ref={ref} {...props}>
       <ChartLayoutTitle textAlignment={textAlignment}>{title}</ChartLayoutTitle>
       <ChartLayoutContent>{content}</ChartLayoutContent>
       <ChartLayoutDescription textAlignment={textAlignment}>

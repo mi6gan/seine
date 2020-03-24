@@ -1,9 +1,16 @@
 // @flow
 import * as React from 'react';
 
-const ResizeObserverContext = React.createContext<{
-  count: number,
+export type ResizeObserverType = {
+  lastResizeTime: number,
+  isResizing: boolean,
   observer?: ResizeObserver,
-}>({ count: 0 });
+};
+
+const ResizeObserverContext = React.createContext<ResizeObserverType>({
+  count: 0,
+  lastResizeTime: new Date(),
+  isResizing: false,
+});
 
 export default ResizeObserverContext;
