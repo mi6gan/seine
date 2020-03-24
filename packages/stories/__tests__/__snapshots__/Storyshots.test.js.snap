@@ -32,8 +32,6 @@ exports[`Storyshots Bream.Review summary header Good Performance 1`] = `null`;
 
 exports[`Storyshots Bream.Review summary header Great Performance 1`] = `null`;
 
-exports[`Storyshots Constraints Bar Chart On Small Screens 1`] = `null`;
-
 exports[`Storyshots Default.Multiple.Content Content Of All Charts 1`] = `null`;
 
 exports[`Storyshots Default.Multiple.Content Content Of Chart Sample One 1`] = `null`;

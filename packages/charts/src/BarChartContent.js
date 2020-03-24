@@ -23,8 +23,6 @@ type Props = {
   units?: string,
   xAxis?: boolean,
 
-  parentType: BlockType,
-
   elementTitleAs: React.ComponentType,
   elementValueAs: React.ComponentType,
   elementRectAs: React.ComponentType,
@@ -59,11 +57,11 @@ export default function BarChartContent({
   yAxis,
   textAlignment,
 
-  parentType,
-
   elementTitleAs: ElementTitle = SvgTypography,
   elementValueAs: ElementValue = SvgTypography,
   elementRectAs: ElementRect = 'rect',
+
+  parentType,
 
   ...metaProps
 }: Props) {
@@ -81,7 +79,9 @@ export default function BarChartContent({
   const valueWidth = valueMethods.getScaledWidth();
   const valueHeight = valueMethods.getScaledHeight();
 
-  const barHeight = titleHeight;
+  const barHeight =
+    (VIEWPORT_HEIGHT - valueHeight) / Math.max(elements.length, 8);
+
   const height =
     parentType === 'grid'
       ? VIEWPORT_HEIGHT
@@ -124,6 +124,10 @@ export default function BarChartContent({
             meta={meta}
             x={0}
             y={y + barHeight / 2}
+            height={barHeight}
+            width={
+              barWidth === paddedBarWidth ? titleWidth : titleWidth - valueWidth
+            }
           >
             {' '}
             {legend ? '' : title}{' '}
@@ -139,6 +143,7 @@ export default function BarChartContent({
             textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
             x={barWidth === paddedBarWidth ? titleWidth + width : width}
             y={y + barHeight / 2}
+            height={barHeight}
           >
             {' '}
             {value}
