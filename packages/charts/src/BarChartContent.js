@@ -59,11 +59,11 @@ export default function BarChartContent({
   yAxis,
   textAlignment,
 
-  parentType,
-
   elementTitleAs: ElementTitle = SvgTypography,
   elementValueAs: ElementValue = SvgTypography,
   elementRectAs: ElementRect = 'rect',
+
+  parentType,
 
   ...metaProps
 }: Props) {
