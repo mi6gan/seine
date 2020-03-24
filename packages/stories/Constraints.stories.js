@@ -164,73 +164,73 @@ export const LineChartOnSmallScreens = (props) => (
         elements: [
           {
             id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
-            title: 'use only 3-digit or smaller values',
-            value: 173,
+            title: 'use only 2-digit or smaller values',
+            value: 17,
             group: 'One',
           },
           {
             id: '23ec0b37-6da2-434c-8484-818f753deb63',
-            title: 'x-axis titles 5 symbols maximum',
+            title: 'x-axis titles 4 symbols maximum',
             value: 61,
             group: 'One',
           },
 
           {
             id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
-            title: 'use only 3-digit or smaller values',
-            value: 201,
+            title: 'use only 2-digit or smaller values',
+            value: 20,
             group: 'Two',
           },
           {
             id: '23ec0b37-6da2-434c-8484-818f753deb63',
-            title: 'X axis titles 5 symbols maximum',
+            title: 'X axis titles 4 symbols maximum',
             value: 60,
             group: 'Two',
           },
 
           {
             id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
-            title: 'use only 3-digit or smaller values',
-            value: 230,
-            group: 'Three',
+            title: 'use only 2-digit or smaller values',
+            value: 23,
+            group: 'Thr',
           },
           {
             id: '23ec0b37-6da2-434c-8484-818f753deb63',
-            title: 'X axis titles 5 symbols maximum',
+            title: 'X axis titles 4 symbols maximum',
             value: 70,
-            group: 'Three',
+            group: 'Thr',
           },
 
           {
             id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
-            title: 'use only 3-digit or smaller values',
-            value: 230,
+            title: 'use only 2-digit or smaller values',
+            value: 23,
             group: 'Four',
           },
           {
             id: '23ec0b37-6da2-434c-8484-818f753deb63',
-            title: 'X axis titles 5 symbols maximum',
+            title: 'X axis titles 4 symbols maximum',
             value: 70,
             group: 'Four',
           },
 
           {
             id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
-            title: 'use only 3-digit or smaller values',
-            value: 280,
+            title: 'use only 2-digit or smaller values',
+            value: 28,
             group: 'Five',
           },
           {
             id: '23ec0b37-6da2-434c-8484-818f753deb63',
-            title: 'X axis titles 5 symbols maximum',
+            title: 'X axis titles 4 symbols maximum',
             value: 70,
             group: 'Five',
           },
 
           {
             id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
-            title: 'use only 3-digit or smaller values',
-            value: 330,
+            title: 'use only 2-digit or smaller values',
+            value: 30,
             group: 'Six',
           },
           {
@@ -242,8 +242,8 @@ export const LineChartOnSmallScreens = (props) => (
         ],
       }}
       format={{
-        dy: 25,
-        maxValue: 400,
+        dy: 5,
+        maxValue: 99,
         title: '6 groups maximum',
       }}
     />

@@ -198,11 +198,9 @@ export default function LineChartContent({
                     (maxValue - minValue) -
                   1
                 }
-                width={graphWidth / (length + 1)}
                 ref={valueTypographyMethodsRef}
                 meta={{ ...elements[index], index }}
               >
-                {groupIndex === 0 && ' '}
                 {value}
                 {units}
               </ElementValue>
