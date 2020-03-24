@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
-import type { ChartElement } from '@seine/core';
+import type { BlockType, ChartElement } from '@seine/core';
 import invert from 'invert-color';
 
 import {
@@ -22,6 +22,8 @@ type Props = {
   palette?: string[],
   units?: string,
   xAxis?: boolean,
+
+  parentType: BlockType,
 
   elementTitleAs: React.ComponentType,
   elementValueAs: React.ComponentType,
@@ -55,6 +57,8 @@ export default function BarChartContent({
   yAxis,
   textAlignment,
 
+  parentType,
+
   elementTitleAs: ElementTitle = SvgTypography,
   elementValueAs: ElementValue = SvgTypography,
   elementRectAs: ElementRect = 'rect',
@@ -75,8 +79,11 @@ export default function BarChartContent({
   const valueWidth = valueMethods.getScaledWidth();
   const valueHeight = valueMethods.getScaledHeight();
 
-  const barHeight =
-    (VIEWPORT_HEIGHT - valueHeight) / Math.max(elements.length, 8);
+  const barHeight = titleHeight;
+  const height =
+    parentType === 'grid'
+      ? VIEWPORT_HEIGHT
+      : elements.length * barHeight + valueHeight;
 
   const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
   const barWidth =
@@ -92,8 +99,7 @@ export default function BarChartContent({
           barWidth === paddedBarWidth
             ? color
             : invert(rgb ? rgb.slice(0, 3) : color, { threshold: 0.5 });
-        const y =
-          VIEWPORT_HEIGHT - valueHeight - barHeight * (elements.length - index);
+        const y = height - valueHeight - barHeight * (elements.length - index);
         const meta = { ...elements[index], index };
 
         return [
@@ -116,10 +122,6 @@ export default function BarChartContent({
             meta={meta}
             x={0}
             y={y + barHeight / 2}
-            height={barHeight}
-            width={
-              barWidth === paddedBarWidth ? titleWidth : titleWidth - valueWidth
-            }
           >
             {' '}
             {legend ? '' : title}{' '}
@@ -135,7 +137,6 @@ export default function BarChartContent({
             textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
             x={barWidth === paddedBarWidth ? titleWidth + width : width}
             y={y + barHeight / 2}
-            height={barHeight}
           >
             {' '}
             {value}
@@ -150,7 +151,7 @@ export default function BarChartContent({
           step={dx}
           units={units}
           x={barWidth === paddedBarWidth ? titleWidth : 0}
-          y={VIEWPORT_HEIGHT - valueHeight}
+          y={height - valueHeight}
         />
       )}
     </g>

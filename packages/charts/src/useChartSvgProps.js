@@ -26,12 +26,9 @@ export default function useChartSvgProps(
       if (chart.parentType === 'grid') {
         return defaultSvgProps;
       }
-      const height =
-        (chart.elements.length * VIEWPORT_HEIGHT) /
-        Math.max(chart.elements.length, 8);
       return {
         overflow: 'visible',
-        viewBox: `0 ${VIEWPORT_HEIGHT - height} ${VIEWPORT_WIDTH} ${height}`,
+        viewBox: `0 0 ${VIEWPORT_WIDTH} ${VIEWPORT_HEIGHT}`,
       };
     }
     case chartTypes.PIE: {
