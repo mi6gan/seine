@@ -65,8 +65,6 @@ export default function BarChartContent({
   elementValueAs: ElementValue = SvgTypography,
   elementRectAs: ElementRect = 'rect',
 
-  parentType,
-
   ...metaProps
 }: Props) {
   const [
@@ -84,11 +82,6 @@ export default function BarChartContent({
   const valueHeight = valueMethods.getScaledHeight();
 
   const barHeight = titleHeight;
-  const height =
-    parentType === 'grid'
-      ? VIEWPORT_HEIGHT
-      : elements.length * barHeight + valueHeight;
-
   const height =
     parentType === 'grid'
       ? VIEWPORT_HEIGHT
