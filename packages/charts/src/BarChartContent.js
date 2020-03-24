@@ -28,6 +28,8 @@ type Props = {
   elementTitleAs: React.ComponentType,
   elementValueAs: React.ComponentType,
   elementRectAs: React.ComponentType,
+
+  parentType: BlockType,
 };
 
 const MIN_BAR_WIDTH = VIEWPORT_WIDTH / 2;
@@ -63,6 +65,8 @@ export default function BarChartContent({
   elementValueAs: ElementValue = SvgTypography,
   elementRectAs: ElementRect = 'rect',
 
+  parentType,
+
   ...metaProps
 }: Props) {
   const [
@@ -84,6 +88,11 @@ export default function BarChartContent({
     parentType === 'grid'
       ? VIEWPORT_HEIGHT
       : elements.length * barHeight + valueHeight;
+
+  const height =
+    parentType === 'grid'
+      ? VIEWPORT_HEIGHT
+      : barHeight * elements.length + valueHeight;
 
   const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
   const barWidth =

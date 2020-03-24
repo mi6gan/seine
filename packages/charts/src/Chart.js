@@ -51,7 +51,7 @@ export default function Chart({ children, kind, ...initialChartProps }: Props) {
       textAlignment={chartProps.textAlignment}
       {...(isResizing && { visibility: 'hidden' })}
     >
-      <ChartSvg {...useChartSvgProps(kind, chartProps)}>
+      <ChartSvg {...useChartSvgProps(kind)}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent {...chartProps} />
