@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-import { BarChart, ColumnChart } from './Chart.stories';
+import { BarChart, ColumnChart, PieChart } from './Chart.stories';
 
-export default { title: 'Constraints' };
+export default {
+  title: 'Constraints',
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+  },
+};
 
 export const BarChartOnSmallScreens = (props) => (
   <BarChart
@@ -36,7 +41,7 @@ export const BarChartOnSmallScreens = (props) => (
         },
       ],
     }}
-    format={{ title: 'Five bar items', dx: 3 }}
+    format={{ title: 'Five bars maximum', dx: 3 }}
   />
 );
 
@@ -103,6 +108,37 @@ export const ColumnChartOfGroupsOnSmallScreens = (props) => (
         },
       ],
     }}
-    format={{ title: '3 of 3 groups', dy: 1 }}
+    format={{ title: '3 of 3 groups maximum', dy: 1 }}
+  />
+);
+
+export const PieChartOnSmallScreens = (props) => (
+  <PieChart
+    {...props}
+    body={{
+      elements: [
+        {
+          id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+          title: 'use only 3-digit or smaller values',
+          value: 260,
+        },
+        {
+          id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+          title: 'legend is forced when some title do not fit in a slice',
+          value: 642,
+        },
+        {
+          id: '23ec0b37-6da2-434c-8484-818f753deb63',
+          title: 'long titles are wrapped',
+          value: 342,
+        },
+        {
+          id: 'ee83f39d-03bc-4878-9c78-0edef43e936b',
+          title: 'Slice titles may have any length',
+          value: 523,
+        },
+      ],
+    }}
+    format={{ title: 'Each slice 15% minimum', units: ' ' }}
   />
 );
