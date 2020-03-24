@@ -41,7 +41,7 @@ export const BarChartOnSmallScreens = (props) => (
         },
       ],
     }}
-    format={{ title: 'Five bar items', dx: 3 }}
+    format={{ title: 'Five bars maximum', dx: 3 }}
   />
 );
 
@@ -108,7 +108,7 @@ export const ColumnChartOfGroupsOnSmallScreens = (props) => (
         },
       ],
     }}
-    format={{ title: '3 of 3 groups', dy: 1 }}
+    format={{ title: '3 of 3 groups maximum', dy: 1 }}
   />
 );
 
