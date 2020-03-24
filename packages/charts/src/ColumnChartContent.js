@@ -132,7 +132,6 @@ export default function ColumnChartContent({
               key={'group'}
               x={GUTTER_WIDTH + groupIndex * groupWidth + groupWidth / 2}
               y={VIEWPORT_HEIGHT - scaledTextHeight}
-              width={columnWidth * groupElements.length}
               meta={group}
             >
               {group}

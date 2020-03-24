@@ -81,7 +81,10 @@ export default function BarChartContent({
   const valueWidth = valueMethods.getScaledWidth();
   const valueHeight = valueMethods.getScaledHeight();
 
-  const barHeight = titleHeight;
+  const barHeight = Math.max(
+    titleHeight,
+    VIEWPORT_HEIGHT / Math.max(elements.length, 8)
+  );
   const height =
     parentType === 'grid'
       ? VIEWPORT_HEIGHT
