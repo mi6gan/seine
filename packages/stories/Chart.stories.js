@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { actions } from '@storybook/addon-actions';
-import {
-  createBlockElements,
-  createTitleIdentityBlockElements,
-} from '@seine/core';
+import { createTitleIdentityBlockElements } from '@seine/core';
 import { Content } from '@seine/content';
 import { Editor } from '@seine/editor';
 import { ChartLayout, ChartLegend, defaultChartPalette } from '@seine/charts';
@@ -113,6 +110,26 @@ export const EditorOfBarChart = (props) => (
 export const ColumnChart = ({
   as: Component = Content,
   children = [],
+  body = {
+    elements: [
+      {
+        id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+        title: 'Maelstorm',
+        value: 50.1,
+      },
+      {
+        id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+        title: 'Spring',
+        value: 60.33,
+      },
+      {
+        id: '23ec0b37-6da2-434c-8484-818f753deb63',
+        title: 'Electro',
+        value: 13,
+      },
+    ],
+  },
+  format = {},
   ...props
 }) => (
   <Component
@@ -129,14 +146,8 @@ export const ColumnChart = ({
       {
         id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
         type: 'chart',
-        body: {
-          elements: createBlockElements([
-            { title: 'Maelstorm', value: 50.1 },
-            { title: 'Spring', value: 60.33 },
-            { title: 'Electro', value: 13 },
-          ]),
-        },
-        format: { kind: 'column' },
+        body,
+        format: { ...format, kind: 'column' },
         parent_id: null,
       },
       ...children,

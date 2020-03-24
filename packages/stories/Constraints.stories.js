@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BarChart } from './Chart.stories';
+import { BarChart, ColumnChart } from './Chart.stories';
 
 export default { title: 'Constraints' };
 
@@ -30,12 +30,79 @@ export const BarChartOnSmallScreens = (props) => (
           id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
         },
         {
-          title: 'of item',
+          title: 'of title',
           value: 8,
           id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
         },
       ],
     }}
-    format={{ title: 'Not more than 5 items', dx: 3 }}
+    format={{ title: 'Five bar items', dx: 3 }}
+  />
+);
+
+export const ColumnChartOfGroupsOnSmallScreens = (props) => (
+  <ColumnChart
+    {...props}
+    body={{
+      elements: [
+        {
+          id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+          title: '1-digit value only',
+          group: 'Max. 5',
+          value: 5,
+        },
+        {
+          id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+          title: '5-symbol group or shorter',
+          group: 'Max. 5',
+          value: 6,
+        },
+        {
+          id: '23ec0b37-6da2-434c-8484-818f753deb63',
+          title: 'Any length legend labels',
+          group: 'Max. 5',
+          value: 1,
+        },
+
+        {
+          id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+          title: '1-digit value only',
+          group: 'Eg. 4',
+          value: 0,
+        },
+        {
+          id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+          title: '5-symbol group or shorter',
+          group: 'Eg. 4',
+          value: 7,
+        },
+        {
+          id: '23ec0b37-6da2-434c-8484-818f753deb63',
+          title: 'Any length legend labels',
+          group: 'Eg. 4',
+          value: 8,
+        },
+
+        {
+          id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+          title: '1-digit value only',
+          group: 'Never 7',
+          value: 5,
+        },
+        {
+          id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+          title: '5-symbol group or shorter',
+          group: 'Never 7',
+          value: 1,
+        },
+        {
+          id: '23ec0b37-6da2-434c-8484-818f753deb63',
+          title: 'Any length legend labels',
+          group: 'Never 7',
+          value: 9,
+        },
+      ],
+    }}
+    format={{ title: '3 of 3 groups', dy: 1 }}
   />
 );
