@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
-import type { ChartElement } from '@seine/core';
+import type { BlockType, ChartElement } from '@seine/core';
 import invert from 'invert-color';
 
 import {
@@ -26,6 +26,8 @@ type Props = {
   elementTitleAs: React.ComponentType,
   elementValueAs: React.ComponentType,
   elementRectAs: React.ComponentType,
+
+  parentType: BlockType,
 };
 
 const MIN_BAR_WIDTH = VIEWPORT_WIDTH / 2;
@@ -59,6 +61,8 @@ export default function BarChartContent({
   elementValueAs: ElementValue = SvgTypography,
   elementRectAs: ElementRect = 'rect',
 
+  parentType,
+
   ...metaProps
 }: Props) {
   const [
@@ -78,6 +82,11 @@ export default function BarChartContent({
   const barHeight =
     (VIEWPORT_HEIGHT - valueHeight) / Math.max(elements.length, 8);
 
+  const height =
+    parentType === 'grid'
+      ? VIEWPORT_HEIGHT
+      : barHeight * elements.length + valueHeight;
+
   const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
   const barWidth =
     paddedBarWidth > MIN_BAR_WIDTH ? paddedBarWidth : VIEWPORT_WIDTH;
@@ -92,8 +101,7 @@ export default function BarChartContent({
           barWidth === paddedBarWidth
             ? color
             : invert(rgb ? rgb.slice(0, 3) : color, { threshold: 0.5 });
-        const y =
-          VIEWPORT_HEIGHT - valueHeight - barHeight * (elements.length - index);
+        const y = height - valueHeight - barHeight * (elements.length - index);
         const meta = { ...elements[index], index };
 
         return [
@@ -150,7 +158,7 @@ export default function BarChartContent({
           step={dx}
           units={units}
           x={barWidth === paddedBarWidth ? titleWidth : 0}
-          y={VIEWPORT_HEIGHT - valueHeight}
+          y={height - valueHeight}
         />
       )}
     </g>

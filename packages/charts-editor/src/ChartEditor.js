@@ -124,7 +124,7 @@ export default function ChartEditor({
       })
   );
 
-  const svgProps = useChartSvgProps(kind, chartProps);
+  const svgProps = useChartSvgProps(kind);
 
   return selection.length === 1 && selection[0] === chartProps.id ? (
     <ChartLayout
