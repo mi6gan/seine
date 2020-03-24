@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-import { BarChart, ColumnChart } from './Chart.stories';
+import { BarChart, ColumnChart, PieChart } from './Chart.stories';
 
-export default { title: 'Constraints' };
+export default {
+  title: 'Constraints',
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+  },
+};
 
 export const BarChartOnSmallScreens = (props) => (
   <BarChart
@@ -104,5 +109,34 @@ export const ColumnChartOfGroupsOnSmallScreens = (props) => (
       ],
     }}
     format={{ title: '3 of 3 groups', dy: 1 }}
+  />
+);
+
+export const PieChartOnSmallScreens = (props) => (
+  <PieChart
+    {...props}
+    body={{
+      title: 'Each slice 15% minimum',
+      elements: [
+        {
+          title: 'use only 3-digit or smaller values',
+          value: 260,
+        },
+        {
+          title: 'legend is forced when some title do not fit in a slice',
+          value: 642,
+        },
+        {
+          title: 'long titles are wrapped',
+          value: 342,
+        },
+        {
+          title: 'Slice titles may have any length',
+          id: 'ee83f39d-03bc-4878-9c78-0edef43e936b',
+          value: 523,
+        },
+      ],
+    }}
+    format={{ units: ' ' }}
   />
 );
