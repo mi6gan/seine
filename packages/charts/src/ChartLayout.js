@@ -21,7 +21,6 @@ const ChartLayoutContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  overflow: hidden;
   position: relative;
   ${ChartLayoutTitle},
   ${ChartLayoutContent},
@@ -31,6 +30,7 @@ const ChartLayoutContainer = styled.div`
     margin-left: auto;
     margin-right: auto
   }
+  overflow: ${({ overflow = 'hidden' }) => overflow};
   ${({ visibility }) => visibility && { visibility }}
 `;
 

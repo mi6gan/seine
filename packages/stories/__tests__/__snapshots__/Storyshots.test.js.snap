@@ -32,11 +32,13 @@ exports[`Storyshots Bream.Review summary header Good Performance 1`] = `null`;
 
 exports[`Storyshots Bream.Review summary header Great Performance 1`] = `null`;
 
-exports[`Storyshots Constraints Bar Chart On Small Screens 1`] = `null`;
+exports[`Storyshots Chart constraints Bar Chart On Small Screens 1`] = `null`;
 
-exports[`Storyshots Constraints Column Chart Of Groups On Small Screens 1`] = `null`;
+exports[`Storyshots Chart constraints Column Chart On Small Screens 1`] = `null`;
 
-exports[`Storyshots Constraints Pie Chart On Small Screens 1`] = `null`;
+exports[`Storyshots Chart constraints Line Chart On Small Screens 1`] = `null`;
+
+exports[`Storyshots Chart constraints Pie Chart On Small Screens 1`] = `null`;
 
 exports[`Storyshots Default.Multiple.Content Content Of All Charts 1`] = `null`;
 
@@ -161,7 +163,7 @@ exports[`Storyshots Default.Single.SvgText HTML Text In SVG 1`] = `
       y={-1}
     >
       <p
-        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 gBdxAs"
+        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 lncloV"
         dominantBaseline="baseline"
         id="default-single-svgtext--html-text-in-svg"
         kind="Default.Single.SvgText"
@@ -206,7 +208,7 @@ exports[`Storyshots Default.Single.SvgText SVG Text Width Property 1`] = `
       y={-1}
     >
       <p
-        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 gBdxAs"
+        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 lncloV"
         dominantBaseline="baseline"
         textAnchor="start"
         width={1}
