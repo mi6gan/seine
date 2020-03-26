@@ -115,7 +115,7 @@ export default function LineChartContent({
             y={height}
             meta={group}
           >
-            {`${group} `}
+            {`${group}`}
           </GroupTitle>
         ))}
       {xAxis || yAxis
@@ -200,6 +200,7 @@ export default function LineChartContent({
                 }
                 ref={valueTypographyMethodsRef}
                 meta={{ ...elements[index], index }}
+                width={graphWidth / groups.length}
               >
                 {value}
                 {units}
