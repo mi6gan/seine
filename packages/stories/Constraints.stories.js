@@ -151,7 +151,7 @@ export const PieChartOnSmallScreens = (props) => (
           },
         ],
       }}
-      format={{ title: 'Each slice 15% minimum', units: ' ' }}
+      format={{ title: 'Each slice 15% minimum', units: ' ', autoFormat: true }}
     />
   </Themed>
 );

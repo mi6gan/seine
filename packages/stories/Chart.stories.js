@@ -600,5 +600,9 @@ export const PieChart = ({
 );
 
 export const EditorOfPieChart = () => (
-  <PieChart as={Editor} {...actions('onChange')} />
+  <PieChart
+    as={Editor}
+    format={{ autoFormat: true }}
+    {...actions('onChange')}
+  />
 );
