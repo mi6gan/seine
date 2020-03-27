@@ -1,6 +1,10 @@
 // @flow
 import * as React from 'react';
-import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
+import {
+  SvgTypography,
+  useResizeTargetRef,
+  useTypographyChildrenMethods,
+} from '@seine/styles';
 import type { ChartElement } from '@seine/core';
 
 import {
@@ -81,10 +85,24 @@ export default function LineChartContent({
   const titleHeight = titleMethods.getScaledHeight();
 
   const height = VIEWPORT_HEIGHT - titleHeight;
-  const graphWidth = VIEWPORT_WIDTH - 2 * GUTTER_WIDTH;
+  const yAxisWidthRef = React.useRef<number>(GUTTER_WIDTH);
+  const { current: yAxisWidth } = yAxisWidthRef;
+
+  const graphWidth = VIEWPORT_WIDTH - 2 * yAxisWidth;
 
   return (
-    <g strokeWidth={valueHeight / 40}>
+    <g strokeWidth={valueHeight / 40} ref={useResizeTargetRef()}>
+      {!!yAxis && (
+        <ChartYAxis
+          arrow
+          length={height - titleHeight}
+          max={maxValue}
+          min={minValue}
+          step={dy}
+          y={height}
+          ref={yAxisWidthRef}
+        />
+      )}
       {!!xAxis &&
         groups.map(([group], index, { length }) => (
           <GroupTitle
@@ -93,12 +111,11 @@ export default function LineChartContent({
             dominantBaseline={'hanging'}
             key={index}
             textAnchor={'middle'}
-            x={GUTTER_WIDTH + (index * graphWidth) / (length - 1)}
+            x={yAxisWidth + (index * graphWidth) / (length - 1)}
             y={height}
-            width={(graphWidth + 2 * GUTTER_WIDTH) / length}
             meta={group}
           >
-            {`${group} `}
+            {`${group}`}
           </GroupTitle>
         ))}
       {xAxis || yAxis
@@ -108,7 +125,7 @@ export default function LineChartContent({
             (_, index, { length }) =>
               !!((xAxis && index === 0) || (yAxis && index > 0)) && (
                 <path
-                  d={`m${GUTTER_WIDTH}  ${height -
+                  d={`m${yAxisWidth}  ${height -
                     (index * (height - titleHeight)) / length} ${graphWidth} 0`}
                   key={['grid', index]}
                   stroke={index > 0 ? '#f0f0f0' : 'black'}
@@ -116,17 +133,6 @@ export default function LineChartContent({
               )
           )
         : null}
-      {!!yAxis && (
-        <ChartYAxis
-          arrow
-          length={height - titleHeight}
-          max={maxValue}
-          min={minValue}
-          maxWidth={GUTTER_WIDTH}
-          step={Math.max(dy, valueHeight)}
-          y={height}
-        />
-      )}
       {titles.map(({ id, title }, titleIndex) => [
         <marker
           key={['point', titleIndex]}
@@ -148,7 +154,7 @@ export default function LineChartContent({
             (acc, [, elements], index) =>
               [
                 acc,
-                GUTTER_WIDTH + (index * graphWidth) / (groups.length - 1),
+                yAxisWidth + (index * graphWidth) / (groups.length - 1),
                 height -
                   ((elements
                     .filter((element) => element.id === id)
@@ -159,7 +165,7 @@ export default function LineChartContent({
             'M'
           )}
           fill={'none'}
-          key={['line', titleIndex]}
+          key={['line', id]}
           markerEnd={`url(#${['point', titleIndex]})`}
           markerMid={`url(#${['point', titleIndex]})`}
           markerStart={`url(#${['point', titleIndex]})`}
@@ -182,7 +188,7 @@ export default function LineChartContent({
                     ? 'middle'
                     : 'start'
                 }
-                x={GUTTER_WIDTH + (groupIndex * graphWidth) / (length - 1)}
+                x={yAxisWidth + (groupIndex * graphWidth) / (length - 1)}
                 y={
                   height -
                   ((groupElements
@@ -192,11 +198,10 @@ export default function LineChartContent({
                     (maxValue - minValue) -
                   1
                 }
-                width={graphWidth / (length + 1)}
                 ref={valueTypographyMethodsRef}
                 meta={{ ...elements[index], index }}
+                width={graphWidth / groups.length}
               >
-                {groupIndex === 0 && ' '}
                 {value}
                 {units}
               </ElementValue>

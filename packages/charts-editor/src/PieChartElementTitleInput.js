@@ -26,6 +26,8 @@ export default React.forwardRef(function PieChartElementTitleInput(
   return (
     <SvgInput
       {...inputProps}
+      multiline
+      height={ref.current.getHeight()}
       ref={ref}
       value={title}
       onChange={useAutoCallback(({ currentTarget }) =>

@@ -485,6 +485,32 @@ export const EditorOfTwoGroupsOfSixColumns = () => (
 export const LineChart = ({
   as: Component = Content,
   children = [],
+  body = {
+    elements: createTitleIdentityBlockElements([
+      { title: 'Easymode', value: 175, group: 'Year 1' },
+      { title: 'Rest', value: 65, group: 'Year 1' },
+
+      { title: 'Easymode', value: 204, group: 'Year 2' },
+      { title: 'Rest', value: 68, group: 'Year 2' },
+
+      { title: 'Easymode', value: 231, group: 'Year 3' },
+      { title: 'Rest', value: 73, group: 'Year 3' },
+
+      { title: 'Easymode', value: 237, group: 'Year 4' },
+      { title: 'Rest', value: 75, group: 'Year 4' },
+
+      { title: 'Easymode', value: 280, group: 'Year 5' },
+      { title: 'Rest', value: 79, group: 'Year 5' },
+
+      { title: 'Easymode', value: 339, group: 'Year 6' },
+      { title: 'Rest', value: 90, group: 'Year 6' },
+    ]),
+    title: 'Sales ($ millions)',
+  },
+  format = {
+    dy: 40,
+    maxValue: 400,
+  },
   ...props
 }) => (
   <Component
@@ -501,33 +527,8 @@ export const LineChart = ({
       {
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'chart',
-        body: {
-          elements: createTitleIdentityBlockElements([
-            { title: 'Easymode', value: 175, group: 'Year 1' },
-            { title: 'Rest', value: 65, group: 'Year 1' },
-
-            { title: 'Easymode', value: 204, group: 'Year 2' },
-            { title: 'Rest', value: 68, group: 'Year 2' },
-
-            { title: 'Easymode', value: 231, group: 'Year 3' },
-            { title: 'Rest', value: 73, group: 'Year 3' },
-
-            { title: 'Easymode', value: 237, group: 'Year 4' },
-            { title: 'Rest', value: 75, group: 'Year 4' },
-
-            { title: 'Easymode', value: 280, group: 'Year 5' },
-            { title: 'Rest', value: 79, group: 'Year 5' },
-
-            { title: 'Easymode', value: 339, group: 'Year 6' },
-            { title: 'Rest', value: 90, group: 'Year 6' },
-          ]),
-          title: 'Sales ($ millions)',
-        },
-        format: {
-          dy: 40,
-          kind: 'line',
-          maxValue: 400,
-        },
+        body,
+        format: { ...format, kind: 'line' },
         parent_id: null,
       },
       ...children,
@@ -542,6 +543,37 @@ export const EditorOfLineChart = () => (
 export const PieChart = ({
   as: Component = Content,
   children = [],
+  body = {
+    elements: [
+      {
+        title:
+          'There is no space at the top. But big slices have enough space to contain text inside',
+        value: 64,
+        id: '0aa5ad65-9337-4bd6-99be-2e1fdff9e6de',
+      },
+      {
+        title: 'repairs of something very long',
+        value: 12,
+        id: '19f01bde-c75e-47fa-9571-a0a0bab03971',
+      },
+      {
+        title: 'consulting',
+        value: 10,
+        id: 'c72d4fcb-71c2-49f2-8a78-e7d26c18b474',
+      },
+      {
+        title: 'training',
+        value: 8,
+        id: '737ff7d8-22ae-4e06-993c-b3a57d8f4234',
+      },
+      {
+        title: 'others',
+        value: 6,
+        id: 'a7e1f2d4-6c76-4247-937b-aaeb32f97b3b',
+      },
+    ],
+  },
+  format = {},
   ...props
 }) => (
   <Component
@@ -558,37 +590,8 @@ export const PieChart = ({
       {
         id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
         type: 'chart',
-        body: {
-          elements: [
-            {
-              title:
-                'There is no space at the top. But big slices have enough space to contain text inside',
-              value: 64,
-              id: '0aa5ad65-9337-4bd6-99be-2e1fdff9e6de',
-            },
-            {
-              title: 'repairs of something very long',
-              value: 12,
-              id: '19f01bde-c75e-47fa-9571-a0a0bab03971',
-            },
-            {
-              title: 'consulting',
-              value: 10,
-              id: 'c72d4fcb-71c2-49f2-8a78-e7d26c18b474',
-            },
-            {
-              title: 'training',
-              value: 8,
-              id: '737ff7d8-22ae-4e06-993c-b3a57d8f4234',
-            },
-            {
-              title: 'others',
-              value: 6,
-              id: 'a7e1f2d4-6c76-4247-937b-aaeb32f97b3b',
-            },
-          ],
-        },
-        format: { kind: 'pie' },
+        body,
+        format: { ...format, kind: 'pie' },
         parent_id: null,
       },
       ...children,
@@ -597,5 +600,9 @@ export const PieChart = ({
 );
 
 export const EditorOfPieChart = () => (
-  <PieChart as={Editor} {...actions('onChange')} />
+  <PieChart
+    as={Editor}
+    format={{ autoFormat: true }}
+    {...actions('onChange')}
+  />
 );

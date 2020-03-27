@@ -133,6 +133,7 @@ export default function ColumnChartContent({
               x={GUTTER_WIDTH + groupIndex * groupWidth + groupWidth / 2}
               y={VIEWPORT_HEIGHT - scaledTextHeight}
               meta={group}
+              width={groupWidth}
             >
               {group}
             </GroupTitle>,

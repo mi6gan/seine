@@ -49,6 +49,7 @@ export default function Chart({ children, kind, ...initialChartProps }: Props) {
         ) : null
       }
       textAlignment={chartProps.textAlignment}
+      overflow={kind === chartTypes.PIE ? 'hidden' : 'visible'}
       {...(isResizing && { visibility: 'hidden' })}
     >
       <ChartSvg {...useChartSvgProps(kind)}>

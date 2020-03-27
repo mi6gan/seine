@@ -1,7 +1,7 @@
 // @flow
 import styled, { css } from 'styled-components/macro';
 
-const Input = styled.input`
+const Textarea = styled.textarea`
   ${({
     variant = 'body1',
     theme: {
@@ -29,4 +29,4 @@ const Input = styled.input`
   `}
 `;
 
-export default Input;
+export default Textarea;
