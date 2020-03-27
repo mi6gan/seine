@@ -40,10 +40,6 @@ exports[`Storyshots Chart constraints Line Chart On Small Screens 1`] = `null`;
 
 exports[`Storyshots Chart constraints Pie Chart On Small Screens 1`] = `null`;
 
-exports[`Storyshots Constraints Column Chart Of Groups On Small Screens 1`] = `null`;
-
-exports[`Storyshots Constraints Pie Chart On Small Screens 1`] = `null`;
-
 exports[`Storyshots Default.Multiple.Content Content Of All Charts 1`] = `null`;
 
 exports[`Storyshots Default.Multiple.Content Content Of Chart Sample One 1`] = `null`;
