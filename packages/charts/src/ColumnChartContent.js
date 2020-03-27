@@ -144,7 +144,6 @@ export default function ColumnChartContent({
     !!yAxis && (
       <g key={'axis'} strokeWidth={scaledTextHeight / 40}>
         <ChartYAxis
-          arrow
           finite
           key={'axis'}
           length={columnHeight}

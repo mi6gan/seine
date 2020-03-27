@@ -89,14 +89,14 @@ export default function PieChartFormattedContent({
   const slices = useAutoMemo(
     elements
       .reduce(
-        ([head, ...acc], { title, value, index }) => {
+        ([head, ...acc], { title, value, index }, sortedIndex) => {
           const start = head.end;
           const end = head.end + (2 * value * Math.PI) / sum;
 
           return [
             {
               length: end - start,
-              meta: { ...elements[index], index },
+              meta: { ...elements[sortedIndex], index },
 
               start,
               startX: head.endX,

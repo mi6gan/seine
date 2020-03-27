@@ -94,7 +94,6 @@ export default function LineChartContent({
     <g strokeWidth={valueHeight / 40} ref={useResizeTargetRef()}>
       {!!yAxis && (
         <ChartYAxis
-          arrow
           length={height - titleHeight}
           max={maxValue}
           min={minValue}

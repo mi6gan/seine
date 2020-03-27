@@ -3,7 +3,6 @@ import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import * as React from 'react';
 
 type Props = {
-  arrow?: boolean,
   finite?: boolean,
   length: number,
   noLine?: boolean,
@@ -23,7 +22,6 @@ type Props = {
  */
 export default React.forwardRef(function ChartYAxis(
   {
-    arrow = false,
     length,
     noLine = false,
     finite = false,
@@ -84,12 +82,6 @@ export default React.forwardRef(function ChartYAxis(
           </SvgTypography>
         ),
       ])}
-      {arrow && (
-        <path
-          d={`m${x + textWidth} ${y - length}v${1}`}
-          markerStart="url(#arrowUpMarker)"
-        />
-      )}
     </>
   );
 });
