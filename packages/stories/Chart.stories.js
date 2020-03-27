@@ -485,6 +485,32 @@ export const EditorOfTwoGroupsOfSixColumns = () => (
 export const LineChart = ({
   as: Component = Content,
   children = [],
+  body = {
+    elements: createTitleIdentityBlockElements([
+      { title: 'Easymode', value: 175, group: 'Year 1' },
+      { title: 'Rest', value: 65, group: 'Year 1' },
+
+      { title: 'Easymode', value: 204, group: 'Year 2' },
+      { title: 'Rest', value: 68, group: 'Year 2' },
+
+      { title: 'Easymode', value: 231, group: 'Year 3' },
+      { title: 'Rest', value: 73, group: 'Year 3' },
+
+      { title: 'Easymode', value: 237, group: 'Year 4' },
+      { title: 'Rest', value: 75, group: 'Year 4' },
+
+      { title: 'Easymode', value: 280, group: 'Year 5' },
+      { title: 'Rest', value: 79, group: 'Year 5' },
+
+      { title: 'Easymode', value: 339, group: 'Year 6' },
+      { title: 'Rest', value: 90, group: 'Year 6' },
+    ]),
+    title: 'Sales ($ millions)',
+  },
+  format = {
+    dy: 40,
+    maxValue: 400,
+  },
   ...props
 }) => (
   <Component
@@ -501,33 +527,8 @@ export const LineChart = ({
       {
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'chart',
-        body: {
-          elements: createTitleIdentityBlockElements([
-            { title: 'Easymode', value: 175, group: 'Year 1' },
-            { title: 'Rest', value: 65, group: 'Year 1' },
-
-            { title: 'Easymode', value: 204, group: 'Year 2' },
-            { title: 'Rest', value: 68, group: 'Year 2' },
-
-            { title: 'Easymode', value: 231, group: 'Year 3' },
-            { title: 'Rest', value: 73, group: 'Year 3' },
-
-            { title: 'Easymode', value: 237, group: 'Year 4' },
-            { title: 'Rest', value: 75, group: 'Year 4' },
-
-            { title: 'Easymode', value: 280, group: 'Year 5' },
-            { title: 'Rest', value: 79, group: 'Year 5' },
-
-            { title: 'Easymode', value: 339, group: 'Year 6' },
-            { title: 'Rest', value: 90, group: 'Year 6' },
-          ]),
-          title: 'Sales ($ millions)',
-        },
-        format: {
-          dy: 40,
-          kind: 'line',
-          maxValue: 400,
-        },
+        body,
+        format: { ...format, kind: 'line' },
         parent_id: null,
       },
       ...children,
@@ -599,5 +600,9 @@ export const PieChart = ({
 );
 
 export const EditorOfPieChart = () => (
-  <PieChart as={Editor} {...actions('onChange')} />
+  <PieChart
+    as={Editor}
+    format={{ autoFormat: true }}
+    {...actions('onChange')}
+  />
 );

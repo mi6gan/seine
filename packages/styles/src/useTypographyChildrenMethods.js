@@ -15,23 +15,31 @@ export default function useTypographyChildrenMethods(count) {
   const { current: childrenMethods } = childrenMethodsRef;
 
   const [methods, setMethods] = React.useState(defaultTypographyMethods);
+  const setCurrent = useAutoCallback((childMethods: ?SvgTypographyMethods) => {
+    childrenMethods.push(childMethods);
+    if (childrenMethods.length === count) {
+      childrenMethodsRef.current = [];
+      setMethods(
+        childrenMethods.reduce(
+          (acc, methods: SvgTypographyMethods) =>
+            methods && (!acc || methods.getWidth() >= acc.getWidth())
+              ? methods
+              : acc,
+          defaultTypographyMethods
+        )
+      );
+    }
+  });
 
   return [
     methods,
-    useAutoCallback((childMethods: ?SvgTypographyMethods) => {
-      childrenMethods.push(childMethods);
-      if (childrenMethods.length === count) {
-        childrenMethodsRef.current = [];
-        setMethods(
-          childrenMethods.reduce(
-            (acc, methods: SvgTypographyMethods) =>
-              methods && (!acc || methods.getWidth() >= acc.getWidth())
-                ? methods
-                : acc,
-            defaultTypographyMethods
-          )
-        );
-      }
-    }),
+    {
+      set current(childMethods) {
+        setCurrent(childMethods);
+      },
+      get current() {
+        return methods;
+      },
+    },
   ];
 }

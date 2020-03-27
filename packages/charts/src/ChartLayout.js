@@ -21,7 +21,6 @@ const ChartLayoutContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  overflow: hidden;
   position: relative;
   ${ChartLayoutTitle},
   ${ChartLayoutContent},

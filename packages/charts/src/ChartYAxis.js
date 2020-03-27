@@ -21,29 +21,33 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ChartYAxis({
-  arrow = false,
-  length,
-  noLine = false,
-  finite = false,
-  maxWidth = null,
-  max,
-  min = 0,
-  step,
-  units = '',
-  x = 0,
-  y,
-}: Props) {
+export default React.forwardRef(function ChartYAxis(
+  {
+    arrow = false,
+    length,
+    noLine = false,
+    finite = false,
+    maxWidth = null,
+    max,
+    min = 0,
+    step,
+    units = '',
+    x = 0,
+    y,
+  }: Props,
+  ref: React.Ref<number>
+) {
   const count = Math.floor((max - min) / step);
   const total = count + !!finite;
-  const [
-    { getScaledHeight, getScaledWidth },
-    textMethodsRef,
-  ] = useTypographyChildrenMethods(total - 1);
-  const textWidth = maxWidth || getScaledWidth();
-  const textHeight = getScaledHeight();
+  const [textMethods, textMethodsRef] = useTypographyChildrenMethods(total - 1);
+  const textWidth = maxWidth ? maxWidth : textMethods.getScaledWidth();
+  const textHeight = textMethods.getScaledHeight();
   const offset = Math.max(length / count, textHeight);
   const visibleCount = Math.round(length / offset);
+
+  if (ref) {
+    ref.current = textWidth;
+  }
 
   return (
     <>
@@ -76,7 +80,7 @@ export default function ChartYAxis({
               min +
                 (index * (max - min)) /
                   (offset === textHeight ? visibleCount : count)
-            )}${units}  `}
+            )}${units} `}
           </SvgTypography>
         ),
       ])}
@@ -88,4 +92,4 @@ export default function ChartYAxis({
       )}
     </>
   );
-}
+});

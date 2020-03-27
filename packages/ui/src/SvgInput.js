@@ -3,9 +3,11 @@ import * as React from 'react';
 import { SvgTypography, useTypographyChildren } from '@seine/styles';
 
 import InlineInput from './InlineInput';
+import MultilineInput from './MultilineInput';
 
 type Props = {
   children?: any,
+  multiline: boolean,
 };
 
 /**
@@ -14,7 +16,14 @@ type Props = {
  * @returns {React.Node}
  */
 const SvgInput = React.forwardRef(function SvgInput(
-  { children, value, onChange, type = 'text', ...typographyProps }: Props,
+  {
+    children,
+    value,
+    onChange,
+    type = 'text',
+    multiline = false,
+    ...typographyProps
+  }: Props,
   ref
 ) {
   const text = useTypographyChildren(children);
@@ -25,7 +34,16 @@ const SvgInput = React.forwardRef(function SvgInput(
   return (
     <SvgTypography {...typographyProps} ref={ref}>
       {Array.from({ length: valueStartsAt - 1 }, () => ' ')}
-      <InlineInput type={type} value={value} onChange={onChange} />
+      {multiline ? (
+        <MultilineInput
+          type={type}
+          value={value}
+          onChange={onChange}
+          height={typographyProps.height}
+        />
+      ) : (
+        <InlineInput type={type} value={value} onChange={onChange} />
+      )}
       {Array.from(
         { length: text.length - 1 - valueEndsAt - valueStartsAt - 1 },
         () => ' '

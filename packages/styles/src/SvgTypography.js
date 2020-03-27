@@ -33,11 +33,10 @@ const StyledTypography = styled(Typography).attrs(({ fill }) => ({
 const TextBox = styled(StyledTypography)`
   position: absolute;
   visibility: hidden;
-  width: auto;
   z-index: -1;
-  ${({ whiteSpace = 'pre' }) => whiteSpace && { whiteSpace }};
-  ${({ whiteSpace = 'pre', width }) =>
-    whiteSpace !== 'pre' && width && { width }};
+  ${({ whiteSpace = 'pre', width = 'auto' }) => ({
+    width: whiteSpace === 'pre' ? 'auto' : width,
+  })};
 `;
 
 const CondensedText = styled.span`
