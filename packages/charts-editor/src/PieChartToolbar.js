@@ -106,6 +106,14 @@ export default function PieChartToolbar({
         id={id}
         name={'legend'}
       />
+
+      <ChartSwitchFormatInput
+        dispatch={dispatch}
+        format={format}
+        label={'auto-fit'}
+        id={id}
+        name={'autoFormat'}
+      />
     </Toolbar>
   );
 }
