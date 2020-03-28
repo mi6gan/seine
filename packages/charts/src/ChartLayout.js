@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import type { TextAlignment } from '@seine/core';
 
 import ChartLayoutTitle from './ChartLayoutTitle';
@@ -25,10 +25,15 @@ const ChartLayoutContainer = styled.div`
   ${ChartLayoutTitle},
   ${ChartLayoutContent},
   ${ChartLayoutDescription} {
-    max-width: 65vw;
     width: 100%;
     margin-left: auto;
     margin-right: auto
+  ${({ theme: { breakpoints } }) => css`
+    max-width: 65vw;
+    ${breakpoints.up('md')} {
+      max-width: 35vw;
+    }
+  `}
   }
   ${({ visibility }) => visibility && { visibility }}
 `;
