@@ -487,29 +487,29 @@ export const LineChart = ({
   children = [],
   body = {
     elements: createTitleIdentityBlockElements([
-      { title: 'Easymode', value: 175, group: 'Year 1' },
-      { title: 'Rest', value: 65, group: 'Year 1' },
+      { title: 'Easymode', value: 1750, group: 'Year 1' },
+      { title: 'Rest', value: 650, group: 'Year 1' },
 
-      { title: 'Easymode', value: 204, group: 'Year 2' },
-      { title: 'Rest', value: 68, group: 'Year 2' },
+      { title: 'Easymode', value: 2040, group: 'Year 2' },
+      { title: 'Rest', value: 680, group: 'Year 2' },
 
-      { title: 'Easymode', value: 231, group: 'Year 3' },
-      { title: 'Rest', value: 73, group: 'Year 3' },
+      { title: 'Easymode', value: 2310, group: 'Year 3' },
+      { title: 'Rest', value: 730, group: 'Year 3' },
 
-      { title: 'Easymode', value: 237, group: 'Year 4' },
-      { title: 'Rest', value: 75, group: 'Year 4' },
+      { title: 'Easymode', value: 2370, group: 'Year 4' },
+      { title: 'Rest', value: 750, group: 'Year 4' },
 
-      { title: 'Easymode', value: 280, group: 'Year 5' },
-      { title: 'Rest', value: 79, group: 'Year 5' },
+      { title: 'Easymode', value: 2800, group: 'Year 5' },
+      { title: 'Rest', value: 790, group: 'Year 5' },
 
-      { title: 'Easymode', value: 339, group: 'Year 6' },
-      { title: 'Rest', value: 90, group: 'Year 6' },
+      { title: 'Easymode', value: 3390, group: 'Year 6' },
+      { title: 'Rest', value: 900, group: 'Year 6' },
     ]),
     title: 'Sales ($ millions)',
   },
   format = {
-    dy: 40,
-    maxValue: 400,
+    dy: 100,
+    maxValue: 4000,
   },
   ...props
 }) => (

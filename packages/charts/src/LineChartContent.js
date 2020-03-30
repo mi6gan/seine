@@ -201,7 +201,7 @@ export default function LineChartContent({
                 meta={{ ...elements[index], index }}
                 width={graphWidth / groups.length}
               >
-                {value}
+                {parseFloat(value).toLocaleString('en')}
                 {units}
               </ElementValue>
             ))

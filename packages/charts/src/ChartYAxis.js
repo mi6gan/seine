@@ -78,7 +78,7 @@ export default React.forwardRef(function ChartYAxis(
               min +
                 (index * (max - min)) /
                   (offset === textHeight ? visibleCount : count)
-            )}${units} `}
+            ).toLocaleString('en')}${units} `}
           </SvgTypography>
         ),
       ])}
