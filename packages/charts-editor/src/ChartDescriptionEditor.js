@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { ChartType } from '@seine/core/src/types';
 import { useAutoMemo } from 'hooks.macro';
 import type { ChartLegendProps } from '@seine/charts';
-import { ChartLegend, defaultBarChartLegend } from '@seine/charts';
+import { ChartLegend, defaultChartLegend } from '@seine/charts';
 import type { ElementsAction } from '@seine/core';
 import { UPDATE_BLOCK_ELEMENT_BY_ID } from '@seine/core';
 import { InlineInput } from '@seine/ui';
@@ -20,7 +20,7 @@ type Props = $Rest<ChartLegendProps, {| kind: ChartType |}> & {
  */
 export default function ChartDescriptionEditor({
   elements,
-  legend = defaultBarChartLegend,
+  legend = defaultChartLegend,
   dispatchElements,
   ...legendProps
 }: Props) {

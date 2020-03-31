@@ -29,7 +29,6 @@ import { useAutoCallback } from 'hooks.macro';
 import type { ChartEditorProps as Props } from './types';
 import ChartGroupsDescriptionEditor from './ChartGroupsDescriptionEditor';
 import BarChartElementTitleInput from './BarChartElementTitleInput';
-import BarChartElementValueInput from './BarChartElementValueInput';
 import BarChartElementRect from './BarChartElementRect';
 import PieChartElementPath from './PieChartElementPath';
 import PieChartElementTitleInput from './PieChartElementTitleInput';
@@ -137,12 +136,14 @@ export default function ChartEditor({
         />
       }
       description={
-        kind === chartTypes.PIE || kind === chartTypes.BAR ? (
+        kind === chartTypes.PIE ? (
           <ChartDescriptionEditor
             {...chartProps}
             dispatchElements={dispatchElements}
           />
-        ) : kind === chartTypes.COLUMN || kind === chartTypes.LINE ? (
+        ) : kind === chartTypes.BAR ||
+          kind === chartTypes.COLUMN ||
+          kind === chartTypes.LINE ? (
           <ChartGroupsDescriptionEditor
             {...chartProps}
             dispatchElements={dispatchElements}
@@ -160,7 +161,8 @@ export default function ChartEditor({
             {...metaProps}
             elementRectAs={BarChartElementRect}
             elementTitleAs={BarChartElementTitleInput}
-            elementValueAs={BarChartElementValueInput}
+            elementValueAs={ChartGroupElementValueInput}
+            groupTitleAs={ChartGroupTitleInput}
           />
         ) : kind === chartTypes.COLUMN ? (
           <ColumnChartContent
