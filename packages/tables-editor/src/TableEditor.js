@@ -20,6 +20,7 @@ const Container = styled.div`
 
 const StyledTextarea = styled.textarea`
   && {
+    width: 100%;
     background: none;
     border: 0;
     color: inherit;

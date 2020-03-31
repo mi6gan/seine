@@ -88,7 +88,7 @@ export default function SuiteLogsBCGLayout({
   children,
 }: Props) {
   return (
-    <BootstrapContainer as={as}>
+    <BootstrapContainer as={as} overflow={'scroll'}>
       <BootstrapRow as={'header'} paddingY={2} paddingX={5}>
         <BootstrapColumn
           as={ThemePaper}
