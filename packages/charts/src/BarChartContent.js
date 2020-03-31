@@ -144,7 +144,7 @@ export default function BarChartContent({
             y={y + barHeight / 2}
           >
             {' '}
-            {value}
+            {parseFloat(value).toLocaleString('en')}
             {units}{' '}
           </ElementValue>,
         ];

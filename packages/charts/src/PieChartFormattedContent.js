@@ -177,7 +177,7 @@ export default function PieChartFormattedContent({
           x={valueX}
           y={valueY}
         >
-          {value}
+          {parseFloat(value).toLocaleString('en')}
           {units}
         </ElementValue>,
 

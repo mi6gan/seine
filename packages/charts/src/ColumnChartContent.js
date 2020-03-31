@@ -111,7 +111,7 @@ export default function ColumnChartContent({
                   key={`value.${groupElements.length * groupIndex + index}`}
                   meta={groupElements[index]}
                 >
-                  {value}
+                  {parseFloat(value).toLocaleString('en')}
                   {units}
                 </ElementValue>,
               ];

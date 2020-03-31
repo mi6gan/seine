@@ -142,7 +142,7 @@ export default function PieChartContent({
               y={textY}
               {...(value < quarter && !legend && { width: GUTTER_WIDTH })}
             >
-              {value}
+              {parseFloat(value).toLocaleString('en')}
               {units}
             </ElementValue>,
 
