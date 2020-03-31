@@ -5,6 +5,7 @@ import type { ChartElement } from '@seine/core';
 
 import {
   defaultChartDy,
+  defaultChartFraction,
   defaultChartMinValue,
   defaultChartPalette,
   defaultChartUnits,
@@ -14,6 +15,7 @@ import {
 } from './constants';
 import { useGroupedElements } from './helpers';
 import ChartYAxis from './ChartYAxis';
+import ChartValue from './ChartValue';
 
 type Props = {
   elements: ChartElement[],
@@ -42,6 +44,7 @@ export default function ColumnChartContent({
   palette = defaultChartPalette,
   units = defaultChartUnits,
   yAxis = defaultChartYAxis,
+  fraction = defaultChartFraction,
 
   dx,
   legend,
@@ -111,7 +114,7 @@ export default function ColumnChartContent({
                   key={`value.${groupElements.length * groupIndex + index}`}
                   meta={groupElements[index]}
                 >
-                  {parseFloat(value).toLocaleString('en')}
+                  <ChartValue fraction={fraction}>{value}</ChartValue>
                   {units}
                 </ElementValue>,
               ];

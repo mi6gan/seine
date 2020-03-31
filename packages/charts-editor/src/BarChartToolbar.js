@@ -14,6 +14,7 @@ import ChartPaletteSelect from './ChartPaletteSelect';
 import ChartElementAddButton from './ChartElementAddButton';
 import ChartSwitchFormatInput from './ChartSwitchFormatInput';
 import ChartUnitsInput from './ChartUnitsInput';
+import ChartFractionInput from './ChartFractionInput';
 
 type Props = ToolbarProps & {
   body: ChartBody,
@@ -89,7 +90,15 @@ export default function BarChartToolbar({
       <ChartUnitsInput
         body={body}
         dispatch={dispatch}
-        editor={editor}
+        format={format}
+        id={id}
+      />
+
+      <Toolbar.Separator />
+
+      <ChartFractionInput
+        body={body}
+        dispatch={dispatch}
         format={format}
         id={id}
       />

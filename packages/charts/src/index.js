@@ -20,6 +20,7 @@ export { default as ChartSvgDefs } from './ChartSvgDefs';
 
 export { default as useChartFormatDefaults } from './useChartFormatDefaults';
 export { default as useChartSvgProps } from './useChartSvgProps';
+export { default as ChartValue } from './ChartValue';
 
 export * from './constants';
 export * from './helpers';

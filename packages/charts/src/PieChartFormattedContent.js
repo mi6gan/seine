@@ -5,12 +5,14 @@ import { useAutoEffect, useAutoMemo } from 'hooks.macro';
 import type { ChartElement } from '@seine/core';
 
 import {
+  defaultChartFraction,
   defaultChartPalette,
   defaultPieChartLegend,
   defaultPieChartUnits,
   VIEWPORT_HEIGHT,
   VIEWPORT_WIDTH,
 } from './constants';
+import ChartValue from './ChartValue';
 
 type Props = {
   elements: ChartElement[],
@@ -35,6 +37,7 @@ export default function PieChartFormattedContent({
   legend: initialLegend = defaultPieChartLegend,
   palette = defaultChartPalette,
   units = defaultPieChartUnits,
+  fraction = defaultChartFraction,
 
   dx,
   dy,
@@ -177,7 +180,7 @@ export default function PieChartFormattedContent({
           x={valueX}
           y={valueY}
         >
-          {parseFloat(value).toLocaleString('en')}
+          <ChartValue fraction={fraction}>{value}</ChartValue>
           {units}
         </ElementValue>,
 

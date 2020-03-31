@@ -7,6 +7,7 @@ import invert from 'invert-color';
 import {
   defaultBarChartLegend,
   defaultChartDx,
+  defaultChartFraction,
   defaultChartPalette,
   defaultChartUnits,
   defaultChartXAxis,
@@ -14,6 +15,7 @@ import {
   VIEWPORT_WIDTH,
 } from './constants';
 import ChartXAxis from './ChartXAxis';
+import ChartValue from './ChartValue';
 
 type Props = {
   elements: ChartElement[],
@@ -47,6 +49,7 @@ export default function BarChartContent({
   palette = defaultChartPalette,
   units = defaultChartUnits,
   xAxis = defaultChartXAxis,
+  fraction = defaultChartFraction,
 
   dy,
   minValue,
@@ -144,7 +147,7 @@ export default function BarChartContent({
             y={y + barHeight / 2}
           >
             {' '}
-            {parseFloat(value).toLocaleString('en')}
+            <ChartValue fraction={fraction}>{value}</ChartValue>
             {units}{' '}
           </ElementValue>,
         ];

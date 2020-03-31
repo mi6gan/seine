@@ -24,6 +24,7 @@ export type ChartFormat = RichTextFormat & {
   yAxis: boolean,
   legend: boolean,
   autoFormat: boolean,
+  fraction: number,
 };
 
 export type ChartElement = {

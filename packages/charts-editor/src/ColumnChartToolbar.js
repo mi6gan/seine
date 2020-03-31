@@ -21,6 +21,7 @@ import ChartGroupAddButton from './ChartGroupAddButton';
 import ChartSwitchFormatInput from './ChartSwitchFormatInput';
 import ChartUnitsInput from './ChartUnitsInput';
 import ChartGroupRemoveButton from './ChartGroupRemoveButton';
+import ChartFractionInput from './ChartFractionInput';
 
 type Props = ToolbarProps & {
   body: ChartBody,
@@ -132,6 +133,15 @@ export default function ColumnChartToolbar({
         body={body}
         dispatch={dispatch}
         editor={editor}
+        format={format}
+        id={id}
+      />
+
+      <Toolbar.Separator />
+
+      <ChartFractionInput
+        body={body}
+        dispatch={dispatch}
         format={format}
         id={id}
       />
