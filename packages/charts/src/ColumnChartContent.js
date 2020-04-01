@@ -61,10 +61,16 @@ export default function ColumnChartContent({
     dy
   );
 
-  const [methods, childMethodsRef] = useTypographyChildrenMethods(
-    titledElements.length
+  const [
+    methods,
+    childMethodsRef,
+  ] = useTypographyChildrenMethods(titledElements.length, (acc, methods) =>
+    acc.getXScale() < methods.getXScale() ? acc : methods
   );
+  methods.getScaledWidth();
   const scaledTextHeight = methods.getScaledHeight();
+  const xScale = methods.getXScale();
+  const yScale = methods.getYScale();
 
   const groupWidth = (VIEWPORT_WIDTH - 2 * GUTTER_WIDTH) / groups.length;
   const columnHeight = VIEWPORT_HEIGHT - 2 * scaledTextHeight;
@@ -97,19 +103,36 @@ export default function ColumnChartContent({
                   key={`selection.${index}`}
                   meta={{ ...groupElements[index], index }}
                 />,
-                <ElementValue
+                <SvgTypography
                   {...metaProps}
+                  width={columnWidth}
+                  fill={'transparent'}
                   ref={childMethodsRef}
                   textAnchor={'middle'}
-                  width={columnWidth}
                   x={
                     GUTTER_WIDTH +
                     groupWidth * groupIndex +
                     (index + 1) * columnWidth
                   }
                   y={columnHeight + scaledTextHeight - rectHeight}
-                  key={`value.${groupElements.length * groupIndex + index}`}
                   meta={groupElements[index]}
+                  key={`value.${groupElements.length * groupIndex + index}`}
+                >
+                  {parseFloat(value).toLocaleString('en')}
+                  {units}
+                </SvgTypography>,
+                <ElementValue
+                  {...metaProps}
+                  textAnchor={'middle'}
+                  x={
+                    GUTTER_WIDTH +
+                    groupWidth * groupIndex +
+                    (index + 1) * columnWidth
+                  }
+                  y={columnHeight + scaledTextHeight - rectHeight}
+                  key={`display.${groupElements.length * groupIndex + index}`}
+                  xScale={xScale}
+                  yScale={yScale}
                 >
                   {parseFloat(value).toLocaleString('en')}
                   {units}
