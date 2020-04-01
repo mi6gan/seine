@@ -182,6 +182,14 @@ export default function ColumnChartToolbar({
         name={'yAxis'}
       />
 
+      <ChartSwitchFormatInput
+        dispatch={dispatch}
+        format={format}
+        label={'show legend'}
+        id={id}
+        name={'legend'}
+      />
+
       <Toolbar.Separator />
     </Toolbar>
   );

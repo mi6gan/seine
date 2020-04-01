@@ -12,7 +12,7 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ColumnChartElementRect({
+export default function GroupedChartElementRect({
   dispatch,
   dispatchElements,
   editor,

@@ -29,11 +29,10 @@ import { useAutoCallback } from 'hooks.macro';
 import type { ChartEditorProps as Props } from './types';
 import ChartGroupsDescriptionEditor from './ChartGroupsDescriptionEditor';
 import BarChartElementTitleInput from './BarChartElementTitleInput';
-import BarChartElementRect from './BarChartElementRect';
 import PieChartElementPath from './PieChartElementPath';
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
-import ColumnChartElementRect from './ColumnChartElementRect';
+import GroupedChartElementRect from './GroupedChartElementRect';
 import ChartGroupElementValueInput from './ChartGroupElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
 import ChartDescriptionEditor from './ChartDescriptionEditor';
@@ -123,7 +122,7 @@ export default function ChartEditor({
       })
   );
 
-  const svgProps = useChartSvgProps(kind);
+  const svgProps = useChartSvgProps(kind, chartProps);
 
   return selection.length === 1 && selection[0] === chartProps.id ? (
     <ChartLayout
@@ -141,14 +140,12 @@ export default function ChartEditor({
             {...chartProps}
             dispatchElements={dispatchElements}
           />
-        ) : kind === chartTypes.BAR ||
-          kind === chartTypes.COLUMN ||
-          kind === chartTypes.LINE ? (
+        ) : (
           <ChartGroupsDescriptionEditor
             {...chartProps}
             dispatchElements={dispatchElements}
           />
-        ) : null
+        )
       }
       textAlignment={chartProps.textAlignment}
       overflow={kind === chartTypes.PIE ? 'hidden' : 'visible'}
@@ -159,7 +156,7 @@ export default function ChartEditor({
           <BarChartContent
             {...chartProps}
             {...metaProps}
-            elementRectAs={BarChartElementRect}
+            elementRectAs={GroupedChartElementRect}
             elementTitleAs={BarChartElementTitleInput}
             elementValueAs={ChartGroupElementValueInput}
             groupTitleAs={ChartGroupTitleInput}
@@ -168,7 +165,7 @@ export default function ChartEditor({
           <ColumnChartContent
             {...chartProps}
             {...metaProps}
-            elementRectAs={ColumnChartElementRect}
+            elementRectAs={GroupedChartElementRect}
             elementValueAs={ChartGroupElementValueInput}
             groupTitleAs={ChartGroupTitleInput}
           />

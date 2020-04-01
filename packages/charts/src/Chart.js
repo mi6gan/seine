@@ -46,7 +46,7 @@ export default function Chart({ children, kind, ...initialChartProps }: Props) {
       overflow={kind === chartTypes.PIE ? 'hidden' : 'visible'}
       {...(isResizing && { visibility: 'hidden' })}
     >
-      <ChartSvg {...useChartSvgProps(kind)}>
+      <ChartSvg {...useChartSvgProps(kind, chartProps)}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent {...chartProps} />

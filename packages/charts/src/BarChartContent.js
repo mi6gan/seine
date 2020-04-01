@@ -110,7 +110,7 @@ export default function BarChartContent({
   const groupHeight =
     parentType === 'grid'
       ? VIEWPORT_HEIGHT / groups.length
-      : (barHeight * elements.length) / groups.length + valueHeight;
+      : (barHeight * elements.length) / groups.length + barHeight;
 
   const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
   const barWidth =
@@ -131,9 +131,8 @@ export default function BarChartContent({
                 : invert(rgb ? rgb.slice(0, 3) : color, { threshold: 0.5 });
             const y =
               groupHeight * (groupIndex + 1) -
-              valueHeight -
+              barHeight -
               barHeight * (groupElements.length - index);
-            const meta = { ...groupElements[index], index };
 
             return [
               <ElementRect
@@ -141,10 +140,10 @@ export default function BarChartContent({
                 fill={color}
                 height={barHeight}
                 width={width}
-                key={`selection.${index}`}
-                meta={meta}
                 x={barWidth === paddedBarWidth ? titleWidth : 0}
                 y={y}
+                key={`selection.${index}`}
+                meta={{ ...groupElements[index], index }}
               />,
               <ElementTitle
                 {...metaProps}
@@ -184,6 +183,7 @@ export default function BarChartContent({
             meta={group}
             x={0}
             y={groupHeight * groupIndex + groupHeight / 2}
+            {...(!legend && { fill: 'transparent' })}
           >
             {' '}
             {legend ? group : ''}{' '}
@@ -199,7 +199,12 @@ export default function BarChartContent({
           step={dx}
           units={units}
           x={barWidth === paddedBarWidth ? titleWidth : 0}
-          y={groupHeight * groups.length - valueHeight}
+          y={
+            Math.max(
+              barHeight * (elements.length + groups.length),
+              VIEWPORT_HEIGHT
+            ) - barHeight
+          }
         />
       </g>
     ),

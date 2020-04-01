@@ -9,11 +9,7 @@ import type {
 } from '@seine/core';
 import { chartTypes } from '@seine/core';
 import { Toolbar } from '@seine/ui';
-import {
-  defaultBarChartFormat,
-  defaultChartFormat,
-  useChartFormatDefaults,
-} from '@seine/charts';
+import { defaultChartFormat, useChartFormatDefaults } from '@seine/charts';
 
 import ColumnChartToolbar from './ColumnChartToolbar';
 import BarChartToolbar from './BarChartToolbar';
@@ -45,20 +41,20 @@ export default function ChartToolbar({
   format = format || {};
   format = useChartFormatDefaults(format.kind, format);
 
-  return format.kind === chartTypes.BAR ? (
-    <BarChartToolbar
-      {...toolbarProps}
-      format={{ ...defaultBarChartFormat, ...format }}
-    >
-      {children}
-    </BarChartToolbar>
-  ) : format.kind === chartTypes.COLUMN ? (
+  return format.kind === chartTypes.COLUMN ? (
     <ColumnChartToolbar
       {...toolbarProps}
       format={{ ...defaultChartFormat, ...format }}
     >
       {children}
     </ColumnChartToolbar>
+  ) : format.kind === chartTypes.BAR ? (
+    <BarChartToolbar
+      {...toolbarProps}
+      format={{ ...defaultChartFormat, ...format }}
+    >
+      {children}
+    </BarChartToolbar>
   ) : format.kind === chartTypes.LINE ? (
     <LineChartToolbar
       {...toolbarProps}
