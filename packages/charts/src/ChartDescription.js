@@ -17,7 +17,7 @@ type Props = $Rest<ChartLegendProps, {| kind: ChartType |}> & {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ColumnChartDescription({
+export default function ChartDescription({
   elements,
   legend = defaultChartLegend,
   ...legendProps

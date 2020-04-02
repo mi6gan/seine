@@ -78,7 +78,7 @@ export const defaultChartEditor = { selection: initialElementsState.selection };
 export const defaultChartTextAlignment = 'left';
 export const defaultChartLegend = true;
 export const defaultPieChartLegend = false;
-export const defaultBarChartLegend = false;
+export const defaultChartFraction = 0;
 
 export const defaultChartFormat = {
   palette: defaultChartPalette,
@@ -87,12 +87,12 @@ export const defaultChartFormat = {
   xAxis: defaultChartXAxis,
   yAxis: defaultChartYAxis,
   legend: defaultChartLegend,
+  fraction: defaultChartFraction,
 };
 
 export const defaultBarChartFormat = {
   ...defaultChartFormat,
   kind: chartTypes.BAR,
-  legend: defaultBarChartLegend,
 };
 export const defaultColumnChartFormat = {
   ...defaultChartFormat,

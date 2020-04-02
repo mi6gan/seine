@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react';
-import { SvgInput } from '@seine/ui';
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
+
+import ChartValueInput from './ChartValueInput';
 
 type Props = {
   children?: any,
@@ -24,11 +25,10 @@ export default React.forwardRef(function ChartGroupElementValueInput(
   ref
 ) {
   return (
-    <SvgInput
+    <ChartValueInput
       {...inputProps}
       ref={ref}
       value={value}
-      type={'number'}
       onChange={useAutoCallback(({ currentTarget }) =>
         dispatchElements({
           type: UPDATE_BLOCK_ELEMENT,

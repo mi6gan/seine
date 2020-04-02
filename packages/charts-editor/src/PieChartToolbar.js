@@ -99,6 +99,8 @@ export default function PieChartToolbar({
         id={id}
       />
 
+      <Toolbar.Separator />
+
       <ChartSwitchFormatInput
         dispatch={dispatch}
         format={format}

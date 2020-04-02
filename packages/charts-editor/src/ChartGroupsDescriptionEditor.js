@@ -29,21 +29,25 @@ export default function ChartGroupsDescriptionEditor({
   return (
     <ChartLegend
       {...legendProps}
-      elements={titleIdentityElements(elements).map(({ id, title }) => ({
-        title: (
-          <InlineInput
-            key={id}
-            value={title}
-            onChange={({ currentTarget }) =>
-              dispatchElements({
-                type: UPDATE_BLOCK_ELEMENT_BY_ID,
-                body: { title: currentTarget.value },
-                id,
-              })
-            }
-          />
-        ),
-      }))}
+      elements={
+        legend
+          ? titleIdentityElements(elements).map(({ id, title }) => ({
+              title: (
+                <InlineInput
+                  key={id}
+                  value={title}
+                  onChange={({ currentTarget }) =>
+                    dispatchElements({
+                      type: UPDATE_BLOCK_ELEMENT_BY_ID,
+                      body: { title: currentTarget.value },
+                      id,
+                    })
+                  }
+                />
+              ),
+            }))
+          : []
+      }
     />
   );
 }

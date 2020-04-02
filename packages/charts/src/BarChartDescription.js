@@ -5,7 +5,7 @@ import { useAutoMemo } from 'hooks.macro';
 
 import type { Props as ChartLegendProps } from './ChartLegend';
 import ChartLegend from './ChartLegend';
-import { defaultBarChartLegend } from './constants';
+import { defaultChartLegend } from './constants';
 
 type Props = $Rest<ChartLegendProps, {| kind: ChartType |}> & {
   legend?: boolean,
@@ -18,7 +18,7 @@ type Props = $Rest<ChartLegendProps, {| kind: ChartType |}> & {
  */
 export default function BarChartDescription({
   elements,
-  legend = defaultBarChartLegend,
+  legend = defaultChartLegend,
   ...legendProps
 }: Props) {
   return (
