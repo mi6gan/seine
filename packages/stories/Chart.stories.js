@@ -219,9 +219,17 @@ export const ThreeGroupsOfThreeColumns = ({
         type: 'chart',
         body: {
           elements: createTitleIdentityBlockElements([
-            { title: 'Maelstorm', value: 50.1, group: 'Group 1' },
-            { title: 'Spring', value: 60.33, group: 'Group 1' },
-            { title: 'Others', value: 35, group: 'Group 1' },
+            {
+              title: 'Maelstorm',
+              value: 50.1,
+              group: 'First columns group title',
+            },
+            {
+              title: 'Spring',
+              value: 60.33,
+              group: 'First columns group title',
+            },
+            { title: 'Others', value: 35, group: 'First columns group title' },
 
             { title: 'Maelstorm', value: 90, group: 'Group 2' },
             { title: 'Spring', value: 100.22, group: 'Group 2' },
