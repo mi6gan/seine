@@ -126,7 +126,7 @@ export default function ColumnChartContent({
                   y={columnHeight + scaledTextHeight - rectHeight}
                   key={`value.${groupElements.length * groupIndex + index}`}
                 >
-                  {parseFloat(value).toLocaleString('en')}
+                  <ChartValue fraction={fraction}>{value}</ChartValue>
                   {units}
                 </SvgTypography>,
                 <ElementValue
