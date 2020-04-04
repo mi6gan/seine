@@ -5,9 +5,10 @@ import type { BlockType, ChartElement } from '@seine/core';
 import invert from 'invert-color';
 
 import {
-  defaultBarChartLegend,
   defaultChartDx,
   defaultChartFraction,
+  defaultChartLegend,
+  defaultChartMinValue,
   defaultChartPalette,
   defaultChartUnits,
   defaultChartXAxis,
@@ -16,6 +17,7 @@ import {
 } from './constants';
 import ChartXAxis from './ChartXAxis';
 import ChartValue from './ChartValue';
+import { useGroupedElements } from './helpers';
 
 type Props = {
   elements: ChartElement[],
@@ -30,6 +32,7 @@ type Props = {
   elementTitleAs: React.ComponentType,
   elementValueAs: React.ComponentType,
   elementRectAs: React.ComponentType,
+  groupTitleAs: React.ComponentType,
 
   parentType: BlockType,
 };
@@ -45,18 +48,15 @@ export default function BarChartContent({
   elements,
 
   dx = defaultChartDx,
-  legend = defaultBarChartLegend,
+  legend = defaultChartLegend,
   palette = defaultChartPalette,
   units = defaultChartUnits,
   xAxis = defaultChartXAxis,
   fraction = defaultChartFraction,
+  minValue: initialMinValue = defaultChartMinValue,
+  maxValue: initialMaxValue,
 
   dy,
-  minValue,
-  maxValue = elements.reduce(
-    (max, { value }) => Math.max(+value, max),
-    -Infinity
-  ),
 
   paletteKey,
   yAxis,
@@ -65,103 +65,148 @@ export default function BarChartContent({
   elementTitleAs: ElementTitle = SvgTypography,
   elementValueAs: ElementValue = SvgTypography,
   elementRectAs: ElementRect = 'rect',
+  groupTitleAs: GroupTitle = SvgTypography,
 
   parentType,
 
   ...metaProps
 }: Props) {
+  const [maxValue, minValue, titledElements, groups] = useGroupedElements(
+    elements,
+    initialMinValue,
+    initialMaxValue,
+    dy
+  );
+
+  const [
+    groupMethods,
+    groupTypographyMethodsRef,
+  ] = useTypographyChildrenMethods(groups.length);
   const [
     titleMethods,
     titleTypographyMethodsRef,
-  ] = useTypographyChildrenMethods(elements.length);
-  const titleWidth = legend ? 0 : titleMethods.getScaledWidth();
-  const titleHeight = titleMethods.getScaledHeight();
+  ] = useTypographyChildrenMethods(titledElements.length);
+  const titleWidth = Math.max(
+    groupMethods.getScaledWidth(),
+    titleMethods.getScaledWidth()
+  );
+  const titleHeight = Math.max(
+    groupMethods.getScaledHeight(),
+    titleMethods.getScaledHeight()
+  );
 
   const [
     valueMethods,
     valueTypographyMethodsRef,
-  ] = useTypographyChildrenMethods(elements.length);
+  ] = useTypographyChildrenMethods(titledElements.length);
   const valueWidth = valueMethods.getScaledWidth();
   const valueHeight = valueMethods.getScaledHeight();
 
   const barHeight = Math.max(
     titleHeight,
-    VIEWPORT_HEIGHT / Math.max(elements.length, 8)
+    (VIEWPORT_HEIGHT - valueHeight * groups.length) /
+      Math.max(elements.length, 5)
   );
-  const height =
+  const groupHeight =
     parentType === 'grid'
-      ? VIEWPORT_HEIGHT
-      : barHeight * elements.length + valueHeight;
+      ? VIEWPORT_HEIGHT / groups.length
+      : (barHeight * elements.length) / groups.length + barHeight;
 
   const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
   const barWidth =
     paddedBarWidth > MIN_BAR_WIDTH ? paddedBarWidth : VIEWPORT_WIDTH;
+  return [
+    ...groups.map(([group, groupElements], groupIndex) => {
+      return (
+        <g strokeWidth={titleHeight / 40} key={groupIndex}>
+          {groupElements.map(({ title, value }, index) => {
+            value = Math.min(Math.max(value, minValue), maxValue);
 
-  return (
-    <g strokeWidth={titleHeight / 40}>
-      {elements.map(({ title, value }, index) => {
-        const width = (barWidth * value) / maxValue;
-        const color = palette[index % palette.length];
-        const rgb = color.startsWith('rgb') && color.match(/\d+/g);
-        const textColor =
-          barWidth === paddedBarWidth
-            ? color
-            : invert(rgb ? rgb.slice(0, 3) : color, { threshold: 0.5 });
-        const y = height - valueHeight - barHeight * (elements.length - index);
-        const meta = { ...elements[index], index };
+            const width = minValue + (barWidth * value) / (maxValue - minValue);
+            const color = palette[index % palette.length];
+            const rgb = color.startsWith('rgb') && color.match(/\d+/g);
+            const textColor =
+              barWidth === paddedBarWidth
+                ? color
+                : invert(rgb ? rgb.slice(0, 3) : color, { threshold: 0.5 });
+            const y =
+              groupHeight * (groupIndex + 1) -
+              barHeight -
+              barHeight * (groupElements.length - index);
 
-        return [
-          <ElementRect
+            return [
+              <ElementRect
+                {...metaProps}
+                fill={color}
+                height={barHeight}
+                width={width}
+                x={barWidth === paddedBarWidth ? titleWidth : 0}
+                y={y}
+                key={`selection.${index}`}
+                meta={{ ...groupElements[index], index }}
+              />,
+              <ElementTitle
+                {...metaProps}
+                dominantBaseline={'middle'}
+                fill={legend ? 'transparent' : textColor}
+                ref={titleTypographyMethodsRef}
+                key={`title.${index}`}
+                meta={groupElements[index]}
+                x={0}
+                y={y + barHeight / 2}
+              >
+                {' '}
+                {legend ? '' : title}{' '}
+              </ElementTitle>,
+
+              <ElementValue
+                {...metaProps}
+                dominantBaseline={'middle'}
+                ref={valueTypographyMethodsRef}
+                {...(barWidth !== paddedBarWidth && { fill: textColor })}
+                key={`value.${index}`}
+                meta={groupElements[index]}
+                textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
+                x={barWidth === paddedBarWidth ? titleWidth + width : width}
+                y={y + barHeight / 2}
+              >
+                {' '}
+                <ChartValue fraction={fraction}>{value}</ChartValue>
+                {units}{' '}
+              </ElementValue>,
+            ];
+          })}
+          <GroupTitle
             {...metaProps}
-            fill={color}
-            height={barHeight}
-            width={width}
-            key={`selection.${index}`}
-            meta={meta}
-            x={barWidth === paddedBarWidth ? titleWidth : 0}
-            y={y}
-          />,
-          <ElementTitle
-            {...metaProps}
-            dominantBaseline={'middle'}
-            fill={textColor}
-            ref={titleTypographyMethodsRef}
-            key={`title.${index}`}
-            meta={meta}
+            fontWeight={600}
+            ref={groupTypographyMethodsRef}
+            meta={group}
             x={0}
-            y={y + barHeight / 2}
+            y={groupHeight * groupIndex + groupHeight / 2}
+            {...(!legend && { fill: 'transparent' })}
           >
             {' '}
-            {legend ? '' : title}{' '}
-          </ElementTitle>,
-
-          <ElementValue
-            {...metaProps}
-            dominantBaseline={'middle'}
-            ref={valueTypographyMethodsRef}
-            {...(barWidth !== paddedBarWidth && { fill: textColor })}
-            key={`value.${index}`}
-            meta={meta}
-            textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
-            x={barWidth === paddedBarWidth ? titleWidth + width : width}
-            y={y + barHeight / 2}
-          >
-            {' '}
-            <ChartValue fraction={fraction}>{value}</ChartValue>
-            {units}{' '}
-          </ElementValue>,
-        ];
-      })}
-      {!!xAxis && (
+            {legend ? group : ''}{' '}
+          </GroupTitle>
+        </g>
+      );
+    }),
+    !!xAxis && (
+      <g key={'axis'} strokeWidth={titleHeight / 40}>
         <ChartXAxis
           length={barWidth}
           max={maxValue}
           step={dx}
           units={units}
           x={barWidth === paddedBarWidth ? titleWidth : 0}
-          y={height - valueHeight}
+          y={
+            Math.max(
+              barHeight * (elements.length + groups.length),
+              VIEWPORT_HEIGHT
+            ) - barHeight
+          }
         />
-      )}
-    </g>
-  );
+      </g>
+    ),
+  ];
 }

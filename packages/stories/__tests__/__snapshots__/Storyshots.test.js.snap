@@ -80,6 +80,8 @@ exports[`Storyshots Default.Single.Chart Editor Of Bar Chart 1`] = `null`;
 
 exports[`Storyshots Default.Single.Chart Editor Of Column Chart 1`] = `null`;
 
+exports[`Storyshots Default.Single.Chart Editor Of Grouped Bar Chart 1`] = `null`;
+
 exports[`Storyshots Default.Single.Chart Editor Of Line Chart 1`] = `null`;
 
 exports[`Storyshots Default.Single.Chart Editor Of Pie Chart 1`] = `null`;
@@ -95,6 +97,8 @@ exports[`Storyshots Default.Single.Chart Editor Of Three Groups Of Three Columns
 exports[`Storyshots Default.Single.Chart Editor Of Two Groups Of Six Columns 1`] = `null`;
 
 exports[`Storyshots Default.Single.Chart Editor Of Two Groups Of Two Columns 1`] = `null`;
+
+exports[`Storyshots Default.Single.Chart Grouped Bar Chart 1`] = `null`;
 
 exports[`Storyshots Default.Single.Chart Line Chart 1`] = `null`;
 

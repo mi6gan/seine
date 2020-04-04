@@ -5,12 +5,24 @@ import { useAutoCallback } from 'hooks.macro';
 import type { SvgTypographyMethods } from './SvgTypography';
 import { defaultTypographyMethods } from './SvgTypography';
 
+type Reducer = (
+  acc: SvgTypographyMethods,
+  elementMethods: SvgTypographyMethods
+) => SvgTypographyMethods;
+
+const defaultReducer: Reducer = (acc, methods) =>
+  methods && (!acc || methods.getWidth() >= acc.getWidth()) ? methods : acc;
+
 /**
  * @description Use typography methods of a child with greatest width.
  * @param {number} count of children
+ * @param {Reducer} reducer
  * @returns {[SvgTypographyMethods, React.Ref<SvgTypographyMethods>]}
  */
-export default function useTypographyChildrenMethods(count) {
+export default function useTypographyChildrenMethods(
+  count,
+  reducer = defaultReducer
+) {
   const childrenMethodsRef = React.useRef([]);
   const { current: childrenMethods } = childrenMethodsRef;
 
@@ -19,15 +31,7 @@ export default function useTypographyChildrenMethods(count) {
     childrenMethods.push(childMethods);
     if (childrenMethods.length === count) {
       childrenMethodsRef.current = [];
-      setMethods(
-        childrenMethods.reduce(
-          (acc, methods: SvgTypographyMethods) =>
-            methods && (!acc || methods.getWidth() >= acc.getWidth())
-              ? methods
-              : acc,
-          defaultTypographyMethods
-        )
-      );
+      setMethods(childrenMethods.reduce(reducer, defaultTypographyMethods));
     }
   });
 

@@ -12,10 +12,8 @@ import PieChartContent from './PieChartContent';
 import type { ChartProps as Props } from './types';
 import ChartSvg from './ChartSvg';
 import ChartSvgDefs from './ChartSvgDefs';
-import ColumnChartDescription from './ColumnChartDescription';
-import LineChartDescription from './LineChartDescription';
+import ChartDescription from './ChartDescription';
 import PieChartDescription from './PieChartDescription';
-import BarChartDescription from './BarChartDescription';
 import useChartFormatDefaults from './useChartFormatDefaults';
 import useChartSvgProps from './useChartSvgProps';
 
@@ -38,21 +36,17 @@ export default function Chart({ children, kind, ...initialChartProps }: Props) {
       ref={useResizeTargetRef()}
       title={chartProps.title}
       description={
-        kind === chartTypes.BAR ? (
-          <BarChartDescription {...chartProps} />
-        ) : kind === chartTypes.COLUMN ? (
-          <ColumnChartDescription {...chartProps} />
-        ) : kind === chartTypes.LINE ? (
-          <LineChartDescription {...chartProps} />
-        ) : kind === chartTypes.PIE ? (
+        kind === chartTypes.PIE ? (
           <PieChartDescription {...chartProps} />
-        ) : null
+        ) : (
+          <ChartDescription {...chartProps} />
+        )
       }
       textAlignment={chartProps.textAlignment}
       overflow={kind === chartTypes.PIE ? 'hidden' : 'visible'}
       {...(isResizing && { visibility: 'hidden' })}
     >
-      <ChartSvg {...useChartSvgProps(kind)}>
+      <ChartSvg {...useChartSvgProps(kind, chartProps)}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent {...chartProps} />

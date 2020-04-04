@@ -76,7 +76,7 @@ export const BarChart = ({
       },
     ],
   },
-  format = {},
+  format = { legend: false },
   children = [],
   ...props
 }) => (
@@ -105,6 +105,67 @@ export const BarChart = ({
 
 export const EditorOfBarChart = (props) => (
   <BarChart as={Editor} {...actions('onChange')} {...props} />
+);
+
+export const GroupedBarChart = ({
+  as: Component = Content,
+  children = [],
+  ...props
+}) => (
+  <Component
+    {...props}
+    parent={{
+      id: null,
+      type: 'page',
+      body: null,
+      format: null,
+      parent_id: null,
+    }}
+  >
+    {[
+      {
+        id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
+        type: 'chart',
+        body: {
+          elements: [
+            {
+              id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+              title: 'Maelstorm',
+              value: 50.1,
+              group: 'Group 1',
+            },
+            {
+              id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+              title: 'Spring',
+              value: 60.33,
+              group: 'Group 1',
+            },
+
+            {
+              id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+              title: 'Maelstorm',
+              value: 90,
+              group: 'Group 2',
+            },
+            {
+              id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+              title: 'Spring',
+              value: 100.22,
+              group: 'Group 2',
+            },
+          ],
+          title: 'Grouped bar chart',
+        },
+        format: { kind: 'bar', legend: true },
+        parent_id: null,
+      },
+      ...children,
+    ]}
+  </Component>
+);
+
+export const EditorOfGroupedBarChart = (props) => (
+  <GroupedBarChart as={Editor} {...actions('onChange')} {...props} />
 );
 
 export const ColumnChart = ({
@@ -219,9 +280,17 @@ export const ThreeGroupsOfThreeColumns = ({
         type: 'chart',
         body: {
           elements: createTitleIdentityBlockElements([
-            { title: 'Maelstorm', value: 50.1, group: 'Group 1' },
-            { title: 'Spring', value: 60.33, group: 'Group 1' },
-            { title: 'Others', value: 35, group: 'Group 1' },
+            {
+              title: 'Maelstorm',
+              value: 50.1,
+              group: 'First columns group title',
+            },
+            {
+              title: 'Spring',
+              value: 60.33,
+              group: 'First columns group title',
+            },
+            { title: 'Others', value: 35, group: 'First columns group title' },
 
             { title: 'Maelstorm', value: 90, group: 'Group 2' },
             { title: 'Spring', value: 100.22, group: 'Group 2' },

@@ -63,18 +63,30 @@ export default function ColumnChartContent({
     initialMaxValue,
     dy
   );
+  const groupWidth = (VIEWPORT_WIDTH - 2 * GUTTER_WIDTH) / groups.length;
+  const columnWidth = groupWidth / (titledElements.length + 1);
 
-  const [methods, childMethodsRef] = useTypographyChildrenMethods(
-    titledElements.length
+  const [
+    methods,
+    childMethodsRef,
+  ] = useTypographyChildrenMethods(elements.length, (acc, methods) =>
+    acc.getWidth() >= methods.getWidth() ? acc : methods
   );
   const scaledTextHeight = methods.getScaledHeight();
+  const scale = Math.min(1, columnWidth / methods.getWidth());
 
-  const groupWidth = (VIEWPORT_WIDTH - 2 * GUTTER_WIDTH) / groups.length;
   const columnHeight = VIEWPORT_HEIGHT - 2 * scaledTextHeight;
+
+  const [
+    groupMethods,
+    groupMethodsRef,
+  ] = useTypographyChildrenMethods(groups.length, (acc, methods) =>
+    acc.getWidth() >= groupMethods.getWidth() ? acc : methods
+  );
+  const groupScale = Math.min(1, groupWidth / groupMethods.getWidth());
 
   return [
     ...groups.map(([group, groupElements], groupIndex) => {
-      const columnWidth = groupWidth / (groupElements.length + 1);
       return (
         <g strokeWidth={scaledTextHeight / 40} key={groupIndex}>
           {[
@@ -100,11 +112,12 @@ export default function ColumnChartContent({
                   key={`selection.${index}`}
                   meta={{ ...groupElements[index], index }}
                 />,
-                <ElementValue
+                <SvgTypography
                   {...metaProps}
+                  width={columnWidth}
+                  fill={'transparent'}
                   ref={childMethodsRef}
                   textAnchor={'middle'}
-                  width={columnWidth}
                   x={
                     GUTTER_WIDTH +
                     groupWidth * groupIndex +
@@ -112,7 +125,22 @@ export default function ColumnChartContent({
                   }
                   y={columnHeight + scaledTextHeight - rectHeight}
                   key={`value.${groupElements.length * groupIndex + index}`}
+                >
+                  <ChartValue fraction={fraction}>{value}</ChartValue>
+                  {units}
+                </SvgTypography>,
+                <ElementValue
+                  {...metaProps}
+                  textAnchor={'middle'}
+                  x={
+                    GUTTER_WIDTH +
+                    groupWidth * groupIndex +
+                    (index + 1) * columnWidth
+                  }
+                  y={columnHeight + scaledTextHeight - rectHeight}
+                  key={`display.${groupElements.length * groupIndex + index}`}
                   meta={groupElements[index]}
+                  scale={scale}
                 >
                   <ChartValue fraction={fraction}>{value}</ChartValue>
                   {units}
@@ -128,17 +156,30 @@ export default function ColumnChartContent({
               stroke={'black'}
               key={'line'}
             />,
+            <SvgTypography
+              {...metaProps}
+              ref={groupMethodsRef}
+              fill={'transparent'}
+              textAnchor={'middle'}
+              dominantBaseline={'hanging'}
+              key={`group.${groupIndex}`}
+              x={GUTTER_WIDTH + groupIndex * groupWidth + groupWidth / 2}
+              y={VIEWPORT_HEIGHT - scaledTextHeight}
+              width={groupWidth}
+            >
+              {`${group}`}
+            </SvgTypography>,
             <GroupTitle
               {...metaProps}
               textAnchor={'middle'}
               dominantBaseline={'hanging'}
-              key={'group'}
+              key={`groupDisplay.${groupIndex}`}
               x={GUTTER_WIDTH + groupIndex * groupWidth + groupWidth / 2}
               y={VIEWPORT_HEIGHT - scaledTextHeight}
               meta={group}
-              width={groupWidth}
+              scale={groupScale}
             >
-              {group}
+              {`${group}`}
             </GroupTitle>,
           ]}
         </g>
