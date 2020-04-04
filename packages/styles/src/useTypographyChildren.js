@@ -22,11 +22,14 @@ export default function useTypographyChildren(
               : child && child.props && 'value' in child.props
               ? child.props.value
               : child &&
-                child.props.children &&
                 (typeof child.props.children === 'string' ||
-                  typeof child.props.children == 'number')
-              ? child.props.children
-              : ''
+                  typeof child.props.children == 'number') &&
+                child.props.fraction
+              ? parseFloat(child.props.children).toLocaleString('en', {
+                  maximumFractionDigits: child.props.fraction,
+                  minimumFractionDigits: child.props.fraction,
+                })
+              : child.props.children || ''
           }`
       )
       .filter((child) => child)

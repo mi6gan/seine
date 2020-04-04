@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react';
-import { SvgInput } from '@seine/ui';
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
+
+import ChartValueInput from './ChartValueInput';
 
 type Props = {
   children?: any,
@@ -24,10 +25,9 @@ export default React.forwardRef(function BarChartElementValueInput(
   ref
 ) {
   return (
-    <SvgInput
+    <ChartValueInput
       {...inputProps}
       ref={ref}
-      type={'number'}
       value={value}
       onChange={useAutoCallback(({ currentTarget }) =>
         dispatchElements({

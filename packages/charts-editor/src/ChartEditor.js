@@ -29,12 +29,10 @@ import { useAutoCallback } from 'hooks.macro';
 import type { ChartEditorProps as Props } from './types';
 import ChartGroupsDescriptionEditor from './ChartGroupsDescriptionEditor';
 import BarChartElementTitleInput from './BarChartElementTitleInput';
-import BarChartElementValueInput from './BarChartElementValueInput';
-import BarChartElementRect from './BarChartElementRect';
 import PieChartElementPath from './PieChartElementPath';
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
-import ColumnChartElementRect from './ColumnChartElementRect';
+import GroupedChartElementRect from './GroupedChartElementRect';
 import ChartGroupElementValueInput from './ChartGroupElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
 import ChartDescriptionEditor from './ChartDescriptionEditor';
@@ -124,7 +122,7 @@ export default function ChartEditor({
       })
   );
 
-  const svgProps = useChartSvgProps(kind);
+  const svgProps = useChartSvgProps(kind, chartProps);
 
   return selection.length === 1 && selection[0] === chartProps.id ? (
     <ChartLayout
@@ -137,17 +135,17 @@ export default function ChartEditor({
         />
       }
       description={
-        kind === chartTypes.PIE || kind === chartTypes.BAR ? (
+        kind === chartTypes.PIE ? (
           <ChartDescriptionEditor
             {...chartProps}
             dispatchElements={dispatchElements}
           />
-        ) : kind === chartTypes.COLUMN || kind === chartTypes.LINE ? (
+        ) : (
           <ChartGroupsDescriptionEditor
             {...chartProps}
             dispatchElements={dispatchElements}
           />
-        ) : null
+        )
       }
       textAlignment={chartProps.textAlignment}
       overflow={kind === chartTypes.PIE ? 'hidden' : 'visible'}
@@ -158,15 +156,16 @@ export default function ChartEditor({
           <BarChartContent
             {...chartProps}
             {...metaProps}
-            elementRectAs={BarChartElementRect}
+            elementRectAs={GroupedChartElementRect}
             elementTitleAs={BarChartElementTitleInput}
-            elementValueAs={BarChartElementValueInput}
+            elementValueAs={ChartGroupElementValueInput}
+            groupTitleAs={ChartGroupTitleInput}
           />
         ) : kind === chartTypes.COLUMN ? (
           <ColumnChartContent
             {...chartProps}
             {...metaProps}
-            elementRectAs={ColumnChartElementRect}
+            elementRectAs={GroupedChartElementRect}
             elementValueAs={ChartGroupElementValueInput}
             groupTitleAs={ChartGroupTitleInput}
           />

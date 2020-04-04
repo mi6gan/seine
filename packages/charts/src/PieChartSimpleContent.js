@@ -5,12 +5,14 @@ import { useAutoMemo } from 'hooks.macro';
 import type { ChartElement } from '@seine/core';
 
 import {
+  defaultChartFraction,
   defaultChartPalette,
   defaultPieChartLegend,
   defaultPieChartUnits,
   VIEWPORT_HEIGHT,
   VIEWPORT_WIDTH,
 } from './constants';
+import ChartValue from './ChartValue';
 
 type Props = {
   elements: ChartElement[],
@@ -36,6 +38,7 @@ export default function PieChartContent({
   legend = defaultPieChartLegend,
   palette = defaultChartPalette,
   units = defaultPieChartUnits,
+  fraction = defaultChartFraction,
 
   dx,
   dy,
@@ -142,7 +145,7 @@ export default function PieChartContent({
               y={textY}
               {...(value < quarter && !legend && { width: GUTTER_WIDTH })}
             >
-              {parseFloat(value).toLocaleString('en')}
+              <ChartValue fraction={fraction}>{value}</ChartValue>
               {units}
             </ElementValue>,
 

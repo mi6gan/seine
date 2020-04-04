@@ -20,6 +20,8 @@ const SvgInput = React.forwardRef(function SvgInput(
     children,
     value,
     onChange,
+    onFocus,
+    onBlur,
     type = 'text',
     multiline = false,
     ...typographyProps
@@ -36,13 +38,21 @@ const SvgInput = React.forwardRef(function SvgInput(
       {Array.from({ length: valueStartsAt - 1 }, () => ' ')}
       {multiline ? (
         <MultilineInput
+          height={typographyProps.height}
           type={type}
           value={value}
+          onBlur={onBlur}
           onChange={onChange}
-          height={typographyProps.height}
+          onFocus={onFocus}
         />
       ) : (
-        <InlineInput type={type} value={value} onChange={onChange} />
+        <InlineInput
+          type={type}
+          value={value}
+          onBlur={onBlur}
+          onChange={onChange}
+          onFocus={onFocus}
+        />
       )}
       {Array.from(
         { length: text.length - 1 - valueEndsAt - valueStartsAt - 1 },
