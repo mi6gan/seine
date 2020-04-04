@@ -97,6 +97,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
     textAnchor = 'start',
     as: Text = StyledTypography,
     whiteSpace = 'pre',
+    scale = 1,
     ...textProps
   }: Props,
   ref
@@ -117,19 +118,17 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   const methods: SvgTypographyMethods = useAutoMemo(() => {
     if (foreignElement) {
       const getXScale = (value = 1) =>
-        theme.typography.round(
+        (scale *
           ((isBlink ? window.devicePixelRatio : 1) *
             value *
-            foreignElement.getBBox().width) /
-            foreignElement.getBoundingClientRect().width
-        );
+            foreignElement.getBBox().width)) /
+        foreignElement.getBoundingClientRect().width;
       const getYScale = (value = 1) =>
-        theme.typography.round(
+        (scale *
           ((isBlink ? window.devicePixelRatio : 1) *
             value *
-            foreignElement.getBBox().height) /
-            foreignElement.getBoundingClientRect().height
-        );
+            foreignElement.getBBox().height)) /
+        foreignElement.getBoundingClientRect().height;
       const getWidth = () =>
         whiteSpace === 'pre' && textBox ? textBox.offsetWidth : width;
       const getHeight = () => textBox && textBox.offsetHeight;
@@ -162,8 +161,9 @@ const SvgTypography = React.forwardRef(function SvgTypography(
             ? width / scaledWidth
             : Infinity
         )
-      : Infinity;
-
+      : scale === 1
+      ? Infinity
+      : scale;
   const text = useTypographyChildren(children);
 
   return (
