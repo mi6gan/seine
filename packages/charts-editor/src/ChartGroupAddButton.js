@@ -42,7 +42,12 @@ export default function ChartGroupAddButton({
       body={React.useMemo(
         () => ({
           elements: [
-            ...body.elements,
+            ...body.elements.map(({ group, ...element }) => ({
+              ...element,
+              ...(group && group.length
+                ? { group }
+                : { group: `Group #${groupsCount}` }),
+            })),
             ...titleIdentityElements(body.elements).map(({ id, title }) => ({
               id,
               title,
