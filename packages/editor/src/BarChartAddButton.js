@@ -1,7 +1,11 @@
 // @flow
 import * as React from 'react';
 import type { Block, BlocksAction, BlocksCreateAction } from '@seine/core';
-import { blockTypes, createBlock } from '@seine/core';
+import {
+  blockTypes,
+  createBlock,
+  createTitleIdentityBlockElements,
+} from '@seine/core';
 import { ActionButton } from '@seine/ui';
 import { defaultBarChartFormat } from '@seine/charts';
 
@@ -27,7 +31,7 @@ export default function BarChartAddButton({
       block={createBlock(
         blockTypes.CHART,
         {
-          elements: [
+          elements: createTitleIdentityBlockElements([
             {
               title: 'First line',
               value: 35,
@@ -36,7 +40,7 @@ export default function BarChartAddButton({
               title: 'Second line',
               value: 70,
             },
-          ],
+          ]),
         },
         defaultBarChartFormat
       )}

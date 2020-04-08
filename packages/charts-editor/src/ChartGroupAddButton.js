@@ -9,6 +9,7 @@ import type {
   ChartFormat,
 } from '@seine/core';
 import { UPDATE_BLOCK_BODY } from '@seine/core';
+import { useAutoMemo } from 'hooks.macro';
 
 type Props = {
   body: ChartBody,
@@ -32,6 +33,11 @@ export default function ChartGroupAddButton({
   ...buttonProps
 }) {
   const { length: groupsCount } = groupElements(body.elements);
+  const elements = body.elements.map((element) =>
+    element.group && element.group.length
+      ? element
+      : { ...element, group: `Group #${groupsCount}` }
+  );
   return (
     <ActionButton
       {...buttonProps}
@@ -39,25 +45,16 @@ export default function ChartGroupAddButton({
       title={'Add group'}
       dispatch={dispatch}
       type={UPDATE_BLOCK_BODY}
-      body={React.useMemo(
-        () => ({
-          elements: [
-            ...body.elements.map(({ group, ...element }) => ({
-              ...element,
-              ...(group && group.length
-                ? { group }
-                : { group: `Group #${groupsCount}` }),
-            })),
-            ...titleIdentityElements(body.elements).map(({ id, title }) => ({
-              id,
-              title,
-              group: `Group #${groupsCount + 1}`,
-              value: format.minValue || 0,
-            })),
-          ],
-        }),
-        [body.elements, format.minValue, groupsCount]
-      )}
+      body={useAutoMemo({
+        elements: [
+          ...elements,
+          ...titleIdentityElements(elements).map((element) => ({
+            ...element,
+            group: `Group #${groupsCount + 1}`,
+            value: format.minValue || 0,
+          })),
+        ],
+      })}
       variant={'text'}
     >
       {children}
