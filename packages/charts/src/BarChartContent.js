@@ -110,7 +110,7 @@ export default function BarChartContent({
 
   const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
   const barWidth =
-    paddedBarWidth > MIN_BAR_WIDTH ? paddedBarWidth : VIEWPORT_WIDTH;
+    legend || paddedBarWidth > MIN_BAR_WIDTH ? paddedBarWidth : VIEWPORT_WIDTH;
   return [
     ...groups.map(([group, groupElements], groupIndex) => {
       return (
