@@ -167,7 +167,7 @@ export default function ColumnChartContent({
               y={VIEWPORT_HEIGHT - scaledTextHeight}
               width={groupWidth}
             >
-              {`${group}`}
+              {group}
             </SvgTypography>,
             <GroupTitle
               {...metaProps}
@@ -179,7 +179,7 @@ export default function ColumnChartContent({
               meta={group}
               scale={groupScale}
             >
-              {`${group}`}
+              {group}
             </GroupTitle>,
           ]}
         </g>

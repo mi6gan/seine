@@ -102,11 +102,7 @@ export default function BarChartContent({
   const valueWidth = valueMethods.getScaledWidth();
   const valueHeight = valueMethods.getScaledHeight();
 
-  const barHeight = Math.max(
-    titleHeight,
-    (VIEWPORT_HEIGHT - valueHeight * groups.length) /
-      Math.max(elements.length, 5)
-  );
+  const barHeight = Math.max(valueHeight, titleHeight);
   const groupHeight =
     parentType === 'grid'
       ? VIEWPORT_HEIGHT / groups.length
