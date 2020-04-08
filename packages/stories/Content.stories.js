@@ -166,15 +166,10 @@ export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
         type: 'chart',
         body: {
           elements: createBlockElements([
-            { title: 'WFLA', value: 20.8 },
             { title: 'Region A', value: 35.7 },
             { title: 'Region B', value: 15.8 },
             { title: 'Region C', value: 40.9 },
             { title: 'Region D', value: 23.6 },
-            { title: 'Region E', value: 17.6 },
-            { title: 'Region F', value: 38.1 },
-            { title: 'Region G', value: 43.8 },
-            { title: 'Region H', value: 16.4 },
           ]),
         },
         format: { kind: 'bar' },
