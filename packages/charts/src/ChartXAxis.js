@@ -1,6 +1,7 @@
 // @flow
 import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import * as React from 'react';
+import { useAutoMemo } from 'hooks.macro';
 
 type Props = {
   finite?: boolean,
@@ -32,45 +33,47 @@ export default function ChartXAxis({
   y,
 }: Props) {
   const count = Math.floor((max - min) / step);
-  const total = count + !!finite;
-  const [{ getScaledWidth }, textMethodsRef] = useTypographyChildrenMethods(
-    total - 1
+  const iterator = useAutoMemo(Array.from({ length: count + !!finite }));
+  const [
+    textMethods,
+    textMethodsRef,
+  ] = useTypographyChildrenMethods(iterator.length - 1, (acc, methods) =>
+    methods && methods.getWidth() >= acc.getWidth() ? methods : acc
   );
-  const textWidth = getScaledWidth();
+  const textWidth = textMethods.getScaledWidth();
   const offset = Math.max(length / count, textWidth);
   const visibleCount = Math.round(length / offset);
 
-  return Array.from({ length: total }).map((_, index) => [
-    !noLine &&
-      index !== count &&
-      (offset !== textWidth || index <= visibleCount) && (
-        <line
-          key={'line'}
-          x1={x + offset * index}
-          x2={x + offset * (index + 1)}
-          y1={y}
-          y2={y}
-          stroke={'black'}
-        />
-      ),
-    index > 0 && (
-      <SvgTypography
-        key={'value'}
-        ref={textMethodsRef}
-        x={x + offset * index}
-        y={y}
-        dominantBaseline={'hanging'}
-        textAnchor={'center'}
-        width={offset}
-        {...(offset === textWidth &&
-          index >= visibleCount && { style: { visibility: 'hidden' } })}
-      >
-        {`${parseInt(
-          min +
-            (index * (max - min)) /
-              (offset === textWidth ? visibleCount : count)
-        )}${units} `}
-      </SvgTypography>
-    ),
-  ]);
+  return iterator.map((_, index) => (
+    <React.Fragment key={index}>
+      {!noLine &&
+        index !== count &&
+        (offset !== textWidth || index <= visibleCount) && (
+          <line
+            x1={x + offset * index}
+            x2={x + offset * (index + 1)}
+            y1={y}
+            y2={y}
+            stroke={'black'}
+          />
+        )}
+      {index > 0 && (
+        <SvgTypography
+          ref={textMethodsRef}
+          x={x + offset * index}
+          y={y}
+          dominantBaseline={'hanging'}
+          textAnchor={'center'}
+          {...(offset === textWidth &&
+            index >= visibleCount && { style: { visibility: 'hidden' } })}
+        >
+          {`${parseInt(
+            min +
+              (index * (max - min)) /
+                (offset === textWidth ? visibleCount : count)
+          )}${units} `}
+        </SvgTypography>
+      )}
+    </React.Fragment>
+  ));
 }

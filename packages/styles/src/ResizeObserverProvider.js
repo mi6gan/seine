@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoEffect, useAutoMemo } from 'hooks.macro';
+import { useAutoLayoutEffect, useAutoMemo } from 'hooks.macro';
 import ResizeObserver from 'resize-observer-polyfill';
 
 import ResizeObserverContext from './ResizeObserverContext';
@@ -23,7 +23,7 @@ export default function ResizeObserverProvider({ children = null }: Props) {
     })
   );
 
-  useAutoEffect(() => {
+  useAutoLayoutEffect(() => {
     setCount(1);
   });
 

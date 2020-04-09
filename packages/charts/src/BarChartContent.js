@@ -3,6 +3,7 @@ import * as React from 'react';
 import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import type { BlockType, ChartElement } from '@seine/core';
 import invert from 'invert-color';
+import { useAutoMemo } from 'hooks.macro';
 
 import {
   defaultChartDx,
@@ -102,14 +103,15 @@ export default function BarChartContent({
   const valueHeight = valueMethods.getScaledHeight();
 
   const barHeight = Math.max(valueHeight, titleHeight);
-  const groupHeight =
-    parentType === 'grid'
-      ? VIEWPORT_HEIGHT / groups.length
-      : (barHeight * elements.length) / groups.length + barHeight;
-
   const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
   const barWidth =
     legend || paddedBarWidth > MIN_BAR_WIDTH ? paddedBarWidth : VIEWPORT_WIDTH;
+
+  const groupHeight = useAutoMemo(
+    parentType === 'grid'
+      ? VIEWPORT_HEIGHT / groups.length
+      : (barHeight * elements.length) / groups.length + barHeight
+  );
 
   return (
     <g strokeWidth={titleHeight / 40}>
@@ -130,6 +132,8 @@ export default function BarChartContent({
               barHeight -
               barHeight * (groupElements.length - index);
 
+            const textY = y + barHeight / 2;
+
             return (
               <React.Fragment key={index}>
                 <ElementRect
@@ -141,7 +145,7 @@ export default function BarChartContent({
                   y={y}
                   meta={{ ...groupElements[index], index }}
                 />
-                {!legend && (
+                {legend ? null : (
                   <ElementTitle
                     {...metaProps}
                     ref={titleTypographyMethodsRef}
@@ -149,7 +153,7 @@ export default function BarChartContent({
                     fill={legend ? 'transparent' : textColor}
                     meta={groupElements[index]}
                     x={0}
-                    y={y + barHeight / 2}
+                    y={textY}
                     {...(legend && { width: 0 })}
                   >
                     {title}
@@ -163,7 +167,7 @@ export default function BarChartContent({
                   meta={groupElements[index]}
                   textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
                   x={barWidth === paddedBarWidth ? titleWidth + width : width}
-                  y={y + barHeight / 2}
+                  y={textY}
                 >
                   {' '}
                   <ChartValue fraction={fraction}>{value}</ChartValue>
@@ -172,35 +176,31 @@ export default function BarChartContent({
               </React.Fragment>
             );
           })}
-          <GroupTitle
-            {...metaProps}
-            fontWeight={600}
-            ref={groupTypographyMethodsRef}
-            meta={group}
-            x={0}
-            y={groupHeight * groupIndex + groupHeight / 2}
-            {...(!legend && { fill: 'transparent' })}
-          >
-            {' '}
-            {legend ? group : ''}{' '}
-          </GroupTitle>
+          {legend && group ? (
+            <GroupTitle
+              {...metaProps}
+              fontWeight={600}
+              ref={groupTypographyMethodsRef}
+              meta={group}
+              x={0}
+              y={groupHeight * groupIndex + groupHeight / 2}
+            >
+              {' '}
+              {group}{' '}
+            </GroupTitle>
+          ) : null}
         </React.Fragment>
       ))}
-      {!!xAxis && (
+      {xAxis ? (
         <ChartXAxis
           length={barWidth}
           max={maxValue}
           step={dx}
           units={units}
           x={barWidth === paddedBarWidth ? titleWidth : 0}
-          y={
-            Math.max(
-              barHeight * (elements.length + groups.length),
-              VIEWPORT_HEIGHT
-            ) - barHeight
-          }
+          y={VIEWPORT_HEIGHT}
         />
-      )}
+      ) : null}
     </g>
   );
 }
