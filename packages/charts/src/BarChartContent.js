@@ -139,7 +139,6 @@ export default function BarChartContent({
                   width={width}
                   x={barWidth === paddedBarWidth ? titleWidth : 0}
                   y={y}
-                  key={`selection.${index}`}
                   meta={{ ...groupElements[index], index }}
                 />
                 {!legend && (

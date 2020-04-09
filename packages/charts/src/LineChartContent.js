@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import type { ChartElement } from '@seine/core';
+import { useAutoMemo } from 'hooks.macro';
 
 import {
   defaultChartDy,
@@ -83,133 +84,138 @@ export default function LineChartContent({
     titleMethods,
     titleTypographyMethodsRef,
   ] = useTypographyChildrenMethods(groups.length, (acc, methods) =>
-    methods && acc.getWidth() < methods.getWidth() ? methods : acc
+    methods && acc.getWidth() <= methods.getWidth() ? methods : acc
   );
-  const titleHeight = titleMethods.getScaledHeight();
 
+  const titleHeight = titleMethods.getScaledHeight();
   const height = VIEWPORT_HEIGHT - titleHeight;
   const yAxisWidthRef = React.useRef<number>(GUTTER_WIDTH);
   const { current: yAxisWidth } = yAxisWidthRef;
 
   const graphWidth = VIEWPORT_WIDTH - 2 * yAxisWidth;
 
-  const titleScale = Math.min(
-    1,
-    graphWidth / (groups.length + 2) / valueMethods.getScaledWidth()
-  );
-
   const valueMaxWidth = graphWidth / groups.length;
   const valueScale = Math.min(1, valueMaxWidth / valueMethods.getScaledWidth());
 
+  const titleScale = Math.min(
+    1,
+    graphWidth / (groups.length - 1) / titleMethods.getScaledWidth()
+  );
+
+  const gridLinesIterator = useAutoMemo(
+    xAxis || yAxis
+      ? Array.from({
+          length: Math.floor((maxValue - minValue) / dy),
+        })
+      : null
+  );
+
   return (
     <g strokeWidth={valueHeight / 40}>
-      {!!xAxis &&
-        groups.map(([group], index, { length }) => (
-          <GroupTitle
-            {...metaProps}
-            ref={titleTypographyMethodsRef}
-            dominantBaseline={'hanging'}
-            key={index}
-            textAnchor={'middle'}
-            x={yAxisWidth + (index * graphWidth) / (length - 1)}
-            y={height}
-            meta={group}
-            scale={titleScale}
-          >
-            {`${group}`}
-          </GroupTitle>
-        ))}
-      {xAxis || yAxis
-        ? Array.from({
-            length: Math.floor((maxValue - minValue) / dy),
-          }).map(
-            (_, index, { length }) =>
-              !!((xAxis && index === 0) || (yAxis && index > 0)) && (
-                <path
-                  d={`m${yAxisWidth}  ${height -
-                    (index * (height - titleHeight)) / length} ${graphWidth} 0`}
-                  key={['grid', index]}
-                  stroke={index > 0 ? '#f0f0f0' : 'black'}
-                />
-              )
-          )
+      {xAxis
+        ? groups.map(([group], index, { length }) => (
+            <GroupTitle
+              {...metaProps}
+              ref={titleTypographyMethodsRef}
+              dominantBaseline={'hanging'}
+              key={index}
+              textAnchor={'middle'}
+              x={yAxisWidth + (index * graphWidth) / (length - 1)}
+              y={height}
+              meta={group}
+              scale={titleScale}
+            >
+              {`${group}`}
+            </GroupTitle>
+          ))
         : null}
-      {titledElements.map(({ id, title }, titleIndex) => [
-        <marker
-          key={['point', titleIndex]}
-          id={['point', titleIndex]}
-          overflow="visible"
-          orient="auto"
-        >
-          <circle
-            cx={0}
-            r={3}
-            stroke={'none'}
-            fill={palette[titleIndex % palette.length]}
-          />
-        </marker>,
 
-        <ElementPath
-          {...metaProps}
-          d={groups.reduce(
-            (acc, [, elements], index) =>
-              [
-                acc,
-                yAxisWidth + (index * graphWidth) / (groups.length - 1),
-                height -
-                  ((elements
-                    .filter((element) => element.id === id)
-                    .map(({ value }) => value)[0] || 0) *
-                    (height - titleHeight)) /
-                    (maxValue - minValue),
-              ].join(' '),
-            'M'
-          )}
-          fill={'none'}
-          key={['line', id]}
-          markerEnd={`url(#${['point', titleIndex]})`}
-          markerMid={`url(#${['point', titleIndex]})`}
-          markerStart={`url(#${['point', titleIndex]})`}
-          stroke={palette[titleIndex % palette.length]}
-          strokeWidth={valueHeight / 20}
-          meta={{ ...titledElements[titleIndex], index: titleIndex }}
-        />,
+      {gridLinesIterator &&
+        gridLinesIterator.map(
+          (_, index, { length }) =>
+            !!((xAxis && index === 0) || (yAxis && index > 0)) && (
+              <path
+                d={`m${yAxisWidth}  ${height -
+                  (index * (height - titleHeight)) / length} ${graphWidth} 0`}
+                key={index}
+                stroke={index > 0 ? '#f0f0f0' : 'black'}
+              />
+            )
+        )}
 
-        ...groups.map(([, groupElements], groupIndex, { length }) =>
-          groupElements
-            .filter((element) => element.id === id)
-            .map(({ index, value }) => (
-              <ElementValue
-                {...metaProps}
-                key={`value.${index}`}
-                textAnchor={
-                  groupIndex === groups.length - 1
-                    ? 'end'
-                    : groupIndex > 0
-                    ? 'middle'
-                    : 'start'
-                }
-                x={yAxisWidth + (groupIndex * graphWidth) / (length - 1)}
-                y={
+      {titledElements.map(({ id, title }, index) => (
+        <React.Fragment key={index}>
+          <marker id={`circle-${index}`} overflow="visible" orient="auto">
+            <circle
+              cx={0}
+              r={3}
+              stroke={'none'}
+              fill={palette[index % palette.length]}
+            />
+          </marker>
+          <ElementPath
+            {...metaProps}
+            d={groups.reduce(
+              (acc, [, elements], index) =>
+                [
+                  acc,
+                  yAxisWidth + (index * graphWidth) / (groups.length - 1),
                   height -
-                  ((groupElements
-                    .filter((element) => element.id === id)
-                    .map(({ value }) => value)[0] || 0) *
-                    (height - titleHeight)) /
-                    (maxValue - minValue) -
-                  1
-                }
-                ref={valueTypographyMethodsRef}
-                meta={{ ...elements[index], index }}
-                scale={valueScale}
-                width={valueMaxWidth}
-              >
-                <ChartValue fraction={fraction}>{value}</ChartValue>
-                {units}
-              </ElementValue>
-            ))
-        ),
-      ])}
+                    ((elements
+                      .filter((element) => element.id === id)
+                      .map(({ value }) => value)[0] || 0) *
+                      (height - titleHeight)) /
+                      (maxValue - minValue),
+                ].join(' '),
+              'M'
+            )}
+            fill={'none'}
+            key={['line', id]}
+            markerEnd={`url(circle-${index})`}
+            markerMid={`url(circle-${index})`}
+            markerStart={`url(circle-${index})`}
+            stroke={palette[index % palette.length]}
+            strokeWidth={valueHeight / 20}
+            meta={{ ...titledElements[index], index }}
+          />
+
+          {groups.map(([, groupElements], groupIndex, { length }) =>
+            groupElements
+              .filter((element) => element.id === id)
+              .map(({ index, value }) => (
+                <ElementValue
+                  {...metaProps}
+                  key={index}
+                  textAnchor={
+                    groupIndex === groups.length - 1
+                      ? 'end'
+                      : groupIndex > 0
+                      ? 'middle'
+                      : 'start'
+                  }
+                  x={yAxisWidth + (groupIndex * graphWidth) / (length - 1)}
+                  y={
+                    height -
+                    ((groupElements
+                      .filter((element) => element.id === id)
+                      .map(({ value }) => value)[0] || 0) *
+                      (height - titleHeight)) /
+                      (maxValue - minValue) -
+                    1
+                  }
+                  ref={valueTypographyMethodsRef}
+                  meta={{ ...elements[index], index }}
+                  scale={valueScale}
+                  width={valueMaxWidth}
+                >
+                  <ChartValue fraction={fraction}>{value}</ChartValue>
+                  {units}
+                </ElementValue>
+              ))
+          )}
+        </React.Fragment>
+      ))}
+
       {!!yAxis && (
         <ChartYAxis
           length={height - titleHeight}
