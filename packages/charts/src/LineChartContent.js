@@ -66,7 +66,7 @@ export default function LineChartContent({
 
   ...metaProps
 }: Props) {
-  const [maxValue, minValue, titles, groups] = useGroupedElements(
+  const [maxValue, minValue, titledElements, groups] = useGroupedElements(
     elements,
     initialMinValue,
     initialMaxValue,
@@ -76,13 +76,15 @@ export default function LineChartContent({
   const [
     valueMethods,
     valueTypographyMethodsRef,
-  ] = useTypographyChildrenMethods(elements.length);
+  ] = useTypographyChildrenMethods(titledElements.length * groups.length);
   const valueHeight = valueMethods.getScaledHeight();
 
   const [
     titleMethods,
     titleTypographyMethodsRef,
-  ] = useTypographyChildrenMethods(groups.length);
+  ] = useTypographyChildrenMethods(groups.length, (acc, methods) =>
+    methods && acc.getWidth() < methods.getWidth() ? methods : acc
+  );
   const titleHeight = titleMethods.getScaledHeight();
 
   const height = VIEWPORT_HEIGHT - titleHeight;
@@ -90,6 +92,14 @@ export default function LineChartContent({
   const { current: yAxisWidth } = yAxisWidthRef;
 
   const graphWidth = VIEWPORT_WIDTH - 2 * yAxisWidth;
+
+  const titleScale = Math.min(
+    1,
+    graphWidth / (groups.length + 2) / valueMethods.getScaledWidth()
+  );
+
+  const valueMaxWidth = graphWidth / groups.length;
+  const valueScale = Math.min(1, valueMaxWidth / valueMethods.getScaledWidth());
 
   return (
     <g strokeWidth={valueHeight / 40}>
@@ -104,6 +114,7 @@ export default function LineChartContent({
             x={yAxisWidth + (index * graphWidth) / (length - 1)}
             y={height}
             meta={group}
+            scale={titleScale}
           >
             {`${group}`}
           </GroupTitle>
@@ -123,7 +134,7 @@ export default function LineChartContent({
               )
           )
         : null}
-      {titles.map(({ id, title }, titleIndex) => [
+      {titledElements.map(({ id, title }, titleIndex) => [
         <marker
           key={['point', titleIndex]}
           id={['point', titleIndex]}
@@ -161,7 +172,7 @@ export default function LineChartContent({
           markerStart={`url(#${['point', titleIndex]})`}
           stroke={palette[titleIndex % palette.length]}
           strokeWidth={valueHeight / 20}
-          meta={{ ...titles[titleIndex], index: titleIndex }}
+          meta={{ ...titledElements[titleIndex], index: titleIndex }}
         />,
 
         ...groups.map(([, groupElements], groupIndex, { length }) =>
@@ -190,7 +201,8 @@ export default function LineChartContent({
                 }
                 ref={valueTypographyMethodsRef}
                 meta={{ ...elements[index], index }}
-                width={graphWidth / groups.length}
+                scale={valueScale}
+                width={valueMaxWidth}
               >
                 <ChartValue fraction={fraction}>{value}</ChartValue>
                 {units}

@@ -83,7 +83,8 @@ export default function BarChartContent({
   const [
     titleMethods,
     titleTypographyMethodsRef,
-  ] = useTypographyChildrenMethods(titledElements.length);
+  ] = useTypographyChildrenMethods(titledElements.length * groups.length);
+
   const titleWidth = Math.max(
     groupMethods.getScaledWidth(),
     titleMethods.getScaledWidth()
@@ -96,7 +97,7 @@ export default function BarChartContent({
   const [
     valueMethods,
     valueTypographyMethodsRef,
-  ] = useTypographyChildrenMethods(titledElements.length);
+  ] = useTypographyChildrenMethods(titledElements.length * groups.length);
   const valueWidth = valueMethods.getScaledWidth();
   const valueHeight = valueMethods.getScaledHeight();
 
@@ -109,10 +110,11 @@ export default function BarChartContent({
   const paddedBarWidth = VIEWPORT_WIDTH - (titleWidth + valueWidth);
   const barWidth =
     legend || paddedBarWidth > MIN_BAR_WIDTH ? paddedBarWidth : VIEWPORT_WIDTH;
-  return [
-    ...groups.map(([group, groupElements], groupIndex) => {
-      return (
-        <g strokeWidth={titleHeight / 40} key={groupIndex}>
+
+  return (
+    <g strokeWidth={titleHeight / 40}>
+      {groups.map(([group, groupElements], groupIndex) => (
+        <React.Fragment key={groupIndex}>
           {groupElements.map(({ title, value }, index) => {
             value = Math.min(Math.max(value, minValue), maxValue);
 
@@ -128,47 +130,48 @@ export default function BarChartContent({
               barHeight -
               barHeight * (groupElements.length - index);
 
-            return [
-              <ElementRect
-                {...metaProps}
-                fill={color}
-                height={barHeight}
-                width={width}
-                x={barWidth === paddedBarWidth ? titleWidth : 0}
-                y={y}
-                key={`selection.${index}`}
-                meta={{ ...groupElements[index], index }}
-              />,
-              <ElementTitle
-                {...metaProps}
-                dominantBaseline={'middle'}
-                fill={legend ? 'transparent' : textColor}
-                ref={titleTypographyMethodsRef}
-                key={`title.${index}`}
-                meta={groupElements[index]}
-                x={0}
-                y={y + barHeight / 2}
-              >
-                {' '}
-                {legend ? '' : title}{' '}
-              </ElementTitle>,
-
-              <ElementValue
-                {...metaProps}
-                dominantBaseline={'middle'}
-                ref={valueTypographyMethodsRef}
-                {...(barWidth !== paddedBarWidth && { fill: textColor })}
-                key={`value.${index}`}
-                meta={groupElements[index]}
-                textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
-                x={barWidth === paddedBarWidth ? titleWidth + width : width}
-                y={y + barHeight / 2}
-              >
-                {' '}
-                <ChartValue fraction={fraction}>{value}</ChartValue>
-                {units}{' '}
-              </ElementValue>,
-            ];
+            return (
+              <React.Fragment key={index}>
+                <ElementRect
+                  {...metaProps}
+                  fill={color}
+                  height={barHeight}
+                  width={width}
+                  x={barWidth === paddedBarWidth ? titleWidth : 0}
+                  y={y}
+                  key={`selection.${index}`}
+                  meta={{ ...groupElements[index], index }}
+                />
+                {!legend && (
+                  <ElementTitle
+                    {...metaProps}
+                    ref={titleTypographyMethodsRef}
+                    dominantBaseline={'middle'}
+                    fill={legend ? 'transparent' : textColor}
+                    meta={groupElements[index]}
+                    x={0}
+                    y={y + barHeight / 2}
+                    {...(legend && { width: 0 })}
+                  >
+                    {title}
+                  </ElementTitle>
+                )}
+                <ElementValue
+                  {...metaProps}
+                  dominantBaseline={'middle'}
+                  ref={valueTypographyMethodsRef}
+                  {...(barWidth !== paddedBarWidth && { fill: textColor })}
+                  meta={groupElements[index]}
+                  textAnchor={barWidth === paddedBarWidth ? 'start' : 'end'}
+                  x={barWidth === paddedBarWidth ? titleWidth + width : width}
+                  y={y + barHeight / 2}
+                >
+                  {' '}
+                  <ChartValue fraction={fraction}>{value}</ChartValue>
+                  {units}{' '}
+                </ElementValue>
+              </React.Fragment>
+            );
           })}
           <GroupTitle
             {...metaProps}
@@ -182,11 +185,9 @@ export default function BarChartContent({
             {' '}
             {legend ? group : ''}{' '}
           </GroupTitle>
-        </g>
-      );
-    }),
-    !!xAxis && (
-      <g key={'axis'} strokeWidth={titleHeight / 40}>
+        </React.Fragment>
+      ))}
+      {!!xAxis && (
         <ChartXAxis
           length={barWidth}
           max={maxValue}
@@ -200,7 +201,7 @@ export default function BarChartContent({
             ) - barHeight
           }
         />
-      </g>
-    ),
-  ];
+      )}
+    </g>
+  );
 }

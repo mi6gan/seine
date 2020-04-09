@@ -73,7 +73,8 @@ export default function ColumnChartContent({
     valueMethodsRef,
   ] = useTypographyChildrenMethods(
     titledElements.length * groups.length,
-    (acc, methods) => (acc.getWidth() >= methods.getWidth() ? acc : methods)
+    (acc, methods) =>
+      methods && acc.getWidth() < methods.getWidth() ? methods : acc
   );
   const scaledTextHeight = valueMethods.getScaledHeight();
   const scale = Math.min(1, columnWidth / valueMethods.getScaledWidth());
@@ -84,7 +85,7 @@ export default function ColumnChartContent({
     groupMethods,
     groupMethodsRef,
   ] = useTypographyChildrenMethods(groups.length, (acc, methods) =>
-    acc.getWidth() >= methods.getWidth() ? acc : methods
+    methods && acc.getWidth() < methods.getWidth() ? methods : acc
   );
   const groupScale = Math.min(1, groupWidth / groupMethods.getScaledWidth());
 
