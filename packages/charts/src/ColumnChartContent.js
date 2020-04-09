@@ -52,6 +52,8 @@ export default function ColumnChartContent({
   paletteKey,
   textAlignment,
 
+  parentType,
+
   groupTitleAs: GroupTitle = SvgTypography,
   elementValueAs: ElementValue = SvgTypography,
   elementRectAs: ElementRect = 'rect',

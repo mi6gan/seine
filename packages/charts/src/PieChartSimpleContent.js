@@ -51,6 +51,7 @@ export default function PieChartContent({
   elementTitleAs: ElementTitle = SvgTypography,
   elementValueAs: ElementValue = SvgTypography,
   elementPathAs: ElementPath = 'path',
+  textAlignment,
 
   ...metaProps
 }): Props {

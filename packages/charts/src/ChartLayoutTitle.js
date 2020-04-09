@@ -31,6 +31,7 @@ const TextBox = styled(ChartLayoutTitleText)`
 export default styled(function ChartLayoutTitle({
   as: Container = 'h3',
   children,
+  textAlignment,
   ...containerProps
 }: Props) {
   const titleElementRef = useResizeTargetRef();
@@ -51,7 +52,7 @@ export default styled(function ChartLayoutTitle({
   });
 
   return (
-    <Container {...containerProps} ref={titleElementRef}>
+    <Container {...containerProps} ref={titleElementRef} align={textAlignment}>
       <TextBox ref={textBoxRef}>{children}</TextBox>
       {textBox && (
         <ChartLayoutTitleText scale={scale}>{children}</ChartLayoutTitleText>
@@ -60,7 +61,7 @@ export default styled(function ChartLayoutTitle({
   );
 })`
   ${({ theme: { typography } }) => typography.h3};
-  text-align: ${({ textAlignment }) => textAlignment};
+  text-align: ${({ align }) => align};
   height: 3.5rem;
   position: relative;
   overflow: hidden;

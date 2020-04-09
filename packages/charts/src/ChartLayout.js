@@ -57,7 +57,7 @@ export default React.forwardRef(function ChartLayout(
   const [content, ...extensions] = React.Children.toArray(children);
 
   return (
-    <ChartLayoutContainer ref={ref} {...props}>
+    <ChartLayoutContainer {...props} ref={ref}>
       <ChartLayoutTitle textAlignment={textAlignment}>{title}</ChartLayoutTitle>
       <ChartLayoutContent>{content}</ChartLayoutContent>
       <ChartLayoutDescription textAlignment={textAlignment}>

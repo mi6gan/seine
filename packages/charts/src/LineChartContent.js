@@ -1,10 +1,6 @@
 // @flow
 import * as React from 'react';
-import {
-  SvgTypography,
-  useResizeTargetRef,
-  useTypographyChildrenMethods,
-} from '@seine/styles';
+import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import type { ChartElement } from '@seine/core';
 
 import {
@@ -66,6 +62,8 @@ export default function LineChartContent({
   groupTitleAs: GroupTitle = SvgTypography,
   elementValueAs: ElementValue = SvgTypography,
 
+  parentType,
+
   ...metaProps
 }: Props) {
   const [maxValue, minValue, titles, groups] = useGroupedElements(
@@ -94,17 +92,7 @@ export default function LineChartContent({
   const graphWidth = VIEWPORT_WIDTH - 2 * yAxisWidth;
 
   return (
-    <g strokeWidth={valueHeight / 40} ref={useResizeTargetRef()}>
-      {!!yAxis && (
-        <ChartYAxis
-          length={height - titleHeight}
-          max={maxValue}
-          min={minValue}
-          step={dy}
-          y={height}
-          ref={yAxisWidthRef}
-        />
-      )}
+    <g strokeWidth={valueHeight / 40}>
       {!!xAxis &&
         groups.map(([group], index, { length }) => (
           <GroupTitle
@@ -210,6 +198,16 @@ export default function LineChartContent({
             ))
         ),
       ])}
+      {!!yAxis && (
+        <ChartYAxis
+          length={height - titleHeight}
+          max={maxValue}
+          min={minValue}
+          step={dy}
+          y={height}
+          ref={yAxisWidthRef}
+        />
+      )}
     </g>
   );
 }
