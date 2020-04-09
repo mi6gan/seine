@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import type { ChartElement } from '@seine/core';
+import { useAutoMemo } from 'hooks.macro';
 
 import {
   defaultChartDy,
@@ -65,8 +66,10 @@ export default function ColumnChartContent({
     initialMaxValue,
     dy
   );
-  const groupWidth = (VIEWPORT_WIDTH - 2 * GUTTER_WIDTH) / groups.length;
-  const columnWidth = groupWidth / (titledElements.length + 1);
+  const groupWidth = useAutoMemo(
+    (VIEWPORT_WIDTH - 2 * GUTTER_WIDTH) / groups.length
+  );
+  const columnWidth = useAutoMemo(groupWidth / (titledElements.length + 1));
 
   const [
     valueMethods,
@@ -77,7 +80,9 @@ export default function ColumnChartContent({
       methods && acc.getWidth() < methods.getWidth() ? methods : acc
   );
   const scaledTextHeight = valueMethods.getScaledHeight();
-  const scale = Math.min(1, columnWidth / valueMethods.getScaledWidth());
+  const scale = useAutoMemo(
+    Math.min(1, columnWidth / valueMethods.getScaledWidth())
+  );
 
   const columnHeight = VIEWPORT_HEIGHT - 2 * scaledTextHeight;
 
@@ -87,7 +92,9 @@ export default function ColumnChartContent({
   ] = useTypographyChildrenMethods(groups.length, (acc, methods) =>
     methods && acc.getWidth() < methods.getWidth() ? methods : acc
   );
-  const groupScale = Math.min(1, groupWidth / groupMethods.getScaledWidth());
+  const groupScale = useAutoMemo(
+    Math.min(1, groupWidth / groupMethods.getScaledWidth())
+  );
 
   return (
     <g strokeWidth={scaledTextHeight / 40}>
@@ -99,13 +106,12 @@ export default function ColumnChartContent({
                 columnHeight *
                 ((Math.max(minValue, Math.min(maxValue, value)) - minValue) /
                   (maxValue - minValue));
-              const fill = palette[index % palette.length];
 
               return (
                 <React.Fragment key={index}>
                   <ElementRect
                     {...metaProps}
-                    fill={fill}
+                    fill={palette[index % palette.length]}
                     height={rectHeight}
                     width={columnWidth}
                     x={
@@ -116,7 +122,6 @@ export default function ColumnChartContent({
                     y={columnHeight + scaledTextHeight - rectHeight}
                     meta={{ ...groupElements[index], index }}
                   />
-                  ,
                   <SvgTypography
                     {...metaProps}
                     width={columnWidth}

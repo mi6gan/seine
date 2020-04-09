@@ -94,12 +94,16 @@ export default function LineChartContent({
 
   const graphWidth = VIEWPORT_WIDTH - 2 * yAxisWidth;
 
-  const valueMaxWidth = graphWidth / groups.length;
-  const valueScale = Math.min(1, valueMaxWidth / valueMethods.getScaledWidth());
+  const valueMaxWidth = useAutoMemo(graphWidth / groups.length);
+  const valueScale = useAutoMemo(
+    Math.min(1, valueMaxWidth / valueMethods.getScaledWidth())
+  );
 
-  const titleScale = Math.min(
-    1,
-    graphWidth / (groups.length - 1) / titleMethods.getScaledWidth()
+  const titleScale = useAutoMemo(
+    Math.min(
+      1,
+      graphWidth / (groups.length - 1) / titleMethods.getScaledWidth()
+    )
   );
 
   const gridLinesIterator = useAutoMemo(
