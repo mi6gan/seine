@@ -15,13 +15,21 @@ export type SvgTypographyProps = {
   meta?: { [string]: any },
 };
 
-const StyledTypography = styled(Typography).attrs(({ fill }) => ({
-  color: fill,
-}))`
+const StyledTypography = styled(Typography).attrs(
+  ({ fill, transform, width, height, whiteSpace = 'pre' }) => ({
+    transform,
+    whiteSpace,
+    style: {
+      transform,
+      color: fill,
+      whiteSpace,
+      ...(width && { width }),
+      ...(height && { height }),
+    },
+  })
+)`
   transform-origin: left top;
   position: fixed;
-  ${({ transform }) => transform && { transform }};
-  ${({ whiteSpace = 'pre' }) => whiteSpace && { whiteSpace }};
   text-align: ${({ textAnchor }) =>
     textAnchor === 'end'
       ? 'right'
@@ -30,13 +38,14 @@ const StyledTypography = styled(Typography).attrs(({ fill }) => ({
       : 'left'};
 `;
 
-const TextBox = styled(StyledTypography)`
+const TextBox = styled(StyledTypography).attrs(
+  ({ whiteSpace = 'pre', width = 'auto' }) => ({
+    width: whiteSpace === 'pre' ? 'auto' : width,
+  })
+)`
   position: absolute;
   visibility: hidden;
   z-index: -1;
-  ${({ whiteSpace = 'pre', width = 'auto' }) => ({
-    width: whiteSpace === 'pre' ? 'auto' : width,
-  })};
 `;
 
 export const defaultTypographyMethods = {
@@ -118,15 +127,19 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   const methods: SvgTypographyMethods = useAutoMemo(() => {
     if (foreignElement) {
       const getXScale = (value = 1) =>
-        ((isBlink ? window.devicePixelRatio : 1) *
-          value *
-          foreignElement.getBBox().width) /
-        foreignElement.getBoundingClientRect().width;
+        theme.typography.round(
+          ((isBlink ? window.devicePixelRatio : 1) *
+            value *
+            foreignElement.getBBox().width) /
+            foreignElement.getBoundingClientRect().width
+        );
       const getYScale = (value = 1) =>
-        ((isBlink ? window.devicePixelRatio : 1) *
-          value *
-          foreignElement.getBBox().height) /
-        foreignElement.getBoundingClientRect().height;
+        theme.typography.round(
+          ((isBlink ? window.devicePixelRatio : 1) *
+            value *
+            foreignElement.getBBox().height) /
+            foreignElement.getBoundingClientRect().height
+        );
       const getWidth = () =>
         whiteSpace === 'pre' && textBox ? textBox.offsetWidth : width;
       const getHeight = () => textBox && textBox.offsetHeight;
@@ -180,12 +193,11 @@ const SvgTypography = React.forwardRef(function SvgTypography(
       )}
     >
       <TextBox
+        {...textProps}
         ref={textBoxRef}
         variant={variant}
-        {...textProps}
         textAnchor={textAnchor}
         dominantBaseline={dominantBaseline}
-        width={methods.getWidth()}
         whiteSpace={whiteSpace}
         {...(!isWebkit && {
           transform: `scale(${methods.getXScale()}, ${methods.getYScale()})`,
@@ -195,8 +207,9 @@ const SvgTypography = React.forwardRef(function SvgTypography(
       </TextBox>
       {textBox && (
         <Text
-          variant={variant}
           {...textProps}
+          overflow={'visible'}
+          variant={variant}
           textAnchor={textAnchor}
           dominantBaseline={dominantBaseline}
           width={methods.getWidth()}

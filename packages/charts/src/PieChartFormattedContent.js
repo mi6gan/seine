@@ -63,7 +63,7 @@ export default function PieChartFormattedContent({
   const valueWidth = valueMethods.getScaledWidth();
 
   const [titleMethods, titleMethodsRef] = useTypographyChildrenMethods(
-    elements.length
+    elements.length - 1
   );
   const titleHeight = titleMethods.getScaledHeight();
   const titleXScale = titleMethods.getXScale();
@@ -184,33 +184,34 @@ export default function PieChartFormattedContent({
           {units}
         </ElementValue>,
 
-        <ElementTitle
-          {...metaProps}
-          ref={titleMethodsRef}
-          meta={meta}
-          dominantBaseline={'hanging'}
-          fill={titleColor}
-          key={`title.${meta.index}`}
-          textAnchor={
-            value >= half && index === 0
-              ? 'middle'
-              : titleX > centerX
-              ? 'start'
-              : 'end'
-          }
-          fontWeight={400}
-          x={titleX}
-          y={titleY}
-          whiteSpace={'pre-wrap'}
-          width={
-            value >= half && index === 0
-              ? VIEWPORT_WIDTH / 2
-              : VIEWPORT_WIDTH / 2 - titleXScale * radius
-          }
-          {...(legend && { style: { visibility: 'hidden' } })}
-        >
-          {title}
-        </ElementTitle>,
+        !legend && (
+          <ElementTitle
+            {...metaProps}
+            ref={titleMethodsRef}
+            meta={meta}
+            dominantBaseline={'hanging'}
+            fill={titleColor}
+            key={`title.${meta.index}`}
+            textAnchor={
+              value >= half && index === 0
+                ? 'middle'
+                : titleX > centerX
+                ? 'start'
+                : 'end'
+            }
+            fontWeight={400}
+            x={titleX}
+            y={titleY}
+            whiteSpace={'pre-wrap'}
+            width={
+              value >= half && index === 0
+                ? VIEWPORT_WIDTH / 2
+                : VIEWPORT_WIDTH / 2 - titleXScale * radius
+            }
+          >
+            {title}
+          </ElementTitle>
+        ),
       ];
     }),
   ];

@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback } from 'hooks.macro';
+import { useAutoMemo } from 'hooks.macro';
 
 import type { SvgTypographyMethods } from './SvgTypography';
 import { defaultTypographyMethods } from './SvgTypography';
@@ -10,7 +10,7 @@ type Reducer = (
   elementMethods: SvgTypographyMethods
 ) => SvgTypographyMethods;
 
-const defaultReducer: Reducer = (acc, methods) =>
+const defaultReducer: Reducer = (acc, methods: SvgTypographyMethods) =>
   methods && (!acc || methods.getWidth() >= acc.getWidth()) ? methods : acc;
 
 /**
@@ -23,27 +23,21 @@ export default function useTypographyChildrenMethods(
   count,
   reducer = defaultReducer
 ) {
-  const childrenMethodsRef = React.useRef([]);
-  const { current: childrenMethods } = childrenMethodsRef;
-
   const [methods, setMethods] = React.useState(defaultTypographyMethods);
-  const setCurrent = useAutoCallback((childMethods: ?SvgTypographyMethods) => {
-    childrenMethods.push(childMethods);
-    if (childrenMethods.length === count) {
-      childrenMethodsRef.current = [];
-      setMethods(childrenMethods.reduce(reducer, defaultTypographyMethods));
-    }
-  });
-
-  return [
+  const { current: childrenMethods } = React.useRef([]);
+  return useAutoMemo([
     methods,
     {
-      set current(childMethods) {
-        setCurrent(childMethods);
+      set current(childMethods?: SvgTypographyMethods) {
+        childrenMethods.push(childMethods);
+        if (childrenMethods.length === count) {
+          setMethods(childrenMethods.reduce(reducer, defaultTypographyMethods));
+          childrenMethods.splice(0, childrenMethods.length);
+        }
       },
       get current() {
         return methods;
       },
     },
-  ];
+  ]);
 }

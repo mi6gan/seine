@@ -137,7 +137,7 @@ exports[`Storyshots Default.Single.RichText Single Line Content 1`] = `null`;
 exports[`Storyshots Default.Single.SvgText HTML Text In SVG 1`] = `
 <div>
   <p
-    className="Typography-sc-1b4huth-0 cURStV"
+    className="Typography-sc-1b4huth-0 fiiyyj"
     id="default-single-svgtext--html-text-in-svg"
     kind="Default.Single.SvgText"
     name="HTML Text In SVG"
@@ -167,13 +167,20 @@ exports[`Storyshots Default.Single.SvgText HTML Text In SVG 1`] = `
       y={0}
     >
       <p
-        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 ToDao"
+        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
         dominantBaseline="baseline"
         id="default-single-svgtext--html-text-in-svg"
         kind="Default.Single.SvgText"
         name="HTML Text In SVG"
+        style={
+          Object {
+            "color": undefined,
+            "transform": undefined,
+            "whiteSpace": "pre",
+          }
+        }
         textAnchor="start"
-        width={0}
+        width="auto"
       >
         html document text
       </p>
@@ -185,7 +192,7 @@ exports[`Storyshots Default.Single.SvgText HTML Text In SVG 1`] = `
 exports[`Storyshots Default.Single.SvgText SVG Text Width Property 1`] = `
 <div>
   <p
-    className="Typography-sc-1b4huth-0 fsrZYM"
+    className="Typography-sc-1b4huth-0 fiiyyj"
     width={200}
   >
     text width is 200, extra is hidden
@@ -212,10 +219,17 @@ exports[`Storyshots Default.Single.SvgText SVG Text Width Property 1`] = `
       y={0}
     >
       <p
-        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 ToDao"
+        className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
         dominantBaseline="baseline"
+        style={
+          Object {
+            "color": undefined,
+            "transform": undefined,
+            "whiteSpace": "pre",
+          }
+        }
         textAnchor="start"
-        width={0}
+        width="auto"
       >
         text width is 200, extra is hidden
       </p>
