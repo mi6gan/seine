@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
+import styled from 'styled-components/macro';
 
 import SvgTypographyForeign from './SvgTypographyForeign';
 import Typography from './Typography';
@@ -39,7 +39,18 @@ const TextBox = styled(StyledTypography)`
   })};
 `;
 
-const CondensedText = styled.span`
+export const defaultTypographyMethods = {
+  getWidth: () => 0,
+  getHeight: () => 0,
+  getXScale: (xScale = 1) => xScale,
+  getYScale: (yScale = 1) => yScale,
+  getScaledWidth: () => 0,
+  getScaledHeight: () => 0,
+};
+
+export type SvgTypographyMethods = typeof defaultTypographyMethods;
+
+export const CondensedText = styled.span`
   && {
     display: inline-block;
     transform-origin: ${({ textAnchor, dominantBaseline }) =>
@@ -59,17 +70,6 @@ const CondensedText = styled.span`
     transform: scale(${({ factor }) => factor});
   }
 `;
-
-export const defaultTypographyMethods = {
-  getWidth: () => 1,
-  getHeight: () => 1,
-  getXScale: (xScale = 1) => xScale,
-  getYScale: (yScale = 1) => yScale,
-  getScaledWidth: () => 1,
-  getScaledHeight: () => 1,
-};
-
-export type SvgTypographyMethods = typeof defaultTypographyMethods;
 
 export type Props = {
   children?: string,
@@ -97,7 +97,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
     textAnchor = 'start',
     as: Text = StyledTypography,
     whiteSpace = 'pre',
-    scale = 1,
+    scale: condensedFactor = Infinity,
     ...textProps
   }: Props,
   ref
@@ -118,16 +118,14 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   const methods: SvgTypographyMethods = useAutoMemo(() => {
     if (foreignElement) {
       const getXScale = (value = 1) =>
-        (scale *
-          ((isBlink ? window.devicePixelRatio : 1) *
-            value *
-            foreignElement.getBBox().width)) /
+        ((isBlink ? window.devicePixelRatio : 1) *
+          value *
+          foreignElement.getBBox().width) /
         foreignElement.getBoundingClientRect().width;
       const getYScale = (value = 1) =>
-        (scale *
-          ((isBlink ? window.devicePixelRatio : 1) *
-            value *
-            foreignElement.getBBox().height)) /
+        ((isBlink ? window.devicePixelRatio : 1) *
+          value *
+          foreignElement.getBBox().height) /
         foreignElement.getBoundingClientRect().height;
       const getWidth = () =>
         whiteSpace === 'pre' && textBox ? textBox.offsetWidth : width;
@@ -151,19 +149,16 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   const scaledWidth = methods.getScaledWidth();
   const scaledHeight = methods.getScaledHeight();
 
-  const condensedFactor =
-    whiteSpace === 'pre'
-      ? Math.min(
-          typeof height === 'number' && height < scaledHeight
-            ? height / scaledHeight
-            : Infinity,
-          typeof width === 'number' && width < scaledWidth
-            ? width / scaledWidth
-            : Infinity
-        )
-      : scale === 1
-      ? Infinity
-      : scale;
+  if (condensedFactor === Infinity && whiteSpace === 'pre') {
+    condensedFactor = Math.min(
+      typeof height === 'number' && height < scaledHeight
+        ? height / scaledHeight
+        : Infinity,
+      typeof width === 'number' && width < scaledWidth
+        ? width / scaledWidth
+        : Infinity
+    );
+  }
   const text = useTypographyChildren(children);
 
   return (
@@ -215,7 +210,6 @@ const SvgTypography = React.forwardRef(function SvgTypography(
               factor={condensedFactor}
               textAnchor={textAnchor}
               dominantBaseline={dominantBaseline}
-              width={methods.getWidth()}
             >
               {children}
             </CondensedText>

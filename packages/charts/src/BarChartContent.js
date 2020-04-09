@@ -33,8 +33,6 @@ type Props = {
   elementValueAs: React.ComponentType,
   elementRectAs: React.ComponentType,
   groupTitleAs: React.ComponentType,
-
-  parentType: BlockType,
 };
 
 const MIN_BAR_WIDTH = VIEWPORT_WIDTH / 2;

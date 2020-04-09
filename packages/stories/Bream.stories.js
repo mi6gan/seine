@@ -62,8 +62,16 @@ export const BarChartInBCGLayout = (props) => (
             body: {
               title: 'Bar chart in BCG Layout',
               elements: [
-                { title: 'Promenade', value: 35 },
-                { title: 'San jose', value: 70 },
+                {
+                  id: '8ddb8338-e17b-4b9a-8feb-b3d3d4107c38',
+                  title: 'Promenade',
+                  value: 35,
+                },
+                {
+                  id: '8ddb8338-e17b-4b9a-8feb-b3d3d4107c38',
+                  title: 'San jose',
+                  value: 70,
+                },
                 {
                   id: '8ddb8338-e17b-4b9a-8feb-b3d3d4107c39',
                   title: 'Arlington',
