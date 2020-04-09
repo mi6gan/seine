@@ -65,7 +65,7 @@ const StyledTableCell = styled.td`
  * @returns {React.Node}
  */
 export default function Table({ header, rows }: Props) {
-  const containerRef = useResizeTargetRef(null);
+  const containerRef = useResizeTargetRef();
   const tableRef = React.useRef<HTMLElement>(null);
 
   const { current: container } = containerRef;

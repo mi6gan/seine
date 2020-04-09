@@ -26,10 +26,12 @@ type Props = {
  */
 export default function PieChartContent({
   autoFormat = false,
+  parentType,
+  onAutoFormat,
   ...contentProps
 }): Props {
   return autoFormat ? (
-    <PieChartFormattedContent {...contentProps} />
+    <PieChartFormattedContent onAutoFormat={onAutoFormat} {...contentProps} />
   ) : (
     <PieChartSimpleContent {...contentProps} />
   );

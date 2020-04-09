@@ -2,15 +2,13 @@
 import * as React from 'react';
 
 export type ResizeObserverType = {
-  lastResizeTime: number,
-  isResizing: boolean,
   observer?: ResizeObserver,
+  count?: number,
 };
 
 const ResizeObserverContext = React.createContext<ResizeObserverType>({
+  observer: null,
   count: 0,
-  lastResizeTime: new Date(),
-  isResizing: false,
 });
 
 export default ResizeObserverContext;

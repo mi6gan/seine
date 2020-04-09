@@ -7,6 +7,7 @@ import { Chart } from '@seine/charts';
 import type { Theme } from '@material-ui/core';
 import { Table } from '@seine/tables';
 import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
+import { useAutoMemo } from 'hooks.macro';
 
 import Grid from './Grid';
 import Image from './Image';
@@ -80,7 +81,7 @@ type ProviderProps = {
 function Provider({ children = null }: ProviderProps) {
   return (
     <ThemeProvider>
-      <ResizeObserverProvider>{children}</ResizeObserverProvider>
+      {useAutoMemo(<ResizeObserverProvider>{children}</ResizeObserverProvider>)}
     </ThemeProvider>
   );
 }
