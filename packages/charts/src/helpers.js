@@ -1,5 +1,4 @@
 // @flow
-import { useMemo } from 'react';
 import {
   addIndex,
   append,
@@ -17,6 +16,7 @@ import {
   toPairs,
 } from 'ramda';
 import type { ChartElement } from '@seine/core';
+import { useAutoMemo } from 'hooks.macro';
 
 /**
  * @function
@@ -61,7 +61,7 @@ export function useGroupedElements(
   max,
   dy
 ): [number, number, *, *] {
-  return useMemo(() => {
+  return useAutoMemo(() => {
     const maxValue =
       dy <= max ? max : Math.max(...elements.map(({ value }) => value));
     return [
@@ -70,5 +70,5 @@ export function useGroupedElements(
       titleIdentityElements(elements),
       groupElements(elements),
     ];
-  }, [dy, elements, max, min]);
+  });
 }

@@ -69,13 +69,14 @@ export default function ColumnChartContent({
   const columnWidth = groupWidth / (titledElements.length + 1);
 
   const [
-    methods,
-    childMethodsRef,
-  ] = useTypographyChildrenMethods(elements.length, (acc, methods) =>
-    acc.getWidth() >= methods.getWidth() ? acc : methods
+    valueMethods,
+    valueMethodsRef,
+  ] = useTypographyChildrenMethods(
+    titledElements.length * groups.length,
+    (acc, methods) => (acc.getWidth() >= methods.getWidth() ? acc : methods)
   );
-  const scaledTextHeight = methods.getScaledHeight();
-  const scale = Math.min(1, columnWidth / methods.getWidth());
+  const scaledTextHeight = valueMethods.getScaledHeight();
+  const scale = Math.min(1, columnWidth / valueMethods.getScaledWidth());
 
   const columnHeight = VIEWPORT_HEIGHT - 2 * scaledTextHeight;
 
@@ -83,72 +84,73 @@ export default function ColumnChartContent({
     groupMethods,
     groupMethodsRef,
   ] = useTypographyChildrenMethods(groups.length, (acc, methods) =>
-    acc.getWidth() >= groupMethods.getWidth() ? acc : methods
+    acc.getWidth() >= methods.getWidth() ? acc : methods
   );
-  const groupScale = Math.min(1, groupWidth / groupMethods.getWidth());
+  const groupScale = Math.min(1, groupWidth / groupMethods.getScaledWidth());
 
-  return [
-    ...groups.map(([group, groupElements], groupIndex) => {
-      return (
-        <g strokeWidth={scaledTextHeight / 40} key={groupIndex}>
-          {[
-            ...groupElements.map(({ value }, index) => {
+  return (
+    <g strokeWidth={scaledTextHeight / 40}>
+      {groups.map(([group, groupElements], groupIndex) => {
+        return (
+          <React.Fragment key={groupIndex}>
+            {groupElements.map(({ value }, index) => {
               const rectHeight =
                 columnHeight *
                 ((Math.max(minValue, Math.min(maxValue, value)) - minValue) /
                   (maxValue - minValue));
               const fill = palette[index % palette.length];
 
-              return [
-                <ElementRect
-                  {...metaProps}
-                  fill={fill}
-                  height={rectHeight}
-                  width={columnWidth}
-                  x={
-                    GUTTER_WIDTH +
-                    groupWidth * groupIndex +
-                    (index + 0.5) * columnWidth
-                  }
-                  y={columnHeight + scaledTextHeight - rectHeight}
-                  key={`selection.${index}`}
-                  meta={{ ...groupElements[index], index }}
-                />,
-                <SvgTypography
-                  {...metaProps}
-                  width={columnWidth}
-                  fill={'transparent'}
-                  ref={childMethodsRef}
-                  textAnchor={'middle'}
-                  x={
-                    GUTTER_WIDTH +
-                    groupWidth * groupIndex +
-                    (index + 1) * columnWidth
-                  }
-                  y={columnHeight + scaledTextHeight - rectHeight}
-                  key={`value.${groupElements.length * groupIndex + index}`}
-                >
-                  <ChartValue fraction={fraction}>{value}</ChartValue>
-                  {units}
-                </SvgTypography>,
-                <ElementValue
-                  {...metaProps}
-                  textAnchor={'middle'}
-                  x={
-                    GUTTER_WIDTH +
-                    groupWidth * groupIndex +
-                    (index + 1) * columnWidth
-                  }
-                  y={columnHeight + scaledTextHeight - rectHeight}
-                  key={`display.${groupElements.length * groupIndex + index}`}
-                  meta={groupElements[index]}
-                  scale={scale}
-                >
-                  <ChartValue fraction={fraction}>{value}</ChartValue>
-                  {units}
-                </ElementValue>,
-              ];
-            }),
+              return (
+                <React.Fragment key={index}>
+                  <ElementRect
+                    {...metaProps}
+                    fill={fill}
+                    height={rectHeight}
+                    width={columnWidth}
+                    x={
+                      GUTTER_WIDTH +
+                      groupWidth * groupIndex +
+                      (index + 0.5) * columnWidth
+                    }
+                    y={columnHeight + scaledTextHeight - rectHeight}
+                    meta={{ ...groupElements[index], index }}
+                  />
+                  ,
+                  <SvgTypography
+                    {...metaProps}
+                    width={columnWidth}
+                    fill={'transparent'}
+                    ref={valueMethodsRef}
+                    textAnchor={'middle'}
+                    x={
+                      GUTTER_WIDTH +
+                      groupWidth * groupIndex +
+                      (index + 1) * columnWidth
+                    }
+                    y={columnHeight + scaledTextHeight - rectHeight}
+                  >
+                    <ChartValue fraction={fraction}>{value}</ChartValue>
+                    {units}
+                  </SvgTypography>
+                  ,
+                  <ElementValue
+                    {...metaProps}
+                    textAnchor={'middle'}
+                    x={
+                      GUTTER_WIDTH +
+                      groupWidth * groupIndex +
+                      (index + 1) * columnWidth
+                    }
+                    y={columnHeight + scaledTextHeight - rectHeight}
+                    meta={groupElements[index]}
+                    scale={scale}
+                  >
+                    <ChartValue fraction={fraction}>{value}</ChartValue>
+                    {units}
+                  </ElementValue>
+                </React.Fragment>
+              );
+            })}
             <path
               d={`m${GUTTER_WIDTH +
                 groupIndex * groupWidth +
@@ -156,42 +158,36 @@ export default function ColumnChartContent({
                 scaledTextHeight}h${columnWidth * groupElements.length +
                 columnWidth / 2}`}
               stroke={'black'}
-              key={'line'}
-            />,
+            />
             <SvgTypography
               {...metaProps}
               ref={groupMethodsRef}
               fill={'transparent'}
               textAnchor={'middle'}
               dominantBaseline={'hanging'}
-              key={`group.${groupIndex}`}
               x={GUTTER_WIDTH + groupIndex * groupWidth + groupWidth / 2}
               y={VIEWPORT_HEIGHT - scaledTextHeight}
               width={groupWidth}
             >
-              {group}
-            </SvgTypography>,
+              {` ${group || ''} `}
+            </SvgTypography>
             <GroupTitle
               {...metaProps}
               textAnchor={'middle'}
               dominantBaseline={'hanging'}
-              key={`groupDisplay.${groupIndex}`}
               x={GUTTER_WIDTH + groupIndex * groupWidth + groupWidth / 2}
               y={VIEWPORT_HEIGHT - scaledTextHeight}
               meta={group}
               scale={groupScale}
             >
-              {group}
-            </GroupTitle>,
-          ]}
-        </g>
-      );
-    }),
-    !!yAxis && (
-      <g key={'axis'} strokeWidth={scaledTextHeight / 40}>
+              {` ${group || ''} `}
+            </GroupTitle>
+          </React.Fragment>
+        );
+      })}
+      {!!yAxis && (
         <ChartYAxis
           finite
-          key={'axis'}
           length={columnHeight}
           max={maxValue}
           step={dy}
@@ -199,7 +195,7 @@ export default function ColumnChartContent({
           y={columnHeight + scaledTextHeight}
           maxWidth={GUTTER_WIDTH}
         />
-      </g>
-    ),
-  ];
+      )}
+    </g>
+  );
 }
