@@ -3,11 +3,6 @@ import styled from 'styled-components/macro';
 
 const Typography = styled.p`
   margin: 0;
-
-  ${({ width }) => width && { width }};
-  ${({ height }) => height && { height }};
-  ${({ color }) => color && { color }};
-  ${({ overflow = 'hidden' }) => overflow && { overflow }};
   ${({
     variant = 'body1',
     theme: {
@@ -24,11 +19,13 @@ const Typography = styled.p`
     fontSize = defaultFontSize,
     fontWeight = defaultFontWeight,
     lineHeight = defaultLineHeight,
+    overflow = 'hidden',
   }) => ({
     fontWeight,
     fontFamily,
     fontSize,
     lineHeight,
+    overflow,
   })}
 `;
 

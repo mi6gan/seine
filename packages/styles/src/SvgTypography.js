@@ -15,12 +15,19 @@ export type SvgTypographyProps = {
   meta?: { [string]: any },
 };
 
-const StyledTypography = styled(Typography).attrs(({ fill }) => ({
-  color: fill,
-}))`
+const StyledTypography = styled(Typography).attrs(
+  ({ fill, transform, width, height }) => ({
+    transform,
+    style: {
+      transform,
+      color: fill,
+      ...(width && { width }),
+      ...(height && { height }),
+    },
+  })
+)`
   transform-origin: left top;
   position: fixed;
-  ${({ transform }) => transform && { transform }};
   ${({ whiteSpace = 'pre' }) => whiteSpace && { whiteSpace }};
   text-align: ${({ textAnchor }) =>
     textAnchor === 'end'
