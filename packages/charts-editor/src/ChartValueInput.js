@@ -18,7 +18,10 @@ const StyledTypography = styled(SvgTypography)`
 `;
 
 const StyledInput = styled(SvgInput)`
-  ${({ opacity }) => ({ opacity })}
+  ${({ opacity }) => ({ opacity })};
+  input {
+    position: absolute;
+  }
 `;
 
 /**
