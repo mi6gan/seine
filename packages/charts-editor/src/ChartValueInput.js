@@ -19,9 +19,6 @@ const StyledTypography = styled(SvgTypography)`
 
 const StyledInput = styled(SvgInput)`
   ${({ opacity }) => ({ opacity })};
-  input {
-    position: absolute;
-  }
 `;
 
 /**
@@ -30,7 +27,7 @@ const StyledInput = styled(SvgInput)`
  * @returns {React.Node}
  */
 export default React.forwardRef(function ChartValueInput(
-  { onChange, value, ...typographyProps }: Props,
+  { onChange, value, width, ...typographyProps }: Props,
   ref
 ) {
   const [focused, setFocused] = React.useState(false);
@@ -39,6 +36,7 @@ export default React.forwardRef(function ChartValueInput(
       <StyledTypography
         {...typographyProps}
         opacity={focused ? 0.0 : 1.0}
+        width={width}
         ref={ref}
       />
       <StyledInput
