@@ -12,6 +12,8 @@ import styled from 'styled-components/macro';
 import { BlockActions, InlineInput } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
 
+import { defaultTableEditor } from './constants';
+
 type Props = TableProps & BlockEditor;
 
 const Container = styled.div`
@@ -64,10 +66,7 @@ export default function TableEditor({
             dispatch({
               id,
               type: UPDATE_BLOCK_EDITOR,
-              editor: {
-                columnIndex: 0,
-                rowIndex: -1,
-              },
+              editor: defaultTableEditor,
             });
           }}
           value={title}
