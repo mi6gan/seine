@@ -7,9 +7,12 @@ import {
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 import type { TableProps } from '@seine/tables';
-import { Table } from '@seine/tables';
+import { Table, TableTitle } from '@seine/tables';
 import styled from 'styled-components/macro';
-import { BlockActions } from '@seine/ui';
+import { BlockActions, InlineInput } from '@seine/ui';
+import { useAutoCallback } from 'hooks.macro';
+
+import { defaultTableEditor } from './constants';
 
 type Props = TableProps & BlockEditor;
 
@@ -46,10 +49,29 @@ export default function TableEditor({
   dispatch,
   header,
   rows,
+  title,
   selection,
+  textAlignment,
 }: Props) {
   return (
     <Container>
+      <TableTitle textAlignment={textAlignment}>
+        <InlineInput
+          forwardedAs={'input'}
+          onChange={useAutoCallback(({ currentTarget: { value } }) =>
+            dispatch({ type: UPDATE_BLOCK_BODY, body: { title: value } })
+          )}
+          onFocus={() => {
+            dispatch({ id, type: SELECT_BLOCK });
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_EDITOR,
+              editor: defaultTableEditor,
+            });
+          }}
+          value={title}
+        />
+      </TableTitle>
       {selection.length === 1 && selection[0] === id ? (
         <Table
           header={header.map(({ text, ...column }, index) => ({

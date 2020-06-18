@@ -26,6 +26,7 @@ export const Table3x3 = ({
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'table',
         body: {
+          title: 'Table title',
           header: [
             { text: 'first column' },
             { text: 'second column' },
@@ -81,6 +82,7 @@ export const Table1x2 = ({
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'table',
         body: {
+          title: 'Table title',
           header: [{ text: 'narrow' }, { text: 'wider column, wider column' }],
           rows: [[{ text: 'column 1' }, { text: 'column 2' }]],
         },

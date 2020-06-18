@@ -1,5 +1,6 @@
 // @flow
 export const defaultTableBody = {
+  title: 'Table title',
   header: [],
   rows: [],
 };
