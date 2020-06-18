@@ -4,6 +4,8 @@ import type { TableBody, TableCell, TableFormat } from '@seine/core';
 import styled, { css } from 'styled-components/macro';
 import { useResizeTargetRef } from '@seine/styles';
 
+import TableTitle from './TableTitle';
+
 export type Props = TableBody & TableFormat;
 
 const Container = styled.div`
@@ -64,7 +66,7 @@ const StyledTableCell = styled.td`
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Table({ header, rows }: Props) {
+export default function Table({ title, header, rows }: Props) {
   const containerRef = useResizeTargetRef();
   const tableRef = React.useRef<HTMLElement>(null);
 
@@ -76,6 +78,7 @@ export default function Table({ header, rows }: Props) {
 
   return (
     <Container ref={containerRef}>
+      <TableTitle>{title}</TableTitle>
       <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
         <thead>
           <tr>
