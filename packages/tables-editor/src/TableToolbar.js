@@ -35,7 +35,7 @@ export default function TableToolbar({
   id,
   editor,
 }: Props) {
-  const { header, rows } = body || defaultTableBody;
+  const { header, rows, textAlignment } = body || defaultTableBody;
   const { rowIndex, columnIndex } = editor || defaultTableEditor;
   const cell =
     (rowIndex === 0 && header[columnIndex]) ||
@@ -126,7 +126,7 @@ export default function TableToolbar({
 
       <Toolbar.Separator />
 
-      {rowIndex > -1 && columnIndex > -1 && (
+      {rowIndex > -1 && columnIndex > -1 ? (
         <>
           <TableCellButton
             {...body}
@@ -187,6 +187,40 @@ export default function TableToolbar({
           >
             <FormatAlignRight {...(!isRight && { color: 'disabled' })} />
           </TableCellButton>
+        </>
+      ) : (
+        <>
+          <ActionButton
+            type={UPDATE_BLOCK_BODY}
+            as={IconButton}
+            dispatch={dispatch}
+            body={{ textAlignment: 'left' }}
+          >
+            <FormatAlignLeft
+              {...(textAlignment !== 'left' && { color: 'disabled' })}
+            />
+          </ActionButton>
+          <ActionButton
+            type={UPDATE_BLOCK_BODY}
+            as={IconButton}
+            dispatch={dispatch}
+            body={{ textAlignment: 'center' }}
+          >
+            <FormatAlignCenter
+              {...(textAlignment !== 'center' && { color: 'disabled' })}
+            />
+          </ActionButton>
+
+          <ActionButton
+            type={UPDATE_BLOCK_BODY}
+            as={IconButton}
+            dispatch={dispatch}
+            body={{ textAlignment: 'right' }}
+          >
+            <FormatAlignRight
+              {...(textAlignment !== 'right' && { color: 'disabled' })}
+            />
+          </ActionButton>
         </>
       )}
     </Toolbar>

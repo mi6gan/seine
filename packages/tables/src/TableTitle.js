@@ -7,6 +7,7 @@ const TableTitle = styled(Typography).attrs(() => ({
   as: 'h3',
 }))`
   margin-bottom: 0.5em;
+  ${({ textAlignment }) => textAlignment && { textAlign: textAlignment }}
 `;
 
 export default TableTitle;
