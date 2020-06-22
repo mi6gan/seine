@@ -66,7 +66,7 @@ const StyledTableCell = styled.td`
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Table({ title, header, rows }: Props) {
+export default function Table({ title, header, rows, textAlignment }: Props) {
   const containerRef = useResizeTargetRef();
   const tableRef = React.useRef<HTMLElement>(null);
 
@@ -78,7 +78,7 @@ export default function Table({ title, header, rows }: Props) {
 
   return (
     <Container ref={containerRef}>
-      <TableTitle>{title}</TableTitle>
+      <TableTitle textAlignment={textAlignment}>{title}</TableTitle>
       <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
         <thead>
           <tr>
