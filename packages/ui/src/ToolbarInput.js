@@ -12,11 +12,11 @@ const ToolbarInput = styled.input.attrs(
     height: 32px;
     margin: 6px 8px;
     padding: 0 8px;
-    ${({ type }) =>
+    ${({ type, width = '5em' }) =>
       type === 'number' &&
       css`
         padding-right: 0;
-        width: 5em;
+        width: ${width};
       `};
   }
 `;

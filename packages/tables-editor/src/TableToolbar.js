@@ -2,16 +2,17 @@
 import * as React from 'react';
 import type { TableBody, TableFormat, ToolbarProps } from '@seine/core';
 import { UPDATE_BLOCK_BODY } from '@seine/core';
-import { ActionButton, Toolbar } from '@seine/ui';
+import { ActionButton, Toolbar, ToolbarInput } from '@seine/ui';
 import {
+  FormatAlignCenter,
+  FormatAlignLeft,
+  FormatAlignRight,
   FormatBold,
   FormatItalic,
-  FormatAlignLeft,
-  FormatAlignCenter,
-  FormatAlignRight,
 } from '@material-ui/icons';
-import { IconButton } from '@material-ui/core';
+import { Checkbox, IconButton } from '@material-ui/core';
 import { defaultTableBody, defaultTableCell } from '@seine/tables';
+import { useAutoCallback } from 'hooks.macro';
 
 import TableCellButton from './TableCellButton';
 import { defaultTableEditor } from './constants';
@@ -75,7 +76,6 @@ export default function TableToolbar({
       >
         Add column
       </ActionButton>
-
       <ActionButton
         disabled={!(rows.length && rows[0].length > 1)}
         body={{
@@ -94,7 +94,6 @@ export default function TableToolbar({
       >
         Remove column
       </ActionButton>
-
       <ActionButton
         body={{
           rows:
@@ -123,9 +122,47 @@ export default function TableToolbar({
       >
         Remove row
       </ActionButton>
-
+      <Checkbox
+        disabled={columnIndex < 0}
+        onChange={useAutoCallback(() => {
+          const { width = null, ...headerCell } = header[columnIndex];
+          dispatch({
+            type: UPDATE_BLOCK_BODY,
+            body: {
+              header: [
+                ...header.slice(0, columnIndex),
+                width === null
+                  ? { ...headerCell, width: parseInt(100 / header.length) }
+                  : headerCell,
+                ...header.slice(columnIndex + 1),
+              ],
+            },
+          });
+        })}
+        checked={columnIndex > -1 && 'width' in header[columnIndex]}
+      />
+      <ToolbarInput
+        disabled={columnIndex < 0 || !('width' in header[columnIndex])}
+        placeholder={'width (%)'}
+        type={'number'}
+        min={0}
+        max={100}
+        width={'7.5em'}
+        onChange={useAutoCallback((event) =>
+          dispatch({
+            type: UPDATE_BLOCK_BODY,
+            body: {
+              header: [
+                ...header.slice(0, columnIndex),
+                { ...header[columnIndex], width: +event.currentTarget.value },
+                ...header.slice(columnIndex + 1),
+              ],
+            },
+          })
+        )}
+        value={columnIndex < 0 ? '' : header[columnIndex].width}
+      />
       <Toolbar.Separator />
-
       {rowIndex > -1 && columnIndex > -1 ? (
         <>
           <TableCellButton

@@ -6,9 +6,13 @@ export type TableCell = {
   italic?: boolean,
 };
 
+export type TableHeaderCell = TableCell & {
+  width?: number,
+};
+
 export type TableBody = {
   title?: string,
-  header: TableCell[],
+  header: TableHeaderCell[],
   rows: TableCell[][],
 };
 

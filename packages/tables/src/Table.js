@@ -1,6 +1,11 @@
 // @flow
 import * as React from 'react';
-import type { TableBody, TableCell, TableFormat } from '@seine/core';
+import type {
+  TableBody,
+  TableCell,
+  TableFormat,
+  TableHeaderCell,
+} from '@seine/core';
 import styled, { css } from 'styled-components/macro';
 import { useResizeTargetRef } from '@seine/styles';
 
@@ -55,6 +60,8 @@ const StyledTable = styled.table`
 `;
 
 const StyledTableCell = styled.td`
+  ${({ width = null }: TableHeaderCell) =>
+    width !== null && { width: `${width}%` }};
   ${({ align = 'left', bold = false, italic = false }: TableCell) => css`
     text-align: ${align};
     font-weight: ${bold ? 'bold' : 'normal'};
