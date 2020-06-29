@@ -131,7 +131,9 @@ export default function TableToolbar({
             body: {
               header: [
                 ...header.slice(0, columnIndex),
-                width === null ? { ...headerCell, width: 100 } : headerCell,
+                width === null
+                  ? { ...headerCell, width: parseInt(100 / header.length) }
+                  : headerCell,
                 ...header.slice(columnIndex + 1),
               ],
             },
@@ -158,6 +160,7 @@ export default function TableToolbar({
             },
           })
         )}
+        value={columnIndex < 0 ? '' : header[columnIndex].width}
       />
       <Toolbar.Separator />
       {rowIndex > -1 && columnIndex > -1 ? (
