@@ -1,10 +1,16 @@
 // @flow
 import * as React from 'react';
-import { Box, Button, Menu, MenuItem, Paper } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Menu,
+  MenuItem,
+  Paper,
+  ButtonBase,
+} from '@material-ui/core';
 import {
   BarChart as BarChartIcon,
   FontDownloadSharp as RichTextIcon,
-  GridOnSharp as GridIcon,
   Menu as MenuIcon,
 } from '@material-ui/icons';
 import { ThemeProvider } from '@seine/styles';
@@ -100,6 +106,11 @@ function BlockToolbarButton({
   );
 }
 
+const MenuButton = styled(Box).attrs(({ disabled }) => ({
+  component: ButtonBase,
+  color: disabled ? 'grey.500' : 'inherit',
+}))``;
+
 const defaultEditorChildren = [];
 
 /**
@@ -135,11 +146,10 @@ export default function Editor({
     ...initialBlocksState,
     blocks: children,
   }));
-  const [{ blocks }, dispatch] = useReducerEx<BlocksState, BlocksAction>(
-    reduceBlocks,
-    initialBlocksState,
-    init
-  );
+  const [{ blocks, selection }, dispatch] = useReducerEx<
+    BlocksState,
+    BlocksAction
+  >(reduceBlocks, initialBlocksState, init);
 
   useAutoEffect(() => {
     onChange(
@@ -163,9 +173,22 @@ export default function Editor({
         keepMounted
         mt={6}
       >
-        <MenuItem onClick={unsetTool}>Copy</MenuItem>
-        <MenuItem onClick={unsetTool}>Undo</MenuItem>
-        <MenuItem onClick={unsetTool}>Redo</MenuItem>
+        <MenuItem>
+          <MenuButton
+            onClick={unsetTool}
+            disabled={!selection || !selection.length}
+          >
+            Copy
+          </MenuButton>
+        </MenuItem>
+        <MenuItem>
+          <MenuButton
+            onClick={unsetTool}
+            disabled={!selection || !selection.length}
+          >
+            Delete
+          </MenuButton>
+        </MenuItem>
       </StyledMenu>
 
       <Toolbar>
@@ -177,13 +200,6 @@ export default function Editor({
         >
           <MenuIcon />
         </ToolbarButton>
-
-        <BlockToolbarButton
-          tool={tool}
-          type={blockTypes.GRID}
-          Icon={GridIcon}
-          onClick={setBlockTool}
-        />
 
         <BlockToolbarButton
           tool={tool}
