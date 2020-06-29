@@ -123,16 +123,16 @@ export default function Editor({
   children = defaultEditorChildren,
   ...contentProps
 }) {
-  const [tool, setTool] = React.useState(null);
+  const parentId = parent && parent.id;
 
   const menuAnchorRef = React.useRef(null);
-  const toolCursorRef = React.useRef(null);
 
+  const [tool, setTool] = React.useState(null);
+  const toolCursorRef = React.useRef(null);
   const unsetTool = useAutoCallback(() => {
     toolCursorRef.current = null;
     setTool(null);
   });
-
   const setBlockTool = useAutoCallback((event) => {
     const svg = event.currentTarget.querySelector('svg');
     const content = svg && btoa(svg.outerHTML);
@@ -142,24 +142,27 @@ export default function Editor({
     setTool(event.currentTarget.value);
   });
 
-  const init = useAutoCallback(() => ({
-    ...initialBlocksState,
-    blocks: children,
-  }));
   const [{ blocks, selection }, dispatch] = useReducerEx<
     BlocksState,
     BlocksAction
-  >(reduceBlocks, initialBlocksState, init);
+  >(
+    reduceBlocks,
+    initialBlocksState,
+    useAutoCallback(() => ({
+      ...initialBlocksState,
+      blocks: children,
+    }))
+  );
 
   useAutoEffect(() => {
     onChange(
       // no extra data should be passed, like `editor` key value
-      blocks.map(({ id, body, format, parent_id, type }) => ({
+      blocks.map(({ id, type, body, format, parent_id }) => ({
+        id,
+        type,
         body,
         format,
-        id,
         parent_id,
-        type,
       }))
     );
   });
@@ -241,7 +244,7 @@ export default function Editor({
                     {
                       verticalAlignment: 'center',
                     },
-                    parent && parent.id
+                    parentId
                   ),
                 });
                 break;
@@ -266,7 +269,7 @@ export default function Editor({
                           ]),
                         },
                         defaultBarChartFormat,
-                        parent && parent.id
+                        parentId
                       ),
                     });
                     break;
