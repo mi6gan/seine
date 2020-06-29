@@ -66,8 +66,8 @@ const Sidebar = styled(Box).attrs({
   bgcolor: 'grey.100',
   color: 'grey.700',
   width: '20%',
-  minHeight: 480,
-  square: true,
+  height: '100%',
+  minHeight: 320,
 })``;
 
 // eslint-disable-next-line
@@ -91,7 +91,7 @@ function BlockToolbarButton({
       {...buttonProps}
     >
       <Icon
-        fill={'white'}
+        fill={'currentColor'}
         width={24}
         height={24}
         xmlns="http://www.w3.org/2000/svg"
@@ -168,45 +168,47 @@ export default function Editor({
         <MenuItem onClick={unsetTool}>Redo</MenuItem>
       </StyledMenu>
 
+      <Toolbar>
+        <ToolbarButton
+          aria-label={'menu'}
+          onClick={useAutoCallback(() => setTool('menu'))}
+          selected={tool === 'menu'}
+          ref={menuAnchorRef}
+        >
+          <MenuIcon />
+        </ToolbarButton>
+
+        <BlockToolbarButton
+          tool={tool}
+          type={blockTypes.GRID}
+          Icon={GridIcon}
+          onClick={setBlockTool}
+        />
+
+        <BlockToolbarButton
+          tool={tool}
+          type={blockTypes.RICH_TEXT}
+          Icon={RichTextIcon}
+          onClick={setBlockTool}
+        />
+
+        <BlockToolbarButton
+          tool={tool}
+          type={`${chartTypes.BAR} ${blockTypes.CHART}`}
+          Icon={BarChartIcon}
+          onClick={setBlockTool}
+        />
+      </Toolbar>
+
       <Box
         display={'flex'}
         flexWrap={'wrap'}
         alignItems={'flex-start'}
         justifyContent={'space-between'}
         bgcolor={'grey.300'}
+        position={'relative'}
+        height={'100%'}
       >
-        <Toolbar>
-          <ToolbarButton
-            aria-label={'menu'}
-            onClick={useAutoCallback(() => setTool('menu'))}
-            selected={tool === 'menu'}
-            ref={menuAnchorRef}
-          >
-            <MenuIcon />
-          </ToolbarButton>
-
-          <BlockToolbarButton
-            tool={tool}
-            type={blockTypes.GRID}
-            Icon={GridIcon}
-            onClick={setBlockTool}
-          />
-
-          <BlockToolbarButton
-            tool={tool}
-            type={blockTypes.RICH_TEXT}
-            Icon={RichTextIcon}
-            onClick={setBlockTool}
-          />
-
-          <BlockToolbarButton
-            tool={tool}
-            type={`${chartTypes.BAR} ${blockTypes.CHART}`}
-            Icon={BarChartIcon}
-            onClick={setBlockTool}
-          />
-        </Toolbar>
-
         <Contents
           cursor={toolCursorRef.current}
           onClick={useAutoCallback(() => {
