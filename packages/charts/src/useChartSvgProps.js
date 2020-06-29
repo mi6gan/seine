@@ -2,7 +2,11 @@
 import type { ChartType } from '@seine/core';
 import { chartTypes } from '@seine/core';
 
-import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from './constants';
+import {
+  defaultChartHeight,
+  VIEWPORT_HEIGHT,
+  VIEWPORT_WIDTH,
+} from './constants';
 import type { ChartProps } from './types';
 
 const defaultSvgProps = {};
@@ -17,23 +21,34 @@ export default function useChartSvgProps(
   kind: ChartType,
   chartProps: ChartProps
 ) {
+  const { height = defaultChartHeight } = chartProps;
+  const maxHeight = `calc(${height}vh - 25%)`;
+
   switch (kind) {
     case chartTypes.PIE: {
       return {
+        maxHeight,
         overflow: 'visible',
       };
     }
     case chartTypes.BAR: {
       if (chartProps.parentType !== 'grid') {
         return {
+          maxHeight,
           viewBox: `0 0 ${VIEWPORT_WIDTH} ${VIEWPORT_HEIGHT +
             (VIEWPORT_HEIGHT * Math.max(0, chartProps.elements.length - 5)) /
               4}`,
         };
       }
-      return defaultSvgProps;
+      return {
+        maxHeight,
+        ...defaultSvgProps,
+      };
     }
     default:
-      return defaultSvgProps;
+      return {
+        maxHeight,
+        defaultSvgProps,
+      };
   }
 }

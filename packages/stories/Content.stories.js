@@ -379,7 +379,6 @@ export const ContentOfAllCharts = (props) => (
             { title: 'Region B', value: 15.8 },
             { title: 'Region C', value: 40.9 },
             { title: 'Region D', value: 23.6 },
-            { title: 'Region E', value: 17.6 },
           ]),
         },
         format: { kind: 'bar' },

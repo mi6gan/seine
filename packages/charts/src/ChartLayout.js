@@ -35,7 +35,8 @@ const ChartLayoutContainer = styled.div`
     }
   `}
   }
-  ${({ visibility }) => visibility && { visibility }}
+  ${({ visibility }) => visibility && { visibility }};
+  max-height: ${({ height }) => height}vh;
 `;
 
 type Props = {

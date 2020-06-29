@@ -24,6 +24,7 @@ const ChartSvg = styled.svg.attrs(
     ${({ overflow }) => ({ overflow })};
     ${({ width = 'auto' }) => ({ width })};
     ${({ height = 'auto' }) => ({ height })};
+    ${({ maxHeight }) => ({ maxHeight })};
   }
 `;
 

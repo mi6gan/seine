@@ -149,6 +149,7 @@ export default function ChartEditor({
       }
       textAlignment={chartProps.textAlignment}
       overflow={kind === chartTypes.PIE ? 'hidden' : 'visible'}
+      height={chartProps.height}
     >
       <ChartSvg onClick={deselectClickHandler} {...svgProps}>
         <ChartSvgDefs />
