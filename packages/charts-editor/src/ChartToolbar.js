@@ -41,6 +41,13 @@ const Input = styled(TextField)`
   }
 `;
 
+const Label = styled.label`
+  align-items: center;
+  display: flex;
+  margin-right: 1em;
+  font-size: 0.75rem;
+`;
+
 /**
  * @description Action buttons to edit currently selected chart.
  * @param {Props} props
@@ -56,6 +63,7 @@ export default function ChartToolbar({
   format = useChartFormatDefaults(format.kind, format);
   children = (
     <>
+      <Label>max % of height</Label>
       <Input
         type={'number'}
         placeholder={'height'}
