@@ -39,9 +39,10 @@ function Content({
   children,
   parent,
   as: Container = parent['parent_id'] ? React.Fragment : Provider,
+  ...containerProps
 }: Props): React.Node {
   return (
-    <Container>
+    <Container {...containerProps}>
       {children
         .filter((block: Block) => block['parent_id'] === parent.id)
         .map(({ body, format, ...block }: Block) => {

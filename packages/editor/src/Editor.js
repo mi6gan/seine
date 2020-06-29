@@ -1,10 +1,29 @@
 // @flow
 import * as React from 'react';
-import { Box, Button, Menu, MenuItem } from '@material-ui/core';
-import { GridOnSharp as GridIcon, Menu as MenuIcon } from '@material-ui/icons';
+import { Box, Button, Menu, MenuItem, Paper } from '@material-ui/core';
+import {
+  BarChart as BarChartIcon,
+  FontDownloadSharp as RichTextIcon,
+  GridOnSharp as GridIcon,
+  Menu as MenuIcon,
+} from '@material-ui/icons';
 import { ThemeProvider } from '@seine/styles';
-import { useAutoCallback } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
+import type { BlocksAction, BlocksState } from '@seine/core';
+import {
+  blockTypes,
+  chartTypes,
+  CREATE_BLOCK,
+  createBlock,
+  createTitleIdentityBlockElements,
+  initialBlocksState,
+  reduceBlocks,
+} from '@seine/core';
+import { useReducerEx } from '@seine/ui';
+import { toRawContent } from '@seine/draft';
+import { Content } from '@seine/content';
+import { defaultBarChartFormat } from '@seine/charts';
 
 import defaultTheme from './defaultTheme';
 
@@ -36,7 +55,7 @@ const StyledMenu = styled(Box).attrs({ component: Menu })`
   }
 `;
 
-const Content = styled(Box).attrs({
+const Contents = styled(Box).attrs({
   minHeight: 480,
   width: '80%',
 })`
@@ -46,34 +65,107 @@ const Content = styled(Box).attrs({
 const Sidebar = styled(Box).attrs({
   bgcolor: 'grey.100',
   color: 'grey.700',
-  minWidth: 150,
+  width: '20%',
   minHeight: 480,
   square: true,
 })``;
+
+// eslint-disable-next-line
+function BlockToolbarButton({
+  type,
+  Icon,
+  tool,
+  iconRef,
+  setTool,
+  ...buttonProps
+}) {
+  const label =
+    type === blockTypes.RICH_TEXT ? 'rich text' : type.toLowerCase();
+
+  return (
+    <ToolbarButton
+      selected={tool === type}
+      aria-label={type}
+      value={type}
+      title={`Add ${label}`}
+      {...buttonProps}
+    >
+      <Icon
+        fill={'white'}
+        width={24}
+        height={24}
+        xmlns="http://www.w3.org/2000/svg"
+      />
+    </ToolbarButton>
+  );
+}
+
+const defaultEditorChildren = [];
 
 /**
  * @description Default content editor.
  * @returns {React.Node}
  */
-export default function Editor() {
+export default function Editor({
+  parent,
+  onChange,
+  children = defaultEditorChildren,
+  ...contentProps
+}) {
   const [tool, setTool] = React.useState(null);
-  const closeMenu = useAutoCallback(() => setTool(null));
 
   const menuAnchorRef = React.useRef(null);
-  const gridIconRef = React.useRef(null);
+  const toolCursorRef = React.useRef(null);
+
+  const unsetTool = useAutoCallback(() => {
+    toolCursorRef.current = null;
+    setTool(null);
+  });
+
+  const setBlockTool = useAutoCallback((event) => {
+    const svg = event.currentTarget.querySelector('svg');
+    const content = svg && btoa(svg.outerHTML);
+
+    toolCursorRef.current =
+      content && `url(data:image/svg+xml;base64,${content}), auto`;
+    setTool(event.currentTarget.value);
+  });
+
+  const init = useAutoCallback(() => ({
+    ...initialBlocksState,
+    blocks: children,
+  }));
+  const [{ blocks }, dispatch] = useReducerEx<BlocksState, BlocksAction>(
+    reduceBlocks,
+    initialBlocksState,
+    init
+  );
+
+  useAutoEffect(() => {
+    onChange(
+      // no extra data should be passed, like `editor` key value
+      blocks.map(({ id, body, format, parent_id, type }) => ({
+        body,
+        format,
+        id,
+        parent_id,
+        type,
+      }))
+    );
+  });
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <StyledMenu
         open={tool === 'menu'}
-        onClose={closeMenu}
+        onClose={unsetTool}
         anchorEl={menuAnchorRef.current}
         keepMounted
         mt={6}
       >
-        <MenuItem onClick={closeMenu}>Copy</MenuItem>
-        <MenuItem onClick={closeMenu}>Undo</MenuItem>
-        <MenuItem onClick={closeMenu}>Redo</MenuItem>
+        <MenuItem onClick={unsetTool}>Copy</MenuItem>
+        <MenuItem onClick={unsetTool}>Undo</MenuItem>
+        <MenuItem onClick={unsetTool}>Redo</MenuItem>
       </StyledMenu>
 
       <Box
@@ -93,30 +185,96 @@ export default function Editor() {
             <MenuIcon />
           </ToolbarButton>
 
-          <ToolbarButton
-            aria-label={'grid'}
-            onClick={useAutoCallback(() => setTool('grid'))}
-            selected={tool === 'grid'}
-            title={'Grid tool'}
-          >
-            <GridIcon
-              ref={gridIconRef}
-              fill={'white'}
-              width={24}
-              height={24}
-              xmlns="http://www.w3.org/2000/svg"
-            />
-          </ToolbarButton>
+          <BlockToolbarButton
+            tool={tool}
+            type={blockTypes.GRID}
+            Icon={GridIcon}
+            onClick={setBlockTool}
+          />
+
+          <BlockToolbarButton
+            tool={tool}
+            type={blockTypes.RICH_TEXT}
+            Icon={RichTextIcon}
+            onClick={setBlockTool}
+          />
+
+          <BlockToolbarButton
+            tool={tool}
+            type={`${chartTypes.BAR} ${blockTypes.CHART}`}
+            Icon={BarChartIcon}
+            onClick={setBlockTool}
+          />
         </Toolbar>
 
-        <Content
-          cursor={
-            tool === 'grid' &&
-            `url(data:image/svg+xml;base64,${btoa(
-              gridIconRef.current.outerHTML
-            )}), auto`
-          }
-        />
+        <Contents
+          cursor={toolCursorRef.current}
+          onClick={useAutoCallback(() => {
+            unsetTool();
+            const [chartType, blockType = chartType] = tool.split(' ');
+
+            switch (blockType) {
+              case blockTypes.RICH_TEXT:
+                dispatch({
+                  type: CREATE_BLOCK,
+                  block: createBlock(
+                    blockTypes.RICH_TEXT,
+                    toRawContent('Rich text'),
+                    {
+                      verticalAlignment: 'center',
+                    },
+                    parent && parent.id
+                  ),
+                });
+                break;
+
+              case blockTypes.CHART:
+                switch (chartType) {
+                  case chartTypes.BAR:
+                    dispatch({
+                      type: CREATE_BLOCK,
+                      block: createBlock(
+                        blockTypes.CHART,
+                        {
+                          elements: createTitleIdentityBlockElements([
+                            {
+                              title: 'First line',
+                              value: 35,
+                            },
+                            {
+                              title: 'Second line',
+                              value: 70,
+                            },
+                          ]),
+                        },
+                        defaultBarChartFormat,
+                        parent && parent.id
+                      ),
+                    });
+                    break;
+
+                  default:
+                    return;
+                }
+                break;
+
+              default:
+                return;
+            }
+          })}
+        >
+          <Content
+            {...contentProps}
+            as={Paper}
+            component={Box}
+            minHeight={320}
+            m={10}
+            p={2}
+            parent={parent}
+          >
+            {blocks}
+          </Content>
+        </Contents>
         <Sidebar>&nbsp;</Sidebar>
       </Box>
     </ThemeProvider>
