@@ -79,6 +79,7 @@ export const defaultChartTextAlignment = 'left';
 export const defaultChartLegend = true;
 export const defaultPieChartLegend = false;
 export const defaultChartFraction = 0;
+export const defaultChartHeight = 100;
 
 export const defaultChartFormat = {
   palette: defaultChartPalette,
@@ -88,6 +89,7 @@ export const defaultChartFormat = {
   yAxis: defaultChartYAxis,
   legend: defaultChartLegend,
   fraction: defaultChartFraction,
+  height: defaultChartHeight,
 };
 
 export const defaultBarChartFormat = {

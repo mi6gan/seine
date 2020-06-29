@@ -198,7 +198,7 @@ export default function BarChartContent({
           step={dx}
           units={units}
           x={barWidth === paddedBarWidth ? titleWidth : 0}
-          y={VIEWPORT_HEIGHT}
+          y={VIEWPORT_HEIGHT - barHeight}
         />
       ) : null}
     </g>

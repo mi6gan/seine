@@ -7,9 +7,16 @@ import type {
   ChartFormat,
   ToolbarProps,
 } from '@seine/core';
-import { chartTypes } from '@seine/core';
+import { chartTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { Toolbar } from '@seine/ui';
-import { defaultChartFormat, useChartFormatDefaults } from '@seine/charts';
+import {
+  defaultChartFormat,
+  defaultChartHeight,
+  useChartFormatDefaults,
+} from '@seine/charts';
+import styled from 'styled-components/macro';
+import { TextField } from '@material-ui/core';
+import { useAutoCallback } from 'hooks.macro';
 
 import ColumnChartToolbar from './ColumnChartToolbar';
 import BarChartToolbar from './BarChartToolbar';
@@ -28,6 +35,19 @@ type Props = $Rest<
   format: ChartFormat,
 };
 
+const Input = styled(TextField)`
+  && {
+    max-width: 4em;
+  }
+`;
+
+const Label = styled.label`
+  align-items: center;
+  display: flex;
+  margin-right: 1em;
+  font-size: 0.75rem;
+`;
+
 /**
  * @description Action buttons to edit currently selected chart.
  * @param {Props} props
@@ -38,38 +58,61 @@ export default function ChartToolbar({
   format,
   ...toolbarProps
 }: Props) {
+  const { dispatch } = toolbarProps;
   format = format || {};
   format = useChartFormatDefaults(format.kind, format);
+  children = (
+    <>
+      <Label>max % of height</Label>
+      <Input
+        type={'number'}
+        placeholder={'height'}
+        value={format.height || defaultChartHeight}
+        onChange={useAutoCallback((event) => {
+          dispatch({
+            type: UPDATE_BLOCK_FORMAT,
+            format: { height: +event.currentTarget.value },
+          });
+        })}
+      />
+      <Toolbar.Separator />
+      {children}
+    </>
+  );
 
-  return format.kind === chartTypes.COLUMN ? (
-    <ColumnChartToolbar
-      {...toolbarProps}
-      format={{ ...defaultChartFormat, ...format }}
-    >
-      {children}
-    </ColumnChartToolbar>
-  ) : format.kind === chartTypes.BAR ? (
-    <BarChartToolbar
-      {...toolbarProps}
-      format={{ ...defaultChartFormat, ...format }}
-    >
-      {children}
-    </BarChartToolbar>
-  ) : format.kind === chartTypes.LINE ? (
-    <LineChartToolbar
-      {...toolbarProps}
-      format={{ ...defaultChartFormat, ...format }}
-    >
-      {children}
-    </LineChartToolbar>
-  ) : format.kind === chartTypes.PIE ? (
-    <PieChartToolbar
-      {...toolbarProps}
-      format={{ ...defaultChartFormat, ...format }}
-    >
-      {children}
-    </PieChartToolbar>
-  ) : (
-    <Toolbar>{children}</Toolbar>
+  return (
+    <>
+      {format.kind === chartTypes.COLUMN ? (
+        <ColumnChartToolbar
+          {...toolbarProps}
+          format={{ ...defaultChartFormat, ...format }}
+        >
+          {children}
+        </ColumnChartToolbar>
+      ) : format.kind === chartTypes.BAR ? (
+        <BarChartToolbar
+          {...toolbarProps}
+          format={{ ...defaultChartFormat, ...format }}
+        >
+          {children}
+        </BarChartToolbar>
+      ) : format.kind === chartTypes.LINE ? (
+        <LineChartToolbar
+          {...toolbarProps}
+          format={{ ...defaultChartFormat, ...format }}
+        >
+          {children}
+        </LineChartToolbar>
+      ) : format.kind === chartTypes.PIE ? (
+        <PieChartToolbar
+          {...toolbarProps}
+          format={{ ...defaultChartFormat, ...format }}
+        >
+          {children}
+        </PieChartToolbar>
+      ) : (
+        <Toolbar>{children}</Toolbar>
+      )}
+    </>
   );
 }
