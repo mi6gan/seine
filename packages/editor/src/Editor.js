@@ -3,16 +3,18 @@ import * as React from 'react';
 import {
   Box,
   Button,
+  ButtonBase,
   Menu,
   MenuItem,
   Paper,
-  ButtonBase,
 } from '@material-ui/core';
 import {
-  BarChart as BarChartIcon,
-  PieChart as PieChartIcon,
+  BarChart as ColumnChartIcon,
   FontDownloadSharp as RichTextIcon,
   Menu as MenuIcon,
+  PieChart as PieChartIcon,
+  ShowChart as LineChartIcon,
+  TableChart as TableIcon,
 } from '@material-ui/icons';
 import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
@@ -30,6 +32,7 @@ import {
 import { ActionButton, useReducerEx } from '@seine/ui';
 import { toRawContent } from '@seine/draft';
 import { Content } from '@seine/content';
+import { defaultTableCell } from '@seine/tables';
 
 import defaultTheme from './defaultTheme';
 
@@ -43,6 +46,17 @@ const ToolbarButton = styled(Button).attrs(() => ({
     min-width: 0;
   }
 `;
+
+const ToolbarSeparator = styled(Box).attrs({
+  height: '1em',
+  width: '2px',
+  position: 'relative',
+  top: '0.25em',
+  color: 'grey.500',
+  bgcolor: 'grey.800',
+  borderLeft: '1px solid currentColor',
+  display: 'inline-block',
+})``;
 
 const Toolbar = styled(Box).attrs({
   bgcolor: 'grey.700',
@@ -117,6 +131,10 @@ const StyledContent = styled(Paper).attrs(() => ({
 }))`
   overflow: auto;
 `;
+
+const BarChartIcon = styled(ColumnChartIcon).attrs({
+  transform: 'rotate(90)',
+})``;
 
 const defaultEditorChildren = [];
 
@@ -221,6 +239,8 @@ export default function Editor({
             <MenuIcon />
           </ToolbarButton>
 
+          <ToolbarSeparator />
+
           <ActionIconButton
             selected={
               action &&
@@ -243,6 +263,40 @@ export default function Editor({
             Icon={RichTextIcon}
             dispatch={selectBlockAction}
           />
+
+          <ToolbarSeparator />
+
+          <ActionIconButton
+            selected={
+              action &&
+              action.type === CREATE_BLOCK &&
+              action.block &&
+              action.block.type === blockTypes.TABLE
+            }
+            type={CREATE_BLOCK}
+            block={useAutoMemo(
+              action !== void 0 &&
+                createBlock(
+                  blockTypes.TABLE,
+                  {
+                    header: [
+                      { ...defaultTableCell, text: 'Column 1' },
+                      { ...defaultTableCell, text: 'Column 2' },
+                    ],
+                    rows: [
+                      [defaultTableCell, defaultTableCell],
+                      [defaultTableCell, defaultTableCell],
+                    ],
+                  },
+                  null,
+                  parentId
+                )
+            )}
+            Icon={TableIcon}
+            dispatch={selectBlockAction}
+          />
+
+          <ToolbarSeparator />
 
           <ActionIconButton
             selected={
@@ -278,6 +332,104 @@ export default function Editor({
                 )
             )}
             Icon={BarChartIcon}
+            dispatch={selectBlockAction}
+          />
+
+          <ActionIconButton
+            selected={
+              action &&
+              action.type === CREATE_BLOCK &&
+              action.block &&
+              action.block.type === blockTypes.CHART &&
+              action.block.format &&
+              action.block.format.kind === chartTypes.COLUMN
+            }
+            type={CREATE_BLOCK}
+            block={useAutoMemo(
+              action !== void 0 &&
+                createBlock(
+                  blockTypes.CHART,
+                  {
+                    elements: createTitleIdentityBlockElements([
+                      {
+                        title: 'First item',
+                        group: 'Group 1',
+                        value: 30,
+                      },
+                      {
+                        title: 'Second item',
+                        group: 'Group 2',
+                        value: 70,
+                      },
+                      {
+                        title: 'First item',
+                        group: 'Group 1',
+                        value: 40,
+                      },
+                      {
+                        title: 'Second item',
+                        group: 'Group 2',
+                        value: 20,
+                      },
+                    ]),
+                  },
+                  {
+                    verticalAlignment: 'center',
+                    kind: chartTypes.COLUMN,
+                  },
+                  parentId
+                )
+            )}
+            Icon={ColumnChartIcon}
+            dispatch={selectBlockAction}
+          />
+
+          <ActionIconButton
+            selected={
+              action &&
+              action.type === CREATE_BLOCK &&
+              action.block &&
+              action.block.type === blockTypes.CHART &&
+              action.block.format &&
+              action.block.format.kind === chartTypes.LINE
+            }
+            type={CREATE_BLOCK}
+            block={useAutoMemo(
+              action !== void 0 &&
+                createBlock(
+                  blockTypes.CHART,
+                  {
+                    elements: createTitleIdentityBlockElements([
+                      {
+                        title: 'Top',
+                        value: 100,
+                        group: 'group 1',
+                      },
+                      {
+                        title: 'Bottom',
+                        value: 10,
+                        group: 'group 1',
+                      },
+                      {
+                        title: 'Top',
+                        value: 100,
+                        group: 'group 2',
+                      },
+                      {
+                        title: 'Bottom',
+                        value: 10,
+                        group: 'group 2',
+                      },
+                    ]),
+                  },
+                  {
+                    verticalAlignment: 'center',
+                    kind: chartTypes.LINE,
+                  },
+                  parentId
+                )
+            )}
+            Icon={LineChartIcon}
             dispatch={selectBlockAction}
           />
 
