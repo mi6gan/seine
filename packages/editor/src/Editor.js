@@ -39,6 +39,8 @@ const ToolbarButton = styled(Button).attrs(() => ({
   && {
     ${({ selected, theme }) =>
       selected && { backgroundColor: theme.palette.grey[800] }};
+    border-radius: 0;
+    min-width: 0;
   }
 `;
 
@@ -46,12 +48,7 @@ const Toolbar = styled(Box).attrs({
   bgcolor: 'grey.700',
   color: 'grey.50',
   width: '100%',
-})`
-  ${ToolbarButton} {
-    border-radius: 0;
-    min-width: 0;
-  }
-`;
+})``;
 
 const StyledMenu = styled(Box).attrs({ component: Menu })`
   .MuiMenu-paper {
@@ -62,16 +59,19 @@ const StyledMenu = styled(Box).attrs({ component: Menu })`
 `;
 
 const Contents = styled(Box).attrs({
-  width: '80%',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
 })`
   ${({ cursor }) => cursor && { cursor }};
+  overflow: auto;
 `;
 
 const Sidebar = styled(Box).attrs({
   bgcolor: 'grey.100',
   color: 'grey.700',
-  width: '20%',
   height: 760,
+  minWidth: 320,
 })``;
 
 // eslint-disable-next-line
@@ -111,6 +111,7 @@ const StyledContent = styled(Paper).attrs(() => ({
   component: Content,
   forwardedAs: Box,
   height: 600,
+  width: '100%',
   m: 10,
   p: 2,
 }))`
@@ -339,8 +340,8 @@ export default function Editor({
             <StyledContent {...contentProps} parent={parent}>
               {blocks}
             </StyledContent>
+            <Sidebar>&nbsp;</Sidebar>
           </Contents>
-          <Sidebar>&nbsp;</Sidebar>
         </Box>
       </ResizeObserverProvider>
     </ThemeProvider>
