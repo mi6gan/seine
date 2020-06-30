@@ -158,7 +158,8 @@ export default function Editor({
         open={action === 'menu'}
         anchorEl={menuAnchorRef.current}
         keepMounted
-        mt={6}
+        mt={3}
+        ml={-1}
       >
         <MenuItem>
           <MenuButton
@@ -179,13 +180,19 @@ export default function Editor({
         </MenuItem>
       </StyledMenu>
 
-      <Toolbar>
+      <Toolbar
+        onKeyUp={useAutoCallback((event) => {
+          if (event.key === 'Escape') {
+            unsetAction();
+          }
+        })}
+        ref={menuAnchorRef}
+      >
         <ToolbarButton
           onClick={useAutoCallback(() => {
             setAction('menu');
           })}
           selected={action === 'menu'}
-          ref={menuAnchorRef}
         >
           <MenuIcon />
         </ToolbarButton>
@@ -300,8 +307,10 @@ export default function Editor({
         <Contents
           cursor={toolCursorRef.current}
           onClick={useAutoCallback(() => {
-            unsetAction();
-            dispatch(action);
+            if (action) {
+              unsetAction();
+              dispatch(action);
+            }
           })}
         >
           <Content
