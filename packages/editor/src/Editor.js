@@ -65,10 +65,6 @@ const Contents = styled(Box).attrs({
   width: '80%',
 })`
   ${({ cursor }) => cursor && { cursor }};
-  .MuiPaper-root {
-    height: 600px;
-    overflow: auto;
-  }
 `;
 
 const Sidebar = styled(Box).attrs({
@@ -110,6 +106,16 @@ const MenuButton = styled(Box).attrs(({ disabled }) => ({
   component: ButtonBase,
   color: disabled ? 'grey.500' : 'inherit',
 }))``;
+
+const StyledContent = styled(Paper).attrs(() => ({
+  component: Content,
+  forwardedAs: Box,
+  height: 600,
+  m: 10,
+  p: 2,
+}))`
+  overflow: auto;
+`;
 
 const defaultEditorChildren = [];
 
@@ -330,17 +336,9 @@ export default function Editor({
               }
             })}
           >
-            <Content
-              {...contentProps}
-              as={Paper}
-              component={Box}
-              minHeight={320}
-              m={10}
-              p={2}
-              parent={parent}
-            >
+            <StyledContent {...contentProps} parent={parent}>
               {blocks}
-            </Content>
+            </StyledContent>
           </Contents>
           <Sidebar>&nbsp;</Sidebar>
         </Box>
