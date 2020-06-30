@@ -14,7 +14,7 @@ import {
   FontDownloadSharp as RichTextIcon,
   Menu as MenuIcon,
 } from '@material-ui/icons';
-import { ThemeProvider } from '@seine/styles';
+import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 import type { BlocksAction, BlocksState } from '@seine/core';
@@ -62,24 +62,40 @@ const StyledMenu = styled(Box).attrs({ component: Menu })`
 `;
 
 const Contents = styled(Box).attrs({
-  minHeight: 480,
   width: '80%',
 })`
   ${({ cursor }) => cursor && { cursor }};
+  .MuiPaper-root {
+    height: 600px;
+    overflow: auto;
+  }
 `;
 
 const Sidebar = styled(Box).attrs({
   bgcolor: 'grey.100',
   color: 'grey.700',
   width: '20%',
-  height: '100%',
-  minHeight: 320,
+  height: 760,
 })``;
 
 // eslint-disable-next-line
-function ActionIconButton({ Icon, ...buttonProps }) {
+function ActionIconButton({ Icon, ...action }) {
   return (
-    <ToolbarButton as={ActionButton} {...buttonProps}>
+    <ToolbarButton
+      as={ActionButton}
+      title={
+        action.type === CREATE_BLOCK
+          ? `Add ${
+              action.block.type === blockTypes.CHART
+                ? `${action.block.format.kind} chart`
+                : action.block.type === blockTypes.RICH_TEXT
+                ? 'rich text'
+                : action.block.type
+            }`
+          : action.type
+      }
+      {...action}
+    >
       <Icon
         fill={'currentColor'}
         width={24}
@@ -153,180 +169,182 @@ export default function Editor({
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <StyledMenu
-        onClose={unsetAction}
-        open={action === 'menu'}
-        anchorEl={menuAnchorRef.current}
-        keepMounted
-        mt={3}
-        ml={-1}
-      >
-        <MenuItem>
-          <MenuButton
-            onClick={unsetAction}
-            disabled={!selection || !selection.length}
-          >
-            Copy
-          </MenuButton>
-        </MenuItem>
-
-        <MenuItem>
-          <MenuButton
-            onClick={unsetAction}
-            disabled={!selection || !selection.length}
-          >
-            Delete
-          </MenuButton>
-        </MenuItem>
-      </StyledMenu>
-
-      <Toolbar
-        onKeyUp={useAutoCallback((event) => {
-          if (event.key === 'Escape') {
-            unsetAction();
-          }
-        })}
-        ref={menuAnchorRef}
-      >
-        <ToolbarButton
-          onClick={useAutoCallback(() => {
-            setAction('menu');
-          })}
-          selected={action === 'menu'}
+      <ResizeObserverProvider>
+        <StyledMenu
+          onClose={unsetAction}
+          open={action === 'menu'}
+          anchorEl={menuAnchorRef.current}
+          keepMounted
+          mt={3}
+          ml={-1}
         >
-          <MenuIcon />
-        </ToolbarButton>
+          <MenuItem>
+            <MenuButton
+              onClick={unsetAction}
+              disabled={!selection || !selection.length}
+            >
+              Copy
+            </MenuButton>
+          </MenuItem>
 
-        <ActionIconButton
-          selected={
-            action &&
-            action.type === CREATE_BLOCK &&
-            action.block &&
-            action.block.type === blockTypes.RICH_TEXT
-          }
-          type={CREATE_BLOCK}
-          block={useAutoMemo(
-            action !== void 0 &&
-              createBlock(
-                blockTypes.RICH_TEXT,
-                toRawContent('Rich text'),
-                {
-                  verticalAlignment: 'center',
-                },
-                parentId
-              )
-          )}
-          Icon={RichTextIcon}
-          dispatch={selectBlockAction}
-        />
+          <MenuItem>
+            <MenuButton
+              onClick={unsetAction}
+              disabled={!selection || !selection.length}
+            >
+              Delete
+            </MenuButton>
+          </MenuItem>
+        </StyledMenu>
 
-        <ActionIconButton
-          selected={
-            action &&
-            action.type === CREATE_BLOCK &&
-            action.block &&
-            action.block.type === blockTypes.CHART &&
-            action.block.format &&
-            action.block.format.kind === chartTypes.BAR
-          }
-          type={CREATE_BLOCK}
-          block={useAutoMemo(
-            action !== void 0 &&
-              createBlock(
-                blockTypes.CHART,
-                {
-                  elements: createTitleIdentityBlockElements([
-                    {
-                      title: 'First item',
-                      value: 30,
-                    },
-                    {
-                      title: 'Second item',
-                      value: 70,
-                    },
-                  ]),
-                },
-                {
-                  verticalAlignment: 'center',
-                  kind: chartTypes.BAR,
-                },
-                parentId
-              )
-          )}
-          Icon={BarChartIcon}
-          dispatch={selectBlockAction}
-        />
-
-        <ActionIconButton
-          selected={
-            action &&
-            action.type === CREATE_BLOCK &&
-            action.block &&
-            action.block.type === blockTypes.CHART &&
-            action.block.format &&
-            action.block.format.kind === chartTypes.PIE
-          }
-          type={CREATE_BLOCK}
-          block={useAutoMemo(
-            action !== void 0 &&
-              createBlock(
-                blockTypes.CHART,
-                {
-                  elements: [
-                    {
-                      title: 'First slice',
-                      value: 30,
-                    },
-                    {
-                      title: 'Second slice',
-                      value: 70,
-                    },
-                  ],
-                },
-                {
-                  verticalAlignment: 'center',
-                  kind: chartTypes.PIE,
-                },
-                parentId
-              )
-          )}
-          Icon={PieChartIcon}
-          dispatch={selectBlockAction}
-        />
-      </Toolbar>
-
-      <Box
-        display={'flex'}
-        flexWrap={'wrap'}
-        alignItems={'flex-start'}
-        justifyContent={'space-between'}
-        bgcolor={'grey.300'}
-        position={'relative'}
-        height={'100%'}
-      >
-        <Contents
-          cursor={toolCursorRef.current}
-          onClick={useAutoCallback(() => {
-            if (action) {
+        <Toolbar
+          onKeyUp={useAutoCallback((event) => {
+            if (event.key === 'Escape') {
               unsetAction();
-              dispatch(action);
             }
           })}
+          ref={menuAnchorRef}
         >
-          <Content
-            {...contentProps}
-            as={Paper}
-            component={Box}
-            minHeight={320}
-            m={10}
-            p={2}
-            parent={parent}
+          <ToolbarButton
+            onClick={useAutoCallback(() => {
+              setAction('menu');
+            })}
+            selected={action === 'menu'}
           >
-            {blocks}
-          </Content>
-        </Contents>
-        <Sidebar>&nbsp;</Sidebar>
-      </Box>
+            <MenuIcon />
+          </ToolbarButton>
+
+          <ActionIconButton
+            selected={
+              action &&
+              action.type === CREATE_BLOCK &&
+              action.block &&
+              action.block.type === blockTypes.RICH_TEXT
+            }
+            type={CREATE_BLOCK}
+            block={useAutoMemo(
+              action !== void 0 &&
+                createBlock(
+                  blockTypes.RICH_TEXT,
+                  toRawContent('Rich text'),
+                  {
+                    verticalAlignment: 'center',
+                  },
+                  parentId
+                )
+            )}
+            Icon={RichTextIcon}
+            dispatch={selectBlockAction}
+          />
+
+          <ActionIconButton
+            selected={
+              action &&
+              action.type === CREATE_BLOCK &&
+              action.block &&
+              action.block.type === blockTypes.CHART &&
+              action.block.format &&
+              action.block.format.kind === chartTypes.BAR
+            }
+            type={CREATE_BLOCK}
+            block={useAutoMemo(
+              action !== void 0 &&
+                createBlock(
+                  blockTypes.CHART,
+                  {
+                    elements: createTitleIdentityBlockElements([
+                      {
+                        title: 'First item',
+                        value: 30,
+                      },
+                      {
+                        title: 'Second item',
+                        value: 70,
+                      },
+                    ]),
+                  },
+                  {
+                    verticalAlignment: 'center',
+                    kind: chartTypes.BAR,
+                  },
+                  parentId
+                )
+            )}
+            Icon={BarChartIcon}
+            dispatch={selectBlockAction}
+          />
+
+          <ActionIconButton
+            selected={
+              action &&
+              action.type === CREATE_BLOCK &&
+              action.block &&
+              action.block.type === blockTypes.CHART &&
+              action.block.format &&
+              action.block.format.kind === chartTypes.PIE
+            }
+            type={CREATE_BLOCK}
+            block={useAutoMemo(
+              action !== void 0 &&
+                createBlock(
+                  blockTypes.CHART,
+                  {
+                    elements: [
+                      {
+                        title: 'First slice',
+                        value: 30,
+                      },
+                      {
+                        title: 'Second slice',
+                        value: 70,
+                      },
+                    ],
+                  },
+                  {
+                    verticalAlignment: 'center',
+                    kind: chartTypes.PIE,
+                  },
+                  parentId
+                )
+            )}
+            Icon={PieChartIcon}
+            dispatch={selectBlockAction}
+          />
+        </Toolbar>
+
+        <Box
+          display={'flex'}
+          flexWrap={'wrap'}
+          alignItems={'flex-start'}
+          justifyContent={'space-between'}
+          bgcolor={'grey.300'}
+          position={'relative'}
+          height={'100%'}
+        >
+          <Contents
+            cursor={toolCursorRef.current}
+            onClick={useAutoCallback(() => {
+              if (action) {
+                unsetAction();
+                dispatch(action);
+              }
+            })}
+          >
+            <Content
+              {...contentProps}
+              as={Paper}
+              component={Box}
+              minHeight={320}
+              m={10}
+              p={2}
+              parent={parent}
+            >
+              {blocks}
+            </Content>
+          </Contents>
+          <Sidebar>&nbsp;</Sidebar>
+        </Box>
+      </ResizeObserverProvider>
     </ThemeProvider>
   );
 }
