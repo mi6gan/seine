@@ -10,11 +10,12 @@ import {
 } from '@material-ui/core';
 import {
   BarChart as BarChartIcon,
+  PieChart as PieChartIcon,
   FontDownloadSharp as RichTextIcon,
   Menu as MenuIcon,
 } from '@material-ui/icons';
 import { ThemeProvider } from '@seine/styles';
-import { useAutoCallback, useAutoEffect } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 import type { BlocksAction, BlocksState } from '@seine/core';
 import {
@@ -26,10 +27,9 @@ import {
   initialBlocksState,
   reduceBlocks,
 } from '@seine/core';
-import { useReducerEx } from '@seine/ui';
+import { ActionButton, useReducerEx } from '@seine/ui';
 import { toRawContent } from '@seine/draft';
 import { Content } from '@seine/content';
-import { defaultBarChartFormat } from '@seine/charts';
 
 import defaultTheme from './defaultTheme';
 
@@ -77,25 +77,9 @@ const Sidebar = styled(Box).attrs({
 })``;
 
 // eslint-disable-next-line
-function BlockToolbarButton({
-  type,
-  Icon,
-  tool,
-  iconRef,
-  setTool,
-  ...buttonProps
-}) {
-  const label =
-    type === blockTypes.RICH_TEXT ? 'rich text' : type.toLowerCase();
-
+function ActionIconButton({ Icon, ...buttonProps }) {
   return (
-    <ToolbarButton
-      selected={tool === type}
-      aria-label={type}
-      value={type}
-      title={`Add ${label}`}
-      {...buttonProps}
-    >
+    <ToolbarButton as={ActionButton} {...buttonProps}>
       <Icon
         fill={'currentColor'}
         width={24}
@@ -127,19 +111,19 @@ export default function Editor({
 
   const menuAnchorRef = React.useRef(null);
 
-  const [tool, setTool] = React.useState(null);
+  const [action, setAction] = React.useState(null);
   const toolCursorRef = React.useRef(null);
-  const unsetTool = useAutoCallback(() => {
+  const unsetAction = useAutoCallback(() => {
     toolCursorRef.current = null;
-    setTool(null);
+    setAction(null);
   });
-  const setBlockTool = useAutoCallback((event) => {
+  const selectBlockAction = useAutoCallback((value, event) => {
     const svg = event.currentTarget.querySelector('svg');
     const content = svg && btoa(svg.outerHTML);
 
     toolCursorRef.current =
       content && `url(data:image/svg+xml;base64,${content}), auto`;
-    setTool(event.currentTarget.value);
+    setAction(value);
   });
 
   const [{ blocks, selection }, dispatch] = useReducerEx<
@@ -170,23 +154,23 @@ export default function Editor({
   return (
     <ThemeProvider theme={defaultTheme}>
       <StyledMenu
-        open={tool === 'menu'}
-        onClose={unsetTool}
+        onClose={unsetAction}
         anchorEl={menuAnchorRef.current}
         keepMounted
         mt={6}
       >
         <MenuItem>
           <MenuButton
-            onClick={unsetTool}
+            onClick={unsetAction}
             disabled={!selection || !selection.length}
           >
             Copy
           </MenuButton>
         </MenuItem>
+
         <MenuItem>
           <MenuButton
-            onClick={unsetTool}
+            onClick={unsetAction}
             disabled={!selection || !selection.length}
           >
             Delete
@@ -197,25 +181,108 @@ export default function Editor({
       <Toolbar>
         <ToolbarButton
           aria-label={'menu'}
-          onClick={useAutoCallback(() => setTool('menu'))}
-          selected={tool === 'menu'}
+          onClick={useAutoCallback(() => setAction('menu'))}
+          selected={action === 'menu'}
           ref={menuAnchorRef}
         >
           <MenuIcon />
         </ToolbarButton>
 
-        <BlockToolbarButton
-          tool={tool}
-          type={blockTypes.RICH_TEXT}
+        <ActionIconButton
+          selected={
+            action &&
+            action.type === CREATE_BLOCK &&
+            action.block &&
+            action.block.type === blockTypes.RICH_TEXT
+          }
+          type={CREATE_BLOCK}
+          block={useAutoMemo(
+            !action &&
+              createBlock(
+                blockTypes.RICH_TEXT,
+                toRawContent('Rich text'),
+                {
+                  verticalAlignment: 'center',
+                },
+                parentId
+              )
+          )}
           Icon={RichTextIcon}
-          onClick={setBlockTool}
+          dispatch={selectBlockAction}
         />
 
-        <BlockToolbarButton
-          tool={tool}
-          type={`${chartTypes.BAR} ${blockTypes.CHART}`}
+        <ActionIconButton
+          selected={
+            action &&
+            action.type === CREATE_BLOCK &&
+            action.block &&
+            action.block.type === blockTypes.CHART &&
+            action.block.format &&
+            action.block.format.kind === chartTypes.BAR
+          }
+          type={CREATE_BLOCK}
+          block={useAutoMemo(
+            !action &&
+              createBlock(
+                blockTypes.CHART,
+                {
+                  elements: createTitleIdentityBlockElements([
+                    {
+                      title: 'First item',
+                      value: 30,
+                    },
+                    {
+                      title: 'Second item',
+                      value: 70,
+                    },
+                  ]),
+                },
+                {
+                  verticalAlignment: 'center',
+                  kind: chartTypes.BAR,
+                },
+                parentId
+              )
+          )}
           Icon={BarChartIcon}
-          onClick={setBlockTool}
+          dispatch={selectBlockAction}
+        />
+
+        <ActionIconButton
+          selected={
+            action &&
+            action.type === CREATE_BLOCK &&
+            action.block &&
+            action.block.type === blockTypes.CHART &&
+            action.block.format &&
+            action.block.format.kind === chartTypes.PIE
+          }
+          type={CREATE_BLOCK}
+          block={useAutoMemo(
+            !action &&
+              createBlock(
+                blockTypes.CHART,
+                {
+                  elements: [
+                    {
+                      title: 'First slice',
+                      value: 30,
+                    },
+                    {
+                      title: 'Second slice',
+                      value: 70,
+                    },
+                  ],
+                },
+                {
+                  verticalAlignment: 'center',
+                  kind: chartTypes.PIE,
+                },
+                parentId
+              )
+          )}
+          Icon={PieChartIcon}
+          dispatch={selectBlockAction}
         />
       </Toolbar>
 
@@ -231,57 +298,8 @@ export default function Editor({
         <Contents
           cursor={toolCursorRef.current}
           onClick={useAutoCallback(() => {
-            unsetTool();
-            const [chartType, blockType = chartType] = tool.split(' ');
-
-            switch (blockType) {
-              case blockTypes.RICH_TEXT:
-                dispatch({
-                  type: CREATE_BLOCK,
-                  block: createBlock(
-                    blockTypes.RICH_TEXT,
-                    toRawContent('Rich text'),
-                    {
-                      verticalAlignment: 'center',
-                    },
-                    parentId
-                  ),
-                });
-                break;
-
-              case blockTypes.CHART:
-                switch (chartType) {
-                  case chartTypes.BAR:
-                    dispatch({
-                      type: CREATE_BLOCK,
-                      block: createBlock(
-                        blockTypes.CHART,
-                        {
-                          elements: createTitleIdentityBlockElements([
-                            {
-                              title: 'First line',
-                              value: 35,
-                            },
-                            {
-                              title: 'Second line',
-                              value: 70,
-                            },
-                          ]),
-                        },
-                        defaultBarChartFormat,
-                        parentId
-                      ),
-                    });
-                    break;
-
-                  default:
-                    return;
-                }
-                break;
-
-              default:
-                return;
-            }
+            unsetAction();
+            dispatch(action);
           })}
         >
           <Content

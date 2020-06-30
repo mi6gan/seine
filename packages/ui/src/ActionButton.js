@@ -41,7 +41,7 @@ export default function ActionButton({
       {...buttonProps}
       type={'button'}
       onClick={React.useCallback(
-        () =>
+        (event) =>
           dispatch(
             block &&
               // create block
@@ -77,7 +77,8 @@ export default function ActionButton({
                 ? { id, mode, type }
                 : { id, type }
               : // delete or deselect block
-                { type }
+                { type },
+            event
           ),
         [block, body, dispatch, editor, format, id, mode, modifier, type]
       )}
