@@ -155,6 +155,7 @@ export default function Editor({
     <ThemeProvider theme={defaultTheme}>
       <StyledMenu
         onClose={unsetAction}
+        open={action === 'menu'}
         anchorEl={menuAnchorRef.current}
         keepMounted
         mt={6}
@@ -180,8 +181,9 @@ export default function Editor({
 
       <Toolbar>
         <ToolbarButton
-          aria-label={'menu'}
-          onClick={useAutoCallback(() => setAction('menu'))}
+          onClick={useAutoCallback(() => {
+            setAction('menu');
+          })}
           selected={action === 'menu'}
           ref={menuAnchorRef}
         >
