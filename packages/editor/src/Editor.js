@@ -197,7 +197,7 @@ export default function Editor({
           }
           type={CREATE_BLOCK}
           block={useAutoMemo(
-            !action &&
+            action !== void 0 &&
               createBlock(
                 blockTypes.RICH_TEXT,
                 toRawContent('Rich text'),
@@ -222,7 +222,7 @@ export default function Editor({
           }
           type={CREATE_BLOCK}
           block={useAutoMemo(
-            !action &&
+            action !== void 0 &&
               createBlock(
                 blockTypes.CHART,
                 {
@@ -259,7 +259,7 @@ export default function Editor({
           }
           type={CREATE_BLOCK}
           block={useAutoMemo(
-            !action &&
+            action !== void 0 &&
               createBlock(
                 blockTypes.CHART,
                 {
