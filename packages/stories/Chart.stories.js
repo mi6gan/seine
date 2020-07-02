@@ -184,6 +184,11 @@ export const ColumnChart = ({
         value: 60.33,
       },
       {
+        id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
+        title: 'Empty',
+        value: 0,
+      },
+      {
         id: '23ec0b37-6da2-434c-8484-818f753deb63',
         title: 'Electro',
         value: 13,

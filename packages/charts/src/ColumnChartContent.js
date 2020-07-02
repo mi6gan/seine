@@ -138,7 +138,6 @@ export default function ColumnChartContent({
                     <ChartValue fraction={fraction}>{value}</ChartValue>
                     {units}
                   </SvgTypography>
-                  ,
                   <ElementValue
                     {...metaProps}
                     textAnchor={'middle'}
@@ -151,7 +150,9 @@ export default function ColumnChartContent({
                     meta={groupElements[index]}
                     scale={scale}
                   >
-                    <ChartValue fraction={fraction}>{value}</ChartValue>
+                    {value !== minValue && (
+                      <ChartValue fraction={fraction}>{value}</ChartValue>
+                    )}
                     {units}
                   </ElementValue>
                 </React.Fragment>
