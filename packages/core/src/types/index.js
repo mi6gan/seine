@@ -7,6 +7,8 @@ import type { RichTextBody, RichTextFormat } from './richText';
 import { RICH_TEXT } from './richText';
 import type { GridBody, GridFormat } from './grid';
 import { GRID } from './grid';
+import type { FlexBody, FlexFormat } from './flex';
+import { FLEX } from './flex';
 import type { ImageBody, ImageFormat } from './image';
 import { IMAGE } from './image';
 import type { PageBody, PageFormat } from './page';
@@ -17,6 +19,7 @@ import { TABLE } from './tables';
 export * from './charts';
 export * from './richText';
 export * from './grid';
+export * from './flex';
 export * from './image';
 export * from './page';
 export * from './tables';
@@ -26,6 +29,7 @@ export const blockTypes = {
   CHART,
   RICH_TEXT,
   GRID,
+  FLEX,
   IMAGE,
   PAGE,
   TABLE,
@@ -40,6 +44,7 @@ export type BlockBody =
   | ChartBody
   | RichTextBody
   | GridBody
+  | FlexBody
   | ImageBody
   | PageBody
   | TableBody;
@@ -49,6 +54,7 @@ export type BlockFormat =
   | ChartFormat
   | RichTextFormat
   | GridFormat
+  | FlexFormat
   | ImageFormat
   | PageFormat
   | TableFormat;
