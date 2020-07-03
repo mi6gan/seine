@@ -184,7 +184,7 @@ export const ColumnChart = ({
         value: 60.33,
       },
       {
-        id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
+        id: 'empty',
         title: 'Empty',
         value: 0,
       },

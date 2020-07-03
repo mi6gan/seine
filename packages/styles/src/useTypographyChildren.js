@@ -24,7 +24,7 @@ export default function useTypographyChildren(
               : child &&
                 (typeof child.props.children === 'string' ||
                   typeof child.props.children == 'number') &&
-                child.props.fraction
+                'fraction' in child.props
               ? parseFloat(child.props.children).toLocaleString('en', {
                   maximumFractionDigits: child.props.fraction,
                   minimumFractionDigits: child.props.fraction,

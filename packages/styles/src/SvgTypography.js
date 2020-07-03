@@ -126,24 +126,40 @@ const SvgTypography = React.forwardRef(function SvgTypography(
 
   const methods: SvgTypographyMethods = useAutoMemo(() => {
     if (foreignElement) {
-      const getXScale = (value = 1) =>
-        theme.typography.round(
-          ((isBlink ? window.devicePixelRatio : 1) *
-            value *
-            foreignElement.getBBox().width) /
-            foreignElement.getBoundingClientRect().width
-        );
-      const getYScale = (value = 1) =>
-        theme.typography.round(
-          ((isBlink ? window.devicePixelRatio : 1) *
-            value *
-            foreignElement.getBBox().height) /
-            foreignElement.getBoundingClientRect().height
-        );
+      const getXScale = (value = 1) => {
+        const foreignWidth = foreignElement.getBoundingClientRect().width;
+        if (foreignWidth) {
+          return theme.typography.round(
+            ((isBlink ? window.devicePixelRatio : 1) *
+              value *
+              foreignElement.getBBox().width) /
+              foreignWidth
+          );
+        }
+        return value;
+      };
+      const getYScale = (value = 1) => {
+        const foreignHeight = foreignElement.getBoundingClientRect().height;
+        if (foreignHeight) {
+          return theme.typography.round(
+            ((isBlink ? window.devicePixelRatio : 1) *
+              value *
+              foreignElement.getBBox().height) /
+              foreignHeight
+          );
+        }
+        return value;
+      };
       const getWidth = () =>
         whiteSpace === 'pre' && textBox ? textBox.offsetWidth : width;
       const getHeight = () => textBox && textBox.offsetHeight;
-      const getScaledWidth = () => getXScale(getWidth());
+      const getScaledWidth = () => {
+        const width = getWidth();
+        if (typeof width === 'number') {
+          return getXScale(width);
+        }
+        return width;
+      };
       const getScaledHeight = () => getYScale(getHeight());
       return {
         getHeight,
