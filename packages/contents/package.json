@@ -2,7 +2,11 @@
   "name": "@seine/contents",
   "version": "0.3.272",
   "description": "React components for rendering block contents.",
-  "main": "src/index.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "files": [
+    "lib/"
+  ],
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
