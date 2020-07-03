@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "name": "@seine/contents",
+  "version": "0.3.272",
+  "description": "React components for rendering block contents.",
+  "main": "src/index.js",
+  "repository": "mi6gan/seine",
+  "author": "Mikhail Boyarov",
+  "license": "MIT",
+  "dependencies": {
+    "@seine/core": "0.3",
+    "@seine/styles": "0.3",
+    "invert-color": "^2.0.0",
+    "ramda": "^0.26.1"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2"
+  }
+}
