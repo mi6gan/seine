@@ -53,7 +53,7 @@ export default function ChartPaletteSelect({
           },
           [dispatch, id]
         )}
-        row
+        row={'true'}
       >
         <MenuItem value={'default'}>
           <Label color={chartPaletteKeyValues.default[3]}>
