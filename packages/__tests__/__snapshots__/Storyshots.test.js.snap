@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Bream.Review summary header Bad Performance 1`] = `null`;
+
+exports[`Storyshots Bream.Review summary header Good Performance 1`] = `null`;
+
+exports[`Storyshots Bream.Review summary header Great Performance 1`] = `null`;
+
+exports[`Storyshots Content Content Of All Charts 1`] = `null`;
+
+exports[`Storyshots Content Content Of Chart Sample One 1`] = `null`;
+
+exports[`Storyshots Content Content Of Column And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Content Content Of Column And Line Charts 1`] = `null`;
+
+exports[`Storyshots Content Content Of Line And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Content Content Of Pie And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Content Content Of Six Groups Of Two Columns And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Content Initial Content 1`] = `null`;
+
+exports[`Storyshots Editor Editor Of All Charts 1`] = `null`;
+
+exports[`Storyshots Editor Editor Of Chart Sample One 1`] = `null`;
+
+exports[`Storyshots Editor Editor Of Column And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Editor Editor Of Column And Line Charts 1`] = `null`;
+
+exports[`Storyshots Editor Editor Of Line And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Editor Editor Of Pie And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Editor Initial Editor 1`] = `null`;

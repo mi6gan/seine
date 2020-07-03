@@ -11,7 +11,7 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/content": "0.3",
+    "@seine/contents": "0.3",
     "@seine/core": "0.3",
     "@seine/styles": "0.3"
   },
@@ -19,6 +19,7 @@
     "babel-plugin-inline-import-data-uri": "^1.0.1"
   },
   "peerDependencies": {
+    "draft-js": "^0.11.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"
