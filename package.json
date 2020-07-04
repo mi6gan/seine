@@ -12,7 +12,6 @@
   "license": "MIT",
   "scripts": {
     "start": "serve",
-    "show": "echo ${npm_package_version}",
     "deploy": "run-s deploy:'*'",
     "deploy:build": "docker build -t mi6gan/seine:${npm_package_version} .",
     "deploy:version": "docker push mi6gan/seine:${npm_package_version}",
@@ -24,7 +23,7 @@
     "release:commit": "git commit -am \"Release ${npm_package_version}\"",
     "release:push": "git push -f origin HEAD:latest",
     "prerelease": "run-s prerelease:'*'",
-    "prerelease:publish": "node scripts/publish.js --tag next",
+    "prerelease:publish": "node scripts/publish.js --prerelease --tag next",
     "prerelease:version": "yarn version --prerelease",
     "prerelease:commit": "git commit -am \"Prerelease ${npm_package_version}\"",
     "prerelease:push": "git push -f origin HEAD:latest",
