@@ -11,6 +11,7 @@ import { InlineInput } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
 import type { TableProps } from '@seine/content';
 import { Table } from '@seine/content';
+import { Box } from '@material-ui/core';
 
 import Frame from '../ui/Frame';
 
@@ -20,7 +21,7 @@ type Props = TableProps & BlockEditor;
 
 const StyledTextarea = styled.textarea`
   && {
-    width: 100%;
+    ${({ width }) => ({ width })};
     background: none;
     border: 0;
     color: inherit;
@@ -34,6 +35,23 @@ const StyledTextarea = styled.textarea`
     resize: none;
   }
 `;
+
+// eslint-disable-next-line
+function Textarea({ value, ...props }) {
+  const [box, setBox] = React.useState(null);
+  return (
+    <>
+      <StyledTextarea
+        {...props}
+        value={value}
+        width={Math.max(20, box ? box.offsetWidth : 0)}
+      />
+      <Box visibility={'hidden'} ref={setBox} position={'absolute'}>
+        {value}
+      </Box>
+    </>
+  );
+}
 
 /**
  * @description Table block editor.
@@ -78,7 +96,7 @@ export default function TableEditor({
         ...column,
         text: (
           <div>
-            <StyledTextarea
+            <Textarea
               onFocus={() => {
                 dispatch({ id, type: SELECT_BLOCK });
                 dispatch({
@@ -112,37 +130,39 @@ export default function TableEditor({
         row.map(({ text, ...column }, columnIndex) => ({
           ...column,
           text: (
-            <StyledTextarea
-              onFocus={() => {
-                dispatch({ id, type: SELECT_BLOCK });
-                dispatch({
-                  id,
-                  type: UPDATE_BLOCK_EDITOR,
-                  editor: {
-                    columnIndex,
-                    rowIndex: rowIndex + 1,
-                  },
-                });
-              }}
-              onChange={({ currentTarget }) =>
-                dispatch({
-                  id,
-                  type: UPDATE_BLOCK_BODY,
-                  body: {
-                    rows: [
-                      ...rows.slice(0, rowIndex),
-                      [
-                        ...row.slice(0, columnIndex),
-                        { ...column, text: currentTarget.value },
-                        ...row.slice(columnIndex + 1),
+            <div>
+              <Textarea
+                onFocus={() => {
+                  dispatch({ id, type: SELECT_BLOCK });
+                  dispatch({
+                    id,
+                    type: UPDATE_BLOCK_EDITOR,
+                    editor: {
+                      columnIndex,
+                      rowIndex: rowIndex + 1,
+                    },
+                  });
+                }}
+                onChange={({ currentTarget }) =>
+                  dispatch({
+                    id,
+                    type: UPDATE_BLOCK_BODY,
+                    body: {
+                      rows: [
+                        ...rows.slice(0, rowIndex),
+                        [
+                          ...row.slice(0, columnIndex),
+                          { ...column, text: currentTarget.value },
+                          ...row.slice(columnIndex + 1),
+                        ],
+                        ...rows.slice(rowIndex + 1),
                       ],
-                      ...rows.slice(rowIndex + 1),
-                    ],
-                  },
-                })
-              }
-              value={text}
-            />
+                    },
+                  })
+                }
+                value={text}
+              />
+            </div>
           ),
         }))
       )}

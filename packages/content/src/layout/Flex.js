@@ -14,7 +14,7 @@ export const defaultFlexWrap = 'nowrap';
 export const defaultFlexJustify = 'normal';
 export const defaultFlexAlignItems = 'normal';
 export const defaultFlexAlignContent = 'normal';
-export const defaultFlexSpacing = 10;
+export const defaultFlexSpacing = 8;
 
 /**
  * @description Flex content layout container.
@@ -40,6 +40,7 @@ export default styled.div.attrs(
 )`
   display: flex;
   position: relative;
+  box-sizing: border-box;
 
   ${({
     direction,
@@ -58,12 +59,7 @@ export default styled.div.attrs(
     width: `calc(100% + ${spacing}px)`,
   })};
 
-  box-sizing: border-box;
   & > ${Item} {
-    box-sizing: border-box;
-    flex-basis: auto;
-    flex-grow: 0;
-    max-width: none;
     ${({ spacing }) => ({ padding: spacing / 2 })}
   }
 `;

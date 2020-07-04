@@ -6,7 +6,9 @@ const Sidebar = styled(Box).attrs({
   bgcolor: 'grey.100',
   color: 'grey.700',
   height: 760,
-  minWidth: 320,
+  width: 320,
+  px: 2,
+  py: 2,
 })``;
 
 export default Sidebar;

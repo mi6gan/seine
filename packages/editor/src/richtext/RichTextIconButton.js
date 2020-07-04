@@ -3,7 +3,7 @@ import * as React from 'react';
 import { blockTypes, CREATE_BLOCK, createBlock } from '@seine/core';
 import { toRawContent } from '@seine/content';
 import { useAutoMemo } from 'hooks.macro';
-import { FontDownloadSharp as RichTextIcon } from '@material-ui/icons';
+import { Title as RichTextIcon } from '@material-ui/icons';
 
 import ActionIconButton from '../ui/ActionIconButton';
 

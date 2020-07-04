@@ -27,7 +27,7 @@
     "prerelease:publish": "node scripts/publish.js --tag next",
     "prerelease:version": "yarn version --prerelease",
     "prerelease:commit": "git commit -am \"Prerelease ${npm_package_version}\"",
-    "prerelease:push": "git push -f origin HEAD:next",
+    "prerelease:push": "git push -f origin HEAD:latest",
     "echo": "echo ${npm_package_version}",
     "test": "run-s build:'*' test:'*'",
     "test:eslint": "eslint -c .eslintrc.js --format unix packages/*/src",
