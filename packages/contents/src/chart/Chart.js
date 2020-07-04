@@ -22,7 +22,13 @@ import useChartSvgProps from './useChartSvgProps';
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Chart({ children, kind, ...initialChartProps }: Props) {
+export default function Chart({
+  children,
+  kind,
+  onClick,
+  className,
+  ...initialChartProps
+}: Props) {
   initialChartProps = useChartFormatDefaults(kind, initialChartProps);
   const [chartProps, setChartProps] = React.useState(initialChartProps);
   const handleAutoFormat = useAutoCallback((format) =>
@@ -31,6 +37,8 @@ export default function Chart({ children, kind, ...initialChartProps }: Props) {
 
   return (
     <ChartLayout
+      onClick={onClick}
+      className={className}
       ref={useResizeTargetRef()}
       title={chartProps.title}
       description={

@@ -7,19 +7,16 @@ import {
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 import styled from 'styled-components/macro';
-import { BlockActions, InlineInput } from '@seine/ui';
+import { InlineInput } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
 import type { TableProps } from '@seine/contents';
-import { Table, TableTitle } from '@seine/contents';
+import { Table } from '@seine/contents';
+
+import Frame, { SelectedFrame } from '../ui/Frame';
 
 import { defaultTableEditor } from './constants';
 
 type Props = TableProps & BlockEditor;
-
-const Container = styled.div`
-  position: relative;
-  height: 100%;
-`;
 
 const StyledTextarea = styled.textarea`
   && {
@@ -44,7 +41,6 @@ const StyledTextarea = styled.textarea`
  * @returns {React.Node}
  */
 export default function TableEditor({
-  addButtonRenderMap,
   id,
   dispatch,
   header,
@@ -53,14 +49,19 @@ export default function TableEditor({
   selection,
   textAlignment,
 }: Props) {
-  return (
-    <Container>
-      <TableTitle textAlignment={textAlignment}>
+  const editTitle = useAutoCallback(({ currentTarget: { value } }) =>
+    dispatch({ type: UPDATE_BLOCK_BODY, body: { title: value } })
+  );
+  return selection.length === 1 && selection[0] === id ? (
+    <SelectedFrame
+      as={Table}
+      id={id}
+      dispatch={dispatch}
+      textAlignment={textAlignment}
+      title={
         <InlineInput
           forwardedAs={'input'}
-          onChange={useAutoCallback(({ currentTarget: { value } }) =>
-            dispatch({ type: UPDATE_BLOCK_BODY, body: { title: value } })
-          )}
+          onChange={editTitle}
           onFocus={() => {
             dispatch({ id, type: SELECT_BLOCK });
             dispatch({
@@ -71,91 +72,88 @@ export default function TableEditor({
           }}
           value={title}
         />
-      </TableTitle>
-      {selection.length === 1 && selection[0] === id ? (
-        <Table
-          header={header.map(({ text, ...column }, index) => ({
-            ...column,
-            text: (
-              <div>
-                <StyledTextarea
-                  onFocus={() => {
-                    dispatch({ id, type: SELECT_BLOCK });
-                    dispatch({
-                      id,
-                      type: UPDATE_BLOCK_EDITOR,
-                      editor: {
-                        columnIndex: index,
-                        rowIndex: 0,
-                      },
-                    });
-                  }}
-                  onChange={({ currentTarget }) =>
-                    dispatch({
-                      id,
-                      type: UPDATE_BLOCK_BODY,
-                      body: {
-                        header: [
-                          ...header.slice(0, index),
-                          { ...column, text: currentTarget.value },
-                          ...header.slice(index + 1),
-                        ],
-                      },
-                    })
-                  }
-                  value={text}
-                />
-              </div>
-            ),
-          }))}
-          rows={rows.map((row, rowIndex) =>
-            row.map(({ text, ...column }, columnIndex) => ({
-              ...column,
-              text: (
-                <StyledTextarea
-                  onFocus={() => {
-                    dispatch({ id, type: SELECT_BLOCK });
-                    dispatch({
-                      id,
-                      type: UPDATE_BLOCK_EDITOR,
-                      editor: {
-                        columnIndex,
-                        rowIndex: rowIndex + 1,
-                      },
-                    });
-                  }}
-                  onChange={({ currentTarget }) =>
-                    dispatch({
-                      id,
-                      type: UPDATE_BLOCK_BODY,
-                      body: {
-                        rows: [
-                          ...rows.slice(0, rowIndex),
-                          [
-                            ...row.slice(0, columnIndex),
-                            { ...column, text: currentTarget.value },
-                            ...row.slice(columnIndex + 1),
-                          ],
-                          ...rows.slice(rowIndex + 1),
-                        ],
-                      },
-                    })
-                  }
-                  value={text}
-                />
-              ),
-            }))
-          )}
-        />
-      ) : (
-        <Table header={header} rows={rows} />
+      }
+      header={header.map(({ text, ...column }, index) => ({
+        ...column,
+        text: (
+          <div>
+            <StyledTextarea
+              onFocus={() => {
+                dispatch({ id, type: SELECT_BLOCK });
+                dispatch({
+                  id,
+                  type: UPDATE_BLOCK_EDITOR,
+                  editor: {
+                    columnIndex: index,
+                    rowIndex: 0,
+                  },
+                });
+              }}
+              onChange={({ currentTarget }) =>
+                dispatch({
+                  id,
+                  type: UPDATE_BLOCK_BODY,
+                  body: {
+                    header: [
+                      ...header.slice(0, index),
+                      { ...column, text: currentTarget.value },
+                      ...header.slice(index + 1),
+                    ],
+                  },
+                })
+              }
+              value={text}
+            />
+          </div>
+        ),
+      }))}
+      rows={rows.map((row, rowIndex) =>
+        row.map(({ text, ...column }, columnIndex) => ({
+          ...column,
+          text: (
+            <StyledTextarea
+              onFocus={() => {
+                dispatch({ id, type: SELECT_BLOCK });
+                dispatch({
+                  id,
+                  type: UPDATE_BLOCK_EDITOR,
+                  editor: {
+                    columnIndex,
+                    rowIndex: rowIndex + 1,
+                  },
+                });
+              }}
+              onChange={({ currentTarget }) =>
+                dispatch({
+                  id,
+                  type: UPDATE_BLOCK_BODY,
+                  body: {
+                    rows: [
+                      ...rows.slice(0, rowIndex),
+                      [
+                        ...row.slice(0, columnIndex),
+                        { ...column, text: currentTarget.value },
+                        ...row.slice(columnIndex + 1),
+                      ],
+                      ...rows.slice(rowIndex + 1),
+                    ],
+                  },
+                })
+              }
+              value={text}
+            />
+          ),
+        }))
       )}
-      <BlockActions
-        addButtonRenderMap={addButtonRenderMap}
-        dispatch={dispatch}
-        id={id}
-        selection={selection}
-      />
-    </Container>
+    />
+  ) : (
+    <Frame
+      id={id}
+      dispatch={dispatch}
+      as={Table}
+      header={header}
+      rows={rows}
+      title={title}
+    />
   );
 }

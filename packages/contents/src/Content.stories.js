@@ -1,40 +1,276 @@
 import * as React from 'react';
-import { actions } from '@storybook/addon-actions';
 import {
+  blockTypes,
   createBlockElements,
   createTitleIdentityBlockElements,
 } from '@seine/core';
+import { actions } from '@storybook/addon-actions';
 
 import Content from './Content';
 
 export default { title: 'Content' };
 
-export const InitialContent = ({
-  as: Container = Content,
-  children = [],
-  ...props
-}) => (
+export const Page = ({ as: Container = Content, children = [], ...props }) => (
   <Container
     parent={{
       id: null,
-      type: 'page',
+      type: blockTypes.PAGE,
       body: null,
       format: null,
       parent_id: null,
     }}
-    {...actions('onChange')}
     {...props}
+    {...actions('onChange')}
   >
     {children}
   </Container>
 );
 
-export const ContentOfPieAndBarSiblingCharts = (props) => (
-  <InitialContent {...props}>
+export const Text = (props) => (
+  <Page {...props}>
     {[
       {
-        id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'grid',
+        id: 'text',
+        parent_id: null,
+        type: blockTypes.RICH_TEXT,
+        body: {
+          blocks: [
+            {
+              key: 'h1',
+              text: 'Header one',
+              type: 'header-one',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h2',
+              text: 'Header two',
+              type: 'header-two',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h3',
+              text: 'Header three',
+              type: 'header-three',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h4',
+              text: 'Header four',
+              type: 'header-four',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h5',
+              text: 'Header five',
+              type: 'header-five',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h6',
+              text: 'Header six',
+              type: 'header-six',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'unstyled',
+              text: 'This block is draft.js content.',
+              type: 'unstyled',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+          ],
+          entityMap: {},
+        },
+        format: { verticalAlignment: 'center' },
+      },
+    ]}
+  </Page>
+);
+
+export const Table = ({ parent_id = null, ...props }) => (
+  <Page {...props}>
+    {[
+      {
+        id: 'table',
+        parent_id,
+        type: blockTypes.TABLE,
+        body: {
+          title: 'Table title',
+          header: [
+            { text: 'first column' },
+            { text: 'second column' },
+            { text: 'third column' },
+          ],
+          rows: [
+            [
+              { text: 'row 1, column 1' },
+              { text: 'row 1, column 2' },
+              { text: 'row 1, column 3' },
+            ],
+            [
+              { text: 'row 2, column 1' },
+              { text: 'row 2, column 2' },
+              { text: 'row 2, column 3' },
+            ],
+            [
+              { text: 'row 3, column 1' },
+              { text: 'row 3, column 2' },
+              { text: 'row 3, column 3' },
+            ],
+          ],
+        },
+        format: {},
+      },
+    ]}
+  </Page>
+);
+
+export const Flex = ({ children = [], ...props }) => (
+  <Page {...props}>
+    {[
+      {
+        id: 'flex',
+        parent_id: null,
+
+        type: blockTypes.FLEX,
+        body: {},
+        format: {},
+      },
+      {
+        id: 'table',
+        parent_id: 'flex',
+        type: blockTypes.TABLE,
+        body: {
+          title: 'Table title',
+          header: [
+            { text: 'first column' },
+            { text: 'second column' },
+            { text: 'third column' },
+          ],
+          rows: [
+            [
+              { text: 'row 1, column 1' },
+              { text: 'row 1, column 2' },
+              { text: 'row 1, column 3' },
+            ],
+            [
+              { text: 'row 2, column 1' },
+              { text: 'row 2, column 2' },
+              { text: 'row 2, column 3' },
+            ],
+            [
+              { text: 'row 3, column 1' },
+              { text: 'row 3, column 2' },
+              { text: 'row 3, column 3' },
+            ],
+          ],
+        },
+        format: {},
+      },
+      {
+        id: 'text',
+        parent_id: 'flex',
+        type: blockTypes.RICH_TEXT,
+        body: {
+          blocks: [
+            {
+              key: 'h1',
+              text: 'Header one',
+              type: 'header-one',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h2',
+              text: 'Header two',
+              type: 'header-two',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h3',
+              text: 'Header three',
+              type: 'header-three',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h4',
+              text: 'Header four',
+              type: 'header-four',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h5',
+              text: 'Header five',
+              type: 'header-five',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'h6',
+              text: 'Header six',
+              type: 'header-six',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+            {
+              key: 'unstyled',
+              text: 'This block is draft.js content.',
+              type: 'unstyled',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+          ],
+          entityMap: {},
+        },
+        format: { verticalAlignment: 'center' },
+      },
+    ]}
+  </Page>
+);
+
+export const ContentOfPieAndBarSiblingCharts = (props) => (
+  <Page {...props}>
+    {[
+      {
+        id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        type: 'flex',
         body: null,
         format: null,
         parent_id: null,
@@ -52,7 +288,7 @@ export const ContentOfPieAndBarSiblingCharts = (props) => (
           ]),
         },
         format: { kind: 'pie' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
       {
         id: '01648d04-78ad-402b-b255-14a6066d7927',
@@ -66,18 +302,18 @@ export const ContentOfPieAndBarSiblingCharts = (props) => (
           ]),
         },
         format: { kind: 'bar' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
     ]}
-  </InitialContent>
+  </Page>
 );
 
 export const ContentOfColumnAndBarSiblingCharts = (props) => (
-  <InitialContent {...props}>
+  <Page {...props}>
     {[
       {
-        id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'grid',
+        id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        type: 'flex',
         body: null,
         format: null,
         parent_id: null,
@@ -93,7 +329,7 @@ export const ContentOfColumnAndBarSiblingCharts = (props) => (
           ]),
         },
         format: { kind: 'column' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
       {
         id: '01648d04-78ad-402b-b255-14a6066d7927',
@@ -112,18 +348,18 @@ export const ContentOfColumnAndBarSiblingCharts = (props) => (
           ]),
         },
         format: { kind: 'bar' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
     ]}
-  </InitialContent>
+  </Page>
 );
 
 export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
-  <InitialContent {...props}>
+  <Page {...props}>
     {[
       {
-        id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'grid',
+        id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        type: 'flex',
         body: null,
         format: null,
         parent_id: null,
@@ -160,7 +396,7 @@ export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
           title: 'Column chart: 4 groups of 3 elements',
         },
         format: { kind: 'column' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
       {
         id: '01648d04-78ad-402b-b255-14a6066d7927',
@@ -174,18 +410,18 @@ export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
           ]),
         },
         format: { kind: 'bar' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
     ]}
-  </InitialContent>
+  </Page>
 );
 
 export const ContentOfLineAndBarSiblingCharts = (props) => (
-  <InitialContent {...props}>
+  <Page {...props}>
     {[
       {
-        id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'grid',
+        id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        type: 'flex',
         body: null,
         format: null,
         parent_id: null,
@@ -220,7 +456,7 @@ export const ContentOfLineAndBarSiblingCharts = (props) => (
           kind: 'line',
           maxValue: 400,
         },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
       {
         id: '01648d04-78ad-402b-b255-14a6066d7927',
@@ -236,18 +472,18 @@ export const ContentOfLineAndBarSiblingCharts = (props) => (
           ]),
         },
         format: { kind: 'bar' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
     ]}
-  </InitialContent>
+  </Page>
 );
 
 export const ContentOfColumnAndLineCharts = (props) => (
-  <InitialContent {...props}>
+  <Page {...props}>
     {[
       {
-        id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'grid',
+        id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        type: 'flex',
         body: null,
         format: null,
         parent_id: null,
@@ -263,7 +499,7 @@ export const ContentOfColumnAndLineCharts = (props) => (
           ]),
         },
         format: { kind: 'column' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
       {
         id: '01648d04-78ad-402b-b255-14a6066d7927--line',
@@ -295,18 +531,18 @@ export const ContentOfColumnAndLineCharts = (props) => (
           kind: 'line',
           maxValue: 400,
         },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
     ]}
-  </InitialContent>
+  </Page>
 );
 
 export const ContentOfAllCharts = (props) => (
-  <InitialContent {...props}>
+  <Page {...props}>
     {[
       {
-        id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'grid',
+        id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        type: 'flex',
         body: null,
         format: null,
         parent_id: null,
@@ -341,7 +577,7 @@ export const ContentOfAllCharts = (props) => (
           kind: 'line',
           maxValue: 400,
         },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
       {
         id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
@@ -368,7 +604,7 @@ export const ContentOfAllCharts = (props) => (
           ]),
         },
         format: { kind: 'column' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
       {
         id: '01648d04-78ad-402b-b255-14a6066d7927',
@@ -383,7 +619,7 @@ export const ContentOfAllCharts = (props) => (
           ]),
         },
         format: { kind: 'bar' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
       {
         id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
@@ -398,14 +634,14 @@ export const ContentOfAllCharts = (props) => (
           ]),
         },
         format: { kind: 'pie' },
-        parent_id: 'grid--bee1c449-5515-4b12-9779-cfa11f1f62d9',
+        parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
       },
     ]}
-  </InitialContent>
+  </Page>
 );
 
 export const ContentOfChartSampleOne = (props) => (
-  <InitialContent {...props}>
+  <Page {...props}>
     {[
       {
         id: '044d4dca-4924-4a9d-9e6b-55b9be006b70',
@@ -417,7 +653,7 @@ export const ContentOfChartSampleOne = (props) => (
       },
       {
         id: '6fbf9072-e107-476d-8300-642b13bf39d2',
-        type: 'grid',
+        type: 'flex',
         parent_id: '044d4dca-4924-4a9d-9e6b-55b9be006b70',
         body: {},
         format: {},
@@ -498,5 +734,5 @@ export const ContentOfChartSampleOne = (props) => (
         schema: null,
       },
     ]}
-  </InitialContent>
+  </Page>
 );

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import type { TableBody, TableFormat, ToolbarProps } from '@seine/core';
 import { UPDATE_BLOCK_BODY } from '@seine/core';
-import { ActionButton, Toolbar, ToolbarInput } from '@seine/ui';
+import { ActionButton, ToolbarInput } from '@seine/ui';
 import {
   FormatAlignCenter,
   FormatAlignLeft,
@@ -13,6 +13,8 @@ import {
 import { Checkbox, IconButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 import { defaultTableBody, defaultTableCell } from '@seine/contents';
+
+import Toolbar from '../ui/Toolbar';
 
 import TableCellButton from './TableCellButton';
 import { defaultTableEditor } from './constants';

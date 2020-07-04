@@ -8,16 +8,15 @@ import type {
 } from '@seine/core';
 import styled, { css } from 'styled-components/macro';
 import { useResizeTargetRef } from '@seine/styles';
+import { useAutoCallback } from 'hooks.macro';
+
+import { Item } from '../layout';
 
 import TableTitle from './TableTitle';
 
 export type Props = TableBody & TableFormat;
 
-const Container = styled.div`
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-`;
+const Container = styled(Item)``;
 
 const StyledTable = styled.table`
   ${({
@@ -73,7 +72,10 @@ const StyledTableCell = styled.td`
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Table({ title, header, rows, textAlignment }: Props) {
+export default React.forwardRef(function Table(
+  { title, header, rows, textAlignment, ...containerProps }: Props,
+  ref
+) {
   const containerRef = useResizeTargetRef();
   const tableRef = React.useRef<HTMLElement>(null);
 
@@ -84,7 +86,13 @@ export default function Table({ title, header, rows, textAlignment }: Props) {
     container && table ? container.offsetWidth / table.offsetWidth : 1;
 
   return (
-    <Container ref={containerRef}>
+    <Container
+      {...containerProps}
+      ref={useAutoCallback((container) => {
+        containerRef.current = container;
+        ref && ref(container);
+      })}
+    >
       <TableTitle textAlignment={textAlignment}>{title}</TableTitle>
       <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
         <thead>
@@ -110,4 +118,4 @@ export default function Table({ title, header, rows, textAlignment }: Props) {
       </StyledTable>
     </Container>
   );
-}
+});

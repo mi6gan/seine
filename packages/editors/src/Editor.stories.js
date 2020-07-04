@@ -7,14 +7,15 @@ import {
   ContentOfColumnAndLineCharts,
   ContentOfLineAndBarSiblingCharts,
   ContentOfPieAndBarSiblingCharts,
-  InitialContent,
+  Page,
+  Flex,
 } from '../../contents/src/Content.stories';
 
 import Editor from './Editor';
 
 export default { title: 'Editor' };
 
-export const InitialEditor = () => <InitialContent as={Editor} />;
+export const InitialEditor = () => <Page as={Editor} />;
 
 export const EditorOfPieAndBarSiblingCharts = () => (
   <ContentOfPieAndBarSiblingCharts as={Editor} />
@@ -37,3 +38,5 @@ export const EditorOfAllCharts = () => <ContentOfAllCharts as={Editor} />;
 export const EditorOfChartSampleOne = () => (
   <ContentOfChartSampleOne as={Editor} />
 );
+
+export const EditorOfFlex = () => <Flex as={Editor} />;

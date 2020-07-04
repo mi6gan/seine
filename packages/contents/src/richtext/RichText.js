@@ -10,6 +10,8 @@ import {
 } from 'draft-js';
 import type { RichTextBody, RichTextFormat } from '@seine/core';
 
+import { Item } from '../layout';
+
 import { toDraftEditor } from './helpers';
 import RichTextStyle from './RichTextStyle';
 
@@ -53,7 +55,7 @@ function Draft({
   return (
     <>
       <RichTextStyle />
-      <div
+      <Item
         className={[
           className,
           ' DraftEditor/root',
@@ -81,7 +83,7 @@ function Draft({
             [blocks, decorators, entityMap]
           )}
         />
-      </div>
+      </Item>
     </>
   );
 }

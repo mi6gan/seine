@@ -20,7 +20,13 @@ exports[`Storyshots Content Content Of Pie And Bar Sibling Charts 1`] = `null`;
 
 exports[`Storyshots Content Content Of Six Groups Of Two Columns And Bar Sibling Charts 1`] = `null`;
 
-exports[`Storyshots Content Initial Content 1`] = `null`;
+exports[`Storyshots Content Flex 1`] = `null`;
+
+exports[`Storyshots Content Page 1`] = `null`;
+
+exports[`Storyshots Content Table 1`] = `null`;
+
+exports[`Storyshots Content Text 1`] = `null`;
 
 exports[`Storyshots Editor Editor Of All Charts 1`] = `null`;
 
@@ -29,6 +35,8 @@ exports[`Storyshots Editor Editor Of Chart Sample One 1`] = `null`;
 exports[`Storyshots Editor Editor Of Column And Bar Sibling Charts 1`] = `null`;
 
 exports[`Storyshots Editor Editor Of Column And Line Charts 1`] = `null`;
+
+exports[`Storyshots Editor Editor Of Flex 1`] = `null`;
 
 exports[`Storyshots Editor Editor Of Line And Bar Sibling Charts 1`] = `null`;
 

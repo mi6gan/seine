@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Box, ButtonBase, MenuItem, Paper } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
-import { useAutoCallback, useAutoEffect } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 import type { BlocksAction, BlocksState } from '@seine/core';
 import { initialBlocksState, reduceBlocks } from '@seine/core';
@@ -22,6 +22,7 @@ import BarChartIconButton from './chart/BarChartIconButton';
 import LineChartIconButton from './chart/LineChartIconButton';
 import ColumnChartIconButton from './chart/ColumnChartIconButton';
 import PieChartIconButton from './chart/PieChartIconButton';
+import defaultBlockRenderMap from './blockRenderMap';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -37,15 +38,15 @@ const MenuButton = styled(Box).attrs(({ disabled }) => ({
   color: disabled ? 'grey.500' : 'inherit',
 }))``;
 
-const StyledContent = styled(Paper).attrs(() => ({
-  component: Content,
-  forwardedAs: Box,
+const EditorPaper = styled(Paper).attrs(() => ({
+  component: Box,
   height: 600,
   width: '100%',
   m: 10,
   p: 2,
 }))`
   overflow: auto;
+  overflow-x: hidden;
 `;
 
 const defaultEditorChildren = [];
@@ -58,6 +59,7 @@ export default function Editor({
   parent,
   onChange,
   children = defaultEditorChildren,
+  blockRenderMap = defaultBlockRenderMap,
   ...contentProps
 }) {
   const parentId = parent && parent.id;
@@ -103,6 +105,14 @@ export default function Editor({
       }))
     );
   });
+
+  const contentChildren = useAutoMemo(
+    blocks.map((block) => ({
+      ...block,
+      dispatch,
+      selection,
+    }))
+  );
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -209,9 +219,11 @@ export default function Editor({
               }
             })}
           >
-            <StyledContent {...contentProps} parent={parent}>
-              {blocks}
-            </StyledContent>
+            <EditorPaper {...contentProps}>
+              <Content blockRenderMap={blockRenderMap} parent={parent}>
+                {contentChildren}
+              </Content>
+            </EditorPaper>
             <Sidebar>&nbsp;</Sidebar>
           </Contents>
         </Box>
