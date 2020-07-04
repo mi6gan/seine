@@ -12,7 +12,7 @@ import { useAutoCallback } from 'hooks.macro';
 import type { TableProps } from '@seine/contents';
 import { Table } from '@seine/contents';
 
-import Frame, { SelectedFrame } from '../ui/Frame';
+import Frame from '../ui/Frame';
 
 import { defaultTableEditor } from './constants';
 
@@ -53,7 +53,8 @@ export default function TableEditor({
     dispatch({ type: UPDATE_BLOCK_BODY, body: { title: value } })
   );
   return selection.length === 1 && selection[0] === id ? (
-    <SelectedFrame
+    <Frame
+      selected
       as={Table}
       id={id}
       dispatch={dispatch}

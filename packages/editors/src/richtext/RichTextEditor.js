@@ -6,7 +6,7 @@ import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
 import { Item, RichTextStyle } from '@seine/contents';
 
-import Frame, { SelectedFrame } from '../ui/Frame';
+import Frame from '../ui/Frame';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
@@ -74,12 +74,11 @@ export default function RichTextEditor({
     }
   }, [dispatch, editorState, readOnly]);
 
-  const RichTextFrame = readOnly ? Frame : SelectedFrame;
-
   return (
     <>
       <RichTextStyle />
-      <RichTextFrame
+      <Frame
+        selected={!readOnly}
         as={Container}
         id={id}
         dispatch={dispatch}
@@ -100,7 +99,7 @@ export default function RichTextEditor({
           )}
           readOnly={readOnly}
         />
-      </RichTextFrame>
+      </Frame>
     </>
   );
 }

@@ -2,12 +2,16 @@
 import * as React from 'react';
 import { Box, ButtonBase, MenuItem, Paper } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
-import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
+import { ThemeProvider } from '@seine/styles';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 import type { BlocksAction, BlocksState } from '@seine/core';
-import { initialBlocksState, reduceBlocks } from '@seine/core';
-import { useReducerEx } from '@seine/ui';
+import {
+  blockTypes,
+  DESELECT_ALL_BLOCKS,
+  initialBlocksState,
+  reduceBlocks,
+} from '@seine/core';
 import { Content } from '@seine/contents';
 
 import defaultTheme from './defaultTheme';
@@ -23,6 +27,7 @@ import LineChartIconButton from './chart/LineChartIconButton';
 import ColumnChartIconButton from './chart/ColumnChartIconButton';
 import PieChartIconButton from './chart/PieChartIconButton';
 import defaultBlockRenderMap from './blockRenderMap';
+import RichTextDesign from './richtext/RichTextDesign';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -81,7 +86,7 @@ export default function Editor({
     setAction(value);
   });
 
-  const [{ blocks, selection }, dispatch] = useReducerEx<
+  const [{ blocks, selection }, dispatch] = React.useReducer<
     BlocksState,
     BlocksAction
   >(
@@ -114,120 +119,144 @@ export default function Editor({
     }))
   );
 
+  const { type, ...block } = useAutoMemo(
+    selection.length === 1
+      ? blocks.find(({ id }) => selection.includes(id))
+      : parent
+  );
+
+  const deselectClickHandler = useAutoCallback(() => {
+    if (action) {
+      unsetAction();
+      dispatch(action);
+    } else {
+      dispatch({ type: DESELECT_ALL_BLOCKS });
+    }
+  });
+
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ResizeObserverProvider>
-        <ToolbarMenu
-          onClose={unsetAction}
-          open={action === 'menu'}
-          anchorEl={menuAnchorRef.current}
-          keepMounted
-          mt={3}
-          ml={-1}
-        >
-          <MenuItem>
-            <MenuButton
-              onClick={unsetAction}
-              disabled={!selection || !selection.length}
-            >
-              Copy
-            </MenuButton>
-          </MenuItem>
+      <ToolbarMenu
+        onClose={unsetAction}
+        open={action === 'menu'}
+        anchorEl={menuAnchorRef.current}
+        keepMounted
+        mt={3}
+        ml={-1}
+      >
+        <MenuItem>
+          <MenuButton
+            onClick={unsetAction}
+            disabled={!selection || !selection.length}
+          >
+            Copy
+          </MenuButton>
+        </MenuItem>
 
-          <MenuItem>
-            <MenuButton
-              onClick={unsetAction}
-              disabled={!selection || !selection.length}
-            >
-              Delete
-            </MenuButton>
-          </MenuItem>
-        </ToolbarMenu>
+        <MenuItem>
+          <MenuButton
+            onClick={unsetAction}
+            disabled={!selection || !selection.length}
+          >
+            Delete
+          </MenuButton>
+        </MenuItem>
+      </ToolbarMenu>
 
-        <Toolbar
-          onKeyUp={useAutoCallback((event) => {
-            if (event.key === 'Escape') {
-              unsetAction();
-            }
+      <Toolbar
+        onClick={deselectClickHandler}
+        onKeyUp={useAutoCallback((event) => {
+          if (event.key === 'Escape') {
+            unsetAction();
+          }
+        })}
+        ref={menuAnchorRef}
+      >
+        <ToolbarButton
+          onClick={useAutoCallback(() => {
+            setAction('menu');
           })}
-          ref={menuAnchorRef}
+          selected={action === 'menu'}
         >
-          <ToolbarButton
-            onClick={useAutoCallback(() => {
-              setAction('menu');
+          <MenuIcon />
+        </ToolbarButton>
+
+        <ToolbarSeparator />
+
+        <RichTextIconButton
+          {...action}
+          parentId={parentId}
+          dispatch={selectBlockAction}
+        />
+
+        <ToolbarSeparator />
+
+        <TableIconButton
+          {...action}
+          parentId={parentId}
+          dispatch={selectBlockAction}
+        />
+
+        <ToolbarSeparator />
+
+        <BarChartIconButton
+          {...action}
+          parentId={parentId}
+          dispatch={selectBlockAction}
+        />
+        <LineChartIconButton
+          {...action}
+          parentId={parentId}
+          dispatch={selectBlockAction}
+        />
+        <ColumnChartIconButton
+          {...action}
+          parentId={parentId}
+          dispatch={selectBlockAction}
+        />
+        <PieChartIconButton
+          {...action}
+          parentId={parentId}
+          dispatch={selectBlockAction}
+        />
+      </Toolbar>
+
+      <Box
+        onClick={deselectClickHandler}
+        display={'flex'}
+        flexWrap={'wrap'}
+        alignItems={'flex-start'}
+        justifyContent={'space-between'}
+        bgcolor={'grey.300'}
+        position={'relative'}
+        height={'100%'}
+      >
+        <Contents cursor={toolCursorRef.current}>
+          <EditorPaper>
+            <Content
+              blockRenderMap={blockRenderMap}
+              parent={parent}
+              {...contentProps}
+            >
+              {contentChildren}
+            </Content>
+          </EditorPaper>
+
+          <Sidebar
+            onClick={useAutoCallback((event) => {
+              event.stopPropagation();
             })}
-            selected={action === 'menu'}
           >
-            <MenuIcon />
-          </ToolbarButton>
-
-          <ToolbarSeparator />
-
-          <RichTextIconButton
-            {...action}
-            parentId={parentId}
-            dispatch={selectBlockAction}
-          />
-
-          <ToolbarSeparator />
-
-          <TableIconButton
-            {...action}
-            parentId={parentId}
-            dispatch={selectBlockAction}
-          />
-
-          <ToolbarSeparator />
-
-          <BarChartIconButton
-            {...action}
-            parentId={parentId}
-            dispatch={selectBlockAction}
-          />
-          <LineChartIconButton
-            {...action}
-            parentId={parentId}
-            dispatch={selectBlockAction}
-          />
-          <ColumnChartIconButton
-            {...action}
-            parentId={parentId}
-            dispatch={selectBlockAction}
-          />
-          <PieChartIconButton
-            {...action}
-            parentId={parentId}
-            dispatch={selectBlockAction}
-          />
-        </Toolbar>
-
-        <Box
-          display={'flex'}
-          flexWrap={'wrap'}
-          alignItems={'flex-start'}
-          justifyContent={'space-between'}
-          bgcolor={'grey.300'}
-          position={'relative'}
-          height={'100%'}
-        >
-          <Contents
-            cursor={toolCursorRef.current}
-            onClick={useAutoCallback(() => {
-              if (action) {
-                unsetAction();
-                dispatch(action);
-              }
-            })}
-          >
-            <EditorPaper {...contentProps}>
-              <Content blockRenderMap={blockRenderMap} parent={parent}>
-                {contentChildren}
-              </Content>
-            </EditorPaper>
-            <Sidebar>&nbsp;</Sidebar>
-          </Contents>
-        </Box>
-      </ResizeObserverProvider>
+            {type === blockTypes.RICH_TEXT ? (
+              <RichTextDesign
+                {...block}
+                dispatch={dispatch}
+                selection={selection}
+              />
+            ) : null}
+          </Sidebar>
+        </Contents>
+      </Box>
     </ThemeProvider>
   );
 }

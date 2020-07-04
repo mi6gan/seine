@@ -3,7 +3,6 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 import { SELECT_BLOCK } from '@seine/core';
-import { ClickAwayListener } from '@material-ui/core';
 import { Item } from '@seine/contents';
 
 const StyledFrame = styled(Item)`
@@ -16,40 +15,24 @@ const StyledFrame = styled(Item)`
     height: 100%;
     z-index: 1;
     border: 2px solid ${({ theme }) => theme.palette.primary.light};
-  }
-`;
-
-const StyledSelectedFrame = styled(StyledFrame).attrs({
-  selected: true,
-})`
-  &:after {
-    pointer-events: none;
+    pointer-events: ${({ selected }) => (selected ? 'none' : 'all')};
   }
 `;
 
 // eslint-disable-next-line
-export default function Frame({ children, dispatch, id, ...props }) {
+export default function Frame({ children, dispatch, id, selected, ...props }) {
   return (
     <StyledFrame
       {...props}
-      onClick={useAutoCallback(() => {
-        dispatch({ type: SELECT_BLOCK, id });
+      selected={selected}
+      onClick={useAutoCallback((event) => {
+        if (!selected) {
+          dispatch({ type: SELECT_BLOCK, id });
+        }
+        event.stopPropagation();
       })}
     >
       {children}
     </StyledFrame>
-  );
-}
-
-// eslint-disable-next-line
-export function SelectedFrame({ dispatch, id, ...props }) {
-  return (
-    <ClickAwayListener
-      onClickAway={useAutoCallback(() => {
-        dispatch({ type: SELECT_BLOCK, id, modifier: 'sub' });
-      })}
-    >
-      <StyledSelectedFrame {...props} />
-    </ClickAwayListener>
   );
 }

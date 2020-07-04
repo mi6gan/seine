@@ -26,7 +26,7 @@ import {
 import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
 
-import Frame, { SelectedFrame } from '../ui/Frame';
+import Frame from '../ui/Frame';
 
 import type { ChartEditorProps as Props } from './types';
 import ChartGroupsDescriptionEditor from './ChartGroupsDescriptionEditor';
@@ -118,7 +118,8 @@ export default function ChartEditor({
   const { id } = chartProps;
 
   return selection.length === 1 && selection[0] === chartProps.id ? (
-    <SelectedFrame
+    <Frame
+      selected
       dispatch={dispatch}
       id={id}
       ref={resizeTargetRef}
@@ -185,7 +186,7 @@ export default function ChartEditor({
           />
         ) : null}
       </ChartSvg>
-    </SelectedFrame>
+    </Frame>
   ) : (
     <Frame as={Chart} dispatch={dispatch} {...chartProps} kind={kind} />
   );
