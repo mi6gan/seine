@@ -1,6 +1,6 @@
 {
   "name": "@seine/contents",
-  "version": "0.3.272",
+  "version": "0.3.273-0",
   "description": "React components for rendering block contents.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -12,8 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/system": "4.9",
-    "@seine/core": "0.3",
-    "@seine/styles": "0.3",
+    "@seine/core": "^0.3.273-0",
+    "@seine/styles": "^0.3.273-0",
     "invert-color": "^2.0.0",
     "ramda": "^0.26.1"
   },

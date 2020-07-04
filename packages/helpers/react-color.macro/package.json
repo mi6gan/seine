@@ -1,6 +1,6 @@
 {
   "name": "react-color.macro",
-  "version": "1.0.187",
+  "version": "1.0.188-0",
   "description": "A macro for babel-plugin-macros that optimizes size of a bundle with react-color named imports.",
   "keywords": [
     "babel-plugin-macros",
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
-    "babel-plugin-tester": "^9.2.0",
-    "@babel/plugin-transform-react-jsx": "^7.10.4"
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "babel-plugin-tester": "^9.2.0"
   }
 }
