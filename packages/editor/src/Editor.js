@@ -28,6 +28,7 @@ import ColumnChartIconButton from './chart/ColumnChartIconButton';
 import PieChartIconButton from './chart/PieChartIconButton';
 import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
+import TableDesign from './table/TableDesign';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -249,6 +250,12 @@ export default function Editor({
           >
             {type === blockTypes.RICH_TEXT ? (
               <RichTextDesign
+                {...block}
+                dispatch={dispatch}
+                selection={selection}
+              />
+            ) : type === blockTypes.TABLE ? (
+              <TableDesign
                 {...block}
                 dispatch={dispatch}
                 selection={selection}
