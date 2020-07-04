@@ -1,0 +1,29 @@
+.buttonWrapper {
+  display: inline-block;
+}
+
+.button {
+  color: #888 !important;
+  font-size: 18px;
+  font-weight: bold;
+  border: 0;
+}
+
+.button svg {
+  fill: #888;
+  vertical-align: middle;
+}
+
+.button:hover,
+.button:focus {
+  color: #444 !important;
+  outline: 0; /* reset for :focus */
+}
+
+.active {
+  color: #444 !important;
+}
+
+.active svg {
+  fill: #444;
+}
