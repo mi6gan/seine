@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { Checkbox, IconButton } from '@material-ui/core';
+import { Box, Checkbox, IconButton } from '@material-ui/core';
 import type { RichTextBody, RichTextFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY } from '@seine/core';
 import { defaultTableBody, defaultTableCell } from '@seine/content';
@@ -41,9 +41,11 @@ export default function TableDesign({ body, dispatch, id, editor }: Props) {
   const isLeft = cell && cell.align === 'left';
   const isCenter = cell && cell.align === 'center';
   const isRight = cell && cell.align === 'right';
+
   return (
     <>
       <SidebarHeading>Table</SidebarHeading>
+
       <SidebarSection>
         <ActionButton
           fullWidth
@@ -122,46 +124,52 @@ export default function TableDesign({ body, dispatch, id, editor }: Props) {
         >
           Remove row
         </ActionButton>
-        <Checkbox
-          disabled={columnIndex < 0}
-          onChange={useAutoCallback(() => {
-            const { width = null, ...headerCell } = header[columnIndex];
-            dispatch({
-              type: UPDATE_BLOCK_BODY,
-              body: {
-                header: [
-                  ...header.slice(0, columnIndex),
-                  width === null
-                    ? { ...headerCell, width: parseInt(100 / header.length) }
-                    : headerCell,
-                  ...header.slice(columnIndex + 1),
-                ],
-              },
-            });
-          })}
-          checked={columnIndex > -1 && 'width' in header[columnIndex]}
-        />
-        <Input
-          disabled={columnIndex < 0 || !('width' in header[columnIndex])}
-          placeholder={'width (%)'}
-          type={'number'}
-          min={0}
-          max={100}
-          width={'100%'}
-          onChange={useAutoCallback((event) =>
-            dispatch({
-              type: UPDATE_BLOCK_BODY,
-              body: {
-                header: [
-                  ...header.slice(0, columnIndex),
-                  { ...header[columnIndex], width: +event.currentTarget.value },
-                  ...header.slice(columnIndex + 1),
-                ],
-              },
-            })
-          )}
-          value={columnIndex < 0 ? '' : header[columnIndex].width}
-        />
+
+        <Box width={'100%'} display={'flex'}>
+          <Checkbox
+            disabled={columnIndex < 0}
+            onChange={useAutoCallback(() => {
+              const { width = null, ...headerCell } = header[columnIndex];
+              dispatch({
+                type: UPDATE_BLOCK_BODY,
+                body: {
+                  header: [
+                    ...header.slice(0, columnIndex),
+                    width === null
+                      ? { ...headerCell, width: parseInt(100 / header.length) }
+                      : headerCell,
+                    ...header.slice(columnIndex + 1),
+                  ],
+                },
+              });
+            })}
+            checked={columnIndex > -1 && 'width' in header[columnIndex]}
+          />
+
+          <Input
+            disabled={columnIndex < 0 || !('width' in header[columnIndex])}
+            placeholder={'width (%)'}
+            type={'number'}
+            min={0}
+            max={100}
+            onChange={useAutoCallback((event) =>
+              dispatch({
+                type: UPDATE_BLOCK_BODY,
+                body: {
+                  header: [
+                    ...header.slice(0, columnIndex),
+                    {
+                      ...header[columnIndex],
+                      width: +event.currentTarget.value,
+                    },
+                    ...header.slice(columnIndex + 1),
+                  ],
+                },
+              })
+            )}
+            value={columnIndex < 0 ? '' : header[columnIndex].width}
+          />
+        </Box>
         {rowIndex > -1 && columnIndex > -1 ? (
           <>
             <TableCellButton

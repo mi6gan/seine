@@ -41,10 +41,14 @@ function Textarea({ value, ...props }) {
   const [box, setBox] = React.useState(null);
   return (
     <>
+      <StyledTextarea
+        {...props}
+        value={value}
+        width={Math.max(20, box ? box.offsetWidth : 0)}
+      />
       <Box visibility={'hidden'} ref={setBox} position={'absolute'}>
         {value}
       </Box>
-      <StyledTextarea {...props} value={value} width={box && box.offsetWidth} />
     </>
   );
 }
