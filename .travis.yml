@@ -24,7 +24,8 @@ deploy:
   skip_cleanup: true
   script: yarn prerelease
   on:
-    branch: /^next-.*$/
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(next-.*)$
 - provider: script
   skip_cleanup: true
   script: yarn deploy
