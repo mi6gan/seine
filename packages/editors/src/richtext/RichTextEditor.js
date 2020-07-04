@@ -3,17 +3,17 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
-import { BlockActions } from '@seine/ui';
 import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
-import { RichTextStyle } from '@seine/contents';
+import { Item, RichTextStyle } from '@seine/contents';
+
+import Frame, { SelectedFrame } from '../ui/Frame';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
   dispatch: Function,
 };
 
-const Container = styled.div`
-  position: relative;
+const Container = styled(Item)`
   height: 100%;
   cursor: text;
 
@@ -44,7 +44,6 @@ export default function RichTextEditor({
   blocks,
   textAlignment,
   verticalAlignment,
-  addButtonRenderMap,
   editor: { state = defaultDraftEditor.state } = defaultDraftEditor,
 }: Props) {
   const readOnly = selection.length !== 1 || selection[0] !== id;
@@ -75,10 +74,17 @@ export default function RichTextEditor({
     }
   }, [dispatch, editorState, readOnly]);
 
+  const RichTextFrame = readOnly ? Frame : SelectedFrame;
+
   return (
     <>
       <RichTextStyle />
-      <Container verticalAlignment={verticalAlignment}>
+      <RichTextFrame
+        as={Container}
+        id={id}
+        dispatch={dispatch}
+        verticalAlignment={verticalAlignment}
+      >
         <Editor
           editorKey={id}
           textAlignment={textAlignment}
@@ -94,14 +100,7 @@ export default function RichTextEditor({
           )}
           readOnly={readOnly}
         />
-        <BlockActions
-          addButtonRenderMap={addButtonRenderMap}
-          dispatch={dispatch}
-          extended
-          id={id}
-          selection={selection}
-        />
-      </Container>
+      </RichTextFrame>
     </>
   );
 }

@@ -1,9 +1,12 @@
-const pluginTester = require('babel-plugin-tester');
+const pluginTester = require('babel-plugin-tester').default;
 const plugin = require('babel-plugin-macros');
 
 pluginTester({
   plugin,
-  babelOptions: { filename: __filename },
+  babelOptions: {
+    plugins: [require('@babel/plugin-transform-react-jsx').default],
+    filename: __filename,
+  },
   snapshot: true,
   tests: [
     `

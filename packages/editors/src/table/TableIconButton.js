@@ -10,7 +10,7 @@ import ActionIconButton from '../ui/ActionIconButton';
 // eslint-disable-next-line
 export default function TableIconButton({
   type = null,
-  block,
+  block = null,
   parentId,
   dispatch,
 }) {

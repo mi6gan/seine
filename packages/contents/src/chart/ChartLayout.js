@@ -3,6 +3,8 @@ import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
 import type { TextAlignment } from '@seine/core';
 
+import { Item } from '../layout';
+
 import ChartLayoutTitle from './ChartLayoutTitle';
 
 const ChartLayoutContent = styled.div`
@@ -16,8 +18,7 @@ const ChartLayoutDescription = styled.div`
   align-items: start;
 `;
 
-const ChartLayoutContainer = styled.div`
-  width: 100%;
+export const ChartLayoutContainer = styled(Item)`
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;

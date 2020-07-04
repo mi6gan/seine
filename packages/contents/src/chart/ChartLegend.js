@@ -11,15 +11,19 @@ const LegendBox = styled.div`
 `;
 
 const LegendLabel = styled.div`
-  white-space: pre-wrap;
-  word-break: break-all;
+  white-space: nowrap;
   padding: 0 0.75rem;
 `;
 
 const LegendItem = styled.div`
-  display: flex;
+  display: inline-flex;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   align-items: center;
-  ${({ minWidth }) => minWidth && { minWidth }};
+  ${({ minWidth, maxWidth }) => ({
+    minWidth,
+    maxWidth,
+  })};
 `;
 
 export type Props = {
@@ -36,9 +40,9 @@ export default function ChartLegend({
   elements,
   palette = defaultChartPalette,
 }: Props) {
-  const minItemWidth = `${100 / elements.length}%`;
+  const minItemWidth = `${parseInt(100 / elements.length)}%`;
   return elements.map(({ title }, index) => (
-    <LegendItem key={index} minWidth={minItemWidth}>
+    <LegendItem key={index} minWidth={minItemWidth} maxWidth={'25%'}>
       <LegendBox color={palette[index % palette.length]} />
       <LegendLabel>{title}</LegendLabel>
     </LegendItem>

@@ -10,7 +10,7 @@ import {
   UPDATE_BLOCK_EDITOR,
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
-import { BlockActions, InlineInput } from '@seine/ui';
+import { InlineInput } from '@seine/ui';
 import {
   BarChartContent,
   Chart,
@@ -25,6 +25,8 @@ import {
 } from '@seine/contents';
 import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
+
+import Frame, { SelectedFrame } from '../ui/Frame';
 
 import type { ChartEditorProps as Props } from './types';
 import ChartGroupsDescriptionEditor from './ChartGroupsDescriptionEditor';
@@ -99,16 +101,6 @@ export default function ChartEditor({
     })
   );
 
-  const blockActions = (
-    <BlockActions
-      addButtonRenderMap={addButtonRenderMap}
-      dispatch={dispatch}
-      editor={editor}
-      id={chartProps.id}
-      selection={selection}
-    />
-  );
-
   const metaProps = { editor, dispatch, dispatchElements };
 
   const deselectClickHandler = useAutoCallback(
@@ -123,10 +115,14 @@ export default function ChartEditor({
   );
 
   const svgProps = useChartSvgProps(kind, chartProps);
+  const { id } = chartProps;
 
   return selection.length === 1 && selection[0] === chartProps.id ? (
-    <ChartLayout
+    <SelectedFrame
+      dispatch={dispatch}
+      id={id}
       ref={resizeTargetRef}
+      as={ChartLayout}
       title={
         <InlineInput
           onChange={handleTitleChange}
@@ -189,11 +185,8 @@ export default function ChartEditor({
           />
         ) : null}
       </ChartSvg>
-      {blockActions}
-    </ChartLayout>
+    </SelectedFrame>
   ) : (
-    <Chart {...chartProps} kind={kind}>
-      {blockActions}
-    </Chart>
+    <Frame as={Chart} dispatch={dispatch} {...chartProps} kind={kind} />
   );
 }

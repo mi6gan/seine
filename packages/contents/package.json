@@ -11,6 +11,7 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/system": "4.9",
     "@seine/core": "0.3",
     "@seine/styles": "0.3",
     "invert-color": "^2.0.0",
