@@ -1,7 +1,7 @@
 const { basename, dirname, resolve, join } = require('path');
 
 const alias = require('@rollup/plugin-alias');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const nodeResolve = require('@rollup/plugin-node-resolve');
 const postcss = require('rollup-plugin-postcss');
@@ -93,7 +93,7 @@ function rollupConfig(
       ...(format === 'esm' || format === 'cjs' ? [flowEntry()] : []),
 
       babel({
-        runtimeHelpers: true,
+        babelHelpers: 'runtime',
         rootMode: 'upward',
       }),
       nodeResolve({ browser: true }),

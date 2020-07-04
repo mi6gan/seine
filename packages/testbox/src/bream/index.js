@@ -1,5 +1,5 @@
 export * from '@seine/core';
-export * from '@seine/contents';
+export * from '@seine/content';
 
 export { default as BreamThemeProvider } from './BreamThemeProvider';
 export { default as breamTheme } from './breamTheme';

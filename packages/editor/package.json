@@ -1,7 +1,7 @@
 {
-  "name": "@seine/testbox",
-  "version": "0.3.273-0",
-  "description": "UI, style and content components packed for testbox.",
+  "name": "@seine/editor",
+  "version": "0.3.271-0",
+  "description": "React components for editing block contents.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "files": [
@@ -13,12 +13,16 @@
   "dependencies": {
     "@seine/content": "^0.3.273-0",
     "@seine/core": "^0.3.273-0",
-    "@seine/styles": "^0.3.273-0"
-  },
-  "devDependencies": {
-    "babel-plugin-inline-import-data-uri": "^1.0.1"
+    "@seine/styles": "^0.3.273-0",
+    "@seine/ui": "^0.3.273-0",
+    "draft-js-buttons": "^2.0.2",
+    "react-color": "^2.17.3",
+    "svg-patterns": "^1.0.0",
+    "virtual-dom-stringify": "^3.0.1"
   },
   "peerDependencies": {
+    "@material-ui/core": "4.9",
+    "@material-ui/icons": "4.9",
     "draft-js": "^0.11.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
