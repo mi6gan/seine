@@ -1,6 +1,6 @@
 {
   "name": "@seine/editor",
-  "version": "0.3.271-2",
+  "version": "0.4.0-2",
   "description": "React components for editing block contents.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -11,10 +11,10 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/content": "^0.4.0-1",
-    "@seine/core": "^0.4.0-1",
-    "@seine/styles": "^0.4.0-1",
-    "@seine/ui": "^0.4.0-1",
+    "@seine/content": "^0.4.0-2",
+    "@seine/core": "^0.4.0-2",
+    "@seine/styles": "^0.4.0-2",
+    "@seine/ui": "^0.4.0-2",
     "draft-js-buttons": "^2.0.2",
     "react-color": "^2.17.3",
     "svg-patterns": "^1.0.0",
