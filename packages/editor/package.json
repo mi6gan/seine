@@ -16,7 +16,7 @@
     "@seine/styles": "^0.4.0-3",
     "@seine/ui": "^0.4.0-3",
     "draft-js-buttons": "^2.0.2",
-    "react-color.macro": "^1.0.187",
+    "react-color.macro": "^1.0.186",
     "svg-patterns": "^1.0.0",
     "virtual-dom-stringify": "^3.0.1"
   },
