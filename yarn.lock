@@ -10067,6 +10067,15 @@ react-clientside-effect@^1.2.2:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
+react-color.macro@^1.0.187:
+  version "1.0.187"
+  resolved "https://registry.yarnpkg.com/react-color.macro/-/react-color.macro-1.0.187.tgz#02fead1c4ec233488c7af2a983e3093db1a8880e"
+  integrity sha512-k7PgR1uxYYtFhl5T0P8cbg81P2MKAYlZKKfDjWwuTSYJwt9Pe3Ag8lQaDE41oqTYXkFb/9xyFK4bwl8flPAjWw==
+  dependencies:
+    "@babel/helper-module-imports" "^7.0.0"
+    babel-plugin-macros "^2.6.1"
+    react-color "^2.17.3"
+
 react-color@^2.17.3:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/react-color/-/react-color-2.18.1.tgz#2cda8cc8e06a9e2c52ad391a30ddad31972472f4"
