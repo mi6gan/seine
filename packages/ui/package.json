@@ -1,6 +1,6 @@
 {
   "name": "@seine/ui",
-  "version": "0.3.273-2",
+  "version": "0.4.0-1",
   "description": "Seine UI library.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -11,8 +11,8 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/core": "^0.3.273-0",
-    "@seine/styles": "^0.3.273-0"
+    "@seine/core": "^0.4.0-1",
+    "@seine/styles": "^0.4.0-1"
   },
   "peerDependencies": {
     "@material-ui/core": "4.9",
