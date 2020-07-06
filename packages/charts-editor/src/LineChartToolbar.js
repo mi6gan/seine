@@ -189,6 +189,13 @@ export default function LineChartToolbar({
         id={id}
         name={'yAxis'}
       />
+      <ChartSwitchFormatInput
+        dispatch={dispatch}
+        format={format}
+        label={'show legend'}
+        id={id}
+        name={'legend'}
+      />
     </Toolbar>
   );
 }
