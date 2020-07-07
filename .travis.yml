@@ -9,6 +9,7 @@ before_install:
 before_script:
 - yarn policies set-version berry
 - yarn global add npm-run-all
+- yarn -v
 before_deploy:
 - echo -e "machine github.com\n  login $CI_USER_LOGIN\n  password $CI_USER_PASSWORD"
   > ~/.netrc
