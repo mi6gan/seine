@@ -20,17 +20,17 @@ deploy:
   skip_cleanup: true
   script: bash -c '
     if yarn version check;
-    then yarn npm publish;
+    then yarn npm publish --tag "$TRAVIS_BRANCH";
     else yarn release;
     fi'
   on:
     all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^(master|next)$
+    condition: $TRAVIS_BRANCH =~ ^(latest|next)$
 - provider: script
   skip_cleanup: true
   script: yarn deploy
   on:
-    branch: latest
+    branch: master
 - provider: script
   skip_cleanup: true
   script: ssh $DEPLOY_LOGIN@$DEPLOY_HOST 'docker-compose pull --parallel && docker-compose
