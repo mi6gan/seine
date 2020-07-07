@@ -9,8 +9,8 @@ before_install:
 - yarn policies set-version berry
 - yarn config set nodeLinker node_modules
 - yarn config set npmPublishAccess public
-- yarn plugin install workspace-tools
-- yarn plugin install version
+- yarn plugin import workspace-tools
+- yarn plugin import version
 - yarn -v
 install: yarn
 before_deploy:
