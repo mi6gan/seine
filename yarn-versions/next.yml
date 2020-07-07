@@ -1,0 +1,8 @@
+releases:
+  "@seine/content": prerelease
+  "@seine/core": prerelease
+  "@seine/editor": prerelease
+  "@seine/styles": prerelease
+  "@seine/testbox": prerelease
+  "@seine/ui": prerelease
+  seine: prerelease
