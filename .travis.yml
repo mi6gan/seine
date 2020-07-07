@@ -7,6 +7,10 @@ cache:
 before_install:
 - openssl aes-256-cbc -K $encrypted_930c6f160693_key -iv $encrypted_930c6f160693_iv -in deploy.enc -d | tar -xz -C ~
 - yarn policies set-version berry
+- yarn config set nodeLinker node_modules
+- yarn config set npmPublishAccess public
+- yarn plugin install workspace-tools
+- yarn plugin install version
 - yarn -v
 install: yarn
 before_deploy:
@@ -15,6 +19,7 @@ before_deploy:
 - echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\n @$NPM_LOGIN:registry=https://registry.npmjs.org/"
   > ~/.npmrc
 - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+- yarn config set changesetBaseRefs --json '["$TRAVIS_BRANCH"]'
 deploy:
 - provider: script
   skip_cleanup: true
