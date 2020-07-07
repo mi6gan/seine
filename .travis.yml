@@ -5,6 +5,8 @@ cache: yarn
 before_install:
 - openssl aes-256-cbc -K $encrypted_930c6f160693_key -iv $encrypted_930c6f160693_iv -in deploy.enc -d | tar -xz -C ~
 - yarn policies set-version berry
+- yarn plugin import workspace-tools
+- yarn plugin import version
 - yarn -v
 before_deploy:
 - yarn global add npm-run-all
