@@ -19,7 +19,7 @@ before_deploy:
 - echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\n @$NPM_LOGIN:registry=https://registry.npmjs.org/"
   > ~/.npmrc
 - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-- yarn config set changesetBaseRefs --json '["$TRAVIS_BRANCH"]'
+- yarn config set changesetBaseRefs --json \"["$TRAVIS_BRANCH"]\"
 deploy:
 - provider: script
   skip_cleanup: true
