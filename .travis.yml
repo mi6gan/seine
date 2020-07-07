@@ -16,24 +16,19 @@ install: yarn
 before_deploy:
 - echo -e "machine github.com\n  login $CI_USER_LOGIN\n  password $CI_USER_PASSWORD"
   > ~/.netrc
-- echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\n @$NPM_LOGIN:registry=https://registry.npmjs.org/"
-  > ~/.npmrc
 - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
 - yarn config set changesetBaseRefs --json '["'$TRAVIS_BRANCH'"]'
+- yarn config set npmAuthToken "$NPM_TOKEN"
 deploy:
 - provider: script
   skip_cleanup: true
-  script: bash -c "
-    if yarn version check;
-    then yarn npm publish --tag $TRAVIS_BRANCH;
-    else yarn release;
-    fi"
+  script: bash scripts/publish.sh
   on:
     all_branches: true
     condition: $TRAVIS_BRANCH =~ ^(latest|next)$
 - provider: script
   skip_cleanup: true
-  script: yarn deploy
+  script: bash scripts/deploy.sh
   on:
     branch: master
 - provider: script
