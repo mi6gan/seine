@@ -11,8 +11,8 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/core": "^0.4.0-3",
-    "@seine/styles": "^0.4.0-3"
+    "@seine/core": "workspace:*",
+    "@seine/styles": "workspace:*"
   },
   "peerDependencies": {
     "@material-ui/core": "4.9",
