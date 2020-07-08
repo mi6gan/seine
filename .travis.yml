@@ -22,7 +22,7 @@ before_deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: bash scripts/publish.sh
+  script: bash scripts/version.sh
   on:
     all_branches: true
     condition: $TRAVIS_BRANCH =~ ^(latest|next)$
@@ -31,12 +31,6 @@ deploy:
   script: npm publish --tag "$TRAVIS_BRANCH"
   on:
     tags: true
-    condition: $TRAVIS_BRANCH =~ ^(latest|next)$
-- provider: script
-  skip_cleanup: true
-  script: bash scripts/deploy.sh
-  on:
-    all_branches: true
     condition: $TRAVIS_BRANCH =~ ^(latest|next)$
 - provider: script
   skip_cleanup: true
