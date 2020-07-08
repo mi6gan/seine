@@ -5,10 +5,10 @@ ADD . /app
 WORKDIR /app
 
 # Use yarn 2.0
-yarn set version berry
+RUN yarn set version berry
 
 # Force node linker to legacy mode
-yarn config set nodeLinker node-modules
+RUN yarn config set nodeLinker node-modules
 
 # Build app for production
 RUN yarn
