@@ -97,7 +97,8 @@
     "rollup-plugin-visualizer": "^2.5.4"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "workspaces": [
     "packages/*"
