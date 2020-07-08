@@ -13,6 +13,9 @@ RUN yarn config set nodeLinker node-modules
 # Install workspaces tools
 RUN yarn plugin import workspace-tools
 
+# Install version plugin
+RUN yarn plugin import version
+
 # Install dependencies
 RUN yarn
 
