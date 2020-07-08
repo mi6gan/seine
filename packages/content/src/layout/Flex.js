@@ -21,7 +21,7 @@ export const defaultFlexSpacing = 8;
  * @param {Props} props
  * @returns {React.Node}
  */
-export default styled.div.attrs(
+const Flex = styled.div.attrs(
   ({
     direction = defaultFlexDirection,
     wrap = defaultFlexWrap,
@@ -63,3 +63,5 @@ export default styled.div.attrs(
     ${({ spacing }) => ({ padding: spacing / 2 })}
   }
 `;
+
+export default Flex;
