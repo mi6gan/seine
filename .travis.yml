@@ -29,7 +29,7 @@ deploy:
     condition: $TRAVIS_BRANCH =~ ^(latest|next)$
 - provider: script
   skip_cleanup: true
-  script: npm publish --tag "$TRAVIS_BRANCH"
+  script: yarn npm publish --tag "$TRAVIS_BRANCH"
   on:
     tags: true
 - provider: script
