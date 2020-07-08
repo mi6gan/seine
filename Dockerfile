@@ -19,9 +19,6 @@ RUN yarn
 # Build app for production
 RUN yarn build
 
-# Clean packages cache dirs
-RUN rm -rf /app/.yarn/cache
-
 # Expose public port which is 5000 by default in zeit/serve
 EXPOSE 5000
 
