@@ -4,14 +4,17 @@ FROM node:12-alpine
 ADD . /app
 WORKDIR /app
 
-# Set packages cache dirs
-RUN yarn config set cache-folder /app/.yarn
+# Use yarn 2.0
+yarn set version berry
+
+# Force node linker to legacy mode
+yarn config set nodeLinker node-modules
 
 # Build app for production
 RUN yarn --prod --frozen-lockfile
 
 # Clean packages cache dirs
-RUN rm -rf /app/.yarn
+RUN rm -rf /app/.yarn/cache
 
 # Expose public port which is 5000 by default in zeit/serve
 EXPOSE 5000
