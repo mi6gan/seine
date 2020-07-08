@@ -10,8 +10,14 @@ RUN yarn set version berry
 # Force node linker to legacy mode
 RUN yarn config set nodeLinker node-modules
 
-# Build app for production
+# Install workspaces tools
+RUN yarn plugin import workspace-tools
+
+# Install dependencies
 RUN yarn
+
+# Build app for production
+RUN yarn build
 
 # Clean packages cache dirs
 RUN rm -rf /app/.yarn/cache
