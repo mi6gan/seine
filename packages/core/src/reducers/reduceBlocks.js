@@ -85,6 +85,7 @@ export const UPDATE_BLOCK_FORMAT = '@seine/core/updateBlockFormat';
 export type UpdateBlockFormatAction = {
   type: typeof UPDATE_BLOCK_FORMAT,
   format: BlockFormat,
+  id?: BlockId,
 };
 
 //
@@ -285,7 +286,7 @@ export function reduceBlocks(
         };
       }
 
-      if (state.selection.length > 1) {
+      if (!('id' in action) && state.selection.length > 1) {
         return {
           ...state,
           error: 'There is more than one block in selection.',

@@ -11,6 +11,7 @@ import type { Block, BlockEditor } from '@seine/core';
 import { ChartEditor } from './chart';
 import { RichTextEditor } from './richtext';
 import { TableEditor } from './table';
+import FlexEditor from './layout/FlexEditor';
 
 export const blockRenderMap = {
   ...defaultBlockRenderMap,
@@ -28,6 +29,7 @@ export const blockRenderMap = {
     ...props
   }: BlockEditor & Block) => <Page {...props} />,
   [blockTypes.TABLE]: TableEditor,
+  [blockTypes.FLEX]: FlexEditor,
 };
 
 export default blockRenderMap;

@@ -2,7 +2,7 @@
 import styled from 'styled-components/macro';
 import type { ItemFormat } from '@seine/core';
 
-const Item = styled.div.attrs(({ layout }: ItemFormat) => ({
+const Item = styled.div.attrs(({ layout = 'flex' }: ItemFormat) => ({
   layout,
 }))`
   box-sizing: border-box;
