@@ -9,7 +9,6 @@ then
   yarn version apply --all
   VERSION=$(node -p -e "require('./package.json').version")
   git commit -am "Release $VERSION"
-  git push -f origin HEAD:"$TRAVIS_BRANCH"
   git tag "$VERSION"
   git push --tags -f origin HEAD:"$TRAVIS_BRANCH"
 else
