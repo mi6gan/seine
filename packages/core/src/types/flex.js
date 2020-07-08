@@ -22,4 +22,13 @@ export type FlexFormat = {
     | 'space-around',
 };
 
+export const defaultFlexFormat = {
+  direction: 'row',
+  wrap: 'nowrap',
+  spacing: 8,
+  justify: 'normal',
+  alignItems: 'normal',
+  alignContent: 'normal',
+};
+
 export const FLEX = 'flex';

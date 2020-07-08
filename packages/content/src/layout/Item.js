@@ -1,29 +1,31 @@
 // @flow
 import styled from 'styled-components/macro';
 import type { ItemFormat } from '@seine/core';
+import { defaultItemFormat } from '@seine/core';
 
-const Item = styled.div.attrs(({ layout = 'flex' }: ItemFormat) => ({
-  layout,
+const Item = styled.div.attrs((format: ItemFormat) => ({
+  ...defaultItemFormat,
+  ...format,
 }))`
   box-sizing: border-box;
   position: relative;
 
-  ${({ maxWidth = 'none', minWidth = 0 }) => ({
+  ${({ maxWidth, minWidth }) => ({
     minWidth,
     maxWidth,
   })}
 
-  ${({ layout, alignSelf = 'start' }) =>
+  ${({ layout, alignSelf }) =>
     (layout === 'flex' || layout === 'grid') && { alignSelf }}}
 
-  ${({ layout, flexGrow = 0, flexBasis = 'auto', flexShrink }) =>
+  ${({ layout, flexGrow, flexBasis, flexShrink }) =>
     layout === 'flex' && {
       flexGrow,
       flexBasis,
       flexShrink,
     }}
 
-  ${({ layout, gridRow = '', gridColumn = '' }) =>
+  ${({ layout, gridRow, gridColumn }) =>
     layout === 'grid' && {
       gridRow,
       gridColumn,
