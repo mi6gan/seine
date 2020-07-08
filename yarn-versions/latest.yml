@@ -5,4 +5,3 @@ releases:
   "@seine/styles": patch
   "@seine/testbox": patch
   "@seine/ui": patch
-  "seine": patch
