@@ -24,14 +24,8 @@ deploy:
   skip_cleanup: true
   script: bash scripts/version.sh
   on:
-    tags: false
     all_branches: true
     condition: $TRAVIS_BRANCH =~ ^(latest|next)$
-- provider: script
-  skip_cleanup: true
-  script: yarn npm publish --tag "$TRAVIS_BRANCH"
-  on:
-    tags: true
 - provider: script
   skip_cleanup: true
   script: bash scripts/deploy.sh
