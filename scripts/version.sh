@@ -6,6 +6,6 @@ then
   yarn version apply --all
   VERSION=$(node -p -e "require('./package.json').version")
   git commit -am "Release $VERSION"
-  yarn npm publish --tag "$TRAVIS_BRANCH"
+  yarn workspaces foreach npm publish --tag "$TRAVIS_BRANCH"
   git push -f origin HEAD:"$TRAVIS_BRANCH"
 fi
