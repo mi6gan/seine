@@ -11,7 +11,7 @@ yarn set version berry
 yarn config set nodeLinker node-modules
 
 # Build app for production
-RUN yarn --prod --frozen-lockfile
+RUN yarn
 
 # Clean packages cache dirs
 RUN rm -rf /app/.yarn/cache
