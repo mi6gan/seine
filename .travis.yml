@@ -22,21 +22,10 @@ before_deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: bash scripts/version.sh
+  script: bash scripts/deploy.sh
   on:
     all_branches: true
     condition: $TRAVIS_BRANCH =~ ^(latest|next)$
-- provider: script
-  skip_cleanup: true
-  script: bash scripts/deploy.sh
-  on:
-    branch: master
-- provider: script
-  skip_cleanup: true
-  script: ssh $DEPLOY_LOGIN@$DEPLOY_HOST 'docker-compose pull --parallel && docker-compose
-    up -d'
-  on:
-    branch: latest
 env:
   global:
   - secure: eY6oIHY5UJk9VXrd2KMUWWe11LUdFcm0JDJ0eO9kNam63z93ml3vSIDpT3OlmZFTkgIq/shF59/3ELRlfNX0KaVXyhgYrIowO1rUGGFnR39O2NPMJpK0bu8PQmNC1jxo4pfC2NW5uC4RT+T0VEkyFkS3FQH38rHsipUIxW4fRXpud1jyKYdB8joDnLsM2zOJcOtebcIuMgIHUSLwsreR0m74XxMLD0LgOaH88ED7kGL/Fl7Qh+GrMD7XRjat7GYk9gVk50+hLWSRF8WdKecysplWbwsa2xUBCSrz+xCdQQEABEVs9Ipi+cVaLOP3iEdqCFt//vTUDkOccX4UTeCJbzRj85tRQ8nKBoaksz1310y/QocntVEFwpuvwKJucaMj3DMaH/HYcKvvIicIrWf1YY0Y1Rny1lgWPYXzBFW1IxosXnGNOP1lG6idCXDME00kEp4R+UtQH4I9cE4IlhbSlO9cRAOd/58ZRY/ZK1fR20S1KnziCD6kkTfmmnBPbpBSjfqE3sjUowHOhzXYk558TOI7KJTAA6kXcSW/1aWzysl8VJ8FQiP2N1mr5YzypY2gUeIL4WeU53vE1fAtyJC2faYJiON3G5NIQTG6U9mJrUSeb9gNYkIh2l/94ouUJw8kFtOTSvVU8aNuiyFK1k5sj+RZKKC+YTojJfVPqXRdoCc=
