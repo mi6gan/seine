@@ -80,9 +80,6 @@ export type AddButtonProps = $Rest<
 };
 
 export type BlockEditor = {
-  addButtonRenderMap: {
-    [BlockType]: React$Component<AddButtonProps>,
-  },
   dispatch: (BlocksAction) => any,
   editor?: { [string]: any },
   selection: BlockId[],

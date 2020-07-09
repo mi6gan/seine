@@ -24,6 +24,7 @@ const Input = styled.input`
     line-height: ${lineHeight};
     ${({ color }) => color && { color }};
     ${({ width }) => width && { width }};
+    ${({ minWidth }) => minWidth && { minWidth }};
     ${({ height }) => height && { height }};
     ${({ textAlign }) => textAlign && { textAlign }};
   `}

@@ -2,7 +2,13 @@
 import { equals } from 'ramda';
 
 import { createBlock } from '../utils';
-import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
+import type {
+  Block,
+  BlockBody,
+  BlockFormat,
+  BlockId,
+  LayoutType,
+} from '../types';
 import { blockTypes } from '../types';
 
 opaque type BlockExtension = {
@@ -88,6 +94,13 @@ export type UpdateBlockFormatAction = {
   id?: BlockId,
 };
 
+export const UPDATE_BLOCK_LAYOUT = '@seine/core/updateBlockLayout';
+export type UpdateBlockLayout = {
+  type: typeof UPDATE_BLOCK_LAYOUT,
+  layout: LayoutType,
+  id?: BlockId,
+};
+
 //
 // Memoize editor's inner state.
 //
@@ -114,7 +127,8 @@ export type BlocksAction =
   | SelectBlockAction
   | UpdateBlockDataAction
   | UpdateBlockFormatAction
-  | UpdateBlockEditorAction;
+  | UpdateBlockEditorAction
+  | UpdateBlockLayout;
 
 /**
  * @description Reduce Content editor actions
@@ -273,7 +287,8 @@ export function reduceBlocks(
 
     case UPDATE_BLOCK_BODY:
     case UPDATE_BLOCK_EDITOR:
-    case UPDATE_BLOCK_FORMAT: {
+    case UPDATE_BLOCK_FORMAT:
+    case UPDATE_BLOCK_LAYOUT: {
       const index = state.blocks.findIndex(
         ({ id }) =>
           ('id' in action && action.id === id) || state.selection.includes(id)
@@ -290,6 +305,16 @@ export function reduceBlocks(
         return {
           ...state,
           error: 'There is more than one block in selection.',
+        };
+      }
+
+      if (
+        action.type === UPDATE_BLOCK_LAYOUT &&
+        !['none', 'flex', 'grid'].includes(action.layout)
+      ) {
+        return {
+          ...state,
+          error: 'Unrecognized layout type',
         };
       }
 
@@ -311,9 +336,20 @@ export function reduceBlocks(
                 ? { body: { ...block.body, ...action.body } }
                 : action.type === UPDATE_BLOCK_EDITOR
                 ? { editor: { ...block.editor, ...action.editor } }
+                : action.type === UPDATE_BLOCK_LAYOUT
+                ? { type: action.layout }
                 : { format: { ...block.format, ...action.format } }),
             },
-            ...state.blocks.slice(index + 1),
+            ...(action.type === UPDATE_BLOCK_LAYOUT
+              ? state.blocks.slice(index + 1).map((block) =>
+                  block['parent_id'] === action.id
+                    ? {
+                        ...block,
+                        format: { ...block.format, layout: action.type },
+                      }
+                    : block
+                )
+              : state.blocks.slice(index + 1)),
           ],
         };
       }

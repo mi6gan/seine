@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import type { FlexBody, FlexFormat } from '@seine/core';
+import { defaultFlexFormat } from '@seine/core';
 import styled from 'styled-components/macro';
 
 import Item from './Item';
@@ -9,13 +10,6 @@ export type Props = (FlexBody & FlexFormat) & {
   children: React.ChildrenArray<React.Node>,
 };
 
-export const defaultFlexDirection = 'row';
-export const defaultFlexWrap = 'nowrap';
-export const defaultFlexJustify = 'normal';
-export const defaultFlexAlignItems = 'normal';
-export const defaultFlexAlignContent = 'normal';
-export const defaultFlexSpacing = 8;
-
 /**
  * @description Flex content layout container.
  * @param {Props} props
@@ -23,13 +17,13 @@ export const defaultFlexSpacing = 8;
  */
 const Flex = styled.div.attrs(
   ({
-    direction = defaultFlexDirection,
-    wrap = defaultFlexWrap,
-    justify = defaultFlexJustify,
-    alignItems = defaultFlexAlignItems,
-    alignContent = defaultFlexAlignContent,
-    spacing = defaultFlexSpacing,
-  }) => ({
+    direction = defaultFlexFormat.direction,
+    wrap = defaultFlexFormat.wrap,
+    justify = defaultFlexFormat.justify,
+    alignItems = defaultFlexFormat.alignItems,
+    alignContent = defaultFlexFormat.alignContent,
+    spacing = defaultFlexFormat.spacing,
+  }: FlexFormat) => ({
     direction,
     wrap,
     justify,

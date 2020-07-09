@@ -1,21 +1,21 @@
 // @flow
 import * as React from 'react';
-import { Flex } from '@seine/content';
+import { Grid } from '@seine/content';
 import { useAutoMemo } from 'hooks.macro';
 
 import Frame from '../ui/Frame';
 
 /**
- * @description Flex layout editor.
+ * @description Grid layout editor.
  * @param {any} props
  * @returns {React.Node}
  */
-export default function FlexEditor({
+export default function GridEditor({
   id,
   dispatch,
   selection,
   children,
-  ...flexProps
+  ...gridProps
 }) {
   const blockIds = useAutoMemo([
     id,
@@ -26,8 +26,8 @@ export default function FlexEditor({
   const selected = useAutoMemo(blockIds.some((id) => selection.includes(id)));
   return (
     <Frame
-      as={Flex}
-      {...flexProps}
+      as={Grid}
+      {...gridProps}
       {...(selected && { borderStyle: 'dashed' })}
       dispatch={dispatch}
       id={id}

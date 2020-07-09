@@ -29,7 +29,7 @@ import PieChartIconButton from './chart/PieChartIconButton';
 import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
-import FlexDesign from './layout/FlexDesign';
+import LayoutDesign from './layout/LayoutDesign';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -136,8 +136,10 @@ export default function Editor({
     }
   });
 
-  const flexSelection = blocks.find(
-    ({ id, type }) => selection.includes(id) && type === blockTypes.FLEX
+  const layoutSelection = blocks.find(
+    ({ id, type }) =>
+      selection.includes(id) &&
+      (type === blockTypes.FLEX || type === blockTypes.GRID)
   );
 
   return (
@@ -253,9 +255,9 @@ export default function Editor({
               event.stopPropagation();
             })}
           >
-            {!!flexSelection && (
-              <FlexDesign
-                {...flexSelection}
+            {!!layoutSelection && (
+              <LayoutDesign
+                {...layoutSelection}
                 dispatch={dispatch}
                 selection={selection}
               />
