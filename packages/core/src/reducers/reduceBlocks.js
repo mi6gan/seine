@@ -341,13 +341,14 @@ export function reduceBlocks(
                 : { format: { ...block.format, ...action.format } }),
             },
             ...(action.type === UPDATE_BLOCK_LAYOUT
-              ? state.blocks
-                  .slice(index + 1)
-                  .map((block) =>
-                    block['parent_id'] === action.id
-                      ? { ...block, layout: action.type }
-                      : block
-                  )
+              ? state.blocks.slice(index + 1).map((block) =>
+                  block['parent_id'] === action.id
+                    ? {
+                        ...block,
+                        format: { ...block.format, layout: action.type },
+                      }
+                    : block
+                )
               : state.blocks.slice(index + 1)),
           ],
         };
