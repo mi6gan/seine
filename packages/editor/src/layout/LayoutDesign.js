@@ -1,33 +1,14 @@
 // @flow
 import * as React from 'react';
-import {
-  Box,
-  IconButton,
-  Input,
-  Select,
-  FormControl,
-  InputLabel,
-} from '@material-ui/core';
+import { FormControl, InputLabel, Select } from '@material-ui/core';
 import type { RichTextBody, RichTextFormat } from '@seine/core';
-import {
-  defaultFlexFormat,
-  UPDATE_BLOCK_FORMAT,
-  UPDATE_BLOCK_LAYOUT,
-} from '@seine/core';
-import {
-  FormatAlignCenter,
-  FormatAlignJustify,
-  FormatAlignLeft,
-  FormatAlignRight,
-  VerticalAlignBottom,
-  VerticalAlignCenter,
-  VerticalAlignTop,
-} from '@material-ui/icons';
-import { ActionButton } from '@seine/ui';
+import { UPDATE_BLOCK_LAYOUT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
+
+import FlexDesign from './FlexDesign';
 
 type Props = {
   body: RichTextBody,
@@ -35,12 +16,12 @@ type Props = {
 };
 
 /**
- * @description Rich text design panel.
+ * @description Flex layout design.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function LayoutDesign({ id, dispatch, format, type }: Props) {
-  const { spacing = defaultFlexFormat.spacing } = format;
+export default function LayoutDesign(props: Props) {
+  const { id, dispatch, type } = props;
   return (
     <>
       <SidebarHeading>Layout</SidebarHeading>
@@ -62,112 +43,9 @@ export default function LayoutDesign({ id, dispatch, format, type }: Props) {
             <option value={'grid'}>Grid</option>
           </Select>
         </FormControl>
-
-        <Box display={'flex'}>
-          <ActionButton
-            as={IconButton}
-            id={id}
-            type={UPDATE_BLOCK_FORMAT}
-            format={{ justify: 'flex-start' }}
-            dispatch={dispatch}
-            color={'inherit'}
-            title={'Start'}
-          >
-            <FormatAlignLeft />
-          </ActionButton>
-
-          <ActionButton
-            as={IconButton}
-            id={id}
-            type={UPDATE_BLOCK_FORMAT}
-            format={{ justify: 'center' }}
-            dispatch={dispatch}
-            color={'inherit'}
-            title={'Center'}
-          >
-            <FormatAlignCenter />
-          </ActionButton>
-
-          <ActionButton
-            as={IconButton}
-            id={id}
-            type={UPDATE_BLOCK_FORMAT}
-            format={{ justify: 'flex-end' }}
-            dispatch={dispatch}
-            color={'inherit'}
-            title={'End'}
-          >
-            <FormatAlignRight />
-          </ActionButton>
-
-          <ActionButton
-            as={IconButton}
-            id={id}
-            type={UPDATE_BLOCK_FORMAT}
-            format={{ justify: 'space-between' }}
-            dispatch={dispatch}
-            color={'inherit'}
-            title={'Space between'}
-          >
-            <FormatAlignJustify />
-          </ActionButton>
-        </Box>
       </SidebarSection>
 
-      <SidebarSection>
-        <Box display={'flex'}>
-          <ActionButton
-            as={IconButton}
-            id={id}
-            type={UPDATE_BLOCK_FORMAT}
-            format={{ alignItems: 'flex-start' }}
-            dispatch={dispatch}
-            color={'inherit'}
-            title={'Start'}
-          >
-            <VerticalAlignTop />
-          </ActionButton>
-
-          <ActionButton
-            as={IconButton}
-            id={id}
-            type={UPDATE_BLOCK_FORMAT}
-            format={{ alignItems: 'center' }}
-            dispatch={dispatch}
-            color={'inherit'}
-            title={'Center'}
-          >
-            <VerticalAlignCenter />
-          </ActionButton>
-
-          <ActionButton
-            as={IconButton}
-            id={id}
-            type={UPDATE_BLOCK_FORMAT}
-            format={{ alignItems: 'flex-end' }}
-            dispatch={dispatch}
-            color={'inherit'}
-            title={'End'}
-          >
-            <VerticalAlignBottom />
-          </ActionButton>
-        </Box>
-      </SidebarSection>
-
-      <SidebarSection>
-        <Input
-          value={spacing}
-          onChange={useAutoCallback(({ currentTarget }) => {
-            dispatch({
-              type: UPDATE_BLOCK_FORMAT,
-              id,
-              format: { spacing: +currentTarget.value },
-            });
-          })}
-          type={'number'}
-          inputProps={{ min: 0, max: 10 }}
-        />
-      </SidebarSection>
+      {type === 'flex' ? <FlexDesign {...props} /> : null}
     </>
   );
 }

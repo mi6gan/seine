@@ -6,7 +6,7 @@ import { useAutoMemo } from 'hooks.macro';
 import Frame from '../ui/Frame';
 
 /**
- * @description Table block editor.
+ * @description Grid layout editor.
  * @param {any} props
  * @returns {React.Node}
  */
@@ -15,7 +15,7 @@ export default function GridEditor({
   dispatch,
   selection,
   children,
-  ...flexProps
+  ...gridProps
 }) {
   const blockIds = useAutoMemo([
     id,
@@ -27,7 +27,7 @@ export default function GridEditor({
   return (
     <Frame
       as={Grid}
-      {...flexProps}
+      {...gridProps}
       {...(selected && { borderStyle: 'dashed' })}
       dispatch={dispatch}
       id={id}

@@ -11,6 +11,10 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function SidebarSection({ children, ...boxProps }) {
-  return <Box {...boxProps}>{children}</Box>;
+export default function SidebarSection({ children, py = 1, ...boxProps }) {
+  return (
+    <Box {...boxProps} py={py}>
+      {children}
+    </Box>
+  );
 }

@@ -6,7 +6,7 @@ import { useAutoMemo } from 'hooks.macro';
 import Frame from '../ui/Frame';
 
 /**
- * @description Table block editor.
+ * @description Flex layout editor.
  * @param {any} props
  * @returns {React.Node}
  */
