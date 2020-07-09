@@ -340,7 +340,15 @@ export function reduceBlocks(
                 ? { type: action.layout }
                 : { format: { ...block.format, ...action.format } }),
             },
-            ...state.blocks.slice(index + 1),
+            ...(action.type === UPDATE_BLOCK_LAYOUT
+              ? state.blocks
+                  .slice(index + 1)
+                  .map((block) =>
+                    block['parent_id'] === action.id
+                      ? { ...block, layout: action.type }
+                      : block
+                  )
+              : state.blocks.slice(index + 1)),
           ],
         };
       }
