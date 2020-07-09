@@ -1,25 +1,20 @@
 // @flow
 import * as React from 'react';
 import { blockTypes } from '@seine/core';
-import {
-  blockRenderMap as defaultBlockRenderMap,
-  Grid,
-  Page,
-} from '@seine/content';
+import { blockRenderMap as defaultBlockRenderMap, Page } from '@seine/content';
 import type { Block, BlockEditor } from '@seine/core';
 
 import { ChartEditor } from './chart';
 import { RichTextEditor } from './richtext';
 import { TableEditor } from './table';
 import FlexEditor from './layout/FlexEditor';
+import GridEditor from './layout/GridEditor';
 
 export const blockRenderMap = {
   ...defaultBlockRenderMap,
   [blockTypes.CHART]: ChartEditor,
   [blockTypes.RICH_TEXT]: RichTextEditor,
-  [blockTypes.GRID]: ({ dispatch, editor, selection, ...props }) => (
-    <Grid {...props} />
-  ),
+  [blockTypes.GRID]: GridEditor,
   [blockTypes.PAGE]: ({
     id,
     addButtonRenderMap,

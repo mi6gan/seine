@@ -1,8 +1,19 @@
 // @flow
 import * as React from 'react';
-import { Box, IconButton, Input } from '@material-ui/core';
+import {
+  Box,
+  IconButton,
+  Input,
+  Select,
+  FormControl,
+  InputLabel,
+} from '@material-ui/core';
 import type { RichTextBody, RichTextFormat } from '@seine/core';
-import { defaultFlexFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import {
+  defaultFlexFormat,
+  UPDATE_BLOCK_FORMAT,
+  UPDATE_BLOCK_LAYOUT,
+} from '@seine/core';
 import {
   FormatAlignCenter,
   FormatAlignJustify,
@@ -28,12 +39,30 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function FlexDesign({ id, dispatch, format }: Props) {
+export default function LayoutDesign({ id, dispatch, format, type }: Props) {
   const { spacing = defaultFlexFormat.spacing } = format;
   return (
     <>
       <SidebarHeading>Layout</SidebarHeading>
+
       <SidebarSection>
+        <FormControl fullWidth>
+          <InputLabel>Type</InputLabel>
+          <Select
+            value={type}
+            onChange={useAutoCallback((e) =>
+              dispatch({
+                type: UPDATE_BLOCK_LAYOUT,
+                id,
+                layout: e.target.value,
+              })
+            )}
+          >
+            <option value={'flex'}>Flex</option>
+            <option value={'grid'}>Grid</option>
+          </Select>
+        </FormControl>
+
         <Box display={'flex'}>
           <ActionButton
             as={IconButton}

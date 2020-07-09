@@ -1,8 +1,10 @@
 // @flow
 export type ItemBody = {};
 
+export type LayoutType = 'none' | 'grid' | 'flex';
+
 export type ItemFormat = {
-  layout: 'none' | 'grid' | 'flex',
+  layout: LayoutType,
   alignSelf: 'normal' | 'center' | 'start' | 'end' | 'stretch',
   maxWidth: 'none' | string | number,
   minWidth: 0 | string | number,
