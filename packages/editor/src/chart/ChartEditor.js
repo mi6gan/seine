@@ -2,7 +2,6 @@
 import * as React from 'react';
 import {
   chartTypes,
-  initialElementsState,
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
@@ -37,10 +36,7 @@ import ChartGroupTitleInput from './ChartGroupTitleInput';
 import ChartDescriptionEditor from './ChartDescriptionEditor';
 import LineChartElementPath from './LineChartElementPath';
 import useDispatchElements from './useDispatchElements';
-
-const defaultEditor = {
-  selection: initialElementsState.selection,
-};
+import { defaultChartEditor } from './constants';
 
 /**
  * @description Chart editor component.
@@ -49,23 +45,20 @@ const defaultEditor = {
  */
 export default function ChartEditor({
   children,
+  editor = defaultChartEditor,
   kind = chartTypes.BAR,
   ...chartProps
 }: Props) {
   chartProps = useChartFormatDefaults(kind, chartProps);
+  const { id } = chartProps;
   const dispatch = useEditorDispatch();
-  const selectedBlock = useSelectedBlocks().find(
-    ({ id }) => id === chartProps.id
-  );
-
-  const editor = selectedBlock && (selectedBlock.editor || defaultEditor);
+  const selectedBlock = useSelectedBlocks().find((block) => block.id === id);
 
   const dispatchElements = useDispatchElements();
 
-  const resizeTargetRef = useResizeTargetRef();
-
   const handleTitleChange = useAutoCallback(({ currentTarget }) =>
     dispatch({
+      id,
       type: UPDATE_BLOCK_BODY,
       body: { title: currentTarget.value },
     })
@@ -81,13 +74,12 @@ export default function ChartEditor({
   const metaProps = { editor, dispatch, dispatchElements };
 
   const svgProps = useChartSvgProps(kind, chartProps);
-  const { id } = chartProps;
 
   return (
     <Frame
-      selected={!!selectedBlock}
       id={id}
-      ref={resizeTargetRef}
+      selected={!!selectedBlock}
+      ref={useResizeTargetRef()}
       as={selectedBlock ? ChartLayout : Chart}
       {...chartProps}
       {...(!!selectedBlock && {
@@ -101,11 +93,13 @@ export default function ChartEditor({
         description:
           kind === chartTypes.PIE ? (
             <ChartDescriptionEditor
+              {...metaProps}
               {...chartProps}
               dispatchElements={dispatchElements}
             />
           ) : (
             <ChartGroupsDescriptionEditor
+              {...metaProps}
               {...chartProps}
               dispatchElements={dispatchElements}
             />
@@ -120,8 +114,8 @@ export default function ChartEditor({
           <ChartSvgDefs />
           {kind === chartTypes.BAR ? (
             <BarChartContent
-              {...chartProps}
               {...metaProps}
+              {...chartProps}
               elementRectAs={GroupedChartElementRect}
               elementTitleAs={BarChartElementTitleInput}
               elementValueAs={ChartGroupElementValueInput}
@@ -129,24 +123,24 @@ export default function ChartEditor({
             />
           ) : kind === chartTypes.COLUMN ? (
             <ColumnChartContent
-              {...chartProps}
               {...metaProps}
+              {...chartProps}
               elementRectAs={GroupedChartElementRect}
               elementValueAs={ChartGroupElementValueInput}
               groupTitleAs={ChartGroupTitleInput}
             />
           ) : kind === chartTypes.LINE ? (
             <LineChartContent
-              {...chartProps}
               {...metaProps}
+              {...chartProps}
               elementPathAs={LineChartElementPath}
               elementValueAs={ChartGroupElementValueInput}
               groupTitleAs={ChartGroupTitleInput}
             />
           ) : kind === chartTypes.PIE ? (
             <PieChartContent
-              {...chartProps}
               {...metaProps}
+              {...chartProps}
               elementPathAs={PieChartElementPath}
               elementTitleAs={PieChartElementTitleInput}
               elementValueAs={PieChartElementValueInput}

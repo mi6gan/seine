@@ -1,16 +1,8 @@
 // @flow
 import * as React from 'react';
-import {
-  blockTypes,
-  DESELECT_BLOCK_ELEMENT,
-  SELECT_BLOCK_ELEMENT,
-} from '@seine/core';
+import { DESELECT_BLOCK_ELEMENT, SELECT_BLOCK_ELEMENT } from '@seine/core';
 import { ClickAwayListener } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
-
-import { useSelectedBlocks } from '../store';
-
-import useDispatchElements from './useDispatchElements';
 
 type Props = {
   children?: any,
@@ -22,15 +14,12 @@ type Props = {
  * @returns {React.Node}
  */
 export default function PieChartElementPath({
+  dispatch,
+  dispatchElements,
+  editor,
   meta: { index },
   ...pathProps
 }: Props) {
-  const dispatchElements = useDispatchElements();
-  const selected = useSelectedBlocks().find(
-    (block) => block.type === blockTypes.CHART
-  );
-  const editor = selected && selected.editor;
-
   return (
     <ClickAwayListener
       onClickAway={(event) =>
@@ -45,7 +34,7 @@ export default function PieChartElementPath({
         <path
           {...pathProps}
           onClick={useAutoCallback((event) => {
-            if (editor && editor.selection !== index) {
+            if (editor.selection !== index) {
               event.stopPropagation();
               event.preventDefault();
               dispatchElements({
@@ -55,7 +44,7 @@ export default function PieChartElementPath({
             }
           })}
         />
-        {editor && editor.selection === index && (
+        {editor.selection === index && (
           <path
             {...pathProps}
             style={{
