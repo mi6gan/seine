@@ -11,11 +11,6 @@
   "license": "MIT",
   "scripts": {
     "start": "serve",
-    "deploy": "run-s deploy:'*'",
-    "deploy:build": "docker build -t mi6gan/seine:${npm_package_version} .",
-    "deploy:version": "docker push mi6gan/seine:${npm_package_version}",
-    "deploy:latest": "docker tag mi6gan/seine:${npm_package_version} mi6gan/seine:latest",
-    "deploy:push": "docker push mi6gan/seine:latest",
     "test": "run-s build:'*' test:'*'",
     "test:eslint": "eslint -c .eslintrc.js --format unix packages/",
     "test:jest": "jest",
