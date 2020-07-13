@@ -6,15 +6,7 @@ const TableCell = styled.td.attrs({
   meta: void 0,
 })`
   ${({ width = null }: TableHeaderCell) =>
-    width !== null && {
-      width: typeof width === 'string' ? width : `${width}%`,
-    }}
-
-  ${({ maxWidth = null }: TableHeaderCell) =>
-    maxWidth !== null && {
-      maxWidth: typeof maxWidth === 'string' ? maxWidth : `${maxWidth}%`,
-    }}
-
+    width !== null && { width: `${width}%` }};
   ${({ align = 'left', bold = false, italic = false }: TableCell) => css`
     text-align: ${align};
     font-weight: ${bold ? 'bold' : 'normal'};
