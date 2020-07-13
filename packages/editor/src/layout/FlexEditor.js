@@ -28,7 +28,6 @@ export default function FlexEditor({
     <Frame
       as={Flex}
       {...flexProps}
-      {...(selected && { borderStyle: 'dashed' })}
       dispatch={dispatch}
       id={id}
       selected={selected}

@@ -11,7 +11,7 @@ import {
   FormatListNumbered,
   FormatUnderlined,
 } from '@material-ui/icons';
-import { SvgIcon } from '@material-ui/core';
+import { InputLabel, SvgIcon } from '@material-ui/core';
 import { UPDATE_BLOCK_EDITOR, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import { defaultDraftFormat } from '@seine/content';
@@ -54,6 +54,7 @@ export default function RichTextDesign() {
     <>
       <SidebarHeading>Text</SidebarHeading>
       <SidebarSection>
+        <InputLabel shrink>Style</InputLabel>
         <ToolbarToggleButtonGroup
           value={useAutoMemo(
             editorState ? [...editorState.getCurrentInlineStyle()] : []
@@ -80,6 +81,7 @@ export default function RichTextDesign() {
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
 
+        <InputLabel shrink>Alignment</InputLabel>
         <ToolbarToggleButtonGroup
           value={textAlignment}
           onChange={useAutoCallback((event, textAlignment) => {
@@ -103,6 +105,7 @@ export default function RichTextDesign() {
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
 
+        <InputLabel shrink>Variant</InputLabel>
         <ToolbarToggleButtonGroup
           value={useAutoMemo(
             editorState &&

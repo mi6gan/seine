@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { Box } from '@material-ui/core';
+import { Box, InputLabel } from '@material-ui/core';
 import { UPDATE_BLOCK_BODY } from '@seine/core';
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import {
@@ -87,6 +87,7 @@ export default function TableDesign() {
     <>
       <SidebarHeading>Table</SidebarHeading>
       <SidebarSection>
+        <InputLabel shrink>Structure</InputLabel>
         <ButtonGroup>
           <ActionIconButton
             Icon={TableColumnPlusBeforeIcon}
@@ -211,36 +212,47 @@ export default function TableDesign() {
           />
         </ButtonGroup>
 
-        <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
-          <ToolbarToggleButton selected={isBold} value={{ bold: !isBold }}>
-            <FormatBold />
-          </ToolbarToggleButton>
+        {columnIndex > -1 && (
+          <>
+            <InputLabel shrink>Cell format</InputLabel>
+            <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
+              <ToolbarToggleButton selected={isBold} value={{ bold: !isBold }}>
+                <FormatBold />
+              </ToolbarToggleButton>
 
-          <ToolbarToggleButton
-            selected={isItalic}
-            value={{ italic: !isItalic }}
-          >
-            <FormatItalic />
-          </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+              <ToolbarToggleButton
+                selected={isItalic}
+                value={{ italic: !isItalic }}
+              >
+                <FormatItalic />
+              </ToolbarToggleButton>
+            </ToolbarToggleButtonGroup>
 
-        <ToolbarToggleButtonGroup
-          disabled={rowIndex > -1 && columnIndex > -1}
-          value={cell}
-          onChange={updateCurrentCell}
-        >
-          <ToolbarToggleButton value={{ align: 'left' }} selected={isLeft}>
-            <FormatAlignLeft />
-          </ToolbarToggleButton>
+            <ToolbarToggleButtonGroup
+              disabled={rowIndex > -1 && columnIndex > -1}
+              value={cell}
+              onChange={updateCurrentCell}
+            >
+              <ToolbarToggleButton value={{ align: 'left' }} selected={isLeft}>
+                <FormatAlignLeft />
+              </ToolbarToggleButton>
 
-          <ToolbarToggleButton value={{ align: 'center' }} selected={isCenter}>
-            <FormatAlignCenter />
-          </ToolbarToggleButton>
+              <ToolbarToggleButton
+                value={{ align: 'center' }}
+                selected={isCenter}
+              >
+                <FormatAlignCenter />
+              </ToolbarToggleButton>
 
-          <ToolbarToggleButton value={{ align: 'right' }} selected={isRight}>
-            <FormatAlignRight />
-          </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+              <ToolbarToggleButton
+                value={{ align: 'right' }}
+                selected={isRight}
+              >
+                <FormatAlignRight />
+              </ToolbarToggleButton>
+            </ToolbarToggleButtonGroup>
+          </>
+        )}
       </SidebarSection>
     </>
   );

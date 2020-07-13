@@ -1,14 +1,9 @@
 // @flow
-import type { BlockType } from '@seine/core/src/types';
-
-import { useEditorSelector } from './index';
+import useEditorSelector from './useEditorSelector';
 
 // eslint-disable-next-line
-export default function useSelectedBlock(type: BlockType = null) {
+export default function useSelectedBlock() {
   const { blocks, selection } = useEditorSelector();
-  const selectedBlocks = blocks.filter(
-    (block) =>
-      selection.includes(block.id) && (type === null || block.type === type)
-  );
+  const selectedBlocks = blocks.filter((block) => selection.includes(block.id));
   return selectedBlocks[0];
 }
