@@ -5,4 +5,6 @@ export const defaultTableBody = {
   header: [],
   rows: [],
 };
-export const defaultTableCell = { text: '' };
+export const defaultTableCell = {
+  text: '',
+};

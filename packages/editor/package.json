@@ -11,6 +11,8 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/system": "4.9",
     "@seine/content": "workspace:*",
     "@seine/core": "workspace:*",
     "@seine/styles": "workspace:*",

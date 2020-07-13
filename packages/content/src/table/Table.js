@@ -1,11 +1,6 @@
 // @flow
 import * as React from 'react';
-import type {
-  TableBody,
-  TableCell,
-  TableFormat,
-  TableHeaderCell,
-} from '@seine/core';
+import type { TableBody, TableFormat } from '@seine/core';
 import styled, { css } from 'styled-components/macro';
 import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
@@ -13,6 +8,7 @@ import { useAutoCallback } from 'hooks.macro';
 import { Item } from '../layout';
 
 import TableTitle from './TableTitle';
+import TableCell from './TableCell';
 
 export type Props = TableBody & TableFormat;
 
@@ -58,22 +54,20 @@ const StyledTable = styled.table`
   `}
 `;
 
-const StyledTableCell = styled.td`
-  ${({ width = null }: TableHeaderCell) =>
-    width !== null && { width: `${width}%` }};
-  ${({ align = 'left', bold = false, italic = false }: TableCell) => css`
-    text-align: ${align};
-    font-weight: ${bold ? 'bold' : 'normal'};
-    font-style: ${italic ? 'italic' : 'normal'};
-  `}
-`;
 /**
  * @description Table block render component.
  * @param {Props} props
  * @returns {React.Node}
  */
 export default React.forwardRef(function Table(
-  { title, header, rows, textAlignment, ...containerProps }: Props,
+  {
+    title,
+    header,
+    rows,
+    textAlignment,
+    cellAs: Cell = TableCell,
+    ...containerProps
+  }: Props,
   ref
 ) {
   const containerRef = useResizeTargetRef();
@@ -98,9 +92,14 @@ export default React.forwardRef(function Table(
         <thead>
           <tr>
             {header.map(({ text, ...cell }, index) => (
-              <StyledTableCell as={'th'} key={index} {...cell}>
+              <Cell
+                as={'th'}
+                key={index}
+                meta={{ rowIndex: -1, columnIndex: index }}
+                {...cell}
+              >
                 {text}
-              </StyledTableCell>
+              </Cell>
             ))}
           </tr>
         </thead>
@@ -108,9 +107,13 @@ export default React.forwardRef(function Table(
           {rows.map((columns, rowIndex) => (
             <tr key={rowIndex}>
               {columns.map(({ text, ...cell }, columnIndex) => (
-                <StyledTableCell key={columnIndex} {...cell}>
+                <Cell
+                  key={columnIndex}
+                  meta={{ rowIndex, columnIndex }}
+                  {...cell}
+                >
                   {text}
-                </StyledTableCell>
+                </Cell>
               ))}
             </tr>
           ))}

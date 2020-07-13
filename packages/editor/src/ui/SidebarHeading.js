@@ -13,7 +13,12 @@ type Props = {
  */
 export default function SidebarHeading({ children, ...boxProps }) {
   return (
-    <Box color={'text.primary'} mb={2} component={'p'} {...boxProps}>
+    <Box
+      color={'text.primary'}
+      component={'p'}
+      textAlign={'center'}
+      {...boxProps}
+    >
       <b>{children}</b>
     </Box>
   );

@@ -17,7 +17,7 @@ RUN yarn plugin import workspace-tools
 RUN yarn plugin import version
 
 # Install dependencies
-RUN yarn
+RUN yarn install
 
 # Build app for production
 RUN yarn build

@@ -30,6 +30,8 @@ import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
 import LayoutDesign from './layout/LayoutDesign';
+import { EditorContext, useEditorDispatch, useEditorSelector } from './context';
+import useSelectedBlock from './context/useSelectedBlock';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -62,10 +64,9 @@ const defaultEditorChildren = [];
  * @description Default content editor.
  * @returns {React.Node}
  */
-export default function Editor({
+function DefaultEditor({
   parent,
   onChange,
-  children = defaultEditorChildren,
   blockRenderMap = defaultBlockRenderMap,
   ...contentProps
 }) {
@@ -88,17 +89,8 @@ export default function Editor({
     setAction(value);
   });
 
-  const [{ blocks, selection }, dispatch] = React.useReducer<
-    BlocksState,
-    BlocksAction
-  >(
-    reduceBlocks,
-    initialBlocksState,
-    useAutoCallback(() => ({
-      ...initialBlocksState,
-      blocks: children,
-    }))
-  );
+  const dispatch = useEditorDispatch();
+  const { blocks, selection } = useEditorSelector();
 
   useAutoEffect(() => {
     onChange(
@@ -121,11 +113,7 @@ export default function Editor({
     }))
   );
 
-  const { type, ...block } = useAutoMemo(
-    selection.length === 1
-      ? blocks.find(({ id }) => selection.includes(id))
-      : parent
-  );
+  const { type } = useSelectedBlock() || parent;
 
   const deselectClickHandler = useAutoCallback(() => {
     if (action) {
@@ -263,21 +251,30 @@ export default function Editor({
               />
             )}
             {type === blockTypes.RICH_TEXT ? (
-              <RichTextDesign
-                {...block}
-                dispatch={dispatch}
-                selection={selection}
-              />
+              <RichTextDesign />
             ) : type === blockTypes.TABLE ? (
-              <TableDesign
-                {...block}
-                dispatch={dispatch}
-                selection={selection}
-              />
+              <TableDesign />
             ) : null}
           </Sidebar>
         </Contents>
       </Box>
     </ThemeProvider>
+  );
+}
+
+// eslint-disable-next-line
+export default function Editor({ children = defaultEditorChildren, ...props }) {
+  const [state, dispatch] = React.useReducer<BlocksState, BlocksAction>(
+    reduceBlocks,
+    initialBlocksState,
+    useAutoCallback(() => ({
+      ...initialBlocksState,
+      blocks: children,
+    }))
+  );
+  return (
+    <EditorContext.Provider value={useAutoMemo({ dispatch, state })}>
+      <DefaultEditor {...props} />
+    </EditorContext.Provider>
   );
 }
