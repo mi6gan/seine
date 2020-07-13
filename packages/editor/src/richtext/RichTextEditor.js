@@ -21,15 +21,9 @@ type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
 };
 
 const Container = styled(Item)`
-  height: 100%;
   cursor: text;
-
-  .DraftEditor-root {
-    height: 100%;
-  }
   .public-DraftEditor-content {
-    display: grid;
-    height: 100%;
+    display: flex;
     align-items: ${({ verticalAlignment = 'start' }) => verticalAlignment};
   }
 `;

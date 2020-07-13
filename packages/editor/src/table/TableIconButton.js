@@ -1,27 +1,24 @@
 // @flow
 import * as React from 'react';
-import { blockTypes, CREATE_BLOCK, createBlock } from '@seine/core';
-import { useAutoMemo } from 'hooks.macro';
+import { blockTypes, createBlock } from '@seine/core';
+import { useAutoCallback } from 'hooks.macro';
 import { TableChart as TableIcon } from '@material-ui/icons';
 import { defaultTableCell } from '@seine/content';
 
-import ActionIconButton from '../ui/ActionIconButton';
+import { EditorContext } from '../store';
+import useEditorBuffer from '../store/useEditorBuffer';
+import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line
-export default function TableIconButton({
-  type = null,
-  block = null,
-  parentId,
-  dispatch,
-}) {
+export default function TableIconButton() {
+  const { setBuffer } = React.useContext(EditorContext);
+  const buffer = useEditorBuffer();
+  const selected = buffer && buffer.type === blockTypes.TABLE;
+
   return (
-    <ActionIconButton
-      selected={
-        type === CREATE_BLOCK && block && block.type === blockTypes.TABLE
-      }
-      type={CREATE_BLOCK}
-      block={useAutoMemo(
-        block === null &&
+    <ToolbarButton
+      onMouseDown={useAutoCallback(() =>
+        setBuffer(
           createBlock(
             blockTypes.TABLE,
             {
@@ -34,12 +31,13 @@ export default function TableIconButton({
                 [defaultTableCell, defaultTableCell],
               ],
             },
-            null,
-            parentId
+            null
           )
+        )
       )}
-      Icon={TableIcon}
-      dispatch={dispatch}
-    />
+      bgcolor={selected ? 'grey.800' : 'inherit'}
+    >
+      <TableIcon />
+    </ToolbarButton>
   );
 }

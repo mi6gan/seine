@@ -1,30 +1,27 @@
 // @flow
 import * as React from 'react';
-import { blockTypes, chartTypes, CREATE_BLOCK, createBlock } from '@seine/core';
-import { useAutoMemo } from 'hooks.macro';
+import { blockTypes, chartTypes, createBlock } from '@seine/core';
+import { useAutoCallback } from 'hooks.macro';
 import { PieChart as PieChartIcon } from '@material-ui/icons';
 
-import ActionIconButton from '../ui/ActionIconButton';
+import { EditorContext } from '../store';
+import useEditorBuffer from '../store/useEditorBuffer';
+import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line
-export default function PieChartIconButton({
-  type = null,
-  block = null,
-  parentId,
-  dispatch,
-}) {
+export default function PieChartIconButton() {
+  const { setBuffer } = React.useContext(EditorContext);
+  const buffer = useEditorBuffer();
+  const selected =
+    buffer &&
+    buffer.type === blockTypes.CHART &&
+    buffer.format &&
+    buffer.format.kind === chartTypes.PIE;
+
   return (
-    <ActionIconButton
-      selected={
-        type === CREATE_BLOCK &&
-        block &&
-        block.type === blockTypes.CHART &&
-        block.format &&
-        block.format.kind === chartTypes.PIE
-      }
-      type={CREATE_BLOCK}
-      block={useAutoMemo(
-        block === null &&
+    <ToolbarButton
+      onMouseDown={useAutoCallback(() =>
+        setBuffer(
           createBlock(
             blockTypes.CHART,
             {
@@ -42,12 +39,13 @@ export default function PieChartIconButton({
             {
               verticalAlignment: 'center',
               kind: chartTypes.PIE,
-            },
-            parentId
+            }
           )
+        )
       )}
-      Icon={PieChartIcon}
-      dispatch={dispatch}
-    />
+      bgcolor={selected ? 'grey.800' : 'inherit'}
+    >
+      <PieChartIcon />
+    </ToolbarButton>
   );
 }

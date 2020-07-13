@@ -184,7 +184,8 @@ export function reduceBlocks(
       }
       const parentIndex = state.blocks.findIndex(
         ({ id, type }) =>
-          id === state.blocks[index].parent_id && type === blockTypes.GRID
+          id === state.blocks[index].parent_id &&
+          (type === blockTypes.GRID || type === blockTypes.FLEX)
       );
 
       const parent =
