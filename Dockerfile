@@ -19,9 +19,6 @@ RUN yarn plugin import version
 # Install dependencies
 RUN yarn install
 
-# Build app for production
-RUN yarn build
-
 # Expose public port which is 5000 by default in zeit/serve
 EXPOSE 5000
 

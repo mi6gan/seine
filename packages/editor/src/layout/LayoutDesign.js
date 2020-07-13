@@ -1,27 +1,26 @@
 // @flow
 import * as React from 'react';
 import { FormControl, InputLabel, Select } from '@material-ui/core';
-import type { RichTextBody, RichTextFormat } from '@seine/core';
-import { UPDATE_BLOCK_LAYOUT } from '@seine/core';
+import { blockTypes, UPDATE_BLOCK_LAYOUT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
+import { useEditorDispatch, useSelectedBlocks } from '../store';
 
 import FlexDesign from './FlexDesign';
 
-type Props = {
-  body: RichTextBody,
-  format: RichTextFormat,
-};
-
 /**
  * @description Flex layout design.
- * @param {Props} props
  * @returns {React.Node}
  */
-export default function LayoutDesign(props: Props) {
-  const { id, dispatch, type } = props;
+export default function LayoutDesign() {
+  const layoutBlock = useSelectedBlocks().find(
+    ({ type }) => type === blockTypes.FLEX || type === blockTypes.GRID
+  );
+  const id = layoutBlock && layoutBlock.id;
+  const type = layoutBlock && layoutBlock.type;
+  const dispatch = useEditorDispatch();
   return (
     <>
       <SidebarHeading>Layout</SidebarHeading>
@@ -33,19 +32,19 @@ export default function LayoutDesign(props: Props) {
             value={type}
             onChange={useAutoCallback((e) =>
               dispatch({
-                type: UPDATE_BLOCK_LAYOUT,
                 id,
+                type: UPDATE_BLOCK_LAYOUT,
                 layout: e.target.value,
               })
             )}
           >
-            <option value={'flex'}>Flex</option>
-            <option value={'grid'}>Grid</option>
+            <option value={blockTypes.FLEX}>Flex</option>
+            <option value={blockTypes.GRID}>Grid</option>
           </Select>
         </FormControl>
       </SidebarSection>
 
-      {type === 'flex' ? <FlexDesign {...props} /> : null}
+      {type === blockTypes.FLEX && <FlexDesign />}
     </>
   );
 }

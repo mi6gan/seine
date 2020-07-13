@@ -1966,7 +1966,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seine/editor@workspace:*, @seine/editor@workspace:packages/editor":
+"@seine/editor@workspace:packages/editor":
   version: 0.0.0-use.local
   resolution: "@seine/editor@workspace:packages/editor"
   dependencies:
@@ -14190,8 +14190,6 @@ resolve@1.1.7:
     "@rollup/plugin-babel": ^5.0.4
     "@rollup/plugin-commonjs": ^13.0.0
     "@rollup/plugin-node-resolve": ^7.1.1
-    "@seine/content": "workspace:*"
-    "@seine/editor": "workspace:*"
     "@storybook/addon-actions": ^5.3.19
     "@storybook/addon-storyshots": ^5.3.19
     "@storybook/addon-viewport": ^5.3.19
