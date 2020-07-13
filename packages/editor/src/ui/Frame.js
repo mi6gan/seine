@@ -5,10 +5,12 @@ import { useAutoCallback } from 'hooks.macro';
 import { SELECT_BLOCK } from '@seine/core';
 import { Item } from '@seine/content';
 
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import { useEditorDispatch } from '../store';
+import useSelectedLayoutItems from '../store/useSelectedLayoutItems';
 
 export const StyledFrame = styled(Item)`
-  &${({ selected }) => (selected ? '' : ':hover')}:after {
+  transition: filter 0.15s ease-in-out;
+  &${({ selected = false }) => (selected ? '' : ':hover')}:after {
     position: absolute;
     content: '';
     left: 0;
@@ -16,10 +18,24 @@ export const StyledFrame = styled(Item)`
     width: calc(100% - 2px);
     height: calc(100% - 2px);
     z-index: 1;
-    border: 1px ${({ borderStyle = 'solid' }) => borderStyle}
-      ${({ theme }) => theme.palette.primary.light};
+    border: 1px
+      ${({ selected }) =>
+        selected === 'self'
+          ? 'solid'
+          : selected === 'child'
+          ? 'dashed'
+          : 'dashed'}
+      ${({ theme, selected }) =>
+        theme.palette.primary[selected === 'self' ? 'main' : 'light']};
     pointer-events: ${({ selected }) => (selected ? 'none' : 'all')};
     cursor: pointer;
+  }
+
+  &:not(:hover) {
+    ${({ selected, item }) => !selected && item && { filter: 'opacity(0.5)' }}
+  }
+  &:hover {
+    ${({ selected }) => !selected && { filter: 'opacity(0.5)' }}
   }
 `;
 
@@ -29,13 +45,19 @@ export default React.forwardRef(function Frame(
   ref
 ) {
   const dispatch = useEditorDispatch();
-  const selected = useSelectedBlocks().some(
-    (block) => block.id === id || block['parent_id'] === id
-  );
+  const { layout, item } = useSelectedLayoutItems();
+  const selected =
+    (item && item.id === id) || (layout && layout.id === id)
+      ? 'self'
+      : item && item['parent_id'] === id
+      ? 'child'
+      : false;
   return (
     <StyledFrame
       {...props}
       ref={ref}
+      id={id}
+      item={!!item}
       selected={selected}
       onClick={useAutoCallback((event) => {
         dispatch({

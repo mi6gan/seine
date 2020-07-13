@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
-import { Box, InputLabel } from '@material-ui/core';
-import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
+import { Box, Input, InputLabel } from '@material-ui/core';
+import { blockTypes, defaultItemFormat, UPDATE_BLOCK_BODY } from '@seine/core';
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import {
   FormatAlignCenter,
@@ -28,7 +28,19 @@ import TableRowPlusAfterIcon from './TableRowPlusAfterIcon';
 import TableRowPlusBeforeIcon from './TableRowPlusBeforeIcon';
 import TableRowRemoveIcon from './TableRowRemoveIcon';
 
-const ButtonGroup = styled(Box).attrs({ mb: 1 })``;
+const ButtonGroup = styled(Box)`
+  ${({ theme }) => ({ margin: theme.spacing(0, 1, 1, 0) })};
+`;
+
+const StructureActionButton = styled(ActionIconButton).attrs({
+  borderColor: 'transparent',
+  variant: 'outlined',
+  size: 'small',
+})`
+  && {
+    padding: 7px;
+  }
+`;
 
 /**
  * @description Table design panel.
@@ -45,7 +57,9 @@ export default function TableDesign() {
     body: {
       header = defaultTableBody.header,
       rows = defaultTableBody.rows,
+      textAlignment = defaultTableBody.textAlignment,
     } = defaultTableBody,
+    format: { layout = defaultItemFormat.layout },
   } = useSelectedBlocks().find(({ type }) => type === blockTypes.TABLE) || {};
   const row = rowIndex === -1 ? header : rows && rows[rowIndex];
   const cell = row && row[columnIndex];
@@ -85,10 +99,11 @@ export default function TableDesign() {
   return (
     <>
       <SidebarHeading>Table</SidebarHeading>
-      <SidebarSection>
+      <SidebarSection {...(columnIndex === -1 && { display: 'none' })}>
         <InputLabel shrink>Structure</InputLabel>
         <ButtonGroup>
-          <ActionIconButton
+          <StructureActionButton
+            color={'success.light'}
             Icon={TableColumnPlusBeforeIcon}
             body={useAutoMemo(
               columnIndex > -1
@@ -115,7 +130,8 @@ export default function TableDesign() {
             title={'Add column before'}
           />
 
-          <ActionIconButton
+          <StructureActionButton
+            color={'success.light'}
             Icon={TableColumnPlusAfterIcon}
             body={useAutoMemo(
               columnIndex > -1
@@ -142,7 +158,8 @@ export default function TableDesign() {
             title={'Add column after'}
           />
 
-          <ActionIconButton
+          <StructureActionButton
+            color={'error.light'}
             Icon={TableColumnRemoveIcon}
             disabled={!(rows.length && rows[0].length > 1)}
             body={useAutoMemo({
@@ -160,9 +177,9 @@ export default function TableDesign() {
             dispatch={dispatch}
             title={'Remove column'}
           />
-        </ButtonGroup>
-        <ButtonGroup>
-          <ActionIconButton
+
+          <StructureActionButton
+            color={'success.light'}
             Icon={TableRowPlusBeforeIcon}
             body={useAutoMemo({
               rows:
@@ -180,7 +197,8 @@ export default function TableDesign() {
             title={'Add row before'}
           />
 
-          <ActionIconButton
+          <StructureActionButton
+            color={'success.light'}
             Icon={TableRowPlusAfterIcon}
             body={useAutoMemo({
               rows:
@@ -198,7 +216,8 @@ export default function TableDesign() {
             title={'Add row after'}
           />
 
-          <ActionIconButton
+          <StructureActionButton
+            color={'error.light'}
             Icon={TableRowRemoveIcon}
             body={useAutoMemo({
               rows: [...rows.slice(0, rowIndex), ...rows.slice(rowIndex + 1)],
@@ -210,48 +229,89 @@ export default function TableDesign() {
             title={'Remove row'}
           />
         </ButtonGroup>
+      </SidebarSection>
 
-        {columnIndex > -1 && (
-          <>
-            <InputLabel shrink>Cell format</InputLabel>
-            <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
-              <ToolbarToggleButton selected={isBold} value={{ bold: !isBold }}>
-                <FormatBold />
-              </ToolbarToggleButton>
+      <SidebarSection {...(columnIndex > -1 && { display: 'none' })}>
+        <InputLabel shrink>Alignment</InputLabel>
+        <ToolbarToggleButtonGroup
+          value={textAlignment}
+          onChange={useAutoCallback((event, textAlignment) =>
+            dispatch({
+              type: UPDATE_BLOCK_BODY,
+              body: { textAlignment },
+            })
+          )}
+        >
+          <ToolbarToggleButton value={'left'}>
+            <FormatAlignLeft />
+          </ToolbarToggleButton>
 
-              <ToolbarToggleButton
-                selected={isItalic}
-                value={{ italic: !isItalic }}
-              >
-                <FormatItalic />
-              </ToolbarToggleButton>
-            </ToolbarToggleButtonGroup>
+          <ToolbarToggleButton value={'center'}>
+            <FormatAlignCenter />
+          </ToolbarToggleButton>
 
-            <ToolbarToggleButtonGroup
-              disabled={rowIndex > -1 && columnIndex > -1}
-              value={cell}
-              onChange={updateCurrentCell}
-            >
-              <ToolbarToggleButton value={{ align: 'left' }} selected={isLeft}>
-                <FormatAlignLeft />
-              </ToolbarToggleButton>
+          <ToolbarToggleButton value={'right'}>
+            <FormatAlignRight />
+          </ToolbarToggleButton>
+        </ToolbarToggleButtonGroup>
+      </SidebarSection>
 
-              <ToolbarToggleButton
-                value={{ align: 'center' }}
-                selected={isCenter}
-              >
-                <FormatAlignCenter />
-              </ToolbarToggleButton>
+      <SidebarSection {...(columnIndex === -1 && { display: 'none' })}>
+        <InputLabel shrink>Style</InputLabel>
+        <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
+          {rowIndex > -1 && (
+            <ToolbarToggleButton selected={isBold} value={{ bold: !isBold }}>
+              <FormatBold />
+            </ToolbarToggleButton>
+          )}
 
-              <ToolbarToggleButton
-                value={{ align: 'right' }}
-                selected={isRight}
-              >
-                <FormatAlignRight />
-              </ToolbarToggleButton>
-            </ToolbarToggleButtonGroup>
-          </>
-        )}
+          <ToolbarToggleButton
+            selected={isItalic}
+            value={{ italic: !isItalic }}
+          >
+            <FormatItalic />
+          </ToolbarToggleButton>
+        </ToolbarToggleButtonGroup>
+
+        <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
+          <ToolbarToggleButton value={{ align: 'left' }} selected={isLeft}>
+            <FormatAlignLeft />
+          </ToolbarToggleButton>
+
+          <ToolbarToggleButton value={{ align: 'center' }} selected={isCenter}>
+            <FormatAlignCenter />
+          </ToolbarToggleButton>
+
+          <ToolbarToggleButton value={{ align: 'right' }} selected={isRight}>
+            <FormatAlignRight />
+          </ToolbarToggleButton>
+        </ToolbarToggleButtonGroup>
+      </SidebarSection>
+      <SidebarSection {...(columnIndex === -1 && { display: 'none' })}>
+        <InputLabel shrink>Width (%)</InputLabel>
+        <Box width={'3em'}>
+          <Input
+            disabled={layout === blockTypes.FLEX}
+            type={'number'}
+            inputProps={{ min: 0, max: 100 }}
+            value={header[columnIndex] ? header[columnIndex].width : ''}
+            onChange={useAutoCallback((event) =>
+              dispatch({
+                type: UPDATE_BLOCK_BODY,
+                body: {
+                  header: [
+                    ...header.slice(0, columnIndex),
+                    {
+                      ...header[columnIndex],
+                      width: +event.currentTarget.value,
+                    },
+                    ...header.slice(columnIndex + 1),
+                  ],
+                },
+              })
+            )}
+          />
+        </Box>
       </SidebarSection>
     </>
   );

@@ -2,11 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';
-import {
-  blockTypes,
-  UPDATE_BLOCK_BODY,
-  UPDATE_BLOCK_EDITOR,
-} from '@seine/core';
+import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
 import {
   defaultDraftBody,
@@ -17,7 +13,7 @@ import {
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 
 import Frame from '../ui/Frame';
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import { useEditorDispatch, useSelectedLayoutItems } from '../store';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
@@ -54,9 +50,8 @@ export default function RichTextEditor({
   textAlignment = defaultDraftFormat.textAlignment,
   verticalAlignment = defaultDraftFormat.verticalAlignment,
 }: Props) {
-  const selected = useSelectedBlocks().some(
-    ({ type }) => type === blockTypes.RICH_TEXT
-  );
+  const { item } = useSelectedLayoutItems();
+  const selected = !!(item && item.id === id);
   const dispatch = useEditorDispatch();
 
   const editorRef = React.useRef<?Editor>(null);
