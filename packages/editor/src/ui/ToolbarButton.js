@@ -3,11 +3,17 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
+import { palette, color, borders } from '@material-ui/system';
 
-const StyledToolbarButton = styled(MuiButton).attrs({
-  color: 'inherit',
-})`
+const StyledToolbarButton = styled(MuiButton).attrs(
+  ({ color = 'inherit' }) => ({
+    color,
+  })
+)`
   && {
+    ${color};
+    ${palette};
+    ${borders};
     min-width: 0;
   }
 `;

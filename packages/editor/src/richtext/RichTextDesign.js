@@ -11,7 +11,7 @@ import {
   FormatListNumbered,
   FormatUnderlined,
 } from '@material-ui/icons';
-import { InputLabel, SvgIcon } from '@material-ui/core';
+import { Box, InputLabel, SvgIcon } from '@material-ui/core';
 import {
   blockTypes,
   UPDATE_BLOCK_EDITOR,
@@ -61,58 +61,8 @@ export default function RichTextDesign() {
   return (
     <>
       <SidebarHeading>Text</SidebarHeading>
+
       <SidebarSection>
-        <InputLabel shrink>Style</InputLabel>
-        <ToolbarToggleButtonGroup
-          value={useAutoMemo(
-            editorState ? [...editorState.getCurrentInlineStyle()] : []
-          )}
-          onChange={useAutoCallback((event, style) => {
-            dispatch({
-              type: UPDATE_BLOCK_EDITOR,
-              editor: {
-                state: RichUtils.toggleInlineStyle(editorState, style),
-              },
-            });
-          })}
-        >
-          <ToolbarToggleButton value={'BOLD'}>
-            <FormatBold />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'ITALIC'}>
-            <FormatItalic />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'UNDERLINE'}>
-            <FormatUnderlined />
-          </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
-
-        <InputLabel shrink>Alignment</InputLabel>
-        <ToolbarToggleButtonGroup
-          value={textAlignment}
-          onChange={useAutoCallback((event, textAlignment) => {
-            event.preventDefault();
-            dispatch({
-              type: UPDATE_BLOCK_FORMAT,
-              format: { textAlignment },
-            });
-          })}
-        >
-          <ToolbarToggleButton value={'left'}>
-            <FormatAlignLeft />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'center'}>
-            <FormatAlignCenter />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'right'}>
-            <FormatAlignRight />
-          </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
-
         <InputLabel shrink>Variant</InputLabel>
         <ToolbarToggleButtonGroup
           value={useAutoMemo(
@@ -157,6 +107,60 @@ export default function RichTextDesign() {
             <FormatListNumbered />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
+      </SidebarSection>
+
+      <SidebarSection>
+        <InputLabel shrink>Style</InputLabel>
+        <Box display={'flex'}>
+          <ToolbarToggleButtonGroup
+            value={useAutoMemo(
+              editorState ? [...editorState.getCurrentInlineStyle()] : []
+            )}
+            onChange={useAutoCallback((event, style) => {
+              dispatch({
+                type: UPDATE_BLOCK_EDITOR,
+                editor: {
+                  state: RichUtils.toggleInlineStyle(editorState, style),
+                },
+              });
+            })}
+          >
+            <ToolbarToggleButton value={'BOLD'}>
+              <FormatBold />
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'ITALIC'}>
+              <FormatItalic />
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'UNDERLINE'}>
+              <FormatUnderlined />
+            </ToolbarToggleButton>
+          </ToolbarToggleButtonGroup>
+
+          <ToolbarToggleButtonGroup
+            value={textAlignment}
+            onChange={useAutoCallback((event, textAlignment) => {
+              event.preventDefault();
+              dispatch({
+                type: UPDATE_BLOCK_FORMAT,
+                format: { textAlignment },
+              });
+            })}
+          >
+            <ToolbarToggleButton value={'left'}>
+              <FormatAlignLeft />
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'center'}>
+              <FormatAlignCenter />
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'right'}>
+              <FormatAlignRight />
+            </ToolbarToggleButton>
+          </ToolbarToggleButtonGroup>
+        </Box>
       </SidebarSection>
     </>
   );

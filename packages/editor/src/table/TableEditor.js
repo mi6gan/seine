@@ -8,7 +8,7 @@ import type { TableProps } from '@seine/content';
 import { Table } from '@seine/content';
 
 import Frame from '../ui/Frame';
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import { useEditorDispatch, useSelectedLayoutItems } from '../store';
 
 import { defaultTableEditor } from './constants';
 import TableCellEditor from './TableCellEditor';
@@ -25,7 +25,8 @@ export default function TableEditor({ id, title, ...tableProps }: Props) {
   const editTitle = useAutoCallback(({ currentTarget: { value } }) =>
     dispatch({ type: UPDATE_BLOCK_BODY, body: { title: value } })
   );
-  const selected = useSelectedBlocks().some((block) => block.id === id);
+  const { item } = useSelectedLayoutItems();
+  const selected = !!(item && item.id === id);
 
   return (
     <Frame

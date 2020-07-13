@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Box, ButtonBase, MenuItem, Paper } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { ThemeProvider } from '@seine/styles';
-import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 import { blockTypes, DESELECT_ALL_BLOCKS } from '@seine/core';
 import { Content } from '@seine/content';
@@ -24,12 +24,9 @@ import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
 import LayoutDesign from './layout/LayoutDesign';
-import {
-  useEditorDispatch,
-  useEditorSelector,
-  useSelectedBlocks,
-} from './store';
+import { useEditorDispatch, useEditorSelector } from './store';
 import EditorProvider from './store/EditorProvider';
+import useSelectedLayoutItems from './store/useSelectedLayoutItems';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -103,16 +100,6 @@ function DefaultEditor({
     );
   });
 
-  const contentChildren = useAutoMemo(
-    blocks.map((block) => ({
-      ...block,
-      dispatch,
-      selection,
-    }))
-  );
-
-  const selectedBlocks = useSelectedBlocks();
-
   const deselectClickHandler = useAutoCallback(() => {
     if (action) {
       unsetAction();
@@ -121,6 +108,7 @@ function DefaultEditor({
       dispatch({ type: DESELECT_ALL_BLOCKS });
     }
   });
+  const { layout, item } = useSelectedLayoutItems();
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -226,7 +214,7 @@ function DefaultEditor({
               parent={parent}
               {...contentProps}
             >
-              {contentChildren}
+              {blocks}
             </Content>
           </EditorPaper>
 
@@ -235,17 +223,9 @@ function DefaultEditor({
               event.stopPropagation();
             })}
           >
-            {selectedBlocks.some(
-              ({ type }) => type === blockTypes.FLEX || type === blockTypes.GRID
-            ) && <LayoutDesign />}
-
-            {selectedBlocks.some(
-              (block) => block.type === blockTypes.RICH_TEXT
-            ) && <RichTextDesign />}
-
-            {selectedBlocks.some(
-              (block) => block.type === blockTypes.TABLE
-            ) && <TableDesign />}
+            {layout && <LayoutDesign />}
+            {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
+            {item && item.type === blockTypes.TABLE && <TableDesign />}
           </Sidebar>
         </Contents>
       </Box>

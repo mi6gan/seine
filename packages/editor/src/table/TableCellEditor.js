@@ -24,9 +24,9 @@ const StyledTextarea = styled.textarea`
     ${({ width }) => ({ width })};
 
     box-sizing: content-box;
-    border: 1px dashed ${({ theme }) => theme.palette.primary.light};
-    &:hover,
-    &:focus {
+    border: 1px ${({ borderStyle }) => borderStyle}
+      ${({ theme }) => theme.palette.primary.light};
+    &:hover {
       border-style: solid;
     }
     background: none;
@@ -80,6 +80,7 @@ export default function TableCellEditor({
   const rows = selected && selected.body.rows;
   const row = rows && (rowIndex === -1 ? header : rows && rows[rowIndex]);
   const cell = row && row[columnIndex];
+  const editor = selected && selected.editor;
   const dispatch = useEditorDispatch();
 
   return (
@@ -88,6 +89,13 @@ export default function TableCellEditor({
         disabled={!selected}
         placeholder={'No text '}
         align={cell && cell.align}
+        borderStyle={
+          editor &&
+          editor.rowIndex === rowIndex &&
+          editor.columnIndex === columnIndex
+            ? 'solid'
+            : 'dashed'
+        }
         onFocus={useAutoCallback(() => {
           dispatch({ type: SELECT_BLOCK, id: selected.id });
           dispatch({
