@@ -6,9 +6,9 @@
     "react",
     "richtext"
   ],
+  "license": "MIT",
   "private": true,
   "repository": "https://github.com/mi6gan/seine",
-  "license": "MIT",
   "scripts": {
     "start": "serve",
     "test": "run-s build:'*' test:'*'",
