@@ -1,38 +1,32 @@
 // @flow
 import * as React from 'react';
-import { blockTypes, CREATE_BLOCK, createBlock } from '@seine/core';
+import { blockTypes, createBlock } from '@seine/core';
 import { toRawContent } from '@seine/content';
-import { useAutoMemo } from 'hooks.macro';
+import { useAutoCallback } from 'hooks.macro';
 import { Title as RichTextIcon } from '@material-ui/icons';
 
-import ActionIconButton from '../ui/ActionIconButton';
+import { EditorContext } from '../store';
+import useEditorBuffer from '../store/useEditorBuffer';
+import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line
-export default function RichTextIconButton({
-  type = null,
-  block = null,
-  parentId,
-  dispatch,
-}) {
+export default function RichTextIconButton() {
+  const { setBuffer } = React.useContext(EditorContext);
+  const buffer = useEditorBuffer();
+  const selected = buffer && buffer.type === blockTypes.RICH_TEXT;
+
   return (
-    <ActionIconButton
-      selected={
-        type === CREATE_BLOCK && block && block.type === blockTypes.RICH_TEXT
-      }
-      type={CREATE_BLOCK}
-      block={useAutoMemo(
-        block === null &&
-          createBlock(
-            blockTypes.RICH_TEXT,
-            toRawContent('Rich text'),
-            {
-              verticalAlignment: 'center',
-            },
-            parentId
-          )
+    <ToolbarButton
+      onMouseDown={useAutoCallback(() =>
+        setBuffer(
+          createBlock(blockTypes.RICH_TEXT, toRawContent('Rich text'), {
+            verticalAlignment: 'center',
+          })
+        )
       )}
-      Icon={RichTextIcon}
-      dispatch={dispatch}
-    />
+      bgcolor={selected ? 'grey.800' : 'inherit'}
+    >
+      <RichTextIcon />
+    </ToolbarButton>
   );
 }

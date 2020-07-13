@@ -10,16 +10,23 @@ const ToolbarToggleButton = styled(ToolbarButton).attrs({
   &&& {
     color: currentColor;
     background-color: ${({ theme }) => theme.palette.action.active};
+    border-color: ${({ theme }) => theme.palette.grey.A100};
+    transition: ${({ theme }) =>
+      theme.transitions.create(
+        ['color', 'background-color', 'border-color', 'box-shadow'],
+        {
+          duration: theme.transitions.duration.standard,
+          easing: 'ease-in-out',
+        }
+      )}};
+    transition: background-color 0.15s;
   }
   &&&.Mui-selected {
     color: currentColor;
     background-color: ${({ theme }) => theme.palette.grey[200]};
   }
   &&&:hover {
-    background-color: ${({ theme }) => theme.palette.action.hover};
-  }
-  &&& {
-    border-color: ${({ theme }) => theme.palette.grey.A100};
+    background-color: ${({ theme }) => theme.palette.grey[300]};
   }
 `;
 

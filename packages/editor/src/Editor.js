@@ -33,7 +33,6 @@ const Contents = styled(Box).attrs({
   display: 'flex',
   justifyContent: 'space-between',
 })`
-  ${({ cursor }) => cursor && { cursor }};
   overflow: auto;
 `;
 
@@ -65,24 +64,9 @@ function DefaultEditor({
   blockRenderMap = defaultBlockRenderMap,
   ...contentProps
 }) {
-  const parentId = parent && parent.id;
-
   const menuAnchorRef = React.useRef(null);
 
-  const [action, setAction] = React.useState(null);
   const toolCursorRef = React.useRef(null);
-  const unsetAction = useAutoCallback(() => {
-    toolCursorRef.current = null;
-    setAction(null);
-  });
-  const selectBlockAction = useAutoCallback((value, event) => {
-    const svg = event.currentTarget.querySelector('svg');
-    const content = svg && btoa(svg.outerHTML);
-
-    toolCursorRef.current =
-      content && `url(data:image/svg+xml;base64,${content}), auto`;
-    setAction(value);
-  });
 
   const dispatch = useEditorDispatch();
   const { blocks, selection } = useEditorSelector();
@@ -101,100 +85,55 @@ function DefaultEditor({
   });
 
   const deselectClickHandler = useAutoCallback(() => {
-    if (action) {
-      unsetAction();
-      dispatch(action);
-    } else {
-      dispatch({ type: DESELECT_ALL_BLOCKS });
-    }
+    dispatch({ type: DESELECT_ALL_BLOCKS });
   });
   const { layout, item } = useSelectedLayoutItems();
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <ToolbarMenu
-        onClose={unsetAction}
-        open={action === 'menu'}
+        onClose={useAutoCallback(() => setMenuOpen(false))}
+        open={menuOpen}
         anchorEl={menuAnchorRef.current}
         keepMounted
         mt={3}
         ml={-1}
       >
         <MenuItem>
-          <MenuButton
-            onClick={unsetAction}
-            disabled={!selection || !selection.length}
-          >
+          <MenuButton disabled={!selection || !selection.length}>
             Copy
           </MenuButton>
         </MenuItem>
 
         <MenuItem>
-          <MenuButton
-            onClick={unsetAction}
-            disabled={!selection || !selection.length}
-          >
+          <MenuButton disabled={!selection || !selection.length}>
             Delete
           </MenuButton>
         </MenuItem>
       </ToolbarMenu>
 
-      <Toolbar
-        onClick={deselectClickHandler}
-        onKeyUp={useAutoCallback((event) => {
-          if (event.key === 'Escape') {
-            unsetAction();
-          }
-        })}
-        ref={menuAnchorRef}
-      >
+      <Toolbar onClick={deselectClickHandler} ref={menuAnchorRef}>
         <ToolbarButton
           onClick={useAutoCallback(() => {
-            setAction('menu');
+            setMenuOpen(true);
           })}
-          selected={action === 'menu'}
+          selected={menuOpen}
         >
           <MenuIcon />
         </ToolbarButton>
-
         <ToolbarSeparator />
 
-        <RichTextIconButton
-          {...action}
-          parentId={parentId}
-          dispatch={selectBlockAction}
-        />
-
+        <RichTextIconButton />
         <ToolbarSeparator />
 
-        <TableIconButton
-          {...action}
-          parentId={parentId}
-          dispatch={selectBlockAction}
-        />
-
+        <TableIconButton />
         <ToolbarSeparator />
 
-        <BarChartIconButton
-          {...action}
-          parentId={parentId}
-          dispatch={selectBlockAction}
-        />
-        <LineChartIconButton
-          {...action}
-          parentId={parentId}
-          dispatch={selectBlockAction}
-        />
-        <ColumnChartIconButton
-          {...action}
-          parentId={parentId}
-          dispatch={selectBlockAction}
-        />
-        <PieChartIconButton
-          {...action}
-          parentId={parentId}
-          dispatch={selectBlockAction}
-        />
+        <BarChartIconButton />
+        <LineChartIconButton />
+        <ColumnChartIconButton />
+        <PieChartIconButton />
       </Toolbar>
 
       <Box

@@ -16,8 +16,12 @@ export default function EditorProvider({ blocks, children }) {
       blocks,
     }))
   );
+
+  const [buffer, setBuffer] = React.useState(null);
   return (
-    <EditorContext.Provider value={useAutoMemo({ dispatch, state })}>
+    <EditorContext.Provider
+      value={useAutoMemo({ dispatch, state, buffer, setBuffer })}
+    >
       {children}
     </EditorContext.Provider>
   );
