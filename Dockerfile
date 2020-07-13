@@ -4,6 +4,21 @@ FROM node:12-alpine
 ADD . /app
 WORKDIR /app
 
+# Use yarn 2.0
+RUN yarn set version berry
+
+# Force node linker to legacy mode
+RUN yarn config set nodeLinker node-modules
+
+# Install workspaces tools
+RUN yarn plugin import workspace-tools
+
+# Install version plugin
+RUN yarn plugin import version
+
+# Install dependencies
+RUN yarn install
+
 # Expose public port which is 5000 by default in zeit/serve
 EXPOSE 5000
 

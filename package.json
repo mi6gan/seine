@@ -42,8 +42,6 @@
     "@rollup/plugin-babel": "^5.0.4",
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "@seine/content": "workspace:*",
-    "@seine/editor": "workspace:*",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-storyshots": "^5.3.19",
     "@storybook/addon-viewport": "^5.3.19",
