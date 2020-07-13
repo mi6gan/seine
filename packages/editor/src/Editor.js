@@ -30,8 +30,12 @@ import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
 import LayoutDesign from './layout/LayoutDesign';
-import { EditorContext, useEditorDispatch, useEditorSelector } from './context';
-import useSelectedBlock from './context/useSelectedBlock';
+import {
+  EditorContext,
+  useEditorDispatch,
+  useEditorSelector,
+  useSelectedBlocks,
+} from './store';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -113,7 +117,7 @@ function DefaultEditor({
     }))
   );
 
-  const { type } = useSelectedBlock() || parent;
+  const selectedBlocks = useSelectedBlocks();
 
   const deselectClickHandler = useAutoCallback(() => {
     if (action) {
@@ -243,18 +247,23 @@ function DefaultEditor({
               event.stopPropagation();
             })}
           >
-            {!!layoutSelection && (
+            {selectedBlocks.some(
+              ({ type }) => type === blockTypes.FLEX || type === blockTypes.GRID
+            ) && (
               <LayoutDesign
                 {...layoutSelection}
                 dispatch={dispatch}
                 selection={selection}
               />
             )}
-            {type === blockTypes.RICH_TEXT ? (
-              <RichTextDesign />
-            ) : type === blockTypes.TABLE ? (
-              <TableDesign />
-            ) : null}
+
+            {selectedBlocks.some(
+              (block) => block.type === blockTypes.RICH_TEXT
+            ) && <RichTextDesign />}
+
+            {selectedBlocks.some(
+              (block) => block.type === blockTypes.TABLE
+            ) && <TableDesign />}
           </Sidebar>
         </Contents>
       </Box>
