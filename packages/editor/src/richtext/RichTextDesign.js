@@ -12,7 +12,11 @@ import {
   FormatUnderlined,
 } from '@material-ui/icons';
 import { InputLabel, SvgIcon } from '@material-ui/core';
-import { UPDATE_BLOCK_EDITOR, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import {
+  blockTypes,
+  UPDATE_BLOCK_EDITOR,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import { defaultDraftFormat } from '@seine/content';
 import styled from 'styled-components/macro';
@@ -21,8 +25,11 @@ import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
 import ToolbarToggleButtonGroup from '../ui/ToolbarToggleButtonGroup';
 import ToolbarToggleButton from '../ui/ToolbarToggleButton';
-import { useEditorDispatch, useEditorSelector } from '../context';
-import useSelectedBlock from '../context/useSelectedBlock';
+import {
+  useEditorDispatch,
+  useEditorSelector,
+  useSelectedBlocks,
+} from '../store';
 
 import { defaultDraftEditor } from './RichTextEditor';
 
@@ -48,7 +55,8 @@ export default function RichTextDesign() {
     editor: {
       state: editorState = defaultDraftEditor.state,
     } = defaultDraftEditor,
-  } = useSelectedBlock();
+  } =
+    useSelectedBlocks().find(({ type }) => type === blockTypes.RICH_TEXT) || {};
   const dispatch = useEditorDispatch();
   return (
     <>

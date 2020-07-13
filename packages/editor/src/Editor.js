@@ -5,13 +5,7 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 import { ThemeProvider } from '@seine/styles';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
-import type { BlocksAction, BlocksState } from '@seine/core';
-import {
-  blockTypes,
-  DESELECT_ALL_BLOCKS,
-  initialBlocksState,
-  reduceBlocks,
-} from '@seine/core';
+import { blockTypes, DESELECT_ALL_BLOCKS } from '@seine/core';
 import { Content } from '@seine/content';
 
 import defaultTheme from './defaultTheme';
@@ -30,8 +24,12 @@ import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
 import LayoutDesign from './layout/LayoutDesign';
-import { EditorContext, useEditorDispatch, useEditorSelector } from './context';
-import useSelectedBlock from './context/useSelectedBlock';
+import {
+  useEditorDispatch,
+  useEditorSelector,
+  useSelectedBlocks,
+} from './store';
+import EditorProvider from './store/EditorProvider';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -113,7 +111,7 @@ function DefaultEditor({
     }))
   );
 
-  const { type } = useSelectedBlock() || parent;
+  const selectedBlocks = useSelectedBlocks();
 
   const deselectClickHandler = useAutoCallback(() => {
     if (action) {
@@ -123,12 +121,6 @@ function DefaultEditor({
       dispatch({ type: DESELECT_ALL_BLOCKS });
     }
   });
-
-  const layoutSelection = blocks.find(
-    ({ id, type }) =>
-      selection.includes(id) &&
-      (type === blockTypes.FLEX || type === blockTypes.GRID)
-  );
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -243,18 +235,17 @@ function DefaultEditor({
               event.stopPropagation();
             })}
           >
-            {!!layoutSelection && (
-              <LayoutDesign
-                {...layoutSelection}
-                dispatch={dispatch}
-                selection={selection}
-              />
-            )}
-            {type === blockTypes.RICH_TEXT ? (
-              <RichTextDesign />
-            ) : type === blockTypes.TABLE ? (
-              <TableDesign />
-            ) : null}
+            {selectedBlocks.some(
+              ({ type }) => type === blockTypes.FLEX || type === blockTypes.GRID
+            ) && <LayoutDesign />}
+
+            {selectedBlocks.some(
+              (block) => block.type === blockTypes.RICH_TEXT
+            ) && <RichTextDesign />}
+
+            {selectedBlocks.some(
+              (block) => block.type === blockTypes.TABLE
+            ) && <TableDesign />}
           </Sidebar>
         </Contents>
       </Box>
@@ -264,17 +255,9 @@ function DefaultEditor({
 
 // eslint-disable-next-line
 export default function Editor({ children = defaultEditorChildren, ...props }) {
-  const [state, dispatch] = React.useReducer<BlocksState, BlocksAction>(
-    reduceBlocks,
-    initialBlocksState,
-    useAutoCallback(() => ({
-      ...initialBlocksState,
-      blocks: children,
-    }))
-  );
   return (
-    <EditorContext.Provider value={useAutoMemo({ dispatch, state })}>
+    <EditorProvider blocks={children}>
       <DefaultEditor {...props} />
-    </EditorContext.Provider>
+    </EditorProvider>
   );
 }

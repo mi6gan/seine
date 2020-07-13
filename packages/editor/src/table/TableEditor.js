@@ -1,19 +1,14 @@
 // @flow
 import * as React from 'react';
 import type { BlockEditor } from '@seine/core';
-import {
-  SELECT_BLOCK,
-  UPDATE_BLOCK_BODY,
-  UPDATE_BLOCK_EDITOR,
-} from '@seine/core';
+import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 import { InlineInput } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
 import type { TableProps } from '@seine/content';
 import { Table } from '@seine/content';
 
 import Frame from '../ui/Frame';
-import { useEditorDispatch } from '../context';
-import useSelectedBlock from '../context/useSelectedBlock';
+import { useEditorDispatch, useSelectedBlocks } from '../store';
 
 import { defaultTableEditor } from './constants';
 import TableCellEditor from './TableCellEditor';
@@ -30,23 +25,19 @@ export default function TableEditor({ id, title, ...tableProps }: Props) {
   const editTitle = useAutoCallback(({ currentTarget: { value } }) =>
     dispatch({ type: UPDATE_BLOCK_BODY, body: { title: value } })
   );
-  const block = useSelectedBlock();
-  const selected = !!(block && block.id === id);
+  const selected = useSelectedBlocks().some((block) => block.id === id);
+
   return (
     <Frame
       {...tableProps}
-      selected={selected}
-      as={Table}
       id={id}
-      title={title}
-      {...(selected && {
-        cellAs: TableCellEditor,
-        title: (
+      as={Table}
+      title={
+        selected ? (
           <InlineInput
             forwardedAs={'input'}
             onChange={editTitle}
             onFocus={() => {
-              dispatch({ id, type: SELECT_BLOCK });
               dispatch({
                 id,
                 type: UPDATE_BLOCK_EDITOR,
@@ -55,8 +46,11 @@ export default function TableEditor({ id, title, ...tableProps }: Props) {
             }}
             value={title}
           />
-        ),
-      })}
+        ) : (
+          title
+        )
+      }
+      {...(!!selected && { cellAs: TableCellEditor })}
     />
   );
 }

@@ -1,9 +1,11 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback } from 'hooks.macro';
 import { SELECT_BLOCK } from '@seine/core';
 import { Item } from '@seine/content';
+
+import { useEditorDispatch, useSelectedBlocks } from '../store';
 
 export const StyledFrame = styled(Item)`
   &${({ selected }) => (selected ? '' : ':hover')}:after {
@@ -22,24 +24,26 @@ export const StyledFrame = styled(Item)`
 `;
 
 // eslint-disable-next-line
-export default function Frame({ children, dispatch, id, selected, ...props }) {
-  const blockIds = useAutoMemo([
-    id,
-    ...(children && children.props && Array.isArray(children.props.children)
-      ? children.props.children.map(({ id }) => id)
-      : []),
-  ]);
+export default React.forwardRef(function Frame(
+  { children, id, ...props },
+  ref
+) {
+  const dispatch = useEditorDispatch();
+  const selected = useSelectedBlocks().some(
+    (block) => block.id === id || block['parent_id'] === id
+  );
   return (
     <StyledFrame
       {...props}
+      ref={ref}
       selected={selected}
       onClick={useAutoCallback((event) => {
-        blockIds.forEach((id, index) => {
-          dispatch(
-            index
-              ? { type: SELECT_BLOCK, id, modifier: 'add' }
-              : { type: SELECT_BLOCK, id }
-          );
+        dispatch({
+          type: SELECT_BLOCK,
+          id,
+          ...(event.key === 'Control' && {
+            modifier: selected ? 'add' : 'sub',
+          }),
         });
         event.stopPropagation();
       })}
@@ -47,4 +51,4 @@ export default function Frame({ children, dispatch, id, selected, ...props }) {
       {children}
     </StyledFrame>
   );
-}
+});

@@ -7,8 +7,11 @@ import {
   Input,
   InputLabel,
 } from '@material-ui/core';
-import type { RichTextBody, RichTextFormat } from '@seine/core';
-import { defaultFlexFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import {
+  blockTypes,
+  defaultFlexFormat,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 import {
   FormatAlignCenter,
   FormatAlignJustify,
@@ -22,19 +25,21 @@ import { ActionButton } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarSection from '../ui/SidebarSection';
-
-type Props = {
-  body: RichTextBody,
-  format: RichTextFormat,
-};
+import { useEditorDispatch, useSelectedBlocks } from '../store';
 
 /**
  * @description Layout design.
- * @param {Props} props
  * @returns {React.Node}
  */
-export default function FlexDesign({ id, dispatch, format }: Props) {
-  const { spacing = defaultFlexFormat.spacing } = format;
+export default function FlexDesign() {
+  const layoutBlock = useSelectedBlocks().find(
+    ({ type }) => type === blockTypes.FLEX
+  );
+  const dispatch = useEditorDispatch();
+  const id = layoutBlock && layoutBlock.id;
+  const { spacing = defaultFlexFormat.spacing } = layoutBlock
+    ? layoutBlock.format || defaultFlexFormat
+    : defaultFlexFormat;
   return (
     <>
       <SidebarSection>

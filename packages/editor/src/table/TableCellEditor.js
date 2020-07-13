@@ -1,16 +1,20 @@
 // @flow
 import * as React from 'react';
 import type { BlockEditor } from '@seine/core';
-import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
+import {
+  blockTypes,
+  SELECT_BLOCK,
+  UPDATE_BLOCK_BODY,
+  UPDATE_BLOCK_EDITOR,
+} from '@seine/core';
 import type { TableProps } from '@seine/content';
-import { defaultTableBody, TableCell } from '@seine/content';
+import { TableCell } from '@seine/content';
 import styled from 'styled-components/macro';
 import { Box } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 import { useResizeTargetRef } from '@seine/styles';
 
-import { useEditorDispatch } from '../context';
-import useSelectedBlock from '../context/useSelectedBlock';
+import { useEditorDispatch, useSelectedBlocks } from '../store';
 
 type Props = TableProps & BlockEditor;
 
@@ -69,33 +73,32 @@ export default function TableCellEditor({
   children: text,
   ...cellProps
 }: Props) {
-  const {
-    id,
-    body: {
-      rows = defaultTableBody.rows,
-      header = defaultTableBody.header,
-    } = defaultTableBody,
-  } = useSelectedBlock();
-  const row = rowIndex === -1 ? header : rows && rows[rowIndex];
+  const selected = useSelectedBlocks().find(
+    (block) => block.type === blockTypes.TABLE
+  );
+  const header = selected && selected.body.header;
+  const rows = selected && selected.body.rows;
+  const row = rows && (rowIndex === -1 ? header : rows && rows[rowIndex]);
   const cell = row && row[columnIndex];
   const dispatch = useEditorDispatch();
 
   return (
     <TableCell {...cellProps}>
       <Textarea
+        disabled={!selected}
         placeholder={'No text '}
         align={cell && cell.align}
-        border={cell ? 0 : '1px dashed currentColor'}
         onFocus={useAutoCallback(() => {
+          dispatch({ type: SELECT_BLOCK, id: selected.id });
           dispatch({
-            id,
+            id: selected.id,
             type: UPDATE_BLOCK_EDITOR,
             editor: { columnIndex, rowIndex },
           });
         })}
         onChange={useAutoCallback(({ currentTarget }) => {
           dispatch({
-            id,
+            id: selected && selected.id,
             type: UPDATE_BLOCK_BODY,
             body:
               rowIndex === -1

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { Box, InputLabel } from '@material-ui/core';
-import { UPDATE_BLOCK_BODY } from '@seine/core';
+import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import {
   FormatAlignCenter,
@@ -18,8 +18,7 @@ import SidebarSection from '../ui/SidebarSection';
 import ActionIconButton from '../ui/ActionIconButton';
 import ToolbarToggleButtonGroup from '../ui/ToolbarToggleButtonGroup';
 import ToolbarToggleButton from '../ui/ToolbarToggleButton';
-import useSelectedBlock from '../context/useSelectedBlock';
-import { useEditorDispatch } from '../context';
+import { useEditorDispatch, useSelectedBlocks } from '../store';
 
 import { defaultTableEditor } from './constants';
 import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
@@ -47,7 +46,7 @@ export default function TableDesign() {
       header = defaultTableBody.header,
       rows = defaultTableBody.rows,
     } = defaultTableBody,
-  } = useSelectedBlock();
+  } = useSelectedBlocks().find(({ type }) => type === blockTypes.TABLE) || {};
   const row = rowIndex === -1 ? header : rows && rows[rowIndex];
   const cell = row && row[columnIndex];
   const isBold = cell && cell.bold;
