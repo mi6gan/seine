@@ -1,0 +1,9 @@
+**
+!dist
+!dist/*
+!dist/**/*
+!package.json
+!serve.json
+!yarn.lock
+!scripts
+!scripts/*.js
