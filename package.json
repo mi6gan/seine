@@ -18,6 +18,11 @@
     "build:cjs": "node scripts/build.js --format=cjs",
     "build:esm": "node scripts/build.js --format=esm",
     "build:umd": "node scripts/build-workspace.js --format=umd --workspace=packages/testbox",
+    "deploy": "run-s deploy:'*'",
+    "deploy:build": "docker build -t mi6gan/seine:${npm_package_version} .",
+    "deploy:version": "docker push mi6gan/seine:${npm_package_version}",
+    "deploy:latest": "docker tag mi6gan/seine:${npm_package_version} mi6gan/seine:latest",
+    "deploy:push": "docker push mi6gan/seine:latest",
     "build:storybook": "yarn build-storybook --quiet --loglevel silent -o dist",
     "dev": "run-s dev:'*'",
     "dev:start": "start-storybook -p 3000"
