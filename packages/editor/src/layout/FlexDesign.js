@@ -161,7 +161,6 @@ export default function FlexDesign() {
                 format: { wrap: wrap === 'wrap' ? 'nowrap' : 'wrap' },
               })
             )}
-            value={'left'}
           >
             <WrapText />
           </ToolbarToggleButton>
