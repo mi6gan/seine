@@ -20,12 +20,14 @@ import {
   VerticalAlignBottom,
   VerticalAlignCenter,
   VerticalAlignTop,
+  WrapText,
 } from '@material-ui/icons';
 import { ActionButton } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarSection from '../ui/SidebarSection';
 import { useEditorDispatch, useSelectedBlocks } from '../store';
+import ToolbarToggleButton from '../ui/ToolbarToggleButton';
 
 /**
  * @description Layout design.
@@ -37,9 +39,10 @@ export default function FlexDesign() {
   );
   const dispatch = useEditorDispatch();
   const id = layoutBlock && layoutBlock.id;
-  const { spacing = defaultFlexFormat.spacing } = layoutBlock
-    ? layoutBlock.format || defaultFlexFormat
-    : defaultFlexFormat;
+  const {
+    spacing = defaultFlexFormat.spacing,
+    wrap = defaultFlexFormat.wrap,
+  } = layoutBlock ? layoutBlock.format || defaultFlexFormat : defaultFlexFormat;
   return (
     <>
       <SidebarSection>
@@ -148,6 +151,21 @@ export default function FlexDesign() {
             <VerticalAlignBottom />
           </ActionButton>
         </Box>
+        <SidebarSection>
+          <InputLabel shrink>Wrap</InputLabel>
+          <ToolbarToggleButton
+            selected={wrap === 'wrap'}
+            onClick={useAutoCallback(() =>
+              dispatch({
+                type: UPDATE_BLOCK_FORMAT,
+                format: { wrap: wrap === 'wrap' ? 'nowrap' : 'wrap' },
+              })
+            )}
+            value={'left'}
+          >
+            <WrapText />
+          </ToolbarToggleButton>
+        </SidebarSection>
       </SidebarSection>
     </>
   );
