@@ -3,6 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 import {
+  blockTypes,
   CREATE_BOTTOM_BLOCK,
   CREATE_LEFT_BLOCK,
   CREATE_RIGHT_BLOCK,
@@ -11,6 +12,12 @@ import {
 } from '@seine/core';
 import { Item } from '@seine/content';
 import { Box } from '@material-ui/core';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowDropDown,
+  ArrowDropUp,
+} from '@material-ui/icons';
 
 import { EditorContext, useEditorDispatch } from '../store';
 import useSelectedLayoutItems from '../store/useSelectedLayoutItems';
@@ -55,22 +62,33 @@ const StyledInsertPlaceholder = styled(Box).attrs({
   bgcolor: 'grey.100',
   size: 10,
   zIndex: 2,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 })`
   cursor: pointer;
   transition: ${({ theme }) =>
-    theme.transitions.create(['width', 'height', 'background'], {
+    theme.transitions.create(['width', 'height', 'background', 'margin'], {
       duration: theme.transitions.duration.short,
       easing: 'ease-in-out',
     })};
-  ${({ vertical, size }) => ({
+  ${({ vertical, size, left, right }) => ({
     height: vertical ? size : '100%',
     width: vertical ? '100%' : size,
+    ...(!vertical && left === 0 && { marginLeft: -size / 2 }),
+    ...(vertical && left === 0 && { marginTop: -size / 2 }),
+    ...(!vertical && right === 0 && { marginRight: -size / 2 }),
+    ...(vertical && right === 0 && { marginBottom: -size / 2 }),
   })}
   &:hover {
-    background-color: ${({ theme }) => theme.palette.grey[400]};
-    ${({ vertical, size }) => ({
+    z-index: 3;
+    ${({ vertical, size, left, right }) => ({
       height: vertical ? size * 4 : '100%',
       width: vertical ? '100%' : size * 4,
+      ...(!vertical && left === 0 && { marginLeft: -size * 2 }),
+      ...(vertical && left === 0 && { marginTop: -size * 2 }),
+      ...(!vertical && right === 0 && { marginRight: -size * 2 }),
+      ...(vertical && right === 0 && { marginBottom: -size * 2 }),
     })}
   }
 `;
@@ -132,11 +150,23 @@ export default React.forwardRef(function Frame(
           event.stopPropagation();
         })}
       >
-        <InsertPlaceholder id={id} type={CREATE_LEFT_BLOCK} />
-        <InsertPlaceholder id={id} type={CREATE_TOP_BLOCK} />
+        <InsertPlaceholder id={id} type={CREATE_LEFT_BLOCK}>
+          <ArrowLeft />
+        </InsertPlaceholder>
+        {(props.type === blockTypes.FLEX || props.type === blockTypes.GRID) && (
+          <InsertPlaceholder id={id} type={CREATE_TOP_BLOCK}>
+            <ArrowDropUp />
+          </InsertPlaceholder>
+        )}
         {children}
-        <InsertPlaceholder id={id} type={CREATE_BOTTOM_BLOCK} />
-        <InsertPlaceholder id={id} type={CREATE_RIGHT_BLOCK} />
+        {(props.type === blockTypes.FLEX || props.type === blockTypes.GRID) && (
+          <InsertPlaceholder id={id} type={CREATE_BOTTOM_BLOCK}>
+            <ArrowDropDown />
+          </InsertPlaceholder>
+        )}
+        <InsertPlaceholder id={id} type={CREATE_RIGHT_BLOCK}>
+          <ArrowRight />
+        </InsertPlaceholder>
       </StyledFrame>
     </>
   );
