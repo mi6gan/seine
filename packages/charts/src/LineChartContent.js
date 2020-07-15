@@ -3,6 +3,7 @@ import * as React from 'react';
 import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import type { ChartElement } from '@seine/core';
 import { useAutoMemo } from 'hooks.macro';
+import styled from 'styled-components/macro';
 
 import {
   defaultChartDy,
@@ -11,6 +12,7 @@ import {
   defaultChartPalette,
   defaultChartUnits,
   defaultChartXAxis,
+  defaultChartXsDy,
   defaultChartYAxis,
   VIEWPORT_HEIGHT,
   VIEWPORT_WIDTH,
@@ -37,6 +39,22 @@ type Props = {
 
 const GUTTER_WIDTH = VIEWPORT_WIDTH / 10;
 
+const MobileOnly = styled.g`
+  ${({ theme }) => ({
+    [theme.breakpoints.up('lg')]: {
+      display: 'none',
+    },
+  })};
+`;
+
+const DesktopOnly = styled.g`
+  ${({ theme, xsDisplay = 'none' }) => ({
+    [theme.breakpoints.down('lg')]: {
+      display: xsDisplay,
+    },
+  })};
+`;
+
 /**
  * @description Column chart content block renderer.
  * @param {Props}: props
@@ -48,6 +66,8 @@ export default function LineChartContent({
   minValue: initialMinValue = defaultChartMinValue,
 
   dy = defaultChartDy,
+  xsDy = defaultChartXsDy,
+
   palette = defaultChartPalette,
   units = defaultChartUnits,
   xAxis = defaultChartXAxis,
@@ -221,14 +241,28 @@ export default function LineChartContent({
       ))}
 
       {!!yAxis && (
-        <ChartYAxis
-          length={height - titleHeight}
-          max={maxValue}
-          min={minValue}
-          step={dy}
-          y={height}
-          ref={yAxisWidthRef}
-        />
+        <DesktopOnly xsDisplay={xsDy === null ? 'inherit' : 'none'}>
+          <ChartYAxis
+            length={height - titleHeight}
+            max={maxValue}
+            min={minValue}
+            step={dy}
+            y={height}
+            ref={yAxisWidthRef}
+          />
+        </DesktopOnly>
+      )}
+      {!!(yAxis && xsDy !== null) && (
+        <MobileOnly>
+          <ChartYAxis
+            length={height - titleHeight}
+            max={maxValue}
+            min={minValue}
+            step={xsDy}
+            y={height}
+            ref={yAxisWidthRef}
+          />
+        </MobileOnly>
       )}
     </g>
   );

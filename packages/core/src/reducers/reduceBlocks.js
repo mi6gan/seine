@@ -310,7 +310,14 @@ export function reduceBlocks(
                 ? { body: { ...block.body, ...action.body } }
                 : action.type === UPDATE_BLOCK_EDITOR
                 ? { editor: { ...block.editor, ...action.editor } }
-                : { format: { ...block.format, ...action.format } }),
+                : {
+                    format: Object.entries({
+                      ...block.format,
+                      ...action.format,
+                    })
+                      .filter(([_, v]) => v !== null)
+                      .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {}),
+                  }),
             },
             ...state.blocks.slice(index + 1),
           ],
