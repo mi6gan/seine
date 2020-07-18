@@ -89,7 +89,6 @@ export const defaultChartFormat = {
   yAxis: defaultChartYAxis,
   legend: defaultChartLegend,
   fraction: defaultChartFraction,
-  height: defaultChartHeight,
 };
 
 export const defaultBarChartFormat = {
@@ -106,13 +105,14 @@ export const defaultLineChartFormat = {
   kind: chartTypes.LINE,
 };
 
+export const defaultPieChartUnits = '%';
+
 export const defaultPieChartFormat = {
   ...defaultChartFormat,
   kind: chartTypes.PIE,
   legend: defaultPieChartLegend,
+  units: defaultPieChartUnits,
 };
-
-export const defaultPieChartUnits = '%';
 
 export const columnChartMaxElements = 5;
 export const columnChartMaxGroups = 5;

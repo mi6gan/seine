@@ -265,6 +265,28 @@ export const Flex = ({ children = [], ...props }) => (
   </Page>
 );
 
+export const ContentOfPieChart = (props) => (
+  <Page {...props}>
+    {[
+      {
+        id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
+        type: 'chart',
+        body: {
+          elements: createBlockElements([
+            { title: 'repairs', value: 12 },
+            { title: 'consulting of something long', value: 10 },
+            { title: 'training', value: 8 },
+            { title: 'product sales', value: 64 },
+            { title: 'others', value: 6 },
+          ]),
+        },
+        format: { kind: 'pie' },
+        parent_id: null,
+      },
+    ]}
+  </Page>
+);
+
 export const ContentOfPieAndBarSiblingCharts = (props) => (
   <Page {...props}>
     {[

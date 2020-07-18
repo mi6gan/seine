@@ -22,25 +22,27 @@ export default function PieChartIconButton() {
     <ToolbarButton
       onMouseDown={useAutoCallback(() =>
         setBuffer(
-          createBlock(
-            blockTypes.CHART,
-            {
-              elements: [
+          selected
+            ? null
+            : createBlock(
+                blockTypes.CHART,
                 {
-                  title: 'First slice',
-                  value: 30,
+                  elements: [
+                    {
+                      title: 'First slice',
+                      value: 30,
+                    },
+                    {
+                      title: 'Second slice',
+                      value: 70,
+                    },
+                  ],
                 },
                 {
-                  title: 'Second slice',
-                  value: 70,
-                },
-              ],
-            },
-            {
-              verticalAlignment: 'center',
-              kind: chartTypes.PIE,
-            }
-          )
+                  verticalAlignment: 'center',
+                  kind: chartTypes.PIE,
+                }
+              )
         )
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}

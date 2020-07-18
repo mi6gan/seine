@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
 import { chartTypes } from '@seine/core';
-import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
+import { useResizeTargetRef } from '@seine/styles';
 
-import ChartLayout from './ChartLayout';
+import { Item } from '../layout';
+
 import BarChartContent from './BarChartContent';
 import ColumnChartContent from './ColumnChartContent';
 import LineChartContent from './LineChartContent';
@@ -12,10 +13,7 @@ import PieChartContent from './PieChartContent';
 import type { ChartProps as Props } from './types';
 import ChartSvg from './ChartSvg';
 import ChartSvgDefs from './ChartSvgDefs';
-import ChartDescription from './ChartDescription';
-import PieChartDescription from './PieChartDescription';
 import useChartFormatDefaults from './useChartFormatDefaults';
-import useChartSvgProps from './useChartSvgProps';
 
 /**
  * @description Switch to chart render components by its kind.
@@ -36,23 +34,8 @@ export default function Chart({
   );
 
   return (
-    <ChartLayout
-      onClick={onClick}
-      className={className}
-      ref={useResizeTargetRef()}
-      title={chartProps.title}
-      description={
-        kind === chartTypes.PIE ? (
-          <PieChartDescription {...chartProps} />
-        ) : (
-          <ChartDescription {...chartProps} />
-        )
-      }
-      textAlignment={chartProps.textAlignment}
-      overflow={kind === chartTypes.PIE ? 'hidden' : 'visible'}
-      height={chartProps.height}
-    >
-      <ChartSvg {...useChartSvgProps(kind, chartProps)}>
+    <Item {...chartProps}>
+      <ChartSvg {...chartProps} ref={useResizeTargetRef()}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent {...chartProps} />
@@ -64,7 +47,6 @@ export default function Chart({
           <PieChartContent {...chartProps} onAutoFormat={handleAutoFormat} />
         ) : null}
       </ChartSvg>
-      {children}
-    </ChartLayout>
+    </Item>
   );
 }

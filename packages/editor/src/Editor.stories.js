@@ -10,6 +10,7 @@ import {
   Page,
   Flex,
   Table,
+  ContentOfPieChart,
 } from '../../content/src/Content.stories';
 
 import Editor from './Editor';
@@ -19,6 +20,8 @@ export default { title: 'Editor' };
 export const InitialEditor = () => <Page as={Editor} />;
 
 export const EditorOfTable = () => <Table as={Editor} />;
+
+export const EditorOfPieChart = () => <ContentOfPieChart as={Editor} />;
 
 export const EditorOfPieAndBarSiblingCharts = () => (
   <ContentOfPieAndBarSiblingCharts as={Editor} />

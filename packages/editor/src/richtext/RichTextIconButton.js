@@ -19,9 +19,11 @@ export default function RichTextIconButton() {
     <ToolbarButton
       onMouseDown={useAutoCallback(() =>
         setBuffer(
-          createBlock(blockTypes.RICH_TEXT, toRawContent('Rich text'), {
-            verticalAlignment: 'center',
-          })
+          selected
+            ? null
+            : createBlock(blockTypes.RICH_TEXT, toRawContent('Rich text'), {
+                verticalAlignment: 'center',
+              })
         )
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}

@@ -27,6 +27,10 @@ import LayoutDesign from './layout/LayoutDesign';
 import { useEditorDispatch, useEditorSelector } from './store';
 import EditorProvider from './store/EditorProvider';
 import useSelectedLayoutItems from './store/useSelectedLayoutItems';
+import { ChartDesign } from './chart';
+import CreateLayoutButton from './ui/CreateLayoutButton';
+import DeleteBlockButton from './ui/DeleteBlockButton';
+import ItemDesign from './layout/ItemDesign';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -90,30 +94,35 @@ function DefaultEditor({
   const { layout, item } = useSelectedLayoutItems();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
+  const ContentBlock = blockRenderMap[parent.type];
+  const closeMenu = useAutoCallback(() => setMenuOpen(false));
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <ToolbarMenu
-        onClose={useAutoCallback(() => setMenuOpen(false))}
+        onClose={closeMenu}
         open={menuOpen}
         anchorEl={menuAnchorRef.current}
         keepMounted
         mt={3}
         ml={-1}
       >
+        <MenuItem onClick={closeMenu}>
+          <CreateLayoutButton as={MenuButton}>Create layout</CreateLayoutButton>
+        </MenuItem>
+
         <MenuItem>
           <MenuButton disabled={!selection || !selection.length}>
             Copy
           </MenuButton>
         </MenuItem>
 
-        <MenuItem>
-          <MenuButton disabled={!selection || !selection.length}>
-            Delete
-          </MenuButton>
+        <MenuItem onClick={closeMenu}>
+          <DeleteBlockButton as={MenuButton}>Delete</DeleteBlockButton>
         </MenuItem>
       </ToolbarMenu>
 
-      <Toolbar onClick={deselectClickHandler} ref={menuAnchorRef}>
+      <Toolbar ref={menuAnchorRef}>
         <ToolbarButton
           onClick={useAutoCallback(() => {
             setMenuOpen(true);
@@ -148,13 +157,15 @@ function DefaultEditor({
       >
         <Contents cursor={toolCursorRef.current}>
           <EditorPaper>
-            <Content
-              blockRenderMap={blockRenderMap}
-              parent={parent}
-              {...contentProps}
-            >
-              {blocks}
-            </Content>
+            <ContentBlock parentType={parent.type}>
+              <Content
+                blockRenderMap={blockRenderMap}
+                parent={parent}
+                {...contentProps}
+              >
+                {blocks}
+              </Content>
+            </ContentBlock>
           </EditorPaper>
 
           <Sidebar
@@ -163,8 +174,10 @@ function DefaultEditor({
             })}
           >
             {layout && <LayoutDesign />}
+            {item && <ItemDesign />}
             {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
             {item && item.type === blockTypes.TABLE && <TableDesign />}
+            {item && item.type === blockTypes.CHART && <ChartDesign />}
           </Sidebar>
         </Contents>
       </Box>
