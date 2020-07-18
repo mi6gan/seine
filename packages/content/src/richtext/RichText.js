@@ -63,6 +63,7 @@ function Draft({
           textAlignment[0].toUpperCase(),
           textAlignment.slice(1),
         ].join('')}
+        {...editorProps}
       >
         <Editor
           {...editorProps}

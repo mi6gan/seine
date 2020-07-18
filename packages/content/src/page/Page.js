@@ -1,15 +1,10 @@
 // @flow
-import * as React from 'react';
+import styled from 'styled-components/macro';
 
-type Props = {
-  children: React.ChildrenArray<any>,
-};
+import { Item } from '../layout';
 
-/**
- * @description Default page renderer.
- * @param {Props} props
- * @returns {React.Node}
- */
-export default function Page({ children }) {
-  return children;
-}
+const Page = styled(Item)`
+  height: 100%;
+`;
+
+export default Page;

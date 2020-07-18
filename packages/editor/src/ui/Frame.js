@@ -22,11 +22,14 @@ export const StyledFrame = styled(Item)`
       duration: theme.transitions.duration.standard,
       easing: 'ease-in-out',
     })};
-  &${({ selected = false }) => (selected ? '' : ':hover')}:after {
-    position: absolute;
+  cursor: pointer;
+  &:after {
     content: '';
+    position: absolute;
     left: 0;
     top: 0;
+  }
+  &${({ selected = false }) => (selected ? '' : ':hover')}:after {
     width: calc(100% - 2px);
     height: calc(100% - 2px);
     z-index: 1;
@@ -40,7 +43,6 @@ export const StyledFrame = styled(Item)`
       ${({ theme, selected }) =>
         theme.palette.primary[selected === 'self' ? 'main' : 'light']};
     pointer-events: ${({ selected }) => (selected ? 'none' : 'all')};
-    cursor: pointer;
   }
   &:not(:hover) {
     ${({ selected, item }) => !selected && item && { filter: 'opacity(0.5)' }}
@@ -104,7 +106,7 @@ export default React.forwardRef(function Frame(
 ) {
   const dispatch = useEditorDispatch();
   const buffer = useEditorBuffer();
-  const { layout, item } = useSelectedLayoutItems();
+  const { layout, item, items } = useSelectedLayoutItems();
   const selected =
     (item && item.id === id) || (layout && layout.id === id)
       ? 'self'
@@ -118,14 +120,21 @@ export default React.forwardRef(function Frame(
         ref={ref}
         id={id}
         item={!!item}
-        selected={buffer ? !item : selected}
+        selected={
+          buffer
+            ? !item
+            : items.reduce((acc, item) => acc.add(item['parent_id']), new Set())
+                .size === 1 && items.some((item) => item.id === id)
+            ? 'self'
+            : selected
+        }
         onClick={useAutoCallback((event) => {
           if (!buffer) {
             dispatch({
               type: SELECT_BLOCK,
               id,
-              ...(event.key === 'Control' && {
-                modifier: selected ? 'add' : 'sub',
+              ...(event.ctrlKey && {
+                modifier: selected ? 'sub' : 'add',
               }),
             });
           }

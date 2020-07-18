@@ -12,7 +12,7 @@ else
   TAG=mi6gan/seine:$(node -p -e "require('./packages/core/package.json').version")
   docker build -t "$TAG" .
   docker push "$TAG"
-  docker tag "$TAG" mi6gan/seine:latest
-  docker push mi6gan/seine:latest
+  docker tag "$TAG" mi6gan/seine:"$TRAVIS_BRANCH"
+  docker push mi6gan/seine:"$TRAVIS_BRANCH"
   ssh "$DEPLOY_LOGIN"@"$DEPLOY_HOST" 'docker-compose pull --parallel && docker-compose up -d'
 fi

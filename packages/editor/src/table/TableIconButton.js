@@ -19,20 +19,22 @@ export default function TableIconButton() {
     <ToolbarButton
       onMouseDown={useAutoCallback(() =>
         setBuffer(
-          createBlock(
-            blockTypes.TABLE,
-            {
-              header: [
-                { ...defaultTableCell, text: 'Column 1' },
-                { ...defaultTableCell, text: 'Column 2' },
-              ],
-              rows: [
-                [defaultTableCell, defaultTableCell],
-                [defaultTableCell, defaultTableCell],
-              ],
-            },
-            null
-          )
+          selected
+            ? null
+            : createBlock(
+                blockTypes.TABLE,
+                {
+                  header: [
+                    { ...defaultTableCell, text: 'Column 1' },
+                    { ...defaultTableCell, text: 'Column 2' },
+                  ],
+                  rows: [
+                    [defaultTableCell, defaultTableCell],
+                    [defaultTableCell, defaultTableCell],
+                  ],
+                },
+                null
+              )
         )
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}

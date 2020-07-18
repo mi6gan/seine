@@ -27,37 +27,39 @@ export default function ColumnChartIconButton() {
     <ToolbarButton
       onMouseDown={useAutoCallback(() =>
         setBuffer(
-          createBlock(
-            blockTypes.CHART,
-            {
-              elements: createTitleIdentityBlockElements([
+          selected
+            ? null
+            : createBlock(
+                blockTypes.CHART,
                 {
-                  title: 'First item',
-                  group: 'Group 1',
-                  value: 30,
+                  elements: createTitleIdentityBlockElements([
+                    {
+                      title: 'First item',
+                      group: 'Group 1',
+                      value: 30,
+                    },
+                    {
+                      title: 'Second item',
+                      group: 'Group 2',
+                      value: 70,
+                    },
+                    {
+                      title: 'First item',
+                      group: 'Group 1',
+                      value: 40,
+                    },
+                    {
+                      title: 'Second item',
+                      group: 'Group 2',
+                      value: 20,
+                    },
+                  ]),
                 },
                 {
-                  title: 'Second item',
-                  group: 'Group 2',
-                  value: 70,
-                },
-                {
-                  title: 'First item',
-                  group: 'Group 1',
-                  value: 40,
-                },
-                {
-                  title: 'Second item',
-                  group: 'Group 2',
-                  value: 20,
-                },
-              ]),
-            },
-            {
-              verticalAlignment: 'center',
-              kind: chartTypes.COLUMN,
-            }
-          )
+                  verticalAlignment: 'center',
+                  kind: chartTypes.COLUMN,
+                }
+              )
         )
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}

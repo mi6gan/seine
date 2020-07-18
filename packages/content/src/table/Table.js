@@ -87,7 +87,7 @@ export default React.forwardRef(function Table(
         ref && ref(container);
       })}
     >
-      <TableTitle textAlignment={textAlignment}>{title}</TableTitle>
+      <TableTitle textAlignment={textAlignment}>{title || <br />}</TableTitle>
       <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
         <thead>
           <tr>
@@ -112,7 +112,7 @@ export default React.forwardRef(function Table(
                   meta={{ rowIndex, columnIndex }}
                   {...cell}
                 >
-                  {text}
+                  {text || ' '}
                 </Cell>
               ))}
             </tr>

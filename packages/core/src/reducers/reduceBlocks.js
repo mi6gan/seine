@@ -101,6 +101,13 @@ export type UpdateBlockLayout = {
   id?: BlockId,
 };
 
+export const SET_BLOCK_PARENT = '@seine/core/setBlockParent';
+export type SetBlockParent = {
+  type: typeof SET_BLOCK_PARENT,
+  id: BlockId,
+  parentId: BlockId,
+};
+
 //
 // Memoize editor's inner state.
 //
@@ -128,7 +135,8 @@ export type BlocksAction =
   | UpdateBlockDataAction
   | UpdateBlockFormatAction
   | UpdateBlockEditorAction
-  | UpdateBlockLayout;
+  | UpdateBlockLayout
+  | SetBlockParent;
 
 /**
  * @description Reduce Content editor actions
@@ -355,6 +363,21 @@ export function reduceBlocks(
         };
       }
       return state;
+    }
+
+    case SET_BLOCK_PARENT: {
+      const index = state.blocks.findIndex((block) => block.id === action.id);
+      return {
+        ...state,
+        blocks: [
+          ...state.blocks.slice(0, index),
+          ...state.blocks.slice(index + 1),
+          {
+            ...state.blocks[index],
+            parent_id: action.parentId,
+          },
+        ],
+      };
     }
 
     default:

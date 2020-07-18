@@ -43,6 +43,7 @@ export default function RichTextEditor({
   entityMap = defaultDraftBody.entityMap,
   textAlignment = defaultDraftFormat.textAlignment,
   verticalAlignment = defaultDraftFormat.verticalAlignment,
+  ...itemProps
 }: Props) {
   const { item } = useSelectedLayoutItems();
   const selected = !!(item && item.id === id);
@@ -88,6 +89,7 @@ export default function RichTextEditor({
         id={id}
         dispatch={dispatch}
         verticalAlignment={verticalAlignment}
+        {...itemProps}
       >
         <Editor
           editorKey={id}

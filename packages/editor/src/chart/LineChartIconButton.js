@@ -27,37 +27,39 @@ export default function LineChartIconButton() {
     <ToolbarButton
       onMouseDown={useAutoCallback(() =>
         setBuffer(
-          createBlock(
-            blockTypes.CHART,
-            {
-              elements: createTitleIdentityBlockElements([
+          selected
+            ? null
+            : createBlock(
+                blockTypes.CHART,
                 {
-                  title: 'Top',
-                  value: 100,
-                  group: 'group 1',
+                  elements: createTitleIdentityBlockElements([
+                    {
+                      title: 'Top',
+                      value: 100,
+                      group: 'group 1',
+                    },
+                    {
+                      title: 'Bottom',
+                      value: 10,
+                      group: 'group 1',
+                    },
+                    {
+                      title: 'Top',
+                      value: 100,
+                      group: 'group 2',
+                    },
+                    {
+                      title: 'Bottom',
+                      value: 10,
+                      group: 'group 2',
+                    },
+                  ]),
                 },
                 {
-                  title: 'Bottom',
-                  value: 10,
-                  group: 'group 1',
-                },
-                {
-                  title: 'Top',
-                  value: 100,
-                  group: 'group 2',
-                },
-                {
-                  title: 'Bottom',
-                  value: 10,
-                  group: 'group 2',
-                },
-              ]),
-            },
-            {
-              verticalAlignment: 'center',
-              kind: chartTypes.LINE,
-            }
-          )
+                  verticalAlignment: 'center',
+                  kind: chartTypes.LINE,
+                }
+              )
         )
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}
