@@ -3,6 +3,7 @@ import {
   blockTypes,
   createBlockElements,
   createTitleIdentityBlockElements,
+  layoutTypes,
 } from '@seine/core';
 import { actions } from '@storybook/addon-actions';
 
@@ -152,9 +153,9 @@ export const Flex = ({ children = [], ...props }) => (
         id: 'grid',
         parent_id: null,
 
-        type: blockTypes.FLEX,
+        type: blockTypes.LAYOUT,
         body: {},
-        format: {},
+        format: { kind: layoutTypes.FLEX },
       },
       {
         id: 'table',
