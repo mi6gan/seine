@@ -2,13 +2,7 @@
 import { equals } from 'ramda';
 
 import { createBlock } from '../utils';
-import type {
-  Block,
-  BlockBody,
-  BlockFormat,
-  BlockId,
-  LayoutType,
-} from '../types';
+import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
 import { blockTypes } from '../types';
 
 opaque type BlockExtension = {
@@ -17,10 +11,12 @@ opaque type BlockExtension = {
 export type BlocksState = {
   blocks: $ReadOnlyArray<Block & BlockExtension>,
   selection: $ReadOnlyArray<BlockId>,
+  device: 'mobile' | 'any',
 };
 export const initialBlocksState: BlocksState = {
   blocks: [],
   selection: [],
+  device: 'any',
 };
 
 export const CREATE_BLOCK = '@seine/core/createBlock';
@@ -94,18 +90,17 @@ export type UpdateBlockFormatAction = {
   id?: BlockId,
 };
 
-export const UPDATE_BLOCK_LAYOUT = '@seine/core/updateBlockLayout';
-export type UpdateBlockLayout = {
-  type: typeof UPDATE_BLOCK_LAYOUT,
-  layout: LayoutType,
-  id?: BlockId,
-};
-
 export const SET_BLOCK_PARENT = '@seine/core/setBlockParent';
-export type SetBlockParent = {
+export type SetBlockParentAction = {
   type: typeof SET_BLOCK_PARENT,
   id: BlockId,
   parentId: BlockId,
+};
+
+export const SET_DEVICE = '@seine/core/setDevice';
+export type SetDeviceAction = {
+  type: typeof SET_DEVICE,
+  device: 'mobile' | 'any',
 };
 
 //
@@ -131,12 +126,13 @@ export type BlocksAction =
   | BlocksCreateAction
   | DeleteSelectedBlocksAction
   | DeselectAllBlocksAction
+  | DeleteBlockAction
   | SelectBlockAction
   | UpdateBlockDataAction
   | UpdateBlockFormatAction
   | UpdateBlockEditorAction
-  | UpdateBlockLayout
-  | SetBlockParent;
+  | SetBlockParentAction
+  | SetDeviceAction;
 
 /**
  * @description Reduce Content editor actions
@@ -192,8 +188,7 @@ export function reduceBlocks(
       }
       const parentIndex = state.blocks.findIndex(
         ({ id, type }) =>
-          id === state.blocks[index].parent_id &&
-          (type === blockTypes.GRID || type === blockTypes.FLEX)
+          id === state.blocks[index].parent_id && type === blockTypes.LAYOUT
       );
 
       const parent =
@@ -296,8 +291,7 @@ export function reduceBlocks(
 
     case UPDATE_BLOCK_BODY:
     case UPDATE_BLOCK_EDITOR:
-    case UPDATE_BLOCK_FORMAT:
-    case UPDATE_BLOCK_LAYOUT: {
+    case UPDATE_BLOCK_FORMAT: {
       const index = state.blocks.findIndex(
         ({ id }) =>
           ('id' in action && action.id === id) || state.selection.includes(id)
@@ -314,16 +308,6 @@ export function reduceBlocks(
         return {
           ...state,
           error: 'There is more than one block in selection.',
-        };
-      }
-
-      if (
-        action.type === UPDATE_BLOCK_LAYOUT &&
-        !['none', 'flex', 'grid'].includes(action.layout)
-      ) {
-        return {
-          ...state,
-          error: 'Unrecognized layout type',
         };
       }
 
@@ -345,16 +329,28 @@ export function reduceBlocks(
                 ? { body: { ...block.body, ...action.body } }
                 : action.type === UPDATE_BLOCK_EDITOR
                 ? { editor: { ...block.editor, ...action.editor } }
-                : action.type === UPDATE_BLOCK_LAYOUT
-                ? { type: action.layout }
-                : { format: { ...block.format, ...action.format } }),
+                : {
+                    format:
+                      state.device === 'any'
+                        ? { ...block.format, ...action.format }
+                        : {
+                            ...block.format,
+                            [state.device]: {
+                              ...(block.format && block.format[state.device]),
+                              ...action.format,
+                            },
+                          },
+                  }),
             },
-            ...(action.type === UPDATE_BLOCK_LAYOUT
+            ...(action.type === UPDATE_BLOCK_FORMAT && action.format.layout
               ? state.blocks.slice(index + 1).map((block) =>
                   block['parent_id'] === action.id
                     ? {
                         ...block,
-                        format: { ...block.format, layout: action.type },
+                        format: {
+                          ...block.format,
+                          layout: action.format.layout,
+                        },
                       }
                     : block
                 )
@@ -377,6 +373,13 @@ export function reduceBlocks(
             parent_id: action.parentId,
           },
         ],
+      };
+    }
+
+    case SET_DEVICE: {
+      return {
+        ...state,
+        device: action.device,
       };
     }
 

@@ -1,7 +1,7 @@
 // @flow
-export type ItemBody = {};
+import type { LayoutType } from '@seine/core';
 
-export type LayoutType = 'none' | 'grid' | 'flex';
+export type ItemBody = {};
 
 export type ItemFormat = {
   layout: LayoutType,

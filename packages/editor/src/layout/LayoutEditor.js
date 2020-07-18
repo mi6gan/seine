@@ -1,17 +1,17 @@
 // @flow
 import * as React from 'react';
-import { Flex } from '@seine/content';
+import { Layout } from '@seine/content';
 
 import Frame from '../ui/Frame';
 
 /**
- * @description Flex layout editor.
+ * @description Grid layout editor.
  * @param {any} props
  * @returns {React.Node}
  */
-export default function FlexEditor({ children, ...flex }) {
+export default function LayoutEditor({ children, ...grid }) {
   return (
-    <Frame {...flex} as={Flex}>
+    <Frame {...grid} as={Layout}>
       {children}
     </Frame>
   );

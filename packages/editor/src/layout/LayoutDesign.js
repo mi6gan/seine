@@ -1,12 +1,21 @@
 // @flow
 import * as React from 'react';
 import { FormControl, InputLabel, Select } from '@material-ui/core';
-import { blockTypes, UPDATE_BLOCK_LAYOUT } from '@seine/core';
+import {
+  blockTypes,
+  defaultLayoutFormat,
+  layoutTypes,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import {
+  useEditorDispatch,
+  useEditorSelector,
+  useSelectedBlocks,
+} from '../store';
 
 import FlexDesign from './FlexDesign';
 
@@ -15,11 +24,14 @@ import FlexDesign from './FlexDesign';
  * @returns {React.Node}
  */
 export default function LayoutDesign() {
+  const device = useEditorSelector((state) => state.device);
   const layoutBlock = useSelectedBlocks().find(
-    ({ type }) => type === blockTypes.FLEX || type === blockTypes.GRID
+    ({ type }) => type === blockTypes.LAYOUT
   );
   const id = layoutBlock && layoutBlock.id;
-  const type = layoutBlock && layoutBlock.type;
+  const { kind = defaultLayoutFormat.kind } = layoutBlock
+    ? layoutBlock.format[device] || layoutBlock.format
+    : defaultLayoutFormat;
   const dispatch = useEditorDispatch();
   return (
     <>
@@ -29,22 +41,22 @@ export default function LayoutDesign() {
         <FormControl fullWidth>
           <InputLabel>Type</InputLabel>
           <Select
-            value={type}
+            value={kind}
             onChange={useAutoCallback((e) =>
               dispatch({
                 id,
-                type: UPDATE_BLOCK_LAYOUT,
-                layout: e.target.value,
+                type: UPDATE_BLOCK_FORMAT,
+                format: { kind: e.target.value },
               })
             )}
           >
-            <option value={blockTypes.FLEX}>Flex</option>
-            <option value={blockTypes.GRID}>Grid</option>
+            <option value={layoutTypes.FLEX}>Flex</option>
+            <option value={layoutTypes.GRID}>Grid</option>
           </Select>
         </FormControl>
       </SidebarSection>
 
-      {type === blockTypes.FLEX && <FlexDesign />}
+      {kind === layoutTypes.FLEX && <FlexDesign />}
     </>
   );
 }

@@ -6,7 +6,11 @@ import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import SidebarSection from '../ui/SidebarSection';
-import { useEditorDispatch, useSelectedLayoutItems } from '../store';
+import {
+  useEditorDispatch,
+  useEditorSelector,
+  useSelectedLayoutItems,
+} from '../store';
 import SidebarHeading from '../ui/SidebarHeading';
 
 const StyledInput = styled(Input)`
@@ -23,12 +27,13 @@ const StyledInputLabel = styled(InputLabel)`
  * @returns {React.Node}
  */
 export default function ItemDesign() {
+  const device = useEditorSelector((state) => state.device);
   const { item } = useSelectedLayoutItems();
   const dispatch = useEditorDispatch();
   const {
     minWidth = defaultItemFormat.minWidth,
     maxWidth = defaultItemFormat.maxWidth,
-  } = item ? item.format : defaultItemFormat;
+  } = item ? item.format[device] || item.format : defaultItemFormat;
   const id = item && item.id;
   return (
     <>

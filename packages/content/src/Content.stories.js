@@ -3,6 +3,7 @@ import {
   blockTypes,
   createBlockElements,
   createTitleIdentityBlockElements,
+  layoutTypes,
 } from '@seine/core';
 import { actions } from '@storybook/addon-actions';
 
@@ -149,16 +150,16 @@ export const Flex = ({ children = [], ...props }) => (
   <Page {...props}>
     {[
       {
-        id: 'flex',
+        id: 'grid',
         parent_id: null,
 
-        type: blockTypes.FLEX,
+        type: blockTypes.LAYOUT,
         body: {},
-        format: {},
+        format: { kind: layoutTypes.FLEX },
       },
       {
         id: 'table',
-        parent_id: 'flex',
+        parent_id: 'grid',
         type: blockTypes.TABLE,
         body: {
           title: 'Table title',
@@ -189,7 +190,7 @@ export const Flex = ({ children = [], ...props }) => (
       },
       {
         id: 'text',
-        parent_id: 'flex',
+        parent_id: 'grid',
         type: blockTypes.RICH_TEXT,
         body: {
           blocks: [
@@ -292,7 +293,7 @@ export const ContentOfPieAndBarSiblingCharts = (props) => (
     {[
       {
         id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'flex',
+        type: 'grid',
         body: null,
         format: null,
         parent_id: null,
@@ -335,7 +336,7 @@ export const ContentOfColumnAndBarSiblingCharts = (props) => (
     {[
       {
         id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'flex',
+        type: 'grid',
         body: null,
         format: null,
         parent_id: null,
@@ -381,7 +382,7 @@ export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
     {[
       {
         id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'flex',
+        type: 'grid',
         body: null,
         format: null,
         parent_id: null,
@@ -443,7 +444,7 @@ export const ContentOfLineAndBarSiblingCharts = (props) => (
     {[
       {
         id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'flex',
+        type: 'grid',
         body: null,
         format: null,
         parent_id: null,
@@ -505,7 +506,7 @@ export const ContentOfColumnAndLineCharts = (props) => (
     {[
       {
         id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'flex',
+        type: 'grid',
         body: null,
         format: null,
         parent_id: null,
@@ -564,7 +565,7 @@ export const ContentOfAllCharts = (props) => (
     {[
       {
         id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
-        type: 'flex',
+        type: 'grid',
         body: null,
         format: null,
         parent_id: null,
@@ -675,7 +676,7 @@ export const ContentOfChartSampleOne = (props) => (
       },
       {
         id: '6fbf9072-e107-476d-8300-642b13bf39d2',
-        type: 'flex',
+        type: 'grid',
         parent_id: '044d4dca-4924-4a9d-9e6b-55b9be006b70',
         body: {},
         format: {},

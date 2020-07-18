@@ -21,6 +21,7 @@ function Content({
   blockRenderMap = defaultBlockRenderMap,
   children,
   parent,
+  device = 'any',
   as: Container = parent['parent_id'] ? React.Fragment : Provider,
   ...containerProps
 }: Props): React.Node {
@@ -37,12 +38,20 @@ function Content({
             <ContentBlock
               key={block.id}
               parentType={parent.type}
-              {...(format ? format : {})}
+              {...(format
+                ? device === 'any'
+                  ? format
+                  : { ...format, ...format[device] }
+                : {})}
               {...(body ? body : {})}
               {...block}
             >
               {blockChildren.length ? (
-                <Content parent={block} blockRenderMap={blockRenderMap}>
+                <Content
+                  device={device}
+                  parent={block}
+                  blockRenderMap={blockRenderMap}
+                >
                   {blockChildren}
                 </Content>
               ) : null}
