@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
-import { Box, ButtonBase, MenuItem, Paper } from '@material-ui/core';
+import { Box, ButtonBase, MenuItem, Paper, Select } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { ThemeProvider } from '@seine/styles';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
-import { blockTypes, DESELECT_ALL_BLOCKS } from '@seine/core';
+import { blockTypes, DESELECT_ALL_BLOCKS, SET_DEVICE } from '@seine/core';
 import { Content } from '@seine/content';
 
 import defaultTheme from './defaultTheme';
@@ -48,12 +48,20 @@ const MenuButton = styled(Box).attrs(({ disabled }) => ({
 const EditorPaper = styled(Paper).attrs(() => ({
   component: Box,
   height: 600,
-  width: '100%',
   m: 10,
   p: 2,
 }))`
   overflow: auto;
   overflow-x: hidden;
+  ${({ device, theme }) => ({
+    width: device === 'mobile' ? theme.breakpoints.width('sm') : '100%',
+  })}
+`;
+
+const StyledSelect = styled(Select)`
+  && {
+    color: ${({ theme }) => theme.palette.grey[50]}};
+  }
 `;
 
 const defaultEditorChildren = [];
@@ -73,7 +81,7 @@ function DefaultEditor({
   const toolCursorRef = React.useRef(null);
 
   const dispatch = useEditorDispatch();
-  const { blocks, selection } = useEditorSelector();
+  const { blocks, selection, device } = useEditorSelector();
 
   useAutoEffect(() => {
     onChange(
@@ -123,26 +131,40 @@ function DefaultEditor({
       </ToolbarMenu>
 
       <Toolbar ref={menuAnchorRef}>
-        <ToolbarButton
-          onClick={useAutoCallback(() => {
-            setMenuOpen(true);
-          })}
-          selected={menuOpen}
-        >
-          <MenuIcon />
-        </ToolbarButton>
-        <ToolbarSeparator />
+        <Box width={'40%'}>
+          <ToolbarButton
+            onClick={useAutoCallback(() => {
+              setMenuOpen(true);
+            })}
+            selected={menuOpen}
+          >
+            <MenuIcon />
+          </ToolbarButton>
+          <ToolbarSeparator />
 
-        <RichTextIconButton />
-        <ToolbarSeparator />
+          <RichTextIconButton />
+          <ToolbarSeparator />
 
-        <TableIconButton />
-        <ToolbarSeparator />
+          <TableIconButton />
+          <ToolbarSeparator />
 
-        <BarChartIconButton />
-        <LineChartIconButton />
-        <ColumnChartIconButton />
-        <PieChartIconButton />
+          <BarChartIconButton />
+          <LineChartIconButton />
+          <ColumnChartIconButton />
+          <PieChartIconButton />
+        </Box>
+        <Box width={'20%'} textAlign={'center'}>
+          <StyledSelect
+            value={device}
+            onChange={(event) =>
+              dispatch({ type: SET_DEVICE, device: event.target.value })
+            }
+          >
+            <MenuItem value={'any'}>Any device</MenuItem>
+            <MenuItem value={'mobile'}>Mobile only</MenuItem>
+          </StyledSelect>
+        </Box>
+        <Box width={'40%'} />
       </Toolbar>
 
       <Box
@@ -156,9 +178,10 @@ function DefaultEditor({
         height={'100%'}
       >
         <Contents cursor={toolCursorRef.current}>
-          <EditorPaper>
+          <EditorPaper device={device}>
             <ContentBlock parentType={parent.type}>
               <Content
+                device={device}
                 blockRenderMap={blockRenderMap}
                 parent={parent}
                 {...contentProps}

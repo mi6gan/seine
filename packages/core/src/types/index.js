@@ -5,10 +5,6 @@ import type { ChartBody, ChartElement, ChartFormat } from './charts';
 import { CHART } from './charts';
 import type { RichTextBody, RichTextFormat } from './richText';
 import { RICH_TEXT } from './richText';
-import type { GridBody, GridFormat } from './grid';
-import { GRID } from './grid';
-import type { FlexBody, FlexFormat } from './flex';
-import { FLEX } from './flex';
 import type { ImageBody, ImageFormat } from './image';
 import { IMAGE } from './image';
 import type { PageBody, PageFormat } from './page';
@@ -16,12 +12,13 @@ import { PAGE } from './page';
 import type { TableBody, TableFormat } from './tables';
 import { TABLE } from './tables';
 import type { ItemBody, ItemFormat } from './item';
+import type { LayoutBody, LayoutFormat } from './layout';
+import { LAYOUT } from './layout';
 
 export * from './item';
 export * from './charts';
 export * from './richText';
-export * from './grid';
-export * from './flex';
+export * from './layout';
 export * from './image';
 export * from './page';
 export * from './tables';
@@ -29,11 +26,10 @@ export * from './tables';
 export const blockTypes = {
   CHART,
   RICH_TEXT,
-  GRID,
-  FLEX,
   IMAGE,
   PAGE,
   TABLE,
+  LAYOUT,
 };
 
 export type BlockElement = ChartElement;
@@ -41,25 +37,16 @@ export type BlockElement = ChartElement;
 export type BlockType = $Values<typeof blockTypes>;
 
 export type BlockBody = ItemBody &
-  (
-    | ChartBody
-    | RichTextBody
-    | GridBody
-    | FlexBody
-    | ImageBody
-    | PageBody
-    | TableBody
-  );
+  (ChartBody | RichTextBody | ImageBody | PageBody | TableBody | LayoutBody);
 
 export type BlockFormat = ItemFormat &
   (
     | ChartFormat
     | RichTextFormat
-    | GridFormat
-    | FlexFormat
     | ImageFormat
     | PageFormat
     | TableFormat
+    | LayoutFormat
   );
 
 export type BlockId = string | null;

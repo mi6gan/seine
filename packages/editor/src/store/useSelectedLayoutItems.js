@@ -13,9 +13,7 @@ export default function useSelectedLayoutItems() {
   const blocks = useSelectedBlocks();
 
   const layouts = useAutoMemo(
-    blocks.filter(
-      ({ type }) => type === blockTypes.FLEX || type === blockTypes.GRID
-    )
+    blocks.filter(({ type }) => type === blockTypes.LAYOUT)
   );
   const items = useAutoMemo(
     layouts.length

@@ -33,7 +33,7 @@ export default function CreateLayoutButton({
       {...buttonProps}
       onClick={useAutoCallback(() => {
         const block = createBlock(
-          blockTypes.FLEX,
+          blockTypes.LAYOUT,
           null,
           defaultFlexFormat,
           parentId

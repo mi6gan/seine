@@ -25,20 +25,25 @@ import { ActionButton } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarSection from '../ui/SidebarSection';
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import {
+  useEditorDispatch,
+  useEditorSelector,
+  useSelectedBlocks,
+} from '../store';
 
 /**
  * @description Layout design.
  * @returns {React.Node}
  */
 export default function FlexDesign() {
+  const device = useEditorSelector((state) => state.device);
   const layoutBlock = useSelectedBlocks().find(
     ({ type }) => type === blockTypes.FLEX
   );
   const dispatch = useEditorDispatch();
   const id = layoutBlock && layoutBlock.id;
   const { spacing = defaultFlexFormat.spacing } = layoutBlock
-    ? layoutBlock.format || defaultFlexFormat
+    ? layoutBlock.format[device] || layoutBlock.format || defaultFlexFormat
     : defaultFlexFormat;
   return (
     <>

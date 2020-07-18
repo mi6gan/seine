@@ -3,19 +3,18 @@ import { blockTypes } from '@seine/core';
 
 import { Chart } from './chart';
 import { RichText } from './richtext';
-import { Grid, Flex } from './layout';
 import { Image } from './image';
 import { Page } from './page';
 import { Table } from './table';
+import { Layout } from './layout';
 
 const blockRenderMap = {
   [blockTypes.CHART]: Chart,
   [blockTypes.RICH_TEXT]: RichText,
-  [blockTypes.GRID]: Grid,
-  [blockTypes.FLEX]: Flex,
   [blockTypes.IMAGE]: Image,
   [blockTypes.PAGE]: Page,
   [blockTypes.TABLE]: Table,
+  [blockTypes.LAYOUT]: Layout,
 };
 
 export default blockRenderMap;
