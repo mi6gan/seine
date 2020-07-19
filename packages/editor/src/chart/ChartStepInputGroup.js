@@ -30,7 +30,7 @@ export default function ChartStepInputGroup({ hideX = false, hideY = false }) {
 
   return (
     <SidebarGroup>
-      <SidebarLabel>Step</SidebarLabel>
+      <SidebarLabel>step</SidebarLabel>
       <SidebarInput
         hidden={hideX}
         disabled={!id}

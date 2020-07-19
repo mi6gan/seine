@@ -100,7 +100,7 @@ export default function TableDesign() {
       <SidebarSection {...(columnIndex === -1 && { display: 'none' })}>
         <SidebarHeading>Table</SidebarHeading>
         <SidebarGroup alignItems={'center'}>
-          <SidebarLabel>Structure</SidebarLabel>
+          <SidebarLabel>structure</SidebarLabel>
           <SidebarButtonGroup>
             <StructureActionButton
               color={'success.light'}
@@ -232,7 +232,7 @@ export default function TableDesign() {
         </SidebarGroup>
 
         <SidebarGroup alignItems={'center'}>
-          <SidebarLabel>Style</SidebarLabel>
+          <SidebarLabel>style</SidebarLabel>
           <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
             {rowIndex > -1 && (
               <ToolbarToggleButton selected={isBold} value={{ bold: !isBold }}>
@@ -250,7 +250,7 @@ export default function TableDesign() {
         </SidebarGroup>
 
         <SidebarGroup alignItems={'center'}>
-          <SidebarLabel>Alignment</SidebarLabel>
+          <SidebarLabel>alignment</SidebarLabel>
 
           <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
             <ToolbarToggleButton value={{ align: 'left' }} selected={isLeft}>
@@ -271,7 +271,7 @@ export default function TableDesign() {
         </SidebarGroup>
 
         <SidebarGroup alignItems={'center'}>
-          <SidebarLabel>Column %</SidebarLabel>
+          <SidebarLabel>column %</SidebarLabel>
           <SidebarInput
             disabled={layout === blockTypes.FLEX}
             type={'number'}
@@ -301,7 +301,7 @@ export default function TableDesign() {
       >
         <SidebarHeading>Table</SidebarHeading>
         <SidebarGroup alignItems={'center'}>
-          <SidebarLabel>Alignment</SidebarLabel>
+          <SidebarLabel>alignment</SidebarLabel>
           <ToolbarToggleButtonGroup
             value={textAlignment}
             onChange={useAutoCallback((event, textAlignment) =>

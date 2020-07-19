@@ -19,6 +19,8 @@ export const defaultItemFormat = {
   alignSelf: 'auto',
   maxWidth: 'none',
   minWidth: 0,
+  maxHeight: 'none',
+  minHeight: 0,
   flexGrow: 0,
   flexBasis: 'auto',
   gridRow: '',

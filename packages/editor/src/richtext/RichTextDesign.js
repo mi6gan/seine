@@ -81,7 +81,7 @@ export default function RichTextDesign() {
     <SidebarSection>
       <SidebarHeading>Rich text</SidebarHeading>
       <SidebarGroup alignItems={'center'}>
-        <SidebarLabel>Heading</SidebarLabel>
+        <SidebarLabel>heading</SidebarLabel>
         <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
           <ToolbarToggleButton value={'header-one'}>
             <SvgIcon>
@@ -104,7 +104,7 @@ export default function RichTextDesign() {
       </SidebarGroup>
 
       <SidebarGroup alignItems={'center'}>
-        <SidebarLabel>List</SidebarLabel>
+        <SidebarLabel>list</SidebarLabel>
         <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
           <ToolbarToggleButton value={'ordered-list-item'}>
             <FormatListNumbered />
@@ -117,7 +117,7 @@ export default function RichTextDesign() {
       </SidebarGroup>
 
       <SidebarGroup alignItems={'center'}>
-        <SidebarLabel>Style</SidebarLabel>
+        <SidebarLabel>style</SidebarLabel>
         <ToolbarToggleButtonGroup
           value={useAutoMemo(
             editorState ? [...editorState.getCurrentInlineStyle()] : []
@@ -146,7 +146,7 @@ export default function RichTextDesign() {
       </SidebarGroup>
 
       <SidebarGroup alignItems={'center'}>
-        <SidebarLabel>Alignment</SidebarLabel>
+        <SidebarLabel>alignment</SidebarLabel>
         <ToolbarToggleButtonGroup
           value={textAlignment}
           onChange={useAutoCallback((event, textAlignment) => {
