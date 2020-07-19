@@ -222,6 +222,7 @@ export default function LineChartContent({
 
       {!!yAxis && (
         <ChartYAxis
+          scale={titleScale}
           length={height - titleHeight}
           max={maxValue}
           min={minValue}

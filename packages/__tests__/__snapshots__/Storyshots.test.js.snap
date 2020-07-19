@@ -441,7 +441,7 @@ exports[`Storyshots Bream.Review summary header Great Performance 1`] = `
 </div>
 `;
 
-exports[`Storyshots Content Content Of All Charts 1`] = `
+exports[`Storyshots Content All Charts 1`] = `
 <div
   className="Grid-sc-1cmgn5o-0 dDYVbN"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
@@ -456,12 +456,12 @@ exports[`Storyshots Content Content Of All Charts 1`] = `
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       dy={40}
       height="100%"
       id="01648d04-78ad-402b-b255-14a6066d7927--line"
       kind="line"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       title="Sales ($ millions)"
       type="chart"
@@ -1407,11 +1407,11 @@ exports[`Storyshots Content Content Of All Charts 1`] = `
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       height="100%"
       id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
       kind="column"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       type="chart"
       viewBox="0 0 297 210"
@@ -3551,11 +3551,11 @@ exports[`Storyshots Content Content Of All Charts 1`] = `
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       height="100%"
       id="01648d04-78ad-402b-b255-14a6066d7927"
       kind="bar"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       type="chart"
       viewBox="0 0 297 210"
@@ -3908,11 +3908,11 @@ exports[`Storyshots Content Content Of All Charts 1`] = `
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       height="100%"
       id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
       kind="pie"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       type="chart"
       viewBox="0 0 297 210"
@@ -4342,7 +4342,2580 @@ exports[`Storyshots Content Content Of All Charts 1`] = `
 </div>
 `;
 
-exports[`Storyshots Content Content Of Chart Sample One 1`] = `
+exports[`Storyshots Content Column And Bar Charts 1`] = `
+<div
+  className="Grid-sc-1cmgn5o-0 dDYVbN"
+  id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+  type="grid"
+>
+  <div
+    className="Item-sc-10s0ojn-0 dsLIhy"
+    id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+    kind="column"
+    type="chart"
+  >
+    <svg
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
+      height="100%"
+      id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+      kind="column"
+      overflow="visible"
+      preserveAspectRatio="xMidYMin meet"
+      type="chart"
+      viewBox="0 0 297 210"
+      width="100%"
+    >
+      <defs>
+        <pattern
+          height="2"
+          id="selectionPattern"
+          patternUnits="userSpaceOnUse"
+          width="2"
+        >
+          <circle
+            cx="1"
+            cy="1"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cy="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cx="2"
+            cy="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cx="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+        </pattern>
+        <marker
+          id="arrowUpMarker"
+          orient="auto"
+          overflow="visible"
+        >
+          <path
+            d="m0 0 6-6-24 6 24 6-6-6z"
+            fill="#000000"
+            fillRule="evenodd"
+            stroke="#000000"
+          />
+        </marker>
+      </defs>
+      <g
+        strokeWidth={0}
+      >
+        <rect
+          fill="#71a2ff"
+          height={174.39085032322228}
+          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+          kind="column"
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={59.4}
+          x={59.39999999999999}
+          y={35.60914967677772}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={89.1}
+          y={35.60915}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            fill="transparent"
+            style={
+              Object {
+                "color": "transparent",
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            width="auto"
+          >
+            50
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={89.1}
+          y={35.60915}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+            50
+          </p>
+        </foreignObject>
+        <rect
+          fill="#c0d4e2"
+          height={210}
+          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+          kind="column"
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={59.4}
+          x={118.8}
+          y={0}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={0}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            fill="transparent"
+            style={
+              Object {
+                "color": "transparent",
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            width="auto"
+          >
+            60
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={0}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+            60
+          </p>
+        </foreignObject>
+        <rect
+          fill="#cbcbcb"
+          height={45.25111884634511}
+          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+          kind="column"
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={59.4}
+          x={178.2}
+          y={164.7488811536549}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={207.9}
+          y={164.74888}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            fill="transparent"
+            style={
+              Object {
+                "color": "transparent",
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            width="auto"
+          >
+            13
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={207.9}
+          y={164.74888}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+            13
+          </p>
+        </foreignObject>
+        <path
+          d="m44.55 210h207.89999999999998"
+          stroke="black"
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            fill="transparent"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": "transparent",
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+              
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+              
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={210}
+          y2={175}
+        />
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={175}
+          y2={140}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={175}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            10 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={140}
+          y2={105}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={140}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            20 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={105}
+          y2={70}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={105}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            30 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={70}
+          y2={35}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={70}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            40 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={35}
+          y2={0}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={35}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            50 
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={0}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            60 
+          </p>
+        </foreignObject>
+      </g>
+    </svg>
+  </div>
+  <div
+    className="Item-sc-10s0ojn-0 dsLIhy"
+    id="01648d04-78ad-402b-b255-14a6066d7927"
+    kind="bar"
+    type="chart"
+  >
+    <svg
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
+      height="100%"
+      id="01648d04-78ad-402b-b255-14a6066d7927"
+      kind="bar"
+      overflow="visible"
+      preserveAspectRatio="xMidYMin meet"
+      type="chart"
+      viewBox="0 0 297 210"
+      width="100%"
+    >
+      <defs>
+        <pattern
+          height="2"
+          id="selectionPattern"
+          patternUnits="userSpaceOnUse"
+          width="2"
+        >
+          <circle
+            cx="1"
+            cy="1"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cy="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cx="2"
+            cy="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cx="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+        </pattern>
+        <marker
+          id="arrowUpMarker"
+          orient="auto"
+          overflow="visible"
+        >
+          <path
+            d="m0 0 6-6-24 6 24 6-6-6z"
+            fill="#000000"
+            fillRule="evenodd"
+            stroke="#000000"
+          />
+        </marker>
+      </defs>
+      <g
+        strokeWidth={0}
+      >
+        <rect
+          fill="#71a2ff"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "d86047cb-0116-406e-854e-64a7b005f311",
+              "index": 0,
+              "title": "WFLA",
+              "value": 20.8,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={141.041095890411}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={141.0411}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              21  
+          </p>
+        </foreignObject>
+        <rect
+          fill="#c0d4e2"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "a05de966-139d-46fe-bcc2-1e868e9b9ebf",
+              "index": 1,
+              "title": "Region A",
+              "value": 35.7,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={242.07534246575347}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={242.07534}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              36  
+          </p>
+        </foreignObject>
+        <rect
+          fill="#cbcbcb"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "2d7729af-5374-4939-8a58-0693022806ab",
+              "index": 2,
+              "title": "Region B",
+              "value": 15.8,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={107.13698630136987}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={107.13699}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              16  
+          </p>
+        </foreignObject>
+        <rect
+          fill="#e57878"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "9a205b75-a8f4-428a-80cf-653f7080328d",
+              "index": 3,
+              "title": "Region C",
+              "value": 40.9,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={277.33561643835617}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={277.33562}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              41  
+          </p>
+        </foreignObject>
+        <rect
+          fill="#8adb96"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "0502b460-11a9-4d21-a369-5dd0efe0ee86",
+              "index": 4,
+              "title": "Region D",
+              "value": 23.6,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={160.027397260274}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={160.0274}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              24  
+          </p>
+        </foreignObject>
+        <rect
+          fill="#6895eb"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "3c699bc8-c2e6-412f-b30b-475e534c9b58",
+              "index": 5,
+              "title": "Region E",
+              "value": 17.6,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={119.34246575342468}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={119.34247}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              18  
+          </p>
+        </foreignObject>
+        <rect
+          fill="#b8c8d8"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "ce5586e1-a18d-4369-9261-3a01da529805",
+              "index": 6,
+              "title": "Region F",
+              "value": 38.1,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={258.3493150684932}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={258.34932}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              38  
+          </p>
+        </foreignObject>
+        <rect
+          fill="#ebebeb"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "836a5c45-ed8e-4236-ab30-89062ba907a5",
+              "index": 7,
+              "title": "Region G",
+              "value": 43.8,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={297}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={297}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              44  
+          </p>
+        </foreignObject>
+        <rect
+          fill="#ff7171"
+          height={0}
+          id="01648d04-78ad-402b-b255-14a6066d7927"
+          kind="bar"
+          meta={
+            Object {
+              "id": "e1941cd3-17fb-44fd-982d-b5e2acd508c9",
+              "index": 8,
+              "title": "Region H",
+              "value": 16.4,
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={111.20547945205479}
+          x={0}
+          y={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={111.20548}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="middle"
+            id="01648d04-78ad-402b-b255-14a6066d7927"
+            kind="bar"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            type="chart"
+            width="auto"
+          >
+              16  
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={74.25}
+          y1={210}
+          y2={210}
+        />
+        <line
+          stroke="black"
+          x1={74.25}
+          x2={148.5}
+          y1={210}
+          y2={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={74.25}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="hanging"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="center"
+            width="auto"
+          >
+            10 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={148.5}
+          x2={222.75}
+          y1={210}
+          y2={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="hanging"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="center"
+            width="auto"
+          >
+            21 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={222.75}
+          x2={297}
+          y1={210}
+          y2={210}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={222.75}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="hanging"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="center"
+            width="auto"
+          >
+            32 
+          </p>
+        </foreignObject>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Content Column And Line Charts 1`] = `
+<div
+  className="Grid-sc-1cmgn5o-0 dDYVbN"
+  id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+  type="grid"
+>
+  <div
+    className="Item-sc-10s0ojn-0 dsLIhy"
+    id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+    kind="column"
+    type="chart"
+  >
+    <svg
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
+      height="100%"
+      id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+      kind="column"
+      overflow="visible"
+      preserveAspectRatio="xMidYMin meet"
+      type="chart"
+      viewBox="0 0 297 210"
+      width="100%"
+    >
+      <defs>
+        <pattern
+          height="2"
+          id="selectionPattern"
+          patternUnits="userSpaceOnUse"
+          width="2"
+        >
+          <circle
+            cx="1"
+            cy="1"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cy="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cx="2"
+            cy="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cx="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+        </pattern>
+        <marker
+          id="arrowUpMarker"
+          orient="auto"
+          overflow="visible"
+        >
+          <path
+            d="m0 0 6-6-24 6 24 6-6-6z"
+            fill="#000000"
+            fillRule="evenodd"
+            stroke="#000000"
+          />
+        </marker>
+      </defs>
+      <g
+        strokeWidth={0}
+      >
+        <rect
+          fill="#71a2ff"
+          height={174.39085032322228}
+          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+          kind="column"
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={59.4}
+          x={59.39999999999999}
+          y={35.60914967677772}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={89.1}
+          y={35.60915}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            fill="transparent"
+            style={
+              Object {
+                "color": "transparent",
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            width="auto"
+          >
+            50
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={89.1}
+          y={35.60915}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+            50
+          </p>
+        </foreignObject>
+        <rect
+          fill="#c0d4e2"
+          height={210}
+          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+          kind="column"
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={59.4}
+          x={118.8}
+          y={0}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={0}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            fill="transparent"
+            style={
+              Object {
+                "color": "transparent",
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            width="auto"
+          >
+            60
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={0}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+            60
+          </p>
+        </foreignObject>
+        <rect
+          fill="#cbcbcb"
+          height={45.25111884634511}
+          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+          kind="column"
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          type="chart"
+          width={59.4}
+          x={178.2}
+          y={164.7488811536549}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={207.9}
+          y={164.74888}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            fill="transparent"
+            style={
+              Object {
+                "color": "transparent",
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            width="auto"
+          >
+            13
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={207.9}
+          y={164.74888}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+            13
+          </p>
+        </foreignObject>
+        <path
+          d="m44.55 210h207.89999999999998"
+          stroke="black"
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            fill="transparent"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": "transparent",
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+              
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={148.5}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
+            kind="column"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            type="chart"
+            width="auto"
+          >
+              
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={210}
+          y2={175}
+        />
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={175}
+          y2={140}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={175}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            10 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={140}
+          y2={105}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={140}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            20 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={105}
+          y2={70}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={105}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            30 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={70}
+          y2={35}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={70}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            40 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={29.7}
+          x2={29.7}
+          y1={35}
+          y2={0}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={35}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            50 
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={0}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            60 
+          </p>
+        </foreignObject>
+      </g>
+    </svg>
+  </div>
+  <div
+    className="Item-sc-10s0ojn-0 dsLIhy"
+    dy={40}
+    id="01648d04-78ad-402b-b255-14a6066d7927--line"
+    kind="line"
+    title="Sales ($ millions)"
+    type="chart"
+  >
+    <svg
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
+      dy={40}
+      height="100%"
+      id="01648d04-78ad-402b-b255-14a6066d7927--line"
+      kind="line"
+      overflow="visible"
+      preserveAspectRatio="xMidYMin meet"
+      title="Sales ($ millions)"
+      type="chart"
+      viewBox="0 0 297 210"
+      width="100%"
+    >
+      <defs>
+        <pattern
+          height="2"
+          id="selectionPattern"
+          patternUnits="userSpaceOnUse"
+          width="2"
+        >
+          <circle
+            cx="1"
+            cy="1"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cy="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cx="2"
+            cy="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+          <circle
+            cx="2"
+            fill="black"
+            r="0.5"
+            stroke="none"
+            strokeWidth="0"
+          />
+        </pattern>
+        <marker
+          id="arrowUpMarker"
+          orient="auto"
+          overflow="visible"
+        >
+          <path
+            d="m0 0 6-6-24 6 24 6-6-6z"
+            fill="#000000"
+            fillRule="evenodd"
+            stroke="#000000"
+          />
+        </marker>
+      </defs>
+      <g
+        strokeWidth={0}
+      >
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            Year 1
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={77.22}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            Year 2
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={124.74}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            Year 3
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={172.26}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            Year 4
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={219.78}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            Year 5
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={267.3}
+          y={210}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="hanging"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            Year 6
+          </p>
+        </foreignObject>
+        <path
+          d="m29.7  210 237.6 0"
+          stroke="black"
+        />
+        <path
+          d="m29.7  189 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <path
+          d="m29.7  168 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <path
+          d="m29.7  147 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <path
+          d="m29.7  126 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <path
+          d="m29.7  105 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <path
+          d="m29.7  84 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <path
+          d="m29.7  63 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <path
+          d="m29.7  42 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <path
+          d="m29.7  21 237.6 0"
+          stroke="#f0f0f0"
+        />
+        <marker
+          id="circle-0"
+          orient="auto"
+          overflow="visible"
+        >
+          <circle
+            cx={0}
+            fill="#71a2ff"
+            r={3}
+            stroke="none"
+          />
+        </marker>
+        <path
+          d="M 29.7 118.125 77.22 102.9 124.74 88.725 172.26 85.575 219.77999999999997 63 267.3 32.025000000000006"
+          fill="none"
+          id="01648d04-78ad-402b-b255-14a6066d7927--line"
+          kind="line"
+          markerEnd="url(circle-0)"
+          markerMid="url(circle-0)"
+          markerStart="url(circle-0)"
+          meta={
+            Object {
+              "id": "9c9b23a9-1ada-4e51-b1ee-0ea077134a4a",
+              "index": 0,
+              "title": "Easymode",
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          stroke="#71a2ff"
+          strokeWidth={0}
+          title="Sales ($ millions)"
+          type="chart"
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={117.125}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            175
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={77.22}
+          y={101.9}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            204
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={124.74}
+          y={87.725}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            231
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={172.26}
+          y={84.575}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            237
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={219.78}
+          y={62}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            280
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={267.3}
+          y={31.025}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            339
+          </p>
+        </foreignObject>
+        <marker
+          id="circle-1"
+          orient="auto"
+          overflow="visible"
+        >
+          <circle
+            cx={0}
+            fill="#c0d4e2"
+            r={3}
+            stroke="none"
+          />
+        </marker>
+        <path
+          d="M 29.7 175.875 77.22 174.3 124.74 171.675 172.26 170.625 219.77999999999997 168.525 267.3 162.75"
+          fill="none"
+          id="01648d04-78ad-402b-b255-14a6066d7927--line"
+          kind="line"
+          markerEnd="url(circle-1)"
+          markerMid="url(circle-1)"
+          markerStart="url(circle-1)"
+          meta={
+            Object {
+              "id": "58fb3946-33bc-4515-b85c-8c0f01adee9a",
+              "index": 1,
+              "title": "Rest",
+            }
+          }
+          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+          stroke="#c0d4e2"
+          strokeWidth={0}
+          title="Sales ($ millions)"
+          type="chart"
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={29.7}
+          y={174.875}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="start"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            65
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={77.22}
+          y={173.3}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            68
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={124.74}
+          y={170.675}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            73
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={172.26}
+          y={169.625}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            75
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={219.78}
+          y={167.525}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="middle"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            79
+          </p>
+        </foreignObject>
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={267.3}
+          y={161.75}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="baseline"
+            id="01648d04-78ad-402b-b255-14a6066d7927--line"
+            kind="line"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            title="Sales ($ millions)"
+            type="chart"
+            width="auto"
+          >
+            90
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={210}
+          y2={189}
+        />
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={189}
+          y2={168}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={189}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            40 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={168}
+          y2={147}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={168}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            80 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={147}
+          y2={126}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={147}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            120 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={126}
+          y2={105}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={126}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            160 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={105}
+          y2={84}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={105}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            200 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={84}
+          y2={63}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={84}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            240 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={63}
+          y2={42}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={63}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            280 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={42}
+          y2={21}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={42}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            320 
+          </p>
+        </foreignObject>
+        <line
+          stroke="black"
+          x1={0}
+          x2={0}
+          y1={21}
+          y2={0}
+        />
+        <foreignObject
+          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
+          height="100%"
+          width="100%"
+          x={0}
+          y={21}
+        >
+          <p
+            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
+            dominantBaseline="end"
+            style={
+              Object {
+                "color": undefined,
+                "transform": undefined,
+                "whiteSpace": "pre",
+              }
+            }
+            textAnchor="end"
+            width="auto"
+          >
+            360 
+          </p>
+        </foreignObject>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Content Editor Of All Charts 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Chart Sample One 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Column And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Column And Line Charts 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Flex 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Line And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Pie And Bar Sibling Charts 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Pie Chart 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Table 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Text 1`] = `null`;
+
+exports[`Storyshots Content First Sample Chart 1`] = `
 <div
   className="Item-sc-10s0ojn-0 Page-sc-1j0php4-0 jNkroP"
   id="044d4dca-4924-4a9d-9e6b-55b9be006b70"
@@ -4361,11 +6934,11 @@ exports[`Storyshots Content Content Of Chart Sample One 1`] = `
       type="chart"
     >
       <svg
-        className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+        className="ChartSvg-sc-1pvl06w-0 hbtCkg"
         height="100%"
         id="cd271f11-75a5-4bff-ab2b-266f7eb4418d"
         kind="pie"
-        overflow="hidden"
+        overflow="visible"
         preserveAspectRatio="xMidYMin meet"
         title="Car dealership sales in 2012 (number of cars sold)"
         type="chart"
@@ -4667,11 +7240,11 @@ exports[`Storyshots Content Content Of Chart Sample One 1`] = `
       type="chart"
     >
       <svg
-        className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+        className="ChartSvg-sc-1pvl06w-0 hbtCkg"
         height="100%"
         id="7d134ef0-86d7-4de6-a689-792986b2dafc"
         kind="pie"
-        overflow="hidden"
+        overflow="visible"
         preserveAspectRatio="xMidYMin meet"
         title="Car dealership sales in 2013 (number of cars sold)"
         type="chart"
@@ -4969,2560 +7542,324 @@ exports[`Storyshots Content Content Of Chart Sample One 1`] = `
 </div>
 `;
 
-exports[`Storyshots Content Content Of Column And Bar Sibling Charts 1`] = `
+exports[`Storyshots Content Flex 1`] = `
 <div
-  className="Grid-sc-1cmgn5o-0 dDYVbN"
-  id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
+  className="Flex-jm331f-0 OkQtc"
+  direction="row"
+  id="grid"
+  spacing={32}
   type="grid"
+  wrap="nowrap"
 >
   <div
-    className="Item-sc-10s0ojn-0 dsLIhy"
-    id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-    kind="column"
-    type="chart"
+    className="Item-sc-10s0ojn-0 Table__Container-u530n6-0 ikmWvq"
+    id="table"
+    type="table"
   >
-    <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
-      height="100%"
-      id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-      kind="column"
-      overflow="hidden"
-      preserveAspectRatio="xMidYMin meet"
-      type="chart"
-      viewBox="0 0 297 210"
-      width="100%"
+    <h3
+      className="Typography-sc-1b4huth-0 TableTitle-sc-1dkost5-0 kZIXcC"
     >
-      <defs>
-        <pattern
-          height="2"
-          id="selectionPattern"
-          patternUnits="userSpaceOnUse"
-          width="2"
-        >
-          <circle
-            cx="1"
-            cy="1"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cy="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cx="2"
-            cy="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cx="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-        </pattern>
-        <marker
-          id="arrowUpMarker"
-          orient="auto"
-          overflow="visible"
-        >
-          <path
-            d="m0 0 6-6-24 6 24 6-6-6z"
-            fill="#000000"
-            fillRule="evenodd"
-            stroke="#000000"
-          />
-        </marker>
-      </defs>
-      <g
-        strokeWidth={0}
-      >
-        <rect
-          fill="#71a2ff"
-          height={174.39085032322228}
-          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-          kind="column"
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={59.4}
-          x={59.39999999999999}
-          y={35.60914967677772}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={89.1}
-          y={35.60915}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            fill="transparent"
-            style={
-              Object {
-                "color": "transparent",
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            width="auto"
+      Table title
+    </h3>
+    <table
+      className="Table__StyledTable-u530n6-1 FuEmH"
+      scale={1}
+    >
+      <thead>
+        <tr>
+          <th
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            50
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={89.1}
-          y={35.60915}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
+            first column
+          </th>
+          <th
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            50
-          </p>
-        </foreignObject>
-        <rect
-          fill="#c0d4e2"
-          height={210}
-          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-          kind="column"
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={59.4}
-          x={118.8}
-          y={0}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={0}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            fill="transparent"
-            style={
-              Object {
-                "color": "transparent",
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            width="auto"
+            second column
+          </th>
+          <th
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            60
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={0}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
+            third column
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            60
-          </p>
-        </foreignObject>
-        <rect
-          fill="#cbcbcb"
-          height={45.25111884634511}
-          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-          kind="column"
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={59.4}
-          x={178.2}
-          y={164.7488811536549}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={207.9}
-          y={164.74888}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            fill="transparent"
-            style={
-              Object {
-                "color": "transparent",
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            width="auto"
+            row 1, column 1
+          </td>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            13
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={207.9}
-          y={164.74888}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
+            row 1, column 2
+          </td>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            13
-          </p>
-        </foreignObject>
-        <path
-          d="m44.55 210h207.89999999999998"
-          stroke="black"
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            fill="transparent"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": "transparent",
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
+            row 1, column 3
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-              
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
+            row 2, column 1
+          </td>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-              
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={210}
-          y2={175}
-        />
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={175}
-          y2={140}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={175}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
+            row 2, column 2
+          </td>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            10 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={140}
-          y2={105}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={140}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
+            row 2, column 3
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            20 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={105}
-          y2={70}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={105}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
+            row 3, column 1
+          </td>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            30 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={70}
-          y2={35}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={70}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
+            row 3, column 2
+          </td>
+          <td
+            className="TableCell-oc851c-0 lnUsfb"
           >
-            40 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={35}
-          y2={0}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={35}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            50 
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={0}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            60 
-          </p>
-        </foreignObject>
-      </g>
-    </svg>
+            row 3, column 3
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div
-    className="Item-sc-10s0ojn-0 dsLIhy"
-    id="01648d04-78ad-402b-b255-14a6066d7927"
-    kind="bar"
-    type="chart"
+    className="Item-sc-10s0ojn-0 dsLIhy RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft"
+    id="text"
+    type="draft"
   >
-    <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
-      height="100%"
-      id="01648d04-78ad-402b-b255-14a6066d7927"
-      kind="bar"
-      overflow="hidden"
-      preserveAspectRatio="xMidYMin meet"
-      type="chart"
-      viewBox="0 0 297 210"
-      width="100%"
+    <div
+      className="DraftEditor-root"
     >
-      <defs>
-        <pattern
-          height="2"
-          id="selectionPattern"
-          patternUnits="userSpaceOnUse"
-          width="2"
-        >
-          <circle
-            cx="1"
-            cy="1"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cy="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cx="2"
-            cy="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cx="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-        </pattern>
-        <marker
-          id="arrowUpMarker"
-          orient="auto"
-          overflow="visible"
-        >
-          <path
-            d="m0 0 6-6-24 6 24 6-6-6z"
-            fill="#000000"
-            fillRule="evenodd"
-            stroke="#000000"
-          />
-        </marker>
-      </defs>
-      <g
-        strokeWidth={0}
+      <div
+        className="DraftEditor-editorContainer"
       >
-        <rect
-          fill="#71a2ff"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
+        <div
+          aria-activedescendant={null}
+          aria-autocomplete={null}
+          aria-controls={null}
+          aria-describedby="placeholder-text"
+          aria-expanded={null}
+          aria-owns={null}
+          className="public-DraftEditor-content"
+          contentEditable={false}
+          onBeforeInput={[Function]}
+          onBlur={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCopy={[Function]}
+          onCut={[Function]}
+          onDragEnd={[Function]}
+          onDragEnter={[Function]}
+          onDragLeave={[Function]}
+          onDragOver={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseUp={[Function]}
+          onPaste={[Function]}
+          onSelect={[Function]}
+          role={null}
+          spellCheck={false}
+          style={
             Object {
-              "id": "d86047cb-0116-406e-854e-64a7b005f311",
-              "index": 0,
-              "title": "WFLA",
-              "value": 20.8,
+              "WebkitUserSelect": "text",
+              "outline": "none",
+              "userSelect": "text",
+              "whiteSpace": "pre-wrap",
+              "wordWrap": "break-word",
             }
           }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={141.041095890411}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={141.0411}
-          y={210}
+          suppressContentEditableWarning={true}
         >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
+          <div
+            data-contents="true"
           >
-              21  
-          </p>
-        </foreignObject>
-        <rect
-          fill="#c0d4e2"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
-            Object {
-              "id": "a05de966-139d-46fe-bcc2-1e868e9b9ebf",
-              "index": 1,
-              "title": "Region A",
-              "value": 35.7,
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={242.07534246575347}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={242.07534}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
-          >
-              36  
-          </p>
-        </foreignObject>
-        <rect
-          fill="#cbcbcb"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
-            Object {
-              "id": "2d7729af-5374-4939-8a58-0693022806ab",
-              "index": 2,
-              "title": "Region B",
-              "value": 15.8,
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={107.13698630136987}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={107.13699}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
-          >
-              16  
-          </p>
-        </foreignObject>
-        <rect
-          fill="#e57878"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
-            Object {
-              "id": "9a205b75-a8f4-428a-80cf-653f7080328d",
-              "index": 3,
-              "title": "Region C",
-              "value": 40.9,
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={277.33561643835617}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={277.33562}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
-          >
-              41  
-          </p>
-        </foreignObject>
-        <rect
-          fill="#8adb96"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
-            Object {
-              "id": "0502b460-11a9-4d21-a369-5dd0efe0ee86",
-              "index": 4,
-              "title": "Region D",
-              "value": 23.6,
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={160.027397260274}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={160.0274}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
-          >
-              24  
-          </p>
-        </foreignObject>
-        <rect
-          fill="#6895eb"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
-            Object {
-              "id": "3c699bc8-c2e6-412f-b30b-475e534c9b58",
-              "index": 5,
-              "title": "Region E",
-              "value": 17.6,
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={119.34246575342468}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={119.34247}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
-          >
-              18  
-          </p>
-        </foreignObject>
-        <rect
-          fill="#b8c8d8"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
-            Object {
-              "id": "ce5586e1-a18d-4369-9261-3a01da529805",
-              "index": 6,
-              "title": "Region F",
-              "value": 38.1,
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={258.3493150684932}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={258.34932}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
-          >
-              38  
-          </p>
-        </foreignObject>
-        <rect
-          fill="#ebebeb"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
-            Object {
-              "id": "836a5c45-ed8e-4236-ab30-89062ba907a5",
-              "index": 7,
-              "title": "Region G",
-              "value": 43.8,
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={297}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={297}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
-          >
-              44  
-          </p>
-        </foreignObject>
-        <rect
-          fill="#ff7171"
-          height={0}
-          id="01648d04-78ad-402b-b255-14a6066d7927"
-          kind="bar"
-          meta={
-            Object {
-              "id": "e1941cd3-17fb-44fd-982d-b5e2acd508c9",
-              "index": 8,
-              "title": "Region H",
-              "value": 16.4,
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={111.20547945205479}
-          x={0}
-          y={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={111.20548}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="middle"
-            id="01648d04-78ad-402b-b255-14a6066d7927"
-            kind="bar"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            type="chart"
-            width="auto"
-          >
-              16  
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={74.25}
-          y1={210}
-          y2={210}
-        />
-        <line
-          stroke="black"
-          x1={74.25}
-          x2={148.5}
-          y1={210}
-          y2={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={74.25}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="hanging"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="center"
-            width="auto"
-          >
-            10 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={148.5}
-          x2={222.75}
-          y1={210}
-          y2={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="hanging"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="center"
-            width="auto"
-          >
-            21 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={222.75}
-          x2={297}
-          y1={210}
-          y2={210}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={222.75}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="hanging"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="center"
-            width="auto"
-          >
-            32 
-          </p>
-        </foreignObject>
-      </g>
-    </svg>
+            <h1
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h1-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h1-0-0"
+              >
+                <span
+                  data-offset-key="h1-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header one
+                  </span>
+                </span>
+              </div>
+            </h1>
+            <h2
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h2-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h2-0-0"
+              >
+                <span
+                  data-offset-key="h2-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header two
+                  </span>
+                </span>
+              </div>
+            </h2>
+            <h3
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h3-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h3-0-0"
+              >
+                <span
+                  data-offset-key="h3-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header three
+                  </span>
+                </span>
+              </div>
+            </h3>
+            <h4
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h4-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h4-0-0"
+              >
+                <span
+                  data-offset-key="h4-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header four
+                  </span>
+                </span>
+              </div>
+            </h4>
+            <h5
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h5-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h5-0-0"
+              >
+                <span
+                  data-offset-key="h5-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header five
+                  </span>
+                </span>
+              </div>
+            </h5>
+            <h6
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h6-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h6-0-0"
+              >
+                <span
+                  data-offset-key="h6-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header six
+                  </span>
+                </span>
+              </div>
+            </h6>
+            <div
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="unstyled-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="unstyled-0-0"
+              >
+                <span
+                  data-offset-key="unstyled-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    This block is draft.js content.
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
-exports[`Storyshots Content Content Of Column And Line Charts 1`] = `
-<div
-  className="Grid-sc-1cmgn5o-0 dDYVbN"
-  id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-  type="grid"
->
-  <div
-    className="Item-sc-10s0ojn-0 dsLIhy"
-    id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-    kind="column"
-    type="chart"
-  >
-    <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
-      height="100%"
-      id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-      kind="column"
-      overflow="hidden"
-      preserveAspectRatio="xMidYMin meet"
-      type="chart"
-      viewBox="0 0 297 210"
-      width="100%"
-    >
-      <defs>
-        <pattern
-          height="2"
-          id="selectionPattern"
-          patternUnits="userSpaceOnUse"
-          width="2"
-        >
-          <circle
-            cx="1"
-            cy="1"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cy="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cx="2"
-            cy="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cx="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-        </pattern>
-        <marker
-          id="arrowUpMarker"
-          orient="auto"
-          overflow="visible"
-        >
-          <path
-            d="m0 0 6-6-24 6 24 6-6-6z"
-            fill="#000000"
-            fillRule="evenodd"
-            stroke="#000000"
-          />
-        </marker>
-      </defs>
-      <g
-        strokeWidth={0}
-      >
-        <rect
-          fill="#71a2ff"
-          height={174.39085032322228}
-          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-          kind="column"
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={59.4}
-          x={59.39999999999999}
-          y={35.60914967677772}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={89.1}
-          y={35.60915}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            fill="transparent"
-            style={
-              Object {
-                "color": "transparent",
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            width="auto"
-          >
-            50
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={89.1}
-          y={35.60915}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
-          >
-            50
-          </p>
-        </foreignObject>
-        <rect
-          fill="#c0d4e2"
-          height={210}
-          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-          kind="column"
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={59.4}
-          x={118.8}
-          y={0}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={0}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            fill="transparent"
-            style={
-              Object {
-                "color": "transparent",
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            width="auto"
-          >
-            60
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={0}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
-          >
-            60
-          </p>
-        </foreignObject>
-        <rect
-          fill="#cbcbcb"
-          height={45.25111884634511}
-          id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-          kind="column"
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          type="chart"
-          width={59.4}
-          x={178.2}
-          y={164.7488811536549}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={207.9}
-          y={164.74888}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            fill="transparent"
-            style={
-              Object {
-                "color": "transparent",
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            width="auto"
-          >
-            13
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={207.9}
-          y={164.74888}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
-          >
-            13
-          </p>
-        </foreignObject>
-        <path
-          d="m44.55 210h207.89999999999998"
-          stroke="black"
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            fill="transparent"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": "transparent",
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
-          >
-              
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={148.5}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
-            kind="column"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            type="chart"
-            width="auto"
-          >
-              
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={210}
-          y2={175}
-        />
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={175}
-          y2={140}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={175}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            10 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={140}
-          y2={105}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={140}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            20 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={105}
-          y2={70}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={105}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            30 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={70}
-          y2={35}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={70}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            40 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={29.7}
-          x2={29.7}
-          y1={35}
-          y2={0}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={35}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            50 
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={0}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            60 
-          </p>
-        </foreignObject>
-      </g>
-    </svg>
-  </div>
-  <div
-    className="Item-sc-10s0ojn-0 dsLIhy"
-    dy={40}
-    id="01648d04-78ad-402b-b255-14a6066d7927--line"
-    kind="line"
-    title="Sales ($ millions)"
-    type="chart"
-  >
-    <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
-      dy={40}
-      height="100%"
-      id="01648d04-78ad-402b-b255-14a6066d7927--line"
-      kind="line"
-      overflow="hidden"
-      preserveAspectRatio="xMidYMin meet"
-      title="Sales ($ millions)"
-      type="chart"
-      viewBox="0 0 297 210"
-      width="100%"
-    >
-      <defs>
-        <pattern
-          height="2"
-          id="selectionPattern"
-          patternUnits="userSpaceOnUse"
-          width="2"
-        >
-          <circle
-            cx="1"
-            cy="1"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cy="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cx="2"
-            cy="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-          <circle
-            cx="2"
-            fill="black"
-            r="0.5"
-            stroke="none"
-            strokeWidth="0"
-          />
-        </pattern>
-        <marker
-          id="arrowUpMarker"
-          orient="auto"
-          overflow="visible"
-        >
-          <path
-            d="m0 0 6-6-24 6 24 6-6-6z"
-            fill="#000000"
-            fillRule="evenodd"
-            stroke="#000000"
-          />
-        </marker>
-      </defs>
-      <g
-        strokeWidth={0}
-      >
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            Year 1
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={77.22}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            Year 2
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={124.74}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            Year 3
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={172.26}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            Year 4
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={219.78}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            Year 5
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={267.3}
-          y={210}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="hanging"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            Year 6
-          </p>
-        </foreignObject>
-        <path
-          d="m29.7  210 237.6 0"
-          stroke="black"
-        />
-        <path
-          d="m29.7  189 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <path
-          d="m29.7  168 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <path
-          d="m29.7  147 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <path
-          d="m29.7  126 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <path
-          d="m29.7  105 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <path
-          d="m29.7  84 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <path
-          d="m29.7  63 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <path
-          d="m29.7  42 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <path
-          d="m29.7  21 237.6 0"
-          stroke="#f0f0f0"
-        />
-        <marker
-          id="circle-0"
-          orient="auto"
-          overflow="visible"
-        >
-          <circle
-            cx={0}
-            fill="#71a2ff"
-            r={3}
-            stroke="none"
-          />
-        </marker>
-        <path
-          d="M 29.7 118.125 77.22 102.9 124.74 88.725 172.26 85.575 219.77999999999997 63 267.3 32.025000000000006"
-          fill="none"
-          id="01648d04-78ad-402b-b255-14a6066d7927--line"
-          kind="line"
-          markerEnd="url(circle-0)"
-          markerMid="url(circle-0)"
-          markerStart="url(circle-0)"
-          meta={
-            Object {
-              "id": "9c9b23a9-1ada-4e51-b1ee-0ea077134a4a",
-              "index": 0,
-              "title": "Easymode",
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          stroke="#71a2ff"
-          strokeWidth={0}
-          title="Sales ($ millions)"
-          type="chart"
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={117.125}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            175
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={77.22}
-          y={101.9}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            204
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={124.74}
-          y={87.725}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            231
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={172.26}
-          y={84.575}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            237
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={219.78}
-          y={62}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            280
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={267.3}
-          y={31.025}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            339
-          </p>
-        </foreignObject>
-        <marker
-          id="circle-1"
-          orient="auto"
-          overflow="visible"
-        >
-          <circle
-            cx={0}
-            fill="#c0d4e2"
-            r={3}
-            stroke="none"
-          />
-        </marker>
-        <path
-          d="M 29.7 175.875 77.22 174.3 124.74 171.675 172.26 170.625 219.77999999999997 168.525 267.3 162.75"
-          fill="none"
-          id="01648d04-78ad-402b-b255-14a6066d7927--line"
-          kind="line"
-          markerEnd="url(circle-1)"
-          markerMid="url(circle-1)"
-          markerStart="url(circle-1)"
-          meta={
-            Object {
-              "id": "58fb3946-33bc-4515-b85c-8c0f01adee9a",
-              "index": 1,
-              "title": "Rest",
-            }
-          }
-          parent_id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
-          stroke="#c0d4e2"
-          strokeWidth={0}
-          title="Sales ($ millions)"
-          type="chart"
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={29.7}
-          y={174.875}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 eLHIbz"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="start"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            65
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={77.22}
-          y={173.3}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            68
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={124.74}
-          y={170.675}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            73
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={172.26}
-          y={169.625}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            75
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={219.78}
-          y={167.525}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 jDRMUp"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="middle"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            79
-          </p>
-        </foreignObject>
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={267.3}
-          y={161.75}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="baseline"
-            id="01648d04-78ad-402b-b255-14a6066d7927--line"
-            kind="line"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            title="Sales ($ millions)"
-            type="chart"
-            width="auto"
-          >
-            90
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={210}
-          y2={189}
-        />
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={189}
-          y2={168}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={189}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            40 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={168}
-          y2={147}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={168}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            80 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={147}
-          y2={126}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={147}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            120 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={126}
-          y2={105}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={126}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            160 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={105}
-          y2={84}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={105}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            200 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={84}
-          y2={63}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={84}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            240 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={63}
-          y2={42}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={63}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            280 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={42}
-          y2={21}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={42}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            320 
-          </p>
-        </foreignObject>
-        <line
-          stroke="black"
-          x1={0}
-          x2={0}
-          y1={21}
-          y2={0}
-        />
-        <foreignObject
-          className="SvgTypographyForeign-sc-10c5zbq-0 jImAGL"
-          height="100%"
-          width="100%"
-          x={0}
-          y={21}
-        >
-          <p
-            className="Typography-sc-1b4huth-0 SvgTypography__StyledTypography-jh05vp-0 SvgTypography__TextBox-jh05vp-1 sEmuj"
-            dominantBaseline="end"
-            style={
-              Object {
-                "color": undefined,
-                "transform": undefined,
-                "whiteSpace": "pre",
-              }
-            }
-            textAnchor="end"
-            width="auto"
-          >
-            360 
-          </p>
-        </foreignObject>
-      </g>
-    </svg>
-  </div>
-</div>
-`;
+exports[`Storyshots Content Initial Editor 1`] = `null`;
 
-exports[`Storyshots Content Content Of Line And Bar Sibling Charts 1`] = `
+exports[`Storyshots Content Line And Bar Charts 1`] = `
 <div
   className="Grid-sc-1cmgn5o-0 dDYVbN"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
@@ -7537,12 +7874,12 @@ exports[`Storyshots Content Content Of Line And Bar Sibling Charts 1`] = `
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       dy={40}
       height="100%"
       id="01648d04-78ad-402b-b255-14a6066d7927--line"
       kind="line"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       title="Sales ($ millions)"
       type="chart"
@@ -8488,11 +8825,11 @@ exports[`Storyshots Content Content Of Line And Bar Sibling Charts 1`] = `
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       height="100%"
       id="01648d04-78ad-402b-b255-14a6066d7927"
       kind="bar"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       type="chart"
       viewBox="0 0 297 210"
@@ -9066,7 +9403,9 @@ exports[`Storyshots Content Content Of Line And Bar Sibling Charts 1`] = `
 </div>
 `;
 
-exports[`Storyshots Content Content Of Pie And Bar Sibling Charts 1`] = `
+exports[`Storyshots Content Page 1`] = `null`;
+
+exports[`Storyshots Content Pie And Bar Charts 1`] = `
 <div
   className="Grid-sc-1cmgn5o-0 dDYVbN"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
@@ -9079,11 +9418,11 @@ exports[`Storyshots Content Content Of Pie And Bar Sibling Charts 1`] = `
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       height="100%"
       id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
       kind="pie"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       type="chart"
       viewBox="0 0 297 210"
@@ -9517,11 +9856,11 @@ exports[`Storyshots Content Content Of Pie And Bar Sibling Charts 1`] = `
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       height="100%"
       id="01648d04-78ad-402b-b255-14a6066d7927"
       kind="bar"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       type="chart"
       viewBox="0 0 297 210"
@@ -9870,7 +10209,7 @@ exports[`Storyshots Content Content Of Pie And Bar Sibling Charts 1`] = `
 </div>
 `;
 
-exports[`Storyshots Content Content Of Pie Chart 1`] = `
+exports[`Storyshots Content Pie Chart 1`] = `
 <div
   className="Item-sc-10s0ojn-0 dsLIhy"
   id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
@@ -9878,11 +10217,11 @@ exports[`Storyshots Content Content Of Pie Chart 1`] = `
   type="chart"
 >
   <svg
-    className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+    className="ChartSvg-sc-1pvl06w-0 hbtCkg"
     height="100%"
     id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
     kind="pie"
-    overflow="hidden"
+    overflow="visible"
     preserveAspectRatio="xMidYMin meet"
     type="chart"
     viewBox="0 0 297 210"
@@ -10311,7 +10650,316 @@ exports[`Storyshots Content Content Of Pie Chart 1`] = `
 </div>
 `;
 
-exports[`Storyshots Content Content Of Six Groups Of Two Columns And Bar Sibling Charts 1`] = `
+exports[`Storyshots Content Table 1`] = `
+<div
+  className="Item-sc-10s0ojn-0 Table__Container-u530n6-0 ikmWvq"
+  id="table"
+  type="table"
+>
+  <h3
+    className="Typography-sc-1b4huth-0 TableTitle-sc-1dkost5-0 kZIXcC"
+  >
+    Table title
+  </h3>
+  <table
+    className="Table__StyledTable-u530n6-1 FuEmH"
+    scale={1}
+  >
+    <thead>
+      <tr>
+        <th
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          first column
+        </th>
+        <th
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          second column
+        </th>
+        <th
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          third column
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 1, column 1
+        </td>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 1, column 2
+        </td>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 1, column 3
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 2, column 1
+        </td>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 2, column 2
+        </td>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 2, column 3
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 3, column 1
+        </td>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 3, column 2
+        </td>
+        <td
+          className="TableCell-oc851c-0 lnUsfb"
+        >
+          row 3, column 3
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Storyshots Content Text 1`] = `
+<div
+  className="Item-sc-10s0ojn-0 dsLIhy RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft"
+  id="text"
+  type="draft"
+>
+  <div
+    className="DraftEditor-root"
+  >
+    <div
+      className="DraftEditor-editorContainer"
+    >
+      <div
+        aria-activedescendant={null}
+        aria-autocomplete={null}
+        aria-controls={null}
+        aria-describedby="placeholder-text"
+        aria-expanded={null}
+        aria-owns={null}
+        className="public-DraftEditor-content"
+        contentEditable={false}
+        onBeforeInput={[Function]}
+        onBlur={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCopy={[Function]}
+        onCut={[Function]}
+        onDragEnd={[Function]}
+        onDragEnter={[Function]}
+        onDragLeave={[Function]}
+        onDragOver={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseUp={[Function]}
+        onPaste={[Function]}
+        onSelect={[Function]}
+        role={null}
+        spellCheck={false}
+        style={
+          Object {
+            "WebkitUserSelect": "text",
+            "outline": "none",
+            "userSelect": "text",
+            "whiteSpace": "pre-wrap",
+            "wordWrap": "break-word",
+          }
+        }
+        suppressContentEditableWarning={true}
+      >
+        <div
+          data-contents="true"
+        >
+          <h1
+            className="RichText-yekvnw-0 hIhKZq"
+            data-block={true}
+            data-editor="text"
+            data-offset-key="h1-0-0"
+          >
+            <div
+              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+              data-offset-key="h1-0-0"
+            >
+              <span
+                data-offset-key="h1-0-0"
+                style={Object {}}
+              >
+                <span
+                  data-text="true"
+                >
+                  Header one
+                </span>
+              </span>
+            </div>
+          </h1>
+          <h2
+            className="RichText-yekvnw-0 hIhKZq"
+            data-block={true}
+            data-editor="text"
+            data-offset-key="h2-0-0"
+          >
+            <div
+              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+              data-offset-key="h2-0-0"
+            >
+              <span
+                data-offset-key="h2-0-0"
+                style={Object {}}
+              >
+                <span
+                  data-text="true"
+                >
+                  Header two
+                </span>
+              </span>
+            </div>
+          </h2>
+          <h3
+            className="RichText-yekvnw-0 hIhKZq"
+            data-block={true}
+            data-editor="text"
+            data-offset-key="h3-0-0"
+          >
+            <div
+              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+              data-offset-key="h3-0-0"
+            >
+              <span
+                data-offset-key="h3-0-0"
+                style={Object {}}
+              >
+                <span
+                  data-text="true"
+                >
+                  Header three
+                </span>
+              </span>
+            </div>
+          </h3>
+          <h4
+            className="RichText-yekvnw-0 hIhKZq"
+            data-block={true}
+            data-editor="text"
+            data-offset-key="h4-0-0"
+          >
+            <div
+              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+              data-offset-key="h4-0-0"
+            >
+              <span
+                data-offset-key="h4-0-0"
+                style={Object {}}
+              >
+                <span
+                  data-text="true"
+                >
+                  Header four
+                </span>
+              </span>
+            </div>
+          </h4>
+          <h5
+            className="RichText-yekvnw-0 hIhKZq"
+            data-block={true}
+            data-editor="text"
+            data-offset-key="h5-0-0"
+          >
+            <div
+              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+              data-offset-key="h5-0-0"
+            >
+              <span
+                data-offset-key="h5-0-0"
+                style={Object {}}
+              >
+                <span
+                  data-text="true"
+                >
+                  Header five
+                </span>
+              </span>
+            </div>
+          </h5>
+          <h6
+            className="RichText-yekvnw-0 hIhKZq"
+            data-block={true}
+            data-editor="text"
+            data-offset-key="h6-0-0"
+          >
+            <div
+              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+              data-offset-key="h6-0-0"
+            >
+              <span
+                data-offset-key="h6-0-0"
+                style={Object {}}
+              >
+                <span
+                  data-text="true"
+                >
+                  Header six
+                </span>
+              </span>
+            </div>
+          </h6>
+          <div
+            className="RichText-yekvnw-0 hIhKZq"
+            data-block={true}
+            data-editor="text"
+            data-offset-key="unstyled-0-0"
+          >
+            <div
+              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+              data-offset-key="unstyled-0-0"
+            >
+              <span
+                data-offset-key="unstyled-0-0"
+                style={Object {}}
+              >
+                <span
+                  data-text="true"
+                >
+                  This block is draft.js content.
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Content Two Column And Bar Charts 1`] = `
 <div
   className="Grid-sc-1cmgn5o-0 dDYVbN"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
@@ -10325,11 +10973,11 @@ exports[`Storyshots Content Content Of Six Groups Of Two Columns And Bar Sibling
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       height="100%"
       id="78f5d055-8a9f-48cc-bead-f6c9e8451ced"
       kind="column"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       title="Column chart: 4 groups of 3 elements"
       type="chart"
@@ -12194,11 +12842,11 @@ exports[`Storyshots Content Content Of Six Groups Of Two Columns And Bar Sibling
     type="chart"
   >
     <svg
-      className="ChartSvg-sc-1pvl06w-0 bNjxCw"
+      className="ChartSvg-sc-1pvl06w-0 hbtCkg"
       height="100%"
       id="01648d04-78ad-402b-b255-14a6066d7927"
       kind="bar"
-      overflow="hidden"
+      overflow="visible"
       preserveAspectRatio="xMidYMin meet"
       type="chart"
       viewBox="0 0 297 210"
@@ -12546,641 +13194,3 @@ exports[`Storyshots Content Content Of Six Groups Of Two Columns And Bar Sibling
   </div>
 </div>
 `;
-
-exports[`Storyshots Content Flex 1`] = `
-<div
-  className="Flex-jm331f-0 OkQtc"
-  direction="row"
-  id="grid"
-  spacing={32}
-  type="grid"
-  wrap="nowrap"
->
-  <div
-    className="Item-sc-10s0ojn-0 Table__Container-u530n6-0 ikmWvq"
-    id="table"
-    type="table"
-  >
-    <h3
-      className="Typography-sc-1b4huth-0 TableTitle-sc-1dkost5-0 kZIXcC"
-    >
-      Table title
-    </h3>
-    <table
-      className="Table__StyledTable-u530n6-1 FuEmH"
-      scale={1}
-    >
-      <thead>
-        <tr>
-          <th
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            first column
-          </th>
-          <th
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            second column
-          </th>
-          <th
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            third column
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 1, column 1
-          </td>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 1, column 2
-          </td>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 1, column 3
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 2, column 1
-          </td>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 2, column 2
-          </td>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 2, column 3
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 3, column 1
-          </td>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 3, column 2
-          </td>
-          <td
-            className="TableCell-oc851c-0 lnUsfb"
-          >
-            row 3, column 3
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div
-    className="Item-sc-10s0ojn-0 dsLIhy RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft"
-    id="text"
-    type="draft"
-  >
-    <div
-      className="DraftEditor-root"
-    >
-      <div
-        className="DraftEditor-editorContainer"
-      >
-        <div
-          aria-describedby="placeholder-text"
-          aria-expanded={null}
-          className="notranslate public-DraftEditor-content"
-          contentEditable={true}
-          onBeforeInput={[Function]}
-          onBlur={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCopy={[Function]}
-          onCut={[Function]}
-          onDragEnd={[Function]}
-          onDragEnter={[Function]}
-          onDragLeave={[Function]}
-          onDragOver={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          onInput={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseUp={[Function]}
-          onPaste={[Function]}
-          onSelect={[Function]}
-          role="textbox"
-          spellCheck={false}
-          style={
-            Object {
-              "WebkitUserSelect": "text",
-              "outline": "none",
-              "userSelect": "text",
-              "whiteSpace": "pre-wrap",
-              "wordWrap": "break-word",
-            }
-          }
-          suppressContentEditableWarning={true}
-        >
-          <div
-            data-contents="true"
-          >
-            <h1
-              className="RichText-yekvnw-0 hIhKZq"
-              data-block={true}
-              data-editor="text"
-              data-offset-key="h1-0-0"
-            >
-              <div
-                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                data-offset-key="h1-0-0"
-              >
-                <span
-                  data-offset-key="h1-0-0"
-                  style={Object {}}
-                >
-                  <span
-                    data-text="true"
-                  >
-                    Header one
-                  </span>
-                </span>
-              </div>
-            </h1>
-            <h2
-              className="RichText-yekvnw-0 hIhKZq"
-              data-block={true}
-              data-editor="text"
-              data-offset-key="h2-0-0"
-            >
-              <div
-                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                data-offset-key="h2-0-0"
-              >
-                <span
-                  data-offset-key="h2-0-0"
-                  style={Object {}}
-                >
-                  <span
-                    data-text="true"
-                  >
-                    Header two
-                  </span>
-                </span>
-              </div>
-            </h2>
-            <h3
-              className="RichText-yekvnw-0 hIhKZq"
-              data-block={true}
-              data-editor="text"
-              data-offset-key="h3-0-0"
-            >
-              <div
-                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                data-offset-key="h3-0-0"
-              >
-                <span
-                  data-offset-key="h3-0-0"
-                  style={Object {}}
-                >
-                  <span
-                    data-text="true"
-                  >
-                    Header three
-                  </span>
-                </span>
-              </div>
-            </h3>
-            <h4
-              className="RichText-yekvnw-0 hIhKZq"
-              data-block={true}
-              data-editor="text"
-              data-offset-key="h4-0-0"
-            >
-              <div
-                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                data-offset-key="h4-0-0"
-              >
-                <span
-                  data-offset-key="h4-0-0"
-                  style={Object {}}
-                >
-                  <span
-                    data-text="true"
-                  >
-                    Header four
-                  </span>
-                </span>
-              </div>
-            </h4>
-            <h5
-              className="RichText-yekvnw-0 hIhKZq"
-              data-block={true}
-              data-editor="text"
-              data-offset-key="h5-0-0"
-            >
-              <div
-                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                data-offset-key="h5-0-0"
-              >
-                <span
-                  data-offset-key="h5-0-0"
-                  style={Object {}}
-                >
-                  <span
-                    data-text="true"
-                  >
-                    Header five
-                  </span>
-                </span>
-              </div>
-            </h5>
-            <h6
-              className="RichText-yekvnw-0 hIhKZq"
-              data-block={true}
-              data-editor="text"
-              data-offset-key="h6-0-0"
-            >
-              <div
-                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                data-offset-key="h6-0-0"
-              >
-                <span
-                  data-offset-key="h6-0-0"
-                  style={Object {}}
-                >
-                  <span
-                    data-text="true"
-                  >
-                    Header six
-                  </span>
-                </span>
-              </div>
-            </h6>
-            <div
-              className="RichText-yekvnw-0 hIhKZq"
-              data-block={true}
-              data-editor="text"
-              data-offset-key="unstyled-0-0"
-            >
-              <div
-                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                data-offset-key="unstyled-0-0"
-              >
-                <span
-                  data-offset-key="unstyled-0-0"
-                  style={Object {}}
-                >
-                  <span
-                    data-text="true"
-                  >
-                    This block is draft.js content.
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Content Page 1`] = `null`;
-
-exports[`Storyshots Content Table 1`] = `
-<div
-  className="Item-sc-10s0ojn-0 Table__Container-u530n6-0 ikmWvq"
-  id="table"
-  type="table"
->
-  <h3
-    className="Typography-sc-1b4huth-0 TableTitle-sc-1dkost5-0 kZIXcC"
-  >
-    Table title
-  </h3>
-  <table
-    className="Table__StyledTable-u530n6-1 FuEmH"
-    scale={1}
-  >
-    <thead>
-      <tr>
-        <th
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          first column
-        </th>
-        <th
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          second column
-        </th>
-        <th
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          third column
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 1, column 1
-        </td>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 1, column 2
-        </td>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 1, column 3
-        </td>
-      </tr>
-      <tr>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 2, column 1
-        </td>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 2, column 2
-        </td>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 2, column 3
-        </td>
-      </tr>
-      <tr>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 3, column 1
-        </td>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 3, column 2
-        </td>
-        <td
-          className="TableCell-oc851c-0 lnUsfb"
-        >
-          row 3, column 3
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-`;
-
-exports[`Storyshots Content Text 1`] = `
-<div
-  className="Item-sc-10s0ojn-0 dsLIhy RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft"
-  id="text"
-  type="draft"
->
-  <div
-    className="DraftEditor-root"
-  >
-    <div
-      className="DraftEditor-editorContainer"
-    >
-      <div
-        aria-describedby="placeholder-text"
-        aria-expanded={null}
-        className="notranslate public-DraftEditor-content"
-        contentEditable={true}
-        onBeforeInput={[Function]}
-        onBlur={[Function]}
-        onCompositionEnd={[Function]}
-        onCompositionStart={[Function]}
-        onCopy={[Function]}
-        onCut={[Function]}
-        onDragEnd={[Function]}
-        onDragEnter={[Function]}
-        onDragLeave={[Function]}
-        onDragOver={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseUp={[Function]}
-        onPaste={[Function]}
-        onSelect={[Function]}
-        role="textbox"
-        spellCheck={false}
-        style={
-          Object {
-            "WebkitUserSelect": "text",
-            "outline": "none",
-            "userSelect": "text",
-            "whiteSpace": "pre-wrap",
-            "wordWrap": "break-word",
-          }
-        }
-        suppressContentEditableWarning={true}
-      >
-        <div
-          data-contents="true"
-        >
-          <h1
-            className="RichText-yekvnw-0 hIhKZq"
-            data-block={true}
-            data-editor="text"
-            data-offset-key="h1-0-0"
-          >
-            <div
-              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-              data-offset-key="h1-0-0"
-            >
-              <span
-                data-offset-key="h1-0-0"
-                style={Object {}}
-              >
-                <span
-                  data-text="true"
-                >
-                  Header one
-                </span>
-              </span>
-            </div>
-          </h1>
-          <h2
-            className="RichText-yekvnw-0 hIhKZq"
-            data-block={true}
-            data-editor="text"
-            data-offset-key="h2-0-0"
-          >
-            <div
-              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-              data-offset-key="h2-0-0"
-            >
-              <span
-                data-offset-key="h2-0-0"
-                style={Object {}}
-              >
-                <span
-                  data-text="true"
-                >
-                  Header two
-                </span>
-              </span>
-            </div>
-          </h2>
-          <h3
-            className="RichText-yekvnw-0 hIhKZq"
-            data-block={true}
-            data-editor="text"
-            data-offset-key="h3-0-0"
-          >
-            <div
-              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-              data-offset-key="h3-0-0"
-            >
-              <span
-                data-offset-key="h3-0-0"
-                style={Object {}}
-              >
-                <span
-                  data-text="true"
-                >
-                  Header three
-                </span>
-              </span>
-            </div>
-          </h3>
-          <h4
-            className="RichText-yekvnw-0 hIhKZq"
-            data-block={true}
-            data-editor="text"
-            data-offset-key="h4-0-0"
-          >
-            <div
-              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-              data-offset-key="h4-0-0"
-            >
-              <span
-                data-offset-key="h4-0-0"
-                style={Object {}}
-              >
-                <span
-                  data-text="true"
-                >
-                  Header four
-                </span>
-              </span>
-            </div>
-          </h4>
-          <h5
-            className="RichText-yekvnw-0 hIhKZq"
-            data-block={true}
-            data-editor="text"
-            data-offset-key="h5-0-0"
-          >
-            <div
-              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-              data-offset-key="h5-0-0"
-            >
-              <span
-                data-offset-key="h5-0-0"
-                style={Object {}}
-              >
-                <span
-                  data-text="true"
-                >
-                  Header five
-                </span>
-              </span>
-            </div>
-          </h5>
-          <h6
-            className="RichText-yekvnw-0 hIhKZq"
-            data-block={true}
-            data-editor="text"
-            data-offset-key="h6-0-0"
-          >
-            <div
-              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-              data-offset-key="h6-0-0"
-            >
-              <span
-                data-offset-key="h6-0-0"
-                style={Object {}}
-              >
-                <span
-                  data-text="true"
-                >
-                  Header six
-                </span>
-              </span>
-            </div>
-          </h6>
-          <div
-            className="RichText-yekvnw-0 hIhKZq"
-            data-block={true}
-            data-editor="text"
-            data-offset-key="unstyled-0-0"
-          >
-            <div
-              className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-              data-offset-key="unstyled-0-0"
-            >
-              <span
-                data-offset-key="unstyled-0-0"
-                style={Object {}}
-              >
-                <span
-                  data-text="true"
-                >
-                  This block is draft.js content.
-                </span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Editor Editor Of All Charts 1`] = `null`;
-
-exports[`Storyshots Editor Editor Of Chart Sample One 1`] = `null`;
-
-exports[`Storyshots Editor Editor Of Column And Bar Sibling Charts 1`] = `null`;
-
-exports[`Storyshots Editor Editor Of Column And Line Charts 1`] = `null`;
-
-exports[`Storyshots Editor Editor Of Flex 1`] = `null`;
-
-exports[`Storyshots Editor Editor Of Line And Bar Sibling Charts 1`] = `null`;
-
-exports[`Storyshots Editor Editor Of Pie And Bar Sibling Charts 1`] = `null`;
-
-exports[`Storyshots Editor Editor Of Pie Chart 1`] = `null`;
-
-exports[`Storyshots Editor Editor Of Table 1`] = `null`;
-
-exports[`Storyshots Editor Initial Editor 1`] = `null`;
