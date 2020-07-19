@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { Box } from '@material-ui/core';
 
 import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
@@ -8,6 +9,7 @@ import ChartUnitsInput from './ChartUnitsInput';
 import ChartPaletteSelect from './ChartPaletteSelect';
 import useChartBlock from './useChartBlock';
 import ChartElementColorButton from './ChartElementColorButton';
+import ChartStructureGroup from './ChartStructureGroup';
 
 /**
  * @description Pie chart design panel.
@@ -24,7 +26,14 @@ export default function PieChartDesign() {
       </SidebarSection>
       {editor.selection > -1 && (
         <SidebarSection>
-          <SidebarHeading>Element</SidebarHeading>
+          <Box
+            component={SidebarHeading}
+            display={'flex'}
+            justifyContent={'space-between'}
+          >
+            Element
+            <ChartStructureGroup />
+          </Box>
           <ChartElementColorButton />
         </SidebarSection>
       )}

@@ -64,10 +64,12 @@ export default function ChartEditor({
       id={id}
       selected={!!selectedBlock}
       onClick={useAutoCallback(() => {
-        dispatchElements({
-          type: DESELECT_BLOCK_ELEMENT,
-          index: editor.selection,
-        });
+        if (editor.selection > -1) {
+          dispatchElements({
+            type: DESELECT_BLOCK_ELEMENT,
+            index: editor.selection,
+          });
+        }
       })}
       {...chartProps}
     >

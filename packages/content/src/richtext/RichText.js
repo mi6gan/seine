@@ -44,7 +44,7 @@ function Draft({
   blockRendererFn = () => null,
   blockStyleFn = () => '',
   keyBindingFn = getDefaultKeyBinding,
-  readOnly = false,
+  readOnly = true,
   spellCheck = false,
   stripPastedStyles = false,
   customStyleMap = DefaultDraftInlineStyle,

@@ -15,6 +15,7 @@ import {
   VerticalAlignTop,
 } from '@material-ui/icons';
 import { useAutoCallback } from 'hooks.macro';
+import { MenuItem, Select } from '@material-ui/core';
 
 import {
   useEditorDispatch,
@@ -42,9 +43,13 @@ export default function FlexDesign() {
     spacing = defaultFlexFormat.spacing,
     justify = defaultFlexFormat.justify,
     alignItems = defaultFlexFormat.alignItems,
+    direction = defaultFlexFormat.direction,
   } = layoutBlock
     ? layoutBlock.format[device] || layoutBlock.format || defaultFlexFormat
     : defaultFlexFormat;
+  const iconProps = direction === 'column' && {
+    style: { transform: 'rotate(-90deg)' },
+  };
   return (
     <>
       <SidebarGroup alignItems={'center'}>
@@ -63,6 +68,24 @@ export default function FlexDesign() {
         />
       </SidebarGroup>
 
+      <SidebarGroup>
+        <SidebarLabel>Direction</SidebarLabel>
+        <Select
+          value={direction}
+          onChange={useAutoCallback((event) =>
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              format: {
+                direction: event.target.value,
+              },
+            })
+          )}
+        >
+          <MenuItem value={'row'}>Row</MenuItem>
+          <MenuItem value={'column'}>Column</MenuItem>
+        </Select>
+      </SidebarGroup>
+
       <SidebarGroup alignItems={'center'}>
         <SidebarLabel>Justify</SidebarLabel>
         <ToolbarToggleButtonGroup
@@ -72,19 +95,19 @@ export default function FlexDesign() {
           )}
         >
           <ToolbarToggleButton value={'flex-start'}>
-            <FormatAlignLeft />
+            <FormatAlignLeft {...iconProps} />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'center'}>
-            <FormatAlignCenter />
+            <FormatAlignCenter {...iconProps} />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'flex-end'}>
-            <FormatAlignRight />
+            <FormatAlignRight {...iconProps} />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'space-between'}>
-            <FormatAlignJustify />
+            <FormatAlignJustify {...iconProps} />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
@@ -98,15 +121,15 @@ export default function FlexDesign() {
           )}
         >
           <ToolbarToggleButton value={'flex-start'}>
-            <VerticalAlignTop />
+            <VerticalAlignTop {...iconProps} />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'center'}>
-            <VerticalAlignCenter />
+            <VerticalAlignCenter {...iconProps} />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'flex-end'}>
-            <VerticalAlignBottom />
+            <VerticalAlignBottom {...iconProps} />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>

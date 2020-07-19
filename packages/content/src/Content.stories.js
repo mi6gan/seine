@@ -261,7 +261,7 @@ export const Flex = ({ children = [], ...props }) => (
   </Page>
 );
 
-export const ContentOfPieChart = (props) => (
+export const PieChart = (props) => (
   <Page {...props}>
     {[
       {
@@ -303,7 +303,7 @@ export const ContentOfPieChart = (props) => (
   </Page>
 );
 
-export const ContentOfPieAndBarSiblingCharts = (props) => (
+export const PieAndBarCharts = (props) => (
   <Page {...props}>
     {[
       {
@@ -382,7 +382,7 @@ export const ContentOfPieAndBarSiblingCharts = (props) => (
   </Page>
 );
 
-export const ContentOfColumnAndBarSiblingCharts = (props) => (
+export const ColumnAndBarCharts = (props) => (
   <Page {...props}>
     {[
       {
@@ -476,7 +476,7 @@ export const ContentOfColumnAndBarSiblingCharts = (props) => (
   </Page>
 );
 
-export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
+export const TwoColumnAndBarCharts = (props) => (
   <Page {...props}>
     {[
       {
@@ -639,7 +639,7 @@ export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
   </Page>
 );
 
-export const ContentOfLineAndBarSiblingCharts = (props) => (
+export const LineAndBarCharts = (props) => (
   <Page {...props}>
     {[
       {
@@ -795,7 +795,7 @@ export const ContentOfLineAndBarSiblingCharts = (props) => (
   </Page>
 );
 
-export const ContentOfColumnAndLineCharts = (props) => (
+export const ColumnAndLineCharts = (props) => (
   <Page {...props}>
     {[
       {
@@ -922,7 +922,7 @@ export const ContentOfColumnAndLineCharts = (props) => (
   </Page>
 );
 
-export const ContentOfAllCharts = (props) => (
+export const AllCharts = (props) => (
   <Page {...props}>
     {[
       {
@@ -1170,7 +1170,7 @@ export const ContentOfAllCharts = (props) => (
   </Page>
 );
 
-export const ContentOfChartSampleOne = (props) => (
+export const FirstSampleChart = (props) => (
   <Page {...props}>
     {[
       {
