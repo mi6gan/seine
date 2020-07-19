@@ -23,14 +23,16 @@ export default function GroupedChartElementRect({
     <g>
       <rect
         {...rectProps}
-        onClick={useAutoCallback(
-          () =>
-            editor.selection !== index &&
+        onClick={useAutoCallback((event) => {
+          if (editor.selection !== index) {
+            event.stopPropagation();
+            event.preventDefault();
             dispatchElements({
               index,
               type: SELECT_BLOCK_ELEMENT,
-            })
-        )}
+            });
+          }
+        })}
       />
       {editor.selection === index && (
         <rect

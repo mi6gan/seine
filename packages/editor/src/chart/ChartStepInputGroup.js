@@ -35,7 +35,7 @@ export default function ChartStepInputGroup({ hideX = false, hideY = false }) {
         hidden={hideX}
         disabled={!id}
         value={dx}
-        inputProps={{ placeholder: 'X' }}
+        inputProps={{ placeholder: 'x' }}
         onChange={useAutoCallback((event) =>
           dispatch({
             id,
@@ -48,7 +48,7 @@ export default function ChartStepInputGroup({ hideX = false, hideY = false }) {
         hidden={hideY}
         disabled={!id}
         value={dy}
-        inputProps={{ placeholder: 'Y' }}
+        inputProps={{ placeholder: 'y' }}
         onChange={useAutoCallback((event) =>
           dispatch({
             id,

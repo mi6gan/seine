@@ -7,6 +7,7 @@ import { useSelectedBlocks } from '../store';
 import PieChartDesign from './PieChartDesign';
 import BarChartDesign from './BarChartDesign';
 import LineChartDesign from './LineChartDesign';
+import ColumnChartDesign from './ColumnChartDesign';
 
 /**
  * @description Chart design panel.
@@ -21,6 +22,7 @@ export default function ChartDesign() {
       {kind === chartTypes.PIE && <PieChartDesign />}
       {kind === chartTypes.BAR && <BarChartDesign />}
       {kind === chartTypes.LINE && <LineChartDesign />}
+      {kind === chartTypes.COLUMN && <ColumnChartDesign />}
     </>
   );
 }
