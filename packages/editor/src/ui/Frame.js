@@ -3,7 +3,6 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 import {
-  blockTypes,
   CREATE_BOTTOM_BLOCK,
   CREATE_LEFT_BLOCK,
   CREATE_RIGHT_BLOCK,
@@ -13,10 +12,10 @@ import {
 import { Item } from '@seine/content';
 import { Box } from '@material-ui/core';
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowDropDown,
   ArrowDropUp,
+  ArrowLeft,
+  ArrowRight,
 } from '@material-ui/icons';
 
 import { EditorContext, useEditorDispatch } from '../store';
@@ -74,23 +73,31 @@ const StyledInsertPlaceholder = styled(Box).attrs({
       duration: theme.transitions.duration.short,
       easing: 'ease-in-out',
     })};
-  ${({ vertical, size, left, right }) => ({
-    height: vertical ? size : '100%',
-    width: vertical ? '100%' : size,
-    ...(!vertical && left === 0 && { marginLeft: -size / 2 }),
-    ...(vertical && left === 0 && { marginTop: -size / 2 }),
-    ...(!vertical && right === 0 && { marginRight: -size / 2 }),
-    ...(vertical && right === 0 && { marginBottom: -size / 2 }),
+  ${({ vertical, size, left, right, top, bottom }) => ({
+    height: !vertical ? size : `calc(100% + ${size}px)`,
+    width: !vertical ? `calc(100% + ${size}px)` : size,
+    ...(vertical &&
+      left === 0 && { marginLeft: -size / 2, marginTop: -size / 2 }),
+    ...(!vertical &&
+      top === 0 && { marginTop: -size / 2, marginLeft: -size / 2 }),
+    ...(vertical &&
+      right === 0 && { marginRight: -size / 2, marginBottom: -size / 2 }),
+    ...(!vertical &&
+      bottom === 0 && { marginBottom: -size / 2, marginRight: -size / 2 }),
   })}
   &:hover {
     z-index: 3;
-    ${({ vertical, size, left, right }) => ({
-      height: vertical ? size * 4 : '100%',
-      width: vertical ? '100%' : size * 4,
-      ...(!vertical && left === 0 && { marginLeft: -size * 2 }),
-      ...(vertical && left === 0 && { marginTop: -size * 2 }),
-      ...(!vertical && right === 0 && { marginRight: -size * 2 }),
-      ...(vertical && right === 0 && { marginBottom: -size * 2 }),
+    ${({ vertical, size, left, right, top, bottom }) => ({
+      height: !vertical ? size * 4 : `calc(100% + ${size}px)`,
+      width: !vertical ? `calc(100% + ${size}px)` : size * 4,
+      ...(vertical &&
+        left === 0 && { marginLeft: -size * 2, marginTop: -size / 2 }),
+      ...(!vertical &&
+        top === 0 && { marginTop: -size * 2, marginLeft: -size / 2 }),
+      ...(vertical &&
+        right === 0 && { marginRight: -size * 2, marginBottom: -size / 2 }),
+      ...(!vertical &&
+        bottom === 0 && { marginBottom: -size * 2, marginRight: -size / 2 }),
     })}
   }
 `;
@@ -100,10 +107,12 @@ function InsertPlaceholder({ id, type, ...props }) {
   const dispatch = useEditorDispatch();
   const buffer = useEditorBuffer();
   const { setBuffer } = React.useContext(EditorContext);
-  const createBlock = useAutoCallback(() => {
-    dispatch({ type, id, block: buffer });
+  const createBlock = useAutoCallback((event) => {
     setBuffer(null);
+    dispatch({ type, id, block: buffer });
     dispatch({ type: SELECT_BLOCK, id: buffer.id });
+    event.preventDefault();
+    event.stopPropagation();
   });
   return buffer ? (
     <StyledInsertPlaceholder
@@ -111,7 +120,7 @@ function InsertPlaceholder({ id, type, ...props }) {
       {...(type === CREATE_LEFT_BLOCK || type === CREATE_TOP_BLOCK
         ? { left: 0, top: 0 }
         : { right: 0, bottom: 0 })}
-      vertical={type === CREATE_TOP_BLOCK || type === CREATE_BOTTOM_BLOCK}
+      vertical={type === CREATE_LEFT_BLOCK || type === CREATE_RIGHT_BLOCK}
       onClick={createBlock}
     />
   ) : null;
@@ -124,9 +133,9 @@ export default React.forwardRef(function Frame(
 ) {
   const dispatch = useEditorDispatch();
   const buffer = useEditorBuffer();
-  const { layout, item, items } = useSelectedLayoutItems();
+  const { item, items } = useSelectedLayoutItems();
   const selected =
-    (item && item.id === id) || (layout && layout.id === id)
+    item && item.id === id
       ? 'self'
       : item && item['parent_id'] === id
       ? 'child'
@@ -156,6 +165,7 @@ export default React.forwardRef(function Frame(
               }),
             });
           }
+          event.preventDefault();
           event.stopPropagation();
           onClick && onClick(event);
         })}
@@ -163,17 +173,13 @@ export default React.forwardRef(function Frame(
         <InsertPlaceholder id={id} type={CREATE_LEFT_BLOCK}>
           <ArrowLeft />
         </InsertPlaceholder>
-        {props.type === blockTypes.LAYOUT && (
-          <InsertPlaceholder id={id} type={CREATE_TOP_BLOCK}>
-            <ArrowDropUp />
-          </InsertPlaceholder>
-        )}
+        <InsertPlaceholder id={id} type={CREATE_TOP_BLOCK}>
+          <ArrowDropUp />
+        </InsertPlaceholder>
         {children}
-        {props.type === blockTypes.LAYOUT && (
-          <InsertPlaceholder id={id} type={CREATE_BOTTOM_BLOCK}>
-            <ArrowDropDown />
-          </InsertPlaceholder>
-        )}
+        <InsertPlaceholder id={id} type={CREATE_BOTTOM_BLOCK}>
+          <ArrowDropDown />
+        </InsertPlaceholder>
         <InsertPlaceholder id={id} type={CREATE_RIGHT_BLOCK}>
           <ArrowRight />
         </InsertPlaceholder>

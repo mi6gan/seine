@@ -66,6 +66,7 @@ export default React.forwardRef(function Table(
     rows,
     textAlignment,
     cellAs: Cell = TableCell,
+    children = null,
     ...containerProps
   }: Props,
   ref
@@ -119,6 +120,7 @@ export default React.forwardRef(function Table(
           ))}
         </tbody>
       </StyledTable>
+      {children}
     </Container>
   );
 });

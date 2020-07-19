@@ -12,10 +12,11 @@ import useEditorBuffer from './store/useEditorBuffer';
 type Props = BlockEditor & Block;
 
 const StyledPage = styled(Page)`
+  position: relative;
   transition: ${({ theme }) =>
     theme.transitions.create(['background'], {
-      duration: theme.transitions.duration.standard,
-      easing: 'ease-in-out',
+      duration: theme.transitions.duration.short,
+      easing: 'linear',
     })}};
 
   &:hover {

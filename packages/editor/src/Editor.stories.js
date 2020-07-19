@@ -12,6 +12,7 @@ import {
   Table,
   PieChart,
   Text,
+  Data,
 } from '../../content/src/Content.stories';
 
 import Editor from './Editor';
@@ -47,3 +48,5 @@ export const EditorOfAllCharts = () => <AllCharts as={Editor} />;
 export const EditorOfChartSampleOne = () => <FirstSampleChart as={Editor} />;
 
 export const EditorOfFlex = () => <Flex as={Editor} />;
+
+export const EditorOfData = () => <Data as={Editor} />;
