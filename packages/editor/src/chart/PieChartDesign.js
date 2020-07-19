@@ -1,46 +1,33 @@
 // @flow
 import * as React from 'react';
-import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { defaultPieChartFormat } from '@seine/content';
-import { useAutoCallback } from 'hooks.macro';
 
-import {
-  useEditorDispatch,
-  useEditorSelector,
-  useSelectedBlocks,
-} from '../store';
-import SidebarInput from '../ui/SidebarInput';
-import SidebarLabel from '../ui/SidebarLabel';
-import SidebarGroup from '../ui/SidebarGroup';
+import SidebarHeading from '../ui/SidebarHeading';
+import SidebarSection from '../ui/SidebarSection';
+
+import ChartUnitsInput from './ChartUnitsInput';
+import ChartPaletteSelect from './ChartPaletteSelect';
+import useChartBlock from './useChartBlock';
+import ChartElementColorButton from './ChartElementColorButton';
 
 /**
  * @description Pie chart design panel.
  * @returns {React.Node}
  */
 export default function PieChartDesign() {
-  const device = useEditorSelector((state) => state.device);
-  const block =
-    useSelectedBlocks().find(({ type }) => type === blockTypes.CHART) || {};
-  const { id } = block;
-  const { units = defaultPieChartFormat.units } =
-    (block && block.format && block.format[device]) ||
-    block.format ||
-    defaultPieChartFormat;
-  const dispatch = useEditorDispatch();
+  const { editor } = useChartBlock();
   return (
-    <SidebarGroup>
-      <SidebarLabel>units</SidebarLabel>
-      <SidebarInput
-        disabled={!id}
-        value={units}
-        onChange={useAutoCallback((event) =>
-          dispatch({
-            id,
-            type: UPDATE_BLOCK_FORMAT,
-            format: { units: event.currentTarget.value },
-          })
-        )}
-      />
-    </SidebarGroup>
+    <>
+      <SidebarSection>
+        <SidebarHeading>Chart</SidebarHeading>
+        <ChartUnitsInput />
+        <ChartPaletteSelect />
+      </SidebarSection>
+      {editor.selection > -1 && (
+        <SidebarSection>
+          <SidebarHeading>Element</SidebarHeading>
+          <ChartElementColorButton />
+        </SidebarSection>
+      )}
+    </>
   );
 }

@@ -1,13 +1,17 @@
 // @flow
 import * as React from 'react';
-import {
-  chartPaletteKeyValues,
-  defaultChartFormat,
-  defaultChartPaletteKey,
-} from '@seine/content';
-import { UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { chartPaletteKeyValues, defaultChartFormat } from '@seine/content';
+import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import styled, { css } from 'styled-components/macro';
-import { FormControl, MenuItem, Select as MuiSelect } from '@material-ui/core';
+import { MenuItem, Select as MuiSelect } from '@material-ui/core';
+
+import {
+  useEditorDispatch,
+  useEditorSelector,
+  useSelectedBlocks,
+} from '../store';
+import SidebarGroup from '../ui/SidebarGroup';
+import SidebarLabel from '../ui/SidebarLabel';
 
 const Label = styled.span.attrs(({ role = 'option' }) => ({ role }))`
   font-weight: bold;
@@ -27,13 +31,19 @@ const Select = styled(MuiSelect)`
  * @description Buttons to select chart's default palette
  * @returns {*}
  */
-export default function ChartPaletteSelect({
-  dispatch,
-  format: { paletteKey = defaultChartPaletteKey } = defaultChartFormat,
-  id,
-}) {
+export default function ChartPaletteSelect() {
+  const device = useEditorSelector((state) => state.device);
+  const dispatch = useEditorDispatch();
+  const block =
+    useSelectedBlocks().find(({ type }) => type === blockTypes.CHART) || {};
+  const { id } = block;
+  const { paletteKey = defaultChartFormat.paletteKey } =
+    (block && block.format && block.format[device]) ||
+    block.format ||
+    defaultChartFormat;
   return (
-    <FormControl>
+    <SidebarGroup alignItems={'center'}>
+      <SidebarLabel>palette</SidebarLabel>
       <Select
         value={paletteKey}
         onChange={React.useCallback(
@@ -81,6 +91,6 @@ export default function ChartPaletteSelect({
           <Label color={chartPaletteKeyValues.black[0]}>Black</Label>
         </MenuItem>
       </Select>
-    </FormControl>
+    </SidebarGroup>
   );
 }

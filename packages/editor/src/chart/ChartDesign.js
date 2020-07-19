@@ -2,11 +2,11 @@
 import * as React from 'react';
 import { blockTypes, chartTypes } from '@seine/core';
 
-import SidebarHeading from '../ui/SidebarHeading';
-import SidebarSection from '../ui/SidebarSection';
 import { useSelectedBlocks } from '../store';
 
 import PieChartDesign from './PieChartDesign';
+import BarChartDesign from './BarChartDesign';
+import LineChartDesign from './LineChartDesign';
 
 /**
  * @description Chart design panel.
@@ -18,10 +18,9 @@ export default function ChartDesign() {
   } = useSelectedBlocks().find(({ type }) => type === blockTypes.CHART) || {};
   return (
     <>
-      <SidebarSection>
-        <SidebarHeading>Chart</SidebarHeading>
-        {kind === chartTypes.PIE && <PieChartDesign />}
-      </SidebarSection>
+      {kind === chartTypes.PIE && <PieChartDesign />}
+      {kind === chartTypes.BAR && <BarChartDesign />}
+      {kind === chartTypes.LINE && <LineChartDesign />}
     </>
   );
 }

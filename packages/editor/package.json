@@ -18,6 +18,7 @@
     "@seine/styles": "workspace:*",
     "@seine/ui": "workspace:*",
     "draft-js-buttons": "^2.0.2",
+    "react-color": "^2.18.1",
     "react-color.macro": "^1.0.186",
     "svg-patterns": "^1.0.0",
     "virtual-dom-stringify": "^3.0.1"

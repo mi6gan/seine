@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
-import { DESELECT_BLOCK_ELEMENT, SELECT_BLOCK_ELEMENT } from '@seine/core';
-import { ClickAwayListener } from '@material-ui/core';
+import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 type Props = {
@@ -21,40 +20,30 @@ export default function PieChartElementPath({
   ...pathProps
 }: Props) {
   return (
-    <ClickAwayListener
-      onClickAway={(event) =>
-        !(event.target instanceof HTMLButtonElement) &&
-        dispatchElements({
-          type: DESELECT_BLOCK_ELEMENT,
-          index,
-        })
-      }
-    >
-      <g>
+    <g>
+      <path
+        {...pathProps}
+        onClick={useAutoCallback((event) => {
+          if (editor.selection !== index) {
+            event.stopPropagation();
+            event.preventDefault();
+            dispatchElements({
+              index,
+              type: SELECT_BLOCK_ELEMENT,
+            });
+          }
+        })}
+      />
+      {editor.selection === index && (
         <path
           {...pathProps}
-          onClick={useAutoCallback((event) => {
-            if (editor.selection !== index) {
-              event.stopPropagation();
-              event.preventDefault();
-              dispatchElements({
-                index,
-                type: SELECT_BLOCK_ELEMENT,
-              });
-            }
-          })}
+          style={{
+            opacity: 0.15,
+            fill: 'url(#selectionPattern)',
+            pointerEvents: 'none',
+          }}
         />
-        {editor.selection === index && (
-          <path
-            {...pathProps}
-            style={{
-              opacity: 0.15,
-              fill: 'url(#selectionPattern)',
-              pointerEvents: 'none',
-            }}
-          />
-        )}
-      </g>
-    </ClickAwayListener>
+      )}
+    </g>
   );
 }

@@ -1,6 +1,10 @@
 // @flow
 import * as React from 'react';
-import { chartTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import {
+  chartTypes,
+  DESELECT_BLOCK_ELEMENT,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 import {
   BarChartContent,
   ChartSvg,
@@ -56,7 +60,17 @@ export default function ChartEditor({
   const metaProps = { editor, dispatch, dispatchElements };
 
   return (
-    <Frame id={id} selected={!!selectedBlock} {...chartProps}>
+    <Frame
+      id={id}
+      selected={!!selectedBlock}
+      onClick={useAutoCallback(() => {
+        dispatchElements({
+          type: DESELECT_BLOCK_ELEMENT,
+          index: editor.selection,
+        });
+      })}
+      {...chartProps}
+    >
       <ChartSvg {...chartProps} ref={useResizeTargetRef()}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (

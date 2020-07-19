@@ -101,7 +101,7 @@ function InsertPlaceholder({ id, type, ...props }) {
 
 // eslint-disable-next-line
 export default React.forwardRef(function Frame(
-  { children, id, ...props },
+  { children, id, onClick, ...props },
   ref
 ) {
   const dispatch = useEditorDispatch();
@@ -139,6 +139,7 @@ export default React.forwardRef(function Frame(
             });
           }
           event.stopPropagation();
+          onClick && onClick(event);
         })}
       >
         <InsertPlaceholder id={id} type={CREATE_LEFT_BLOCK} />
