@@ -5,13 +5,13 @@ import { Layout } from '@seine/content';
 import Frame from '../ui/Frame';
 
 /**
- * @description Grid layout editor.
+ * @description Layout editor.
  * @param {any} props
  * @returns {React.Node}
  */
-export default function LayoutEditor({ children, ...grid }) {
+export default function LayoutEditor({ children, ...frameProps }) {
   return (
-    <Frame {...grid} as={Layout}>
+    <Frame {...frameProps} as={Layout}>
       {children}
     </Frame>
   );

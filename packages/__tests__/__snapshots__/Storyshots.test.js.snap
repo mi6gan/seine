@@ -443,7 +443,7 @@ exports[`Storyshots Bream.Review summary header Great Performance 1`] = `
 
 exports[`Storyshots Content All Charts 1`] = `
 <div
-  className="Grid-sc-1cmgn5o-0 dDYVbN"
+  className="Item-sc-10s0ojn-0 Grid-sc-1cmgn5o-0 hKdwTP"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
   type="grid"
 >
@@ -4344,7 +4344,7 @@ exports[`Storyshots Content All Charts 1`] = `
 
 exports[`Storyshots Content Column And Bar Charts 1`] = `
 <div
-  className="Grid-sc-1cmgn5o-0 dDYVbN"
+  className="Item-sc-10s0ojn-0 Grid-sc-1cmgn5o-0 hKdwTP"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
   type="grid"
 >
@@ -5435,7 +5435,7 @@ exports[`Storyshots Content Column And Bar Charts 1`] = `
 
 exports[`Storyshots Content Column And Line Charts 1`] = `
 <div
-  className="Grid-sc-1cmgn5o-0 dDYVbN"
+  className="Item-sc-10s0ojn-0 Grid-sc-1cmgn5o-0 hKdwTP"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
   type="grid"
 >
@@ -6922,7 +6922,7 @@ exports[`Storyshots Content First Sample Chart 1`] = `
   type="page"
 >
   <div
-    className="Grid-sc-1cmgn5o-0 dDYVbN"
+    className="Item-sc-10s0ojn-0 Grid-sc-1cmgn5o-0 hKdwTP"
     id="6fbf9072-e107-476d-8300-642b13bf39d2"
     type="grid"
   >
@@ -7544,7 +7544,7 @@ exports[`Storyshots Content First Sample Chart 1`] = `
 
 exports[`Storyshots Content Flex 1`] = `
 <div
-  className="Flex-jm331f-0 OkQtc"
+  className="Item-sc-10s0ojn-0 Flex-jm331f-0 jWKHs"
   direction="row"
   id="grid"
   spacing={32}
@@ -7861,7 +7861,7 @@ exports[`Storyshots Content Initial Editor 1`] = `null`;
 
 exports[`Storyshots Content Line And Bar Charts 1`] = `
 <div
-  className="Grid-sc-1cmgn5o-0 dDYVbN"
+  className="Item-sc-10s0ojn-0 Grid-sc-1cmgn5o-0 hKdwTP"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
   type="grid"
 >
@@ -9407,7 +9407,7 @@ exports[`Storyshots Content Page 1`] = `null`;
 
 exports[`Storyshots Content Pie And Bar Charts 1`] = `
 <div
-  className="Grid-sc-1cmgn5o-0 dDYVbN"
+  className="Item-sc-10s0ojn-0 Grid-sc-1cmgn5o-0 hKdwTP"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
   type="grid"
 >
@@ -10961,7 +10961,7 @@ exports[`Storyshots Content Text 1`] = `
 
 exports[`Storyshots Content Two Column And Bar Charts 1`] = `
 <div
-  className="Grid-sc-1cmgn5o-0 dDYVbN"
+  className="Item-sc-10s0ojn-0 Grid-sc-1cmgn5o-0 hKdwTP"
   id="flex--bee1c449-5515-4b12-9779-cfa11f1f62d9"
   type="grid"
 >

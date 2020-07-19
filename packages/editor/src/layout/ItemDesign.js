@@ -24,7 +24,9 @@ export default function ItemDesign() {
   const {
     minWidth = defaultItemFormat.minWidth,
     maxWidth = defaultItemFormat.maxWidth,
-  } = item ? item.format[device] || item.format : defaultItemFormat;
+  } =
+    (item && item.format && (item.format[device] || item.format)) ||
+    defaultItemFormat;
   const id = item && item.id;
   return (
     <>

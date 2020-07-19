@@ -196,8 +196,8 @@ function DefaultEditor({
               event.stopPropagation();
             })}
           >
-            {layout && <LayoutDesign />}
             {item && <ItemDesign />}
+            {layout && <LayoutDesign />}
             {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
             {item && item.type === blockTypes.TABLE && <TableDesign />}
             {item && item.type === blockTypes.CHART && <ChartDesign />}

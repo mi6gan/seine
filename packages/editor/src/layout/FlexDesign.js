@@ -27,6 +27,7 @@ import SidebarInput from '../ui/SidebarInput';
 import SidebarGroup from '../ui/SidebarGroup';
 import ToolbarToggleButtonGroup from '../ui/ToolbarToggleButtonGroup';
 import ToolbarToggleButton from '../ui/ToolbarToggleButton';
+import SidebarSelectLabel from '../ui/SidebarSelectLabel';
 
 /**
  * @description Layout design.
@@ -81,8 +82,12 @@ export default function FlexDesign() {
             })
           )}
         >
-          <MenuItem value={'row'}>Row</MenuItem>
-          <MenuItem value={'column'}>Column</MenuItem>
+          <MenuItem value={'row'}>
+            <SidebarSelectLabel>Row</SidebarSelectLabel>
+          </MenuItem>
+          <MenuItem value={'column'}>
+            <SidebarSelectLabel>Column</SidebarSelectLabel>
+          </MenuItem>
         </Select>
       </SidebarGroup>
 

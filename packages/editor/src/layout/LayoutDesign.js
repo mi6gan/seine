@@ -18,6 +18,7 @@ import {
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarSection from '../ui/SidebarSection';
+import SidebarSelectLabel from '../ui/SidebarSelectLabel';
 
 import FlexDesign from './FlexDesign';
 
@@ -37,27 +38,33 @@ export default function LayoutDesign() {
       : defaultLayoutFormat;
   const dispatch = useEditorDispatch();
   return (
-    <SidebarSection>
-      <SidebarHeading>Layout</SidebarHeading>
+    <>
+      <SidebarSection>
+        <SidebarHeading>Layout</SidebarHeading>
 
-      <SidebarGroup alignItems={'center'}>
-        <SidebarLabel>Type</SidebarLabel>
-        <Select
-          value={kind}
-          onChange={useAutoCallback((e) =>
-            dispatch({
-              id,
-              type: UPDATE_BLOCK_FORMAT,
-              format: { kind: e.target.value },
-            })
-          )}
-        >
-          <MenuItem value={layoutTypes.FLEX}>Flex</MenuItem>
-          <MenuItem value={layoutTypes.GRID}>Grid</MenuItem>
-        </Select>
-      </SidebarGroup>
+        <SidebarGroup alignItems={'center'}>
+          <SidebarLabel>Type</SidebarLabel>
+          <Select
+            value={kind}
+            onChange={useAutoCallback((e) =>
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_FORMAT,
+                format: { kind: e.target.value },
+              })
+            )}
+          >
+            <MenuItem value={layoutTypes.FLEX}>
+              <SidebarSelectLabel>Flex</SidebarSelectLabel>
+            </MenuItem>
+            <MenuItem value={layoutTypes.GRID}>
+              <SidebarSelectLabel>Grid</SidebarSelectLabel>
+            </MenuItem>
+          </Select>
+        </SidebarGroup>
 
-      {kind === layoutTypes.FLEX && <FlexDesign />}
-    </SidebarSection>
+        {kind === layoutTypes.FLEX && <FlexDesign />}
+      </SidebarSection>
+    </>
   );
 }
