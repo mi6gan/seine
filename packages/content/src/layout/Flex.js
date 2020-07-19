@@ -15,7 +15,7 @@ export type Props = (FlexBody & FlexFormat) & {
  * @param {Props} props
  * @returns {React.Node}
  */
-const Flex = styled.div.attrs(
+const Flex = styled(Item).attrs(
   ({
     direction = defaultFlexFormat.direction,
     wrap = defaultFlexFormat.wrap,
@@ -33,8 +33,6 @@ const Flex = styled.div.attrs(
   })
 )`
   display: flex;
-  position: relative;
-  box-sizing: border-box;
 
   ${({
     direction,

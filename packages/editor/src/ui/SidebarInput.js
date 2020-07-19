@@ -4,12 +4,12 @@ import styled from 'styled-components/macro';
 
 const SidebarInput = styled(Box).attrs(({ width = '3rem', mr = 1 }) => ({
   component: Input,
-  variant: 'caption',
   mr,
   width,
 }))`
   && {
     ${({ hidden }) => hidden && { display: 'none' }}
+    ${({ theme }) => theme.typography.caption}
   }
 `;
 

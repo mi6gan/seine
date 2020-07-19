@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { chartPaletteKeyValues, defaultChartFormat } from '@seine/content';
 import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
-import styled from 'styled-components/macro';
-import { Box, MenuItem, Typography, Select } from '@material-ui/core';
+import { MenuItem, Select } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import SidebarSelectLabel from '../ui/SidebarSelectLabel';
 import {
   useEditorDispatch,
   useEditorSelector,
@@ -13,14 +13,6 @@ import {
 } from '../store';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
-
-const Label = styled(Box).attrs({
-  component: Typography,
-  variant: 'caption',
-  display: 'inline',
-})`
-  font-weight: bold;
-`;
 
 /**
  * @description Buttons to select chart's default palette
@@ -54,27 +46,33 @@ export default function ChartPaletteSelect() {
         })}
       >
         <MenuItem value={'default'}>
-          <Label color={chartPaletteKeyValues.default[3]}>General</Label>
+          <SidebarSelectLabel color={chartPaletteKeyValues.default[3]}>
+            General
+          </SidebarSelectLabel>
         </MenuItem>
 
         <MenuItem value={'mcKinseyDeep'}>
-          <Label color={chartPaletteKeyValues.mcKinseyDeep[0]}>
+          <SidebarSelectLabel color={chartPaletteKeyValues.mcKinseyDeep[0]}>
             McKinsey Deep
-          </Label>
+          </SidebarSelectLabel>
         </MenuItem>
 
         <MenuItem value={'mcKinseyLight'}>
-          <Label color={chartPaletteKeyValues.mcKinseyLight[0]}>
+          <SidebarSelectLabel color={chartPaletteKeyValues.mcKinseyLight[0]}>
             McKinsey Light
-          </Label>
+          </SidebarSelectLabel>
         </MenuItem>
 
         <MenuItem value={'bcg'}>
-          <Label color={chartPaletteKeyValues.bcg[0]}>BCG</Label>
+          <SidebarSelectLabel color={chartPaletteKeyValues.bcg[0]}>
+            BCG
+          </SidebarSelectLabel>
         </MenuItem>
 
         <MenuItem value={'black'}>
-          <Label color={chartPaletteKeyValues.black[0]}>Black</Label>
+          <SidebarSelectLabel color={chartPaletteKeyValues.black[0]}>
+            Black
+          </SidebarSelectLabel>
         </MenuItem>
       </Select>
     </SidebarGroup>

@@ -7,12 +7,7 @@ import {
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
-import {
-  DeleteOutlined,
-  Add,
-  ControlPoint,
-  LinearScale,
-} from '@material-ui/icons';
+import { DeleteOutlined, Add, ControlPoint } from '@material-ui/icons';
 import { Button } from '@material-ui/core';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
@@ -69,7 +64,7 @@ export default function ChartStructureGroup() {
         title={kind === chartTypes.LINE ? 'Add line' : 'add item'}
         variant={'text'}
       >
-        {kind === chartTypes.LINE ? <Add /> : <LinearScale />}
+        <Add />
       </ActionButton>
       {useAutoMemo(() => {
         if (kind === chartTypes.LINE) {

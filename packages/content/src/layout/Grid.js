@@ -3,6 +3,8 @@ import * as React from 'react';
 import type { GridBody, GridFormat } from '@seine/core';
 import styled, { css } from 'styled-components/macro';
 
+import Item from './Item';
+
 export type Props = (GridBody & GridFormat) & {
   children: React.ChildrenArray<React.Node>,
 };
@@ -17,9 +19,8 @@ export const defaultGridRows = '';
  * @param {Props} props
  * @returns {React.Node}
  */
-export default styled.div`
+export default styled(Item)`
   display: grid;
-  position: relative;
   ${({
     columns = defaultGridColumns,
     columnGap = defaultGridColumnGap,
