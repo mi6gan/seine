@@ -13,6 +13,7 @@ import {
   VerticalAlignBottom,
   VerticalAlignCenter,
   VerticalAlignTop,
+  WrapText,
 } from '@material-ui/icons';
 import { useAutoCallback } from 'hooks.macro';
 import { MenuItem, Select } from '@material-ui/core';
@@ -45,6 +46,7 @@ export default function FlexDesign() {
     justify = defaultFlexFormat.justify,
     alignItems = defaultFlexFormat.alignItems,
     direction = defaultFlexFormat.direction,
+    wrap = defaultFlexFormat.wrap,
   } = layoutBlock
     ? layoutBlock.format[device] || layoutBlock.format || defaultFlexFormat
     : defaultFlexFormat;
@@ -137,6 +139,21 @@ export default function FlexDesign() {
             <VerticalAlignBottom {...iconProps} />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
+      </SidebarGroup>
+
+      <SidebarGroup>
+        <SidebarLabel shrink>Wrap</SidebarLabel>
+        <ToolbarToggleButton
+          selected={wrap === 'wrap'}
+          onClick={useAutoCallback(() =>
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              format: { wrap: wrap === 'wrap' ? 'nowrap' : 'wrap' },
+            })
+          )}
+        >
+          <WrapText />
+        </ToolbarToggleButton>
       </SidebarGroup>
     </>
   );
