@@ -1,8 +1,12 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import type { BlocksAction, BlocksState } from '@seine/core';
-import { initialBlocksState, reduceBlocks } from '@seine/core';
+import {
+  DESELECT_ALL_BLOCKS,
+  initialBlocksState,
+  reduceBlocks,
+} from '@seine/core';
 
 import EditorContext from './EditorContext';
 
@@ -18,6 +22,11 @@ export default function EditorProvider({ blocks, children }) {
   );
 
   const [buffer, setBuffer] = React.useState(null);
+  useAutoEffect(() => {
+    if (buffer) {
+      dispatch({ type: DESELECT_ALL_BLOCKS });
+    }
+  });
   return (
     <EditorContext.Provider
       value={useAutoMemo({ dispatch, state, buffer, setBuffer })}

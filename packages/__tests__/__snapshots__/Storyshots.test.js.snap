@@ -6895,6 +6895,8 @@ exports[`Storyshots Content Column And Line Charts 1`] = `
 </div>
 `;
 
+exports[`Storyshots Content Data 1`] = `null`;
+
 exports[`Storyshots Content Editor Of All Charts 1`] = `null`;
 
 exports[`Storyshots Content Editor Of Chart Sample One 1`] = `null`;
@@ -6902,6 +6904,8 @@ exports[`Storyshots Content Editor Of Chart Sample One 1`] = `null`;
 exports[`Storyshots Content Editor Of Column And Bar Sibling Charts 1`] = `null`;
 
 exports[`Storyshots Content Editor Of Column And Line Charts 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Data 1`] = `null`;
 
 exports[`Storyshots Content Editor Of Flex 1`] = `null`;
 
