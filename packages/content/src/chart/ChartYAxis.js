@@ -41,7 +41,9 @@ export default React.forwardRef(function ChartYAxis(
   const [textMethods, textMethodsRef] = useTypographyChildrenMethods(
     iterator.length - 1
   );
-  const textWidth = maxWidth ? maxWidth : textMethods.getScaledWidth();
+  const textWidth = useAutoMemo(
+    maxWidth ? maxWidth : textMethods.getScaledWidth()
+  );
   const textHeight = useAutoMemo(textMethods.getScaledHeight());
   const offset = useAutoMemo(Math.max(length / count, textHeight));
   const visibleCount = useAutoMemo(Math.round(length / offset));

@@ -13,9 +13,7 @@ export default function useSelectedLayoutItems() {
   const blocks = useSelectedBlocks();
 
   const layouts = useAutoMemo(
-    blocks.filter(
-      ({ type }) => type === blockTypes.FLEX || type === blockTypes.GRID
-    )
+    blocks.filter(({ type }) => type === blockTypes.LAYOUT)
   );
   const items = useAutoMemo(
     layouts.length
@@ -29,6 +27,7 @@ export default function useSelectedLayoutItems() {
     layouts,
     items,
     layout: layouts.length === 1 ? layouts[0] : null,
-    item: items.length === 1 ? items[0] : null,
+    item:
+      items.length === 1 ? items[0] : layouts.length === 1 ? layouts[0] : null,
   };
 }

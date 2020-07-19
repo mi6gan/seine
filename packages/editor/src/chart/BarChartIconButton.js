@@ -27,25 +27,27 @@ export default function BarChartIconButton() {
     <ToolbarButton
       onMouseDown={useAutoCallback(() =>
         setBuffer(
-          createBlock(
-            blockTypes.CHART,
-            {
-              elements: createTitleIdentityBlockElements([
+          selected
+            ? null
+            : createBlock(
+                blockTypes.CHART,
                 {
-                  title: 'First item',
-                  value: 30,
+                  elements: createTitleIdentityBlockElements([
+                    {
+                      title: 'First item',
+                      value: 30,
+                    },
+                    {
+                      title: 'Second item',
+                      value: 70,
+                    },
+                  ]),
                 },
                 {
-                  title: 'Second item',
-                  value: 70,
-                },
-              ]),
-            },
-            {
-              verticalAlignment: 'center',
-              kind: chartTypes.BAR,
-            }
-          )
+                  verticalAlignment: 'center',
+                  kind: chartTypes.BAR,
+                }
+              )
         )
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}

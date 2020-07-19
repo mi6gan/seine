@@ -1,45 +1,52 @@
 import * as React from 'react';
 
 import {
-  ContentOfAllCharts,
-  ContentOfChartSampleOne,
-  ContentOfColumnAndBarSiblingCharts,
-  ContentOfColumnAndLineCharts,
-  ContentOfLineAndBarSiblingCharts,
-  ContentOfPieAndBarSiblingCharts,
+  AllCharts,
+  FirstSampleChart,
+  ColumnAndBarCharts,
+  ColumnAndLineCharts,
+  LineAndBarCharts,
+  PieAndBarCharts,
   Page,
   Flex,
   Table,
+  PieChart,
+  Text,
+  Data,
 } from '../../content/src/Content.stories';
 
 import Editor from './Editor';
 
-export default { title: 'Editor' };
+export default { title: 'Content' };
 
 export const InitialEditor = () => <Page as={Editor} />;
 
 export const EditorOfTable = () => <Table as={Editor} />;
 
+export const EditorOfText = () => <Text as={Editor} />;
+
+export const EditorOfPieChart = () => <PieChart as={Editor} />;
+
 export const EditorOfPieAndBarSiblingCharts = () => (
-  <ContentOfPieAndBarSiblingCharts as={Editor} />
+  <PieAndBarCharts as={Editor} />
 );
 
 export const EditorOfColumnAndBarSiblingCharts = () => (
-  <ContentOfColumnAndBarSiblingCharts as={Editor} />
+  <ColumnAndBarCharts as={Editor} />
 );
 
 export const EditorOfLineAndBarSiblingCharts = () => (
-  <ContentOfLineAndBarSiblingCharts as={Editor} />
+  <LineAndBarCharts as={Editor} />
 );
 
 export const EditorOfColumnAndLineCharts = () => (
-  <ContentOfColumnAndLineCharts as={Editor} />
+  <ColumnAndLineCharts as={Editor} />
 );
 
-export const EditorOfAllCharts = () => <ContentOfAllCharts as={Editor} />;
+export const EditorOfAllCharts = () => <AllCharts as={Editor} />;
 
-export const EditorOfChartSampleOne = () => (
-  <ContentOfChartSampleOne as={Editor} />
-);
+export const EditorOfChartSampleOne = () => <FirstSampleChart as={Editor} />;
 
 export const EditorOfFlex = () => <Flex as={Editor} />;
+
+export const EditorOfData = () => <Data as={Editor} />;

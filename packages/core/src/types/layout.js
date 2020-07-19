@@ -1,4 +1,20 @@
 // @flow
+export const layoutTypes = {
+  FLEX: 'flex',
+  GRID: 'grid',
+};
+
+export type LayoutType = $Values<typeof layoutTypes>;
+
+export type GridBody = {};
+
+export type GridFormat = {
+  columns?: string,
+  columnGap?: string,
+  rows?: string,
+  rowGap?: string,
+};
+
 export type FlexBody = {};
 
 export type FlexFormat = {
@@ -23,6 +39,7 @@ export type FlexFormat = {
 };
 
 export const defaultFlexFormat = {
+  kind: layoutTypes.FLEX,
   direction: 'row',
   wrap: 'nowrap',
   spacing: 8,
@@ -31,4 +48,13 @@ export const defaultFlexFormat = {
   alignContent: 'normal',
 };
 
-export const FLEX = 'flex';
+export const defaultLayoutFormat = {
+  kind: layoutTypes.GRID,
+};
+
+export type LayoutFormat =
+  | { kind: typeof layoutTypes.FLEX, ...FlexFormat }
+  | { kind: typeof layoutTypes.GRID, ...GridFormat };
+export type LayoutBody = FlexBody | GridBody;
+
+export const LAYOUT = 'grid';

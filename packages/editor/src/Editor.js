@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
-import { Box, ButtonBase, MenuItem, Paper } from '@material-ui/core';
+import { Box, ButtonBase, MenuItem, Paper, Select } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { ThemeProvider } from '@seine/styles';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
-import { blockTypes, DESELECT_ALL_BLOCKS } from '@seine/core';
+import { blockTypes, DESELECT_ALL_BLOCKS, SET_DEVICE } from '@seine/core';
 import { Content } from '@seine/content';
 
 import defaultTheme from './defaultTheme';
@@ -27,6 +27,10 @@ import LayoutDesign from './layout/LayoutDesign';
 import { useEditorDispatch, useEditorSelector } from './store';
 import EditorProvider from './store/EditorProvider';
 import useSelectedLayoutItems from './store/useSelectedLayoutItems';
+import { ChartDesign } from './chart';
+import CreateLayoutButton from './ui/CreateLayoutButton';
+import DeleteBlockButton from './ui/DeleteBlockButton';
+import ItemDesign from './layout/ItemDesign';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -44,12 +48,20 @@ const MenuButton = styled(Box).attrs(({ disabled }) => ({
 const EditorPaper = styled(Paper).attrs(() => ({
   component: Box,
   height: 600,
-  width: '100%',
   m: 10,
   p: 2,
 }))`
   overflow: auto;
   overflow-x: hidden;
+  ${({ device, theme }) => ({
+    width: device === 'mobile' ? theme.breakpoints.width('sm') : '100%',
+  })}
+`;
+
+const StyledSelect = styled(Select)`
+  && {
+    color: ${({ theme }) => theme.palette.grey[50]}};
+  }
 `;
 
 const defaultEditorChildren = [];
@@ -69,7 +81,7 @@ function DefaultEditor({
   const toolCursorRef = React.useRef(null);
 
   const dispatch = useEditorDispatch();
-  const { blocks, selection } = useEditorSelector();
+  const { blocks, selection, device } = useEditorSelector();
 
   useAutoEffect(() => {
     onChange(
@@ -90,50 +102,69 @@ function DefaultEditor({
   const { layout, item } = useSelectedLayoutItems();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
+  const ContentBlock = blockRenderMap[parent.type];
+  const closeMenu = useAutoCallback(() => setMenuOpen(false));
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <ToolbarMenu
-        onClose={useAutoCallback(() => setMenuOpen(false))}
+        onClose={closeMenu}
         open={menuOpen}
         anchorEl={menuAnchorRef.current}
         keepMounted
         mt={3}
         ml={-1}
       >
+        <MenuItem onClick={closeMenu}>
+          <CreateLayoutButton as={MenuButton}>Create layout</CreateLayoutButton>
+        </MenuItem>
+
         <MenuItem>
           <MenuButton disabled={!selection || !selection.length}>
             Copy
           </MenuButton>
         </MenuItem>
 
-        <MenuItem>
-          <MenuButton disabled={!selection || !selection.length}>
-            Delete
-          </MenuButton>
+        <MenuItem onClick={closeMenu}>
+          <DeleteBlockButton as={MenuButton}>Delete</DeleteBlockButton>
         </MenuItem>
       </ToolbarMenu>
 
-      <Toolbar onClick={deselectClickHandler} ref={menuAnchorRef}>
-        <ToolbarButton
-          onClick={useAutoCallback(() => {
-            setMenuOpen(true);
-          })}
-          selected={menuOpen}
-        >
-          <MenuIcon />
-        </ToolbarButton>
-        <ToolbarSeparator />
+      <Toolbar ref={menuAnchorRef}>
+        <Box width={'40%'}>
+          <ToolbarButton
+            onClick={useAutoCallback(() => {
+              setMenuOpen(true);
+            })}
+            selected={menuOpen}
+          >
+            <MenuIcon />
+          </ToolbarButton>
+          <ToolbarSeparator />
 
-        <RichTextIconButton />
-        <ToolbarSeparator />
+          <RichTextIconButton />
+          <ToolbarSeparator />
 
-        <TableIconButton />
-        <ToolbarSeparator />
+          <TableIconButton />
+          <ToolbarSeparator />
 
-        <BarChartIconButton />
-        <LineChartIconButton />
-        <ColumnChartIconButton />
-        <PieChartIconButton />
+          <BarChartIconButton />
+          <LineChartIconButton />
+          <ColumnChartIconButton />
+          <PieChartIconButton />
+        </Box>
+        <Box width={'20%'} textAlign={'center'}>
+          <StyledSelect
+            value={device}
+            onChange={(event) =>
+              dispatch({ type: SET_DEVICE, device: event.target.value })
+            }
+          >
+            <MenuItem value={'any'}>Any device</MenuItem>
+            <MenuItem value={'mobile'}>Mobile only</MenuItem>
+          </StyledSelect>
+        </Box>
+        <Box width={'40%'} />
       </Toolbar>
 
       <Box
@@ -147,14 +178,17 @@ function DefaultEditor({
         height={'100%'}
       >
         <Contents cursor={toolCursorRef.current}>
-          <EditorPaper>
-            <Content
-              blockRenderMap={blockRenderMap}
-              parent={parent}
-              {...contentProps}
-            >
-              {blocks}
-            </Content>
+          <EditorPaper device={device}>
+            <ContentBlock parentType={parent.type}>
+              <Content
+                device={device}
+                blockRenderMap={blockRenderMap}
+                parent={parent}
+                {...contentProps}
+              >
+                {blocks}
+              </Content>
+            </ContentBlock>
           </EditorPaper>
 
           <Sidebar
@@ -162,9 +196,11 @@ function DefaultEditor({
               event.stopPropagation();
             })}
           >
+            {item && <ItemDesign />}
             {layout && <LayoutDesign />}
             {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
             {item && item.type === blockTypes.TABLE && <TableDesign />}
+            {item && item.type === blockTypes.CHART && <ChartDesign />}
           </Sidebar>
         </Contents>
       </Box>

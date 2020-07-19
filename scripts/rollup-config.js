@@ -4,6 +4,7 @@ const alias = require('@rollup/plugin-alias');
 const { babel } = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const nodeResolve = require('@rollup/plugin-node-resolve');
+const json = require('@rollup/plugin-json');
 const postcss = require('rollup-plugin-postcss');
 const flowEntry = require('rollup-plugin-flow-entry');
 const cleanup = require('rollup-plugin-cleanup');
@@ -96,6 +97,7 @@ function rollupConfig(
         babelHelpers: 'runtime',
         rootMode: 'upward',
       }),
+      json(),
       nodeResolve({ browser: true }),
       commonjs(),
       postcss({ modules: true }),

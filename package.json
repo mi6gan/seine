@@ -41,6 +41,7 @@
     "@rollup/plugin-alias": "^3.0.1",
     "@rollup/plugin-babel": "^5.0.4",
     "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-storyshots": "^5.3.19",

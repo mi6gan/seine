@@ -1,53 +1,39 @@
 // @flow
 import * as React from 'react';
-import type {
-  BlockId,
-  BlocksAction,
-  ChartBody,
-  ChartFormat,
-} from '@seine/core';
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { defaultChartFormat, defaultChartUnits } from '@seine/content';
-import styled from 'styled-components/macro';
-import { TextField } from '@material-ui/core';
+import { useAutoCallback } from 'hooks.macro';
 
-type Props = {
-  body: ChartBody,
-  dispatch: (BlocksAction) => any,
-  format: ChartFormat,
-  id: BlockId,
-};
+import { useEditorDispatch } from '../store';
+import SidebarInput from '../ui/SidebarInput';
+import SidebarLabel from '../ui/SidebarLabel';
+import SidebarGroup from '../ui/SidebarGroup';
 
-const Input = styled(TextField)`
-  && {
-    max-width: 4em;
-  }
-`;
+import useChartBlock from './useChartBlock';
 
 /**
- * @description Input that changes minimum value (of y axis).
- * @param {Props} props
+ * @description Pie chart design panel.
  * @returns {React.Node}
  */
-export default function ChartUnitsInput({
-  dispatch,
-  format: { units = defaultChartUnits } = defaultChartFormat,
-}: Props) {
+export default function ChartUnitsInput() {
+  const {
+    id,
+    format: { units },
+  } = useChartBlock();
+  const dispatch = useEditorDispatch();
   return (
-    <Input
-      onChange={React.useCallback(
-        ({ currentTarget }) =>
+    <SidebarGroup>
+      <SidebarLabel>units</SidebarLabel>
+      <SidebarInput
+        disabled={!id}
+        value={units}
+        onChange={useAutoCallback((event) =>
           dispatch({
+            id,
             type: UPDATE_BLOCK_FORMAT,
-            format: { units: currentTarget.value },
-          }),
-        [dispatch]
-      )}
-      InputProps={{
-        placeholder: 'units',
-      }}
-      margin={'dense'}
-      value={units}
-    />
+            format: { units: event.currentTarget.value },
+          })
+        )}
+      />
+    </SidebarGroup>
   );
 }

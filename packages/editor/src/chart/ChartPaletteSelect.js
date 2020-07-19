@@ -1,86 +1,80 @@
 // @flow
 import * as React from 'react';
+import { chartPaletteKeyValues, defaultChartFormat } from '@seine/content';
+import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { MenuItem, Select } from '@material-ui/core';
+import { useAutoCallback } from 'hooks.macro';
+
+import SidebarSelectLabel from '../ui/SidebarSelectLabel';
 import {
-  chartPaletteKeyValues,
-  defaultChartFormat,
-  defaultChartPaletteKey,
-} from '@seine/content';
-import { UPDATE_BLOCK_FORMAT } from '@seine/core';
-import styled, { css } from 'styled-components/macro';
-import { FormControl, MenuItem, Select as MuiSelect } from '@material-ui/core';
-
-const Label = styled.span.attrs(({ role = 'option' }) => ({ role }))`
-  font-weight: bold;
-  ${(props) =>
-    css`
-      color: ${props.color};
-    `}
-`;
-
-const Select = styled(MuiSelect)`
-  && {
-    height: 100%;
-  }
-`;
+  useEditorDispatch,
+  useEditorSelector,
+  useSelectedBlocks,
+} from '../store';
+import SidebarGroup from '../ui/SidebarGroup';
+import SidebarLabel from '../ui/SidebarLabel';
 
 /**
  * @description Buttons to select chart's default palette
  * @returns {*}
  */
-export default function ChartPaletteSelect({
-  dispatch,
-  format: { paletteKey = defaultChartPaletteKey } = defaultChartFormat,
-  id,
-}) {
+export default function ChartPaletteSelect() {
+  const device = useEditorSelector((state) => state.device);
+  const dispatch = useEditorDispatch();
+  const block =
+    useSelectedBlocks().find(({ type }) => type === blockTypes.CHART) || {};
+  const { id } = block;
+  const { paletteKey = defaultChartFormat.paletteKey } =
+    (block && block.format && block.format[device]) ||
+    block.format ||
+    defaultChartFormat;
   return (
-    <FormControl>
+    <SidebarGroup alignItems={'center'}>
+      <SidebarLabel>palette</SidebarLabel>
       <Select
         value={paletteKey}
-        onChange={React.useCallback(
-          (event) => {
-            const paletteKey = event.target.value;
-            dispatch(
-              {
-                format: {
-                  palette: chartPaletteKeyValues[paletteKey],
-                  paletteKey,
-                },
-                id,
-                type: UPDATE_BLOCK_FORMAT,
-              },
-              []
-            );
-          },
-          [dispatch, id]
-        )}
-        row={'true'}
+        onChange={useAutoCallback((event) => {
+          const paletteKey = event.target.value;
+          dispatch({
+            format: {
+              palette: chartPaletteKeyValues[paletteKey],
+              paletteKey,
+            },
+            id,
+            type: UPDATE_BLOCK_FORMAT,
+          });
+        })}
       >
         <MenuItem value={'default'}>
-          <Label color={chartPaletteKeyValues.default[3]}>
-            General Palette
-          </Label>
+          <SidebarSelectLabel color={chartPaletteKeyValues.default[3]}>
+            General
+          </SidebarSelectLabel>
         </MenuItem>
 
         <MenuItem value={'mcKinseyDeep'}>
-          <Label color={chartPaletteKeyValues.mcKinseyDeep[0]}>
+          <SidebarSelectLabel color={chartPaletteKeyValues.mcKinseyDeep[0]}>
             McKinsey Deep
-          </Label>
+          </SidebarSelectLabel>
         </MenuItem>
 
         <MenuItem value={'mcKinseyLight'}>
-          <Label color={chartPaletteKeyValues.mcKinseyLight[0]}>
+          <SidebarSelectLabel color={chartPaletteKeyValues.mcKinseyLight[0]}>
             McKinsey Light
-          </Label>
+          </SidebarSelectLabel>
         </MenuItem>
 
         <MenuItem value={'bcg'}>
-          <Label color={chartPaletteKeyValues.bcg[0]}>BCG</Label>
+          <SidebarSelectLabel color={chartPaletteKeyValues.bcg[0]}>
+            BCG
+          </SidebarSelectLabel>
         </MenuItem>
 
         <MenuItem value={'black'}>
-          <Label color={chartPaletteKeyValues.black[0]}>Black</Label>
+          <SidebarSelectLabel color={chartPaletteKeyValues.black[0]}>
+            Black
+          </SidebarSelectLabel>
         </MenuItem>
       </Select>
-    </FormControl>
+    </SidebarGroup>
   );
 }

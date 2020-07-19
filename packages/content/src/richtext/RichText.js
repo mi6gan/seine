@@ -37,13 +37,14 @@ export const defaultDraftFormat: RichTextFormat = {
  * @returns {React.Node}
  */
 function Draft({
+  id,
   className = '',
   decorators = [],
   blockRenderMap = DefaultDraftBlockRenderMap,
   blockRendererFn = () => null,
   blockStyleFn = () => '',
   keyBindingFn = getDefaultKeyBinding,
-  readOnly = false,
+  readOnly = true,
   spellCheck = false,
   stripPastedStyles = false,
   customStyleMap = DefaultDraftInlineStyle,
@@ -63,9 +64,12 @@ function Draft({
           textAlignment[0].toUpperCase(),
           textAlignment.slice(1),
         ].join('')}
+        id={id}
+        {...editorProps}
       >
         <Editor
           {...editorProps}
+          editorKey={id}
           blockRenderMap={blockRenderMap}
           blockRendererFn={blockRendererFn}
           blockStyleFn={(block) => `${blockStyleFn(block)} ${className}`.trim()}

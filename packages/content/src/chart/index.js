@@ -18,7 +18,7 @@ export { default as ChartLayout, ChartLayoutContainer } from './ChartLayout';
 
 export { default as ChartSvgDefs } from './ChartSvgDefs';
 
-export { default as useChartFormatDefaults } from './useChartFormatDefaults';
+export { default as useChartFormat } from './useChartFormat';
 export { default as useChartSvgProps } from './useChartSvgProps';
 export { default as ChartValue } from './ChartValue';
 

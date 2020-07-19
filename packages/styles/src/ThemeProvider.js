@@ -20,27 +20,31 @@ export default function ThemeProvider({
   children,
   theme = defaultTheme,
 }: Props) {
+  const currentTheme = useTheme();
   const [ready, setReady] = React.useState(false);
+
   useAutoEffect(() => {
-    let cancelled = false;
-    if ('fonts' in document) {
-      if (!ready) {
-        document.fonts.ready.then(() => {
-          if (!cancelled) {
-            setReady(true);
-          }
-        });
+    if (!currentTheme) {
+      let cancelled = false;
+      if ('fonts' in document) {
+        if (!ready) {
+          document.fonts.ready.then(() => {
+            if (!cancelled) {
+              setReady(true);
+            }
+          });
+        }
+      } else {
+        setReady(true);
       }
-    } else {
-      setReady(true);
+      return () => {
+        cancelled = true;
+      };
     }
-    return () => {
-      cancelled = true;
-    };
   });
-  return useTheme()
-    ? children
-    : ready && (
-        <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
-      );
+  return currentTheme ? (
+    children
+  ) : (
+    <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
+  );
 }

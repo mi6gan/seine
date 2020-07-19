@@ -1,22 +1,25 @@
 // @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
-import { SketchPicker } from 'react-color.macro';
-import { Button } from '@material-ui/core';
+import SketchPicker from 'react-color/lib/Sketch';
+import { Button, ClickAwayListener } from '@material-ui/core';
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
-import {
-  chartPaletteKeyValues,
-  defaultChartEditor,
-  defaultChartFormat,
-  defaultChartPaletteKey,
-} from '@seine/content';
+import { chartPaletteKeyValues } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
+
+import { useEditorDispatch } from '../store';
+import SidebarGroup from '../ui/SidebarGroup';
+import SidebarLabel from '../ui/SidebarLabel';
+
+import useChartBlock from './useChartBlock';
 
 const StyledColorButton = styled(Button).attrs(({ children = '' }) => ({
   children,
 }))`
   &&& {
     background-color: ${({ bgcolor }) => bgcolor};
+    min-width: 0;
+    width: 2rem;
   ${({ theme }) =>
     css`
       height: ${theme.spacing(4)}px;
@@ -27,7 +30,7 @@ const ColorPickerContainer = styled.div`
   margin-right: -250px;
   margin-top: 50px;
   position: absolute;
-  z-index: 999;
+  z-index: 9999;
   ${({ open }) =>
     !open &&
     css`
@@ -36,39 +39,52 @@ const ColorPickerContainer = styled.div`
 `;
 
 // eslint-disable-next-line
-export default function ChartElementColorButton({
-  dispatch,
-  editor: { selection = defaultChartEditor.selection } = defaultChartEditor,
-  format: {
-    palette = defaultChartFormat.palette,
-    paletteKey = defaultChartPaletteKey,
-  } = defaultChartFormat,
-}) {
+export default function ChartElementColorButton() {
+  const {
+    id,
+    editor: { selection },
+    format: { paletteKey, palette },
+  } = useChartBlock();
+  const dispatch = useEditorDispatch();
   const [open, setOpen] = React.useState(false);
   const colorIndex = selection % palette.length;
   const color = palette[colorIndex];
+  const buttonRef = React.useRef(null);
   return (
-    <div>
+    <SidebarGroup alignItems={'center'}>
+      <SidebarLabel>color</SidebarLabel>
       <StyledColorButton
+        ref={buttonRef}
         bgcolor={color}
         onClick={useAutoCallback(() => {
           setOpen(!open);
         })}
         size={'small'}
       />
-      <ColorPickerContainer
-        open={open}
-        onClick={(event) => {
-          event.stopPropagation();
-          event.preventDefault();
+      <ClickAwayListener
+        onClickAway={(event) => {
+          if (
+            !buttonRef.current ||
+            (event.target !== buttonRef.current &&
+              !buttonRef.current.contains(event.target))
+          ) {
+            setOpen(false);
+          }
         }}
       >
-        <SketchPicker
-          color={color}
-          presetColors={chartPaletteKeyValues[paletteKey]}
-          onChange={useAutoCallback(
-            ({ rgb: { r, g, b, a = 1 } }) =>
+        <ColorPickerContainer
+          open={open}
+          onClick={useAutoCallback((event) => {
+            event.preventDefault();
+            event.stopPropagation();
+          })}
+        >
+          <SketchPicker
+            color={color}
+            presetColors={chartPaletteKeyValues[paletteKey]}
+            onChange={useAutoCallback(({ rgb: { r, g, b, a = 1 } }) =>
               dispatch({
+                id,
                 type: UPDATE_BLOCK_FORMAT,
                 format: {
                   palette: [
@@ -77,11 +93,11 @@ export default function ChartElementColorButton({
                     ...palette.slice(colorIndex + 1),
                   ],
                 },
-              }),
-            [colorIndex, dispatch, palette]
-          )}
-        />
-      </ColorPickerContainer>
-    </div>
+              })
+            )}
+          />
+        </ColorPickerContainer>
+      </ClickAwayListener>
+    </SidebarGroup>
   );
 }
