@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  blockTypes,
-  createBlockElements,
-  createTitleIdentityBlockElements,
-  layoutTypes,
-} from '@seine/core';
+import { blockTypes, layoutTypes } from '@seine/core';
 import { actions } from '@storybook/addon-actions';
 
 import Content from './Content';
@@ -273,13 +268,33 @@ export const ContentOfPieChart = (props) => (
         id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'repairs', value: 12 },
-            { title: 'consulting of something long', value: 10 },
-            { title: 'training', value: 8 },
-            { title: 'product sales', value: 64 },
-            { title: 'others', value: 6 },
-          ]),
+          elements: [
+            {
+              title: 'repairs',
+              value: 12,
+              id: 'dc390594-21cb-4e6c-8c8d-c23ecf56d535',
+            },
+            {
+              title: 'consulting of something long',
+              value: 10,
+              id: '363f5e90-4ce2-4983-bc74-930d80911e4e',
+            },
+            {
+              title: 'training',
+              value: 8,
+              id: '53ec7a6a-66a4-4e17-95eb-d7f7fcd4a49e',
+            },
+            {
+              title: 'product sales',
+              value: 64,
+              id: '4d7afb4f-ddf0-49bf-b8e6-038c60ad8783',
+            },
+            {
+              title: 'others',
+              value: 6,
+              id: '8411e6cd-501f-4de6-bce1-f5f571f8272b',
+            },
+          ],
         },
         format: { kind: 'pie' },
         parent_id: null,
@@ -302,13 +317,33 @@ export const ContentOfPieAndBarSiblingCharts = (props) => (
         id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'repairs', value: 12 },
-            { title: 'consulting of something long', value: 10 },
-            { title: 'training', value: 8 },
-            { title: 'product sales', value: 64 },
-            { title: 'others', value: 6 },
-          ]),
+          elements: [
+            {
+              title: 'repairs',
+              value: 12,
+              id: 'dc390594-21cb-4e6c-8c8d-c23ecf56d535',
+            },
+            {
+              title: 'consulting of something long',
+              value: 10,
+              id: '363f5e90-4ce2-4983-bc74-930d80911e4e',
+            },
+            {
+              title: 'training',
+              value: 8,
+              id: '53ec7a6a-66a4-4e17-95eb-d7f7fcd4a49e',
+            },
+            {
+              title: 'product sales',
+              value: 64,
+              id: '4d7afb4f-ddf0-49bf-b8e6-038c60ad8783',
+            },
+            {
+              title: 'others',
+              value: 6,
+              id: '8411e6cd-501f-4de6-bce1-f5f571f8272b',
+            },
+          ],
         },
         format: { kind: 'pie' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -317,12 +352,28 @@ export const ContentOfPieAndBarSiblingCharts = (props) => (
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'WFLA', value: 20.8 },
-            { title: 'Region A', value: 35.7 },
-            { title: 'Region B', value: 15.8 },
-            { title: 'Region C', value: 40.9 },
-          ]),
+          elements: [
+            {
+              title: 'WFLA',
+              value: 20.8,
+              id: 'c417d03c-d018-427f-8518-8c217c600e60',
+            },
+            {
+              title: 'Region A',
+              value: 35.7,
+              id: '4a35a3e4-c405-4466-8b2b-d147226a1f30',
+            },
+            {
+              title: 'Region B',
+              value: 15.8,
+              id: '4fc968d0-1af5-486d-9fd8-9cf29db75051',
+            },
+            {
+              title: 'Region C',
+              value: 40.9,
+              id: '82fb9862-e422-4c41-9a0d-45ce30cd8d17',
+            },
+          ],
         },
         format: { kind: 'bar' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -345,11 +396,23 @@ export const ContentOfColumnAndBarSiblingCharts = (props) => (
         id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'Maelstorm', value: 50.1 },
-            { title: 'Spring', value: 60.33 },
-            { title: 'Electro', value: 13 },
-          ]),
+          elements: [
+            {
+              title: 'Maelstorm',
+              value: 50.1,
+              id: 'b5771803-93b3-48dd-afe9-cc29bbb30729',
+            },
+            {
+              title: 'Spring',
+              value: 60.33,
+              id: 'e1f309f0-ad10-4a8f-89a8-1a3bbbaf6069',
+            },
+            {
+              title: 'Electro',
+              value: 13,
+              id: '7b878fef-c31c-4fe7-959a-6b0280e430a5',
+            },
+          ],
         },
         format: { kind: 'column' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -358,17 +421,53 @@ export const ContentOfColumnAndBarSiblingCharts = (props) => (
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'WFLA', value: 20.8 },
-            { title: 'Region A', value: 35.7 },
-            { title: 'Region B', value: 15.8 },
-            { title: 'Region C', value: 40.9 },
-            { title: 'Region D', value: 23.6 },
-            { title: 'Region E', value: 17.6 },
-            { title: 'Region F', value: 38.1 },
-            { title: 'Region G', value: 43.8 },
-            { title: 'Region H', value: 16.4 },
-          ]),
+          elements: [
+            {
+              title: 'WFLA',
+              value: 20.8,
+              id: 'd86047cb-0116-406e-854e-64a7b005f311',
+            },
+            {
+              title: 'Region A',
+              value: 35.7,
+              id: 'a05de966-139d-46fe-bcc2-1e868e9b9ebf',
+            },
+            {
+              title: 'Region B',
+              value: 15.8,
+              id: '2d7729af-5374-4939-8a58-0693022806ab',
+            },
+            {
+              title: 'Region C',
+              value: 40.9,
+              id: '9a205b75-a8f4-428a-80cf-653f7080328d',
+            },
+            {
+              title: 'Region D',
+              value: 23.6,
+              id: '0502b460-11a9-4d21-a369-5dd0efe0ee86',
+            },
+            {
+              title: 'Region E',
+              value: 17.6,
+              id: '3c699bc8-c2e6-412f-b30b-475e534c9b58',
+            },
+            {
+              title: 'Region F',
+              value: 38.1,
+              id: 'ce5586e1-a18d-4369-9261-3a01da529805',
+            },
+            {
+              title: 'Region G',
+              value: 43.8,
+              id: '836a5c45-ed8e-4236-ab30-89062ba907a5',
+            },
+            {
+              title: 'Region H',
+              value: 16.4,
+              id: 'e1941cd3-17fb-44fd-982d-b5e2acd508c9',
+            },
+          ],
         },
         format: { kind: 'bar' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -391,31 +490,116 @@ export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
         id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
         type: 'chart',
         body: {
-          elements: createTitleIdentityBlockElements([
-            { title: 'Maelstorm', value: 50.1, group: 'Group 1' },
-            { title: 'Spring', value: 60.33, group: 'Group 1' },
-            { title: 'Electro', value: 13, group: 'Group 1' },
-
-            { title: 'Maelstorm', value: 90, group: 'Group 2' },
-            { title: 'Spring', value: 100.22, group: 'Group 2' },
-            { title: 'Electro', value: 14, group: 'Group 2' },
-
-            { title: 'Maelstorm', value: 66, group: 'Group 3' },
-            { title: 'Spring', value: 29, group: 'Group 3' },
-            { title: 'Electro', value: 19, group: 'Group 3' },
-
-            { title: 'Maelstorm', value: 30.1, group: 'Group 4' },
-            { title: 'Spring', value: 8.33, group: 'Group 4' },
-            { title: 'Electro', value: 100, group: 'Group 4' },
-
-            { title: 'Maelstorm', value: 40, group: 'Group 5' },
-            { title: 'Spring', value: 90.22, group: 'Group 5' },
-            { title: 'Electro', value: 81, group: 'Group 5' },
-
-            { title: 'Maelstorm', value: 100.13, group: 'Group 6' },
-            { title: 'Spring', value: 73, group: 'Group 6' },
-            { title: 'Electro', value: 34, group: 'Group 6' },
-          ]),
+          elements: [
+            {
+              title: 'Maelstorm',
+              value: 50.1,
+              group: 'Group 1',
+              id: 'd498cc41-26a1-471b-9649-3c91eca3be7c',
+            },
+            {
+              title: 'Spring',
+              value: 60.33,
+              group: 'Group 1',
+              id: '9a72a6a0-9705-4317-91fe-b19f1756cd83',
+            },
+            {
+              title: 'Electro',
+              value: 13,
+              group: 'Group 1',
+              id: 'a321c0cd-f6da-4935-94f2-a092a462fff5',
+            },
+            {
+              title: 'Maelstorm',
+              value: 90,
+              group: 'Group 2',
+              id: 'd498cc41-26a1-471b-9649-3c91eca3be7c',
+            },
+            {
+              title: 'Spring',
+              value: 100.22,
+              group: 'Group 2',
+              id: '9a72a6a0-9705-4317-91fe-b19f1756cd83',
+            },
+            {
+              title: 'Electro',
+              value: 14,
+              group: 'Group 2',
+              id: 'a321c0cd-f6da-4935-94f2-a092a462fff5',
+            },
+            {
+              title: 'Maelstorm',
+              value: 66,
+              group: 'Group 3',
+              id: 'd498cc41-26a1-471b-9649-3c91eca3be7c',
+            },
+            {
+              title: 'Spring',
+              value: 29,
+              group: 'Group 3',
+              id: '9a72a6a0-9705-4317-91fe-b19f1756cd83',
+            },
+            {
+              title: 'Electro',
+              value: 19,
+              group: 'Group 3',
+              id: 'a321c0cd-f6da-4935-94f2-a092a462fff5',
+            },
+            {
+              title: 'Maelstorm',
+              value: 30.1,
+              group: 'Group 4',
+              id: 'd498cc41-26a1-471b-9649-3c91eca3be7c',
+            },
+            {
+              title: 'Spring',
+              value: 8.33,
+              group: 'Group 4',
+              id: '9a72a6a0-9705-4317-91fe-b19f1756cd83',
+            },
+            {
+              title: 'Electro',
+              value: 100,
+              group: 'Group 4',
+              id: 'a321c0cd-f6da-4935-94f2-a092a462fff5',
+            },
+            {
+              title: 'Maelstorm',
+              value: 40,
+              group: 'Group 5',
+              id: 'd498cc41-26a1-471b-9649-3c91eca3be7c',
+            },
+            {
+              title: 'Spring',
+              value: 90.22,
+              group: 'Group 5',
+              id: '9a72a6a0-9705-4317-91fe-b19f1756cd83',
+            },
+            {
+              title: 'Electro',
+              value: 81,
+              group: 'Group 5',
+              id: 'a321c0cd-f6da-4935-94f2-a092a462fff5',
+            },
+            {
+              title: 'Maelstorm',
+              value: 100.13,
+              group: 'Group 6',
+              id: 'd498cc41-26a1-471b-9649-3c91eca3be7c',
+            },
+            {
+              title: 'Spring',
+              value: 73,
+              group: 'Group 6',
+              id: '9a72a6a0-9705-4317-91fe-b19f1756cd83',
+            },
+            {
+              title: 'Electro',
+              value: 34,
+              group: 'Group 6',
+              id: 'a321c0cd-f6da-4935-94f2-a092a462fff5',
+            },
+          ],
           title: 'Column chart: 4 groups of 3 elements',
         },
         format: { kind: 'column' },
@@ -425,12 +609,28 @@ export const ContentOfSixGroupsOfTwoColumnsAndBarSiblingCharts = (props) => (
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'Region A', value: 35.7 },
-            { title: 'Region B', value: 15.8 },
-            { title: 'Region C', value: 40.9 },
-            { title: 'Region D', value: 23.6 },
-          ]),
+          elements: [
+            {
+              title: 'Region A',
+              value: 35.7,
+              id: 'a05de966-139d-46fe-bcc2-1e868e9b9ebf',
+            },
+            {
+              title: 'Region B',
+              value: 15.8,
+              id: '2d7729af-5374-4939-8a58-0693022806ab',
+            },
+            {
+              title: 'Region C',
+              value: 40.9,
+              id: '9a205b75-a8f4-428a-80cf-653f7080328d',
+            },
+            {
+              title: 'Region D',
+              value: 23.6,
+              id: '0502b460-11a9-4d21-a369-5dd0efe0ee86',
+            },
+          ],
         },
         format: { kind: 'bar' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -453,25 +653,80 @@ export const ContentOfLineAndBarSiblingCharts = (props) => (
         id: '01648d04-78ad-402b-b255-14a6066d7927--line',
         type: 'chart',
         body: {
-          elements: createTitleIdentityBlockElements([
-            { title: 'Easymode', value: 175, group: 'Year 1' },
-            { title: 'Rest', value: 65, group: 'Year 1' },
-
-            { title: 'Easymode', value: 204, group: 'Year 2' },
-            { title: 'Rest', value: 68, group: 'Year 2' },
-
-            { title: 'Easymode', value: 231, group: 'Year 3' },
-            { title: 'Rest', value: 73, group: 'Year 3' },
-
-            { title: 'Easymode', value: 237, group: 'Year 4' },
-            { title: 'Rest', value: 75, group: 'Year 4' },
-
-            { title: 'Easymode', value: 280, group: 'Year 5' },
-            { title: 'Rest', value: 79, group: 'Year 5' },
-
-            { title: 'Easymode', value: 339, group: 'Year 6' },
-            { title: 'Rest', value: 90, group: 'Year 6' },
-          ]),
+          elements: [
+            {
+              title: 'Easymode',
+              value: 175,
+              group: 'Year 1',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 65,
+              group: 'Year 1',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 204,
+              group: 'Year 2',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 68,
+              group: 'Year 2',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 231,
+              group: 'Year 3',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 73,
+              group: 'Year 3',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 237,
+              group: 'Year 4',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 75,
+              group: 'Year 4',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 280,
+              group: 'Year 5',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 79,
+              group: 'Year 5',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 339,
+              group: 'Year 6',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 90,
+              group: 'Year 6',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+          ],
           title: 'Sales ($ millions)',
         },
         format: {
@@ -485,14 +740,53 @@ export const ContentOfLineAndBarSiblingCharts = (props) => (
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'WFLA', value: 20.8 },
-            { title: 'Region A', value: 35.7 },
-            { title: 'Region B', value: 15.8 },
-            { title: 'Region C', value: 40.9 },
-            { title: 'Region D', value: 23.6 },
-            { title: 'Region E', value: 17.6 },
-          ]),
+          elements: [
+            {
+              title: 'WFLA',
+              value: 20.8,
+              id: 'd86047cb-0116-406e-854e-64a7b005f311',
+            },
+            {
+              title: 'Region A',
+              value: 35.7,
+              id: 'a05de966-139d-46fe-bcc2-1e868e9b9ebf',
+            },
+            {
+              title: 'Region B',
+              value: 15.8,
+              id: '2d7729af-5374-4939-8a58-0693022806ab',
+            },
+            {
+              title: 'Region C',
+              value: 40.9,
+              id: '9a205b75-a8f4-428a-80cf-653f7080328d',
+            },
+            {
+              title: 'Region D',
+              value: 23.6,
+              id: '0502b460-11a9-4d21-a369-5dd0efe0ee86',
+            },
+            {
+              title: 'Region E',
+              value: 17.6,
+              id: '3c699bc8-c2e6-412f-b30b-475e534c9b58',
+            },
+            {
+              title: 'Region F',
+              value: 38.1,
+              id: 'ce5586e1-a18d-4369-9261-3a01da529805',
+            },
+            {
+              title: 'Region G',
+              value: 43.8,
+              id: '836a5c45-ed8e-4236-ab30-89062ba907a5',
+            },
+            {
+              title: 'Region H',
+              value: 16.4,
+              id: 'e1941cd3-17fb-44fd-982d-b5e2acd508c9',
+            },
+          ],
         },
         format: { kind: 'bar' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -515,11 +809,23 @@ export const ContentOfColumnAndLineCharts = (props) => (
         id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'Maelstorm', value: 50.1 },
-            { title: 'Spring', value: 60.33 },
-            { title: 'Electro', value: 13 },
-          ]),
+          elements: [
+            {
+              title: 'Maelstorm',
+              value: 50.1,
+              id: 'b5771803-93b3-48dd-afe9-cc29bbb30729',
+            },
+            {
+              title: 'Spring',
+              value: 60.33,
+              id: 'e1f309f0-ad10-4a8f-89a8-1a3bbbaf6069',
+            },
+            {
+              title: 'Electro',
+              value: 13,
+              id: '7b878fef-c31c-4fe7-959a-6b0280e430a5',
+            },
+          ],
         },
         format: { kind: 'column' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -528,25 +834,81 @@ export const ContentOfColumnAndLineCharts = (props) => (
         id: '01648d04-78ad-402b-b255-14a6066d7927--line',
         type: 'chart',
         body: {
-          elements: createTitleIdentityBlockElements([
-            { title: 'Easymode', value: 175, group: 'Year 1' },
-            { title: 'Rest', value: 65, group: 'Year 1' },
+          elements: [
+            {
+              title: 'Easymode',
+              value: 175,
+              group: 'Year 1',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 65,
+              group: 'Year 1',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 204,
+              group: 'Year 2',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 68,
+              group: 'Year 2',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 231,
+              group: 'Year 3',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 73,
+              group: 'Year 3',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 237,
+              group: 'Year 4',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 75,
+              group: 'Year 4',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 280,
+              group: 'Year 5',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 79,
+              group: 'Year 5',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 339,
+              group: 'Year 6',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 90,
+              group: 'Year 6',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+          ],
 
-            { title: 'Easymode', value: 204, group: 'Year 2' },
-            { title: 'Rest', value: 68, group: 'Year 2' },
-
-            { title: 'Easymode', value: 231, group: 'Year 3' },
-            { title: 'Rest', value: 73, group: 'Year 3' },
-
-            { title: 'Easymode', value: 237, group: 'Year 4' },
-            { title: 'Rest', value: 75, group: 'Year 4' },
-
-            { title: 'Easymode', value: 280, group: 'Year 5' },
-            { title: 'Rest', value: 79, group: 'Year 5' },
-
-            { title: 'Easymode', value: 339, group: 'Year 6' },
-            { title: 'Rest', value: 90, group: 'Year 6' },
-          ]),
           title: 'Sales ($ millions)',
         },
         format: {
@@ -574,25 +936,80 @@ export const ContentOfAllCharts = (props) => (
         id: '01648d04-78ad-402b-b255-14a6066d7927--line',
         type: 'chart',
         body: {
-          elements: createTitleIdentityBlockElements([
-            { title: 'Easymode', value: 175, group: 'Year 1' },
-            { title: 'Rest', value: 65, group: 'Year 1' },
-
-            { title: 'Easymode', value: 204, group: 'Year 2' },
-            { title: 'Rest', value: 68, group: 'Year 2' },
-
-            { title: 'Easymode', value: 231, group: 'Year 3' },
-            { title: 'Rest', value: 73, group: 'Year 3' },
-
-            { title: 'Easymode', value: 237, group: 'Year 4' },
-            { title: 'Rest', value: 75, group: 'Year 4' },
-
-            { title: 'Easymode', value: 280, group: 'Year 5' },
-            { title: 'Rest', value: 79, group: 'Year 5' },
-
-            { title: 'Easymode', value: 339, group: 'Year 6' },
-            { title: 'Rest', value: 90, group: 'Year 6' },
-          ]),
+          elements: [
+            {
+              title: 'Easymode',
+              value: 175,
+              group: 'Year 1',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 65,
+              group: 'Year 1',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 204,
+              group: 'Year 2',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 68,
+              group: 'Year 2',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 231,
+              group: 'Year 3',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 73,
+              group: 'Year 3',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 237,
+              group: 'Year 4',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 75,
+              group: 'Year 4',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 280,
+              group: 'Year 5',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 79,
+              group: 'Year 5',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 339,
+              group: 'Year 6',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 90,
+              group: 'Year 6',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+          ],
           title: 'Sales ($ millions)',
         },
         format: {
@@ -606,25 +1023,80 @@ export const ContentOfAllCharts = (props) => (
         id: '78f5d055-8a9f-48cc-bead-f6c9e8451ced',
         type: 'chart',
         body: {
-          elements: createTitleIdentityBlockElements([
-            { title: 'Easymode', value: 175, group: 'Year 1' },
-            { title: 'Rest', value: 65, group: 'Year 1' },
-
-            { title: 'Easymode', value: 204, group: 'Year 2' },
-            { title: 'Rest', value: 68, group: 'Year 2' },
-
-            { title: 'Easymode', value: 231, group: 'Year 3' },
-            { title: 'Rest', value: 73, group: 'Year 3' },
-
-            { title: 'Easymode', value: 237, group: 'Year 4' },
-            { title: 'Rest', value: 75, group: 'Year 4' },
-
-            { title: 'Easymode', value: 280, group: 'Year 5' },
-            { title: 'Rest', value: 79, group: 'Year 5' },
-
-            { title: 'Easymode', value: 339, group: 'Year 6' },
-            { title: 'Rest', value: 90, group: 'Year 6' },
-          ]),
+          elements: [
+            {
+              title: 'Easymode',
+              value: 175,
+              group: 'Year 1',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 65,
+              group: 'Year 1',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 204,
+              group: 'Year 2',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 68,
+              group: 'Year 2',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 231,
+              group: 'Year 3',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 73,
+              group: 'Year 3',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 237,
+              group: 'Year 4',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 75,
+              group: 'Year 4',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 280,
+              group: 'Year 5',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 79,
+              group: 'Year 5',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+            {
+              title: 'Easymode',
+              value: 339,
+              group: 'Year 6',
+              id: '9c9b23a9-1ada-4e51-b1ee-0ea077134a4a',
+            },
+            {
+              title: 'Rest',
+              value: 90,
+              group: 'Year 6',
+              id: '58fb3946-33bc-4515-b85c-8c0f01adee9a',
+            },
+          ],
         },
         format: { kind: 'column' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -633,13 +1105,28 @@ export const ContentOfAllCharts = (props) => (
         id: '01648d04-78ad-402b-b255-14a6066d7927',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'WFLA', value: 20.8 },
-            { title: 'Region A', value: 35.7 },
-            { title: 'Region B', value: 15.8 },
-            { title: 'Region C', value: 40.9 },
-            { title: 'Region D', value: 23.6 },
-          ]),
+          elements: [
+            {
+              title: 'WFLA',
+              value: 20.8,
+              id: 'c417d03c-d018-427f-8518-8c217c600e60',
+            },
+            {
+              title: 'Region A',
+              value: 35.7,
+              id: '4a35a3e4-c405-4466-8b2b-d147226a1f30',
+            },
+            {
+              title: 'Region B',
+              value: 15.8,
+              id: '4fc968d0-1af5-486d-9fd8-9cf29db75051',
+            },
+            {
+              title: 'Region C',
+              value: 40.9,
+              id: '82fb9862-e422-4c41-9a0d-45ce30cd8d17',
+            },
+          ],
         },
         format: { kind: 'bar' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
@@ -648,13 +1135,33 @@ export const ContentOfAllCharts = (props) => (
         id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
         type: 'chart',
         body: {
-          elements: createBlockElements([
-            { title: 'repairs', value: 12 },
-            { title: 'consulting', value: 10 },
-            { title: 'training', value: 8 },
-            { title: 'product sales', value: 64 },
-            { title: 'others', value: 6 },
-          ]),
+          elements: [
+            {
+              title: 'repairs',
+              value: 12,
+              id: 'dc390594-21cb-4e6c-8c8d-c23ecf56d535',
+            },
+            {
+              title: 'consulting of something long',
+              value: 10,
+              id: '363f5e90-4ce2-4983-bc74-930d80911e4e',
+            },
+            {
+              title: 'training',
+              value: 8,
+              id: '53ec7a6a-66a4-4e17-95eb-d7f7fcd4a49e',
+            },
+            {
+              title: 'product sales',
+              value: 64,
+              id: '4d7afb4f-ddf0-49bf-b8e6-038c60ad8783',
+            },
+            {
+              title: 'others',
+              value: 6,
+              id: '8411e6cd-501f-4de6-bce1-f5f571f8272b',
+            },
+          ],
         },
         format: { kind: 'pie' },
         parent_id: 'flex--bee1c449-5515-4b12-9779-cfa11f1f62d9',
