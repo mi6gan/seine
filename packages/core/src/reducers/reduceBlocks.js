@@ -1,5 +1,5 @@
 // @flow
-import { equals } from 'ramda';
+import { equals, filter } from 'ramda';
 
 import { createBlock } from '../utils';
 import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
@@ -332,13 +332,16 @@ export function reduceBlocks(
                 : {
                     format:
                       state.device === 'any'
-                        ? { ...block.format, ...action.format }
+                        ? filter((value) => value !== null, {
+                            ...block.format,
+                            ...action.format,
+                          })
                         : {
                             ...block.format,
-                            [state.device]: {
+                            [state.device]: filter((value) => value !== null, {
                               ...(block.format && block.format[state.device]),
                               ...action.format,
-                            },
+                            }),
                           },
                   }),
             },
