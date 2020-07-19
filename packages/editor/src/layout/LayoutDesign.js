@@ -31,9 +31,10 @@ export default function LayoutDesign() {
     ({ type }) => type === blockTypes.LAYOUT
   );
   const id = layoutBlock && layoutBlock.id;
-  const { kind = defaultLayoutFormat.kind } = layoutBlock
-    ? layoutBlock.format[device] || layoutBlock.format
-    : defaultLayoutFormat;
+  const { kind = defaultLayoutFormat.kind } =
+    layoutBlock && layoutBlock.format
+      ? layoutBlock.format[device] || layoutBlock.format
+      : defaultLayoutFormat;
   const dispatch = useEditorDispatch();
   return (
     <SidebarSection>

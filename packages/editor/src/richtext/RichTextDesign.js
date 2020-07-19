@@ -51,7 +51,7 @@ const SvgText = styled.text.attrs({
 export default function RichTextDesign() {
   const textAlignment = useEditorSelector(
     ({ format = defaultDraftFormat }) =>
-      format.textAlignment || defaultDraftFormat.textAlignment
+      (format && format.textAlignment) || defaultDraftFormat.textAlignment
   );
   const {
     editor: {
