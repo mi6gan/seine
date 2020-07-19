@@ -1,20 +1,9 @@
 // @flow
-import * as React from 'react';
 import { Box } from '@material-ui/core';
+import styled from 'styled-components/macro';
 
-type Props = {
-  children: React.Node,
-};
+const SidebarSection = styled(Box).attrs(({ py = 2 }) => ({ py }))`
+  border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
+`;
 
-/**
- * @description Sidebar group heading text.
- * @param {Props} props
- * @returns {React.Node}
- */
-export default function SidebarSection({ children, py = 1, ...boxProps }) {
-  return (
-    <Box {...boxProps} py={py}>
-      {children}
-    </Box>
-  );
-}
+export default SidebarSection;

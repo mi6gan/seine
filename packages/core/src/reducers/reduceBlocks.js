@@ -3,7 +3,7 @@ import { equals } from 'ramda';
 
 import { createBlock } from '../utils';
 import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
-import { blockTypes } from '../types';
+import { blockTypes, layoutTypes } from '../types';
 
 opaque type BlockExtension = {
   editor: { [string]: any },
@@ -194,9 +194,9 @@ export function reduceBlocks(
       const parent =
         state.blocks[parentIndex] ||
         createBlock(
-          blockTypes.GRID,
+          blockTypes.LAYOUT,
           null,
-          null,
+          { kind: layoutTypes.GRID },
           state.blocks[index]['parent_id']
         );
 
@@ -260,7 +260,7 @@ export function reduceBlocks(
       const blocks = state.blocks.filter(({ id }) => !selection.includes(id));
       const redundant = blocks.filter(
         ({ id, type }, _, blocks) =>
-          type === blockTypes.GRID &&
+          type === blockTypes.LAYOUT &&
           blocks.filter(({ parent_id }) => parent_id === id).length < 2
       );
       return {

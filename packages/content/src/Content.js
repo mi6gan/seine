@@ -10,6 +10,7 @@ export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
   children: $ReadOnlyArray<Block>,
   parent: Block,
+  device: 'mobile' | 'any',
 };
 
 /**
