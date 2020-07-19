@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { Box } from '@material-ui/core';
 import { blockTypes, defaultItemFormat, UPDATE_BLOCK_BODY } from '@seine/core';
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import {
@@ -22,6 +21,7 @@ import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarInput from '../ui/SidebarInput';
 import SidebarHeading from '../ui/SidebarHeading';
+import SidebarButtonGroup from '../ui/SidebarButtonGroup';
 
 import { defaultTableEditor } from './constants';
 import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
@@ -30,10 +30,6 @@ import TableColumnRemoveIcon from './TableColumnRemoveIcon';
 import TableRowPlusAfterIcon from './TableRowPlusAfterIcon';
 import TableRowPlusBeforeIcon from './TableRowPlusBeforeIcon';
 import TableRowRemoveIcon from './TableRowRemoveIcon';
-
-const ButtonGroup = styled(Box)`
-  ${({ theme }) => ({ margin: theme.spacing(0, 1, 1, 0) })};
-`;
 
 const StructureActionButton = styled(ActionIconButton).attrs({
   borderColor: 'transparent',
@@ -105,7 +101,7 @@ export default function TableDesign() {
         <SidebarHeading>Table</SidebarHeading>
         <SidebarGroup alignItems={'center'}>
           <SidebarLabel>Structure</SidebarLabel>
-          <ButtonGroup>
+          <SidebarButtonGroup>
             <StructureActionButton
               color={'success.light'}
               Icon={TableColumnPlusBeforeIcon}
@@ -232,7 +228,7 @@ export default function TableDesign() {
               dispatch={dispatch}
               title={'Remove row'}
             />
-          </ButtonGroup>
+          </SidebarButtonGroup>
         </SidebarGroup>
 
         <SidebarGroup alignItems={'center'}>
