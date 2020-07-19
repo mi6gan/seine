@@ -186,4 +186,4 @@ export default React.forwardRef(function Frame(
       </StyledFrame>
     </>
   );
-})
+});
