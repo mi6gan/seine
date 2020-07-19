@@ -107,11 +107,11 @@ export default function RichTextDesign() {
         <SidebarLabel>List</SidebarLabel>
         <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
           <ToolbarToggleButton value={'ordered-list-item'}>
-            <FormatListBulleted />
+            <FormatListNumbered />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'unordered-list-item'}>
-            <FormatListNumbered />
+            <FormatListBulleted />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
