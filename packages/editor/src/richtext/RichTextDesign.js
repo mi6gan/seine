@@ -11,7 +11,7 @@ import {
   FormatListNumbered,
   FormatUnderlined,
 } from '@material-ui/icons';
-import { Box, InputLabel, SvgIcon } from '@material-ui/core';
+import { SvgIcon } from '@material-ui/core';
 import {
   blockTypes,
   UPDATE_BLOCK_EDITOR,
@@ -30,6 +30,8 @@ import {
   useEditorSelector,
   useSelectedBlocks,
 } from '../store';
+import SidebarGroup from '../ui/SidebarGroup';
+import SidebarLabel from '../ui/SidebarLabel';
 
 import { defaultDraftEditor } from './RichTextEditor';
 
@@ -58,29 +60,29 @@ export default function RichTextDesign() {
   } =
     useSelectedBlocks().find(({ type }) => type === blockTypes.RICH_TEXT) || {};
   const dispatch = useEditorDispatch();
-  return (
-    <>
-      <SidebarHeading>Text</SidebarHeading>
 
-      <SidebarSection>
-        <InputLabel shrink>Variant</InputLabel>
-        <ToolbarToggleButtonGroup
-          value={useAutoMemo(
-            editorState &&
-              editorState
-                .getCurrentContent()
-                .getBlockForKey(editorState.getSelection().getStartKey())
-                .getType()
-          )}
-          onChange={useAutoCallback((event, blockType) => {
-            dispatch({
-              type: UPDATE_BLOCK_EDITOR,
-              editor: {
-                state: RichUtils.toggleBlockType(editorState, blockType),
-              },
-            });
-          })}
-        >
+  const blockType = useAutoMemo(
+    editorState &&
+      editorState
+        .getCurrentContent()
+        .getBlockForKey(editorState.getSelection().getStartKey())
+        .getType()
+  );
+  const toggleBlockType = useAutoCallback((event, blockType) => {
+    dispatch({
+      type: UPDATE_BLOCK_EDITOR,
+      editor: {
+        state: RichUtils.toggleBlockType(editorState, blockType),
+      },
+    });
+  });
+
+  return (
+    <SidebarSection>
+      <SidebarHeading>Rich text</SidebarHeading>
+      <SidebarGroup alignItems={'center'}>
+        <SidebarLabel>Heading</SidebarLabel>
+        <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
           <ToolbarToggleButton value={'header-one'}>
             <SvgIcon>
               <SvgText>H1</SvgText>
@@ -98,7 +100,12 @@ export default function RichTextDesign() {
               <SvgText>H3</SvgText>
             </SvgIcon>
           </ToolbarToggleButton>
+        </ToolbarToggleButtonGroup>
+      </SidebarGroup>
 
+      <SidebarGroup alignItems={'center'}>
+        <SidebarLabel>List</SidebarLabel>
+        <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
           <ToolbarToggleButton value={'ordered-list-item'}>
             <FormatListBulleted />
           </ToolbarToggleButton>
@@ -107,61 +114,61 @@ export default function RichTextDesign() {
             <FormatListNumbered />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
-      </SidebarSection>
+      </SidebarGroup>
 
-      <SidebarSection>
-        <InputLabel shrink>Style</InputLabel>
-        <Box display={'flex'}>
-          <ToolbarToggleButtonGroup
-            value={useAutoMemo(
-              editorState ? [...editorState.getCurrentInlineStyle()] : []
-            )}
-            onChange={useAutoCallback((event, style) => {
-              dispatch({
-                type: UPDATE_BLOCK_EDITOR,
-                editor: {
-                  state: RichUtils.toggleInlineStyle(editorState, style),
-                },
-              });
-            })}
-          >
-            <ToolbarToggleButton value={'BOLD'}>
-              <FormatBold />
-            </ToolbarToggleButton>
+      <SidebarGroup alignItems={'center'}>
+        <SidebarLabel>Style</SidebarLabel>
+        <ToolbarToggleButtonGroup
+          value={useAutoMemo(
+            editorState ? [...editorState.getCurrentInlineStyle()] : []
+          )}
+          onChange={useAutoCallback((event, style) => {
+            dispatch({
+              type: UPDATE_BLOCK_EDITOR,
+              editor: {
+                state: RichUtils.toggleInlineStyle(editorState, style),
+              },
+            });
+          })}
+        >
+          <ToolbarToggleButton value={'BOLD'}>
+            <FormatBold />
+          </ToolbarToggleButton>
 
-            <ToolbarToggleButton value={'ITALIC'}>
-              <FormatItalic />
-            </ToolbarToggleButton>
+          <ToolbarToggleButton value={'ITALIC'}>
+            <FormatItalic />
+          </ToolbarToggleButton>
 
-            <ToolbarToggleButton value={'UNDERLINE'}>
-              <FormatUnderlined />
-            </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
+          <ToolbarToggleButton value={'UNDERLINE'}>
+            <FormatUnderlined />
+          </ToolbarToggleButton>
+        </ToolbarToggleButtonGroup>
+      </SidebarGroup>
 
-          <ToolbarToggleButtonGroup
-            value={textAlignment}
-            onChange={useAutoCallback((event, textAlignment) => {
-              event.preventDefault();
-              dispatch({
-                type: UPDATE_BLOCK_FORMAT,
-                format: { textAlignment },
-              });
-            })}
-          >
-            <ToolbarToggleButton value={'left'}>
-              <FormatAlignLeft />
-            </ToolbarToggleButton>
+      <SidebarGroup alignItems={'center'}>
+        <SidebarLabel>Alignment</SidebarLabel>
+        <ToolbarToggleButtonGroup
+          value={textAlignment}
+          onChange={useAutoCallback((event, textAlignment) => {
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              format: { textAlignment },
+            });
+          })}
+        >
+          <ToolbarToggleButton value={'left'}>
+            <FormatAlignLeft />
+          </ToolbarToggleButton>
 
-            <ToolbarToggleButton value={'center'}>
-              <FormatAlignCenter />
-            </ToolbarToggleButton>
+          <ToolbarToggleButton value={'center'}>
+            <FormatAlignCenter />
+          </ToolbarToggleButton>
 
-            <ToolbarToggleButton value={'right'}>
-              <FormatAlignRight />
-            </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
-        </Box>
-      </SidebarSection>
-    </>
+          <ToolbarToggleButton value={'right'}>
+            <FormatAlignRight />
+          </ToolbarToggleButton>
+        </ToolbarToggleButtonGroup>
+      </SidebarGroup>
+    </SidebarSection>
   );
 }

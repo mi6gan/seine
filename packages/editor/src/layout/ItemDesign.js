@@ -1,9 +1,7 @@
 // @flow
 import * as React from 'react';
-import { Box, FormControl, Input, InputLabel } from '@material-ui/core';
 import { defaultItemFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
-import styled from 'styled-components/macro';
 
 import SidebarSection from '../ui/SidebarSection';
 import {
@@ -11,16 +9,9 @@ import {
   useEditorSelector,
   useSelectedLayoutItems,
 } from '../store';
-import SidebarHeading from '../ui/SidebarHeading';
-
-const StyledInput = styled(Input)`
-  width: 3rem;
-  margin: ${({ theme }) => theme.spacing(0, 1)};
-`;
-
-const StyledInputLabel = styled(InputLabel)`
-  margin: ${({ theme }) => theme.spacing(0, 1)};
-`;
+import SidebarLabel from '../ui/SidebarLabel';
+import SidebarInput from '../ui/SidebarInput';
+import SidebarGroup from '../ui/SidebarGroup';
 
 /**
  * @description Layout design.
@@ -38,42 +29,33 @@ export default function ItemDesign() {
   return (
     <>
       <SidebarSection>
-        <SidebarHeading>Block</SidebarHeading>
-        <Box display={'flex'} alignItems={'flex-end'}>
-          <Box component={'label'} mr={2}>
-            width
-          </Box>
-          <FormControl>
-            <StyledInputLabel shrink>min</StyledInputLabel>
-
-            <StyledInput
-              disabled={!id}
-              value={minWidth === 0 ? '' : minWidth}
-              onChange={useAutoCallback((event) =>
-                dispatch({
-                  id,
-                  type: UPDATE_BLOCK_FORMAT,
-                  format: { minWidth: event.currentTarget.value || 0 },
-                })
-              )}
-            />
-          </FormControl>
-
-          <FormControl>
-            <StyledInputLabel shrink>max</StyledInputLabel>
-            <StyledInput
-              disabled={!id}
-              value={maxWidth === 'none' ? '' : maxWidth}
-              onChange={useAutoCallback((event) =>
-                dispatch({
-                  id,
-                  type: UPDATE_BLOCK_FORMAT,
-                  format: { maxWidth: event.currentTarget.value || 'none' },
-                })
-              )}
-            />
-          </FormControl>
-        </Box>
+        <SidebarGroup>
+          <SidebarLabel>width</SidebarLabel>
+          <SidebarInput
+            inputProps={{ placeholder: 'min' }}
+            disabled={!id}
+            value={minWidth === 0 ? '' : minWidth}
+            onChange={useAutoCallback((event) =>
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_FORMAT,
+                format: { minWidth: event.currentTarget.value || 0 },
+              })
+            )}
+          />
+          <SidebarInput
+            inputProps={{ placeholder: 'max' }}
+            disabled={!id}
+            value={maxWidth === 'none' ? '' : maxWidth}
+            onChange={useAutoCallback((event) =>
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_FORMAT,
+                format: { maxWidth: event.currentTarget.value || 'none' },
+              })
+            )}
+          />
+        </SidebarGroup>
       </SidebarSection>
     </>
   );
