@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { blockTypes, layoutTypes } from '@seine/core';
 import { actions } from '@storybook/addon-actions';
+import { Box } from '@material-ui/core';
+
+import * as data from '../../core/src/data';
 
 import Content from './Content';
 
@@ -1266,3 +1269,12 @@ export const FirstSampleChart = (props) => (
     ]}
   </Page>
 );
+
+export const Data = ({ as: Container = Content, children = [], ...props }) =>
+  Object.entries(data).map(([key, [parent, ...children]]) => (
+    <Box key={key} p={8} borderBottom={'1px dashed currentColor'}>
+      <Container parent={parent} {...actions('onChange')} {...props}>
+        {children}
+      </Container>
+    </Box>
+  ));

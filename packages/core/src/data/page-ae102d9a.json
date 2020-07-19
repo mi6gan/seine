@@ -1,0 +1,159 @@
+[
+  {
+    "id": "ae102d9a-0752-41df-9725-96a19210d0e5",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "2679a19a-577f-48ce-9c3e-04504b0e2e35",
+    "type": "table",
+    "parent_id": "ae102d9a-0752-41df-9725-96a19210d0e5",
+    "body": {
+      "rows": [
+        [
+          { "text": "Change, %" },
+          { "text": "-2", "align": "center" },
+          { "text": "3", "align": "center" },
+          { "text": "No data", "align": "center" },
+          { "text": "2", "align": "center" }
+        ]
+      ],
+      "title": "Change in the percentage of Kuzun sales by type of buyers, %",
+      "header": [
+        { "text": "Type of buyer" },
+        {
+          "0": { "text": "" },
+          "1": { "text": "" },
+          "2": { "text": "" },
+          "text": "Domestic dealers",
+          "align": "center"
+        },
+        {
+          "0": { "0": { "text": "" }, "align": "left" },
+          "1": { "text": "" },
+          "text": "State companies \n(domestic)",
+          "align": "center"
+        },
+        {
+          "0": { "align": "center" },
+          "text": "Corporate clients \n(domestic)",
+          "align": "center"
+        },
+        { "text": "Foreign clients", "align": "center" }
+      ]
+    },
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "65e5d2a1-25e9-4485-8569-2dd60960d0f7",
+    "type": "grid",
+    "parent_id": "ae102d9a-0752-41df-9725-96a19210d0e5",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "1ca33a06-1a9c-4b9f-bc6b-606d5502a174",
+    "type": "chart",
+    "parent_id": "65e5d2a1-25e9-4485-8569-2dd60960d0f7",
+    "body": {
+      "title": "Kuzun sales by type of buyer in 2020, %",
+      "elements": [
+        { "title": "Dealers", "value": 61 },
+        {
+          "id": "87337fbd-3ebd-4b5b-bcc8-0f89cd4d7190",
+          "title": "Foreign clients",
+          "value": 18
+        },
+        {
+          "id": "18e838f2-f176-4a3c-b2ee-b8515c090fef",
+          "title": "State companies",
+          "value": 14
+        },
+        {
+          "id": "99b708db-8974-43b2-97e8-d469214db178",
+          "title": "Corporate clients",
+          "value": 7
+        }
+      ]
+    },
+    "format": {
+      "kind": "pie",
+      "units": "",
+      "xAxis": true,
+      "yAxis": true,
+      "legend": 1,
+      "palette": [
+        "rgba(20,69,22,1)",
+        "rgba(36,119,39,1)",
+        "rgba(45,184,81,1)",
+        "rgba(170,210,150,1)",
+        "#7fc791",
+        "#aad296",
+        "#daebd1"
+      ],
+      "paletteKey": "bcg",
+      "textAlignment": "left"
+    },
+    "schema": null
+  },
+  {
+    "id": "d1e69912-cc8b-4245-8eaf-e1d9e4476367",
+    "type": "table",
+    "parent_id": "65e5d2a1-25e9-4485-8569-2dd60960d0f7",
+    "body": {
+      "rows": [
+        [
+          { "text": "Kuzun" },
+          { "text": "45", "align": "center" },
+          { "text": "21", "align": "center" },
+          { "text": "29", "align": "center" },
+          { "text": "53", "align": "center" },
+          { "text": "53", "align": "center" }
+        ],
+        [
+          { "text": "VJN" },
+          { "text": "3", "align": "center" },
+          { "text": "2", "align": "center" },
+          { "text": "2", "align": "center" },
+          { "text": "5", "align": "center" },
+          { "text": "8", "align": "center" }
+        ],
+        [
+          { "text": "Trucko" },
+          { "text": "3", "align": "center" },
+          { "text": "8", "align": "center" },
+          { "text": "3", "align": "center" },
+          { "text": "4", "align": "center" },
+          { "text": "3", "align": "center" }
+        ]
+      ],
+      "title": "Sales of new, locally  produced trucks,  in thousands",
+      "header": [
+        { "text": "" },
+        { "text": "2016", "align": "center" },
+        {
+          "0": { "text": "" },
+          "1": { "text": "" },
+          "2": { "text": "" },
+          "text": "2017",
+          "align": "center"
+        },
+        {
+          "0": { "text": "" },
+          "1": { "text": "" },
+          "text": "2018",
+          "align": "center"
+        },
+        { "0": { "text": "" }, "text": "2019", "align": "center" },
+        { "text": "2020", "align": "center" }
+      ]
+    },
+    "format": {},
+    "schema": null
+  }
+]
