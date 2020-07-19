@@ -54,9 +54,7 @@ export default function ChartPaletteSelect() {
         })}
       >
         <MenuItem value={'default'}>
-          <Label color={chartPaletteKeyValues.default[3]}>
-            General Palette
-          </Label>
+          <Label color={chartPaletteKeyValues.default[3]}>General</Label>
         </MenuItem>
 
         <MenuItem value={'mcKinseyDeep'}>
