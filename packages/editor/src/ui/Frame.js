@@ -19,8 +19,8 @@ import useEditorBuffer from '../store/useEditorBuffer';
 export const StyledFrame = styled(Item)`
   transition: ${({ theme }) =>
     theme.transitions.create(['filter'], {
-      duration: theme.transitions.duration.standard,
-      easing: 'ease-in-out',
+      duration: theme.transitions.duration.short,
+      easing: 'linear',
     })};
   cursor: pointer;
   &:after {
@@ -62,7 +62,7 @@ const StyledInsertPlaceholder = styled(Box).attrs({
   transition: ${({ theme }) =>
     theme.transitions.create(['width', 'height', 'background'], {
       duration: theme.transitions.duration.short,
-      easing: 'ease-in-out',
+      easing: 'linear',
     })};
   ${({ vertical, size }) => ({
     height: vertical ? size : '100%',

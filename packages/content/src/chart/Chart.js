@@ -13,7 +13,7 @@ import PieChartContent from './PieChartContent';
 import type { ChartProps as Props } from './types';
 import ChartSvg from './ChartSvg';
 import ChartSvgDefs from './ChartSvgDefs';
-import useChartFormatDefaults from './useChartFormatDefaults';
+import useChartFormat from './useChartFormat';
 
 /**
  * @description Switch to chart render components by its kind.
@@ -27,7 +27,7 @@ export default function Chart({
   className,
   ...initialChartProps
 }: Props) {
-  initialChartProps = useChartFormatDefaults(kind, initialChartProps);
+  initialChartProps = useChartFormat({ kind, ...initialChartProps });
   const [chartProps, setChartProps] = React.useState(initialChartProps);
   const handleAutoFormat = useAutoCallback((format) =>
     setChartProps({ ...initialChartProps, ...format })

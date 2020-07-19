@@ -12,16 +12,16 @@ import useChartBlock from './useChartBlock';
 import ChartPaletteSelect from './ChartPaletteSelect';
 
 /**
- * @description Bar chart design panel.
+ * @description Column chart design panel.
  * @returns {React.Node}
  */
-export default function BarChartDesign() {
+export default function ColumnChartDesign() {
   const { editor } = useChartBlock();
   return (
     <>
       <SidebarSection>
         <SidebarHeading>Chart</SidebarHeading>
-        <ChartStepInputGroup hideY />
+        <ChartStepInputGroup hideX />
         <ChartPaletteSelect />
       </SidebarSection>
       {editor.selection > -1 && (

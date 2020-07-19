@@ -12,13 +12,13 @@ import {
   ColumnChartContent,
   LineChartContent,
   PieChartContent,
-  useChartFormatDefaults,
+  useChartFormat,
 } from '@seine/content';
 import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
 
 import Frame from '../ui/Frame';
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import { useEditorDispatch, useSelectedLayoutItems } from '../store';
 
 import type { ChartEditorProps as Props } from './types';
 import BarChartElementTitleInput from './BarChartElementTitleInput';
@@ -43,10 +43,11 @@ export default function ChartEditor({
   kind = chartTypes.BAR,
   ...chartProps
 }: Props) {
-  chartProps = useChartFormatDefaults(kind, chartProps);
+  chartProps = useChartFormat({ kind, ...chartProps });
   const { id } = chartProps;
   const dispatch = useEditorDispatch();
-  const selectedBlock = useSelectedBlocks().find((block) => block.id === id);
+  const { item } = useSelectedLayoutItems();
+  const selectedBlock = item && item.id === id ? item : null;
 
   const dispatchElements = useDispatchElements();
 

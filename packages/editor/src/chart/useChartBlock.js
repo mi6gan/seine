@@ -1,12 +1,5 @@
-import { blockTypes, chartTypes } from '@seine/core';
-import {
-  defaultBarChartFormat,
-  defaultChartFormat,
-  defaultColumnChartFormat,
-  defaultLineChartFormat,
-  defaultPieChartFormat,
-} from '@seine/content';
-import { useAutoMemo } from 'hooks.macro';
+import { blockTypes } from '@seine/core';
+import { useChartFormat } from '@seine/content';
 
 import { useEditorSelector, useSelectedBlocks } from '../store';
 
@@ -21,25 +14,8 @@ export default function useChartBlock() {
   return {
     ...block,
     editor: block.editor || defaultChartEditor,
-    format: useAutoMemo(() => {
-      const format =
-        (block && block.format && block.format[device]) || block.format || {};
-      const defaultFormat =
-        format.kind === chartTypes.PIE
-          ? defaultPieChartFormat
-          : format.kind === chartTypes.LINE
-          ? defaultLineChartFormat
-          : format.kind === chartTypes.BAR
-          ? defaultBarChartFormat
-          : format.kind === chartTypes.COLUMN
-          ? defaultColumnChartFormat
-          : defaultChartFormat;
-      for (const [key, value] of Object.entries(defaultFormat)) {
-        if (format[key] === void 0) {
-          format[key] = value;
-        }
-      }
-      return format;
-    }),
+    format: useChartFormat(
+      (block && block.format && block.format[device]) || block.format || {}
+    ),
   };
 }
