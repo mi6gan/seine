@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import type { ChartElement } from '@seine/core';
+import { palette, typography } from '@material-ui/system';
 import {
   Chart,
   Legend,
@@ -31,27 +32,24 @@ type Props = {
   elementPathAs?: React.ElementType,
   elementTitleAs?: React.ElementType,
   elementValueAs?: React.ElementType,
-
-  onAutoFormat?: ($Shape<Props>) => any,
 };
 
-const Text = styled(Chart.Label).attrs(({ variant = 'body1' }) => ({
+const ChartLabel = styled(Chart.Label).attrs(({ variant = 'body1' }) => ({
   variant,
 }))`
   && {
     ${({
       variant,
       theme: {
-        typography: {
-          fontWeightLight,
-          [variant]: {
-            fontWeight: defaultFontWeight = fontWeightLight,
-            ...font
-          },
-        },
+        typography: { [variant]: font },
       },
-      fontWeight = defaultFontWeight,
-    }) => ({ ...font, fontWeight })};
+      ...defaults
+    }) =>
+      typography({
+        ...defaults,
+        ...font,
+      })};
+    ${palette};
     fill: currentColor;
   }
 `;
@@ -95,45 +93,51 @@ function PieLabel({
   } = props;
   const angle = startAngle + (endAngle - startAngle) / 2;
 
-  const x = ((2 * maxRadius) / 3) * Math.sin(angle);
-  const y = ((2 * maxRadius) / 3) * Math.cos(angle);
+  const x = (maxRadius / 2) * Math.sin(angle);
+  const y = (maxRadius / 2) * Math.cos(angle);
 
   return (
     <>
       <PieSeries.Point {...props} />
-      <ElementValue
+      <ChartLabel
+        as={ElementValue}
         textAnchor={'middle'}
         dominantBaseline={legend ? 'middle' : 'baseline'}
         variant={'h5'}
         fontWeight={400}
         x={arg + x}
         y={val - y}
+        color={'common.white'}
         meta={{ value, index }}
       >
         {value}
         {units}
-      </ElementValue>
+      </ChartLabel>
       {!legend && (
-        <ElementTitle
+        <ChartLabel
+          as={ElementTitle}
           textAnchor={'middle'}
           dominantBaseline={'hanging'}
           variant={'caption'}
           x={arg + x}
           y={val - y}
+          color={'common.white'}
           meta={{ title: argument, index }}
         >
           {argument.slice(0, maxTextLength)}
           {maxTextLength < argument.length && '...'}
-        </ElementTitle>
+        </ChartLabel>
       )}
     </>
   );
 }
 
-const StyledTitle = styled.div.attrs(({ text: children, variant = 'h4' }) => ({
-  children,
-  variant,
-}))`
+const StyledTitle = styled(Title).attrs(
+  ({ text: children, variant = 'h4' }) => ({
+    children,
+    variant,
+  })
+)`
   ${({
     variant,
     theme: {
@@ -144,7 +148,6 @@ const StyledTitle = styled.div.attrs(({ text: children, variant = 'h4' }) => ({
     },
     fontWeight = defaultFontWeight,
   }) => ({ ...font, fontWeight })};
-  fill: currentColor;
 `;
 
 /**
@@ -167,8 +170,8 @@ export default function PieChartContent({
   paletteKey,
   xAxis,
   yAxis,
-  elementTitleAs = Text,
-  elementValueAs = Text,
+  elementTitleAs = ChartLabel,
+  elementValueAs = ChartLabel,
   ...itemProps
 }): Props {
   return (
@@ -196,7 +199,7 @@ export default function PieChartContent({
           markerComponent={LegendMarker}
         />
       )}
-      <Title text={title} textComponent={StyledTitle} />
+      <StyledTitle text={title} />
     </Container>
   );
 }
