@@ -2029,6 +2029,7 @@ __metadata:
     invert-color: ^2.0.0
     ramda: ^0.26.1
   peerDependencies:
+    d3-interpolate: 1.4
     draft-js: ^0.11.0
     react: ^16.9.0
     react-dom: ^16.9.0
@@ -2062,6 +2063,7 @@ __metadata:
   peerDependencies:
     "@material-ui/core": 4.9
     "@material-ui/icons": 4.9
+    d3-interpolate: 1.4
     draft-js: ^0.11.0
     react: ^16.9.0
     react-dom: ^16.9.0
