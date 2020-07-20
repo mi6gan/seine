@@ -1,8 +1,6 @@
 // @flow
 import * as React from 'react';
 import { chartTypes } from '@seine/core';
-import { useAutoCallback } from 'hooks.macro';
-import { useResizeTargetRef } from '@seine/styles';
 
 import { Item } from '../layout';
 
@@ -21,21 +19,18 @@ import useChartFormat from './useChartFormat';
  * @returns {React.Node}
  */
 export default function Chart({
-  children,
   kind,
   onClick,
   className,
   ...initialChartProps
 }: Props) {
-  initialChartProps = useChartFormat({ kind, ...initialChartProps });
-  const [chartProps, setChartProps] = React.useState(initialChartProps);
-  const handleAutoFormat = useAutoCallback((format) =>
-    setChartProps({ ...initialChartProps, ...format })
-  );
+  const chartProps = useChartFormat({ kind, ...initialChartProps });
 
-  return (
+  return kind === chartTypes.PIE ? (
+    <PieChartContent {...chartProps} />
+  ) : (
     <Item {...chartProps}>
-      <ChartSvg {...chartProps} ref={useResizeTargetRef()}>
+      <ChartSvg {...chartProps}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent {...chartProps} />
@@ -43,8 +38,6 @@ export default function Chart({
           <ColumnChartContent {...chartProps} />
         ) : kind === chartTypes.LINE ? (
           <LineChartContent {...chartProps} />
-        ) : kind === chartTypes.PIE ? (
-          <PieChartContent {...chartProps} onAutoFormat={handleAutoFormat} />
         ) : null}
       </ChartSvg>
     </Item>

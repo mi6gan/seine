@@ -4,6 +4,7 @@ import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import ChartValueInput from './ChartValueInput';
+import useDispatchElements from './useDispatchElements';
 
 type Props = {
   children?: any,
@@ -14,28 +15,22 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default React.forwardRef(function BarChartElementValueInput(
-  {
-    dispatch,
-    dispatchElements,
-    editor,
-    meta: { index, value },
-    ...inputProps
-  }: Props,
-  ref
-) {
+export default function PieChartElementValueInput({
+  meta: { index, value },
+  ...inputProps
+}: Props) {
+  const dispatchElements = useDispatchElements();
   return (
     <ChartValueInput
       {...inputProps}
-      ref={ref}
       value={value}
-      onChange={useAutoCallback(({ currentTarget }) =>
+      onChange={useAutoCallback(({ currentTarget }) => {
         dispatchElements({
           type: UPDATE_BLOCK_ELEMENT,
           index,
           body: { value: +currentTarget.value },
-        })
-      )}
+        });
+      })}
     />
   );
-});
+}

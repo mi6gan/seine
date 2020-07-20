@@ -24,6 +24,8 @@ export default function ItemDesign() {
   const {
     minWidth = defaultItemFormat.minWidth,
     maxWidth = defaultItemFormat.maxWidth,
+    minHeight = defaultItemFormat.minHeight,
+    maxHeight = defaultItemFormat.maxHeight,
   } =
     (item && item.format && (item.format[device] || item.format)) ||
     defaultItemFormat;
@@ -54,6 +56,33 @@ export default function ItemDesign() {
                 id,
                 type: UPDATE_BLOCK_FORMAT,
                 format: { maxWidth: event.currentTarget.value || 'none' },
+              })
+            )}
+          />
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarLabel>height</SidebarLabel>
+          <SidebarInput
+            inputProps={{ placeholder: 'min' }}
+            disabled={!id}
+            value={minHeight === 0 ? '' : minHeight}
+            onChange={useAutoCallback((event) =>
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_FORMAT,
+                format: { minHeight: event.currentTarget.value || 0 },
+              })
+            )}
+          />
+          <SidebarInput
+            inputProps={{ placeholder: 'max' }}
+            disabled={!id}
+            value={maxHeight === 'none' ? '' : maxHeight}
+            onChange={useAutoCallback((event) =>
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_FORMAT,
+                format: { maxHeight: event.currentTarget.value || 'none' },
               })
             )}
           />

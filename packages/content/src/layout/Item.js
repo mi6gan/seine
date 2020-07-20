@@ -15,6 +15,11 @@ const Item = styled.div.attrs((format: ItemFormat) => ({
     maxWidth,
   })}
 
+  ${({ maxHeight, minHeight }) => ({
+    minHeight,
+    maxHeight,
+  })}
+
   ${({ layout, alignSelf }) =>
     (layout === 'flex' || layout === 'grid') && { alignSelf }}}
 

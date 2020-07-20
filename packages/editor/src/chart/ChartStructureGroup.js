@@ -3,11 +3,12 @@ import * as React from 'react';
 import { ActionButton, CompositeActionButton } from '@seine/ui';
 import {
   chartTypes,
+  createBlockElement,
   createTitleIdentityBlockElements,
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
-import { DeleteOutlined, Add, ControlPoint } from '@material-ui/icons';
+import { Add, ControlPoint, DeleteOutlined } from '@material-ui/icons';
 import { Button } from '@material-ui/core';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
@@ -15,6 +16,7 @@ import { groupElements, titleIdentityElements } from '@seine/content';
 
 import { useEditorDispatch } from '../store';
 import SidebarGroup from '../ui/SidebarGroup';
+import useSelectedBlockElement from '../context/useSelectedBlockElement';
 
 import useChartBlock from './useChartBlock';
 
@@ -31,17 +33,13 @@ export default function ChartStructureGroup() {
   const {
     id,
     body: { elements },
-    editor: { selection },
     format: { minValue, maxValue, kind },
   } = useChartBlock();
   const dispatch = useEditorDispatch();
   const values = useAutoMemo(elements.map(({ value }) => value));
   const min = useAutoMemo(minValue || Math.min(...values));
   const max = useAutoMemo(maxValue || Math.max(...values));
-  const element =
-    selection >= 0
-      ? elements.find(({ id }, index) => index === selection)
-      : null;
+  const { selection, element } = useSelectedBlockElement();
   return (
     <SidebarGroup alignItems={'flex-start'}>
       <ActionButton
@@ -52,13 +50,20 @@ export default function ChartStructureGroup() {
         body={useAutoMemo({
           elements: [
             ...elements,
-            ...createTitleIdentityBlockElements(
-              groupElements(elements).map(([group, { length }]) => ({
-                ...(group ? { group } : {}),
-                title: `Item #${length}`,
-                value: min + Math.floor((max - min) / 2),
-              }))
-            ),
+            ...(kind === chartTypes.PIE
+              ? [
+                  createBlockElement({
+                    title: `Item #${elements.length + 1}`,
+                    value: Math.floor(min + (max - min) / 2),
+                  }),
+                ]
+              : createTitleIdentityBlockElements(
+                  groupElements(elements).map(([group, { length }]) => ({
+                    ...(group ? { group } : {}),
+                    title: `Item #${length}`,
+                    value: Math.floor(min + (max - min) / 2),
+                  }))
+                )),
           ],
         })}
         title={kind === chartTypes.LINE ? 'Add line' : 'add item'}
@@ -96,10 +101,11 @@ export default function ChartStructureGroup() {
             </ActionButton>
           );
         }
+        return null;
       })}
       <CompositeActionButton
         as={StyledButton}
-        disabled={elements.length <= 2}
+        disabled={!(selection >= 0 && elements.length > 1)}
         dispatch={dispatch}
         stroke={'error'}
         light

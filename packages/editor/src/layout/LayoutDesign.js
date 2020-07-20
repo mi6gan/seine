@@ -43,7 +43,7 @@ export default function LayoutDesign() {
         <SidebarHeading>Layout</SidebarHeading>
 
         <SidebarGroup alignItems={'center'}>
-          <SidebarLabel>Type</SidebarLabel>
+          <SidebarLabel>type</SidebarLabel>
           <Select
             value={kind}
             onChange={useAutoCallback((e) =>
@@ -55,10 +55,10 @@ export default function LayoutDesign() {
             )}
           >
             <MenuItem value={layoutTypes.FLEX}>
-              <SidebarSelectLabel>Flex</SidebarSelectLabel>
+              <SidebarSelectLabel>flex</SidebarSelectLabel>
             </MenuItem>
             <MenuItem value={layoutTypes.GRID}>
-              <SidebarSelectLabel>Grid</SidebarSelectLabel>
+              <SidebarSelectLabel>grid</SidebarSelectLabel>
             </MenuItem>
           </Select>
         </SidebarGroup>
