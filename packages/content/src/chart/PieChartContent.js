@@ -9,7 +9,8 @@ import {
 } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
 import styled from 'styled-components/macro';
-import { List, Typography } from '@material-ui/core';
+import { List } from '@material-ui/core';
+import { useAutoMemo } from 'hooks.macro';
 
 type Props = {
   autoFormat: boolean,
@@ -57,7 +58,7 @@ function LegendMarker({ color }) {
   );
 }
 // eslint-disable-next-line
-function PieLabel({ units, textGroup, legend, ...props }) {
+function PieLabel({ units, legend, ...props }) {
   const {
     index,
     argument,
@@ -73,7 +74,6 @@ function PieLabel({ units, textGroup, legend, ...props }) {
     (maxRadius * Math.cos(startAngle + (endAngle - startAngle) / 2)) / 2;
   const y =
     (-maxRadius * Math.sin(startAngle + (endAngle - startAngle) / 2)) / 2;
-  const dx = Math.abs(x - (maxRadius * Math.cos(startAngle)) / 2);
 
   return (
     <>
@@ -85,7 +85,7 @@ function PieLabel({ units, textGroup, legend, ...props }) {
             variant={'h5'}
             fontWeight={400}
             y={y}
-            x={x - dx / 2}
+            x={x}
           >
             {value}
             {units}
@@ -96,7 +96,7 @@ function PieLabel({ units, textGroup, legend, ...props }) {
               dominantBaseline={'hanging'}
               variant={'caption'}
               y={y}
-              x={x - dx / 2}
+              x={x}
             >
               {argument.slice(0, maxTextLength)}
               {maxTextLength < argument.length && '...'}
@@ -105,20 +105,31 @@ function PieLabel({ units, textGroup, legend, ...props }) {
         </g>
       </defs>
       <PieSeries.Point {...props} />
-      {(endAngle === 2 * Math.PI || endAngle === 0) &&
-        Array.from({ length: index }).map((_, index) => (
-          <use href={`#sliceText${index}`} key={index} />
-        ))}
+      {useAutoMemo(
+        startAngle > Math.PI ? Array.from({ length: index + 1 }) : []
+      ).map((_, index) => (
+        <use href={`#sliceText${index}`} key={index} />
+      ))}
     </>
   );
 }
 
-const StyledTitle = styled(Typography).attrs(
-  ({ text: children, variant = 'h4' }) => ({
-    children,
+const StyledTitle = styled.div.attrs(({ text: children, variant = 'h4' }) => ({
+  children,
+  variant,
+}))`
+  ${({
     variant,
-  })
-)``;
+    theme: {
+      typography: {
+        fontWeightLight,
+        [variant]: { fontWeight: defaultFontWeight = fontWeightLight, ...font },
+      },
+    },
+    fontWeight = defaultFontWeight,
+  }) => ({ ...font, fontWeight })};
+  fill: currentColor;
+`;
 
 /**
  * @description Pie chart content block renderer.
@@ -135,8 +146,8 @@ export default function PieChartContent({
 }): Props {
   return (
     <Container data={elements}>
-      <Title text={title} textComponent={StyledTitle} />
       <Palette scheme={palette} />
+      <Title text={title} textComponent={StyledTitle} />
       <PieSeries
         valueField={'value'}
         argumentField={'title'}

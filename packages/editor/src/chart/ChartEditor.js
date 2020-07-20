@@ -4,7 +4,6 @@ import {
   chartTypes,
   DESELECT_BLOCK_ELEMENT,
   SELECT_BLOCK_ELEMENT,
-  UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
 import {
   BarChartContent,
@@ -16,18 +15,15 @@ import {
   useChartFormat,
 } from '@seine/content';
 import { useResizeTargetRef } from '@seine/styles';
-import { useAutoCallback } from 'hooks.macro';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 import { Chart } from '@devexpress/dx-react-chart-material-ui';
 
 import Frame from '../ui/Frame';
-import { useEditorDispatch, useSelectedLayoutItems } from '../store';
+import { useSelectedLayoutItems } from '../store';
 
 import type { ChartEditorProps as Props } from './types';
 import BarChartElementTitleInput from './BarChartElementTitleInput';
-import PieChartElementPath from './PieChartElementPath';
-import PieChartElementTitleInput from './PieChartElementTitleInput';
-import PieChartElementValueInput from './PieChartElementValueInput';
 import GroupedChartElementRect from './GroupedChartElementRect';
 import ChartGroupElementValueInput from './ChartGroupElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
@@ -38,11 +34,13 @@ import useChartBlock from './useChartBlock';
 
 // eslint-disable-next-line
 function SelectableChart({ children, ...props }) {
+  const dispatchElements = useDispatchElements();
+  const targetRef = React.useRef(null);
+  const { current: target } = targetRef;
   const {
     editor: { selection },
   } = useChartBlock();
-  const dispatchElements = useDispatchElements();
-  const targetRef = React.useRef();
+  const hasSelection = selection > -1;
 
   return (
     <Chart {...props}>
@@ -65,9 +63,7 @@ function SelectableChart({ children, ...props }) {
         })}
       />
       <SelectionState
-        selection={
-          selection > -1 && targetRef.current ? [targetRef.current] : []
-        }
+        selection={useAutoMemo(hasSelection && target ? [target] : [])}
       />
     </Chart>
   );
@@ -86,41 +82,23 @@ export default function ChartEditor({
 }: Props) {
   chartProps = useChartFormat({ kind, ...chartProps });
   const { id } = chartProps;
-  const dispatch = useEditorDispatch();
   const { item } = useSelectedLayoutItems();
   const selectedBlock = item && item.id === id ? item : null;
 
-  const dispatchElements = useDispatchElements();
-  const handleAutoFormat = useAutoCallback((format) =>
-    dispatch({
-      type: UPDATE_BLOCK_FORMAT,
-      format,
-    })
-  );
-
-  const metaProps = { editor, dispatch, dispatchElements };
   const resizeTargetRef = useResizeTargetRef();
 
   return (
     <Frame id={id} selected={!!selectedBlock} {...chartProps}>
       {kind === chartTypes.PIE ? (
         <PieChartContent
-          {...metaProps}
           {...chartProps}
-          {...(selectedBlock && {
-            elementPathAs: PieChartElementPath,
-            elementValueAs: PieChartElementValueInput,
-            groupTitleAs: PieChartElementTitleInput,
-            as: SelectableChart,
-          })}
-          onAutoFormat={handleAutoFormat}
+          {...(selectedBlock && { as: SelectableChart })}
         />
       ) : (
         <ChartSvg {...chartProps} ref={resizeTargetRef}>
           <ChartSvgDefs />
           {kind === chartTypes.BAR ? (
             <BarChartContent
-              {...metaProps}
               {...chartProps}
               {...(selectedBlock && {
                 elementRectAs: GroupedChartElementRect,
@@ -131,7 +109,6 @@ export default function ChartEditor({
             />
           ) : kind === chartTypes.COLUMN ? (
             <ColumnChartContent
-              {...metaProps}
               {...chartProps}
               {...(selectedBlock && {
                 elementRectAs: GroupedChartElementRect,
@@ -141,7 +118,6 @@ export default function ChartEditor({
             />
           ) : kind === chartTypes.LINE ? (
             <LineChartContent
-              {...metaProps}
               {...chartProps}
               {...(selectedBlock && {
                 elementPathAs: LineChartElementPath,
