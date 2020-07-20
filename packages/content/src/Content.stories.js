@@ -1138,6 +1138,7 @@ export const AllCharts = (props) => (
         id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
         type: 'chart',
         body: {
+          title: 'Pie chart',
           elements: [
             {
               title: 'repairs',

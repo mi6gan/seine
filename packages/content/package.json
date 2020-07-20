@@ -11,6 +11,10 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
+    "@devexpress/dx-chart-core": "^2.7.0",
+    "@devexpress/dx-react-chart": "^2.7.0",
+    "@devexpress/dx-react-chart-material-ui": "^2.7.0",
+    "@devexpress/dx-react-core": "^2.7.0",
     "@material-ui/system": "4.9",
     "@seine/core": "workspace:*",
     "@seine/styles": "workspace:*",

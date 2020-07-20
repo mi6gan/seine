@@ -1384,6 +1384,69 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@devexpress/dx-chart-core@npm:2.7.0, @devexpress/dx-chart-core@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@devexpress/dx-chart-core@npm:2.7.0"
+  dependencies:
+    d3-array: ^2.4.0
+    d3-scale: ^3.2.0
+    d3-shape: ^1.3.7
+  checksum: 431ef0d948006f2c9ab35b6c6aaa8abc4e071553975b2718eceb2b31624725a61cac1cf0699b023f58f0ea311d46f269a611f9a5a6fa7deacc6215fb08494ca7
+  languageName: node
+  linkType: hard
+
+"@devexpress/dx-core@npm:2.7.0":
+  version: 2.7.0
+  resolution: "@devexpress/dx-core@npm:2.7.0"
+  checksum: c419ba3494b679547d0bf8394862ba31321ef2450b7dda83c942e9777dda3ed5c2ea8e756198443bf2e585bcd11d43f562fa1d07f86cb0c2af5593ec5620f4ad
+  languageName: node
+  linkType: hard
+
+"@devexpress/dx-react-chart-material-ui@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@devexpress/dx-react-chart-material-ui@npm:2.7.0"
+  dependencies:
+    clsx: ^1.0.4
+    prop-types: ^15.7.2
+  peerDependencies:
+    "@devexpress/dx-chart-core": 2.7.0
+    "@devexpress/dx-react-chart": 2.7.0
+    "@devexpress/dx-react-core": 2.7.0
+    "@material-ui/core": ">=4.5.0"
+    "@material-ui/icons": ">=4.4.3"
+    react: ">=16.10.2"
+  checksum: 0760271aeb286784212b3fd196fed5958b8d6952aea2449de706c9eb5f6239f17583fda8c9178a5edae7aecb72c776a467cf89868e0efd671c88347e801e500c
+  languageName: node
+  linkType: hard
+
+"@devexpress/dx-react-chart@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@devexpress/dx-react-chart@npm:2.7.0"
+  dependencies:
+    "@devexpress/dx-chart-core": 2.7.0
+    d3-scale: ^3.2.0
+    d3-shape: ^1.3.7
+  peerDependencies:
+    "@devexpress/dx-react-core": 2.7.0
+    react: ">=16.10.2"
+    react-dom: ">=16.10.2"
+  checksum: de99c928ed793617274a5c11ee8a503f8a47e6876ee49865b4579525dc6713a25ac6b4b5ee2cdd48f880fd05a1aff6341140f629066c193545f17feee71ee14c
+  languageName: node
+  linkType: hard
+
+"@devexpress/dx-react-core@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@devexpress/dx-react-core@npm:2.7.0"
+  dependencies:
+    "@devexpress/dx-core": 2.7.0
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ">=16.10.2"
+    react-dom: ">=16.10.2"
+  checksum: c11943dde3a0529ea3a69271ab1c624f8344a4c1b043c462b54b0f32430264e8c41db9ee5ca10649ef2a35d808ee122515d0e56652f213c3c1cd4ddba4025366
+  languageName: node
+  linkType: hard
+
 "@emotion/cache@npm:^10.0.27":
   version: 10.0.29
   resolution: "@emotion/cache@npm:10.0.29"
@@ -1956,6 +2019,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@seine/content@workspace:packages/content"
   dependencies:
+    "@devexpress/dx-chart-core": ^2.7.0
+    "@devexpress/dx-react-chart": ^2.7.0
+    "@devexpress/dx-react-chart-material-ui": ^2.7.0
+    "@devexpress/dx-react-core": ^2.7.0
     "@material-ui/system": 4.9
     "@seine/core": "workspace:*"
     "@seine/styles": "workspace:*"
@@ -5938,6 +6005,81 @@ __metadata:
   version: 1.0.1
   resolution: "cyclist@npm:1.0.1"
   checksum: 74bc0a48c37bed8a430f103d0a880902768b7e3bcc0f9e098c4bd9630438c6b053b88e33c127e41316bb2da8d642a937015961a6cd563641ad2a5798dfecadd9
+  languageName: node
+  linkType: hard
+
+"d3-array@npm:1.2.0 - 2, d3-array@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "d3-array@npm:2.4.0"
+  checksum: 666ca4a26bde9094472ccb795a2f5d8eb4df281d42dd97b7349b9ba990b089dfc49f2c23fd64080d95d319841870efcf6c6095cbe95de491be36847184b30738
+  languageName: node
+  linkType: hard
+
+"d3-color@npm:1":
+  version: 1.4.1
+  resolution: "d3-color@npm:1.4.1"
+  checksum: a579fdc2f4ec50980e32d0ac5212c3023ee9c6a7555ae698278f05c9f7d06322f83dde01253f672f9f9fd05d8860f0256d25aee999a0d32cf4111d731413f5da
+  languageName: node
+  linkType: hard
+
+"d3-format@npm:1":
+  version: 1.4.4
+  resolution: "d3-format@npm:1.4.4"
+  checksum: a0961a9c92e56588203b93226837bda242642016f798ab241136b1db564f2719a8c0db2f68b1a4cdd9079a62e065be4e4f35f213d2b59b2d34a8e05e6f0ba860
+  languageName: node
+  linkType: hard
+
+"d3-interpolate@npm:^1.2.0":
+  version: 1.4.0
+  resolution: "d3-interpolate@npm:1.4.0"
+  dependencies:
+    d3-color: 1
+  checksum: beea08fb3a712ccb992082c058a96a108f31692bbcecbf8029539ff378747b666fd0f33798b313835a2cb019e399a30fd1f5b643822f1cc0be3c86b4fe4730c7
+  languageName: node
+  linkType: hard
+
+"d3-path@npm:1":
+  version: 1.0.9
+  resolution: "d3-path@npm:1.0.9"
+  checksum: 48492b1a4218bdfee93bed5bcb59f5e3ff6d3c66bffba82ddbb8e4007515ca517fc59b8ec7023c2387506ec25502ff7797f9a59274b6efec8b7652bc839a0be3
+  languageName: node
+  linkType: hard
+
+"d3-scale@npm:^3.2.0":
+  version: 3.2.1
+  resolution: "d3-scale@npm:3.2.1"
+  dependencies:
+    d3-array: 1.2.0 - 2
+    d3-format: 1
+    d3-interpolate: ^1.2.0
+    d3-time: 1
+    d3-time-format: 2
+  checksum: 09937be16d680c5f8c3741ed54f270eba5c703de2e954fb376b2d996f49725f40aadb783ad71bc19c64464fbb5234075e900a5b063f83eee599b049157cb65d5
+  languageName: node
+  linkType: hard
+
+"d3-shape@npm:^1.3.7":
+  version: 1.3.7
+  resolution: "d3-shape@npm:1.3.7"
+  dependencies:
+    d3-path: 1
+  checksum: 90c1e7d773b3586da88f90bd5592d57eb5dade5b26088cddbb9828dd9f86c63f84c609b41051d695626c8acce21f041c61e189071939d45a2511585a87dd7151
+  languageName: node
+  linkType: hard
+
+"d3-time-format@npm:2":
+  version: 2.2.3
+  resolution: "d3-time-format@npm:2.2.3"
+  dependencies:
+    d3-time: 1
+  checksum: b29dfa87cf60600155266848ad40c9941c1c09cfc30bd3386da8ed6c853c2131abc957df55427b1ed7e9817ab4381387477f327f2583bd666393f2f6b7dda539
+  languageName: node
+  linkType: hard
+
+"d3-time@npm:1":
+  version: 1.1.0
+  resolution: "d3-time@npm:1.1.0"
+  checksum: d083c2181bbd1207f5fc8a0bfc2a8c1a44a56b3781dd6ef73a70f1d82aa74f49d1b410d4afc8e1a10db459fd60fdc75191ac89b8cdf4ee2705d7f3a1f0034fac
   languageName: node
   linkType: hard
 
