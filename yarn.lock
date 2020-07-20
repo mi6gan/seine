@@ -6031,7 +6031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-interpolate@npm:^1.2.0":
+"d3-interpolate@npm:1.4, d3-interpolate@npm:^1.2.0":
   version: 1.4.0
   resolution: "d3-interpolate@npm:1.4.0"
   dependencies:
@@ -14361,6 +14361,7 @@ resolve@1.1.7:
     babel-preset-react-app: ^9.0.1
     colorette: ^1.1.0
     cross-env: ^6.0.3
+    d3-interpolate: 1.4
     draft-js: ^0.11.0
     eslint: ^6.8.0
     eslint-config-prettier: ^6.0.0
