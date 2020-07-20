@@ -1,13 +1,12 @@
 // @flow
 import * as React from 'react';
-import { blockTypes, chartTypes } from '@seine/core';
-
-import { useSelectedBlocks } from '../store';
+import { chartTypes } from '@seine/core';
 
 import PieChartDesign from './PieChartDesign';
 import BarChartDesign from './BarChartDesign';
 import LineChartDesign from './LineChartDesign';
 import ColumnChartDesign from './ColumnChartDesign';
+import useChartBlock from './useChartBlock';
 
 /**
  * @description Chart design panel.
@@ -16,7 +15,7 @@ import ColumnChartDesign from './ColumnChartDesign';
 export default function ChartDesign() {
   const {
     format: { kind },
-  } = useSelectedBlocks().find(({ type }) => type === blockTypes.CHART) || {};
+  } = useChartBlock();
   return (
     <>
       {kind === chartTypes.PIE && <PieChartDesign />}

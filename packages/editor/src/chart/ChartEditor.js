@@ -14,7 +14,6 @@ import {
   PieChartContent,
   useChartFormat,
 } from '@seine/content';
-import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 import { Chart } from '@devexpress/dx-react-chart-material-ui';
@@ -29,8 +28,9 @@ import ChartGroupElementValueInput from './ChartGroupElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
 import LineChartElementPath from './LineChartElementPath';
 import useDispatchElements from './useDispatchElements';
-import { defaultChartEditor } from './constants';
 import useChartBlock from './useChartBlock';
+import PieChartElementTitleInput from './PieChartElementTitleInput';
+import PieChartElementValueInput from './PieChartElementValueInput';
 
 // eslint-disable-next-line
 function SelectableChart({ children, ...props }) {
@@ -43,7 +43,7 @@ function SelectableChart({ children, ...props }) {
   const hasSelection = selection > -1;
 
   return (
-    <Chart {...props}>
+    <Frame {...props} as={Chart}>
       {children}
       <EventTracker
         onClick={useAutoCallback(({ targets: [target = null] }) => {
@@ -65,7 +65,7 @@ function SelectableChart({ children, ...props }) {
       <SelectionState
         selection={useAutoMemo(hasSelection && target ? [target] : [])}
       />
-    </Chart>
+    </Frame>
   );
 }
 
@@ -75,59 +75,57 @@ function SelectableChart({ children, ...props }) {
  * @returns {React.Node}
  */
 export default function ChartEditor({
-  children,
-  editor = defaultChartEditor,
   kind = chartTypes.BAR,
-  ...chartProps
+  ...initialChartProps
 }: Props) {
-  chartProps = useChartFormat({ kind, ...chartProps });
+  const chartProps = useChartFormat({ kind, ...initialChartProps });
   const { id } = chartProps;
   const { item } = useSelectedLayoutItems();
   const selectedBlock = item && item.id === id ? item : null;
 
-  const resizeTargetRef = useResizeTargetRef();
-
-  return (
-    <Frame id={id} selected={!!selectedBlock} {...chartProps}>
-      {kind === chartTypes.PIE ? (
-        <PieChartContent
-          {...chartProps}
-          {...(selectedBlock && { as: SelectableChart })}
-        />
-      ) : (
-        <ChartSvg {...chartProps} ref={resizeTargetRef}>
-          <ChartSvgDefs />
-          {kind === chartTypes.BAR ? (
-            <BarChartContent
-              {...chartProps}
-              {...(selectedBlock && {
-                elementRectAs: GroupedChartElementRect,
-                elementTitleAs: BarChartElementTitleInput,
-                elementValueAs: ChartGroupElementValueInput,
-                groupTitleAs: ChartGroupTitleInput,
-              })}
-            />
-          ) : kind === chartTypes.COLUMN ? (
-            <ColumnChartContent
-              {...chartProps}
-              {...(selectedBlock && {
-                elementRectAs: GroupedChartElementRect,
-                elementValueAs: ChartGroupElementValueInput,
-                groupTitleAs: ChartGroupTitleInput,
-              })}
-            />
-          ) : kind === chartTypes.LINE ? (
-            <LineChartContent
-              {...chartProps}
-              {...(selectedBlock && {
-                elementPathAs: LineChartElementPath,
-                elementValueAs: ChartGroupElementValueInput,
-                groupTitleAs: ChartGroupTitleInput,
-              })}
-            />
-          ) : null}
-        </ChartSvg>
-      )}
+  return kind === chartTypes.PIE ? (
+    <PieChartContent
+      {...chartProps}
+      as={selectedBlock ? SelectableChart : Frame}
+      {...(selectedBlock && {
+        elementTitleAs: PieChartElementTitleInput,
+        elementValueAs: PieChartElementValueInput,
+      })}
+    />
+  ) : (
+    <Frame {...chartProps}>
+      <ChartSvg {...chartProps}>
+        <ChartSvgDefs />
+        {kind === chartTypes.BAR ? (
+          <BarChartContent
+            {...chartProps}
+            {...(selectedBlock && {
+              elementRectAs: GroupedChartElementRect,
+              elementTitleAs: BarChartElementTitleInput,
+              elementValueAs: ChartGroupElementValueInput,
+              groupTitleAs: ChartGroupTitleInput,
+            })}
+          />
+        ) : kind === chartTypes.COLUMN ? (
+          <ColumnChartContent
+            {...chartProps}
+            {...(selectedBlock && {
+              elementRectAs: GroupedChartElementRect,
+              elementValueAs: ChartGroupElementValueInput,
+              groupTitleAs: ChartGroupTitleInput,
+            })}
+          />
+        ) : kind === chartTypes.LINE ? (
+          <LineChartContent
+            {...chartProps}
+            {...(selectedBlock && {
+              elementPathAs: LineChartElementPath,
+              elementValueAs: ChartGroupElementValueInput,
+              groupTitleAs: ChartGroupTitleInput,
+            })}
+          />
+        ) : null}
+      </ChartSvg>
     </Frame>
   );
 }

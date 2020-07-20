@@ -7,10 +7,19 @@ import {
   PieSeries,
   Title,
 } from '@devexpress/dx-react-chart-material-ui';
-import { Palette } from '@devexpress/dx-react-chart';
 import styled from 'styled-components/macro';
 import { List } from '@material-ui/core';
-import { useAutoMemo } from 'hooks.macro';
+import { Palette } from '@devexpress/dx-react-chart';
+import { useResizeTargetRef } from '@seine/styles';
+
+import Item from '../layout/Item';
+
+import {
+  defaultChartFraction,
+  defaultChartPalette,
+  defaultPieChartLegend,
+  defaultPieChartUnits,
+} from './constants';
 
 type Props = {
   autoFormat: boolean,
@@ -26,18 +35,25 @@ type Props = {
   onAutoFormat?: ($Shape<Props>) => any,
 };
 
-const Text = styled.text.attrs(({ variant = 'body1' }) => ({ variant }))`
-  ${({
-    variant,
-    theme: {
-      typography: {
-        fontWeightLight,
-        [variant]: { fontWeight: defaultFontWeight = fontWeightLight, ...font },
+const Text = styled(Chart.Label).attrs(({ variant = 'body1' }) => ({
+  variant,
+}))`
+  && {
+    ${({
+      variant,
+      theme: {
+        typography: {
+          fontWeightLight,
+          [variant]: {
+            fontWeight: defaultFontWeight = fontWeightLight,
+            ...font
+          },
+        },
       },
-    },
-    fontWeight = defaultFontWeight,
-  }) => ({ ...font, fontWeight })};
-  fill: currentColor;
+      fontWeight = defaultFontWeight,
+    }) => ({ ...font, fontWeight })};
+    fill: currentColor;
+  }
 `;
 
 const LegendRoot = styled(List)`
@@ -57,10 +73,17 @@ function LegendMarker({ color }) {
     </svg>
   );
 }
+
 // eslint-disable-next-line
-function PieLabel({ units, legend, ...props }) {
+function PieLabel({
+  units,
+  legend,
+  maxTextLength = 15,
+  elementTitleAs: ElementTitle,
+  elementValueAs: ElementValue,
+  ...props
+}) {
   const {
-    index,
     argument,
     value,
     arg,
@@ -68,48 +91,41 @@ function PieLabel({ units, legend, ...props }) {
     maxRadius,
     startAngle,
     endAngle,
-    maxTextLength = 15,
+    index,
   } = props;
-  const x =
-    (maxRadius * Math.cos(startAngle + (endAngle - startAngle) / 2)) / 2;
-  const y =
-    (-maxRadius * Math.sin(startAngle + (endAngle - startAngle) / 2)) / 2;
+  const angle = startAngle + (endAngle - startAngle) / 2;
+
+  const x = ((2 * maxRadius) / 3) * Math.sin(angle);
+  const y = ((2 * maxRadius) / 3) * Math.cos(angle);
 
   return (
     <>
-      <defs>
-        <g id={`sliceText${index}`} transform={`translate(${arg} ${val})`}>
-          <Text
-            textAnchor={'middle'}
-            dominantBaseline={'baseline'}
-            variant={'h5'}
-            fontWeight={400}
-            y={y}
-            x={x}
-          >
-            {value}
-            {units}
-          </Text>
-          {!legend && (
-            <Text
-              textAnchor={'middle'}
-              dominantBaseline={'hanging'}
-              variant={'caption'}
-              y={y}
-              x={x}
-            >
-              {argument.slice(0, maxTextLength)}
-              {maxTextLength < argument.length && '...'}
-            </Text>
-          )}
-        </g>
-      </defs>
       <PieSeries.Point {...props} />
-      {useAutoMemo(
-        startAngle > Math.PI ? Array.from({ length: index + 1 }) : []
-      ).map((_, index) => (
-        <use href={`#sliceText${index}`} key={index} />
-      ))}
+      <ElementValue
+        textAnchor={'middle'}
+        dominantBaseline={legend ? 'middle' : 'baseline'}
+        variant={'h5'}
+        fontWeight={400}
+        x={arg + x}
+        y={val - y}
+        meta={{ value, index }}
+      >
+        {value}
+        {units}
+      </ElementValue>
+      {!legend && (
+        <ElementTitle
+          textAnchor={'middle'}
+          dominantBaseline={'hanging'}
+          variant={'caption'}
+          x={arg + x}
+          y={val - y}
+          meta={{ title: argument, index }}
+        >
+          {argument.slice(0, maxTextLength)}
+          {maxTextLength < argument.length && '...'}
+        </ElementTitle>
+      )}
     </>
   );
 }
@@ -137,23 +153,41 @@ const StyledTitle = styled.div.attrs(({ text: children, variant = 'h4' }) => ({
  * @returns {React.Node}
  */
 export default function PieChartContent({
+  as: Container = Item,
+  legend = defaultPieChartLegend,
+  palette = defaultChartPalette,
+  units = defaultPieChartUnits,
+  fraction = defaultChartFraction,
+  dx,
+  dy,
   elements,
-  palette,
-  units,
-  legend,
   title,
-  as: Container = Chart,
+  minValue,
+  maxValue,
+  paletteKey,
+  xAxis,
+  yAxis,
+  elementTitleAs = Text,
+  elementValueAs = Text,
+  ...itemProps
 }): Props {
   return (
-    <Container data={elements}>
+    <Container
+      as={Chart}
+      {...itemProps}
+      data={elements}
+      forwardRef={useResizeTargetRef()}
+    >
       <Palette scheme={palette} />
-      <Title text={title} textComponent={StyledTitle} />
       <PieSeries
+        name={'slices'}
         valueField={'value'}
         argumentField={'title'}
         legend={legend}
         units={units}
         pointComponent={PieLabel}
+        elementTitleAs={elementTitleAs}
+        elementValueAs={elementValueAs}
       />
       {!!legend && (
         <Legend
@@ -162,6 +196,7 @@ export default function PieChartContent({
           markerComponent={LegendMarker}
         />
       )}
+      <Title text={title} textComponent={StyledTitle} />
     </Container>
   );
 }

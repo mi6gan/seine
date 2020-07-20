@@ -45,19 +45,17 @@ export default function PieChartDesign() {
           />
         </SidebarGroup>
       </SidebarSection>
-      {editor.selection > -1 && (
-        <SidebarSection>
-          <Box
-            component={SidebarHeading}
-            display={'flex'}
-            justifyContent={'space-between'}
-          >
-            Element
-            <ChartStructureGroup />
-          </Box>
-          <ChartElementColorButton />
-        </SidebarSection>
-      )}
+      <SidebarSection>
+        <Box
+          component={SidebarHeading}
+          display={'flex'}
+          justifyContent={'space-between'}
+        >
+          Element
+          <ChartStructureGroup />
+        </Box>
+        {editor.selection > -1 && <ChartElementColorButton />}
+      </SidebarSection>
     </>
   );
 }

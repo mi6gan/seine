@@ -4,32 +4,30 @@ import { SvgInput } from '@seine/ui';
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import useDispatchElements from './useDispatchElements';
+
 type Props = {
   children?: any,
 };
 
 /**
- * @description Bar chart element title input for editor.
+ * @description Pie chart element title input for editor.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default React.forwardRef(function PieChartElementTitleInput(
-  {
-    dispatch,
-    dispatchElements,
-    editor,
-    meta: { index, title },
-    ...inputProps
-  }: Props,
-  ref
-) {
+export default function PieChartElementTitleInput({
+  meta: { title, index },
+  ...inputProps
+}) {
+  const dispatchElements = useDispatchElements();
+
   return (
     <SvgInput
       {...inputProps}
       multiline
-      height={ref ? ref.current.getHeight() : 'auto'}
-      ref={ref}
+      height={'auto'}
       value={title}
+      whiteSpace={'pre'}
       onChange={useAutoCallback(({ currentTarget }) =>
         dispatchElements({
           type: UPDATE_BLOCK_ELEMENT,
@@ -39,4 +37,4 @@ export default React.forwardRef(function PieChartElementTitleInput(
       )}
     />
   );
-});
+}

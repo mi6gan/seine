@@ -141,49 +141,47 @@ export default React.forwardRef(function Frame(
       ? 'child'
       : false;
   return (
-    <>
-      <StyledFrame
-        {...props}
-        ref={ref}
-        id={id}
-        item={!!item}
-        selected={
-          buffer
-            ? !item
-            : items.reduce((acc, item) => acc.add(item['parent_id']), new Set())
-                .size === 1 && items.some((item) => item.id === id)
-            ? 'self'
-            : selected
+    <StyledFrame
+      {...props}
+      ref={ref}
+      id={id}
+      item={!!item}
+      selected={
+        buffer
+          ? !item
+          : items.reduce((acc, item) => acc.add(item['parent_id']), new Set())
+              .size === 1 && items.some((item) => item.id === id)
+          ? 'self'
+          : selected
+      }
+      onClick={useAutoCallback((event) => {
+        if (!buffer) {
+          dispatch({
+            type: SELECT_BLOCK,
+            id,
+            ...(event.ctrlKey && {
+              modifier: selected ? 'sub' : 'add',
+            }),
+          });
         }
-        onClick={useAutoCallback((event) => {
-          if (!buffer) {
-            dispatch({
-              type: SELECT_BLOCK,
-              id,
-              ...(event.ctrlKey && {
-                modifier: selected ? 'sub' : 'add',
-              }),
-            });
-          }
-          event.preventDefault();
-          event.stopPropagation();
-          onClick && onClick(event);
-        })}
-      >
-        <InsertPlaceholder id={id} type={CREATE_LEFT_BLOCK}>
-          <ArrowLeft />
-        </InsertPlaceholder>
-        <InsertPlaceholder id={id} type={CREATE_TOP_BLOCK}>
-          <ArrowDropUp />
-        </InsertPlaceholder>
-        {children}
-        <InsertPlaceholder id={id} type={CREATE_BOTTOM_BLOCK}>
-          <ArrowDropDown />
-        </InsertPlaceholder>
-        <InsertPlaceholder id={id} type={CREATE_RIGHT_BLOCK}>
-          <ArrowRight />
-        </InsertPlaceholder>
-      </StyledFrame>
-    </>
+        event.preventDefault();
+        event.stopPropagation();
+        onClick && onClick(event);
+      })}
+    >
+      <InsertPlaceholder id={id} type={CREATE_LEFT_BLOCK}>
+        <ArrowLeft />
+      </InsertPlaceholder>
+      <InsertPlaceholder id={id} type={CREATE_TOP_BLOCK}>
+        <ArrowDropUp />
+      </InsertPlaceholder>
+      {children}
+      <InsertPlaceholder id={id} type={CREATE_BOTTOM_BLOCK}>
+        <ArrowDropDown />
+      </InsertPlaceholder>
+      <InsertPlaceholder id={id} type={CREATE_RIGHT_BLOCK}>
+        <ArrowRight />
+      </InsertPlaceholder>
+    </StyledFrame>
   );
 });

@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import { chartTypes } from '@seine/core';
-import { useResizeTargetRef } from '@seine/styles';
 
 import { Item } from '../layout';
 
@@ -20,31 +19,27 @@ import useChartFormat from './useChartFormat';
  * @returns {React.Node}
  */
 export default function Chart({
-  children,
   kind,
   onClick,
   className,
   ...initialChartProps
 }: Props) {
   const chartProps = useChartFormat({ kind, ...initialChartProps });
-  const resizeTargetRef = useResizeTargetRef();
 
-  return (
-    <Item {...chartProps} ref={resizeTargetRef}>
-      {kind === chartTypes.PIE ? (
-        <PieChartContent {...chartProps} />
-      ) : (
-        <ChartSvg {...chartProps} ref={resizeTargetRef}>
-          <ChartSvgDefs />
-          {kind === chartTypes.BAR ? (
-            <BarChartContent {...chartProps} />
-          ) : kind === chartTypes.COLUMN ? (
-            <ColumnChartContent {...chartProps} />
-          ) : kind === chartTypes.LINE ? (
-            <LineChartContent {...chartProps} />
-          ) : null}
-        </ChartSvg>
-      )}
+  return kind === chartTypes.PIE ? (
+    <PieChartContent {...chartProps} />
+  ) : (
+    <Item {...chartProps}>
+      <ChartSvg {...chartProps}>
+        <ChartSvgDefs />
+        {kind === chartTypes.BAR ? (
+          <BarChartContent {...chartProps} />
+        ) : kind === chartTypes.COLUMN ? (
+          <ColumnChartContent {...chartProps} />
+        ) : kind === chartTypes.LINE ? (
+          <LineChartContent {...chartProps} />
+        ) : null}
+      </ChartSvg>
     </Item>
   );
 }
