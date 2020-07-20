@@ -2,6 +2,9 @@
 import * as React from 'react';
 import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 
+import useDispatchElements from './useDispatchElements';
+import useChartBlock from './useChartBlock';
+
 type Props = {
   children?: any,
 };
@@ -12,12 +15,11 @@ type Props = {
  * @returns {React.Node}
  */
 export default function LineChartElementPath({
-  dispatch,
-  dispatchElements,
-  editor,
   meta: { index },
   ...pathProps
 }: Props) {
+  const { editor } = useChartBlock();
+  const dispatchElements = useDispatchElements();
   return (
     <g>
       <path {...pathProps} />

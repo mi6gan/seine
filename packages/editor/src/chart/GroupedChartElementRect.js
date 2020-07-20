@@ -3,6 +3,9 @@ import * as React from 'react';
 import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import useChartBlock from './useChartBlock';
+import useDispatchElements from './useDispatchElements';
+
 type Props = {
   children?: any,
 };
@@ -13,12 +16,11 @@ type Props = {
  * @returns {React.Node}
  */
 export default function GroupedChartElementRect({
-  dispatch,
-  dispatchElements,
-  editor,
   meta: { index },
   ...rectProps
 }: Props) {
+  const { editor } = useChartBlock();
+  const dispatchElements = useDispatchElements();
   return (
     <g>
       <rect

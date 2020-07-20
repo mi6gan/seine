@@ -17,6 +17,7 @@ import {
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 import { Chart } from '@devexpress/dx-react-chart-material-ui';
+import { useResizeTargetRef } from '@seine/styles';
 
 import Frame from '../ui/Frame';
 import { useSelectedLayoutItems } from '../store';
@@ -82,6 +83,7 @@ export default function ChartEditor({
   const { id } = chartProps;
   const { item } = useSelectedLayoutItems();
   const selectedBlock = item && item.id === id ? item : null;
+  const resizeTargetRef = useResizeTargetRef();
 
   return kind === chartTypes.PIE ? (
     <PieChartContent
@@ -94,7 +96,7 @@ export default function ChartEditor({
     />
   ) : (
     <Frame {...chartProps}>
-      <ChartSvg {...chartProps}>
+      <ChartSvg {...chartProps} ref={resizeTargetRef}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent

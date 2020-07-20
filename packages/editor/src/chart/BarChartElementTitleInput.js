@@ -4,6 +4,8 @@ import { SvgInput } from '@seine/ui';
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import useDispatchElements from './useDispatchElements';
+
 type Props = {
   children?: any,
 };
@@ -14,15 +16,10 @@ type Props = {
  * @returns {React.Node}
  */
 export default React.forwardRef(function BarChartElementTitleInput(
-  {
-    dispatch,
-    dispatchElements,
-    editor,
-    meta: { index, title },
-    ...inputProps
-  }: Props,
+  { meta: { index, title }, ...inputProps }: Props,
   ref
 ) {
+  const dispatchElements = useDispatchElements();
   return (
     <SvgInput
       {...inputProps}
