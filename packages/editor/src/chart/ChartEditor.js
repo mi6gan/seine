@@ -14,7 +14,7 @@ import {
   PieChart,
   useChartFormat,
 } from '@seine/content';
-import { useAutoCallback } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 import { useResizeTargetRef } from '@seine/styles';
 
@@ -36,10 +36,24 @@ function SelectionFrame({ children, ...frame }) {
   const selectionRef = React.useRef([]);
   const { current: selection } = selectionRef;
 
-  const frameBlocksSelector = useAutoCallback(({ blocks }) =>
-    blocks.filter((block) => block.id === frame.id)
+  const dispatchElements = useChartDispatchElements(
+    useAutoCallback(({ blocks }) =>
+      blocks.filter((block) => block.id === frame.id)
+    )
   );
-  const dispatchElements = useChartDispatchElements(frameBlocksSelector);
+
+  const dispatchSelection = useAutoCallback(() => {
+    for (const target of selection) {
+      dispatchElements({
+        type: SELECT_BLOCK_ELEMENT,
+        index: target.point,
+      });
+    }
+  });
+
+  useAutoEffect(() => {
+    dispatchSelection();
+  });
 
   return (
     <Frame {...frame}>
@@ -53,12 +67,7 @@ function SelectionFrame({ children, ...frame }) {
             });
           }
           selectionRef.current = targets;
-          for (const target of targets) {
-            dispatchElements({
-              type: SELECT_BLOCK_ELEMENT,
-              index: target.point,
-            });
-          }
+          dispatchSelection();
         })}
       />
       <SelectionState selection={selection} />
@@ -81,9 +90,11 @@ export default function ChartEditor(props: Props) {
   return kind === chartTypes.PIE ? (
     <PieChart
       {...chart}
+      {...(selectedBlock && {
+        elementTitleAs: PieChartElementTitleInput,
+        elementValueAs: PieChartElementValueInput,
+      })}
       as={SelectionFrame}
-      elementTitleAs={PieChartElementTitleInput}
-      elementValueAs={PieChartElementValueInput}
     />
   ) : (
     <Frame {...chart}>
