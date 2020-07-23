@@ -15,6 +15,7 @@ import ChartPaletteSelect from './ChartPaletteSelect';
 import useChartBlock from './useChartBlock';
 import ChartElementColorButton from './ChartElementColorButton';
 import ChartStructureGroup from './ChartStructureGroup';
+import ChartFractionInput from './ChartFractionInput';
 
 /**
  * @description Pie chart design panel.
@@ -31,6 +32,7 @@ export default function PieChartDesign() {
       <SidebarSection>
         <SidebarHeading>Chart</SidebarHeading>
         <ChartUnitsInput />
+        <ChartFractionInput />
         <ChartPaletteSelect />
         <SidebarGroup alignItems={'center'}>
           <SidebarLabel>legend</SidebarLabel>

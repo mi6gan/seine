@@ -6,12 +6,12 @@ import {
   SELECT_BLOCK_ELEMENT,
 } from '@seine/core';
 import {
+  PieChart,
   BarChartContent,
   ChartSvg,
   ChartSvgDefs,
   ColumnChartContent,
   LineChartContent,
-  PieChart,
   useChartFormat,
 } from '@seine/content';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
@@ -21,15 +21,15 @@ import { useResizeTargetRef } from '@seine/styles';
 import Frame from '../ui/Frame';
 import { useSelectedLayoutItems } from '../store';
 
-import type { ChartEditorProps as Props } from './types';
-import BarChartElementTitleInput from './BarChartElementTitleInput';
-import GroupedChartElementRect from './GroupedChartElementRect';
-import ChartGroupElementValueInput from './ChartGroupElementValueInput';
-import ChartGroupTitleInput from './ChartGroupTitleInput';
-import LineChartElementPath from './LineChartElementPath';
-import useChartDispatchElements from './useChartDispatchElements';
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
+import BarChartElementTitleInput from './BarChartElementTitleInput';
+import ChartGroupElementValueInput from './ChartGroupElementValueInput';
+import ChartGroupTitleInput from './ChartGroupTitleInput';
+import GroupedChartElementRect from './GroupedChartElementRect';
+import LineChartElementPath from './LineChartElementPath';
+import useChartDispatchElements from './useChartDispatchElements';
+import type { ChartEditorProps as Props } from './types';
 
 // eslint-disable-next-line
 function SelectionFrame({ children, ...frame }) {

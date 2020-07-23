@@ -7,11 +7,16 @@ import {
   createTitleIdentityBlockElements,
 } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
+import styled from 'styled-components/macro';
+import { BarChart as ColumnChartIcon } from '@material-ui/icons';
 
-import BarChartIcon from '../chart/BarChartIcon';
 import { EditorContext } from '../store';
 import useBlocksBuffer from '../store/useBlocksBuffer';
 import ToolbarButton from '../ui/ToolbarButton';
+
+const BarChartIcon = styled(ColumnChartIcon).attrs({
+  transform: 'rotate(90)',
+})``;
 
 // eslint-disable-next-line
 export default function BarChartIconButton() {

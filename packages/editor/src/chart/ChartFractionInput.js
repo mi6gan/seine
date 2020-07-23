@@ -1,54 +1,41 @@
 // @flow
 import * as React from 'react';
-import type {
-  BlockId,
-  BlocksAction,
-  ChartBody,
-  ChartFormat,
-} from '@seine/core';
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { defaultChartFormat, defaultChartFraction } from '@seine/content';
-import styled from 'styled-components/macro';
-import { TextField } from '@material-ui/core';
+import { defaultChartFraction } from '@seine/content';
+import { useAutoCallback } from 'hooks.macro';
 
-type Props = {
-  body: ChartBody,
-  dispatch: (BlocksAction) => any,
-  format: ChartFormat,
-  id: BlockId,
-};
+import SidebarGroup from '../ui/SidebarGroup';
+import SidebarLabel from '../ui/SidebarLabel';
+import SidebarInput from '../ui/SidebarInput';
+import { useBlocksDispatch } from '../store';
 
-const Input = styled(TextField)`
-  && {
-    max-width: 4em;
-  }
-`;
+import useChartBlock from './useChartBlock';
 
 /**
  * @description Input that changes minimum value (of y axis).
- * @param {Props} props
  * @returns {React.Node}
  */
-export default function ChartFractionInput({
-  dispatch,
-  format: { fraction = defaultChartFraction } = defaultChartFormat,
-}: Props) {
+export default function ChartFractionInput() {
+  const {
+    id,
+    format: { fraction = defaultChartFraction },
+  } = useChartBlock();
+  const dispatch = useBlocksDispatch();
   return (
-    <Input
-      onChange={React.useCallback(
-        ({ currentTarget }) =>
+    <SidebarGroup>
+      <SidebarLabel>fraction</SidebarLabel>
+      <SidebarInput
+        disabled={!id}
+        value={fraction || ''}
+        onChange={useAutoCallback((event) =>
           dispatch({
+            id,
             type: UPDATE_BLOCK_FORMAT,
-            format: { fraction: +currentTarget.value },
-          }),
-        [dispatch]
-      )}
-      InputProps={{
-        placeholder: 'fraction',
-      }}
-      type={'number'}
-      margin={'dense'}
-      value={fraction || ''}
-    />
+            format: { fraction: +event.currentTarget.value },
+          })
+        )}
+        type={'number'}
+      />
+    </SidebarGroup>
   );
 }

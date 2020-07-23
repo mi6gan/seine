@@ -20,6 +20,7 @@ import {
 } from './constants';
 import ChartLegend from './ChartLegend';
 import ChartLabel from './ChartLabel';
+import ChartValue from './ChartValue';
 
 type Props = {
   elements: ChartElement[],
@@ -35,6 +36,7 @@ type Props = {
 function PieLabel({
   units,
   legend,
+  fraction,
   maxTextLength = 15,
   elementTitleAs: ElementTitle,
   elementValueAs: ElementValue,
@@ -73,7 +75,7 @@ function PieLabel({
         color={'common.white'}
         meta={{ value, index }}
       >
-        {value}
+        <ChartValue fraction={fraction}>{value}</ChartValue>
         {units}
       </ChartLabel>
       <ChartLabel
@@ -116,7 +118,7 @@ const StyledTitle = styled(Title).attrs(
  * @returns {React.Node}
  */
 export default function PieChart({
-  as: ChartItem = Item,
+  as: Container = Item,
 
   legend = defaultPieChartLegend,
   palette = defaultChartPalette,
@@ -141,7 +143,7 @@ export default function PieChart({
   ...itemProps
 }): Props {
   return (
-    <ChartItem as={Chart} data={elements} {...itemProps}>
+    <Container as={Chart} data={elements} {...itemProps}>
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
@@ -149,12 +151,13 @@ export default function PieChart({
         argumentField={'title'}
         legend={legend}
         units={units}
+        fraction={fraction}
         pointComponent={PieLabel}
         elementTitleAs={elementTitleAs}
         elementValueAs={elementValueAs}
       />
       {!!legend && <ChartLegend />}
       <StyledTitle text={title} />
-    </ChartItem>
+    </Container>
   );
 }

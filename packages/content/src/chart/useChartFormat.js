@@ -1,4 +1,5 @@
 // @flow
+import type { ChartFormat } from '@seine/core';
 import { chartTypes } from '@seine/core';
 import { useAutoMemo } from 'hooks.macro';
 
@@ -11,7 +12,9 @@ import {
 } from './constants';
 
 // eslint-disable-next-line
-export default function useChartFormat(chartProps = defaultChartFormat) {
+export default function useChartFormat(
+  chartProps = defaultChartFormat
+): $Shape<ChartFormat> {
   return useAutoMemo({
     ...(chartProps.kind === chartTypes.PIE
       ? defaultPieChartFormat
