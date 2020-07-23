@@ -3,7 +3,7 @@ import * as React from 'react';
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import { useEditorDispatch } from '../store';
+import { useBlocksDispatch } from '../store';
 import SidebarInput from '../ui/SidebarInput';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
@@ -19,7 +19,7 @@ export default function ChartUnitsInput() {
     id,
     format: { units },
   } = useChartBlock();
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   return (
     <SidebarGroup>
       <SidebarLabel>units</SidebarLabel>

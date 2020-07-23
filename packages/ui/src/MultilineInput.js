@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 import Textarea from './Textarea';
 
-const MultilineInput = styled(Textarea).attrs(() => ({
+const MultilineInput = styled(Textarea).attrs({
   color: 'inherit',
   fontSize: 'inherit',
   fontWeight: 'inherit',
@@ -10,7 +10,7 @@ const MultilineInput = styled(Textarea).attrs(() => ({
   lineHeight: 'inherit',
   textAlign: 'inherit',
   width: '100%',
-}))`
+})`
   && {
     background: none;
     border: none;

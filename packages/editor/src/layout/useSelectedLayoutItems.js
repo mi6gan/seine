@@ -3,14 +3,14 @@ import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 import { blockTypes } from '@seine/core';
 
-import useSelectedBlocks from './useSelectedBlocks';
+import useBlocksSelector from '../store/useBlocksSelector';
 
 /**
  * @description Default content editor.
  * @returns {React.Node}
  */
 export default function useSelectedLayoutItems() {
-  const blocks = useSelectedBlocks();
+  const blocks = useBlocksSelector();
 
   const layouts = useAutoMemo(
     blocks.filter(({ type }) => type === blockTypes.LAYOUT)

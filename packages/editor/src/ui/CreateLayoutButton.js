@@ -11,8 +11,8 @@ import {
   SET_BLOCK_PARENT,
 } from '@seine/core';
 
-import useSelectedLayoutItems from '../store/useSelectedLayoutItems';
-import { useEditorDispatch } from '../store';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
+import { useBlocksDispatch } from '../store';
 
 // eslint-disable-next-line
 export default function CreateLayoutButton({
@@ -20,7 +20,7 @@ export default function CreateLayoutButton({
   children,
   ...buttonProps
 }) {
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const { items } = useSelectedLayoutItems();
   const parentIds = items.reduce(
     (acc, item) => acc.add(item['parent_id']),

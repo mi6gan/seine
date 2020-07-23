@@ -13,7 +13,7 @@ import {
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 
 import Frame from '../ui/Frame';
-import { useEditorDispatch, useSelectedLayoutItems } from '../store';
+import { useBlocksDispatch, useSelectedLayoutItems } from '../store';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
@@ -47,7 +47,7 @@ export default function RichTextEditor({
 }: Props) {
   const { item } = useSelectedLayoutItems();
   const selected = !!(item && item.id === id);
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
 
   const editorRef = React.useRef<?Editor>(null);
 

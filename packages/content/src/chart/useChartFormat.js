@@ -11,7 +11,7 @@ import {
 } from './constants';
 
 // eslint-disable-next-line
-export default function useChartFormat(chartProps) {
+export default function useChartFormat(chartProps = defaultChartFormat) {
   return useAutoMemo({
     ...(chartProps.kind === chartTypes.PIE
       ? defaultPieChartFormat

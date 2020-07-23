@@ -24,9 +24,9 @@ import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
 import LayoutDesign from './layout/LayoutDesign';
-import { useEditorDispatch, useEditorSelector } from './store';
+import { useBlocksDispatch, useBlocksSelector } from './store';
 import EditorProvider from './store/EditorProvider';
-import useSelectedLayoutItems from './store/useSelectedLayoutItems';
+import useSelectedLayoutItems from './layout/useSelectedLayoutItems';
 import { ChartDesign } from './chart';
 import CreateLayoutButton from './ui/CreateLayoutButton';
 import DeleteBlockButton from './ui/DeleteBlockButton';
@@ -80,8 +80,8 @@ function DefaultEditor({
 
   const toolCursorRef = React.useRef(null);
 
-  const dispatch = useEditorDispatch();
-  const { blocks, selection, device } = useEditorSelector();
+  const dispatch = useBlocksDispatch();
+  const { blocks, selection, device } = useBlocksSelector((state) => state);
 
   useAutoEffect(() => {
     onChange(

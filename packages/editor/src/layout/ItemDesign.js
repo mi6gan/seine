@@ -5,8 +5,8 @@ import { useAutoCallback } from 'hooks.macro';
 
 import SidebarSection from '../ui/SidebarSection';
 import {
-  useEditorDispatch,
-  useEditorSelector,
+  useBlocksDispatch,
+  useBlocksSelector,
   useSelectedLayoutItems,
 } from '../store';
 import SidebarLabel from '../ui/SidebarLabel';
@@ -18,9 +18,9 @@ import SidebarGroup from '../ui/SidebarGroup';
  * @returns {React.Node}
  */
 export default function ItemDesign() {
-  const device = useEditorSelector((state) => state.device);
+  const device = useBlocksSelector((state) => state.device);
   const { item } = useSelectedLayoutItems();
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const {
     minWidth = defaultItemFormat.minWidth,
     maxWidth = defaultItemFormat.maxWidth,

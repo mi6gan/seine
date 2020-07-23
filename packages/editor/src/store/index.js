@@ -1,6 +1,5 @@
 // @flow
 export { default as EditorContext } from './EditorContext';
-export { default as useEditorDispatch } from './useEditorDispatch';
-export { default as useEditorSelector } from './useEditorSelector';
-export { default as useSelectedBlocks } from './useSelectedBlocks';
-export { default as useSelectedLayoutItems } from './useSelectedLayoutItems';
+export { default as useBlocksDispatch } from './useBlocksDispatch';
+export { default as useBlocksSelector } from './useBlocksSelector';
+export { default as useSelectedLayoutItems } from '../layout/useSelectedLayoutItems';

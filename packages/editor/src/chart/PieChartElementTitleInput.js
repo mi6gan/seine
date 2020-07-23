@@ -4,7 +4,7 @@ import { SvgInput } from '@seine/ui';
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import useDispatchElements from './useDispatchElements';
+import useChartDispatchElements from './useChartDispatchElements';
 
 type Props = {
   children?: any,
@@ -19,7 +19,7 @@ export default function PieChartElementTitleInput({
   meta: { title, index },
   ...inputProps
 }) {
-  const dispatchElements = useDispatchElements();
+  const dispatchElements = useChartDispatchElements();
 
   return (
     <SvgInput

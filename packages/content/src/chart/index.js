@@ -7,7 +7,7 @@ export { default as ColumnChartContent } from './ColumnChartContent';
 
 export { default as LineChartContent } from './LineChartContent';
 
-export { default as PieChartContent } from './PieChartContent';
+export { default as PieChart } from './PieChart';
 
 export { default as ChartSvg } from './ChartSvg';
 

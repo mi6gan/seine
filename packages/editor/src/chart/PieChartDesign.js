@@ -8,7 +8,7 @@ import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
-import { useEditorDispatch } from '../store';
+import { useBlocksDispatch } from '../store';
 
 import ChartUnitsInput from './ChartUnitsInput';
 import ChartPaletteSelect from './ChartPaletteSelect';
@@ -25,7 +25,7 @@ export default function PieChartDesign() {
     editor,
     format: { legend },
   } = useChartBlock();
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   return (
     <>
       <SidebarSection>

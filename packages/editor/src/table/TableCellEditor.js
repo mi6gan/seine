@@ -14,7 +14,7 @@ import { Box } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 import { useResizeTargetRef } from '@seine/styles';
 
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../store';
 
 type Props = TableProps & BlockEditor;
 
@@ -73,7 +73,7 @@ export default function TableCellEditor({
   children: text,
   ...cellProps
 }: Props) {
-  const selected = useSelectedBlocks().find(
+  const selected = useBlocksSelector().find(
     (block) => block.type === blockTypes.TABLE
   );
   const header = selected && selected.body.header;
@@ -81,7 +81,7 @@ export default function TableCellEditor({
   const row = rows && (rowIndex === -1 ? header : rows && rows[rowIndex]);
   const cell = row && row[columnIndex];
   const editor = selected && selected.editor;
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
 
   return (
     <TableCell {...cellProps}>

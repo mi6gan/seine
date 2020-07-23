@@ -7,7 +7,7 @@ import { Item } from '../layout';
 import BarChartContent from './BarChartContent';
 import ColumnChartContent from './ColumnChartContent';
 import LineChartContent from './LineChartContent';
-import PieChartContent from './PieChartContent';
+import PieChart from './PieChart';
 import type { ChartProps as Props } from './types';
 import ChartSvg from './ChartSvg';
 import ChartSvgDefs from './ChartSvgDefs';
@@ -27,7 +27,7 @@ export default function Chart({
   const chartProps = useChartFormat({ kind, ...initialChartProps });
 
   return kind === chartTypes.PIE ? (
-    <PieChartContent {...chartProps} />
+    <PieChart {...chartProps} />
   ) : (
     <Item {...chartProps}>
       <ChartSvg {...chartProps}>

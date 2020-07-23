@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 import Input from './Input';
 
-const InlineInput = styled(Input).attrs(() => ({
+const InlineInput = styled(Input).attrs({
   color: 'inherit',
   fontSize: 'inherit',
   fontWeight: 'inherit',
@@ -10,7 +10,7 @@ const InlineInput = styled(Input).attrs(() => ({
   lineHeight: 'inherit',
   textAlign: 'inherit',
   width: '100%',
-}))`
+})`
   && {
     background: none;
     border: none;

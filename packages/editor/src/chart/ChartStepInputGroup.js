@@ -4,11 +4,7 @@ import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { defaultBarChartFormat } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 
-import {
-  useEditorDispatch,
-  useEditorSelector,
-  useSelectedBlocks,
-} from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../store';
 import SidebarInput from '../ui/SidebarInput';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
@@ -18,15 +14,15 @@ import SidebarGroup from '../ui/SidebarGroup';
  * @returns {React.Node}
  */
 export default function ChartStepInputGroup({ hideX = false, hideY = false }) {
-  const device = useEditorSelector((state) => state.device);
+  const device = useBlocksSelector((state) => state.device);
   const block =
-    useSelectedBlocks().find(({ type }) => type === blockTypes.CHART) || {};
+    useBlocksSelector().find(({ type }) => type === blockTypes.CHART) || {};
   const { id } = block;
   const { dx, dy } =
     (block && block.format && block.format[device]) ||
     block.format ||
     defaultBarChartFormat;
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
 
   return (
     <SidebarGroup>

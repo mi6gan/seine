@@ -6,13 +6,13 @@ import { TableChart as TableIcon } from '@material-ui/icons';
 import { defaultTableCell } from '@seine/content';
 
 import { EditorContext } from '../store';
-import useEditorBuffer from '../store/useEditorBuffer';
+import useBlocksBuffer from '../store/useBlocksBuffer';
 import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line
 export default function TableIconButton() {
   const { setBuffer } = React.useContext(EditorContext);
-  const buffer = useEditorBuffer();
+  const buffer = useBlocksBuffer();
   const selected = buffer && buffer.type === blockTypes.TABLE;
 
   return (

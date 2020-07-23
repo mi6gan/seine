@@ -5,17 +5,17 @@ import { useAutoMemo } from 'hooks.macro';
 import { ChartLegend, defaultChartLegend } from '@seine/content';
 import { InlineInput } from '@seine/ui';
 
-import { useSelectedBlocks } from '../store';
+import { useBlocksSelector } from '../store';
 
-import useDispatchElements from './useDispatchElements';
+import useChartDispatchElements from './useChartDispatchElements';
 
 /**
  * @description Editor of bar chart titles.
  * @returns {React.Node}
  */
 export default function ChartDescriptionEditor() {
-  const dispatchElements = useDispatchElements();
-  const selected = useSelectedBlocks().find(
+  const dispatchElements = useChartDispatchElements();
+  const selected = useBlocksSelector().find(
     (block) => block.type === blockTypes.CHART
   );
   const legend = selected && (selected.format.legend || defaultChartLegend);

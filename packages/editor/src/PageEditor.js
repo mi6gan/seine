@@ -6,8 +6,8 @@ import { Page } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { EditorContext, useEditorDispatch } from './store';
-import useEditorBuffer from './store/useEditorBuffer';
+import { EditorContext, useBlocksDispatch } from './store';
+import useBlocksBuffer from './store/useBlocksBuffer';
 
 type Props = BlockEditor & Block;
 
@@ -34,8 +34,8 @@ const StyledPage = styled(Page)`
  * @returns {React.Node}
  */
 export default function PageEditor({ id, ...pageProps }: Props) {
-  const dispatch = useEditorDispatch();
-  const buffer = useEditorBuffer();
+  const dispatch = useBlocksDispatch();
+  const buffer = useBlocksBuffer();
   const { setBuffer } = React.useContext(EditorContext);
 
   return (

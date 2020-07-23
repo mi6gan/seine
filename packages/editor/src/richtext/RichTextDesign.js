@@ -25,11 +25,7 @@ import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
 import ToolbarToggleButtonGroup from '../ui/ToolbarToggleButtonGroup';
 import ToolbarToggleButton from '../ui/ToolbarToggleButton';
-import {
-  useEditorDispatch,
-  useEditorSelector,
-  useSelectedBlocks,
-} from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../store';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 
@@ -49,7 +45,7 @@ const SvgText = styled.text.attrs({
  * @returns {React.Node}
  */
 export default function RichTextDesign() {
-  const textAlignment = useEditorSelector(
+  const textAlignment = useBlocksSelector(
     ({ format = defaultDraftFormat }) =>
       (format && format.textAlignment) || defaultDraftFormat.textAlignment
   );
@@ -58,8 +54,8 @@ export default function RichTextDesign() {
       state: editorState = defaultDraftEditor.state,
     } = defaultDraftEditor,
   } =
-    useSelectedBlocks().find(({ type }) => type === blockTypes.RICH_TEXT) || {};
-  const dispatch = useEditorDispatch();
+    useBlocksSelector().find(({ type }) => type === blockTypes.RICH_TEXT) || {};
+  const dispatch = useBlocksDispatch();
 
   const blockType = useAutoMemo(
     editorState &&

@@ -18,9 +18,9 @@ import {
   ArrowRight,
 } from '@material-ui/icons';
 
-import { EditorContext, useEditorDispatch } from '../store';
-import useSelectedLayoutItems from '../store/useSelectedLayoutItems';
-import useEditorBuffer from '../store/useEditorBuffer';
+import { EditorContext, useBlocksDispatch } from '../store';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
+import useBlocksBuffer from '../store/useBlocksBuffer';
 
 export const StyledFrame = styled(Item)`
   transition: ${({ theme }) =>
@@ -104,8 +104,8 @@ const StyledInsertPlaceholder = styled(Box).attrs({
 
 // eslint-disable-next-line
 function InsertPlaceholder({ id, type, ...props }) {
-  const dispatch = useEditorDispatch();
-  const buffer = useEditorBuffer();
+  const dispatch = useBlocksDispatch();
+  const buffer = useBlocksBuffer();
   const { setBuffer } = React.useContext(EditorContext);
   const createBlock = useAutoCallback((event) => {
     setBuffer(null);
@@ -127,12 +127,9 @@ function InsertPlaceholder({ id, type, ...props }) {
 }
 
 // eslint-disable-next-line
-export default React.forwardRef(function Frame(
-  { children, id, onClick, ...props },
-  ref
-) {
-  const dispatch = useEditorDispatch();
-  const buffer = useEditorBuffer();
+export default function Frame({ children, id, onClick, ...props }) {
+  const dispatch = useBlocksDispatch();
+  const buffer = useBlocksBuffer();
   const { item, items } = useSelectedLayoutItems();
   const selected =
     item && item.id === id
@@ -143,7 +140,6 @@ export default React.forwardRef(function Frame(
   return (
     <StyledFrame
       {...props}
-      ref={ref}
       id={id}
       item={!!item}
       selected={
@@ -164,9 +160,9 @@ export default React.forwardRef(function Frame(
             }),
           });
         }
+        onClick && onClick(event);
         event.preventDefault();
         event.stopPropagation();
-        onClick && onClick(event);
       })}
     >
       <InsertPlaceholder id={id} type={CREATE_LEFT_BLOCK}>
@@ -184,4 +180,4 @@ export default React.forwardRef(function Frame(
       </InsertPlaceholder>
     </StyledFrame>
   );
-});
+}

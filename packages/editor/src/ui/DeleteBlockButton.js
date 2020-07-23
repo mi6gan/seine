@@ -4,8 +4,8 @@ import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 
-import useSelectedLayoutItems from '../store/useSelectedLayoutItems';
-import { useEditorDispatch } from '../store';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
+import { useBlocksDispatch } from '../store';
 
 // eslint-disable-next-line
 export default function DeleteBlockButton({
@@ -13,7 +13,7 @@ export default function DeleteBlockButton({
   children,
   ...buttonProps
 }) {
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const { items } = useSelectedLayoutItems();
   return (
     <Button

@@ -1,21 +1,30 @@
+// @flow
+import { defaultChartFormat, useChartFormat } from '@seine/content';
 import { blockTypes } from '@seine/core';
-import { useChartFormat } from '@seine/content';
+import { useAutoMemo } from 'hooks.macro';
 
-import { useEditorSelector, useSelectedBlocks } from '../store';
+import { useBlocksSelector } from '../store';
+import { defaultBlocksSelector } from '../store/useBlocksSelector';
 
 import { defaultChartEditor } from './constants';
 
+const deviceSelector = (state) => state.device;
+
 // eslint-disable-next-line
-export default function useChartBlock() {
-  const device = useEditorSelector((state) => state.device);
-  const block = useSelectedBlocks().find(
+export default function useChartBlock(blocksSelector = defaultBlocksSelector) {
+  const device = useBlocksSelector(deviceSelector);
+  const [block = {}] = useBlocksSelector(blocksSelector).filter(
     ({ type }) => type === blockTypes.CHART
   );
-  return {
+  const {
+    format: { [device]: deviceFormat, ...defaultFormat } = defaultChartFormat,
+    editor = defaultChartEditor,
+  } = block;
+
+  const format = useChartFormat({ ...defaultFormat, ...deviceFormat });
+  return useAutoMemo({
     ...block,
-    editor: block.editor || defaultChartEditor,
-    format: useChartFormat(
-      (block && block.format && block.format[device]) || block.format || {}
-    ),
-  };
+    format,
+    editor,
+  });
 }

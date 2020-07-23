@@ -11,12 +11,11 @@ import {
   ChartSvgDefs,
   ColumnChartContent,
   LineChartContent,
-  PieChartContent,
+  PieChart,
   useChartFormat,
 } from '@seine/content';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
-import { Chart } from '@devexpress/dx-react-chart-material-ui';
 import { useResizeTargetRef } from '@seine/styles';
 
 import Frame from '../ui/Frame';
@@ -28,34 +27,33 @@ import GroupedChartElementRect from './GroupedChartElementRect';
 import ChartGroupElementValueInput from './ChartGroupElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
 import LineChartElementPath from './LineChartElementPath';
-import useDispatchElements from './useDispatchElements';
-import useChartBlock from './useChartBlock';
+import useChartDispatchElements from './useChartDispatchElements';
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
 
 // eslint-disable-next-line
-function SelectableChart({ children, ...props }) {
-  const dispatchElements = useDispatchElements();
-  const targetRef = React.useRef(null);
-  const { current: target } = targetRef;
-  const {
-    editor: { selection },
-  } = useChartBlock();
-  const hasSelection = selection > -1;
+function SelectionFrame({ children, ...frame }) {
+  const selectionRef = React.useRef([]);
+  const { current: selection } = selectionRef;
+
+  const frameBlocksSelector = useAutoCallback(({ blocks }) =>
+    blocks.filter((block) => block.id === frame.id)
+  );
+  const dispatchElements = useChartDispatchElements(frameBlocksSelector);
 
   return (
-    <Frame {...props} as={Chart}>
+    <Frame {...frame}>
       {children}
       <EventTracker
-        onClick={useAutoCallback(({ targets: [target = null] }) => {
-          if (target === null && targetRef.current) {
+        onClick={useAutoCallback(({ targets }) => {
+          for (const target of selection) {
             dispatchElements({
               type: DESELECT_BLOCK_ELEMENT,
-              index: targetRef.current.point,
+              index: target.point,
             });
           }
-          targetRef.current = target;
-          if (target) {
+          selectionRef.current = targets;
+          for (const target of targets) {
             dispatchElements({
               type: SELECT_BLOCK_ELEMENT,
               index: target.point,
@@ -63,9 +61,7 @@ function SelectableChart({ children, ...props }) {
           }
         })}
       />
-      <SelectionState
-        selection={useAutoMemo(hasSelection && target ? [target] : [])}
-      />
+      <SelectionState selection={selection} />
     </Frame>
   );
 }
@@ -75,32 +71,27 @@ function SelectableChart({ children, ...props }) {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ChartEditor({
-  kind = chartTypes.BAR,
-  ...initialChartProps
-}: Props) {
-  const chartProps = useChartFormat({ kind, ...initialChartProps });
-  const { id } = chartProps;
+export default function ChartEditor(props: Props) {
+  const { kind, ...chart } = useChartFormat(props);
   const { item } = useSelectedLayoutItems();
-  const selectedBlock = item && item.id === id ? item : null;
   const resizeTargetRef = useResizeTargetRef();
 
+  const selectedBlock = item && item.id === chart.id ? item : null;
+
   return kind === chartTypes.PIE ? (
-    <PieChartContent
-      {...chartProps}
-      as={selectedBlock ? SelectableChart : Frame}
-      {...(selectedBlock && {
-        elementTitleAs: PieChartElementTitleInput,
-        elementValueAs: PieChartElementValueInput,
-      })}
+    <PieChart
+      {...chart}
+      as={SelectionFrame}
+      elementTitleAs={PieChartElementTitleInput}
+      elementValueAs={PieChartElementValueInput}
     />
   ) : (
-    <Frame {...chartProps}>
-      <ChartSvg {...chartProps} ref={resizeTargetRef}>
+    <Frame {...chart}>
+      <ChartSvg {...chart} ref={resizeTargetRef}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
           <BarChartContent
-            {...chartProps}
+            {...chart}
             {...(selectedBlock && {
               elementRectAs: GroupedChartElementRect,
               elementTitleAs: BarChartElementTitleInput,
@@ -110,7 +101,7 @@ export default function ChartEditor({
           />
         ) : kind === chartTypes.COLUMN ? (
           <ColumnChartContent
-            {...chartProps}
+            {...chart}
             {...(selectedBlock && {
               elementRectAs: GroupedChartElementRect,
               elementValueAs: ChartGroupElementValueInput,
@@ -119,7 +110,7 @@ export default function ChartEditor({
           />
         ) : kind === chartTypes.LINE ? (
           <LineChartContent
-            {...chartProps}
+            {...chart}
             {...(selectedBlock && {
               elementPathAs: LineChartElementPath,
               elementValueAs: ChartGroupElementValueInput,

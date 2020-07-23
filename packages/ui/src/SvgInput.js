@@ -1,63 +1,51 @@
 // @flow
 import * as React from 'react';
 import { SvgTypography, useTypographyChildren } from '@seine/styles';
+import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 
 import InlineInput from './InlineInput';
-import MultilineInput from './MultilineInput';
 
-type Props = {
-  children?: any,
-  multiline: boolean,
-};
-
-/**
- * @description Svg foreign input styled according to root html document.
- * @param {Props} props
- * @returns {React.Node}
- */
+// eslint-disable-next-line
 const SvgInput = React.forwardRef(function SvgInput(
-  {
-    children,
-    value,
-    onChange,
-    onFocus,
-    onBlur,
-    type = 'text',
-    multiline = false,
-    ...typographyProps
-  }: Props,
+  { value, onChange, children, ...typographyProps }: Props,
   ref
 ) {
-  const text = useTypographyChildren(children);
-  const { index: valueStartsAt } = text.match(/(?!\s)./) || { index: 0 };
-  const { index: valueEndsAt } = text.match(/\s*(?!\s).\s/) || {
-    index: text.length - 1,
-  };
+  const text = useTypographyChildren(children, '');
+  const [prefix = '', suffix = ''] = text.split(value);
+
+  const inputRef = React.useRef(null);
+  const { current: input } = inputRef;
+
+  const cursorRef = React.useRef(`${prefix}${value}`.length);
+  const { current: cursor } = cursorRef;
+
+  const selectionStart = input && input.selectionStart;
+  const selectionEnd = input && input.selectionEnd;
+
+  useAutoEffect(() => {
+    if (selectionStart > cursor || selectionEnd > cursor) {
+      input.selectionStart = input.selectionEnd = cursor;
+    }
+  });
+
   return (
     <SvgTypography {...typographyProps} ref={ref}>
-      {Array.from({ length: valueStartsAt - 1 }, () => ' ')}
-      {multiline ? (
-        <MultilineInput
-          height={typographyProps.height}
-          type={type}
-          value={value}
-          onBlur={onBlur}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-      ) : (
-        <InlineInput
-          type={type}
-          value={value}
-          onBlur={onBlur}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-      )}
-      {Array.from(
-        { length: text.length - 1 - valueEndsAt - valueStartsAt - 1 },
-        () => ' '
-      )}
+      <InlineInput
+        ref={inputRef}
+        value={text}
+        onInput={useAutoCallback(() => {
+          cursorRef.current = input.selectionStart;
+        })}
+        onChange={useAutoCallback((event) =>
+          onChange({
+            currentTarget: {
+              value: event.currentTarget.value
+                .replace(prefix, '')
+                .replace(suffix, ''),
+            },
+          })
+        )}
+      />
     </SvgTypography>
   );
 });

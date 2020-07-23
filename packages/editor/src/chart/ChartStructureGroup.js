@@ -14,7 +14,7 @@ import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 import { groupElements, titleIdentityElements } from '@seine/content';
 
-import { useEditorDispatch } from '../store';
+import { useBlocksDispatch } from '../store';
 import SidebarGroup from '../ui/SidebarGroup';
 import useSelectedBlockElement from '../context/useSelectedBlockElement';
 
@@ -35,7 +35,7 @@ export default function ChartStructureGroup() {
     body: { elements },
     format: { minValue, maxValue, kind },
   } = useChartBlock();
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const values = useAutoMemo(elements.map(({ value }) => value));
   const min = useAutoMemo(minValue || Math.min(...values));
   const max = useAutoMemo(maxValue || Math.max(...values));
