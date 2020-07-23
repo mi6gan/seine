@@ -42,17 +42,18 @@ function SelectionFrame({ children, ...frame }) {
     )
   );
 
-  const dispatchSelection = useAutoCallback(() => {
+  const select = useAutoCallback((selection) => {
     for (const target of selection) {
       dispatchElements({
         type: SELECT_BLOCK_ELEMENT,
         index: target.point,
       });
     }
+    selectionRef.current = selection;
   });
 
   useAutoEffect(() => {
-    dispatchSelection();
+    select(selection);
   });
 
   return (
@@ -66,8 +67,7 @@ function SelectionFrame({ children, ...frame }) {
               index: target.point,
             });
           }
-          selectionRef.current = targets;
-          dispatchSelection();
+          select(targets);
         })}
       />
       <SelectionState selection={selection} />
