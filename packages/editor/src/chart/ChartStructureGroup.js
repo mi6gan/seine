@@ -14,9 +14,8 @@ import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 import { groupElements, titleIdentityElements } from '@seine/content';
 
-import { useBlocksDispatch } from '../context';
+import { useBlocksDispatch, useElementSelector } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
-import useElementSelector from '../context/useElementSelector';
 
 import useChartBlock from './useChartBlock';
 

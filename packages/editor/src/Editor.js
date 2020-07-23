@@ -24,8 +24,11 @@ import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
 import LayoutDesign from './layout/LayoutDesign';
-import { useBlocksDispatch, useBlocksSelector } from './context';
-import EditorProvider from './context/EditorProvider';
+import {
+  useBlocksDispatch,
+  useBlocksSelector,
+  EditorProvider,
+} from './context';
 import useSelectedLayoutItems from './layout/useSelectedLayoutItems';
 import { ChartDesign } from './chart';
 import CreateLayoutButton from './ui/CreateLayoutButton';

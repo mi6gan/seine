@@ -3,8 +3,7 @@ import { defaultChartFormat, useChartFormat } from '@seine/content';
 import { blockTypes } from '@seine/core';
 import { useAutoMemo } from 'hooks.macro';
 
-import { useBlocksSelector } from '../context';
-import { defaultBlocksSelector } from '../context/useBlocksSelector';
+import { useBlocksSelector, defaultBlocksSelector } from '../context';
 
 import { defaultChartEditor } from './constants';
 
