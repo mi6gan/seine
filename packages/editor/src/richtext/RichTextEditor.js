@@ -1,19 +1,20 @@
 // @flow
 import * as React from 'react';
+import { useAutoCallback, useAutoEffect } from 'hooks.macro';
+import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
 import styled from 'styled-components/macro';
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
-import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
 import {
   defaultDraftBody,
   defaultDraftFormat,
   Item,
   RichTextStyle,
 } from '@seine/content';
-import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 
 import Frame from '../ui/Frame';
-import { useEditorDispatch, useSelectedLayoutItems } from '../store';
+import { useBlocksDispatch } from '../context';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
@@ -47,7 +48,7 @@ export default function RichTextEditor({
 }: Props) {
   const { item } = useSelectedLayoutItems();
   const selected = !!(item && item.id === id);
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
 
   const editorRef = React.useRef<?Editor>(null);
 

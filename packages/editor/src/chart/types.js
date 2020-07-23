@@ -1,8 +1,8 @@
 // @flow
-import type { BlockEditor } from '@seine/core';
-import type { ChartProps } from '@seine/content';
+import type { BlockEditor, ChartBody, ChartFormat } from '@seine/core';
 
-export type ChartEditorProps = ChartProps &
+export type ChartEditorProps = ChartBody &
+  $Shape<ChartFormat> &
   BlockEditor & {
     editor: { selection: number },
   };

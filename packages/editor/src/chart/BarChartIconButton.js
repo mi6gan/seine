@@ -7,16 +7,20 @@ import {
   createTitleIdentityBlockElements,
 } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
+import styled from 'styled-components/macro';
+import { BarChart as ColumnChartIcon } from '@material-ui/icons';
 
-import BarChartIcon from '../chart/BarChartIcon';
-import { EditorContext } from '../store';
-import useEditorBuffer from '../store/useEditorBuffer';
+import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
+
+const BarChartIcon = styled(ColumnChartIcon).attrs({
+  transform: 'rotate(90)',
+})``;
 
 // eslint-disable-next-line
 export default function BarChartIconButton() {
   const { setBuffer } = React.useContext(EditorContext);
-  const buffer = useEditorBuffer();
+  const buffer = useBlocksBuffer();
   const selected =
     buffer &&
     buffer.type === blockTypes.CHART &&

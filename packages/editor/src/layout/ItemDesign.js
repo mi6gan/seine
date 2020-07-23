@@ -4,23 +4,21 @@ import { defaultItemFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarSection from '../ui/SidebarSection';
-import {
-  useEditorDispatch,
-  useEditorSelector,
-  useSelectedLayoutItems,
-} from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarInput from '../ui/SidebarInput';
 import SidebarGroup from '../ui/SidebarGroup';
+
+import useSelectedLayoutItems from './useSelectedLayoutItems';
 
 /**
  * @description Layout design.
  * @returns {React.Node}
  */
 export default function ItemDesign() {
-  const device = useEditorSelector((state) => state.device);
+  const device = useBlocksSelector((state) => state.device);
   const { item } = useSelectedLayoutItems();
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const {
     minWidth = defaultItemFormat.minWidth,
     maxWidth = defaultItemFormat.maxWidth,

@@ -18,11 +18,7 @@ import {
 import { useAutoCallback } from 'hooks.macro';
 import { MenuItem, Select } from '@material-ui/core';
 
-import {
-  useEditorDispatch,
-  useEditorSelector,
-  useSelectedBlocks,
-} from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarInput from '../ui/SidebarInput';
 import SidebarGroup from '../ui/SidebarGroup';
@@ -35,11 +31,11 @@ import SidebarSelectLabel from '../ui/SidebarSelectLabel';
  * @returns {React.Node}
  */
 export default function FlexDesign() {
-  const device = useEditorSelector((state) => state.device);
-  const layoutBlock = useSelectedBlocks().find(
+  const device = useBlocksSelector((state) => state.device);
+  const layoutBlock = useBlocksSelector().find(
     ({ type }) => type === blockTypes.LAYOUT
   );
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const id = layoutBlock && layoutBlock.id;
   const {
     spacing = defaultFlexFormat.spacing,

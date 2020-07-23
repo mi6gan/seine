@@ -24,9 +24,12 @@ import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
 import LayoutDesign from './layout/LayoutDesign';
-import { useEditorDispatch, useEditorSelector } from './store';
-import EditorProvider from './store/EditorProvider';
-import useSelectedLayoutItems from './store/useSelectedLayoutItems';
+import {
+  useBlocksDispatch,
+  useBlocksSelector,
+  EditorProvider,
+} from './context';
+import useSelectedLayoutItems from './layout/useSelectedLayoutItems';
 import { ChartDesign } from './chart';
 import CreateLayoutButton from './ui/CreateLayoutButton';
 import DeleteBlockButton from './ui/DeleteBlockButton';
@@ -66,6 +69,10 @@ const StyledSelect = styled(Select)`
 
 const defaultEditorChildren = [];
 
+const blocksSelector = (state) => state.blocks;
+const selectionSelector = (state) => state.selection;
+const deviceSelector = (state) => state.device;
+
 /**
  * @description Default content editor.
  * @returns {React.Node}
@@ -76,12 +83,17 @@ function DefaultEditor({
   blockRenderMap = defaultBlockRenderMap,
   ...contentProps
 }) {
+  const ParentBlock = blockRenderMap[parent.type];
+
   const menuAnchorRef = React.useRef(null);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const closeMenu = useAutoCallback(() => setMenuOpen(false));
 
-  const toolCursorRef = React.useRef(null);
-
-  const dispatch = useEditorDispatch();
-  const { blocks, selection, device } = useEditorSelector();
+  const dispatch = useBlocksDispatch();
+  const blocks = useBlocksSelector(blocksSelector);
+  const selection = useBlocksSelector(selectionSelector);
+  const device = useBlocksSelector(deviceSelector);
+  const { layout, item } = useSelectedLayoutItems();
 
   useAutoEffect(() => {
     onChange(
@@ -95,15 +107,6 @@ function DefaultEditor({
       }))
     );
   });
-
-  const deselectClickHandler = useAutoCallback(() => {
-    dispatch({ type: DESELECT_ALL_BLOCKS });
-  });
-  const { layout, item } = useSelectedLayoutItems();
-  const [menuOpen, setMenuOpen] = React.useState(false);
-
-  const ContentBlock = blockRenderMap[parent.type];
-  const closeMenu = useAutoCallback(() => setMenuOpen(false));
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -168,7 +171,9 @@ function DefaultEditor({
       </Toolbar>
 
       <Box
-        onClick={deselectClickHandler}
+        onClick={useAutoCallback(() => {
+          dispatch({ type: DESELECT_ALL_BLOCKS });
+        })}
         display={'flex'}
         flexWrap={'wrap'}
         alignItems={'flex-start'}
@@ -177,9 +182,9 @@ function DefaultEditor({
         position={'relative'}
         height={'100%'}
       >
-        <Contents cursor={toolCursorRef.current}>
+        <Contents>
           <EditorPaper device={device}>
-            <ContentBlock parentType={parent.type}>
+            <ParentBlock>
               <Content
                 device={device}
                 blockRenderMap={blockRenderMap}
@@ -188,7 +193,7 @@ function DefaultEditor({
               >
                 {blocks}
               </Content>
-            </ContentBlock>
+            </ParentBlock>
           </EditorPaper>
 
           <Sidebar

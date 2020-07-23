@@ -1,5 +1,5 @@
 // @flow
-import type { BlocksAction, BlocksCreateAction } from '../reducers';
+import type { BlocksAction } from '../reducers';
 
 import type { ChartBody, ChartElement, ChartFormat } from './charts';
 import { CHART } from './charts';
@@ -59,19 +59,8 @@ export type Block = {
   type: BlockType,
 };
 
-export type AddButtonProps = $Rest<
-  BlocksCreateAction,
-  {| block: Block, type: string |}
-> & {
-  dispatch: (BlocksAction) => any,
-};
-
 export type BlockEditor = {
   dispatch: (BlocksAction) => any,
   editor?: { [string]: any },
   selection: BlockId[],
-};
-
-export type ToolbarProps = (Block & BlockEditor) & {
-  children?: React$Node,
 };

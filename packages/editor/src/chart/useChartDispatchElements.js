@@ -2,24 +2,21 @@
 import { useAutoCallback } from 'hooks.macro';
 import type { ElementsAction } from '@seine/core';
 import {
-  blockTypes,
   reduceElements,
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import { useBlocksDispatch, defaultBlocksSelector } from '../context';
 
-import { defaultChartEditor } from './constants';
+import useChartBlock from './useChartBlock';
 
 // eslint-disable-next-line
-export default function useDispatchElements() {
-  const selectedBlock = useSelectedBlocks().find(
-    (block) => block.type === blockTypes.CHART
-  );
-  const body = selectedBlock && selectedBlock.body;
-  const editor = selectedBlock && (selectedBlock.editor || defaultChartEditor);
-  const dispatch = useEditorDispatch();
+export default function useChartDispatchElements(
+  blocksSelector = defaultBlocksSelector
+) {
+  const { body, editor } = useChartBlock(blocksSelector);
+  const dispatch = useBlocksDispatch();
 
   return useAutoCallback((action: ElementsAction) => {
     const { elements, selection } = reduceElements(

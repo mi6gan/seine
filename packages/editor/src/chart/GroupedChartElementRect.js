@@ -4,7 +4,7 @@ import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import useChartBlock from './useChartBlock';
-import useDispatchElements from './useDispatchElements';
+import useChartDispatchElements from './useChartDispatchElements';
 
 type Props = {
   children?: any,
@@ -20,7 +20,7 @@ export default function GroupedChartElementRect({
   ...rectProps
 }: Props) {
   const { editor } = useChartBlock();
-  const dispatchElements = useDispatchElements();
+  const dispatchElements = useChartDispatchElements();
   return (
     <g>
       <rect

@@ -8,13 +8,14 @@ import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
-import { useEditorDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 
 import ChartUnitsInput from './ChartUnitsInput';
 import ChartPaletteSelect from './ChartPaletteSelect';
 import useChartBlock from './useChartBlock';
 import ChartElementColorButton from './ChartElementColorButton';
 import ChartStructureGroup from './ChartStructureGroup';
+import ChartFractionInput from './ChartFractionInput';
 
 /**
  * @description Pie chart design panel.
@@ -25,12 +26,13 @@ export default function PieChartDesign() {
     editor,
     format: { legend },
   } = useChartBlock();
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   return (
     <>
       <SidebarSection>
         <SidebarHeading>Chart</SidebarHeading>
         <ChartUnitsInput />
+        <ChartFractionInput />
         <ChartPaletteSelect />
         <SidebarGroup alignItems={'center'}>
           <SidebarLabel>legend</SidebarLabel>

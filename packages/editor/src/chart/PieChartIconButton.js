@@ -4,14 +4,13 @@ import { blockTypes, chartTypes, createBlock } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 import { PieChart as PieChartIcon } from '@material-ui/icons';
 
-import { EditorContext } from '../store';
-import useEditorBuffer from '../store/useEditorBuffer';
+import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line
 export default function PieChartIconButton() {
   const { setBuffer } = React.useContext(EditorContext);
-  const buffer = useEditorBuffer();
+  const buffer = useBlocksBuffer();
   const selected =
     buffer &&
     buffer.type === blockTypes.CHART &&

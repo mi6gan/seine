@@ -16,7 +16,7 @@ import SidebarSection from '../ui/SidebarSection';
 import ActionIconButton from '../ui/ActionIconButton';
 import ToolbarToggleButtonGroup from '../ui/ToolbarToggleButtonGroup';
 import ToolbarToggleButton from '../ui/ToolbarToggleButton';
-import { useEditorDispatch, useSelectedBlocks } from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarInput from '../ui/SidebarInput';
@@ -46,7 +46,7 @@ const StructureActionButton = styled(ActionIconButton).attrs({
  * @returns {React.Node}
  */
 export default function TableDesign() {
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const {
     id,
     editor: {
@@ -59,7 +59,7 @@ export default function TableDesign() {
       textAlignment = defaultTableBody.textAlignment,
     } = defaultTableBody,
     format: { layout = defaultItemFormat.layout },
-  } = useSelectedBlocks().find(({ type }) => type === blockTypes.TABLE) || {};
+  } = useBlocksSelector().find(({ type }) => type === blockTypes.TABLE) || {};
   const row = rowIndex === -1 ? header : rows && rows[rowIndex];
   const cell = row && row[columnIndex];
   const isBold = cell && cell.bold;

@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
+import { SvgInput } from '@seine/ui';
 
-import ChartValueInput from './ChartValueInput';
-import useDispatchElements from './useDispatchElements';
+import useChartDispatchElements from './useChartDispatchElements';
 
 type Props = {
   children?: any,
@@ -19,10 +19,11 @@ export default function PieChartElementValueInput({
   meta: { index, value },
   ...inputProps
 }: Props) {
-  const dispatchElements = useDispatchElements();
+  const dispatchElements = useChartDispatchElements();
   return (
-    <ChartValueInput
+    <SvgInput
       {...inputProps}
+      type={'number'}
       value={value}
       onChange={useAutoCallback(({ currentTarget }) => {
         dispatchElements({

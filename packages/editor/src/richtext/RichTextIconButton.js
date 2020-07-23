@@ -5,14 +5,13 @@ import { toRawContent } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 import { Title as RichTextIcon } from '@material-ui/icons';
 
-import { EditorContext } from '../store';
-import useEditorBuffer from '../store/useEditorBuffer';
+import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line
 export default function RichTextIconButton() {
   const { setBuffer } = React.useContext(EditorContext);
-  const buffer = useEditorBuffer();
+  const buffer = useBlocksBuffer();
   const selected = buffer && buffer.type === blockTypes.RICH_TEXT;
 
   return (

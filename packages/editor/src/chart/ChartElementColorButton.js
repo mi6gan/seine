@@ -7,7 +7,7 @@ import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { chartPaletteKeyValues } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 
-import { useEditorDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 
@@ -45,7 +45,7 @@ export default function ChartElementColorButton() {
     editor: { selection },
     format: { paletteKey, palette },
   } = useChartBlock();
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const [open, setOpen] = React.useState(false);
   const colorIndex = selection % palette.length;
   const color = palette[colorIndex];

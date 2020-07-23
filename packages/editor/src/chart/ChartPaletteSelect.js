@@ -6,11 +6,7 @@ import { MenuItem, Select } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarSelectLabel from '../ui/SidebarSelectLabel';
-import {
-  useEditorDispatch,
-  useEditorSelector,
-  useSelectedBlocks,
-} from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 
@@ -19,10 +15,10 @@ import SidebarLabel from '../ui/SidebarLabel';
  * @returns {*}
  */
 export default function ChartPaletteSelect() {
-  const device = useEditorSelector((state) => state.device);
-  const dispatch = useEditorDispatch();
+  const device = useBlocksSelector((state) => state.device);
+  const dispatch = useBlocksDispatch();
   const block =
-    useSelectedBlocks().find(({ type }) => type === blockTypes.CHART) || {};
+    useBlocksSelector().find(({ type }) => type === blockTypes.CHART) || {};
   const { id } = block;
   const { paletteKey = defaultChartFormat.paletteKey } =
     (block && block.format && block.format[device]) ||

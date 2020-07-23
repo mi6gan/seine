@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
-import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
-import type { BlockType, ChartElement } from '@seine/core';
-import invert from 'invert-color';
 import { useAutoMemo } from 'hooks.macro';
+import invert from 'invert-color';
+import type { BlockType, ChartElement } from '@seine/core';
+import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 
 import {
   defaultChartDx,

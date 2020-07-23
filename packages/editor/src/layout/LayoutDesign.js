@@ -10,11 +10,7 @@ import {
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarHeading from '../ui/SidebarHeading';
-import {
-  useEditorDispatch,
-  useEditorSelector,
-  useSelectedBlocks,
-} from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarSection from '../ui/SidebarSection';
@@ -27,8 +23,8 @@ import FlexDesign from './FlexDesign';
  * @returns {React.Node}
  */
 export default function LayoutDesign() {
-  const device = useEditorSelector((state) => state.device);
-  const layoutBlock = useSelectedBlocks().find(
+  const device = useBlocksSelector((state) => state.device);
+  const layoutBlock = useBlocksSelector().find(
     ({ type }) => type === blockTypes.LAYOUT
   );
   const id = layoutBlock && layoutBlock.id;
@@ -36,7 +32,7 @@ export default function LayoutDesign() {
     layoutBlock && layoutBlock.format
       ? layoutBlock.format[device] || layoutBlock.format
       : defaultLayoutFormat;
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   return (
     <>
       <SidebarSection>

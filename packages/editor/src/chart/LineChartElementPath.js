@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 
-import useDispatchElements from './useDispatchElements';
+import useChartDispatchElements from './useChartDispatchElements';
 import useChartBlock from './useChartBlock';
 
 type Props = {
@@ -19,7 +19,7 @@ export default function LineChartElementPath({
   ...pathProps
 }: Props) {
   const { editor } = useChartBlock();
-  const dispatchElements = useDispatchElements();
+  const dispatchElements = useChartDispatchElements();
   return (
     <g>
       <path {...pathProps} />

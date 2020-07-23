@@ -4,7 +4,7 @@ import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import ChartValueInput from './ChartValueInput';
-import useDispatchElements from './useDispatchElements';
+import useChartDispatchElements from './useChartDispatchElements';
 
 type Props = {
   children?: any,
@@ -19,7 +19,7 @@ export default React.forwardRef(function ChartGroupElementValueInput(
   { meta: { index, value }, ...inputProps }: Props,
   ref
 ) {
-  const dispatchElements = useDispatchElements();
+  const dispatchElements = useChartDispatchElements();
   return (
     <ChartValueInput
       {...inputProps}

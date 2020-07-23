@@ -8,7 +8,8 @@ import type { TableProps } from '@seine/content';
 import { Table } from '@seine/content';
 
 import Frame from '../ui/Frame';
-import { useEditorDispatch, useSelectedLayoutItems } from '../store';
+import { useBlocksDispatch } from '../context';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
 
 import { defaultTableEditor } from './constants';
 import TableCellEditor from './TableCellEditor';
@@ -21,7 +22,7 @@ type Props = TableProps & BlockEditor;
  * @returns {React.Node}
  */
 export default function TableEditor({ id, title, ...tableProps }: Props) {
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
   const editTitle = useAutoCallback(({ currentTarget: { value } }) =>
     dispatch({ type: UPDATE_BLOCK_BODY, body: { title: value } })
   );
