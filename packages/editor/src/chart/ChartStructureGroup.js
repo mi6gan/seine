@@ -14,9 +14,9 @@ import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 import { groupElements, titleIdentityElements } from '@seine/content';
 
-import { useBlocksDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
-import useSelectedBlockElement from '../context/useSelectedBlockElement';
+import useElementSelector from '../context/useElementSelector';
 
 import useChartBlock from './useChartBlock';
 
@@ -39,7 +39,7 @@ export default function ChartStructureGroup() {
   const values = useAutoMemo(elements.map(({ value }) => value));
   const min = useAutoMemo(minValue || Math.min(...values));
   const max = useAutoMemo(maxValue || Math.max(...values));
-  const { selection, element } = useSelectedBlockElement();
+  const { selection, element } = useElementSelector();
   return (
     <SidebarGroup alignItems={'flex-start'}>
       <ActionButton

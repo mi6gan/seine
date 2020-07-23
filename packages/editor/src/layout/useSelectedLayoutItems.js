@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 import { blockTypes } from '@seine/core';
 
-import useBlocksSelector from '../store/useBlocksSelector';
+import useBlocksSelector from '../context/useBlocksSelector';
 
 /**
  * @description Default content editor.

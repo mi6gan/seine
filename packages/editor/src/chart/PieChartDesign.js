@@ -8,7 +8,7 @@ import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
-import { useBlocksDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 
 import ChartUnitsInput from './ChartUnitsInput';
 import ChartPaletteSelect from './ChartPaletteSelect';

@@ -12,7 +12,7 @@ import {
 } from '@seine/core';
 
 import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
-import { useBlocksDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 
 // eslint-disable-next-line
 export default function CreateLayoutButton({

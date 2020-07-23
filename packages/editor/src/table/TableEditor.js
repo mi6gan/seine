@@ -8,7 +8,8 @@ import type { TableProps } from '@seine/content';
 import { Table } from '@seine/content';
 
 import Frame from '../ui/Frame';
-import { useBlocksDispatch, useSelectedLayoutItems } from '../store';
+import { useBlocksDispatch } from '../context';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
 
 import { defaultTableEditor } from './constants';
 import TableCellEditor from './TableCellEditor';

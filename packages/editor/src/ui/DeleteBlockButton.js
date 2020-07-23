@@ -5,7 +5,7 @@ import { useAutoCallback } from 'hooks.macro';
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 
 import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
-import { useBlocksDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 
 // eslint-disable-next-line
 export default function DeleteBlockButton({

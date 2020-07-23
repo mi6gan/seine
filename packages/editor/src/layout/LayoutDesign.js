@@ -10,7 +10,7 @@ import {
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarHeading from '../ui/SidebarHeading';
-import { useBlocksDispatch, useBlocksSelector } from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarSection from '../ui/SidebarSection';

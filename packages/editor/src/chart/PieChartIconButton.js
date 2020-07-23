@@ -4,8 +4,7 @@ import { blockTypes, chartTypes, createBlock } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 import { PieChart as PieChartIcon } from '@material-ui/icons';
 
-import { EditorContext } from '../store';
-import useBlocksBuffer from '../store/useBlocksBuffer';
+import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line

@@ -18,11 +18,10 @@ import {
   ArrowRight,
 } from '@material-ui/icons';
 
-import { EditorContext, useBlocksDispatch } from '../store';
+import { EditorContext, useBlocksDispatch, useBlocksBuffer } from '../context';
 import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
-import useBlocksBuffer from '../store/useBlocksBuffer';
 
-export const StyledFrame = styled(Item)`
+const StyledFrame = styled(Item)`
   transition: ${({ theme }) =>
     theme.transitions.create(['filter'], {
       duration: theme.transitions.duration.short,

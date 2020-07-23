@@ -16,7 +16,7 @@ import SidebarSection from '../ui/SidebarSection';
 import ActionIconButton from '../ui/ActionIconButton';
 import ToolbarToggleButtonGroup from '../ui/ToolbarToggleButtonGroup';
 import ToolbarToggleButton from '../ui/ToolbarToggleButton';
-import { useBlocksDispatch, useBlocksSelector } from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarInput from '../ui/SidebarInput';

@@ -4,7 +4,7 @@ import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { defaultBarChartFormat } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 
-import { useBlocksDispatch, useBlocksSelector } from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarInput from '../ui/SidebarInput';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';

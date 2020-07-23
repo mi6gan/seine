@@ -14,7 +14,7 @@ import { Box } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 import { useResizeTargetRef } from '@seine/styles';
 
-import { useBlocksDispatch, useBlocksSelector } from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 
 type Props = TableProps & BlockEditor;
 

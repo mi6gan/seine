@@ -19,7 +19,7 @@ import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 import { useResizeTargetRef } from '@seine/styles';
 
 import Frame from '../ui/Frame';
-import { useSelectedLayoutItems } from '../store';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
 
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';

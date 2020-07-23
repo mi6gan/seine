@@ -5,8 +5,7 @@ import { useAutoCallback } from 'hooks.macro';
 import { TableChart as TableIcon } from '@material-ui/icons';
 import { defaultTableCell } from '@seine/content';
 
-import { EditorContext } from '../store';
-import useBlocksBuffer from '../store/useBlocksBuffer';
+import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line

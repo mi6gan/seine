@@ -7,7 +7,7 @@ import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { chartPaletteKeyValues } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 
-import { useBlocksDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 

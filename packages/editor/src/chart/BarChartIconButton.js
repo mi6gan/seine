@@ -10,8 +10,7 @@ import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 import { BarChart as ColumnChartIcon } from '@material-ui/icons';
 
-import { EditorContext } from '../store';
-import useBlocksBuffer from '../store/useBlocksBuffer';
+import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
 const BarChartIcon = styled(ColumnChartIcon).attrs({

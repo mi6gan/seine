@@ -6,8 +6,7 @@ import { Page } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { EditorContext, useBlocksDispatch } from './store';
-import useBlocksBuffer from './store/useBlocksBuffer';
+import { EditorContext, useBlocksDispatch, useBlocksBuffer } from './context';
 
 type Props = BlockEditor & Block;
 

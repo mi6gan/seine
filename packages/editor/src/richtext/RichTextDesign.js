@@ -25,7 +25,7 @@ import SidebarHeading from '../ui/SidebarHeading';
 import SidebarSection from '../ui/SidebarSection';
 import ToolbarToggleButtonGroup from '../ui/ToolbarToggleButtonGroup';
 import ToolbarToggleButton from '../ui/ToolbarToggleButton';
-import { useBlocksDispatch, useBlocksSelector } from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 

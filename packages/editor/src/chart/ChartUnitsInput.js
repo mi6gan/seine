@@ -3,7 +3,7 @@ import * as React from 'react';
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import { useBlocksDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 import SidebarInput from '../ui/SidebarInput';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';

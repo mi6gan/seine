@@ -7,8 +7,8 @@ import {
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 
-import { useBlocksDispatch } from '../store';
-import { defaultBlocksSelector } from '../store/useBlocksSelector';
+import { useBlocksDispatch } from '../context';
+import { defaultBlocksSelector } from '../context/useBlocksSelector';
 
 import useChartBlock from './useChartBlock';
 

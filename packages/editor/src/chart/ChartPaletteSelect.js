@@ -6,7 +6,7 @@ import { MenuItem, Select } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarSelectLabel from '../ui/SidebarSelectLabel';
-import { useBlocksDispatch, useBlocksSelector } from '../store';
+import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 

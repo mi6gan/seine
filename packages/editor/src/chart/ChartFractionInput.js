@@ -7,7 +7,7 @@ import { useAutoCallback } from 'hooks.macro';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarInput from '../ui/SidebarInput';
-import { useBlocksDispatch } from '../store';
+import { useBlocksDispatch } from '../context';
 
 import useChartBlock from './useChartBlock';
 

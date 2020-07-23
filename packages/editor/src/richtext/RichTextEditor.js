@@ -13,7 +13,8 @@ import {
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 
 import Frame from '../ui/Frame';
-import { useBlocksDispatch, useSelectedLayoutItems } from '../store';
+import { useBlocksDispatch } from '../context';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
