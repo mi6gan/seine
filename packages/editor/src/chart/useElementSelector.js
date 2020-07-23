@@ -1,9 +1,9 @@
 // @flow
 import { useAutoMemo } from 'hooks.macro';
 
-import useChartBlock from '../chart/useChartBlock';
+import { defaultBlocksSelector } from '../context';
 
-import { defaultBlocksSelector } from './useBlocksSelector';
+import useChartBlock from './useChartBlock';
 
 const elementSelector = (block) => {
   const selection = block && block.editor && block.editor.selection;

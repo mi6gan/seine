@@ -1,5 +1,5 @@
 // @flow
-import { useContext } from 'react';
+import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 
 import EditorContext from './EditorContext';
@@ -16,6 +16,6 @@ export const defaultBlocksSelector = ({ blocks, selection }) =>
 
 // eslint-disable-next-line
 export default function useBlocksSelector(selector = defaultBlocksSelector) {
-  const { state } = useContext(EditorContext);
+  const { state } = React.useContext(EditorContext);
   return useAutoMemo(selector(state));
 }

@@ -7,4 +7,3 @@ export {
   default as useBlocksSelector,
   defaultBlocksSelector,
 } from './useBlocksSelector';
-export { default as useElementSelector } from './useElementSelector';

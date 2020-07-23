@@ -7,9 +7,10 @@ export type EditorContextType = {
   dispatch: (Action) => State,
   state: State,
   buffer: Action,
+  setBuffer: (Action) => any,
 };
 
-const EditorContext: React.Context<EditorContextType> = React.createContext({
+const EditorContext = React.createContext<EditorContextType>({
   dispatch: () => {},
   state: initialBlocksState,
   buffer: null,

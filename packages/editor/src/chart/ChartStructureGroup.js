@@ -14,10 +14,11 @@ import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 import { groupElements, titleIdentityElements } from '@seine/content';
 
-import { useBlocksDispatch, useElementSelector } from '../context';
+import { useBlocksDispatch } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
 
 import useChartBlock from './useChartBlock';
+import useElementSelector from './useElementSelector';
 
 const StyledButton = styled(Button)`
   && {
