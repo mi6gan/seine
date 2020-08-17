@@ -35,7 +35,7 @@ const StyledTable = styled.table`
       border-left: 1px solid #fff;
       border-right: 1px solid #fff;
       line-height: 1.5;
-      padding: 0.5rem;
+      padding: 0.5rem 1.25rem;
       white-space: pre-wrap;
     }
 
