@@ -29,7 +29,7 @@ const TextBox = styled(ChartLayoutTitleText)`
  * @returns {React.Node}
  */
 export default styled(function ChartLayoutTitle({
-  as: Container = 'h3',
+  as: Container = 'h4',
   children,
   textAlignment,
   ...containerProps
@@ -60,7 +60,7 @@ export default styled(function ChartLayoutTitle({
     </Container>
   );
 })`
-  ${({ theme: { typography } }) => typography.h3};
+  ${({ theme: { typography } }) => typography.h4};
   text-align: ${({ align }) => align};
   height: 3.5rem;
   position: relative;
