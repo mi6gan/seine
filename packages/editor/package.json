@@ -1,6 +1,6 @@
 {
   "name": "@seine/editor",
-  "version": "0.3.276",
+  "version": "0.3.277",
   "description": "Seine structured content renderer.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
