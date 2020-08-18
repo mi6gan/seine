@@ -44,7 +44,7 @@ function Content({
     <Container>
       {children
         .filter((block: Block) => block['parent_id'] === parent.id)
-        .map(({ body, format, ...block }: Block) => {
+        .map(({ body, format, ...block }: Block, { length }) => {
           const ContentBlock = blockRenderMap[block.type];
           const blockChildren = children.filter(
             (content) => content.id !== block.id
@@ -56,6 +56,7 @@ function Content({
               {...(format ? format : {})}
               {...(body ? body : {})}
               {...block}
+              hasSibling={length > 1}
             >
               {blockChildren.length ? (
                 <Content parent={block} blockRenderMap={blockRenderMap}>
