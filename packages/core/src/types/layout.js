@@ -9,6 +9,7 @@ export type LayoutType = $Values<typeof layoutTypes>;
 export type GridBody = {};
 
 export type GridFormat = {
+  kind: 'grid',
   columns?: string,
   columnGap?: string,
   rows?: string,
@@ -18,6 +19,7 @@ export type GridFormat = {
 export type FlexBody = {};
 
 export type FlexFormat = {
+  kind: 'flex',
   direction: 'row' | 'column',
   wrap: 'wrap' | 'nowrap',
   spacing: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10,
@@ -52,9 +54,7 @@ export const defaultLayoutFormat = {
   kind: layoutTypes.GRID,
 };
 
-export type LayoutFormat =
-  | { kind: typeof layoutTypes.FLEX, ...FlexFormat }
-  | { kind: typeof layoutTypes.GRID, ...GridFormat };
+export type LayoutFormat = FlexFormat | GridFormat;
 export type LayoutBody = FlexBody | GridBody;
 
 export const LAYOUT = 'grid';

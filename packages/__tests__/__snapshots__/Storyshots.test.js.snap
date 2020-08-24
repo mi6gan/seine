@@ -134,7 +134,7 @@ exports[`Storyshots Bream.Review summary header Bad Performance 1`] = `
                     className="BootstrapTypography-y5qxg5-0 eKnrAT BootstrapBox-sc-1geqqjv-0 cynOcG"
                     fontWeight={600}
                   >
-                    Keep on training, practice makes perfect!
+                    Keep training; practice makes perfect!
                   </span>
                 </div>
               </div>
@@ -281,7 +281,7 @@ exports[`Storyshots Bream.Review summary header Good Performance 1`] = `
                     className="BootstrapTypography-y5qxg5-0 eKnrAT BootstrapBox-sc-1geqqjv-0 cynOcG"
                     fontWeight={600}
                   >
-                    Good progress, keep calm and carry on!
+                    Good progress; keep calm and carry on!
                   </span>
                 </div>
               </div>
@@ -428,7 +428,7 @@ exports[`Storyshots Bream.Review summary header Great Performance 1`] = `
                     className="BootstrapTypography-y5qxg5-0 eKnrAT BootstrapBox-sc-1geqqjv-0 cynOcG"
                     fontWeight={600}
                   >
-                    Great job, tell friends about your success!
+                    Great job; tell your friends about your success!
                   </span>
                 </div>
               </div>
@@ -446,6 +446,8 @@ exports[`Storyshots Content Data 1`] = `null`;
 exports[`Storyshots Content Editor Of Data 1`] = `null`;
 
 exports[`Storyshots Content Editor Of Flex 1`] = `null`;
+
+exports[`Storyshots Content Editor Of Nested Flex 1`] = `null`;
 
 exports[`Storyshots Content Editor Of Table 1`] = `null`;
 
@@ -465,11 +467,6 @@ exports[`Storyshots Content Flex 1`] = `
     id="table"
     type="table"
   >
-    <h3
-      className="Typography-sc-1b4huth-0 TableTitle-sc-1dkost5-0 kZIXcC"
-    >
-      Table title
-    </h3>
     <table
       className="Table__StyledTable-u530n6-1 FuEmH"
       scale={1}
@@ -768,6 +765,408 @@ exports[`Storyshots Content Flex 1`] = `
 
 exports[`Storyshots Content Initial Editor 1`] = `null`;
 
+exports[`Storyshots Content Nested Flex 1`] = `
+<div
+  className="Item-sc-10s0ojn-0 Flex-jm331f-0 kcTaZv"
+  direction="row"
+  id="grid"
+  spacing={32}
+  type="grid"
+  wrap="nowrap"
+>
+  <div
+    className="Item-sc-10s0ojn-0 Flex-jm331f-0 fQLCBd"
+    direction="column"
+    id="b3e6d581-6df8-47ee-b2cf-6cb9119edd78"
+    spacing={32}
+    type="grid"
+    wrap="nowrap"
+  >
+    <div
+      className="Item-sc-10s0ojn-0 Xwmnj RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft"
+      id="27053ca8-1f37-4cf6-bb97-a51847b34dc8"
+      type="draft"
+    >
+      <div
+        className="DraftEditor-root"
+      >
+        <div
+          className="DraftEditor-editorContainer"
+        >
+          <div
+            aria-activedescendant={null}
+            aria-autocomplete={null}
+            aria-controls={null}
+            aria-describedby="placeholder-27053ca8-1f37-4cf6-bb97-a51847b34dc8"
+            aria-expanded={null}
+            aria-owns={null}
+            className="public-DraftEditor-content"
+            contentEditable={false}
+            onBeforeInput={[Function]}
+            onBlur={[Function]}
+            onCompositionEnd={[Function]}
+            onCompositionStart={[Function]}
+            onCopy={[Function]}
+            onCut={[Function]}
+            onDragEnd={[Function]}
+            onDragEnter={[Function]}
+            onDragLeave={[Function]}
+            onDragOver={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseUp={[Function]}
+            onPaste={[Function]}
+            onSelect={[Function]}
+            role={null}
+            spellCheck={false}
+            style={
+              Object {
+                "WebkitUserSelect": "text",
+                "outline": "none",
+                "userSelect": "text",
+                "whiteSpace": "pre-wrap",
+                "wordWrap": "break-word",
+              }
+            }
+            suppressContentEditableWarning={true}
+          >
+            <div
+              data-contents="true"
+            >
+              <div
+                className="RichText-yekvnw-0 hIhKZq"
+                data-block={true}
+                data-editor="27053ca8-1f37-4cf6-bb97-a51847b34dc8"
+                data-offset-key="bppru-0-0"
+              >
+                <div
+                  className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                  data-offset-key="bppru-0-0"
+                >
+                  <span
+                    data-offset-key="bppru-0-0"
+                    style={Object {}}
+                  >
+                    <span
+                      data-text="true"
+                    >
+                      Rich text
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="Item-sc-10s0ojn-0 Table__Container-u530n6-0 lNMTM"
+      id="table"
+      type="table"
+    >
+      <table
+        className="Table__StyledTable-u530n6-1 FuEmH"
+        scale={1}
+      >
+        <thead>
+          <tr>
+            <th
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              first column
+            </th>
+            <th
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              second column
+            </th>
+            <th
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              third column
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 1, column 1
+            </td>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 1, column 2
+            </td>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 1, column 3
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 2, column 1
+            </td>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 2, column 2
+            </td>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 2, column 3
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 3, column 1
+            </td>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 3, column 2
+            </td>
+            <td
+              className="TableCell-oc851c-0 lnUsfb"
+            >
+              row 3, column 3
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    className="Item-sc-10s0ojn-0 Xwmnj RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft RichText-yekvnw-0 hIhKZq DraftEditor/root DraftEditor/alignLeft"
+    id="text"
+    type="draft"
+  >
+    <div
+      className="DraftEditor-root"
+    >
+      <div
+        className="DraftEditor-editorContainer"
+      >
+        <div
+          aria-activedescendant={null}
+          aria-autocomplete={null}
+          aria-controls={null}
+          aria-describedby="placeholder-text"
+          aria-expanded={null}
+          aria-owns={null}
+          className="public-DraftEditor-content"
+          contentEditable={false}
+          onBeforeInput={[Function]}
+          onBlur={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCopy={[Function]}
+          onCut={[Function]}
+          onDragEnd={[Function]}
+          onDragEnter={[Function]}
+          onDragLeave={[Function]}
+          onDragOver={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseUp={[Function]}
+          onPaste={[Function]}
+          onSelect={[Function]}
+          role={null}
+          spellCheck={false}
+          style={
+            Object {
+              "WebkitUserSelect": "text",
+              "outline": "none",
+              "userSelect": "text",
+              "whiteSpace": "pre-wrap",
+              "wordWrap": "break-word",
+            }
+          }
+          suppressContentEditableWarning={true}
+        >
+          <div
+            data-contents="true"
+          >
+            <h1
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h1-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h1-0-0"
+              >
+                <span
+                  data-offset-key="h1-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header one
+                  </span>
+                </span>
+              </div>
+            </h1>
+            <h2
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h2-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h2-0-0"
+              >
+                <span
+                  data-offset-key="h2-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header two
+                  </span>
+                </span>
+              </div>
+            </h2>
+            <h3
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h3-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h3-0-0"
+              >
+                <span
+                  data-offset-key="h3-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header three
+                  </span>
+                </span>
+              </div>
+            </h3>
+            <h4
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h4-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h4-0-0"
+              >
+                <span
+                  data-offset-key="h4-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header four
+                  </span>
+                </span>
+              </div>
+            </h4>
+            <h5
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h5-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h5-0-0"
+              >
+                <span
+                  data-offset-key="h5-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header five
+                  </span>
+                </span>
+              </div>
+            </h5>
+            <h6
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="h6-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="h6-0-0"
+              >
+                <span
+                  data-offset-key="h6-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    Header six
+                  </span>
+                </span>
+              </div>
+            </h6>
+            <div
+              className="RichText-yekvnw-0 hIhKZq"
+              data-block={true}
+              data-editor="text"
+              data-offset-key="unstyled-0-0"
+            >
+              <div
+                className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                data-offset-key="unstyled-0-0"
+              >
+                <span
+                  data-offset-key="unstyled-0-0"
+                  style={Object {}}
+                >
+                  <span
+                    data-text="true"
+                  >
+                    This block is draft.js content.
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Content Page 1`] = `null`;
 
 exports[`Storyshots Content Table 1`] = `
@@ -776,11 +1175,6 @@ exports[`Storyshots Content Table 1`] = `
   id="table"
   type="table"
 >
-  <h3
-    className="Typography-sc-1b4huth-0 TableTitle-sc-1dkost5-0 kZIXcC"
-  >
-    Table title
-  </h3>
   <table
     className="Table__StyledTable-u530n6-1 FuEmH"
     scale={1}

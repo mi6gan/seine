@@ -3,7 +3,7 @@ import { equals, filter } from 'ramda';
 
 import { createBlock } from '../utils';
 import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
-import { blockTypes, layoutTypes } from '../types';
+import { blockTypes, defaultFlexFormat, layoutTypes } from '../types';
 
 opaque type BlockExtension = {
   editor: { [string]: any },
@@ -136,14 +136,17 @@ export type BlocksAction =
 
 /**
  * @description Reduce Content editor actions
- * @param {BlocksState} state
+ * @param {BlocksState} inputState
  * @param {BlocksAction} action
  * @returns {BlocksState}
  */
 export function reduceBlocks(
-  state: BlocksState = initialBlocksState,
+  inputState: BlocksState = initialBlocksState,
   action: BlocksAction
 ): BlocksState {
+  const { error, ...validState } = inputState;
+  const state: BlocksState = validState;
+
   switch (action.type) {
     case CREATE_BLOCK:
       return {
@@ -161,23 +164,56 @@ export function reduceBlocks(
         return state;
       }
       const parentIndex = state.blocks.findIndex(
-        ({ id }) => id === state.blocks[index].parent_id
+        ({ id, type, format, direction }) =>
+          id === state.blocks[index].parent_id &&
+          type === blockTypes.LAYOUT &&
+          format &&
+          format === 'flex' &&
+          direction === 'column'
       );
       if (parentIndex > -1) {
         index = parentIndex;
       }
 
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks.slice(
-            0,
-            index + +(action.type === CREATE_BOTTOM_BLOCK)
-          ),
-          { ...action.block, parent_id: state.blocks[index].parent_id },
-          ...state.blocks.slice(index + +(action.type === CREATE_BOTTOM_BLOCK)),
-        ],
-      };
+      if (state.blocks[parentIndex]) {
+        return {
+          ...state,
+          blocks: [
+            ...state.blocks.slice(
+              0,
+              index + +(action.type === CREATE_BOTTOM_BLOCK)
+            ),
+            { ...action.block, parent_id: state.blocks[parentIndex].id },
+            ...state.blocks.slice(
+              index + +(action.type === CREATE_BOTTOM_BLOCK)
+            ),
+          ],
+        };
+      } else {
+        const parent = createBlock(
+          blockTypes.LAYOUT,
+          {},
+          { ...defaultFlexFormat, direction: 'column' },
+          state.blocks[index].parent_id
+        );
+        const blocks = [
+          { ...action.block, parent_id: parent.id },
+          { ...state.blocks[index], parent_id: parent.id },
+        ];
+        if (action.type === CREATE_BOTTOM_BLOCK) {
+          blocks.reverse();
+        }
+
+        return {
+          ...state,
+          blocks: [
+            ...state.blocks.slice(0, index),
+            parent,
+            ...blocks,
+            ...state.blocks.slice(index + 1),
+          ],
+        };
+      }
     }
 
     case CREATE_LEFT_BLOCK:

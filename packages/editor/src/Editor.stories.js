@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   Data,
   Flex,
+  NestedFlex,
   Page,
   Table,
   Text,
@@ -21,3 +22,5 @@ export const EditorOfText = () => <Text as={Editor} />;
 export const EditorOfFlex = () => <Flex as={Editor} />;
 
 export const EditorOfData = () => <Data as={Editor} />;
+
+export const EditorOfNestedFlex = () => <NestedFlex as={Editor} />;
