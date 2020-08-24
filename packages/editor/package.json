@@ -21,7 +21,6 @@
     "react-color": "^2.18.1",
     "react-color.macro": "^1.0.186",
     "svg-patterns": "^1.0.0",
-    "use-reducer-logger": "^1.0.2",
     "virtual-dom-stringify": "^3.0.1"
   },
   "peerDependencies": {

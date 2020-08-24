@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import logger from 'use-reducer-logger';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import type { BlocksAction, BlocksState } from '@seine/core';
 import {
@@ -14,7 +13,7 @@ import EditorContext from './EditorContext';
 // eslint-disable-next-line
 export default function EditorProvider({ blocks, children }) {
   const [state, dispatch] = React.useReducer<BlocksState, BlocksAction>(
-    logger(reduceBlocks),
+    reduceBlocks,
     initialBlocksState,
     useAutoCallback(() => ({
       ...initialBlocksState,

@@ -2059,7 +2059,6 @@ __metadata:
     react-color: ^2.18.1
     react-color.macro: ^1.0.186
     svg-patterns: ^1.0.0
-    use-reducer-logger: ^1.0.2
     virtual-dom-stringify: ^3.0.1
   peerDependencies:
     "@material-ui/core": 4.9
@@ -16106,15 +16105,6 @@ resolve@1.1.7:
     "@types/react":
       optional: true
   checksum: 7e559af86fc2776d334ea93aba52fecfff38ee2aa0fd253fd5ae02b0517bcdcf657ea4656d610743a52a524b0f7c276bc44accef20dce757c3c57aea426d9c4d
-  languageName: node
-  linkType: hard
-
-"use-reducer-logger@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "use-reducer-logger@npm:1.0.2"
-  peerDependencies:
-    react: ^16.8
-  checksum: 20136d4dcf65ad7db4ad44a7e12ad6fbe278576aa96f822570d52dfed0d8212cec7a79dafbe66c2a9cd6b4aa1571a19d67f1743a96c9b02e9a4aa0311fe968e7
   languageName: node
   linkType: hard
 
