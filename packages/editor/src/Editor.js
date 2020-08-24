@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
 import { ClickAwayListener, Paper } from '@material-ui/core';
 import type { ContentProps } from '@seine/content';
-import { Content, defaultBlockRenderMap, Grid, Page } from '@seine/content';
+import { Content, defaultBlockRenderMap, Page } from '@seine/content';
 import type {
   AddButtonProps,
   Block,
@@ -37,6 +37,7 @@ import PageToolbar from './PageToolbar';
 import ImageAddButton from './ImageAddButton';
 import defaultTheme from './defaultTheme';
 import TableAddButton from './TableAddButton';
+import { GridEditor } from './GridEditor';
 
 const defaultEditorChildren = [];
 
@@ -44,9 +45,7 @@ export const defaultEditorBlockRendererMap = {
   ...defaultBlockRenderMap,
   [blockTypes.CHART]: ChartEditor,
   [blockTypes.RICH_TEXT]: DraftEditor,
-  [blockTypes.GRID]: ({ dispatch, editor, selection, ...props }) => (
-    <Grid {...props} />
-  ),
+  [blockTypes.GRID]: GridEditor,
   [blockTypes.PAGE]: ({
     id,
     addButtonRenderMap,

@@ -142,23 +142,56 @@ export function reduceBlocks(
         return state;
       }
       const parentIndex = state.blocks.findIndex(
-        ({ id }) => id === state.blocks[index].parent_id
+        ({ id, type, format, direction }) =>
+          id === state.blocks[index].parent_id &&
+          type === blockTypes.GRID &&
+          format &&
+          format === 'flex' &&
+          direction === 'column'
       );
       if (parentIndex > -1) {
         index = parentIndex;
       }
 
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks.slice(
-            0,
-            index + +(action.type === CREATE_BOTTOM_BLOCK)
-          ),
-          { ...action.block, parent_id: state.blocks[index].parent_id },
-          ...state.blocks.slice(index + +(action.type === CREATE_BOTTOM_BLOCK)),
-        ],
-      };
+      if (state.blocks[parentIndex]) {
+        return {
+          ...state,
+          blocks: [
+            ...state.blocks.slice(
+              0,
+              index + +(action.type === CREATE_BOTTOM_BLOCK)
+            ),
+            { ...action.block, parent_id: state.blocks[parentIndex].id },
+            ...state.blocks.slice(
+              index + +(action.type === CREATE_BOTTOM_BLOCK)
+            ),
+          ],
+        };
+      } else {
+        const parent = createBlock(
+          blockTypes.GRID,
+          {},
+          { columns: '100%' },
+          state.blocks[index].parent_id
+        );
+        const blocks = [
+          { ...action.block, parent_id: parent.id },
+          { ...state.blocks[index], parent_id: parent.id },
+        ];
+        if (action.type === CREATE_BOTTOM_BLOCK) {
+          blocks.reverse();
+        }
+
+        return {
+          ...state,
+          blocks: [
+            ...state.blocks.slice(0, index),
+            parent,
+            ...blocks,
+            ...state.blocks.slice(index + 1),
+          ],
+        };
+      }
     }
 
     case CREATE_LEFT_BLOCK:
