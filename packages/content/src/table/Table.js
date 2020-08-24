@@ -7,7 +7,6 @@ import { useAutoCallback } from 'hooks.macro';
 
 import { Item } from '../layout';
 
-import TableTitle from './TableTitle';
 import TableCell from './TableCell';
 
 export type Props = TableBody & TableFormat;
@@ -88,7 +87,6 @@ export default React.forwardRef(function Table(
         ref && ref(container);
       })}
     >
-      <TableTitle textAlignment={textAlignment}>{title || <br />}</TableTitle>
       <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
         <thead>
           <tr>

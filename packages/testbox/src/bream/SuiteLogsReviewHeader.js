@@ -58,10 +58,10 @@ export default function SuiteLogsReviewHeader({
           shareButtonAs={performance > 40 ? shareButtonAs : false}
         >
           {performance > 70
-            ? 'Great job, tell friends about your success!'
+            ? 'Great job; tell your friends about your success!'
             : performance <= 40
-            ? 'Keep on training, practice makes perfect!'
-            : 'Good progress, keep calm and carry on!'}
+            ? 'Keep training; practice makes perfect!'
+            : 'Good progress; keep calm and carry on!'}
         </SuiteLogsReviewGreeting>
       </BootstrapColumn>
     </BootstrapRow>
