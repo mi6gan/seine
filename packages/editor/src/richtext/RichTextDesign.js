@@ -98,6 +98,22 @@ export default function RichTextDesign() {
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
+      <SidebarGroup alignItems={'center'}>
+        <SidebarLabel>&nbsp;</SidebarLabel>
+        <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
+          <ToolbarToggleButton value={'header-four'}>
+            <SvgIcon>
+              <SvgText>H4</SvgText>
+            </SvgIcon>
+          </ToolbarToggleButton>
+
+          <ToolbarToggleButton value={'header-five'}>
+            <SvgIcon>
+              <SvgText>H5</SvgText>
+            </SvgIcon>
+          </ToolbarToggleButton>
+        </ToolbarToggleButtonGroup>
+      </SidebarGroup>
 
       <SidebarGroup alignItems={'center'}>
         <SidebarLabel>list</SidebarLabel>
