@@ -5,13 +5,8 @@ import { useAutoMemo } from 'hooks.macro';
 import EditorContext from './EditorContext';
 
 export const defaultBlocksSelector = ({ blocks, selection }) =>
-  blocks.reduce(
-    (acc, block) =>
-      selection.includes(block.id) ||
-      acc.find((parent) => block['parent_id'] === parent.id)
-        ? [...acc, block]
-        : acc,
-    []
+  blocks.filter((block) =>
+    selection.some((id) => id === block.id || id === block['parent_id'])
   );
 
 // eslint-disable-next-line

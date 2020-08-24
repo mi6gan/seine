@@ -28,6 +28,6 @@ export default function useSelectedLayoutItems() {
     items,
     layout: layouts.length === 1 ? layouts[0] : null,
     item:
-      items.length === 1 ? items[0] : layouts.length === 1 ? layouts[0] : null,
+      items.length === 1 ? items[0] : layouts.length > 0 ? layouts[0] : null,
   };
 }

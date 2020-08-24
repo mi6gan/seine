@@ -72,14 +72,15 @@ export default function RichTextEditor({
     [id, state]
   );
 
-  useAutoEffect(() => {
+  React.useEffect(() => {
     if (editorState && !selected) {
       dispatch({
         type: UPDATE_BLOCK_BODY,
         body: convertToRaw(editorState.getCurrentContent()),
       });
     }
-  });
+    // eslint-disable-next-line
+  }, [selected]);
 
   return (
     <>

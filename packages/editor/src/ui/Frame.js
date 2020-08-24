@@ -18,7 +18,12 @@ import {
   ArrowRight,
 } from '@material-ui/icons';
 
-import { EditorContext, useBlocksDispatch, useBlocksBuffer } from '../context';
+import {
+  EditorContext,
+  useBlocksDispatch,
+  useBlocksBuffer,
+  useBlocksSelector,
+} from '../context';
 import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
 
 const StyledFrame = styled(Item)`
@@ -130,10 +135,13 @@ export default function Frame({ children, id, onClick, ...props }) {
   const dispatch = useBlocksDispatch();
   const buffer = useBlocksBuffer();
   const { item, items } = useSelectedLayoutItems();
+  const parent = useBlocksSelector(
+    ({ blocks }) => item && blocks.find(({ id }) => item['parent_id'] === id)
+  );
   const selected =
     item && item.id === id
       ? 'self'
-      : item && item['parent_id'] === id
+      : (item && item['parent_id'] === id) || (parent && parent['parent_id'])
       ? 'child'
       : false;
   return (
