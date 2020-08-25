@@ -25,7 +25,6 @@ const ChartSvg = styled.svg.attrs(
     ${({ width = 'auto' }) => ({ width })};
     ${({ height = 'auto' }) => ({ height })};
     ${({ maxHeight }) => ({ maxHeight })};
-    flex-grow: 1;
   }
 `;
 

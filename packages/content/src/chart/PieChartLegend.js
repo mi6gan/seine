@@ -8,8 +8,15 @@ const LegendRoot = styled(List)`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  && {
+    position: relative;
+    top: 0.75em;
+    padding: 0;
+  }
   .MuiListItem-root {
+    height: 2.25em;
     width: auto;
+    padding-left: 0;
   }
 `;
 

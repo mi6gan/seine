@@ -4,6 +4,7 @@ import type { ChartElement } from '@seine/core';
 import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
+import styled from 'styled-components/macro';
 
 import Item from '../layout/Item';
 
@@ -89,14 +90,18 @@ function PieLabel({
   );
 }
 
+const PieChartItem = styled(Item)`
+  && {
+    height: 100% !important;
+  }
+`;
+
 /**
  * @description Pie chart block renderer.
  * @param {Props}: props
  * @returns {React.Node}
  */
 export default function PieChart({
-  as: Container = Item,
-
   legend = defaultPieChartLegend,
   palette = defaultChartPalette,
   units = defaultPieChartUnits,
@@ -120,7 +125,7 @@ export default function PieChart({
   ...itemProps
 }): Props {
   return (
-    <Container as={Chart} data={elements} {...itemProps}>
+    <PieChartItem forwardedAs={Chart} data={elements} {...itemProps}>
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
@@ -134,6 +139,6 @@ export default function PieChart({
         elementValueAs={elementValueAs}
       />
       {!!legend && <PieChartLegend />}
-    </Container>
+    </PieChartItem>
   );
 }
