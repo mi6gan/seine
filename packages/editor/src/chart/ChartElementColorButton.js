@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components/macro';
 import SketchPicker from 'react-color/lib/Sketch';
 import { Button, ClickAwayListener } from '@material-ui/core';
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { chartPaletteKeyValues } from '@seine/content';
-import { useAutoCallback } from 'hooks.macro';
+import { chartPaletteKeyValues, groupElements } from '@seine/content';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
 import { useBlocksDispatch } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
@@ -44,10 +44,19 @@ export default function ChartElementColorButton() {
     id,
     editor: { selection },
     format: { paletteKey, palette },
+    body: { elements },
   } = useChartBlock();
+  const colorIndex = useAutoMemo(
+    groupElements(elements).reduce(
+      (acc, [_, group]) =>
+        acc === -1
+          ? group.findIndex(({ index }) => index === selection) % palette.length
+          : acc,
+      -1
+    )
+  );
   const dispatch = useBlocksDispatch();
   const [open, setOpen] = React.useState(false);
-  const colorIndex = selection % palette.length;
   const color = palette[colorIndex];
   const buttonRef = React.useRef(null);
   return (
@@ -85,7 +94,7 @@ export default function ChartElementColorButton() {
           <SketchPicker
             color={color}
             presetColors={chartPaletteKeyValues[paletteKey]}
-            onChange={useAutoCallback(({ rgb: { r, g, b, a = 1 } }) =>
+            onChange={useAutoCallback(({ rgb: { r, g, b, a = 1 } }) => {
               dispatch({
                 id,
                 type: UPDATE_BLOCK_FORMAT,
@@ -96,8 +105,8 @@ export default function ChartElementColorButton() {
                     ...palette.slice(colorIndex + 1),
                   ],
                 },
-              })
-            )}
+              });
+            })}
           />
         </ColorPickerContainer>
       </ClickAwayListener>
