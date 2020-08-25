@@ -12,8 +12,9 @@ node_modules/
 /coverage
 
 # production
-dist/
-**/lib
+/dist
+/storybook-static
+/**/lib
 
 # idea
 .idea
