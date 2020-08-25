@@ -12,6 +12,8 @@ import PieChart from './PieChart';
 import ChartSvg from './ChartSvg';
 import ChartSvgDefs from './ChartSvgDefs';
 import useChartFormat from './useChartFormat';
+import ChartLegend from './ChartLegend';
+import { titleIdentityElements } from './helpers';
 
 type Props = $Shape<ChartFormat> & ChartBody & { parentType: string };
 
@@ -37,6 +39,12 @@ export default function Chart(props: Props) {
           <LineChartContent {...chartProps} />
         ) : null}
       </ChartSvg>
+      {!!chartProps.legend && (
+        <ChartLegend
+          elements={titleIdentityElements(chartProps.elements)}
+          palette={chartProps.palette}
+        />
+      )}
     </Item>
   );
 }

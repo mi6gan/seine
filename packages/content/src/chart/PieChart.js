@@ -18,7 +18,7 @@ import {
   defaultPieChartLegend,
   defaultPieChartUnits,
 } from './constants';
-import ChartLegend from './ChartLegend';
+import PieChartLegend from './PieChartLegend';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 
@@ -156,7 +156,7 @@ export default function PieChart({
         elementTitleAs={elementTitleAs}
         elementValueAs={elementValueAs}
       />
-      {!!legend && <ChartLegend />}
+      {!!legend && <PieChartLegend />}
       <StyledTitle text={title} />
     </Container>
   );

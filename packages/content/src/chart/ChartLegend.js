@@ -1,31 +1,56 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { List } from '@material-ui/core';
-import { Legend } from '@devexpress/dx-react-chart-material-ui';
+import type { ChartElement } from '@seine/core';
 
-const LegendRoot = styled(List)`
+import { defaultChartBody, defaultChartPalette } from './constants';
+
+const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  .MuiListItem-root {
-    width: auto;
-  }
 `;
 
-const LegendMarker = ({ color }) => (
-  <svg width={20} height={20} fill={color}>
-    <rect x={0} y={0} width={'100%'} height={'100%'} />
-  </svg>
-);
+const LegendBox = styled.div`
+  background-color: ${({ color }) => color};
+  padding: 0.75rem;
+`;
 
-// eslint-disable-next-line
-export default function PieChartContent() {
+const LegendLabel = styled.div`
+  white-space: pre-wrap;
+  word-break: break-all;
+  padding: 0 0.75rem;
+`;
+
+const LegendItem = styled.div`
+  display: flex;
+  align-items: center;
+  ${({ minWidth }) => minWidth && { minWidth }};
+  line-height: 2;
+`;
+
+export type Props = {
+  elements: ChartElement[],
+  palette?: string[],
+};
+
+/**
+ * @description Chart legend.
+ * @param {Props} props
+ * @returns {React.Node}
+ */
+export default function ChartLegend({
+  elements = defaultChartBody.elements,
+  palette = defaultChartPalette,
+}: Props) {
+  const minItemWidth = `${100 / elements.length}%`;
   return (
-    <Legend
-      position={'bottom'}
-      rootComponent={LegendRoot}
-      markerComponent={LegendMarker}
-    />
+    <Container>
+      {elements.map(({ title }, index) => (
+        <LegendItem key={index} minWidth={minItemWidth}>
+          <LegendBox color={palette[index % palette.length]} />
+          <LegendLabel>{title}</LegendLabel>
+        </LegendItem>
+      ))}
+    </Container>
   );
 }

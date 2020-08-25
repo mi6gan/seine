@@ -5,9 +5,10 @@ import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from './constants';
 
 const ChartSvg = styled.svg.attrs(
   ({
+    legend = false,
     overflow = 'visible',
     width = '100%',
-    height = '100%',
+    height = legend ? 'calc(100%) - 2rem' : '100%',
     viewBox = `0 0 ${VIEWPORT_WIDTH} ${VIEWPORT_HEIGHT}`,
     preserveAspectRatio = 'xMidYMin meet',
   }) => ({
