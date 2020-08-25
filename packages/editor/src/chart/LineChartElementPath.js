@@ -42,8 +42,9 @@ export default function LineChartElementPath({
               stroke: 'black',
             }
           : {
-              strokeWidth: 4,
+              strokeWidth: 8,
               stroke: 'transparent',
+
               markerEnd: 'none',
               markerMid: 'none',
               markerStart: 'none',
