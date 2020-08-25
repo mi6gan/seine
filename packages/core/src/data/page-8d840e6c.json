@@ -1,0 +1,202 @@
+[
+  {
+    "id": "8d840e6c-e8c0-4ad9-824a-73666c3f933c",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "b635bd91-2ce0-4dbe-8480-fc6c594e10cb",
+    "type": "draft",
+    "parent_id": "8d840e6c-e8c0-4ad9-824a-73666c3f933c",
+    "body": {
+      "blocks": [
+        {
+          "key": "af9v",
+          "data": {},
+          "text": "Delnev sells food and non-food grocery products through a network of hypermarkets and a small, but expanding, supermarket chain established in 2020. ",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "4k042",
+          "data": {},
+          "text": "The company currently has its stores in 68 cities throughout the country. All of the supermarkets are located on rental properties. ",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "a0046",
+          "data": {},
+          "text": "At the end of 2020, Delnev operated 116 hypermarkets with a total retail area of 743 thousand square meters (sq.m.). 25% of hypermarkets are rented, the rest are owned by Delnev.",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "dsntg",
+          "data": {},
+          "text": "",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": { "verticalAlignment": "center" },
+    "schema": null
+  },
+  {
+    "id": "d1024ad0-097a-4ff6-a3ee-03e8a816ba47",
+    "type": "grid",
+    "parent_id": "8d840e6c-e8c0-4ad9-824a-73666c3f933c",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "7cad34f1-24f3-4195-9843-6a0410ad2737",
+    "type": "chart",
+    "parent_id": "d1024ad0-097a-4ff6-a3ee-03e8a816ba47",
+    "body": {
+      "title": "Total Gross Floor Area (thousand of sq.m)",
+      "elements": [
+        {
+          "id": "98b7d1cb-52e7-4831-81a4-3675769a82fe",
+          "group": "2018",
+          "title": "Hypermarket",
+          "value": 431
+        },
+        {
+          "id": "010f6197-1f2b-4156-a0e8-f84ab46d64a6",
+          "group": "2018",
+          "title": "Supermarket",
+          "value": 0
+        },
+        {
+          "id": "98b7d1cb-52e7-4831-81a4-3675769a82fe",
+          "group": "2019",
+          "title": "Hypermarket",
+          "value": 564
+        },
+        {
+          "id": "010f6197-1f2b-4156-a0e8-f84ab46d64a6",
+          "group": "2019",
+          "title": "Supermarket",
+          "value": 0
+        },
+        {
+          "id": "98b7d1cb-52e7-4831-81a4-3675769a82fe",
+          "group": "2020",
+          "title": "Hypermarket",
+          "value": 762
+        },
+        {
+          "id": "010f6197-1f2b-4156-a0e8-f84ab46d64a6",
+          "group": "2020",
+          "title": "Supermarket",
+          "value": 110
+        }
+      ]
+    },
+    "format": {
+      "dy": 100,
+      "kind": "column",
+      "xAxis": true,
+      "yAxis": 0,
+      "legend": true,
+      "palette": [
+        "#1b591d",
+        "rgba(45,184,81,1)",
+        "#29a147",
+        "#2db851",
+        "#7fc791",
+        "#aad296",
+        "#daebd1"
+      ],
+      "fraction": 0,
+      "maxValue": 800,
+      "minValue": 0,
+      "paletteKey": "bcg",
+      "textAlignment": "left"
+    },
+    "schema": null
+  },
+  {
+    "id": "024dff17-5d75-4b49-9c94-4c0763f37d99",
+    "type": "chart",
+    "parent_id": "d1024ad0-097a-4ff6-a3ee-03e8a816ba47",
+    "body": {
+      "title": "Number of Stores by Type",
+      "elements": [
+        {
+          "id": "7b277972-d4e1-42ed-afa0-edf3af27f189",
+          "group": "2018",
+          "title": "Hypermarket",
+          "value": 63
+        },
+        {
+          "id": "4f8c2a15-1800-496f-92d3-158104dc2e08",
+          "group": "2018",
+          "title": "Supermarket",
+          "value": 0
+        },
+        {
+          "id": "7b277972-d4e1-42ed-afa0-edf3af27f189",
+          "group": "2019",
+          "title": "Hypermarket",
+          "value": 84
+        },
+        {
+          "id": "4f8c2a15-1800-496f-92d3-158104dc2e08",
+          "group": "2019",
+          "title": "Supermarket",
+          "value": 0
+        },
+        {
+          "id": "7b277972-d4e1-42ed-afa0-edf3af27f189",
+          "group": "2020",
+          "title": "Hypermarket",
+          "value": 116
+        },
+        {
+          "id": "4f8c2a15-1800-496f-92d3-158104dc2e08",
+          "group": "2020",
+          "title": "Supermarket",
+          "value": 22
+        }
+      ]
+    },
+    "format": {
+      "dy": 25,
+      "kind": "column",
+      "xAxis": true,
+      "yAxis": 0,
+      "legend": true,
+      "palette": [
+        "#1b591d",
+        "rgba(45,184,81,1)",
+        "#29a147",
+        "#2db851",
+        "#7fc791",
+        "#aad296",
+        "#daebd1"
+      ],
+      "fraction": 0,
+      "maxValue": 150,
+      "minValue": 0,
+      "paletteKey": "bcg",
+      "textAlignment": "left"
+    },
+    "schema": null
+  }
+]

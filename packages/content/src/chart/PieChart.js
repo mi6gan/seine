@@ -1,12 +1,7 @@
 // @flow
 import * as React from 'react';
 import type { ChartElement } from '@seine/core';
-import {
-  Chart,
-  PieSeries,
-  Title,
-} from '@devexpress/dx-react-chart-material-ui';
-import styled from 'styled-components/macro';
+import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
 
@@ -94,24 +89,6 @@ function PieLabel({
   );
 }
 
-const StyledTitle = styled(Title).attrs(
-  ({ text: children, variant = 'h4' }) => ({
-    children,
-    variant,
-  })
-)`
-  ${({
-    variant,
-    theme: {
-      typography: {
-        fontWeightLight,
-        [variant]: { fontWeight: defaultFontWeight = fontWeightLight, ...font },
-      },
-    },
-    fontWeight = defaultFontWeight,
-  }) => ({ ...font, fontWeight })};
-`;
-
 /**
  * @description Pie chart block renderer.
  * @param {Props}: props
@@ -157,7 +134,6 @@ export default function PieChart({
         elementValueAs={elementValueAs}
       />
       {!!legend && <PieChartLegend />}
-      <StyledTitle text={title} />
     </Container>
   );
 }

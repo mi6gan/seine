@@ -2,6 +2,7 @@
 import * as React from 'react';
 import type { ChartBody, ChartFormat } from '@seine/core';
 import { chartTypes } from '@seine/core';
+import styled from 'styled-components/macro';
 
 import { Item } from '../layout';
 
@@ -17,6 +18,11 @@ import { titleIdentityElements } from './helpers';
 
 type Props = $Shape<ChartFormat> & ChartBody & { parentType: string };
 
+const ChartItem = styled(Item)`
+  display: flex;
+  flex-direction: column;
+`;
+
 /**
  * @description Switch to chart render components by its kind.
  * @param {Props} props
@@ -26,9 +32,9 @@ export default function Chart(props: Props) {
   const { kind, ...chartProps } = useChartFormat(props);
 
   return kind === chartTypes.PIE ? (
-    <PieChart {...chartProps} />
+    <PieChart {...chartProps} as={ChartItem} />
   ) : (
-    <Item {...chartProps}>
+    <ChartItem {...chartProps}>
       <ChartSvg {...chartProps}>
         <ChartSvgDefs />
         {kind === chartTypes.BAR ? (
@@ -45,6 +51,6 @@ export default function Chart(props: Props) {
           palette={chartProps.palette}
         />
       )}
-    </Item>
+    </ChartItem>
   );
 }

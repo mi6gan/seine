@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const LegendBox = styled.div`
   background-color: ${({ color }) => color};
-  padding: 0.75rem;
+  padding: 10px;
 `;
 
 const LegendLabel = styled.div`
