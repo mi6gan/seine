@@ -4,6 +4,7 @@
 !dist/**/*
 !.env*
 !.*rc
+!*.config.js
 !*scripts*
 !*scripts*/*
 !src

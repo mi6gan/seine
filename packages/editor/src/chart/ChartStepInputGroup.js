@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { blockTypes, chartTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { defaultBarChartFormat } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 
@@ -9,11 +9,16 @@ import SidebarInput from '../ui/SidebarInput';
 import SidebarLabel from '../ui/SidebarLabel';
 import SidebarGroup from '../ui/SidebarGroup';
 
+import useChartBlock from './useChartBlock';
+
 /**
  * @description Pie chart design panel.
  * @returns {React.Node}
  */
-export default function ChartStepInputGroup({ hideX = false, hideY = false }) {
+export default function ChartStepInputGroup() {
+  const {
+    format: { kind },
+  } = useChartBlock();
   const device = useBlocksSelector((state) => state.device);
   const block =
     useBlocksSelector().find(({ type }) => type === blockTypes.CHART) || {};
@@ -28,7 +33,7 @@ export default function ChartStepInputGroup({ hideX = false, hideY = false }) {
     <SidebarGroup>
       <SidebarLabel>step</SidebarLabel>
       <SidebarInput
-        hidden={hideX}
+        hidden={kind === chartTypes.COLUMN || kind === chartTypes.BAR}
         disabled={!id}
         value={dx}
         inputProps={{ placeholder: 'x' }}
@@ -39,9 +44,10 @@ export default function ChartStepInputGroup({ hideX = false, hideY = false }) {
             format: { dx: +event.currentTarget.value || null },
           })
         )}
+        type={'number'}
       />
       <SidebarInput
-        hidden={hideY}
+        hidden={kind === chartTypes.BAR}
         disabled={!id}
         value={dy}
         inputProps={{ placeholder: 'y' }}
@@ -52,6 +58,7 @@ export default function ChartStepInputGroup({ hideX = false, hideY = false }) {
             format: { dy: +event.currentTarget.value || null },
           })
         )}
+        type={'number'}
       />
     </SidebarGroup>
   );

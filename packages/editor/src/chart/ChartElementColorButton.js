@@ -51,7 +51,10 @@ export default function ChartElementColorButton() {
   const color = palette[colorIndex];
   const buttonRef = React.useRef(null);
   return (
-    <SidebarGroup alignItems={'center'}>
+    <SidebarGroup
+      alignItems={'center'}
+      display={selection > -1 ? 'flex' : 'none'}
+    >
       <SidebarLabel>color</SidebarLabel>
       <StyledColorButton
         ref={buttonRef}

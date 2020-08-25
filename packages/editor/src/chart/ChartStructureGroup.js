@@ -89,9 +89,10 @@ export default function ChartStructureGroup() {
                     group: `Group #${groupsCount + 1}`,
                     value:
                       minValue ||
-                      elements
-                        .filter(({ id }) => id === element.id)
-                        .reverse()[0].value,
+                      (element &&
+                        elements
+                          .filter(({ id }) => id === element.id)
+                          .reverse()[0].value),
                   })),
                 ],
               }}
@@ -119,7 +120,9 @@ export default function ChartStructureGroup() {
             body: {
               elements:
                 kind === chartTypes.LINE
-                  ? elements.filter(({ id }) => id !== element.id)
+                  ? element
+                    ? elements.filter(({ id }) => id !== element.id)
+                    : []
                   : [
                       ...elements.slice(0, selection),
                       ...elements.slice(selection + 1),
