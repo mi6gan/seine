@@ -93,6 +93,7 @@ function PieLabel({
 const PieChartItem = styled(Item)`
   && {
     height: 100% !important;
+    padding: 0;
   }
 `;
 
