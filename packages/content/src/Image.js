@@ -32,8 +32,6 @@ export default function Image({
   file,
   hasSibling,
 }: Props) {
-  // eslint-disable-next-line
-  console.log({ hasSibling });
   return (
     <ImageContainer hasSibling={hasSibling}>
       <Img alt={alt} align={align} src={file} />
