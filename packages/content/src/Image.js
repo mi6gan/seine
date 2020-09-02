@@ -13,6 +13,11 @@ export const ImageContainer = styled.div`
   justify-content: center;
   position: relative;
   width: 100%;
+  & > img {
+    @media (min-width: 1280px) {
+      ${({ hasSibling = false }) => !hasSibling && { padding: '10%' }}
+    }
+  }
 `;
 
 /**
@@ -20,9 +25,15 @@ export const ImageContainer = styled.div`
  * {Props} props
  * @returns {React.Node}
  */
-export default function Image({ as: Img = 'img', align, alt, file }: Props) {
+export default function Image({
+  as: Img = 'img',
+  align,
+  alt,
+  file,
+  hasSibling,
+}: Props) {
   return (
-    <ImageContainer>
+    <ImageContainer hasSibling={hasSibling}>
       <Img alt={alt} align={align} src={file} />
     </ImageContainer>
   );

@@ -1,5 +1,6 @@
 import { chartTypes, initialElementsState } from '@seine/core';
 
+export const defaultChartXsDy = null;
 export const defaultChartDy = 10;
 export const defaultChartDx = 10;
 export const defaultChartTitle = 'Chart title';

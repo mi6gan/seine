@@ -23,19 +23,38 @@ type Props = {
  */
 export default function ChartValueStepInput({ dispatch, format }: Props) {
   return (
-    <ToolbarInput
-      type={'number'}
-      onChange={React.useCallback(
-        ({ currentTarget }) =>
-          dispatch({
-            type: UPDATE_BLOCK_FORMAT,
-            format: { dy: +currentTarget.value },
-          }),
-        [dispatch]
-      )}
-      placeholder={'step'}
-      value={typeof format.dy === 'number' ? format.dy : ''}
-      min={0}
-    />
+    <>
+      <ToolbarInput
+        type={'number'}
+        onChange={React.useCallback(
+          ({ currentTarget }) =>
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              format: { dy: +currentTarget.value },
+            }),
+          [dispatch]
+        )}
+        placeholder={'step'}
+        value={typeof format.dy === 'number' ? format.dy : ''}
+        min={0}
+      />
+
+      <ToolbarInput
+        type={'number'}
+        onChange={React.useCallback(
+          ({ currentTarget }) =>
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              format: {
+                xsDy: currentTarget.value ? +currentTarget.value : null,
+              },
+            }),
+          [dispatch]
+        )}
+        placeholder={'mobile'}
+        value={typeof format.xsDy === 'number' ? format.xsDy : ''}
+        min={0}
+      />
+    </>
   );
 }
