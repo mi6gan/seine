@@ -23,13 +23,17 @@ const TextBox = styled(ChartLayoutTitleText)`
   width: auto;
 `;
 
+const StyledContainer = styled.h4`
+  margin-top: 0.5em;
+`;
+
 /**
  * @description Chart layout title that scales to fit in line
  * @param {Props} props
  * @returns {React.Node}
  */
 export default styled(function ChartLayoutTitle({
-  as: Container = 'h4',
+  as: Container = StyledContainer,
   children,
   textAlignment,
   ...containerProps
