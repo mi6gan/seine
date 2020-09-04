@@ -27,12 +27,16 @@ export function GridEditor({
 }: Props) {
   return (
     <Container>
-      <BlockActions
-        addButtonRenderMap={addButtonRenderMap}
-        dispatch={dispatch}
-        id={id}
-        selection={selection}
-      />
+      {!!gridProps?.children?.props?.children?.every(
+        ({ id }) => !selection.includes(id)
+      ) && (
+        <BlockActions
+          addButtonRenderMap={addButtonRenderMap}
+          dispatch={dispatch}
+          id={id}
+          selection={selection}
+        />
+      )}
       <Grid {...gridProps} />
     </Container>
   );
