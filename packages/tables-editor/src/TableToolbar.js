@@ -1,8 +1,13 @@
 // @flow
 import * as React from 'react';
 import type { TableBody, TableFormat, ToolbarProps } from '@seine/core';
-import { UPDATE_BLOCK_BODY } from '@seine/core';
-import { ActionButton, Toolbar, ToolbarInput } from '@seine/ui';
+import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
+import {
+  ActionButton,
+  CompositeActionButton,
+  Toolbar,
+  ToolbarInput,
+} from '@seine/ui';
 import {
   FormatAlignCenter,
   FormatAlignLeft,
@@ -12,7 +17,7 @@ import {
 } from '@material-ui/icons';
 import { Checkbox, IconButton } from '@material-ui/core';
 import { defaultTableBody, defaultTableCell } from '@seine/tables';
-import { useAutoCallback } from 'hooks.macro';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
 import TableCellButton from './TableCellButton';
 import { defaultTableEditor } from './constants';
@@ -76,24 +81,34 @@ export default function TableToolbar({
       >
         Add column
       </ActionButton>
-      <ActionButton
+      <CompositeActionButton
         disabled={!(rows.length && rows[0].length > 1)}
-        body={{
-          header: [
-            ...header.slice(0, columnIndex),
-            ...header.slice(columnIndex + 1),
-          ],
-          rows: rows.map((row) => [
-            ...row.slice(0, columnIndex),
-            ...row.slice(columnIndex + 1),
-          ]),
-        }}
-        id={id}
-        type={UPDATE_BLOCK_BODY}
+        actions={useAutoMemo([
+          {
+            type: UPDATE_BLOCK_EDITOR,
+            editor: {
+              columnIndex: -1,
+              rowIndex: -1,
+            },
+          },
+          {
+            type: UPDATE_BLOCK_BODY,
+            body: {
+              header: [
+                ...header.slice(0, columnIndex),
+                ...header.slice(columnIndex + 1),
+              ],
+              rows: rows.map((row) => [
+                ...row.slice(0, columnIndex),
+                ...row.slice(columnIndex + 1),
+              ]),
+            },
+          },
+        ])}
         dispatch={dispatch}
       >
         Remove column
-      </ActionButton>
+      </CompositeActionButton>
       <ActionButton
         body={{
           rows:
@@ -111,17 +126,29 @@ export default function TableToolbar({
       >
         Add row
       </ActionButton>
-      <ActionButton
-        body={{
-          rows: [...rows.slice(0, rowIndex), ...rows.slice(rowIndex + 1)],
-        }}
+      <CompositeActionButton
+        actions={[
+          {
+            type: UPDATE_BLOCK_EDITOR,
+            editor: {
+              columnIndex: -1,
+              rowIndex: -1,
+            },
+          },
+          {
+            type: UPDATE_BLOCK_BODY,
+            body: {
+              rows: [...rows.slice(0, rowIndex - 1), ...rows.slice(rowIndex)],
+            },
+          },
+        ]}
         disabled={!(rows.length > 1)}
         id={id}
         type={UPDATE_BLOCK_BODY}
         dispatch={dispatch}
       >
         Remove row
-      </ActionButton>
+      </CompositeActionButton>
       <Checkbox
         disabled={columnIndex < 0}
         onChange={useAutoCallback(() => {

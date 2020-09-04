@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import { Button as MuiButton } from '@material-ui/core';
+import { useAutoCallback } from 'hooks.macro';
 
 type Action = { type: string, [string]: any };
 
@@ -23,10 +24,7 @@ export default function CompositeActionButton({
   return (
     <Button
       {...buttonProps}
-      onClick={React.useCallback(() => actions.forEach(dispatch), [
-        dispatch,
-        actions,
-      ])}
+      onClick={useAutoCallback(() => actions.forEach(dispatch))}
     />
   );
 }
