@@ -13,6 +13,7 @@ import {
   UPDATE_BLOCK_EDITOR,
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
+import { useAutoCallback } from 'hooks.macro';
 
 export type Props = Action & React.ElementProps<HTMLButtonElement>;
 
@@ -34,53 +35,53 @@ export default function ActionButton({
   mode,
   modifier,
   type,
+  onClick,
   ...buttonProps
 }: Props) {
   return (
     <Button
       {...buttonProps}
       type={'button'}
-      onClick={React.useCallback(
-        () =>
-          dispatch(
-            block &&
-              // create block
-              (type === CREATE_BLOCK ||
-                (id &&
-                  (type === CREATE_BOTTOM_BLOCK ||
-                    type === CREATE_LEFT_BLOCK ||
-                    type === CREATE_RIGHT_BLOCK ||
-                    type === CREATE_TOP_BLOCK)))
-              ? id
-                ? { id, block, type }
-                : { block, type }
-              : // update block
-              body && UPDATE_BLOCK_BODY
-              ? id
-                ? { id, body, type }
-                : { body, type }
-              : format && UPDATE_BLOCK_FORMAT
-              ? id
-                ? { id, format, type }
-                : { format, type }
-              : editor && UPDATE_BLOCK_EDITOR
-              ? id
-                ? { id, editor, type }
-                : { editor, type }
-              : // select block
-              id && SELECT_BLOCK
-              ? modifier
-                ? mode
-                  ? { id, mode, modifier, type }
-                  : { id, modifier, type }
-                : mode
-                ? { id, mode, type }
-                : { id, type }
-              : // delete or deselect block
-                { type }
-          ),
-        [block, body, dispatch, editor, format, id, mode, modifier, type]
-      )}
+      onClick={useAutoCallback((event) => {
+        onClick && onClick(event);
+        dispatch(
+          block &&
+            // create block
+            (type === CREATE_BLOCK ||
+              (id &&
+                (type === CREATE_BOTTOM_BLOCK ||
+                  type === CREATE_LEFT_BLOCK ||
+                  type === CREATE_RIGHT_BLOCK ||
+                  type === CREATE_TOP_BLOCK)))
+            ? id
+              ? { id, block, type }
+              : { block, type }
+            : // update block
+            body && UPDATE_BLOCK_BODY
+            ? id
+              ? { id, body, type }
+              : { body, type }
+            : format && UPDATE_BLOCK_FORMAT
+            ? id
+              ? { id, format, type }
+              : { format, type }
+            : editor && UPDATE_BLOCK_EDITOR
+            ? id
+              ? { id, editor, type }
+              : { editor, type }
+            : // select block
+            id && SELECT_BLOCK
+            ? modifier
+              ? mode
+                ? { id, mode, modifier, type }
+                : { id, modifier, type }
+              : mode
+              ? { id, mode, type }
+              : { id, type }
+            : // delete or deselect block
+              { type }
+        );
+      })}
     />
   );
 }

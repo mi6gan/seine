@@ -20,11 +20,11 @@ export default function useReducerEx<S: State, A: Action>(
   devToolsConfig: { [string]: any } = defaultDevToolsConfig
 ) {
   // reference to last dispatched action
-  const actionRef = useRef<Action | null>(null);
+  const historyRef = useRef<Action | null>(null);
 
   const [state, dispatch] = useReducer<S, A>(reduce, initialArg, init);
 
-  const { current: action } = actionRef;
+  const { current: history } = historyRef;
   const devTools = useAutoMemo(
     process.env.NODE_ENV === 'development' &&
       window['__REDUX_DEVTOOLS_EXTENSION__'] &&
@@ -33,10 +33,13 @@ export default function useReducerEx<S: State, A: Action>(
 
   useAutoEffect(() => {
     if (devTools) {
-      if (action === null) {
+      if (history === null) {
+        historyRef.current = [];
         devTools.init(state);
       } else {
-        devTools.send(action, state);
+        for (const { action, state } of history.splice(0, Infinity)) {
+          devTools.send(action, state);
+        }
       }
     }
   });
@@ -44,7 +47,12 @@ export default function useReducerEx<S: State, A: Action>(
   return [
     state,
     useAutoCallback((action: Action) => {
-      actionRef.current = action;
+      if (historyRef.current) {
+        historyRef.current.push({
+          action,
+          state: reduce(state, action),
+        });
+      }
       dispatch(action);
     }),
   ];
