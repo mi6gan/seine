@@ -504,7 +504,7 @@ export const ContentOfChartSampleTwo = (props) => (
   <InitialContent {...props}>
     {[
       {
-        id: '0a7c94fe-6336-4a05-96ca-ebaf35f98b42',
+        id: 'f9c4f3b9-94e7-4cc7-8bc3-015d089aaf77',
         type: 'page',
         parent_id: null,
         body: {},
@@ -512,13 +512,21 @@ export const ContentOfChartSampleTwo = (props) => (
         schema: null,
       },
       {
-        id: '0cc84c15-ba31-4410-9eee-14eb76607b96',
+        id: '61a71f74-671b-4e20-a4df-be37d4e5842f',
+        type: 'grid',
+        parent_id: 'f9c4f3b9-94e7-4cc7-8bc3-015d089aaf77',
+        body: {},
+        format: { columns: '100%' },
+        schema: null,
+      },
+      {
+        id: '5680f28d-2d4b-486c-bef9-86578923bf78',
         type: 'draft',
-        parent_id: '0a7c94fe-6336-4a05-96ca-ebaf35f98b42',
+        parent_id: '61a71f74-671b-4e20-a4df-be37d4e5842f',
         body: {
           blocks: [
             {
-              key: '6c5o7',
+              key: 'eoeip',
               data: {},
               text:
                 'Kura’s product offering currently targets low-income consumers. The company’s CEO aims to approach high-income and middle-income groups of the population by expanding the range of products and types of meat produced.',
@@ -528,7 +536,7 @@ export const ContentOfChartSampleTwo = (props) => (
               inlineStyleRanges: [],
             },
             {
-              key: '8ro6r',
+              key: '5gubs',
               data: {},
               text:
                 'The segmentation of population and consumption of three types of meat are shown in the charts below.',
@@ -544,138 +552,33 @@ export const ContentOfChartSampleTwo = (props) => (
         schema: null,
       },
       {
-        id: 'e45ee008-b12e-481d-8dcc-7055c449e97c',
+        id: '20a339cf-d22b-44f7-bd6b-2d018677cfef',
         type: 'grid',
-        parent_id: '0a7c94fe-6336-4a05-96ca-ebaf35f98b42',
+        parent_id: '61a71f74-671b-4e20-a4df-be37d4e5842f',
         body: {},
         format: {},
         schema: null,
       },
       {
-        id: '9605040b-022f-4063-a90a-ae213a3ee784',
-        type: 'chart',
-        parent_id: 'e45ee008-b12e-481d-8dcc-7055c449e97c',
+        id: '9c736c6f-e5ac-40fa-a6bc-f378fab203f1',
+        type: 'image',
+        parent_id: '20a339cf-d22b-44f7-bd6b-2d018677cfef',
         body: {
-          title: 'Meat Consumption by Income, %',
-          elements: [
-            {
-              id: 'fe016c09-6247-4740-9047-cd9cd007d43d',
-              group: 'Chicken',
-              title: 'Low',
-              value: 70,
-            },
-            {
-              id: '57e8e244-d83f-4046-b4eb-0f8565b5eea0',
-              group: 'Chicken',
-              title: 'Middle',
-              value: 20,
-            },
-            {
-              id: 'fe016c09-6247-4740-9047-cd9cd007d43d',
-              group: 'Beef',
-              title: 'Low',
-              value: 70,
-            },
-            {
-              id: '57e8e244-d83f-4046-b4eb-0f8565b5eea0',
-              group: 'Beef',
-              title: 'Middle',
-              value: 30,
-            },
-            {
-              id: 'fe016c09-6247-4740-9047-cd9cd007d43d',
-              group: 'Pork',
-              title: 'Low',
-              value: 55,
-            },
-            {
-              id: '57e8e244-d83f-4046-b4eb-0f8565b5eea0',
-              group: 'Pork',
-              title: 'Middle',
-              value: 23,
-            },
-            {
-              id: '1cd3d7a2-e2f5-4de1-a685-01f54b9f8f8a',
-              group: 'Chicken',
-              title: 'High',
-              value: 10,
-            },
-            {
-              id: '1cd3d7a2-e2f5-4de1-a685-01f54b9f8f8a',
-              group: 'Beef',
-              title: 'High',
-              value: 20,
-            },
-            {
-              id: '1cd3d7a2-e2f5-4de1-a685-01f54b9f8f8a',
-              group: 'Pork',
-              title: 'High',
-              value: 22,
-            },
-          ],
+          file:
+            'https://api.testbox.dodone.org/media/attachment/de/79/de79bcae10bc7f52de7ee8b51b27542a.jpg',
         },
-        format: {
-          dy: 10,
-          kind: 'column',
-          xAxis: true,
-          yAxis: true,
-          legend: true,
-          palette: [
-            '#1b591d',
-            'rgba(41,161,71,1)',
-            'rgba(127,199,145,1)',
-            '#2db851',
-            '#7fc791',
-            '#aad296',
-            '#daebd1',
-          ],
-          fraction: 0,
-          maxValue: 80,
-          minValue: 0,
-          paletteKey: 'bcg',
-          textAlignment: 'left',
-        },
+        format: { align: 'middle' },
         schema: null,
       },
       {
-        id: 'b3c105dc-fa88-4b3f-a2a1-679ae5ddde96',
-        type: 'chart',
-        parent_id: 'e45ee008-b12e-481d-8dcc-7055c449e97c',
+        id: '89d8ff62-5a22-40b4-af0f-83afc8c09989',
+        type: 'image',
+        parent_id: '20a339cf-d22b-44f7-bd6b-2d018677cfef',
         body: {
-          title: 'Population of Mexico by Income, %',
-          elements: [
-            { title: 'Low', value: 65 },
-            {
-              id: '3aceb049-3c70-4d37-87b2-5a7309f1c4c5',
-              title: 'Middle',
-              value: 25,
-            },
-            {
-              id: 'a148c376-78c6-430e-b435-f94d0365993e',
-              title: 'High',
-              value: 10,
-            },
-          ],
+          file:
+            'https://api.testbox.dodone.org/media/attachment/00/12/00124debb5c8669255e6ca008e643bdd.jpg',
         },
-        format: {
-          kind: 'pie',
-          xAxis: true,
-          yAxis: true,
-          legend: 1,
-          palette: [
-            '#1b591d',
-            'rgba(41,161,71,1)',
-            'rgba(127,199,145,1)',
-            '#2db851',
-            '#7fc791',
-            '#aad296',
-            '#daebd1',
-          ],
-          fraction: 0,
-          autoFormat: 0,
-          paletteKey: 'bcg',
-          textAlignment: 'left',
-        },
+        format: { align: 'middle' },
         schema: null,
       },
     ]}
