@@ -6902,7 +6902,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-node@npm:^0.3.2":
+"eslint-import-resolver-node@npm:^0.3.2, eslint-import-resolver-node@npm:^0.3.4":
   version: 0.3.4
   resolution: "eslint-import-resolver-node@npm:0.3.4"
   dependencies:
@@ -14370,6 +14370,7 @@ resolve@1.1.7:
     eslint: ^6.8.0
     eslint-config-prettier: ^6.0.0
     eslint-config-react-app: ^5.0.1
+    eslint-import-resolver-node: ^0.3.4
     eslint-plugin-flowtype: ^4.2.0
     eslint-plugin-import: 2.18.2
     eslint-plugin-jsdoc: ^15.12.0
