@@ -17,28 +17,28 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v2
-      with:
-        path: .
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: ${GITHUB_WORKSPACE}
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: yarn
-    - run: yarn build
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn
+      - run: yarn build
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        path: |
-          .yarn/cache
-          .yarn/build-state.yml
-          .yarn/install-state.gz
-          packages/*/lib/**
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            .yarn/cache
+            .yarn/build-state.yml
+            .yarn/install-state.gz
+            packages/*/lib/**
 
   test:
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
-          path: .
+          path: ${GITHUB_WORKSPACE}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
