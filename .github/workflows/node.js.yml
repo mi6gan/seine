@@ -32,11 +32,11 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
-        path:
-          - .yarn/cache
-          - .yarn/build-state.yml
-          - .yarn/install-state.gz
-          - packages/*/lib/**
+        path: |
+          .yarn/cache
+          .yarn/build-state.yml
+          .yarn/install-state.gz
+          packages/*/lib/**
 
   test:
     runs-on: ubuntu-latest
