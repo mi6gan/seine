@@ -11,7 +11,7 @@
   "repository": "https://github.com/mi6gan/seine",
   "scripts": {
     "start": "serve",
-    "test": "run-s build:'*' test:'*'",
+    "test": "run-s test:'*'",
     "test:eslint": "eslint -c .eslintrc.js --format unix packages/",
     "test:jest": "jest",
     "build": "run-s build:'*'",
