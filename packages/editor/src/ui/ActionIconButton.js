@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
-import { ActionButton } from '@seine/ui';
 import { blockTypes, CREATE_BLOCK } from '@seine/core';
 
 import ToolbarButton from './ToolbarButton';
+import ActionButton from './ActionButton';
 
 // eslint-disable-next-line
 export default function ActionIconButton({ Icon, ...action }) {

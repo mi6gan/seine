@@ -2,7 +2,8 @@
 import * as React from 'react';
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
-import { SvgInput } from '@seine/ui';
+
+import SvgInput from '../ui/SvgInput';
 
 import useChartDispatchElements from './useChartDispatchElements';
 

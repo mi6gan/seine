@@ -6,7 +6,8 @@ import type { ChartLegendProps } from '@seine/content';
 import { ChartLegend, defaultPieChartLegend } from '@seine/content';
 import type { ElementsAction } from '@seine/core';
 import { UPDATE_BLOCK_ELEMENT_BY_ID } from '@seine/core';
-import { InlineInput } from '@seine/ui';
+
+import InlineInput from '../ui/InlineInput';
 
 type Props = $Rest<ChartLegendProps, {| kind: ChartType |}> & {
   dispatchElements: (ElementsAction) => void,

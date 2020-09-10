@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { ActionButton, CompositeActionButton } from '@seine/ui';
 import {
   chartTypes,
   createBlockElement,
@@ -16,6 +15,8 @@ import { groupElements, titleIdentityElements } from '@seine/content';
 
 import { useBlocksDispatch } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
+import ActionButton from '../ui/ActionButton';
+import CompositeActionButton from '../ui/CompositeActionButton';
 
 import useChartBlock from './useChartBlock';
 import useElementSelector from './useElementSelector';
