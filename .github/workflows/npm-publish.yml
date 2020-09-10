@@ -16,8 +16,6 @@ jobs:
 
       - name: Download production artifacts
         uses: actions/download-artifact@v2
-        with:
-          path: .
 
       - uses: actions/setup-node@v1
         with:
