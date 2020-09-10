@@ -17,10 +17,32 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
+
+    - name: Use yarn cache
+      uses: actions/cache@v2
+      env:
+        cache-name: yarn-cach
+      with:
+        path: .yarn/cache
+         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Download production artifacts
+      uses: actions/download-artifact@v2
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn
     - run: yarn test
+
+    - name: Upload production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: lib
+        path: packages/*/lib/**
