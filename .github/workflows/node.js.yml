@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - step: &cache-node-modules
-          name: Cache node modules
+      - name: &cache-node-modules
+          Cache node modules
           uses: actions/cache@v2
           env:
             cache-name: cache-node-modules
