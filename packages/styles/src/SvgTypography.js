@@ -119,8 +119,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   const foreignObjectRef = React.useRef(null);
   const { current: foreignElement } = foreignObjectRef;
 
-  const textBoxRef = React.useRef(null);
-  const { current: textBox } = textBoxRef;
+  const [textBox, textBoxRef] = React.useState(null);
 
   const theme = useTheme();
 

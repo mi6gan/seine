@@ -1,14 +1,10 @@
 // @flow
 import * as React from 'react';
 import type { ChartElement } from '@seine/core';
-import {
-  Chart,
-  PieSeries,
-  Title,
-} from '@devexpress/dx-react-chart-material-ui';
-import styled from 'styled-components/macro';
+import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
+import styled from 'styled-components/macro';
 
 import Item from '../layout/Item';
 
@@ -18,7 +14,7 @@ import {
   defaultPieChartLegend,
   defaultPieChartUnits,
 } from './constants';
-import ChartLegend from './ChartLegend';
+import PieChartLegend from './PieChartLegend';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 
@@ -94,22 +90,10 @@ function PieLabel({
   );
 }
 
-const StyledTitle = styled(Title).attrs(
-  ({ text: children, variant = 'h4' }) => ({
-    children,
-    variant,
-  })
-)`
-  ${({
-    variant,
-    theme: {
-      typography: {
-        fontWeightLight,
-        [variant]: { fontWeight: defaultFontWeight = fontWeightLight, ...font },
-      },
-    },
-    fontWeight = defaultFontWeight,
-  }) => ({ ...font, fontWeight })};
+const PieChartItem = styled(Item)`
+  && {
+    height: 100% !important;
+  }
 `;
 
 /**
@@ -118,8 +102,6 @@ const StyledTitle = styled(Title).attrs(
  * @returns {React.Node}
  */
 export default function PieChart({
-  as: Container = Item,
-
   legend = defaultPieChartLegend,
   palette = defaultChartPalette,
   units = defaultPieChartUnits,
@@ -143,7 +125,7 @@ export default function PieChart({
   ...itemProps
 }): Props {
   return (
-    <Container as={Chart} data={elements} {...itemProps}>
+    <PieChartItem forwardedAs={Chart} data={elements} {...itemProps}>
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
@@ -156,8 +138,7 @@ export default function PieChart({
         elementTitleAs={elementTitleAs}
         elementValueAs={elementValueAs}
       />
-      {!!legend && <ChartLegend />}
-      <StyledTitle text={title} />
-    </Container>
+      {!!legend && <PieChartLegend />}
+    </PieChartItem>
   );
 }
