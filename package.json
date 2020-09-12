@@ -30,7 +30,7 @@
     "build:cjs": "node scripts/build.js --format=cjs",
     "build:esm": "node scripts/build.js --format=esm",
     "build:umd": "node scripts/build-workspace.js --format=umd --workspace=packages/testbox",
-    "build:storybook": "yarn build-storybook --quiet --loglevel silent -o dist",
+    "skip:build:storybook": "yarn build-storybook --quiet --loglevel silent -o dist",
     "dev": "run-s dev:'*'",
     "dev:start": "start-storybook -p 3000"
   },
