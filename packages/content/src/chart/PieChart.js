@@ -8,12 +8,7 @@ import styled from 'styled-components/macro';
 
 import Item from '../layout/Item';
 
-import {
-  defaultChartFraction,
-  defaultChartPalette,
-  defaultPieChartLegend,
-  defaultPieChartUnits,
-} from './constants';
+import { defaultChartFraction, defaultChartPalette, defaultPieChartLegend, defaultPieChartUnits } from './constants';
 import PieChartLegend from './PieChartLegend';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
