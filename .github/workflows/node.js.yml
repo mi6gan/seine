@@ -24,7 +24,11 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: .yarn/cache
+          path: |
+            .yarn/cache
+            .yarn/build-state.yml
+            .yarn/install-state.gz
+            node_modules/.cache
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -36,38 +40,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - run: yarn
+
       - run: yarn build
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          path: |
-            .yarn/cache
-            .yarn/build-state.yml
-            .yarn/install-state.gz
-            packages/*/lib/**
-
-  test:
-    runs-on: ubuntu-latest
-
-    needs: build
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Download artifacts
-        uses: actions/download-artifact@v2
-        with:
-          path: ${GITHUB_WORKSPACE}
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: yarn
       - run: yarn test
