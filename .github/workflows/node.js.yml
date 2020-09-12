@@ -54,7 +54,7 @@ jobs:
         run: yarn test
 
       - name: Release version
-        if: ${{ github.event_name != 'push' }}
+        if: ${{ github.event_name == 'push' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
