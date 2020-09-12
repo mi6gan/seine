@@ -180,7 +180,10 @@ export default function LineChartContent({
             markerStart={`url(circle-${index})`}
             stroke={palette[index % palette.length]}
             strokeWidth={valueHeight / 20}
-            meta={{ ...titledElements[index], index }}
+            meta={{
+              ...titledElements[index],
+              index: elements.findIndex((element) => id === element.id),
+            }}
           />
 
           {groups.map(([, groupElements], groupIndex, { length }) =>

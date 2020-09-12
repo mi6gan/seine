@@ -7,7 +7,7 @@ const ChartSvg = styled.svg.attrs(
   ({
     overflow = 'visible',
     width = '100%',
-    height = '100%',
+    height,
     viewBox = `0 0 ${VIEWPORT_WIDTH} ${VIEWPORT_HEIGHT}`,
     preserveAspectRatio = 'xMidYMin meet',
   }) => ({

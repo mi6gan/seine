@@ -6,12 +6,13 @@ import {
   SELECT_BLOCK_ELEMENT,
 } from '@seine/core';
 import {
-  PieChart,
   BarChartContent,
   ChartSvg,
   ChartSvgDefs,
   ColumnChartContent,
   LineChartContent,
+  PieChart,
+  titleIdentityElements,
   useChartFormat,
 } from '@seine/content';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
@@ -30,6 +31,7 @@ import GroupedChartElementRect from './GroupedChartElementRect';
 import LineChartElementPath from './LineChartElementPath';
 import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
+import ChartLegendEditor from './ChartLegendEditor';
 
 // eslint-disable-next-line
 function SelectionFrame({ children, ...frame }) {
@@ -130,6 +132,12 @@ export default function ChartEditor(props: Props) {
           />
         ) : null}
       </ChartSvg>
+      {!!chart.legend && (
+        <ChartLegendEditor
+          elements={titleIdentityElements(chart.elements)}
+          palette={chart.palette}
+        />
+      )}
     </Frame>
   );
 }

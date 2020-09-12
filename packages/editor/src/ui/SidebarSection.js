@@ -2,7 +2,10 @@
 import { Box } from '@material-ui/core';
 import styled from 'styled-components/macro';
 
-const SidebarSection = styled(Box).attrs(({ py = 2 }) => ({ py }))`
+const SidebarSection = styled(Box).attrs(({ py = 2, display = 'block' }) => ({
+  py,
+  display,
+}))`
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
 `;
 
