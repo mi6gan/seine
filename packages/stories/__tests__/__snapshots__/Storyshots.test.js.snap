@@ -44,6 +44,8 @@ exports[`Storyshots Default.Multiple.Content Content Of All Charts 1`] = `null`;
 
 exports[`Storyshots Default.Multiple.Content Content Of Chart Sample One 1`] = `null`;
 
+exports[`Storyshots Default.Multiple.Content Content Of Chart Sample Three 1`] = `null`;
+
 exports[`Storyshots Default.Multiple.Content Content Of Chart Sample Two 1`] = `null`;
 
 exports[`Storyshots Default.Multiple.Content Content Of Column And Bar Sibling Charts 1`] = `null`;
@@ -61,6 +63,8 @@ exports[`Storyshots Default.Multiple.Content Initial Content 1`] = `null`;
 exports[`Storyshots Default.Multiple.Editor Editor Of All Charts 1`] = `null`;
 
 exports[`Storyshots Default.Multiple.Editor Editor Of Chart Sample One 1`] = `null`;
+
+exports[`Storyshots Default.Multiple.Editor Editor Of Chart Sample Three 1`] = `null`;
 
 exports[`Storyshots Default.Multiple.Editor Editor Of Chart Sample Two 1`] = `null`;
 

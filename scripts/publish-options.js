@@ -1,7 +1,6 @@
 module.exports = [
+  'npm',
   'publish',
-  '--non-interactive',
-  '--patch',
   '--access=public',
   ...process.argv.slice(2),
 ];

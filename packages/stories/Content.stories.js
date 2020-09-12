@@ -584,3 +584,136 @@ export const ContentOfChartSampleTwo = (props) => (
     ]}
   </InitialContent>
 );
+
+export const ContentOfChartSampleThree = (props) => (
+  <InitialContent {...props}>
+    {[
+      {
+        id: 'f9c4f3b9-94e7-4cc7-8bc3-015d089aaf77',
+        type: 'page',
+        parent_id: null,
+        body: {},
+        format: {},
+        schema: null,
+      },
+      {
+        id: 'f9c3a94c-5a08-47f4-8ea1-f6624ca3a827',
+        type: 'grid',
+        parent_id: 'f9c4f3b9-94e7-4cc7-8bc3-015d089aaf77',
+        body: {},
+        format: { columns: '100%' },
+        schema: null,
+      },
+      {
+        id: '42685ea2-ded7-4df3-8b04-d8f1b93b471f',
+        type: 'draft',
+        parent_id: 'f9c3a94c-5a08-47f4-8ea1-f6624ca3a827',
+        body: {
+          blocks: [
+            {
+              key: '7hvgq',
+              data: {},
+              text:
+                'Kura’s product offering currently targets low-income consumers. The company’s CEO aims to approach high-income and middle-income groups of the population by expanding the range of products and types of meat produced. The segmentation of population and consumption of three types of meat are shown in the charts below.',
+              type: 'unstyled',
+              depth: 0,
+              entityRanges: [],
+              inlineStyleRanges: [],
+            },
+          ],
+          entityMap: {},
+        },
+        format: { verticalAlignment: 'center' },
+        schema: null,
+      },
+      {
+        id: '31f26c74-e905-45dd-9c3c-d5844922f415',
+        type: 'grid',
+        parent_id: 'f9c3a94c-5a08-47f4-8ea1-f6624ca3a827',
+        body: {},
+        format: {},
+        schema: null,
+      },
+      {
+        id: 'c7ffe152-4796-4317-bd3e-588ae191d8af',
+        type: 'grid',
+        parent_id: '31f26c74-e905-45dd-9c3c-d5844922f415',
+        body: {},
+        format: { columns: '100%' },
+        schema: null,
+      },
+      {
+        id: '2623dd91-b28e-4e8d-918d-c6b045d99352',
+        type: 'draft',
+        parent_id: 'c7ffe152-4796-4317-bd3e-588ae191d8af',
+        body: {
+          blocks: [
+            {
+              key: '2alb9',
+              data: {},
+              text: 'Meat Consumption by Income, %',
+              type: 'unstyled',
+              depth: 0,
+              entityRanges: [],
+              inlineStyleRanges: [],
+            },
+          ],
+          entityMap: {},
+        },
+        format: { textAlignment: 'center', verticalAlignment: 'center' },
+        schema: null,
+      },
+      {
+        id: '7a4906ec-d2be-42fd-90b0-83e3d9afe078',
+        type: 'image',
+        parent_id: 'c7ffe152-4796-4317-bd3e-588ae191d8af',
+        body: {
+          file:
+            'https://api.testbox.dodone.org/media/attachment/87/0d/870d097de20c055ba6484d7b19a648aa.jpg',
+        },
+        format: { align: 'middle' },
+        schema: null,
+      },
+      {
+        id: 'e7435980-55da-4c7e-aafa-3790db7844e0',
+        type: 'grid',
+        parent_id: '31f26c74-e905-45dd-9c3c-d5844922f415',
+        body: {},
+        format: { columns: '100%' },
+        schema: null,
+      },
+      {
+        id: '68600d15-7356-41a2-80d5-bd27eab45e3e',
+        type: 'draft',
+        parent_id: 'e7435980-55da-4c7e-aafa-3790db7844e0',
+        body: {
+          blocks: [
+            {
+              key: '7mb6j',
+              data: {},
+              text: 'Population of Mexico by Income, %',
+              type: 'unstyled',
+              depth: 0,
+              entityRanges: [],
+              inlineStyleRanges: [],
+            },
+          ],
+          entityMap: {},
+        },
+        format: { textAlignment: 'center', verticalAlignment: 'center' },
+        schema: null,
+      },
+      {
+        id: 'dbdce2fd-975e-4d2a-8807-b10410688b0b',
+        type: 'image',
+        parent_id: 'e7435980-55da-4c7e-aafa-3790db7844e0',
+        body: {
+          file:
+            'https://api.testbox.dodone.org/media/attachment/04/88/0488f32c2742d107255e32257ea86b56.jpg',
+        },
+        format: { align: 'middle' },
+        schema: null,
+      },
+    ]}
+  </InitialContent>
+);

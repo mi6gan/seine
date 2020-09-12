@@ -1,17 +1,17 @@
 {
   "name": "@seine/draft",
-  "version": "0.3.296",
+  "version": "0.3.298",
   "description": "Seine draft.js renderer.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "files": [
     "lib/"
   ],
-  "repository": "redchiliorg/seine",
+  "repository": "https://github.com/mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/core": "0.3",
+    "@seine/core": "workspace:*",
     "clsx": "^1.0.4",
     "draft-js": "^0.11.0"
   },

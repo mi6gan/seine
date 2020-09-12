@@ -1,26 +1,26 @@
 {
   "name": "@seine/editor",
-  "version": "0.3.296",
+  "version": "0.3.298",
   "description": "Seine structured content renderer.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "files": [
     "lib/"
   ],
-  "repository": "redchiliorg/seine",
+  "repository": "https://github.com/mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/charts": "0.3",
-    "@seine/charts-editor": "0.3",
-    "@seine/content": "0.3",
-    "@seine/core": "0.3",
-    "@seine/draft": "0.3",
-    "@seine/draft-editor": "0.3",
-    "@seine/styles": "0.3",
-    "@seine/tables": "0.3",
-    "@seine/tables-editor": "0.3",
-    "@seine/ui": "0.3"
+    "@seine/charts": "workspace:*",
+    "@seine/charts-editor": "workspace:*",
+    "@seine/content": "workspace:*",
+    "@seine/core": "workspace:*",
+    "@seine/draft": "workspace:*",
+    "@seine/draft-editor": "workspace:*",
+    "@seine/styles": "workspace:*",
+    "@seine/tables": "workspace:*",
+    "@seine/tables-editor": "workspace:*",
+    "@seine/ui": "workspace:*"
   },
   "peerDependencies": {
     "@material-ui/core": "4.9",
