@@ -56,4 +56,6 @@ jobs:
       - name: Release version
         if: ${{ github.event_name == 'push' }}
         run: yarn release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
