@@ -1,6 +1,4 @@
 // @flow
-export { default as useReducerEx } from './useReducerEx';
-
 export { default as BlockActions } from './BlockActions';
 export * from './BlockActions';
 

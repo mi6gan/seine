@@ -21,7 +21,7 @@ import {
 } from '@seine/core';
 import { ChartEditor, ChartToolbar } from '@seine/charts-editor';
 import { DraftEditor, DraftToolbar } from '@seine/draft-editor';
-import { BlockDeleteButton, useReducerEx } from '@seine/ui';
+import { BlockDeleteButton } from '@seine/ui';
 import { ThemeProvider } from '@seine/styles';
 import { TableEditor, TableToolbar } from '@seine/tables-editor';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
@@ -131,7 +131,7 @@ export default function Editor({
     ...initialBlocksState,
     blocks: children,
   }));
-  const [{ blocks, selection }, dispatch] = useReducerEx<
+  const [{ blocks, selection }, dispatch] = React.useReducer<
     BlocksState,
     BlocksAction
   >(reduceBlocks, initialBlocksState, init);
