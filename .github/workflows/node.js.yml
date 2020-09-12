@@ -4,10 +4,10 @@
 name: Node.js CI
 
 on:
-  pull_request:
+  push:
     branches:
       - master
-  push:
+  pull_request:
     branches:
       - master
 
