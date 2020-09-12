@@ -1,4 +1,5 @@
 module.exports = [
+  'npm',
   'publish',
   '--non-interactive',
   '--patch',
