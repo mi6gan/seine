@@ -22,4 +22,4 @@ yarn workspaces foreach -t --exclude seine version patch
 VERSION=$(node -p -e "require('./packages/core/package.json').version")
 git commit -am "Release $VERSION"
 yarn workspaces foreach -t --exclude seine exec npm publish
-# git push -f origin HEAD:latest
+git push -f origin HEAD:latest
