@@ -21,5 +21,5 @@ undecided:'\n'\
 yarn version apply --all
 VERSION=$(node -p -e "require('./packages/core/package.json').version")
 git commit -am "Release $VERSION"
-yarn workspaces foreach npm publish
+yarn workspaces foreach npm publish --tag latest
 # git push -f origin HEAD:latest
