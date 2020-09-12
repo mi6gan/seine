@@ -20,7 +20,7 @@
     "deploy:push": "docker push mi6gan/seine:latest",
     "release": "run-s release:'*'",
     "release:publish": "node scripts/publish.js",
-    "release:version": "yarn version --patch",
+    "release:version": "yarn workspaces foreach version patch",
     "release:commit": "git commit -am \"Release ${npm_package_version}\"",
     "release:push": "git push -f origin HEAD:latest",
     "test": "run-s test:'*'",

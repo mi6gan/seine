@@ -11,11 +11,11 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/charts": "0.3",
-    "@seine/core": "0.3",
-    "@seine/draft": "0.3",
-    "@seine/styles": "0.3",
-    "@seine/tables": "0.3"
+    "@seine/charts": "workspace:*",
+    "@seine/core": "workspace:*",
+    "@seine/draft": "workspace:*",
+    "@seine/styles": "workspace:*",
+    "@seine/tables": "workspace:*"
   },
   "peerDependencies": {
     "react": "^16.9.0",

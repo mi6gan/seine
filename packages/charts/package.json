@@ -11,8 +11,8 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/core": "0.3",
-    "@seine/styles": "0.3",
+    "@seine/core": "workspace:*",
+    "@seine/styles": "workspace:*",
     "invert-color": "^2.0.0",
     "ramda": "^0.26.1"
   },

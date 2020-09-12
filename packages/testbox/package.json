@@ -11,9 +11,9 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/content": "0.3",
-    "@seine/core": "0.3",
-    "@seine/styles": "0.3"
+    "@seine/content": "workspace:*",
+    "@seine/core": "workspace:*",
+    "@seine/styles": "workspace:*"
   },
   "devDependencies": {
     "babel-plugin-inline-import-data-uri": "^1.0.1"

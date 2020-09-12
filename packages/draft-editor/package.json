@@ -11,9 +11,9 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/core": "0.3",
-    "@seine/draft": "0.3",
-    "@seine/ui": "0.3",
+    "@seine/core": "workspace:*",
+    "@seine/draft": "workspace:*",
+    "@seine/ui": "workspace:*",
     "clsx": "^1.0.4",
     "draft-js-buttons": "^2.0.2"
   },
