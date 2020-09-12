@@ -2,8 +2,9 @@
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 import { UPDATE_BLOCK_ELEMENT_BY_ID } from '@seine/core';
-import { InlineInput } from '@seine/ui';
 import { ChartLegend } from '@seine/content';
+
+import InlineInput from '../ui/InlineInput';
 
 import useChartDispatchElements from './useChartDispatchElements';
 
