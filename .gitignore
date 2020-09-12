@@ -2,15 +2,19 @@
 
 # dependencies
 node_modules/
-/.pnp
-.pnp.js
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
 
 # testing
 /coverage
 
 # production
-dist/
-**/lib
+/dist
+/storybook-static
+/**/lib
 
 # idea
 .idea
