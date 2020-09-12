@@ -6,7 +6,7 @@
     "babel-plugin-macros",
     "react-color"
   ],
-  "repository": "redchiliorg/seine",
+  "repository": "https://github.com/mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
