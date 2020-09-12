@@ -1,13 +1,13 @@
 {
   "name": "@seine/tables-editor",
-  "version": "0.3.296",
+  "version": "0.3.297",
   "description": "Seine tables editor.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "files": [
     "lib/"
   ],
-  "repository": "redchiliorg/seine",
+  "repository": "https://github.com/mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
