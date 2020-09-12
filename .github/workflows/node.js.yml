@@ -38,11 +38,11 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: yarn
@@ -60,5 +60,8 @@ jobs:
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GIT_EMAIL}"
-          yarn release
+          yarn workspaces foreach -t version patch
+          git commit -am "Release $(node -p -e "require('./packages/core/package.json').version")"
+          yarn workspaces foreach -t --exclude seine exec npm publish
+          git push -f origin HEAD:latest
 
