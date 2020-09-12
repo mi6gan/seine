@@ -18,8 +18,8 @@ releases:'\n'\
 undecided:'\n'\
 '  '- seine\
 > .yarn/versions/release.yml
-yarn version apply --all
+yarn workspaces foreach -t --exclude seine version patch
 VERSION=$(node -p -e "require('./packages/core/package.json').version")
 git commit -am "Release $VERSION"
-yarn workspaces foreach npm publish --tag latest
+yarn workspaces foreach -t --exclude seine exec npm publish
 # git push -f origin HEAD:latest
