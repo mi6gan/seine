@@ -58,9 +58,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          yarn config set version-commit-hooks false
-          yarn config set version-git-tag false
-          yarn config set version-sign-git-tag false
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GIT_EMAIL}"
           yarn release
