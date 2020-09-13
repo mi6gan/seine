@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-const { join } = require('path');
-
 const resolveWorkspaces = require('./resolve-workspaces');
 const cleanWorkspace = require('./clean-workspace');
 const buildWorkspace = require('./build-workspace');
@@ -20,10 +18,10 @@ async function build(workspaces, options = defaultOptions) {
     ({ manifest }) => !manifest.raw.private
   );
   for (const workspace of workspaces) {
-    cleanWorkspace(workspace.cwd);
+    cleanWorkspace(workspace.relativeCwd);
   }
   for (const workspace of workspaces) {
-    await buildWorkspace(workspace.cwd, options);
+    await buildWorkspace(workspace.relativeCwd, options);
   }
 }
 

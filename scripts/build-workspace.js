@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const { readdirSync, existsSync } = require('fs');
-const { dirname, resolve, join, relative } = require('path');
+const { basename, dirname, resolve, join, relative } = require('path');
 
 const rollup = require('rollup');
 const tc = require('colorette');
@@ -30,11 +30,8 @@ async function buildWorkspace(
 ) {
   const cwd = resolve(workspace);
   let { format, input } = options;
-  if (!input.startsWith('/')) {
-    input = join(cwd, input);
-  }
 
-  const srcDir = dirname(input);
+  const srcDir = join(cwd, dirname(input));
 
   for (const dirEntry of readdirSync(srcDir, { withFileTypes: true })) {
     if (dirEntry.isDirectory()) {
@@ -42,14 +39,18 @@ async function buildWorkspace(
       if (existsSync(entry)) {
         await buildWorkspace(workspace, {
           ...options,
-          input: entry,
-          file: join(cwd, 'lib', format, `${dirEntry.name}.js`),
+          input: join(
+            relative(process.cwd(), dirname(input)),
+            dirEntry.name,
+            'index.js'
+          ),
+          file: join('lib', format, `${dirEntry.name}.js`),
         });
       }
     }
   }
 
-  if (!existsSync(input)) {
+  if (!existsSync(join(srcDir, basename(input)))) {
     return;
   }
 

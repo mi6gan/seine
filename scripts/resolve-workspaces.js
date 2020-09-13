@@ -17,9 +17,12 @@ async function resolveWorkspaces([workspace, ...workspaces] = [process.cwd()]) {
     workspace,
     pluginConfiguration
   );
-  const { project } = await Project.find(configuration, workspace);
+  const {
+    project,
+    workspace: { workspacesCwds },
+  } = await Project.find(configuration, workspace);
 
-  return [workspace, ...workspaces].map((cwd) =>
+  return [workspace, ...workspacesCwds, ...workspaces].map((cwd) =>
     project.getWorkspaceByCwd(cwd)
   );
 }

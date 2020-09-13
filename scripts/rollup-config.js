@@ -106,7 +106,7 @@ async function rollupConfig(
       ...(format === 'umd' ? [terser()] : []),
     ],
     external: (id) =>
-      id.startsWith('@seine/') ||
+      (format !== 'umd' && id.startsWith('@seine/')) ||
       externalModuleIds.some(
         (moduleId) => id === moduleId || id.startsWith(`${moduleId}/`)
       ),
