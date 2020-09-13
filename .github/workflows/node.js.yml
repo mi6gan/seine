@@ -26,7 +26,7 @@ jobs:
         run: echo "::set-env name=need_build::$(if [[ $(git log -1 --pretty=%B) =~ ^Release\ .+$ ]]; then echo 'n'; else echo 'y'; fi)"
 
       - name: Cache node modules
-        if: ${{ need_build == 'y' }}
+        if: ${{ env.need_build == 'y' }}
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
@@ -43,26 +43,26 @@ jobs:
             ${{ runner.os }}-
 
       - name: Use Node.js ${{ matrix.node-version }}
-        if: ${{ need_build == 'y' }}
+        if: ${{ env.need_build == 'y' }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        if: ${{ need_build == 'y' }}
+        if: ${{ env.need_build == 'y' }}
         run: yarn
 
       - name: Build sources
-        if: ${{ need_build == 'y' }}
+        if: ${{ env.need_build == 'y' }}
         run: yarn build
 
       - name: Run all tests
-        if: ${{ need_build == 'y' }}
+        if: ${{ env.need_build == 'y' }}
         run: yarn test
 
       - name: Release version
-        if: ${{ need_build == 'y' && github.event_name == 'push' }}
+        if: ${{ env.need_build == 'y' && github.event_name == 'push' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
