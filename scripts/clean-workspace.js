@@ -14,6 +14,7 @@ const stderr = (...args) => process.stderr.write(...args);
 /**
  * @description Clean rollup destination before build.
  * @param {?string} workspace
+ * @param options.file
  * @param {object} options
  * @returns {void}
  */

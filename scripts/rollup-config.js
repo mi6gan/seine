@@ -4,6 +4,7 @@ const alias = require('@rollup/plugin-alias');
 const { babel } = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const nodeResolve = require('@rollup/plugin-node-resolve');
+const pnpResolve = require('rollup-plugin-pnp-resolve');
 const json = require('@rollup/plugin-json');
 const postcss = require('rollup-plugin-postcss');
 const flowEntry = require('rollup-plugin-flow-entry');
@@ -20,29 +21,28 @@ const {
 
 const { NODE_ENV = 'production' } = process.env;
 
-/**
- * @description Builds rollup config object for workspace and options.
- * @param {?string} workspace
- * @param {object} options
- * @returns {object}
- */
-function rollupConfig(
+// eslint-disable-next-line
+async function rollupConfig(
   workspace = defaultWorkspace,
   { input, file, format, external } = defaultOptions
 ) {
   const [
     {
-      context,
-      packageJson: {
-        name: packageName,
-        dependencies = {},
-        peerDependencies = {},
+      cwd,
+      manifest: {
+        raw: { name: packageName, dependencies = {}, peerDependencies = {} },
       },
     },
-  ] = resolveWorkspaces([workspace]);
+  ] = await resolveWorkspaces([workspace]);
 
-  const workspaceModuleIds = resolveWorkspaces()
-    .map(({ packageJson: { name: id } }) => id)
+  const workspaceModuleIds = (await resolveWorkspaces())
+    .map(
+      ({
+        manifest: {
+          raw: { name: id },
+        },
+      }) => id
+    )
     .filter((id) => id in dependencies);
   const peerModuleIds = Object.keys(peerDependencies);
   const externalModuleIds = [
@@ -52,9 +52,9 @@ function rollupConfig(
   ].filter((id) => id.trim());
 
   return {
-    input: resolve(context, input),
+    input: join(cwd, input),
     output: {
-      file: resolve(context, file),
+      file: join(cwd, file),
       format,
       ...(format === 'umd' && {
         name: camelCase(packageName),
@@ -84,7 +84,7 @@ function rollupConfig(
         : []),
       visualize({
         filename: join(
-          context,
+          cwd,
           dirname(file),
           `${basename(file).split('.')[0]}.html`
         ),
@@ -100,11 +100,13 @@ function rollupConfig(
       json(),
       nodeResolve({ browser: true }),
       commonjs(),
+      pnpResolve(),
       postcss({ modules: true }),
       cleanup(),
       ...(format === 'umd' ? [terser()] : []),
     ],
     external: (id) =>
+      id.startsWith('@seine/') ||
       externalModuleIds.some(
         (moduleId) => id === moduleId || id.startsWith(`${moduleId}/`)
       ),

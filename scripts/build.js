@@ -1,24 +1,29 @@
 #!/usr/bin/env node
-const { relative } = require('path');
+const { join } = require('path');
 
 const resolveWorkspaces = require('./resolve-workspaces');
 const cleanWorkspace = require('./clean-workspace');
 const buildWorkspace = require('./build-workspace');
+const {
+  workspace: defaultWorkspace,
+  ...defaultOptions
+} = require('./rollup-options');
 
 /**
  * @description Publish (yarn) workspaces.
  * @param {string[]} workspaces
+ * @param {?Array<string>} options
  * @returns {*}
  */
-async function build(workspaces) {
-  workspaces = resolveWorkspaces(workspaces)
-    .filter(({ entry = null }) => entry !== null)
-    .map(({ context }) => relative(process.cwd(), context));
+async function build(workspaces, options = defaultOptions) {
+  workspaces = (await resolveWorkspaces(workspaces)).filter(
+    ({ manifest }) => !manifest.raw.private
+  );
   for (const workspace of workspaces) {
-    cleanWorkspace(workspace);
+    cleanWorkspace(workspace.cwd);
   }
   for (const workspace of workspaces) {
-    await buildWorkspace(workspace);
+    await buildWorkspace(workspace.cwd, options);
   }
 }
 

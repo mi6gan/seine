@@ -29,8 +29,12 @@ async function buildWorkspace(
   options = defaultOptions
 ) {
   const cwd = resolve(workspace);
-  const { format, input } = options;
-  const srcDir = join(cwd, dirname(input));
+  let { format, input } = options;
+  if (!input.startsWith('/')) {
+    input = join(cwd, input);
+  }
+
+  const srcDir = dirname(input);
 
   for (const dirEntry of readdirSync(srcDir, { withFileTypes: true })) {
     if (dirEntry.isDirectory()) {
@@ -38,18 +42,18 @@ async function buildWorkspace(
       if (existsSync(entry)) {
         await buildWorkspace(workspace, {
           ...options,
-          input: join(
-            relative(process.cwd(), dirname(input)),
-            dirEntry.name,
-            'index.js'
-          ),
-          file: join('lib', format, `${dirEntry.name}.js`),
+          input: entry,
+          file: join(cwd, 'lib', format, `${dirEntry.name}.js`),
         });
       }
     }
   }
 
-  const { output, ...config } = rollupConfig(workspace, options);
+  if (!existsSync(input)) {
+    return;
+  }
+
+  const { output, ...config } = await rollupConfig(workspace, options);
 
   const start = Date.now();
 
