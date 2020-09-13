@@ -22,7 +22,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Add last commit message to environment
+        run: echo "::set-env name=need_build::$(if [[ $(git log -1 --pretty=%B) =~ ^Release\ .+$ ]]; then echo 'n'; else echo 'y'; fi)"
+
       - name: Cache node modules
+        if: ${{ need_build == 'y' }}
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
@@ -39,22 +43,26 @@ jobs:
             ${{ runner.os }}-
 
       - name: Use Node.js ${{ matrix.node-version }}
+        if: ${{ need_build == 'y' }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
+        if: ${{ need_build == 'y' }}
         run: yarn
 
       - name: Build sources
+        if: ${{ need_build == 'y' }}
         run: yarn build
 
       - name: Run all tests
+        if: ${{ need_build == 'y' }}
         run: yarn test
 
       - name: Release version
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ need_build == 'y' && github.event_name == 'push' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
@@ -63,5 +71,5 @@ jobs:
           yarn workspaces foreach -t version prerelease
           git commit -am "Release $(node -p -e "require('./packages/core/package.json').version")"
           yarn workspaces foreach -t --exclude seine exec npm publish --tag next
-          git push -f origin HEAD:latest
+          git push -f origin HEAD:next
 
