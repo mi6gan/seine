@@ -70,6 +70,6 @@ jobs:
           git config --global user.email "${GIT_EMAIL}"
           yarn workspaces foreach -t version prerelease
           git commit -am "Release $(node -p -e "require('./packages/core/package.json').version")"
-          yarn workspaces foreach -t --exclude seine exec npm publish --tag next
           git push -f origin HEAD:next
+          yarn workspaces foreach -t --exclude seine exec npm publish --tag next
 
