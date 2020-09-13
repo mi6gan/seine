@@ -2,11 +2,10 @@ import * as React from 'react';
 import { actions } from '@storybook/addon-actions';
 import { Box } from '@material-ui/core';
 
-import * as data from '../../core/src/data';
-
-import Content from './Content';
+import * as data from './data';
 
 import { blockTypes, layoutTypes } from '@seine/core';
+import { Content } from '@seine/content';
 
 export default { title: 'Content' };
 

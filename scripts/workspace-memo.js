@@ -4,7 +4,7 @@ const { inspect } = require('util');
 
 const { hashElement } = require('folder-hash');
 
-const parseWorkspaces = require('./parse-workspaces');
+const resolveWorkspaces = require('./resolve-workspaces');
 const { workspace: defaultWorkspace } = require('./rollup-options');
 
 /**
@@ -13,17 +13,17 @@ const { workspace: defaultWorkspace } = require('./rollup-options');
  * @returns {Promise<object>}
  */
 async function workspaceMemo(workspace = defaultWorkspace) {
-  const { packages: workspaces } = parseWorkspaces();
+  const workspaces = await resolveWorkspaces();
   const context = resolve(workspace);
   const { dependencies } = require(join(context, 'package.json'));
 
   const hashes = [(await hashElement(join(context, 'src'))).toString()];
   for (const [name] of Object.entries(dependencies)) {
     const subWorkspace = workspaces.find(
-      (workspace) => require(join(workspace, 'package.json')).name === name
+      (workspace) => workspace.manifest.raw.name === name
     );
     if (subWorkspace) {
-      hashes.push(await workspaceMemo(subWorkspace));
+      hashes.push(await workspaceMemo(subWorkspace.cwd));
     }
   }
 

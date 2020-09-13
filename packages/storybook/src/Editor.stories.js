@@ -1,15 +1,8 @@
 import * as React from 'react';
 
-import {
-  Data,
-  Flex,
-  NestedFlex,
-  Page,
-  Table,
-  Text,
-} from '../../content/src/Content.stories';
+import { Data, Flex, NestedFlex, Page, Table, Text } from './Content.stories';
 
-import Editor from './Editor';
+import { Editor } from '@seine/editor';
 
 export default { title: 'Editor' };
 

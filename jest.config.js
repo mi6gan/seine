@@ -1,10 +1,7 @@
 module.exports = {
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
   resolver: require.resolve('jest-pnp-resolver'),
-  setupFiles: [
-    'react-app-polyfill/jsdom',
-    '<rootDir>/.storybook/storyshots-setup.js',
-  ],
+  setupFiles: ['react-app-polyfill/jsdom', '@seine/storybook/storyshotsSetup'],
   testMatch: [
     '<rootDir>/packages/**/__tests__/**/*.{js,jsx,ts,tsx}',
     '<rootDir>/packages/**/?(*.)(spec|test).{js,jsx,ts,tsx}',

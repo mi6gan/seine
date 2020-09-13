@@ -1,54 +1,37 @@
 #!/usr/bin/env node
-const { join, resolve } = require('path');
+require('../.pnp').setup();
+
 const { inspect } = require('util');
-const crypto = require('crypto');
 
-const findCacheDir = require('find-cache-dir');
-
-const parseWorkspaces = require('./parse-workspaces');
-const workspaceMemo = require('./workspace-memo');
+const { Configuration, Project, Workspace } = require('@yarnpkg/core');
+const { getPluginConfiguration } = require('@yarnpkg/cli');
 
 /**
- * @description Resolve each workspaces to its context path, entry module and
- * packageJson content
- * @param {string[]} workspaces
- * @returns {Array<{context: string, entry: string, resolveCachePath: function(string): Promise<string>, packageJson: object}>}
+ * @description Parse and normalize package (yarn) workspaces.
+ * @param {Array<string>} workspacesDirs
+ * @returns {Promise<Array<Workspace>>}
  */
-function resolveWorkspaces(workspaces) {
-  return parseWorkspaces(workspaces).packages.map((workspace) => {
-    const context = resolve(workspace);
-    const packageJson = require(join(context, 'package.json'));
+async function resolveWorkspaces([workspace, ...workspaces] = [process.cwd()]) {
+  const pluginConfiguration = getPluginConfiguration();
+  const configuration = await Configuration.find(
+    workspace,
+    pluginConfiguration
+  );
+  const {
+    project,
+    workspace: { workspacesCwds },
+  } = await Project.find(configuration, workspace);
 
-    if (packageJson.private) {
-      return { context, packageJson };
-    }
-
-    try {
-      return {
-        context,
-        entry: require.resolve(join(context, 'src', 'index.js')),
-        packageJson,
-        resolveCachePath: async (name) =>
-          findCacheDir({
-            name: join(
-              packageJson.name,
-              crypto
-                .createHash('md5')
-                .update(JSON.stringify(await workspaceMemo(workspace)))
-                .digest('hex'),
-              name
-            ),
-          }),
-      };
-    } catch (err) {
-      return { context, packageJson };
-    }
-  });
+  return [workspace, ...workspacesCwds, ...workspaces].map((cwd) =>
+    project.getWorkspaceByCwd(cwd)
+  );
 }
 
 module.exports = resolveWorkspaces;
 
 if (require.main === module) {
-  // eslint-disable-next-line no-console
-  console.log(inspect(resolveWorkspaces(), false, null, true));
+  resolveWorkspaces().then((workspaces) =>
+    // eslint-disable-next-line no-console
+    console.log(inspect(workspaces, false, null, true))
+  );
 }

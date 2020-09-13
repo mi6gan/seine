@@ -2,7 +2,7 @@
 const { copyFileSync, existsSync, mkdirSync } = require('fs');
 const { basename, dirname, join } = require('path');
 
-const resolveWorkspaces = require('./resolve-workspaces');
+const resolveCachePath = require('./resolve-cache-path');
 
 /**
  * @description Save workspace build cache.
@@ -11,10 +11,12 @@ const resolveWorkspaces = require('./resolve-workspaces');
  * @returns {boolean}
  */
 async function loadCache(workspace, file) {
-  const [{ resolveCachePath }] = resolveWorkspaces([workspace]);
   const format = basename(dirname(file));
 
-  const cachedFile = join(await resolveCachePath(format), basename(file));
+  const cachedFile = join(
+    await resolveCachePath(workspace, format),
+    basename(file)
+  );
   if (existsSync(cachedFile)) {
     mkdirSync(dirname(file), { recursive: true });
     copyFileSync(cachedFile, file);
