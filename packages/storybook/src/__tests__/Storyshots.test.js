@@ -4,7 +4,7 @@ import { render } from 'enzyme';
 import { createSerializer } from 'enzyme-to-json';
 
 initStoryshots({
-  configPath: path.resolve(__dirname, '../../.storybook'),
+  configPath: path.join(__dirname, '..', '..'),
   renderer: render,
   snapshotSerializers: [createSerializer()],
 });

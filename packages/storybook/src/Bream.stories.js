@@ -1,11 +1,12 @@
 // @flow
 import * as React from 'react';
 
-import BootstrapContainer from '../BootstrapContainer';
-
-import useBreamStoryEffect from './useBreamStoryEffect';
-import SuiteLogsReviewHeader from './SuiteLogsReviewHeader';
-import BreamThemeProvider from './BreamThemeProvider';
+import {
+  BootstrapContainer,
+  useBreamStoryEffect,
+  SuiteLogsReviewHeader,
+  BreamThemeProvider,
+} from '@seine/testbox';
 
 export default { title: 'Bream.Review summary header' };
 
