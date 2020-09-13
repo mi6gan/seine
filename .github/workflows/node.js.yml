@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Add last commit message to environment
+      - name: Add last commit message to env
         run: echo "::set-env name=need_build::$(if [[ $(git log -1 --pretty=%B) =~ ^Release\ .+$ ]]; then echo 'n'; else echo 'y'; fi)"
 
       - name: Cache node modules
