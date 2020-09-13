@@ -107,16 +107,7 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-terser": "^5.2.0",
     "rollup-plugin-visualizer": "^2.5.4",
-    "uuid": "^8.3.0"
-  },
-  "dependenciesMeta": {
-    "@storybook/core": {
-      "unplugged": true
-    }
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "uuid": "^3.4.0"
   },
   "workspaces": [
     "packages/*"

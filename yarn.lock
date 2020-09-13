@@ -2493,7 +2493,7 @@ __metadata:
   resolution: "@seine/core@workspace:packages/core"
   dependencies:
     ramda: ^0.26.1
-    uuid: ^8.3.0
+    uuid: ^3.4.0
   languageName: unknown
   linkType: soft
 
@@ -15895,10 +15895,7 @@ resolve@1.1.7:
     rollup-plugin-visualizer: ^2.5.4
     serve: ^11.1.0
     styled-components: ^4.3.2
-    uuid: ^8.3.0
-  dependenciesMeta:
-    "@storybook/core":
-      unplugged: true
+    uuid: ^3.4.0
   languageName: unknown
   linkType: soft
 
@@ -17732,7 +17729,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"uuid@npm:^3.1.0, uuid@npm:^3.3.2":
+"uuid@npm:^3.1.0, uuid@npm:^3.3.2, uuid@npm:^3.4.0":
   version: 3.4.0
   resolution: "uuid@npm:3.4.0"
   bin:
@@ -17741,7 +17738,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"uuid@npm:^8.0.0, uuid@npm:^8.3.0":
+"uuid@npm:^8.0.0":
   version: 8.3.0
   resolution: "uuid@npm:8.3.0"
   bin:
