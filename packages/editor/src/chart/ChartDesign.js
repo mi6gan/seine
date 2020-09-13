@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { Box, Checkbox } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
-import { UPDATE_BLOCK_FORMAT, chartTypes } from '@seine/core';
 
 import SidebarSection from '../ui/SidebarSection';
 import SidebarHeading from '../ui/SidebarHeading';
@@ -15,6 +14,8 @@ import ChartPaletteSelect from './ChartPaletteSelect';
 import ChartStructureGroup from './ChartStructureGroup';
 import ChartElementColorButton from './ChartElementColorButton';
 import useChartBlock from './useChartBlock';
+
+import { UPDATE_BLOCK_FORMAT, chartTypes } from '@seine/core';
 
 /**
  * @description Chart design panel.

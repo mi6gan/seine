@@ -11,7 +11,7 @@ import {
 
 import Editor from './Editor';
 
-export default { title: 'Content' };
+export default { title: 'Editor' };
 
 export const InitialEditor = () => <Page as={Editor} />;
 

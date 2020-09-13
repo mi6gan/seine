@@ -1,11 +1,12 @@
 // @flow
 import * as React from 'react';
-import { UPDATE_BLOCK_ELEMENT_BY_GROUP } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SvgInput from '../ui/SvgInput';
 
 import useChartDispatchElements from './useChartDispatchElements';
+
+import { UPDATE_BLOCK_ELEMENT_BY_GROUP } from '@seine/core';
 
 type Props = {
   children?: any,

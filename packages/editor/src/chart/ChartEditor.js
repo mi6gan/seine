@@ -1,23 +1,7 @@
 // @flow
 import * as React from 'react';
-import {
-  chartTypes,
-  DESELECT_BLOCK_ELEMENT,
-  SELECT_BLOCK_ELEMENT,
-} from '@seine/core';
-import {
-  BarChartContent,
-  ChartSvg,
-  ChartSvgDefs,
-  ColumnChartContent,
-  LineChartContent,
-  PieChart,
-  titleIdentityElements,
-  useChartFormat,
-} from '@seine/content';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
-import { useResizeTargetRef } from '@seine/styles';
 
 import Frame from '../ui/Frame';
 import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
@@ -32,6 +16,23 @@ import LineChartElementPath from './LineChartElementPath';
 import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
 import ChartLegendEditor from './ChartLegendEditor';
+
+import { useResizeTargetRef } from '@seine/styles';
+import {
+  BarChartContent,
+  ChartSvg,
+  ChartSvgDefs,
+  ColumnChartContent,
+  LineChartContent,
+  PieChart,
+  titleIdentityElements,
+  useChartFormat,
+} from '@seine/content';
+import {
+  chartTypes,
+  DESELECT_BLOCK_ELEMENT,
+  SELECT_BLOCK_ELEMENT,
+} from '@seine/core';
 
 // eslint-disable-next-line
 function SelectionFrame({ children, ...frame }) {

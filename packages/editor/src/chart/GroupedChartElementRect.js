@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
-import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import useChartBlock from './useChartBlock';
 import useChartDispatchElements from './useChartDispatchElements';
+
+import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 
 type Props = {
   children?: any,

@@ -20,7 +20,7 @@ type Props = {
 
 /**
  * @description Output greetings and share button of suite log review results.
- * {Props} props
+ * @param {Props} props
  * @returns {React.Node}
  */
 export default function SuiteLogsReviewGreeting({

@@ -1,17 +1,18 @@
 // @flow
 import * as React from 'react';
-import {
-  blockTypes,
-  chartTypes,
-  createBlock,
-  createTitleIdentityBlockElements,
-} from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 import { BarChart as ColumnChartIcon } from '@material-ui/icons';
 
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
+
+import {
+  blockTypes,
+  chartTypes,
+  createBlock,
+  createTitleIdentityBlockElements,
+} from '@seine/core';
 
 const BarChartIcon = styled(ColumnChartIcon).attrs({
   transform: 'rotate(90)',

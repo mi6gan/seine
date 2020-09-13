@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
-import type { ChartElement } from '@seine/core';
 import { useAutoMemo } from 'hooks.macro';
 
 import {
@@ -18,6 +16,9 @@ import {
 import { useGroupedElements } from './helpers';
 import ChartYAxis from './ChartYAxis';
 import ChartValue from './ChartValue';
+
+import type { ChartElement } from '@seine/core';
+import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 
 type Props = {
   elements: ChartElement[],
@@ -39,7 +40,7 @@ const GUTTER_WIDTH = VIEWPORT_WIDTH / 10;
 
 /**
  * @description Column chart content block renderer.
- * @param {Props}: props
+ * @param {Props} props
  * @returns {React.Node}
  */
 export default function LineChartContent({
@@ -139,8 +140,9 @@ export default function LineChartContent({
           (_, index, { length }) =>
             !!((xAxis && index === 0) || (yAxis && index > 0)) && (
               <path
-                d={`m${yAxisWidth}  ${height -
-                  (index * (height - titleHeight)) / length} ${graphWidth} 0`}
+                d={`m${yAxisWidth}  ${
+                  height - (index * (height - titleHeight)) / length
+                } ${graphWidth} 0`}
                 key={index}
                 stroke={index > 0 ? '#f0f0f0' : 'black'}
               />

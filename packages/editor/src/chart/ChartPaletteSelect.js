@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-import { chartPaletteKeyValues, defaultChartFormat } from '@seine/content';
-import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { MenuItem, Select } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
@@ -9,6 +7,9 @@ import SidebarSelectLabel from '../ui/SidebarSelectLabel';
 import { useBlocksDispatch, useBlocksSelector } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
+
+import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { chartPaletteKeyValues, defaultChartFormat } from '@seine/content';
 
 /**
  * @description Buttons to select chart's default palette

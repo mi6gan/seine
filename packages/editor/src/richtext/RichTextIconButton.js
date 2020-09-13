@@ -1,12 +1,13 @@
 // @flow
 import * as React from 'react';
-import { blockTypes, createBlock } from '@seine/core';
-import { toRawContent } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 import { Title as RichTextIcon } from '@material-ui/icons';
 
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
+
+import { toRawContent } from '@seine/content';
+import { blockTypes, createBlock } from '@seine/core';
 
 // eslint-disable-next-line
 export default function RichTextIconButton() {

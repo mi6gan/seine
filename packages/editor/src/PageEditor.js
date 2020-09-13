@@ -1,12 +1,13 @@
 // @flow
 import * as React from 'react';
-import type { Block, BlockEditor } from '@seine/core';
-import { CREATE_BLOCK, SELECT_BLOCK } from '@seine/core';
-import { Page } from '@seine/content';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import { EditorContext, useBlocksDispatch, useBlocksBuffer } from './context';
+
+import type { Block, BlockEditor } from '@seine/core';
+import { CREATE_BLOCK, SELECT_BLOCK } from '@seine/core';
+import { Page } from '@seine/content';
 
 type Props = BlockEditor & Block;
 

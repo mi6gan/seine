@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react';
-import { Layout } from '@seine/content';
 
 import Frame from '../ui/Frame';
+
+import { Layout } from '@seine/content';
 
 /**
  * @description Layout editor.

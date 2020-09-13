@@ -14,21 +14,22 @@ const ThemePaper = styled.div`
     ${({ borderLeft }) => borderLeft && { borderLeft }}
     ${({ borderRight }) => borderRight && { borderRight }}
 
-    ${variant === 'two' &&
-      css`
-        position: relative;
-        padding: 1.8rem 2rem;
-      `}
+    ${variant ===
+      'two' &&
+    css`
+      position: relative;
+      padding: 1.8rem 2rem;
+    `}
 
     ${variant === 'loader' &&
-      css`
-        overflow: hidden;
-        min-height: 8.6rem;
-        padding: 0 0 0 2rem;
-        & > p {
-          padding: 2rem 2rem 2rem 0;
-        }
-      `}
+    css`
+      overflow: hidden;
+      min-height: 8.6rem;
+      padding: 0 0 0 2rem;
+      & > p {
+        padding: 2rem 2rem 2rem 0;
+      }
+    `}
   `}
 `;
 

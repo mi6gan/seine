@@ -1,7 +1,9 @@
 // @flow
 import * as React from 'react';
-import type { Action } from '@seine/core';
 import { Button as MuiButton } from '@material-ui/core';
+import { useAutoCallback } from 'hooks.macro';
+
+import type { Action } from '@seine/core';
 import {
   CREATE_BLOCK,
   CREATE_BOTTOM_BLOCK,
@@ -13,7 +15,6 @@ import {
   UPDATE_BLOCK_EDITOR,
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
-import { useAutoCallback } from 'hooks.macro';
 
 export type Props = Action & React.ElementProps<HTMLButtonElement>;
 

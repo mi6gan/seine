@@ -2,11 +2,8 @@
 import * as React from 'react';
 import { Box, ButtonBase, MenuItem, Paper, Select } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
-import { ThemeProvider } from '@seine/styles';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
-import { blockTypes, DESELECT_ALL_BLOCKS, SET_DEVICE } from '@seine/core';
-import { Content } from '@seine/content';
 
 import defaultTheme from './defaultTheme';
 import Sidebar from './ui/Sidebar';
@@ -34,6 +31,11 @@ import { ChartDesign } from './chart';
 import CreateLayoutButton from './ui/CreateLayoutButton';
 import DeleteBlockButton from './ui/DeleteBlockButton';
 import ItemDesign from './layout/ItemDesign';
+
+import { Content } from '@seine/content';
+import type { Block, BlockType } from '@seine/core';
+import { blockTypes, DESELECT_ALL_BLOCKS, SET_DEVICE } from '@seine/core';
+import { ThemeProvider } from '@seine/styles';
 
 const Contents = styled(Box).attrs({
   width: '100%',
@@ -73,8 +75,15 @@ const blocksSelector = (state) => state.blocks;
 const selectionSelector = (state) => state.selection;
 const deviceSelector = (state) => state.device;
 
+type Props = {
+  parent: Block,
+  onChange: (Block[]) => any,
+  blockRenderMap?: (BlockType) => React.Node,
+};
+
 /**
  * @description Default content editor.
+ * @param {Props} props
  * @returns {React.Node}
  */
 function DefaultEditor({
@@ -82,7 +91,7 @@ function DefaultEditor({
   onChange,
   blockRenderMap = defaultBlockRenderMap,
   ...contentProps
-}) {
+}: Props) {
   const ParentBlock = blockRenderMap[parent.type];
 
   const menuAnchorRef = React.useRef(null);

@@ -15,13 +15,14 @@ import {
   reject,
   toPairs,
 } from 'ramda';
-import type { ChartElement } from '@seine/core';
 import { useAutoMemo } from 'hooks.macro';
+
+import type { ChartElement } from '@seine/core';
 
 /**
  * @function
  * @param {ChartElement[]} elements
- * @returns {[?string, ChartElement[]][]}
+ * @returns Array<[?string, Array<ChartElement>]>
  */
 export const groupElements: (
   elements: ChartElement[]
@@ -53,7 +54,7 @@ export const titleIdentityElements: (
  * @param {number?} min
  * @param {number?} max
  * @param {number?} dy
- * @returns {[number, number, Array<*>, Array<*>]}
+ * @returns {Array}
  */
 export function useGroupedElements(
   elements,

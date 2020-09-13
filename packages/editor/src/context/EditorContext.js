@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+
 import { initialBlocksState } from '@seine/core';
 import type { Action, State } from '@seine/core';
 

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { blockTypes, layoutTypes } from '@seine/core';
 import { actions } from '@storybook/addon-actions';
 import { Box } from '@material-ui/core';
 
 import * as data from '../../core/src/data';
 
 import Content from './Content';
+
+import { blockTypes, layoutTypes } from '@seine/core';
 
 export default { title: 'Content' };
 

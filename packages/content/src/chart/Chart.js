@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-import type { ChartBody, ChartFormat } from '@seine/core';
-import { chartTypes } from '@seine/core';
 import styled from 'styled-components/macro';
 
 import { Item } from '../layout';
@@ -15,6 +13,9 @@ import ChartSvgDefs from './ChartSvgDefs';
 import useChartFormat from './useChartFormat';
 import ChartLegend from './ChartLegend';
 import { titleIdentityElements } from './helpers';
+
+import { chartTypes } from '@seine/core';
+import type { ChartBody, ChartFormat } from '@seine/core';
 
 type Props = $Shape<ChartFormat> & ChartBody & { parentType: string };
 

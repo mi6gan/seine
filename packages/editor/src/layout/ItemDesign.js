@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { defaultItemFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarSection from '../ui/SidebarSection';
@@ -10,6 +9,8 @@ import SidebarInput from '../ui/SidebarInput';
 import SidebarGroup from '../ui/SidebarGroup';
 
 import useSelectedLayoutItems from './useSelectedLayoutItems';
+
+import { defaultItemFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 /**
  * @description Layout design.

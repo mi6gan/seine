@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-import { blockTypes, defaultItemFormat, UPDATE_BLOCK_BODY } from '@seine/core';
-import { defaultTableBody, defaultTableCell } from '@seine/content';
 import {
   FormatAlignCenter,
   FormatAlignLeft,
@@ -30,6 +28,9 @@ import TableColumnRemoveIcon from './TableColumnRemoveIcon';
 import TableRowPlusAfterIcon from './TableRowPlusAfterIcon';
 import TableRowPlusBeforeIcon from './TableRowPlusBeforeIcon';
 import TableRowRemoveIcon from './TableRowRemoveIcon';
+
+import { defaultTableBody, defaultTableCell } from '@seine/content';
+import { blockTypes, defaultItemFormat, UPDATE_BLOCK_BODY } from '@seine/core';
 
 const StructureActionButton = styled(ActionIconButton).attrs({
   borderColor: 'transparent',

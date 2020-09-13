@@ -2,14 +2,6 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
-import {
-  CREATE_BOTTOM_BLOCK,
-  CREATE_LEFT_BLOCK,
-  CREATE_RIGHT_BLOCK,
-  CREATE_TOP_BLOCK,
-  SELECT_BLOCK,
-} from '@seine/core';
-import { Item } from '@seine/content';
 import { Box } from '@material-ui/core';
 import {
   ArrowDropDown,
@@ -25,6 +17,15 @@ import {
   useBlocksSelector,
 } from '../context';
 import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
+
+import { Item } from '@seine/content';
+import {
+  CREATE_BOTTOM_BLOCK,
+  CREATE_LEFT_BLOCK,
+  CREATE_RIGHT_BLOCK,
+  CREATE_TOP_BLOCK,
+  SELECT_BLOCK,
+} from '@seine/core';
 
 const StyledFrame = styled(Item)`
   transition: ${({ theme }) =>

@@ -1,5 +1,11 @@
 // @flow
 import * as React from 'react';
+import styled from 'styled-components/macro';
+import { Box } from '@material-ui/core';
+import { useAutoCallback } from 'hooks.macro';
+
+import { useBlocksDispatch, useBlocksSelector } from '../context';
+
 import type { BlockEditor } from '@seine/core';
 import {
   blockTypes,
@@ -9,12 +15,7 @@ import {
 } from '@seine/core';
 import type { TableProps } from '@seine/content';
 import { TableCell } from '@seine/content';
-import styled from 'styled-components/macro';
-import { Box } from '@material-ui/core';
-import { useAutoCallback } from 'hooks.macro';
 import { useResizeTargetRef } from '@seine/styles';
-
-import { useBlocksDispatch, useBlocksSelector } from '../context';
 
 type Props = TableProps & BlockEditor;
 

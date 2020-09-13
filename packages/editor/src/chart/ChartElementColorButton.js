@@ -3,8 +3,6 @@ import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
 import SketchPicker from 'react-color/lib/Sketch';
 import { Button, ClickAwayListener } from '@material-ui/core';
-import { UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { chartPaletteKeyValues, groupElements } from '@seine/content';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
 import { useBlocksDispatch } from '../context';
@@ -12,6 +10,9 @@ import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 
 import useChartBlock from './useChartBlock';
+
+import { chartPaletteKeyValues, groupElements } from '@seine/content';
+import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 const StyledColorButton = styled(Button).attrs(({ children = '' }) => ({
   children,

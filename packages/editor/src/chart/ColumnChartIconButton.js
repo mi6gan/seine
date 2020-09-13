@@ -1,16 +1,17 @@
 // @flow
 import * as React from 'react';
+import { useAutoCallback } from 'hooks.macro';
+import { BarChart as ColumnChartIcon } from '@material-ui/icons';
+
+import { EditorContext, useBlocksBuffer } from '../context';
+import ToolbarButton from '../ui/ToolbarButton';
+
 import {
   blockTypes,
   chartTypes,
   createBlock,
   createTitleIdentityBlockElements,
 } from '@seine/core';
-import { useAutoCallback } from 'hooks.macro';
-import { BarChart as ColumnChartIcon } from '@material-ui/icons';
-
-import { EditorContext, useBlocksBuffer } from '../context';
-import ToolbarButton from '../ui/ToolbarButton';
 
 // eslint-disable-next-line
 export default function ColumnChartIconButton() {

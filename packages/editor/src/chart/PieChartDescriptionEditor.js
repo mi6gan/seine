@@ -1,13 +1,14 @@
 // @flow
 import * as React from 'react';
-import type { ChartType } from '@seine/core/src/types';
 import { useAutoMemo } from 'hooks.macro';
+
+import InlineInput from '../ui/InlineInput';
+
+import type { ChartType } from '@seine/core/src/types';
 import type { ChartLegendProps } from '@seine/content';
 import { ChartLegend, defaultPieChartLegend } from '@seine/content';
 import type { ElementsAction } from '@seine/core';
 import { UPDATE_BLOCK_ELEMENT_BY_ID } from '@seine/core';
-
-import InlineInput from '../ui/InlineInput';
 
 type Props = $Rest<ChartLegendProps, {| kind: ChartType |}> & {
   dispatchElements: (ElementsAction) => void,
