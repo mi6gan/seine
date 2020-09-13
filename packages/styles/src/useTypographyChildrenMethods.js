@@ -18,7 +18,7 @@ const defaultReducer: Reducer = (acc, methods: SvgTypographyMethods) =>
  * @param {number} count of children
  * @param {Reducer} reducer
  * @param {object} initial
- * @returns {[SvgTypographyMethods, React.Ref<SvgTypographyMethods>]}
+ * @returns {Array}
  */
 export default function useTypographyChildrenMethods(
   count,

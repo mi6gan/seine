@@ -1,15 +1,16 @@
 // @flow
 import { useAutoCallback } from 'hooks.macro';
+
+import { useBlocksDispatch, defaultBlocksSelector } from '../context';
+
+import useChartBlock from './useChartBlock';
+
 import type { ElementsAction } from '@seine/core';
 import {
   reduceElements,
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
-
-import { useBlocksDispatch, defaultBlocksSelector } from '../context';
-
-import useChartBlock from './useChartBlock';
 
 // eslint-disable-next-line
 export default function useChartDispatchElements(

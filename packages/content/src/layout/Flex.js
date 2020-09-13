@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
-import type { FlexBody, FlexFormat } from '@seine/core';
-import { defaultFlexFormat } from '@seine/core';
 import styled from 'styled-components/macro';
 
 import Item from './Item';
+
+import type { FlexBody, FlexFormat } from '@seine/core';
+import { defaultFlexFormat } from '@seine/core';
 
 export type Props = (FlexBody & FlexFormat) & {
   children: React.ChildrenArray<React.Node>,

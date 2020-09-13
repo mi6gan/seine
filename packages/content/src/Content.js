@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
-import type { Block } from '@seine/core';
-import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 
 import defaultBlockRenderMap from './blockRenderMap';
+
+import type { Block } from '@seine/core';
+import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },

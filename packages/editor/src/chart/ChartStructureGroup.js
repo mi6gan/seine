@@ -1,13 +1,5 @@
 // @flow
 import * as React from 'react';
-import { ActionButton, CompositeActionButton } from '@seine/ui';
-import {
-  chartTypes,
-  createBlockElement,
-  createTitleIdentityBlockElements,
-  UPDATE_BLOCK_BODY,
-  UPDATE_BLOCK_EDITOR,
-} from '@seine/core';
 import {
   Add,
   ControlPoint,
@@ -17,13 +9,23 @@ import {
 import { Button } from '@material-ui/core';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
-import { groupElements, titleIdentityElements } from '@seine/content';
 
 import { useBlocksDispatch } from '../context';
 import SidebarGroup from '../ui/SidebarGroup';
+import ActionButton from '../ui/ActionButton';
+import CompositeActionButton from '../ui/CompositeActionButton';
 
 import useChartBlock from './useChartBlock';
 import useElementSelector from './useElementSelector';
+
+import { groupElements, titleIdentityElements } from '@seine/content';
+import {
+  chartTypes,
+  createBlockElement,
+  createTitleIdentityBlockElements,
+  UPDATE_BLOCK_BODY,
+  UPDATE_BLOCK_EDITOR,
+} from '@seine/core';
 
 const StyledButton = styled(Button)`
   && {

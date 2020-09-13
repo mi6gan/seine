@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
-import { ThemeProvider } from '@seine/styles';
 import { createGlobalStyle } from 'styled-components/macro';
 
 import breamTheme from './breamTheme';
+
+import { ThemeProvider } from '@seine/styles';
 
 type Props = {
   children?: any,

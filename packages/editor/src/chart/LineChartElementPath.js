@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
-import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 
 import useChartDispatchElements from './useChartDispatchElements';
 import useChartBlock from './useChartBlock';
+
+import { SELECT_BLOCK_ELEMENT } from '@seine/core';
 
 type Props = {
   children?: any,

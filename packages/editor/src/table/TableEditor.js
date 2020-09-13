@@ -1,18 +1,19 @@
 // @flow
 import * as React from 'react';
-import type { BlockEditor } from '@seine/core';
-import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
-import { InlineInput } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
-import type { TableProps } from '@seine/content';
-import { Table } from '@seine/content';
 
 import Frame from '../ui/Frame';
 import { useBlocksDispatch } from '../context';
 import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
+import InlineInput from '../ui/InlineInput';
 
 import { defaultTableEditor } from './constants';
 import TableCellEditor from './TableCellEditor';
+
+import { Table } from '@seine/content';
+import type { TableProps } from '@seine/content';
+import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
+import type { BlockEditor } from '@seine/core';
 
 type Props = TableProps & BlockEditor;
 

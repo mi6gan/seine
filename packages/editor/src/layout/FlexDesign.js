@@ -1,11 +1,6 @@
 // @flow
 import * as React from 'react';
 import {
-  blockTypes,
-  defaultFlexFormat,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
-import {
   FormatAlignCenter,
   FormatAlignJustify,
   FormatAlignLeft,
@@ -25,6 +20,12 @@ import SidebarGroup from '../ui/SidebarGroup';
 import ToolbarToggleButtonGroup from '../ui/ToolbarToggleButtonGroup';
 import ToolbarToggleButton from '../ui/ToolbarToggleButton';
 import SidebarSelectLabel from '../ui/SidebarSelectLabel';
+
+import {
+  blockTypes,
+  defaultFlexFormat,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 
 /**
  * @description Layout design.

@@ -7,5 +7,6 @@
 [lints]
 
 [options]
+module.resolver=<PROJECT_ROOT>/.pnp.js
 
 [strict]

@@ -1,9 +1,10 @@
+import path from 'path';
 import initStoryshots from '@storybook/addon-storyshots';
-import * as core from '@material-ui/core';
-
-jest.mock('@material-ui/core');
-core.Popover = jest.fn().mockReturnValue(null);
+import { render } from 'enzyme';
+import { createSerializer } from 'enzyme-to-json';
 
 initStoryshots({
-  storyNameRegex: /^.*(?!Chart).*$/,
+  configPath: path.resolve(__dirname, '../../.storybook'),
+  renderer: render,
+  snapshotSerializers: [createSerializer()],
 });

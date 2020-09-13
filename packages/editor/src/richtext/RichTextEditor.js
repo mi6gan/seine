@@ -3,6 +3,11 @@ import * as React from 'react';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
 import styled from 'styled-components/macro';
+
+import Frame from '../ui/Frame';
+import { useBlocksDispatch } from '../context';
+import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
+
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 import {
@@ -11,10 +16,6 @@ import {
   Item,
   RichTextStyle,
 } from '@seine/content';
-
-import Frame from '../ui/Frame';
-import { useBlocksDispatch } from '../context';
-import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
@@ -35,6 +36,7 @@ export const defaultDraftEditor = {
 
 /**
  * @description Draft block editor component.
+ * @param {Props} props
  * @returns {React.Node}
  */
 export default function RichTextEditor({

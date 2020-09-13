@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
-import type { ImageBody, ImageFormat } from '@seine/core';
 import styled from 'styled-components/macro';
+
+import type { ImageBody, ImageFormat } from '@seine/core';
 
 export type Props = ImageBody & ImageFormat & $Shape<HTMLImageElement>;
 
@@ -22,7 +23,7 @@ export const ImageContainer = styled.div`
 
 /**
  * @description Image block default render component.
- * {Props} props
+ * @param {Props} props
  * @returns {React.Node}
  */
 export default function Image({

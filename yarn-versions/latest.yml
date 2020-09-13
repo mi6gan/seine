@@ -1,9 +1,0 @@
-releases:
-  "@seine/content": patch
-  "@seine/core": patch
-  "@seine/editor": patch
-  "@seine/styles": patch
-  "@seine/testbox": patch
-  "@seine/ui": patch
-
-declined: seine

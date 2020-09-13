@@ -1,12 +1,6 @@
 // @flow
 import * as React from 'react';
 import { MenuItem, Select } from '@material-ui/core';
-import {
-  blockTypes,
-  defaultLayoutFormat,
-  layoutTypes,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import SidebarHeading from '../ui/SidebarHeading';
@@ -17,6 +11,13 @@ import SidebarSection from '../ui/SidebarSection';
 import SidebarSelectLabel from '../ui/SidebarSelectLabel';
 
 import FlexDesign from './FlexDesign';
+
+import {
+  blockTypes,
+  defaultLayoutFormat,
+  layoutTypes,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 
 /**
  * @description Flex layout design.

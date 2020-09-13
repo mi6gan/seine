@@ -1,5 +1,6 @@
 // @flow
 import styled from 'styled-components/macro';
+
 import type { ItemFormat } from '@seine/core';
 import { defaultItemFormat } from '@seine/core';
 

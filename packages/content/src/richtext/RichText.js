@@ -8,12 +8,13 @@ import {
   Editor,
   getDefaultKeyBinding,
 } from 'draft-js';
-import type { RichTextBody, RichTextFormat } from '@seine/core';
 
 import { Item } from '../layout';
 
 import { toDraftEditor } from './helpers';
 import RichTextStyle from './RichTextStyle';
+
+import type { RichTextBody, RichTextFormat } from '@seine/core';
 
 export type Props = (RichTextBody & RichTextFormat) & {
   decorators?: CompositeDecorator[],

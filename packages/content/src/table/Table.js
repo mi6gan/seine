@@ -1,13 +1,14 @@
 // @flow
 import * as React from 'react';
-import type { TableBody, TableFormat } from '@seine/core';
 import styled, { css } from 'styled-components/macro';
-import { useResizeTargetRef } from '@seine/styles';
 import { useAutoCallback } from 'hooks.macro';
 
 import { Item } from '../layout';
 
 import TableCell from './TableCell';
+
+import { useResizeTargetRef } from '@seine/styles';
+import type { TableBody, TableFormat } from '@seine/core';
 
 export type Props = TableBody & TableFormat;
 

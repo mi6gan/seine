@@ -12,13 +12,7 @@ import {
   FormatUnderlined,
 } from '@material-ui/icons';
 import { SvgIcon } from '@material-ui/core';
-import {
-  blockTypes,
-  UPDATE_BLOCK_EDITOR,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
-import { defaultDraftFormat } from '@seine/content';
 import styled from 'styled-components/macro';
 
 import SidebarHeading from '../ui/SidebarHeading';
@@ -30,6 +24,13 @@ import SidebarGroup from '../ui/SidebarGroup';
 import SidebarLabel from '../ui/SidebarLabel';
 
 import { defaultDraftEditor } from './RichTextEditor';
+
+import { defaultDraftFormat } from '@seine/content';
+import {
+  blockTypes,
+  UPDATE_BLOCK_EDITOR,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 
 const SvgText = styled.text.attrs({
   textAnchor: 'middle',

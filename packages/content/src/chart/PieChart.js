@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import type { ChartElement } from '@seine/core';
 import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
@@ -17,6 +16,8 @@ import {
 import PieChartLegend from './PieChartLegend';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
+
+import type { ChartElement } from '@seine/core';
 
 type Props = {
   elements: ChartElement[],
@@ -93,12 +94,13 @@ function PieLabel({
 const PieChartItem = styled(Item)`
   && {
     height: 100% !important;
+    padding: 0;
   }
 `;
 
 /**
  * @description Pie chart block renderer.
- * @param {Props}: props
+ * @param {Props} props
  * @returns {React.Node}
  */
 export default function PieChart({

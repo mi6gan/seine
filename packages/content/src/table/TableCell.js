@@ -1,5 +1,6 @@
 // @flow
 import styled, { css } from 'styled-components/macro';
+
 import type { TableHeaderCell } from '@seine/core';
 
 const TableCell = styled.td.attrs({

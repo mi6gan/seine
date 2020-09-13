@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
-import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import ChartValueInput from './ChartValueInput';
 import useChartDispatchElements from './useChartDispatchElements';
+
+import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 
 type Props = {
   children?: any,

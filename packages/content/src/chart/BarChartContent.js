@@ -2,8 +2,6 @@
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 import invert from 'invert-color';
-import type { BlockType, ChartElement } from '@seine/core';
-import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 
 import {
   defaultChartDx,
@@ -19,6 +17,9 @@ import {
 import ChartXAxis from './ChartXAxis';
 import ChartValue from './ChartValue';
 import { useGroupedElements } from './helpers';
+
+import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
+import type { BlockType, ChartElement } from '@seine/core';
 
 type Props = {
   elements: ChartElement[],
@@ -40,7 +41,7 @@ const MIN_BAR_WIDTH = VIEWPORT_WIDTH / 2;
 
 /**
  * @description Bar chart content block renderer.
- * @param {Props}: props
+ * @param {Props} props
  * @returns {React.Node}
  */
 export default function BarChartContent({

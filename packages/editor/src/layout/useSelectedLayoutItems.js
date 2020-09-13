@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
-import { blockTypes } from '@seine/core';
 
 import useBlocksSelector from '../context/useBlocksSelector';
+
+import { blockTypes } from '@seine/core';
 
 /**
  * @description Default content editor.

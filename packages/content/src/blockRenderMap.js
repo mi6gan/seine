@@ -1,5 +1,4 @@
 // @flow
-import { blockTypes } from '@seine/core';
 
 import { Chart } from './chart';
 import { RichText } from './richtext';
@@ -7,6 +6,8 @@ import { Image } from './image';
 import { Page } from './page';
 import { Table } from './table';
 import { Layout } from './layout';
+
+import { blockTypes } from '@seine/core';
 
 const blockRenderMap = {
   [blockTypes.CHART]: Chart,

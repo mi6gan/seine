@@ -1,7 +1,8 @@
 // @flow
-import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
+
+import { SvgTypography, useTypographyChildrenMethods } from '@seine/styles';
 
 type Props = {
   finite?: boolean,

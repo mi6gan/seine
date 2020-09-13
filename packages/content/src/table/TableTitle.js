@@ -1,5 +1,6 @@
 // @flow
 import styled from 'styled-components/macro';
+
 import { Typography } from '@seine/styles';
 
 const TableTitle = styled(Typography).attrs(() => ({

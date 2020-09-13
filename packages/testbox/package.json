@@ -15,11 +15,9 @@
     "@seine/core": "workspace:*",
     "@seine/styles": "workspace:*"
   },
-  "devDependencies": {
-    "babel-plugin-inline-import-data-uri": "^1.0.1"
-  },
   "peerDependencies": {
     "draft-js": "^0.11.0",
+    "ramda": "^0.26.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"

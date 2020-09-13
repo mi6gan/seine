@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
-import type { LayoutBody, LayoutFormat } from '@seine/core';
 
 import Flex from './Flex';
 import Grid from './Grid';
+
+import type { LayoutBody, LayoutFormat } from '@seine/core';
 
 type Props = LayoutFormat & LayoutBody;
 

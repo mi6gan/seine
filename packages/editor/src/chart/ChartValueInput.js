@@ -1,8 +1,10 @@
 // @flow
 import * as React from 'react';
-import { SvgInput } from '@seine/ui';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
+
+import SvgInput from '../ui/SvgInput';
+
 import { SvgTypography } from '@seine/styles';
 
 type Props = {

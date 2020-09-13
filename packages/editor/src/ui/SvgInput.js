@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
-import { SvgTypography, useTypographyChildren } from '@seine/styles';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 
 import InlineInput from './InlineInput';
+
+import { SvgTypography, useTypographyChildren } from '@seine/styles';
 
 // eslint-disable-next-line
 const SvgInput = React.forwardRef(function SvgInput(

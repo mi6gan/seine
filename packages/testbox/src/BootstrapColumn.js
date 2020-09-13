@@ -27,9 +27,15 @@ const BootstrapColumn = styled.div.attrs(
   ${(props) => css`
     ${breakpointStyle('xs', props)}
     ${breakpointStyle('sm', props)}
-    ${breakpointStyle('md', props)}
+    ${breakpointStyle(
+      'md',
+      props
+    )}
     ${breakpointStyle('lg', props)}
-    ${breakpointStyle('xl', props)}
+    ${breakpointStyle(
+      'xl',
+      props
+    )}
     ${breakpointStyle('xxl', props)}
   `}
 `;

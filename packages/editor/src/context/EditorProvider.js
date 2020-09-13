@@ -1,14 +1,15 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
+
+import EditorContext from './EditorContext';
+
 import type { BlocksAction, BlocksState } from '@seine/core';
 import {
   DESELECT_ALL_BLOCKS,
   initialBlocksState,
   reduceBlocks,
 } from '@seine/core';
-
-import EditorContext from './EditorContext';
 
 // eslint-disable-next-line
 export default function EditorProvider({ blocks, children }) {
