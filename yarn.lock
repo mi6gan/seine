@@ -2543,6 +2543,7 @@ __metadata:
     "@seine/styles": "workspace:*"
   peerDependencies:
     draft-js: ^0.11.0
+    ramda: ^0.26.1
     react: ^16.9.0
     react-dom: ^16.9.0
     styled-components: ^4.3.2
@@ -15894,6 +15895,7 @@ resolve@1.1.7:
     rollup-plugin-visualizer: ^2.5.4
     serve: ^11.1.0
     styled-components: ^4.3.2
+    uuid: ^8.3.0
   dependenciesMeta:
     "@storybook/core":
       unplugged: true
