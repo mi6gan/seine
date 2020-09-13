@@ -69,7 +69,7 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GIT_EMAIL}"
           yarn workspaces foreach -t version prerelease
-          git commit -am "Release $(node -p -e "require('./packages/core/package.json').version")"
+          git commit -am "Release $(node -p -e "require('./packages/core/package.json').version")"A
           git push -f origin HEAD:next
-          yarn workspaces foreach -t --exclude seine exec npm publish --tag next
+          yarn workspaces foreach -t --exclude seine --exclude @seine/storybook exec npm publish --tag next
 
