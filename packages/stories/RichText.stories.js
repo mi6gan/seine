@@ -89,7 +89,7 @@ export const SingleLineContent = ({ as: Component = Content, ...props }) => (
           ],
           entityMap: {},
         },
-        format: { verticalAlignment: 'center' },
+        format: { verticalAlignment: 'center', textAlignment: 'right' },
         parent_id: null,
       },
     ]}

@@ -1,17 +1,16 @@
 // @flow
 import * as React from 'react';
-import styled, { css, createGlobalStyle } from 'styled-components/macro';
+import styled, { createGlobalStyle, css } from 'styled-components/macro';
 import clsx from 'clsx';
-import CompositeDecorator from 'draft-js/lib/CompositeDraftDecorator';
+import Editor from 'draft-js/lib/DraftEditor.react';
 import type { DraftDecorator } from 'draft-js/lib/DraftDecorator';
-import DraftEditorContents from 'draft-js/lib/DraftEditorContents.react';
 import defaultBlockRenderMap from 'draft-js/lib/DefaultDraftBlockRenderMap';
 import defaultDraftInlineStyle from 'draft-js/lib/DefaultDraftInlineStyle';
 import getDefaultKeyBinding from 'draft-js/lib/getDefaultKeyBinding';
 import type { DraftEditorProps } from 'draft-js/lib/DraftEditorProps';
 import type { RichTextBody, RichTextFormat } from '@seine/core';
+import { useAutoMemo } from 'hooks.macro';
 
-import { imageDecorator } from './decorators';
 import { toDraftEditor } from './helpers';
 
 export type Props = (RichTextBody & RichTextFormat) & {
@@ -89,7 +88,6 @@ export const DraftStyle = createGlobalStyle`
  */
 function Draft({
   className = '',
-  decorators = [imageDecorator],
   blockRenderMap = defaultBlockRenderMap,
   blockRendererFn = () => null,
   blockStyleFn = () => '',
@@ -106,35 +104,18 @@ function Draft({
   return (
     <>
       <DraftStyle />
-      <div
-        className={clsx({
-          [className]: true,
-          'DraftEditor/root': true,
-          'DraftEditor/alignLeft': textAlignment === 'left',
-          'DraftEditor/alignRight': textAlignment === 'right',
-          'DraftEditor/alignCenter': textAlignment === 'center',
-        })}
-      >
-        <DraftEditorContents
-          {...editorProps}
-          blockRenderMap={blockRenderMap}
-          blockRendererFn={blockRendererFn}
-          blockStyleFn={(block) => clsx(blockStyleFn(block), className)}
-          keyBindingFn={keyBindingFn}
-          readOnly={readOnly}
-          spellChek={spellCheck}
-          stripPastedStyles={stripPastedStyles}
-          customStyleMap={customStyleMap}
-          editorState={React.useMemo(
-            () =>
-              toDraftEditor(
-                { blocks, entityMap },
-                new CompositeDecorator(decorators)
-              ),
-            [blocks, decorators, entityMap]
-          )}
-        />
-      </div>
+      <Editor
+        {...editorProps}
+        readOnly
+        textAlignment={textAlignment}
+        editorState={useAutoMemo(toDraftEditor({ blocks, entityMap }))}
+        blockRenderMap={blockRenderMap}
+        blockRendererFn={blockRendererFn}
+        blockStyleFn={(block) => clsx(blockStyleFn(block), className)}
+        keyBindingFn={keyBindingFn}
+        spellChek={spellCheck}
+        customStyleMap={customStyleMap}
+      />
     </>
   );
 }
