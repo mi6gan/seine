@@ -4,7 +4,10 @@ import { Data, Flex, NestedFlex, Page, Table, Text } from './Content.stories';
 
 import { Editor } from '@seine/editor';
 
-export default { title: 'Editor' };
+export default {
+  title: 'Editor',
+  parameters: { storyshots: { disable: true } },
+};
 
 export const InitialEditor = () => <Page as={Editor} />;
 

@@ -456,3 +456,8 @@ export const Data = ({ as: Container = Content, children = [], ...props }) =>
       </Container>
     </Box>
   ));
+Data.parameters = {
+  storyshots: {
+    disable: true,
+  },
+};
