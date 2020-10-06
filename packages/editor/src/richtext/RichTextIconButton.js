@@ -6,6 +6,7 @@ import { Title as RichTextIcon } from '@material-ui/icons';
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
+import { BlockTypeIcon } from '@seine/editor';
 import { toRawContent } from '@seine/content';
 import { blockTypes, createBlock } from '@seine/core';
 
@@ -29,6 +30,7 @@ export default function RichTextIconButton() {
       bgcolor={selected ? 'grey.800' : 'inherit'}
     >
       <RichTextIcon />
+      <BlockTypeIcon type={blockTypes.RICH_TEXT} />
     </ToolbarButton>
   );
 }

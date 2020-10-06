@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
-import { ShowChart as LineChartIcon } from '@material-ui/icons';
 
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
+import { BlockTypeIcon } from '@seine/editor';
 import {
   blockTypes,
   chartTypes,
@@ -64,7 +64,7 @@ export default function LineChartIconButton() {
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}
     >
-      <LineChartIcon />
+      <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.LINE} />
     </ToolbarButton>
   );
 }

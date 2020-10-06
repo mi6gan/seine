@@ -7,6 +7,7 @@ import { BarChart as ColumnChartIcon } from '@material-ui/icons';
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
+import { BlockTypeIcon } from '@seine/editor';
 import {
   blockTypes,
   chartTypes,
@@ -58,6 +59,7 @@ export default function BarChartIconButton() {
       bgcolor={selected ? 'grey.800' : 'inherit'}
     >
       <BarChartIcon />
+      <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.BAR} />
     </ToolbarButton>
   );
 }

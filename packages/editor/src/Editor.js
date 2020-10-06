@@ -5,6 +5,12 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
+import EditorTree from './EditorTree';
+import {
+  allBlocksSelector,
+  deviceSelector,
+  selectionSelector,
+} from './selectors';
 import defaultTheme from './defaultTheme';
 import Sidebar from './ui/Sidebar';
 import Toolbar from './ui/Toolbar';
@@ -21,10 +27,14 @@ import defaultBlockRenderMap from './blockRenderMap';
 import RichTextDesign from './richtext/RichTextDesign';
 import TableDesign from './table/TableDesign';
 import LayoutDesign from './layout/LayoutDesign';
+import SidebarGroup from './ui/SidebarGroup';
+import SidebarSection from './ui/SidebarSection';
+import SidebarHeading from './ui/SidebarHeading';
+import SidebarLabel from './ui/SidebarLabel';
 import {
+  EditorProvider,
   useBlocksDispatch,
   useBlocksSelector,
-  EditorProvider,
 } from './context';
 import useSelectedLayoutItems from './layout/useSelectedLayoutItems';
 import { ChartDesign } from './chart';
@@ -71,10 +81,6 @@ const StyledSelect = styled(Select)`
 
 const defaultEditorChildren = [];
 
-const blocksSelector = (state) => state.blocks;
-const selectionSelector = (state) => state.selection;
-const deviceSelector = (state) => state.device;
-
 type Props = {
   parent: Block,
   onChange: (Block[]) => any,
@@ -99,7 +105,7 @@ function DefaultEditor({
   const closeMenu = useAutoCallback(() => setMenuOpen(false));
 
   const dispatch = useBlocksDispatch();
-  const blocks = useBlocksSelector(blocksSelector);
+  const blocks = useBlocksSelector(allBlocksSelector);
   const selection = useBlocksSelector(selectionSelector);
   const device = useBlocksSelector(deviceSelector);
   const { layout, item } = useSelectedLayoutItems();
@@ -192,6 +198,14 @@ function DefaultEditor({
         height={'100%'}
       >
         <Contents>
+          <Sidebar>
+            <SidebarSection>
+              <SidebarHeading>Structure</SidebarHeading>
+              <SidebarGroup>
+                <EditorTree labelAs={SidebarLabel} />
+              </SidebarGroup>
+            </SidebarSection>
+          </Sidebar>
           <EditorPaper device={device}>
             <ParentBlock>
               <Content

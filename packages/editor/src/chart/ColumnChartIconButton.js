@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
-import { BarChart as ColumnChartIcon } from '@material-ui/icons';
 
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
+import { BlockTypeIcon } from '@seine/editor';
 import {
   blockTypes,
   chartTypes,
@@ -64,7 +64,7 @@ export default function ColumnChartIconButton() {
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}
     >
-      <ColumnChartIcon />
+      <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.COLUMN} />
     </ToolbarButton>
   );
 }

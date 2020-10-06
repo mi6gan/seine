@@ -7,7 +7,7 @@ import useBlocksSelector from '../context/useBlocksSelector';
 import { blockTypes } from '@seine/core';
 
 /**
- * @description Default content editor.
+ * @description Use layout items list from current selection.
  * @returns {React.Node}
  */
 export default function useSelectedLayoutItems() {
