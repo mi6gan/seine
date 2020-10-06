@@ -174,9 +174,9 @@ function DefaultEditor({
         <Box width={'20%'} textAlign={'center'}>
           <StyledSelect
             value={device}
-            onChange={(event) =>
+            onChange={useAutoCallback((event) =>
               dispatch({ type: SET_DEVICE, device: event.target.value })
-            }
+            )}
           >
             <MenuItem value={'any'}>Any device</MenuItem>
             <MenuItem value={'mobile'}>Mobile only</MenuItem>
