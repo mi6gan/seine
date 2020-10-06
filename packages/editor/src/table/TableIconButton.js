@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
-import { TableChart as TableIcon } from '@material-ui/icons';
 
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
+import { BlockTypeIcon } from '@seine/editor';
 import { defaultTableCell } from '@seine/content';
 import { blockTypes, createBlock } from '@seine/core';
 
@@ -39,7 +39,7 @@ export default function TableIconButton() {
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}
     >
-      <TableIcon />
+      <BlockTypeIcon type={blockTypes.RICH_TEXT} />
     </ToolbarButton>
   );
 }

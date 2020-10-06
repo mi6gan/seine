@@ -1665,10 +1665,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@devexpress/dx-chart-core@npm:2.7.2":
+  version: 2.7.2
+  resolution: "@devexpress/dx-chart-core@npm:2.7.2"
+  dependencies:
+    d3-array: ^2.4.0
+    d3-scale: ^3.2.0
+    d3-shape: ^1.3.7
+  peerDependencies:
+    "@devexpress/dx-core": 2.7.2
+  checksum: 0abf8b5ea8d1793b35a7504442f3023c1985ac2286d30f71a606293532c5b2de9570b74019799283a192e3fa51874f4eee18376d33c7c06e8e87c2ede7ed80cd
+  languageName: node
+  linkType: hard
+
 "@devexpress/dx-core@npm:2.7.1":
   version: 2.7.1
   resolution: "@devexpress/dx-core@npm:2.7.1"
   checksum: 7cf530a50f1b2d41039ab5e77e8e3bc8f3fdbe5d0639770eb83826e294b4fc9ab127bfc8cd957b0946741c66067fcde7dcdc3d7367511eef750d4699acc98322
+  languageName: node
+  linkType: hard
+
+"@devexpress/dx-core@npm:^2.7.0":
+  version: 2.7.2
+  resolution: "@devexpress/dx-core@npm:2.7.2"
+  checksum: 6d089bbccf82cfbab47dbd8246c14680a1b8ff0f0829bd004508e59dd49b4b451aae840a5b3c90d671884546f494a1f57f1b530bd07d86297bebde0972853443
   languageName: node
   linkType: hard
 
@@ -1686,6 +1706,21 @@ __metadata:
     "@material-ui/icons": ">=4.4.3"
     react: ">=16.10.2"
   checksum: 01e3a5f184c329a87d4c4bc91acc15efd3a1eb753f0826007b4b83ecc88fe17038c8a5004ec3926e833da54c1d2903ee7d2031a613f90546a27958d79b170fdc
+  languageName: node
+  linkType: hard
+
+"@devexpress/dx-react-chart@npm:*":
+  version: 2.7.2
+  resolution: "@devexpress/dx-react-chart@npm:2.7.2"
+  dependencies:
+    "@devexpress/dx-chart-core": 2.7.2
+    d3-scale: ^3.2.0
+    d3-shape: ^1.3.7
+  peerDependencies:
+    "@devexpress/dx-react-core": 2.7.2
+    react: ">=16.10.2"
+    react-dom: ">=16.10.2"
+  checksum: 72701faecf5e15b967e64c6ac62c8aef4f9927048793aab48e5e60f3648b4ee189091aaf6007b62a3879cd101d8c182e8c2ae267853957dabfe94736eb911c1c
   languageName: node
   linkType: hard
 
@@ -2118,6 +2153,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@material-ui/core@npm:*":
+  version: 4.11.0
+  resolution: "@material-ui/core@npm:4.11.0"
+  dependencies:
+    "@babel/runtime": ^7.4.4
+    "@material-ui/styles": ^4.10.0
+    "@material-ui/system": ^4.9.14
+    "@material-ui/types": ^5.1.0
+    "@material-ui/utils": ^4.10.2
+    "@types/react-transition-group": ^4.2.0
+    clsx: ^1.0.4
+    hoist-non-react-statics: ^3.3.2
+    popper.js: 1.16.1-lts
+    prop-types: ^15.7.2
+    react-is: ^16.8.0
+    react-transition-group: ^4.4.0
+  peerDependencies:
+    "@types/react": ^16.8.6
+    react: ^16.8.0
+    react-dom: ^16.8.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 02b3ada79f258f5e5d64fbab804c65d07ea3e8b2533e40c18fcab49c8065ebcb5acfea4ea0b033f2d91dee1fee3a6720f567c0c60f3be1bb5bd754be2d9bf322
+  languageName: node
+  linkType: hard
+
 "@material-ui/core@npm:4.9":
   version: 4.9.14
   resolution: "@material-ui/core@npm:4.9.14"
@@ -2145,7 +2207,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/icons@npm:4.9":
+"@material-ui/icons@npm:*, @material-ui/icons@npm:4.9":
   version: 4.9.1
   resolution: "@material-ui/icons@npm:4.9.1"
   dependencies:
@@ -2183,7 +2245,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/styles@npm:^4.9.14":
+"@material-ui/styles@npm:^4.10.0, @material-ui/styles@npm:^4.9.14":
   version: 4.10.0
   resolution: "@material-ui/styles@npm:4.10.0"
   dependencies:
@@ -2498,6 +2560,7 @@ __metadata:
     enzyme: ^3.11.0
     enzyme-adapter-react-16: ^1.15.4
     enzyme-to-json: ^3.5.0
+    pnp-webpack-plugin: ^1.6.4
     react: ^16.9.0
     react-dom: ^16.9.0
     styled-components: ^4.3.2
@@ -14441,6 +14504,13 @@ fsevents@^1.2.7:
   dependencies:
     "@babel/runtime": ^7.9.2
   checksum: 79cdcf97454d2d9a0fcb4d9282311a7df891b6d60a874622bb84842bc2e772f75f2366450bf411c246200e2ce2b154f870a5868845c19fd70147274180884a0c
+  languageName: node
+  linkType: hard
+
+"popper.js@npm:1.16.1-lts":
+  version: 1.16.1-lts
+  resolution: "popper.js@npm:1.16.1-lts"
+  checksum: 93704853f7e737e3f34cf16d72556a28ccdb041f9046e1f205566d1577132c871a7f0168cb77d8b9a3854f280b03722485231666555f149ae4330beddde70a7b
   languageName: node
   linkType: hard
 

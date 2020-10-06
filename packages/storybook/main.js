@@ -1,4 +1,8 @@
 module.exports = {
   stories: ['./src/**/*.stories.js'],
-  addons: ['@storybook/addon-actions', '@storybook/addon-viewport'],
+  addons: [
+    require.resolve('./yarn-preset.js'),
+    '@storybook/addon-actions',
+    '@storybook/addon-viewport',
+  ],
 };
