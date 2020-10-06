@@ -9,7 +9,7 @@ async function yarn2Config({ resolve, resolveLoader, ...config }, mode) {
       ...resolve,
       plugins: [...((resolve && resolve.plugins) || []), PnpWebpackPlugin],
       alias:
-        mode && mode.toLowerCase() === 'development'
+        mode.configType.toLowerCase() === 'development'
           ? (await resolveWorkspaces())
               .filter(({ manifest }) => manifest.module)
               .reduce(
