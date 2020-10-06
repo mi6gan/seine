@@ -66,7 +66,7 @@ function EditorTree({
         useAutoCallback((state) =>
           state.blocks.filter((block) => block['parent_id'] === root)
         )
-      ).map(({ id, type }) => (
+      ).map(({ id, type, format }) => (
         <EditorTree
           as={TreeItem}
           root={id}
@@ -82,7 +82,7 @@ function EditorTree({
               px={1}
             >
               {id && <Label>{id.slice(0, 6)}</Label>}
-              <BlockTypeIcon type={type} />
+              <BlockTypeIcon type={type} {...format} />
             </Box>
           }
         />

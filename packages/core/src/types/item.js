@@ -1,5 +1,5 @@
 // @flow
-import type { LayoutType } from '@seine/core';
+import type { LayoutType } from './layout';
 
 export type ItemBody = {};
 

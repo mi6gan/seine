@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
-import { Title as RichTextIcon } from '@material-ui/icons';
 
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
@@ -29,7 +28,6 @@ export default function RichTextIconButton() {
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}
     >
-      <RichTextIcon />
       <BlockTypeIcon type={blockTypes.RICH_TEXT} />
     </ToolbarButton>
   );

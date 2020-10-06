@@ -1,8 +1,6 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
-import styled from 'styled-components/macro';
-import { BarChart as ColumnChartIcon } from '@material-ui/icons';
 
 import { EditorContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
@@ -14,10 +12,6 @@ import {
   createBlock,
   createTitleIdentityBlockElements,
 } from '@seine/core';
-
-const BarChartIcon = styled(ColumnChartIcon).attrs({
-  transform: 'rotate(90)',
-})``;
 
 // eslint-disable-next-line
 export default function BarChartIconButton() {
@@ -58,7 +52,6 @@ export default function BarChartIconButton() {
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}
     >
-      <BarChartIcon />
       <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.BAR} />
     </ToolbarButton>
   );

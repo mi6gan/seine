@@ -39,7 +39,7 @@ export default function TableIconButton() {
       )}
       bgcolor={selected ? 'grey.800' : 'inherit'}
     >
-      <BlockTypeIcon type={blockTypes.RICH_TEXT} />
+      <BlockTypeIcon type={blockTypes.TABLE} />
     </ToolbarButton>
   );
 }
