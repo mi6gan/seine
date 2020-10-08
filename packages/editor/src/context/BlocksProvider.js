@@ -1,15 +1,11 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
 import BlocksContext from './BlocksContext';
 
 import type { BlocksAction, BlocksState } from '@seine/core';
-import {
-  DESELECT_ALL_BLOCKS,
-  initialBlocksState,
-  reduceBlocks,
-} from '@seine/core';
+import { initialBlocksState, reduceBlocks } from '@seine/core';
 
 // eslint-disable-next-line
 export default function BlocksProvider({ blocks, children }) {
@@ -23,11 +19,6 @@ export default function BlocksProvider({ blocks, children }) {
   );
 
   const [buffer, setBuffer] = React.useState(null);
-  useAutoEffect(() => {
-    if (buffer) {
-      dispatch({ type: DESELECT_ALL_BLOCKS });
-    }
-  });
   return (
     <BlocksContext.Provider
       value={useAutoMemo({ dispatch, state, buffer, setBuffer })}

@@ -4,7 +4,7 @@ import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
 import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
-import { useBlocksDispatch } from '../context';
+import { BlocksContext } from '../context';
 
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 
@@ -14,13 +14,14 @@ export default function DeleteBlockButton({
   children,
   ...buttonProps
 }) {
-  const dispatch = useBlocksDispatch();
   const { items } = useSelectedLayoutItems();
+  const { setBuffer } = React.useContext(BlocksContext);
+
   return (
     <Button
       {...buttonProps}
       onClick={useAutoCallback(() => {
-        dispatch({ type: DELETE_SELECTED_BLOCKS });
+        setBuffer({ type: DELETE_SELECTED_BLOCKS });
       })}
       disabled={!items.length}
     >

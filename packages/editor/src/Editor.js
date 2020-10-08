@@ -7,6 +7,7 @@ import styled from 'styled-components/macro';
 
 import ItemMenu, { ItemMenuContext, ItemMenuProvider } from './ui/ItemMenu';
 import EditorTree from './EditorTree';
+import DeleteConfirmationModal from './ui/DeleteConfirmationModal';
 import { allBlocksSelector, deviceSelector } from './selectors';
 import defaultTheme from './defaultTheme';
 import Sidebar from './ui/Sidebar';
@@ -113,6 +114,7 @@ function DefaultEditor({
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <DeleteConfirmationModal />
       <ItemMenu />
 
       <Toolbar ref={menuAnchorRef}>
