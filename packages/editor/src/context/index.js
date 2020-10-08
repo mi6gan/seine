@@ -1,6 +1,8 @@
 // @flow
-export { default as EditorContext } from './EditorContext';
-export { default as EditorProvider } from './EditorProvider';
+export { default as BlocksContext } from './BlocksContext';
+export { default as BlocksProvider } from './BlocksProvider';
+export { default as ClipboardContext } from './ClipboardContext';
+export { default as ClipboardProvider } from './ClipboardProvider';
 export { default as useBlocksBuffer } from './useBlocksBuffer';
 export { default as useBlocksDispatch } from './useBlocksDispatch';
 export {

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { EditorContext, useBlocksBuffer } from '../context';
+import { BlocksContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
 import { BlockTypeIcon } from '@seine/editor';
@@ -11,7 +11,7 @@ import { blockTypes, createBlock } from '@seine/core';
 
 // eslint-disable-next-line
 export default function TableIconButton() {
-  const { setBuffer } = React.useContext(EditorContext);
+  const { setBuffer } = React.useContext(BlocksContext);
   const buffer = useBlocksBuffer();
   const selected = buffer && buffer.type === blockTypes.TABLE;
 

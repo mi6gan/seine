@@ -1,9 +1,9 @@
 {
-  "exclude": [
-    "node_modules",
-    "lib",
-    "dist",
-    "packages/styles/src/bream/img",
-    "packages/styles/src/bream/styles/css"
-  ]
+  "exclude": ["lib", "dist"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@seine/*": ["packages/*/src"]
+    }
+  }
 }

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { EditorContext, useBlocksDispatch, useBlocksBuffer } from './context';
+import { BlocksContext, useBlocksDispatch, useBlocksBuffer } from './context';
 
 import type { Block, BlockEditor } from '@seine/core';
 import { CREATE_BLOCK, SELECT_BLOCK } from '@seine/core';
@@ -36,7 +36,7 @@ const StyledPage = styled(Page)`
 export default function PageEditor({ id, ...pageProps }: Props) {
   const dispatch = useBlocksDispatch();
   const buffer = useBlocksBuffer();
-  const { setBuffer } = React.useContext(EditorContext);
+  const { setBuffer } = React.useContext(BlocksContext);
 
   return (
     <StyledPage
