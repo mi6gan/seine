@@ -5,6 +5,7 @@ export { default as BlockTypeIcon } from './BlockTypeIcon';
 export { default as CompositeActionButton } from './CompositeActionButton';
 export { default as CreateLayoutButton } from './CreateLayoutButton';
 export { default as DeleteBlockButton } from './DeleteBlockButton';
+export { default as DeleteConfirmationDialog } from './DeleteConfirmationDialog';
 export { default as Frame } from './Frame';
 export { default as InlineInput } from './InlineInput';
 export { default as Input } from './Input';

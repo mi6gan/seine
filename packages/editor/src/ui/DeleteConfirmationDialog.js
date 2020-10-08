@@ -8,7 +8,7 @@ import { BlocksContext } from '../context';
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 
 // eslint-disable-next-line
-export default function DeleteConfirmationModal() {
+export default function DeleteConfirmationDialog() {
   const { buffer, setBuffer, dispatch } = React.useContext(BlocksContext);
 
   return (
