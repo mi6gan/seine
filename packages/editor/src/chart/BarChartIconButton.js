@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { EditorContext, useBlocksBuffer } from '../context';
+import { BlocksContext, useBlocksBuffer } from '../context';
 import ToolbarButton from '../ui/ToolbarButton';
 
 import { BlockTypeIcon } from '@seine/editor';
@@ -15,7 +15,7 @@ import {
 
 // eslint-disable-next-line
 export default function BarChartIconButton() {
-  const { setBuffer } = React.useContext(EditorContext);
+  const { setBuffer } = React.useContext(BlocksContext);
   const buffer = useBlocksBuffer();
   const selected =
     buffer &&

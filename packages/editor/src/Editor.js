@@ -1,21 +1,17 @@
 // @flow
 import * as React from 'react';
-import { Box, ButtonBase, MenuItem, Paper, Select } from '@material-ui/core';
+import { Box, MenuItem, Paper, Select } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
+import ItemMenu, { ItemMenuContext, ItemMenuProvider } from './ui/ItemMenu';
 import EditorTree from './EditorTree';
-import {
-  allBlocksSelector,
-  deviceSelector,
-  selectionSelector,
-} from './selectors';
+import { allBlocksSelector, deviceSelector } from './selectors';
 import defaultTheme from './defaultTheme';
 import Sidebar from './ui/Sidebar';
 import Toolbar from './ui/Toolbar';
 import ToolbarButton from './ui/ToolbarButton';
-import ToolbarMenu from './ui/ToolbarMenu';
 import ToolbarSeparator from './ui/ToolbarSeparator';
 import RichTextIconButton from './richtext/RichTextIconButton';
 import TableIconButton from './table/TableIconButton';
@@ -32,14 +28,13 @@ import SidebarSection from './ui/SidebarSection';
 import SidebarHeading from './ui/SidebarHeading';
 import SidebarLabel from './ui/SidebarLabel';
 import {
-  EditorProvider,
+  BlocksProvider,
+  ClipboardProvider,
   useBlocksDispatch,
   useBlocksSelector,
 } from './context';
 import useSelectedLayoutItems from './layout/useSelectedLayoutItems';
 import { ChartDesign } from './chart';
-import CreateLayoutButton from './ui/CreateLayoutButton';
-import DeleteBlockButton from './ui/DeleteBlockButton';
 import ItemDesign from './layout/ItemDesign';
 
 import { Content } from '@seine/content';
@@ -54,11 +49,6 @@ const Contents = styled(Box).attrs({
 })`
   overflow: auto;
 `;
-
-const MenuButton = styled(Box).attrs(({ disabled }) => ({
-  component: ButtonBase,
-  color: disabled ? 'grey.500' : 'inherit',
-}))``;
 
 const EditorPaper = styled(Paper).attrs(() => ({
   component: Box,
@@ -101,12 +91,10 @@ function DefaultEditor({
   const ParentBlock = blockRenderMap[parent.type];
 
   const menuAnchorRef = React.useRef(null);
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const closeMenu = useAutoCallback(() => setMenuOpen(false));
+  const itemMenu = React.useContext(ItemMenuContext);
 
   const dispatch = useBlocksDispatch();
   const blocks = useBlocksSelector(allBlocksSelector);
-  const selection = useBlocksSelector(selectionSelector);
   const device = useBlocksSelector(deviceSelector);
   const { layout, item } = useSelectedLayoutItems();
 
@@ -125,36 +113,17 @@ function DefaultEditor({
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ToolbarMenu
-        onClose={closeMenu}
-        open={menuOpen}
-        anchorEl={menuAnchorRef.current}
-        keepMounted
-        mt={3}
-        ml={-1}
-      >
-        <MenuItem onClick={closeMenu}>
-          <CreateLayoutButton as={MenuButton}>Create layout</CreateLayoutButton>
-        </MenuItem>
-
-        <MenuItem>
-          <MenuButton disabled={!selection || !selection.length}>
-            Copy
-          </MenuButton>
-        </MenuItem>
-
-        <MenuItem onClick={closeMenu}>
-          <DeleteBlockButton as={MenuButton}>Delete</DeleteBlockButton>
-        </MenuItem>
-      </ToolbarMenu>
+      <ItemMenu />
 
       <Toolbar ref={menuAnchorRef}>
         <Box width={'40%'}>
           <ToolbarButton
             onClick={useAutoCallback(() => {
-              setMenuOpen(true);
+              if (itemMenu) {
+                itemMenu.open(menuAnchorRef.current);
+              }
             })}
-            selected={menuOpen}
+            selected={itemMenu.isOpen}
           >
             <MenuIcon />
           </ToolbarButton>
@@ -239,8 +208,12 @@ function DefaultEditor({
 // eslint-disable-next-line
 export default function Editor({ children = defaultEditorChildren, ...props }) {
   return (
-    <EditorProvider blocks={children}>
-      <DefaultEditor {...props} />
-    </EditorProvider>
+    <BlocksProvider blocks={children}>
+      <ClipboardProvider>
+        <ItemMenuProvider>
+          <DefaultEditor {...props} />
+        </ItemMenuProvider>
+      </ClipboardProvider>
+    </BlocksProvider>
   );
 }

@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
 
-import EditorContext from './EditorContext';
+import BlocksContext from './BlocksContext';
 
 // eslint-disable-next-line
 export default function useBlocksBuffer() {
-  const { buffer } = React.useContext(EditorContext);
+  const { buffer } = React.useContext(BlocksContext);
   return buffer;
 }

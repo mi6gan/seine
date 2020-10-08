@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 
-import EditorContext from './EditorContext';
+import BlocksContext from './BlocksContext';
 
 import type { BlocksAction, BlocksState } from '@seine/core';
 import {
@@ -12,7 +12,7 @@ import {
 } from '@seine/core';
 
 // eslint-disable-next-line
-export default function EditorProvider({ blocks, children }) {
+export default function BlocksProvider({ blocks, children }) {
   const [state, dispatch] = React.useReducer<BlocksState, BlocksAction>(
     reduceBlocks,
     initialBlocksState,
@@ -29,10 +29,10 @@ export default function EditorProvider({ blocks, children }) {
     }
   });
   return (
-    <EditorContext.Provider
+    <BlocksContext.Provider
       value={useAutoMemo({ dispatch, state, buffer, setBuffer })}
     >
       {children}
-    </EditorContext.Provider>
+    </BlocksContext.Provider>
   );
 }

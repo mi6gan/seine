@@ -6,6 +6,7 @@ import { TreeItem, TreeView } from '@material-ui/lab';
 import { ChevronRight, ExpandMore } from '@material-ui/icons';
 import { Box } from '@material-ui/core';
 
+import { ItemMenuContext } from './ui/ItemMenu';
 import { useBlocksDispatch, useBlocksSelector } from './context';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 
@@ -16,30 +17,48 @@ type Props = {
   root?: null | string,
 };
 
+const isExpandEvent = (event) => {
+  const target = event.target.viewportElement || event.target;
+  return target.dataset['toggle'];
+};
+
 const DefaultTreeView = styled(({ children, ...viewProps }) => {
   const dispatch = useBlocksDispatch();
   const selection = useBlocksSelector((state) => state.selection);
+  const [expanded, setExpanded] = React.useState(
+    useBlocksSelector(
+      useAutoCallback((state) => state.blocks.map(({ id }) => id))
+    )
+  );
+
   return (
     <TreeView
       {...viewProps}
       multiSelect
+      defaultExpandIcon={<ChevronRight data-toggle={true} />}
+      defaultCollapseIcon={<ExpandMore data-toggle={true} />}
+      expanded={expanded}
       selected={selection}
-      defaultExpandIcon={<ChevronRight />}
-      defaultCollapseIcon={<ExpandMore />}
-      defaultExpanded={useBlocksSelector(
-        useAutoCallback((state) => state.blocks.map(({ id }) => id))
-      )}
-      onNodeSelect={useAutoCallback((event, nodeIds) => {
+      onNodeToggle={useAutoCallback((event: SyntheticInputEvent, nodeIds) => {
         event.stopPropagation();
         event.preventDefault();
-        dispatch({ type: DESELECT_ALL_BLOCKS });
-        nodeIds.forEach((id) =>
-          dispatch({
-            type: SELECT_BLOCK,
-            id,
-            modifier: event.ctrlKey ? 'add' : null,
-          })
-        );
+        if (isExpandEvent(event)) {
+          setExpanded(nodeIds);
+        }
+      })}
+      onNodeSelect={useAutoCallback((event: SyntheticInputEvent, nodeIds) => {
+        event.stopPropagation();
+        event.preventDefault();
+        if (!isExpandEvent(event)) {
+          dispatch({ type: DESELECT_ALL_BLOCKS });
+          nodeIds.forEach((id) =>
+            dispatch({
+              type: SELECT_BLOCK,
+              id,
+              modifier: event.ctrlKey ? 'add' : null,
+            })
+          );
+        }
       })}
     >
       {children}
@@ -56,10 +75,18 @@ const DefaultTreeView = styled(({ children, ...viewProps }) => {
  */
 function EditorTree({
   as: Tree = DefaultTreeView,
-  labelAs: Label = React.Fragment,
+  labelAs: Label = 'span',
   root = null,
   ...treeProps
 }: Props) {
+  const dispatch = useBlocksDispatch();
+  const itemMenu = React.useContext(ItemMenuContext);
+  const openItemMenu = useAutoCallback((event) => {
+    dispatch({ type: SELECT_BLOCK, id: event.currentTarget.dataset.id });
+    event.preventDefault();
+    itemMenu.open(event.currentTarget);
+  });
+
   return (
     <Tree {...treeProps}>
       {useBlocksSelector(
@@ -81,7 +108,9 @@ function EditorTree({
               alignItems={'center'}
               px={1}
             >
-              {id && <Label>{id.slice(0, 6)}</Label>}
+              <Label onContextMenu={openItemMenu} data-id={id}>
+                {id ? id.slice(0, 6) : type}
+              </Label>
               <BlockTypeIcon type={type} {...format} />
             </Box>
           }
