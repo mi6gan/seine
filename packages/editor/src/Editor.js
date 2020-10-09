@@ -1,29 +1,18 @@
 // @flow
 import * as React from 'react';
-import { Box, MenuItem, Paper, Select } from '@material-ui/core';
-import { Menu as MenuIcon } from '@material-ui/icons';
+import { Box, Paper } from '@material-ui/core';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import ItemMenu, { ItemMenuContext, ItemMenuProvider } from './ui/ItemMenu';
+import EditorItemMenu, { ItemMenuProvider } from './EditorItemMenu';
 import EditorTree from './EditorTree';
+import EditorDesign from './EditorDesign';
+import EditorToolbar from './EditorToolbar';
 import DeleteConfirmationDialog from './ui/DeleteConfirmationDialog';
 import { allBlocksSelector, deviceSelector } from './selectors';
 import defaultTheme from './defaultTheme';
 import Sidebar from './ui/Sidebar';
-import Toolbar from './ui/Toolbar';
-import ToolbarButton from './ui/ToolbarButton';
-import ToolbarSeparator from './ui/ToolbarSeparator';
-import RichTextIconButton from './richtext/RichTextIconButton';
-import TableIconButton from './table/TableIconButton';
-import BarChartIconButton from './chart/BarChartIconButton';
-import LineChartIconButton from './chart/LineChartIconButton';
-import ColumnChartIconButton from './chart/ColumnChartIconButton';
-import PieChartIconButton from './chart/PieChartIconButton';
 import defaultBlockRenderMap from './blockRenderMap';
-import RichTextDesign from './richtext/RichTextDesign';
-import TableDesign from './table/TableDesign';
-import LayoutDesign from './layout/LayoutDesign';
 import SidebarGroup from './ui/SidebarGroup';
 import SidebarSection from './ui/SidebarSection';
 import SidebarHeading from './ui/SidebarHeading';
@@ -34,13 +23,10 @@ import {
   useBlocksDispatch,
   useBlocksSelector,
 } from './context';
-import useSelectedLayoutItems from './layout/useSelectedLayoutItems';
-import { ChartDesign } from './chart';
-import ItemDesign from './layout/ItemDesign';
 
 import { Content } from '@seine/content';
 import type { Block, BlockType } from '@seine/core';
-import { blockTypes, DESELECT_ALL_BLOCKS, SET_DEVICE } from '@seine/core';
+import { DESELECT_ALL_BLOCKS } from '@seine/core';
 import { ThemeProvider } from '@seine/styles';
 
 const Contents = styled(Box).attrs({
@@ -64,12 +50,6 @@ const EditorPaper = styled(Paper).attrs(() => ({
   })}
 `;
 
-const StyledSelect = styled(Select)`
-  && {
-    color: ${({ theme }) => theme.palette.grey[50]}};
-  }
-`;
-
 const defaultEditorChildren = [];
 
 type Props = {
@@ -91,13 +71,9 @@ function DefaultEditor({
 }: Props) {
   const ParentBlock = blockRenderMap[parent.type];
 
-  const menuAnchorRef = React.useRef(null);
-  const itemMenu = React.useContext(ItemMenuContext);
-
   const dispatch = useBlocksDispatch();
   const blocks = useBlocksSelector(allBlocksSelector);
   const device = useBlocksSelector(deviceSelector);
-  const { layout, item } = useSelectedLayoutItems();
 
   useAutoEffect(() => {
     onChange(
@@ -115,46 +91,8 @@ function DefaultEditor({
   return (
     <ThemeProvider theme={defaultTheme}>
       <DeleteConfirmationDialog />
-      <ItemMenu />
-
-      <Toolbar ref={menuAnchorRef}>
-        <Box width={'40%'}>
-          <ToolbarButton
-            onClick={useAutoCallback(() => {
-              if (itemMenu) {
-                itemMenu.open(menuAnchorRef.current);
-              }
-            })}
-            selected={itemMenu.isOpen}
-          >
-            <MenuIcon />
-          </ToolbarButton>
-          <ToolbarSeparator />
-
-          <RichTextIconButton />
-          <ToolbarSeparator />
-
-          <TableIconButton />
-          <ToolbarSeparator />
-
-          <BarChartIconButton />
-          <LineChartIconButton />
-          <ColumnChartIconButton />
-          <PieChartIconButton />
-        </Box>
-        <Box width={'20%'} textAlign={'center'}>
-          <StyledSelect
-            value={device}
-            onChange={useAutoCallback((event) =>
-              dispatch({ type: SET_DEVICE, device: event.target.value })
-            )}
-          >
-            <MenuItem value={'any'}>Any device</MenuItem>
-            <MenuItem value={'mobile'}>Mobile only</MenuItem>
-          </StyledSelect>
-        </Box>
-        <Box width={'40%'} />
-      </Toolbar>
+      <EditorItemMenu />
+      <EditorToolbar />
 
       <Box
         onClick={useAutoCallback(() => {
@@ -177,6 +115,7 @@ function DefaultEditor({
               </SidebarGroup>
             </SidebarSection>
           </Sidebar>
+
           <EditorPaper device={device}>
             <ParentBlock>
               <Content
@@ -195,11 +134,7 @@ function DefaultEditor({
               event.stopPropagation();
             })}
           >
-            {item && <ItemDesign />}
-            {layout && <LayoutDesign />}
-            {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
-            {item && item.type === blockTypes.TABLE && <TableDesign />}
-            {item && item.type === blockTypes.CHART && <ChartDesign />}
+            <EditorDesign />
           </Sidebar>
         </Contents>
       </Box>
