@@ -10,7 +10,7 @@ import {
   blockTypes,
   CREATE_BLOCK,
   createBlock,
-  defaultFlexFormat,
+  defaultLayoutFormat,
   SELECT_BLOCK,
   SET_BLOCK_PARENT,
 } from '@seine/core';
@@ -36,7 +36,7 @@ export default function CreateLayoutButton({
         const block = createBlock(
           blockTypes.LAYOUT,
           null,
-          defaultFlexFormat,
+          defaultLayoutFormat,
           parentId
         );
         dispatch({
@@ -58,7 +58,6 @@ export default function CreateLayoutButton({
           onClick(event);
         }
       })}
-      disabled={items.length <= 1 || parentIds.length > 1}
     >
       {children}
     </Button>
