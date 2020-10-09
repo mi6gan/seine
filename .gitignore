@@ -15,7 +15,7 @@ node_modules/
 # production
 /dist
 /storybook-static
-/**/lib
+/packages/*/index.*
 
 # idea
 .idea

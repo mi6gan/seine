@@ -6,10 +6,10 @@ name: Node.js CI
 on:
   push:
     branches:
-      - next
+      - master
   pull_request:
     branches:
-      - next
+      - master
 
 jobs:
   build:
@@ -22,14 +22,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Add last commit message to env
-        run: echo "::set-env name=need_build::$(if [[ $(git log -1 --pretty=%B) =~ ^Release\ .+$ ]]; then echo 'n'; else echo 'y'; fi)"
-
       - name: Cache node modules
-        if: ${{ env.need_build == 'y' }}
         uses: actions/cache@v2
         env:
-          cache-name: cache-node-modules
+          cache-name: cache-dependencies
         with:
           path: |
             .yarn/cache
@@ -43,33 +39,29 @@ jobs:
             ${{ runner.os }}-
 
       - name: Use Node.js ${{ matrix.node-version }}
-        if: ${{ env.need_build == 'y' }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        if: ${{ env.need_build == 'y' }}
         run: yarn
 
       - name: Build sources
-        if: ${{ env.need_build == 'y' }}
+        if: ${{ github.event_name == 'push' }}
         run: yarn build
 
       - name: Run all tests
-        if: ${{ env.need_build == 'y' }}
         run: yarn test
 
       - name: Release version
-        if: ${{ env.need_build == 'y' && github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GIT_EMAIL}"
-          yarn workspaces foreach -t version prerelease
-          git commit -am "Release $(node -p -e "require('./packages/core/package.json').version")"
-          git push -f origin HEAD:next
-          yarn workspaces foreach -t --exclude seine --exclude @seine/storybook exec npm publish --tag next
-
+          yarn workspaces foreach -t version patch
+          git commit -am "Release $(node -p -e "require('./package.json').version")"
+          git push -f origin HEAD:latest
+          yarn release

@@ -3,7 +3,7 @@
 
 __metadata:
   version: 4
-  cacheKey: 6
+  cacheKey: 7
 
 "@arcanis/slice-ansi@npm:^1.0.2":
   version: 1.0.2
@@ -1653,7 +1653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.10.4, @babel/types@npm:^7.10.5, @babel/types@npm:^7.11.0, @babel/types@npm:^7.11.5, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.0, @babel/types@npm:^7.4.4, @babel/types@npm:^7.7.0, @babel/types@npm:^7.9.0, @babel/types@npm:^7.9.5":
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.10.4, @babel/types@npm:^7.10.5, @babel/types@npm:^7.11.0, @babel/types@npm:^7.11.5, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.0, @babel/types@npm:^7.4.4, @babel/types@npm:^7.7.0, @babel/types@npm:^7.8.3, @babel/types@npm:^7.9.0, @babel/types@npm:^7.9.5":
   version: 7.11.5
   resolution: "@babel/types@npm:7.11.5"
   dependencies:
@@ -2342,7 +2342,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/icons@npm:*, @material-ui/icons@npm:4.9, @material-ui/icons@npm:^4.9":
+"@material-ui/icons@npm:*, @material-ui/icons@npm:^4.9":
   version: 4.9.1
   resolution: "@material-ui/icons@npm:4.9.1"
   dependencies:
@@ -2669,69 +2669,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@seine/storybook@workspace:*, @seine/storybook@workspace:packages/storybook":
-  version: 0.0.0-use.local
-  resolution: "@seine/storybook@workspace:packages/storybook"
-  dependencies:
-    "@babel/core": 7
-    "@devexpress/dx-chart-core": ^2.7.0
-    "@devexpress/dx-react-chart": ^2.7.0
-    "@devexpress/dx-react-chart-material-ui": ^2.7.0
-    "@devexpress/dx-react-core": ^2.7.0
-    "@material-ui/core": 4.9
-    "@material-ui/icons": 4.9
-    "@seine/content": "workspace:*"
-    "@seine/core": "workspace:*"
-    "@seine/editor": "workspace:*"
-    "@seine/styles": "workspace:*"
-    "@seine/testbox": "workspace:*"
-    "@storybook/addon-actions": ^6.0.21
-    "@storybook/addon-storyshots": ^6.0.21
-    "@storybook/addon-viewport": ^6.0.21
-    "@storybook/addons": ^6.0.21
-    "@storybook/react": ^6.0.21
-    d3-interpolate: 1.4
-    draft-js: ^0.11.0
-    enzyme: ^3.11.0
-    enzyme-adapter-react-16: ^1.15.4
-    enzyme-to-json: ^3.5.0
-    pnp-webpack-plugin: ^1.6.4
-    react: ^16.9.0
-    react-dom: ^16.9.0
-    styled-components: ^4.3.2
-  bin:
-    start-storybook-seine: ./start.js
-  languageName: unknown
-  linkType: soft
-
 "@seine/styles@workspace:*, @seine/styles@workspace:packages/styles":
   version: 0.0.0-use.local
   resolution: "@seine/styles@workspace:packages/styles"
   dependencies:
     resize-observer-polyfill: ^1.5.1
   peerDependencies:
-    react: ^16.9.0
-    react-dom: ^16.9.0
-    styled-components: ^4.3.2
-  languageName: unknown
-  linkType: soft
-
-"@seine/testbox@workspace:*, @seine/testbox@workspace:packages/testbox":
-  version: 0.0.0-use.local
-  resolution: "@seine/testbox@workspace:packages/testbox"
-  dependencies:
-    "@seine/content": "workspace:*"
-    "@seine/core": "workspace:*"
-    "@seine/styles": "workspace:*"
-  peerDependencies:
-    "@devexpress/dx-chart-core": ^2.7.0
-    "@devexpress/dx-react-chart": ^2.7.0
-    "@devexpress/dx-react-core": ^2.7.0
-    "@material-ui/core": 4.9
-    "@material-ui/icons": 4.9
-    d3-interpolate: 1.4
-    draft-js: ^0.11.0
-    ramda: ^0.26.1
     react: ^16.9.0
     react-dom: ^16.9.0
     styled-components: ^4.3.2
@@ -9869,20 +9812,20 @@ fsevents@^1.2.7:
 
 "fsevents@patch:fsevents@^1.2.7#builtin<compat/fsevents>":
   version: 1.2.13
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#builtin<compat/fsevents>::version=1.2.13&hash=87eb42"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#builtin<compat/fsevents>::version=1.2.13&hash=127e8e"
   dependencies:
     bindings: ^1.5.0
     nan: ^2.12.1
-  checksum: 31c62373556f061f4b4c52ff61c91bc9080243ea074a38a81cf12c1f2c9098da731ea3d39705c805b738427e4284af6b8151efe65ce9ca6b11378d43f36db2c4
+  checksum: 7bc048c164eb72f91b18ba7cd2ba30679a0afe57e9cd6352eac4bdbc4ddd4ca2ea98674d0bd3a80e96427469adc433c13532494b36aea40fceab36e198982182
   languageName: node
   linkType: hard
 
 "fsevents@patch:fsevents@^2.1.2#builtin<compat/fsevents>, fsevents@patch:fsevents@~2.1.2#builtin<compat/fsevents>":
   version: 2.1.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=87eb42"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=127e8e"
   dependencies:
     node-gyp: latest
-  checksum: d8ae862048fc127cdbd00d02b2feb7c25946c3ce4cbc44e958134be87e239577a16dafafa1c270d010b8624e1b1e0372e23f7865c55c6f83e83fc9f68b0a30d2
+  checksum: e2b8c379340e21a786d32c653854c8876f94eb1202dd5be378fd42c062bc123aab5051c32bf0011865257c85982c41ded203f9fe8c9f9c8f8c84dc4672abc0e0
   languageName: node
   linkType: hard
 
@@ -16965,6 +16908,20 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
+"rollup@npm:*":
+  version: 2.29.0
+  resolution: "rollup@npm:2.29.0"
+  dependencies:
+    fsevents: ~2.1.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    rollup: dist/bin/rollup
+  checksum: c5d8b9d8b19a5213e854132cea54bc4d3c9c3e7b66e994de590032c85ff74193721789b1867595182f91e6b15e9a2caaaca4262840957da9cdc3369940754c86
+  languageName: node
+  linkType: hard
+
 "rollup@npm:^2.18.2":
   version: 2.26.11
   resolution: "rollup@npm:2.26.11"
@@ -17139,6 +17096,40 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
+"seine-storybook@workspace:*, seine-storybook@workspace:packages/storybook":
+  version: 0.0.0-use.local
+  resolution: "seine-storybook@workspace:packages/storybook"
+  dependencies:
+    "@babel/core": 7
+    "@devexpress/dx-chart-core": ^2.7.0
+    "@devexpress/dx-react-chart": ^2.7.0
+    "@devexpress/dx-react-chart-material-ui": ^2.7.0
+    "@devexpress/dx-react-core": ^2.7.0
+    "@material-ui/core": ^4.9
+    "@material-ui/icons": ^4.9
+    "@seine/content": "workspace:*"
+    "@seine/core": "workspace:*"
+    "@seine/editor": "workspace:*"
+    "@seine/styles": "workspace:*"
+    "@storybook/addon-actions": ^6.0.21
+    "@storybook/addon-storyshots": ^6.0.21
+    "@storybook/addon-viewport": ^6.0.21
+    "@storybook/addons": ^6.0.21
+    "@storybook/react": ^6.0.21
+    d3-interpolate: 1.4
+    draft-js: ^0.11.0
+    enzyme: ^3.11.0
+    enzyme-adapter-react-16: ^1.15.4
+    enzyme-to-json: ^3.5.0
+    pnp-webpack-plugin: ^1.6.4
+    react: ^16.9.0
+    react-dom: ^16.9.0
+    styled-components: ^4.3.2
+  bin:
+    start-storybook-seine: ./start.js
+  languageName: unknown
+  linkType: soft
+
 "seine@workspace:.":
   version: 0.0.0-use.local
   resolution: "seine@workspace:."
@@ -17157,8 +17148,6 @@ resolve@1.1.7:
     "@rollup/plugin-json": ^4.1.0
     "@rollup/plugin-node-resolve": ^7.1.1
     "@seine/editor": "workspace:*"
-    "@seine/storybook": "workspace:*"
-    "@seine/testbox": "workspace:*"
     "@storybook/addon-actions": ^6.0.21
     "@storybook/addon-storyshots": ^6.0.21
     "@storybook/addon-viewport": ^6.0.21
@@ -17195,7 +17184,7 @@ resolve@1.1.7:
     find-cache-dir: ^3.3.0
     flow-bin: ^0.109.0
     folder-hash: ^3.3.0
-    glob: ^7.1.4
+    glob: ^7.1.6
     history: ^4.10.1
     hooks.macro: ^1.0.1
     identity-obj-proxy: ^3.0.0
@@ -17222,6 +17211,7 @@ resolve@1.1.7:
     rollup-plugin-postcss: ^2.0.3
     rollup-plugin-terser: ^5.2.0
     rollup-plugin-visualizer: ^2.5.4
+    seine-storybook: "workspace:*"
     serve: ^11.1.0
     styled-components: ^4.3.2
     uuid: ^3.4.0
