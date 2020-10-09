@@ -24,49 +24,44 @@ async function rollupConfig() {
   );
   const workspace = project.getWorkspaceByCwd(configuration.startingCwd);
 
-  if (!workspace.manifest.private) {
-    const externalModuleIds = [
-      ...[...workspace.manifest.peerDependencies].map(([_, { name }]) => name),
-      ...project.workspaces
-        .map(({ manifest }) => manifest.raw.name)
-        .filter((id) =>
-          [...workspace.manifest.dependencies].some(
-            ([_, { name }]) => name === id
-          )
-        ),
-    ];
+  const externalModuleIds = [
+    ...Object.keys(workspace.manifest.raw.peerDependencies || {}),
+    ...project.workspaces
+      .map(({ manifest }) => manifest.raw.name)
+      .filter((id) =>
+        Object.keys(workspace.manifest.raw.dependencies).some(
+          (name) => name === id
+        )
+      ),
+  ];
 
-    stderr(`building ${workspace.manifest.raw.name}`);
+  stderr(`building ${workspace.manifest.raw.name}`);
 
-    return {
-      input: 'src/index.js',
-      output: {
-        file: 'index.js',
-        format: 'cjs',
-        sourcemap: true,
-      },
-      plugins: [
-        flowEntry(),
-        babel({
-          babelHelpers: 'runtime',
-          rootMode: 'upward',
-        }),
-        json(),
-        nodeResolve({ browser: true }),
-        commonjs(),
-        postcss({ modules: true }),
-        cleanup(),
-      ],
-      external: (id) =>
-        id.startsWith('@seine/') ||
-        externalModuleIds.some(
-          (moduleId) => id === moduleId || id.startsWith(`${moduleId}/`)
-        ),
-      cache: true,
-    };
-  }
-
-  return [];
+  return {
+    input: 'src/index.js',
+    output: {
+      file: 'index.js',
+      format: 'cjs',
+      sourcemap: true,
+    },
+    plugins: [
+      flowEntry(),
+      babel({
+        babelHelpers: 'runtime',
+        rootMode: 'upward',
+      }),
+      json(),
+      nodeResolve({ browser: true }),
+      commonjs(),
+      postcss({ modules: true }),
+      cleanup(),
+    ],
+    external: (id) =>
+      id.startsWith('@seine/') ||
+      externalModuleIds.some(
+        (moduleId) => id === moduleId || id.startsWith(`${moduleId}/`)
+      ),
+  };
 }
 
 export default rollupConfig();
