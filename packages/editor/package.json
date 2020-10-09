@@ -1,6 +1,6 @@
 {
   "name": "@seine/editor",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "React components for editing block contents.",
   "files": [
     "index.js"
