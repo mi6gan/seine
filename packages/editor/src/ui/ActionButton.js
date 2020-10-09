@@ -3,6 +3,8 @@ import * as React from 'react';
 import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import { useBlocksDispatch } from '../context';
+
 import type { Action } from '@seine/core';
 import {
   CREATE_BLOCK,
@@ -27,7 +29,6 @@ export default function ActionButton({
   as: Button = MuiButton,
   block,
   body,
-  dispatch,
   editor,
   format,
   group,
@@ -39,6 +40,7 @@ export default function ActionButton({
   onClick,
   ...buttonProps
 }: Props) {
+  const dispatch = useBlocksDispatch();
   return (
     <Button
       {...buttonProps}

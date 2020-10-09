@@ -73,12 +73,17 @@ export function ItemMenuProvider({ children }) {
 export default function EditorItemMenu() {
   const dispatch = useBlocksDispatch();
   const selected = useBlocksSelector(selectionSelector);
-  const [block = null]: [Block] = useBlocksSelector();
+  const [block = null, ...nextBlocks]: [Block] = useBlocksSelector(
+    useAutoCallback(({ blocks, selection }) =>
+      blocks.filter(({ id }) => selection.includes(id))
+    )
+  );
   const { isOpen, close, anchorEl } = React.useContext(ItemMenuContext);
   const clipboard = React.useContext(ClipboardContext);
 
   const isContainer =
     block &&
+    nextBlocks.length === 0 &&
     (block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE);
 
   return (
@@ -93,7 +98,7 @@ export default function EditorItemMenu() {
       <CreateLayoutButton
         onClick={close}
         as={MenuButton}
-        disabled={selected.length <= 1 || isContainer}
+        disabled={isContainer}
         {...(isContainer && { display: 'none' })}
       >
         Create layout
@@ -114,7 +119,7 @@ export default function EditorItemMenu() {
       </MenuButton>
 
       <MenuButton
-        disabled={selected.length !== 1 || isContainer}
+        disabled={isContainer}
         onClick={useAutoCallback(() => {
           dispatch({ type: DELETE_SELECTED_BLOCKS });
           clipboard.replace({
