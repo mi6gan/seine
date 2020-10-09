@@ -6,7 +6,7 @@ import { TreeItem, TreeView } from '@material-ui/lab';
 import { ChevronRight, ExpandMore } from '@material-ui/icons';
 import { Box } from '@material-ui/core';
 
-import { ItemMenuContext } from './ui/ItemMenu';
+import { ItemMenuContext } from './EditorItemMenu';
 import { useBlocksDispatch, useBlocksSelector } from './context';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 
@@ -55,7 +55,7 @@ const DefaultTreeView = styled(({ children, ...viewProps }) => {
             dispatch({
               type: SELECT_BLOCK,
               id,
-              modifier: event.ctrlKey ? 'add' : null,
+              modifier: event.ctrlKey || event.shiftKey ? 'add' : null,
             })
           );
         }

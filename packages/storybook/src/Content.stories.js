@@ -449,10 +449,10 @@ export const NestedFlex = ({ children = [], ...props }) => (
 );
 
 export const Data = ({ as: Container = Content, children = [], ...props }) =>
-  Object.entries(data).map(([key, [parent, ...children]]) => (
+  Object.entries(data).map(([key, blocks]) => (
     <Box key={key} p={8} borderBottom={'1px dashed currentColor'}>
-      <Container parent={parent} {...actions('onChange')} {...props}>
-        {children}
+      <Container parent={blocks[0]} {...actions('onChange')} {...props}>
+        {blocks}
       </Container>
     </Box>
   ));

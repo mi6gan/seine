@@ -7,6 +7,7 @@ import {
   PieChart,
   Title as RichTextIcon,
   ViewCompact as LayoutIcon,
+  Description as PageIcon,
 } from '@material-ui/icons';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
@@ -30,6 +31,9 @@ const BarChartIcon = styled(ColumnChartIcon).attrs({
 export default function BlockTypeIcon({ type, kind, ...iconProps }: Props) {
   const Icon = useAutoMemo(() => {
     switch (type) {
+      case blockTypes.PAGE:
+        return PageIcon;
+
       case blockTypes.TABLE:
         return TableIcon;
 

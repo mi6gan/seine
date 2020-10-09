@@ -1,8 +1,20 @@
-const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
-const resolveWorkspaces = require('../../scripts/resolve-workspaces');
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
+const { getPluginConfiguration } = require('@yarnpkg/cli');
+const { Configuration, Project } = require('@yarnpkg/core');
+
+const pluginConfiguration = getPluginConfiguration();
 
 // eslint-disable-next-line
 async function yarn2Config({ resolve, resolveLoader, ...config }, mode) {
+  const configuration = await Configuration.find(
+    __dirname,
+    pluginConfiguration
+  );
+  const { project } = await Project.find(
+    configuration,
+    configuration.startingCwd
+  );
+
   const newConfig = {
     ...config,
     resolve: {
@@ -10,8 +22,8 @@ async function yarn2Config({ resolve, resolveLoader, ...config }, mode) {
       plugins: [...((resolve && resolve.plugins) || []), PnpWebpackPlugin],
       alias:
         mode.configType.toLowerCase() === 'development'
-          ? (await resolveWorkspaces())
-              .filter(({ manifest }) => manifest.module)
+          ? project.workspaces
+              .filter(({ manifest }) => !manifest.raw.private)
               .reduce(
                 (acc, { manifest, cwd }) => ({
                   ...acc,

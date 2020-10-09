@@ -11,6 +11,7 @@ import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 // eslint-disable-next-line
 export default function DeleteBlockButton({
   as: Button = MuiButton,
+  onClick = null,
   children,
   ...buttonProps
 }) {
@@ -20,8 +21,11 @@ export default function DeleteBlockButton({
   return (
     <Button
       {...buttonProps}
-      onClick={useAutoCallback(() => {
+      onClick={useAutoCallback((event) => {
         setBuffer({ type: DELETE_SELECTED_BLOCKS });
+        if (onClick) {
+          onClick(event);
+        }
       })}
       disabled={!items.length}
     >

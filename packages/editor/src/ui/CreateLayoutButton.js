@@ -19,20 +19,20 @@ import {
 export default function CreateLayoutButton({
   as: Button = MuiButton,
   children,
+  onClick = null,
   ...buttonProps
 }) {
   const dispatch = useBlocksDispatch();
   const { items } = useSelectedLayoutItems();
-  const parentIds = items.reduce(
-    (acc, item) => acc.add(item['parent_id']),
-    new Set()
-  );
+  const parentIds = [
+    ...items.reduce((acc, item) => acc.add(item['parent_id']), new Set()),
+  ];
   const parentId = parentIds[0];
 
   return (
     <Button
       {...buttonProps}
-      onClick={useAutoCallback(() => {
+      onClick={useAutoCallback((event) => {
         const block = createBlock(
           blockTypes.LAYOUT,
           null,
@@ -54,8 +54,11 @@ export default function CreateLayoutButton({
           type: SELECT_BLOCK,
           id: block.id,
         });
+        if (onClick) {
+          onClick(event);
+        }
       })}
-      disabled={items.length <= 1 || parentIds.size > 1}
+      disabled={items.length <= 1 || parentIds.length > 1}
     >
       {children}
     </Button>
