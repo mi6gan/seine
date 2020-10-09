@@ -1,6 +1,6 @@
 {
   "name": "seine-storybook",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Storybook of seine library",
   "private": true,
   "bin": {
