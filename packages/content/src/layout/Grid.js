@@ -12,7 +12,7 @@ export type Props = (GridBody & GridFormat) & {
 
 export const defaultGridColumns = 'repeat(auto-fit, minmax(150px, 1fr))';
 export const defaultGridColumnGap = 25;
-export const defaultGridRowGap = 25;
+export const defaultGridRowGap = 12;
 export const defaultGridRows = '';
 
 /**
