@@ -1,2 +1,3 @@
-lib
+packages/*/index.*
 node_modules
+__tests__

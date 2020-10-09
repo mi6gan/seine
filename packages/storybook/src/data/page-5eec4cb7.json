@@ -1,0 +1,169 @@
+[
+  {
+    "id": "5eec4cb7-8b53-4a28-b1d5-cd801ef5f38e",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "61272942-4da3-46a6-8a2d-5bb838183f07",
+    "type": "draft",
+    "parent_id": "5eec4cb7-8b53-4a28-b1d5-cd801ef5f38e",
+    "body": {
+      "blocks": [
+        {
+          "key": "2n1g7",
+          "data": {},
+          "text": "An average Onekey office brings in $590 in operating income per client. The average expense rate (operating costs / operating income) is 50%.",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "6mgs8",
+          "data": {},
+          "text": "",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": { "verticalAlignment": "center" },
+    "schema": null
+  },
+  {
+    "id": "a9291061-183d-4c2d-86c9-e910129ef834",
+    "type": "grid",
+    "parent_id": "5eec4cb7-8b53-4a28-b1d5-cd801ef5f38e",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "2609c704-a97f-4e97-a8fc-7017fb6f758c",
+    "type": "chart",
+    "parent_id": "a9291061-183d-4c2d-86c9-e910129ef834",
+    "body": {
+      "title": "Expense Rate, %",
+      "elements": [
+        {
+          "id": "cc1fbb81-5e14-4e24-9134-46d3e8a53999",
+          "group": "Jan",
+          "index": 0,
+          "title": "Expense Rate",
+          "value": 92
+        },
+        {
+          "id": "cc1fbb81-5e14-4e24-9134-46d3e8a53999",
+          "group": "Feb",
+          "index": 1,
+          "title": "Expense Rate",
+          "value": 106
+        },
+        {
+          "id": "cc1fbb81-5e14-4e24-9134-46d3e8a53999",
+          "group": "Mar",
+          "index": 2,
+          "title": "Expense Rate",
+          "value": 58
+        },
+        {
+          "id": "cc1fbb81-5e14-4e24-9134-46d3e8a53999",
+          "group": "Apr",
+          "index": 3,
+          "title": "Expense Rate",
+          "value": 77
+        },
+        {
+          "id": "cc1fbb81-5e14-4e24-9134-46d3e8a53999",
+          "group": "May",
+          "index": 4,
+          "title": "Expense Rate",
+          "value": 62
+        },
+        {
+          "id": "cc1fbb81-5e14-4e24-9134-46d3e8a53999",
+          "group": "Jun",
+          "title": "Expense Rate",
+          "value": 62
+        },
+        {
+          "id": "cc1fbb81-5e14-4e24-9134-46d3e8a53999",
+          "group": "Jul",
+          "title": "Expense Rate",
+          "value": 65
+        },
+        {
+          "id": "cc1fbb81-5e14-4e24-9134-46d3e8a53999",
+          "group": "Aug",
+          "title": "Expense Rate",
+          "value": 73
+        }
+      ]
+    },
+    "format": {
+      "dy": 25,
+      "kind": "line",
+      "xAxis": true,
+      "yAxis": true,
+      "legend": 0,
+      "palette": [
+        "#1b591d",
+        "#247727",
+        "#29a147",
+        "#2db851",
+        "#7fc791",
+        "#aad296",
+        "#daebd1"
+      ],
+      "fraction": 0,
+      "maxValue": 125,
+      "minValue": 0,
+      "paletteKey": "bcg",
+      "textAlignment": "left"
+    },
+    "schema": null
+  },
+  {
+    "id": "242a401e-9e62-41b9-b84c-650636a2fec2",
+    "type": "table",
+    "parent_id": "a9291061-183d-4c2d-86c9-e910129ef834",
+    "body": {
+      "rows": [
+        [
+          { "text": "Emerald" },
+          { "text": "298" },
+          { "text": "741" },
+          { "text": "2,339" }
+        ],
+        [
+          { "text": "Cedar" },
+          { "text": "313" },
+          { "text": "919" },
+          { "text": "2,871" }
+        ],
+        [
+          { "text": "Diamond" },
+          { "text": "486" },
+          { "text": "1,004" },
+          { "text": "2,620" }
+        ]
+      ],
+      "title": "Operating Income per Client (in 8 months of the current year)",
+      "header": [
+        { "text": "" },
+        { "text": "Low-value" },
+        { "text": "Middle-value" },
+        { "text": "High-value" }
+      ]
+    },
+    "format": {},
+    "schema": null
+  }
+]

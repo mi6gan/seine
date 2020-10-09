@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
 import { BlockActions } from '@seine/ui';
-import { Grid } from '@seine/content';
 import type { ChartProps } from '@seine/charts';
-import type { BlockEditor } from '@seine/core';
 import styled from 'styled-components/macro';
+
+import { Grid } from '@seine/content';
+import type { BlockEditor } from '@seine/core';
 
 type Props = (ChartProps & BlockEditor) & {};
 

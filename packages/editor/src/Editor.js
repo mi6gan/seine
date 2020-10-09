@@ -1,203 +1,221 @@
 // @flow
 import * as React from 'react';
-import styled, { css } from 'styled-components/macro';
-import { ClickAwayListener, Paper } from '@material-ui/core';
-import type { ContentProps } from '@seine/content';
-import { Content, defaultBlockRenderMap, Page } from '@seine/content';
-import type {
-  AddButtonProps,
-  Block,
-  BlockEditor,
-  BlocksAction,
-  BlocksState,
-  BlockType,
-  ToolbarProps,
-} from '@seine/core';
-import {
-  blockTypes,
-  DESELECT_ALL_BLOCKS,
-  initialBlocksState,
-  reduceBlocks,
-} from '@seine/core';
-import { ChartEditor, ChartToolbar } from '@seine/charts-editor';
-import { DraftEditor, DraftToolbar } from '@seine/draft-editor';
-import { BlockDeleteButton } from '@seine/ui';
-import { ThemeProvider } from '@seine/styles';
-import { TableEditor, TableToolbar } from '@seine/tables-editor';
-import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
+import { Box, MenuItem, Paper, Select } from '@material-ui/core';
+import { Menu as MenuIcon } from '@material-ui/icons';
+import { useAutoCallback, useAutoEffect } from 'hooks.macro';
+import styled from 'styled-components/macro';
 
-import PieChartAddButton from './PieChartAddButton';
-import BarChartAddButton from './BarChartAddButton';
-import ColumnChartAddButton from './ColumnChartAddButton';
-import LineChartAddButton from './LineChartAddButton';
-import DraftAddButton from './DraftAddButton';
-import { ImageEditor } from './ImageEditor';
-import ImageToolbar from './ImageToolbar';
-import PageToolbar from './PageToolbar';
-import ImageAddButton from './ImageAddButton';
+import ItemMenu, { ItemMenuContext, ItemMenuProvider } from './ui/ItemMenu';
+import EditorTree from './EditorTree';
+import DeleteConfirmationDialog from './ui/DeleteConfirmationDialog';
+import { allBlocksSelector, deviceSelector } from './selectors';
 import defaultTheme from './defaultTheme';
-import TableAddButton from './TableAddButton';
-import { GridEditor } from './GridEditor';
+import Sidebar from './ui/Sidebar';
+import Toolbar from './ui/Toolbar';
+import ToolbarButton from './ui/ToolbarButton';
+import ToolbarSeparator from './ui/ToolbarSeparator';
+import RichTextIconButton from './richtext/RichTextIconButton';
+import TableIconButton from './table/TableIconButton';
+import BarChartIconButton from './chart/BarChartIconButton';
+import LineChartIconButton from './chart/LineChartIconButton';
+import ColumnChartIconButton from './chart/ColumnChartIconButton';
+import PieChartIconButton from './chart/PieChartIconButton';
+import defaultBlockRenderMap from './blockRenderMap';
+import RichTextDesign from './richtext/RichTextDesign';
+import TableDesign from './table/TableDesign';
+import LayoutDesign from './layout/LayoutDesign';
+import SidebarGroup from './ui/SidebarGroup';
+import SidebarSection from './ui/SidebarSection';
+import SidebarHeading from './ui/SidebarHeading';
+import SidebarLabel from './ui/SidebarLabel';
+import {
+  BlocksProvider,
+  ClipboardProvider,
+  useBlocksDispatch,
+  useBlocksSelector,
+} from './context';
+import useSelectedLayoutItems from './layout/useSelectedLayoutItems';
+import { ChartDesign } from './chart';
+import ItemDesign from './layout/ItemDesign';
 
-const defaultEditorChildren = [];
+import { Content } from '@seine/content';
+import type { Block, BlockType } from '@seine/core';
+import { blockTypes, DESELECT_ALL_BLOCKS, SET_DEVICE } from '@seine/core';
+import { ThemeProvider } from '@seine/styles';
 
-export const defaultEditorBlockRendererMap = {
-  ...defaultBlockRenderMap,
-  [blockTypes.CHART]: ChartEditor,
-  [blockTypes.RICH_TEXT]: DraftEditor,
-  [blockTypes.GRID]: GridEditor,
-  [blockTypes.PAGE]: ({
-    id,
-    addButtonRenderMap,
-    dispatch,
-    editor,
-    selection,
-    ...props
-  }: BlockEditor & Block) => <Page {...props} />,
-  [blockTypes.IMAGE]: ImageEditor,
-  [blockTypes.TABLE]: TableEditor,
-};
-
-export const defaultAddButtonRenderMap = {
-  [blockTypes.CHART]: (props: AddButtonProps) => (
-    <>
-      <PieChartAddButton {...props} />
-      <BarChartAddButton {...props} />
-      <ColumnChartAddButton {...props} />
-      <LineChartAddButton {...props} />
-    </>
-  ),
-  [blockTypes.RICH_TEXT]: DraftAddButton,
-  [blockTypes.GRID]: () => null,
-  [blockTypes.IMAGE]: ImageAddButton,
-  [blockTypes.PAGE]: () => null,
-  [blockTypes.TABLE]: TableAddButton,
-};
-
-export const defaultToolbarRenderMap = {
-  [blockTypes.CHART]: ChartToolbar,
-  [blockTypes.RICH_TEXT]: DraftToolbar,
-  [blockTypes.GRID]: PageToolbar,
-  [blockTypes.IMAGE]: ImageToolbar,
-  [blockTypes.PAGE]: PageToolbar,
-  [blockTypes.TABLE]: TableToolbar,
-};
-
-const DefaultContainer = styled.div`
-  width: 100%;
+const Contents = styled(Box).attrs({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+})`
+  overflow: auto;
 `;
 
-const ContentPaper = styled(Paper)`
+const EditorPaper = styled(Paper).attrs(() => ({
+  component: Box,
+  height: 600,
+  m: 10,
+  p: 2,
+}))`
+  overflow: auto;
+  overflow-x: hidden;
+  ${({ device, theme }) => ({
+    width: device === 'mobile' ? theme.breakpoints.width('sm') : '100%',
+  })}
+`;
+
+const StyledSelect = styled(Select)`
   && {
-    ${({ theme }) => css`
-      max-height: ${20 * theme.spacing(6)}px;
-      min-height: ${2 * theme.spacing(6)}px;
-      padding: ${theme.spacing(6)}px;
-      margin-bottom: ${theme.spacing(6)}px;
-      overflow: hidden auto;
-    `}
+    color: ${({ theme }) => theme.palette.grey[50]}};
   }
 `;
 
-export type Props = {
-  as?: React.ComponentType<*>,
-  children?: Block[],
-  onChange: (Block[]) => any,
+const defaultEditorChildren = [];
+
+type Props = {
   parent: Block,
-  addButtonRenderMap?: {
-    [BlockType]: React.ComponentType<AddButtonProps>,
-  },
-  toolbarRenderMap?: {
-    [BlockType]: React.ComponentType<ToolbarProps>,
-  },
-} & ContentProps;
+  onChange: (Block[]) => any,
+  blockRenderMap?: (BlockType) => React.Node,
+};
 
 /**
  * @description Default content editor.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Editor({
-  addButtonRenderMap = defaultAddButtonRenderMap,
-  as: Container = DefaultContainer,
-  blockRenderMap = defaultEditorBlockRendererMap,
-  children = defaultEditorChildren,
-  onChange,
+function DefaultEditor({
   parent,
-  toolbarRenderMap = defaultToolbarRenderMap,
+  onChange,
+  blockRenderMap = defaultBlockRenderMap,
   ...contentProps
 }: Props) {
-  const init = useAutoCallback(() => ({
-    ...initialBlocksState,
-    blocks: children,
-  }));
-  const [{ blocks, selection }, dispatch] = React.useReducer<
-    BlocksState,
-    BlocksAction
-  >(reduceBlocks, initialBlocksState, init);
+  const ParentBlock = blockRenderMap[parent.type];
+
+  const menuAnchorRef = React.useRef(null);
+  const itemMenu = React.useContext(ItemMenuContext);
+
+  const dispatch = useBlocksDispatch();
+  const blocks = useBlocksSelector(allBlocksSelector);
+  const device = useBlocksSelector(deviceSelector);
+  const { layout, item } = useSelectedLayoutItems();
 
   useAutoEffect(() => {
     onChange(
       // no extra data should be passed, like `editor` key value
-      blocks.map(({ id, body, format, parent_id, type }) => ({
+      blocks.map(({ id, type, body, format, parent_id }) => ({
+        id,
+        type,
         body,
         format,
-        id,
         parent_id,
-        type,
       }))
     );
   });
 
-  const { type, ...block } = useAutoMemo(
-    selection.length === 1
-      ? blocks.find(({ id }) => selection.includes(id))
-      : parent
-  );
-
-  const BlockToolbar = toolbarRenderMap[type];
-
-  const contentChildren = useAutoMemo(
-    blocks.map((block) => ({
-      ...block,
-      addButtonRenderMap,
-      dispatch,
-      selection,
-    }))
-  );
-
-  const deselectClickHandler = useAutoCallback(
-    (event) =>
-      (event.target === event.currentTarget ||
-        event.target instanceof HTMLHtmlElement) &&
-      dispatch({ type: DESELECT_ALL_BLOCKS })
-  );
-
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ClickAwayListener onClickAway={deselectClickHandler}>
-        <Container>
-          <BlockToolbar
-            {...block}
-            onClick={deselectClickHandler}
-            blocks={blocks}
-            addButtonRenderMap={addButtonRenderMap}
-            dispatch={dispatch}
-            selection={selection}
+      <DeleteConfirmationDialog />
+      <ItemMenu />
+
+      <Toolbar ref={menuAnchorRef}>
+        <Box width={'40%'}>
+          <ToolbarButton
+            onClick={useAutoCallback(() => {
+              if (itemMenu) {
+                itemMenu.open(menuAnchorRef.current);
+              }
+            })}
+            selected={itemMenu.isOpen}
           >
-            <BlockDeleteButton dispatch={dispatch} selection={selection} />
-          </BlockToolbar>
-          <ContentPaper onClick={deselectClickHandler}>
-            <Content
-              {...contentProps}
-              parent={parent}
-              blockRenderMap={blockRenderMap}
-            >
-              {contentChildren}
-            </Content>
-          </ContentPaper>
-        </Container>
-      </ClickAwayListener>
+            <MenuIcon />
+          </ToolbarButton>
+          <ToolbarSeparator />
+
+          <RichTextIconButton />
+          <ToolbarSeparator />
+
+          <TableIconButton />
+          <ToolbarSeparator />
+
+          <BarChartIconButton />
+          <LineChartIconButton />
+          <ColumnChartIconButton />
+          <PieChartIconButton />
+        </Box>
+        <Box width={'20%'} textAlign={'center'}>
+          <StyledSelect
+            value={device}
+            onChange={useAutoCallback((event) =>
+              dispatch({ type: SET_DEVICE, device: event.target.value })
+            )}
+          >
+            <MenuItem value={'any'}>Any device</MenuItem>
+            <MenuItem value={'mobile'}>Mobile only</MenuItem>
+          </StyledSelect>
+        </Box>
+        <Box width={'40%'} />
+      </Toolbar>
+
+      <Box
+        onClick={useAutoCallback(() => {
+          dispatch({ type: DESELECT_ALL_BLOCKS });
+        })}
+        display={'flex'}
+        flexWrap={'wrap'}
+        alignItems={'flex-start'}
+        justifyContent={'space-between'}
+        bgcolor={'grey.300'}
+        position={'relative'}
+        height={'100%'}
+      >
+        <Contents>
+          <Sidebar>
+            <SidebarSection>
+              <SidebarHeading>Structure</SidebarHeading>
+              <SidebarGroup>
+                <EditorTree labelAs={SidebarLabel} />
+              </SidebarGroup>
+            </SidebarSection>
+          </Sidebar>
+          <EditorPaper device={device}>
+            <ParentBlock>
+              <Content
+                device={device}
+                blockRenderMap={blockRenderMap}
+                parent={parent}
+                {...contentProps}
+              >
+                {blocks}
+              </Content>
+            </ParentBlock>
+          </EditorPaper>
+
+          <Sidebar
+            onClick={useAutoCallback((event) => {
+              event.stopPropagation();
+            })}
+          >
+            {item && <ItemDesign />}
+            {layout && <LayoutDesign />}
+            {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
+            {item && item.type === blockTypes.TABLE && <TableDesign />}
+            {item && item.type === blockTypes.CHART && <ChartDesign />}
+          </Sidebar>
+        </Contents>
+      </Box>
     </ThemeProvider>
+  );
+}
+
+// eslint-disable-next-line
+export default function Editor({ children = defaultEditorChildren, ...props }) {
+  return (
+    <BlocksProvider blocks={children}>
+      <ClipboardProvider>
+        <ItemMenuProvider>
+          <DefaultEditor {...props} />
+        </ItemMenuProvider>
+      </ClipboardProvider>
+    </BlocksProvider>
   );
 }

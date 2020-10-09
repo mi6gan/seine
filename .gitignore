@@ -6,6 +6,8 @@ node_modules/
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # testing
 /coverage
@@ -13,7 +15,7 @@ node_modules/
 # production
 /dist
 /storybook-static
-/**/lib
+/packages/*/index.*
 
 # idea
 .idea

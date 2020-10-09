@@ -1,36 +1,21 @@
 // @flow
 import * as React from 'react';
-import type { Block } from '@seine/core';
-import { blockTypes } from '@seine/core';
-import { Draft } from '@seine/draft';
-import { Chart } from '@seine/charts';
-import type { Theme } from '@material-ui/core';
-import { Table } from '@seine/tables';
-import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 import { useAutoMemo } from 'hooks.macro';
 
-import Grid from './Grid';
-import Image from './Image';
-import Page from './Page';
+import defaultBlockRenderMap from './blockRenderMap';
+
+import type { Block } from '@seine/core';
+import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
   children: $ReadOnlyArray<Block>,
   parent: Block,
-  theme?: $Shape<Theme>,
-};
-
-export const defaultBlockRenderMap = {
-  [blockTypes.CHART]: Chart,
-  [blockTypes.RICH_TEXT]: Draft,
-  [blockTypes.GRID]: Grid,
-  [blockTypes.IMAGE]: Image,
-  [blockTypes.PAGE]: Page,
-  [blockTypes.TABLE]: Table,
+  device: 'mobile' | 'any',
 };
 
 /**
- * @description Content blocks default renderer.
+ * @description Content blocks renderer.
  * @param {Props} props
  * @returns {React.Node}
  */
@@ -38,13 +23,15 @@ function Content({
   blockRenderMap = defaultBlockRenderMap,
   children,
   parent,
+  device = 'any',
   as: Container = parent['parent_id'] ? React.Fragment : Provider,
+  ...containerProps
 }: Props): React.Node {
   return (
-    <Container>
+    <Container {...containerProps}>
       {children
         .filter((block: Block) => block['parent_id'] === parent.id)
-        .map(({ body, format, ...block }: Block, _, { length }) => {
+        .map(({ body, format, ...block }: Block, { length }) => {
           const ContentBlock = blockRenderMap[block.type];
           const blockChildren = children.filter(
             (content) => content.id !== block.id
@@ -53,13 +40,21 @@ function Content({
             <ContentBlock
               key={block.id}
               parentType={parent.type}
-              {...(format ? format : {})}
+              {...(format
+                ? device === 'any'
+                  ? format
+                  : { ...format, ...format[device] }
+                : {})}
               {...(body ? body : {})}
               {...block}
               hasSibling={length > 1}
             >
               {blockChildren.length ? (
-                <Content parent={block} blockRenderMap={blockRenderMap}>
+                <Content
+                  device={device}
+                  parent={block}
+                  blockRenderMap={blockRenderMap}
+                >
                   {blockChildren}
                 </Content>
               ) : null}

@@ -1,17 +1,9 @@
 {
+  "exclude": ["packages/*/index.js", "dist"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*/macro": ["node_modules/*"],
-      "@seine/*": ["packages/*/src"],
-      "*": ["packages/helpers/*"]
+      "@seine/*": ["packages/*/src"]
     }
-  },
-  "exclude": [
-    "node_modules",
-    "lib",
-    "dist",
-    "packages/styles/src/bream/img",
-    "packages/styles/src/bream/styles/css"
-  ]
+  }
 }

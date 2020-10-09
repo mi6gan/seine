@@ -7,6 +7,7 @@ module.exports = {
   ],
   rules: {
     'import/order': ['error', { 'newlines-between': 'always' }],
+    'import/no-unresolved': 0,
     'no-console': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',

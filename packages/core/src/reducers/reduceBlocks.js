@@ -1,9 +1,9 @@
 // @flow
-import { equals } from 'ramda';
+import { equals, filter } from 'ramda';
 
 import { createBlock } from '../utils';
 import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
-import { blockTypes } from '../types';
+import { blockTypes, defaultFlexFormat, layoutTypes } from '../types';
 
 opaque type BlockExtension = {
   editor: { [string]: any },
@@ -11,10 +11,12 @@ opaque type BlockExtension = {
 export type BlocksState = {
   blocks: $ReadOnlyArray<Block & BlockExtension>,
   selection: $ReadOnlyArray<BlockId>,
+  device: 'mobile' | 'any',
 };
 export const initialBlocksState: BlocksState = {
   blocks: [],
   selection: [],
+  device: 'any',
 };
 
 export const CREATE_BLOCK = '@seine/core/createBlock';
@@ -85,6 +87,20 @@ export const UPDATE_BLOCK_FORMAT = '@seine/core/updateBlockFormat';
 export type UpdateBlockFormatAction = {
   type: typeof UPDATE_BLOCK_FORMAT,
   format: BlockFormat,
+  id?: BlockId,
+};
+
+export const SET_BLOCK_PARENT = '@seine/core/setBlockParent';
+export type SetBlockParentAction = {
+  type: typeof SET_BLOCK_PARENT,
+  id: BlockId,
+  parentId: BlockId,
+};
+
+export const SET_DEVICE = '@seine/core/setDevice';
+export type SetDeviceAction = {
+  type: typeof SET_DEVICE,
+  device: 'mobile' | 'any',
 };
 
 //
@@ -110,21 +126,27 @@ export type BlocksAction =
   | BlocksCreateAction
   | DeleteSelectedBlocksAction
   | DeselectAllBlocksAction
+  | DeleteBlockAction
   | SelectBlockAction
   | UpdateBlockDataAction
   | UpdateBlockFormatAction
-  | UpdateBlockEditorAction;
+  | UpdateBlockEditorAction
+  | SetBlockParentAction
+  | SetDeviceAction;
 
 /**
  * @description Reduce Content editor actions
- * @param {BlocksState} state
+ * @param {BlocksState} inputState
  * @param {BlocksAction} action
  * @returns {BlocksState}
  */
 export function reduceBlocks(
-  state: BlocksState = initialBlocksState,
+  inputState: BlocksState = initialBlocksState,
   action: BlocksAction
 ): BlocksState {
+  const { error, ...validState } = inputState;
+  const state: BlocksState = validState;
+
   switch (action.type) {
     case CREATE_BLOCK:
       return {
@@ -141,29 +163,57 @@ export function reduceBlocks(
       if (index === -1) {
         return state;
       }
-      const parent = createBlock(
-        blockTypes.GRID,
-        {},
-        { columns: '100%' },
-        state.blocks[index].parent_id
+      const parentIndex = state.blocks.findIndex(
+        ({ id, type, format, direction }) =>
+          id === state.blocks[index].parent_id &&
+          type === blockTypes.LAYOUT &&
+          format &&
+          format === 'flex' &&
+          direction === 'column'
       );
-      const blocks = [
-        { ...action.block, parent_id: parent.id },
-        { ...state.blocks[index], parent_id: parent.id },
-      ];
-      if (action.type === CREATE_BOTTOM_BLOCK) {
-        blocks.reverse();
+      if (parentIndex > -1) {
+        index = parentIndex;
       }
 
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks.slice(0, index),
-          parent,
-          ...blocks,
-          ...state.blocks.slice(index + 1),
-        ],
-      };
+      if (state.blocks[parentIndex]) {
+        return {
+          ...state,
+          blocks: [
+            ...state.blocks.slice(
+              0,
+              index + +(action.type === CREATE_BOTTOM_BLOCK)
+            ),
+            { ...action.block, parent_id: state.blocks[parentIndex].id },
+            ...state.blocks.slice(
+              index + +(action.type === CREATE_BOTTOM_BLOCK)
+            ),
+          ],
+        };
+      } else {
+        const parent = createBlock(
+          blockTypes.LAYOUT,
+          {},
+          { ...defaultFlexFormat, direction: 'column' },
+          state.blocks[index].parent_id
+        );
+        const blocks = [
+          { ...action.block, parent_id: parent.id },
+          { ...state.blocks[index], parent_id: parent.id },
+        ];
+        if (action.type === CREATE_BOTTOM_BLOCK) {
+          blocks.reverse();
+        }
+
+        return {
+          ...state,
+          blocks: [
+            ...state.blocks.slice(0, index),
+            parent,
+            ...blocks,
+            ...state.blocks.slice(index + 1),
+          ],
+        };
+      }
     }
 
     case CREATE_LEFT_BLOCK:
@@ -173,18 +223,16 @@ export function reduceBlocks(
         return state;
       }
       const parentIndex = state.blocks.findIndex(
-        ({ id, type, format }) =>
-          id === state.blocks[index].parent_id &&
-          type === blockTypes.GRID &&
-          format.columns !== '100%'
+        ({ id, type }) =>
+          id === state.blocks[index].parent_id && type === blockTypes.LAYOUT
       );
 
       const parent =
         state.blocks[parentIndex] ||
         createBlock(
-          blockTypes.GRID,
+          blockTypes.LAYOUT,
           null,
-          null,
+          { kind: layoutTypes.GRID },
           state.blocks[index]['parent_id']
         );
 
@@ -248,7 +296,7 @@ export function reduceBlocks(
       const blocks = state.blocks.filter(({ id }) => !selection.includes(id));
       const redundant = blocks.filter(
         ({ id, type }, _, blocks) =>
-          type === blockTypes.GRID &&
+          type === blockTypes.LAYOUT &&
           blocks.filter(({ parent_id }) => parent_id === id).length < 2
       );
       return {
@@ -292,7 +340,7 @@ export function reduceBlocks(
         };
       }
 
-      if (state.selection.length > 1) {
+      if (!('id' in action) && state.selection.length > 1) {
         return {
           ...state,
           error: 'There is more than one block in selection.',
@@ -318,19 +366,60 @@ export function reduceBlocks(
                 : action.type === UPDATE_BLOCK_EDITOR
                 ? { editor: { ...block.editor, ...action.editor } }
                 : {
-                    format: Object.entries({
-                      ...block.format,
-                      ...action.format,
-                    })
-                      .filter(([_, v]) => v !== null)
-                      .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {}),
+                    format:
+                      state.device === 'any'
+                        ? filter((value) => value !== null, {
+                            ...block.format,
+                            ...action.format,
+                          })
+                        : {
+                            ...block.format,
+                            [state.device]: filter((value) => value !== null, {
+                              ...(block.format && block.format[state.device]),
+                              ...action.format,
+                            }),
+                          },
                   }),
             },
-            ...state.blocks.slice(index + 1),
+            ...(action.type === UPDATE_BLOCK_FORMAT && action.format.layout
+              ? state.blocks.slice(index + 1).map((block) =>
+                  block['parent_id'] === action.id
+                    ? {
+                        ...block,
+                        format: {
+                          ...block.format,
+                          layout: action.format.layout,
+                        },
+                      }
+                    : block
+                )
+              : state.blocks.slice(index + 1)),
           ],
         };
       }
       return state;
+    }
+
+    case SET_BLOCK_PARENT: {
+      const index = state.blocks.findIndex((block) => block.id === action.id);
+      return {
+        ...state,
+        blocks: [
+          ...state.blocks.slice(0, index),
+          ...state.blocks.slice(index + 1),
+          {
+            ...state.blocks[index],
+            parent_id: action.parentId,
+          },
+        ],
+      };
+    }
+
+    case SET_DEVICE: {
+      return {
+        ...state,
+        device: action.device,
+      };
     }
 
     default:

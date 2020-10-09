@@ -17,13 +17,15 @@ const defaultReducer: Reducer = (acc, methods: SvgTypographyMethods) =>
  * @description Use typography methods of a child with greatest width.
  * @param {number} count of children
  * @param {Reducer} reducer
- * @returns {[SvgTypographyMethods, React.Ref<SvgTypographyMethods>]}
+ * @param {object} initial
+ * @returns {Array}
  */
 export default function useTypographyChildrenMethods(
   count,
-  reducer = defaultReducer
+  reducer = defaultReducer,
+  initial = defaultTypographyMethods
 ) {
-  const [methods, setMethods] = React.useState(defaultTypographyMethods);
+  const [methods, setMethods] = React.useState(initial);
   const { current: childrenMethods } = React.useRef([]);
   return useAutoMemo([
     methods,
@@ -31,7 +33,7 @@ export default function useTypographyChildrenMethods(
       set current(childMethods?: SvgTypographyMethods) {
         childrenMethods.push(childMethods);
         if (childrenMethods.length === count) {
-          setMethods(childrenMethods.reduce(reducer, defaultTypographyMethods));
+          setMethods(childrenMethods.reduce(reducer, initial));
           childrenMethods.splice(0, childrenMethods.length);
         }
       },

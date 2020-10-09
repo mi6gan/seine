@@ -1,9 +1,0 @@
-html.bream {
-  font-size: 10px;
-  @import './base.css';
-  @import './theme.css';
-}
-
-html.bream body {
-  background-color: #f7f7f7;
-}
