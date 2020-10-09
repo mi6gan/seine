@@ -1,6 +1,6 @@
 {
   "name": "@seine/content",
-  "version": "0.4.0-43",
+  "version": "0.4.0",
   "description": "React components for rendering block contents.",
   "files": [
     "index.js"

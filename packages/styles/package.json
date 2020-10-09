@@ -1,6 +1,6 @@
 {
   "name": "@seine/styles",
-  "version": "0.4.0-43",
+  "version": "0.4.0",
   "description": "Seine styles library.",
   "files": [
     "index.js"
