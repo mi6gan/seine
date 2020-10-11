@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@material-ui/system": "4.9",
+    "@material-ui/system": "^4.9",
     "@seine/content": "workspace:*",
     "@seine/core": "workspace:*",
     "@seine/styles": "workspace:*",
@@ -21,11 +21,11 @@
     "virtual-dom-stringify": "^3.0.1"
   },
   "peerDependencies": {
-    "@devexpress/dx-chart-core": "^2.7.0",
-    "@devexpress/dx-react-chart": "^2.7.0",
-    "@devexpress/dx-react-core": "^2.7.0",
-    "@material-ui/core": "4.9",
-    "@material-ui/icons": "4.9",
+    "@devexpress/dx-chart-core": "<=2.7.1",
+    "@devexpress/dx-react-chart": "<=2.7.1",
+    "@devexpress/dx-react-core": "<=2.7.1",
+    "@material-ui/core": "^4.9",
+    "@material-ui/icons": "^4.9",
     "d3-interpolate": "1.4",
     "draft-js": "^0.11.0",
     "react": "^16.9.0",

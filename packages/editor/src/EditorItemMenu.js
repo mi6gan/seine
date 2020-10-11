@@ -8,7 +8,7 @@ import {
   ClipboardContext,
   useBlocksDispatch,
   useBlocksSelector,
-} from './context';
+} from './contexts';
 import { selectionSelector } from './selectors';
 import ToolbarMenu from './ui/ToolbarMenu';
 import CreateLayoutButton from './ui/CreateLayoutButton';
@@ -66,6 +66,7 @@ export function ItemMenuProvider({ children }) {
     </ItemMenuContext.Provider>
   );
 }
+
 /**
  * @description Selected item context menu.
  * @returns {React.Node}

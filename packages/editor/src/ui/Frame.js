@@ -3,15 +3,14 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 
+import { SELECT_BLOCK } from '@seine/core';
+import { Item } from '@seine/content';
 import {
   useBlocksBuffer,
   useBlocksDispatch,
   useBlocksSelector,
-} from '../context';
-import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
-
-import { Item } from '@seine/content';
-import { SELECT_BLOCK } from '@seine/core';
+  useSelectedLayoutItems,
+} from '@seine/editor';
 
 const StyledFrame = styled(Item)`
   transition: ${({ theme }) =>
@@ -90,8 +89,7 @@ export default function Frame({ children, id, onClick, ...props }) {
         event.preventDefault();
         event.stopPropagation();
       })}
-    >
-      {children}
-    </StyledFrame>
+      children={children}
+    />
   );
 }

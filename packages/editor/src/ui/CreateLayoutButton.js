@@ -3,9 +3,6 @@ import * as React from 'react';
 import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
-import { useBlocksDispatch } from '../context';
-
 import {
   blockTypes,
   CREATE_BLOCK,
@@ -14,6 +11,7 @@ import {
   SELECT_BLOCK,
   SET_BLOCK_PARENT,
 } from '@seine/core';
+import { useSelectedLayoutItems, useBlocksDispatch } from '@seine/editor';
 
 // eslint-disable-next-line
 export default function CreateLayoutButton({

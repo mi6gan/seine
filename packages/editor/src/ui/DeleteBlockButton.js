@@ -3,10 +3,8 @@ import * as React from 'react';
 import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
-import { BlocksContext } from '../context';
-
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
+import { useSelectedLayoutItems, BlocksContext } from '@seine/editor';
 
 // eslint-disable-next-line
 export default function DeleteBlockButton({

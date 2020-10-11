@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 
-import type { BlockElement } from '../types';
+import type { BlockElement } from '@seine/core';
 
 const defaultBlockElementBody = {};
 

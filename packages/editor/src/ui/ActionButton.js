@@ -3,8 +3,6 @@ import * as React from 'react';
 import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import { useBlocksDispatch } from '../context';
-
 import type { Action } from '@seine/core';
 import {
   CREATE_BLOCK,
@@ -17,6 +15,7 @@ import {
   UPDATE_BLOCK_EDITOR,
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
+import { useBlocksDispatch } from '@seine/editor';
 
 export type Props = Action & React.ElementProps<HTMLButtonElement>;
 

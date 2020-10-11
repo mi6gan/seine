@@ -1,11 +1,11 @@
 // @flow
 
-import { Chart } from './chart';
-import { RichText } from './richtext';
-import { Image } from './image';
-import { Page } from './page';
-import { Table } from './table';
-import { Layout } from './layout';
+import { Chart } from './charts';
+import { RichText } from './richtexts';
+import { Image } from './images';
+import { Page } from './pages';
+import { Table } from './tables';
+import { Layout } from './layouts';
 
 import { blockTypes } from '@seine/core';
 

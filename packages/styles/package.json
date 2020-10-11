@@ -5,6 +5,7 @@
   "files": [
     "index.js"
   ],
+  "loader": "./src/index.js",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
