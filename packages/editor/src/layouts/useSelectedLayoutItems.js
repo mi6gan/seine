@@ -2,7 +2,8 @@
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 
-import { useBlocksSelector } from '@seine/editor';
+import { useBlocksSelector } from '../contexts';
+
 import { blockTypes } from '@seine/core';
 
 /**

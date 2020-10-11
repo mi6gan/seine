@@ -15,6 +15,16 @@ import { SvgIcon } from '@material-ui/core';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
+import {
+  SidebarHeading,
+  SidebarSection,
+  ToolbarToggleButtonGroup,
+  ToolbarToggleButton,
+  SidebarGroup,
+  SidebarLabel,
+} from '../ui';
+import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+
 import { defaultDraftEditor } from './RichTextEditor';
 
 import {
@@ -23,16 +33,6 @@ import {
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
 import { defaultDraftFormat } from '@seine/content';
-import {
-  SidebarHeading,
-  SidebarSection,
-  ToolbarToggleButtonGroup,
-  ToolbarToggleButton,
-  useBlocksDispatch,
-  useBlocksSelector,
-  SidebarGroup,
-  SidebarLabel,
-} from '@seine/editor';
 
 const SvgText = styled.text.attrs({
   textAnchor: 'middle',

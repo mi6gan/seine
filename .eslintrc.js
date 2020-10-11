@@ -6,14 +6,14 @@ module.exports = {
     'plugin:jsdoc/recommended',
   ],
   rules: {
-    'import/order': ['error', { 'newlines-between': 'always' }],
-    'import/no-unresolved': 0,
     'no-console': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',
     'jsdoc/require-returns-description': 0,
     'jsdoc/require-param-description': 0,
     'jsdoc/require-description': ['warn', { descriptionStyle: 'tag' }],
+    'import/order': ['error', { 'newlines-between': 'always' }],
+    'import/no-unresolved': 0,
     'no-restricted-imports': [
       'error',
       {
@@ -29,5 +29,6 @@ module.exports = {
   },
   settings: {
     'import/ignore': ['styled-components/*'],
+    'import/internal-regex': '^@seine/',
   },
 };

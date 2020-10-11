@@ -10,14 +10,6 @@ import {
 import styled from 'styled-components/macro';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
-import { defaultTableEditor } from './constants';
-import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
-import TableColumnPlusBeforeIcon from './TableColumnPlusBeforeIcon';
-import TableColumnRemoveIcon from './TableColumnRemoveIcon';
-import TableRowPlusAfterIcon from './TableRowPlusAfterIcon';
-import TableRowPlusBeforeIcon from './TableRowPlusBeforeIcon';
-import TableRowRemoveIcon from './TableRowRemoveIcon';
-
 import {
   ActionIconButton,
   SidebarButtonGroup,
@@ -28,9 +20,17 @@ import {
   SidebarSection,
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
-  useBlocksDispatch,
-  useBlocksSelector,
-} from '@seine/editor';
+} from '../ui';
+import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+
+import { defaultTableEditor } from './constants';
+import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
+import TableColumnPlusBeforeIcon from './TableColumnPlusBeforeIcon';
+import TableColumnRemoveIcon from './TableColumnRemoveIcon';
+import TableRowPlusAfterIcon from './TableRowPlusAfterIcon';
+import TableRowPlusBeforeIcon from './TableRowPlusBeforeIcon';
+import TableRowRemoveIcon from './TableRowRemoveIcon';
+
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import { blockTypes, defaultItemFormat, UPDATE_BLOCK_BODY } from '@seine/core';
 

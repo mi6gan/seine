@@ -10,15 +10,12 @@ import { Button } from '@material-ui/core';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
+import { SidebarGroup, ActionButton, CompositeActionButton } from '../ui';
+import { useBlocksDispatch } from '../contexts';
+
 import useChartBlock from './useChartBlock';
 import useElementSelector from './useElementSelector';
 
-import {
-  useBlocksDispatch,
-  SidebarGroup,
-  ActionButton,
-  CompositeActionButton,
-} from '@seine/editor';
 import { groupElements, titleIdentityElements } from '@seine/content';
 import {
   chartTypes,

@@ -1,9 +1,10 @@
 // @flow
 import { useAutoCallback } from 'hooks.macro';
 
+import { useBlocksDispatch, defaultBlocksSelector } from '../contexts';
+
 import useChartBlock from './useChartBlock';
 
-import { useBlocksDispatch, defaultBlocksSelector } from '@seine/editor';
 import type { ElementsAction } from '@seine/core';
 import {
   reduceElements,

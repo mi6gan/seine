@@ -3,8 +3,9 @@ import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
+import { SvgInput } from '../ui';
+
 import { SvgTypography } from '@seine/styles';
-import { SvgInput } from '@seine/editor';
 
 type Props = {
   children?: any,

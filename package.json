@@ -11,10 +11,11 @@
   "private": true,
   "repository": "https://github.com/mi6gan/seine",
   "scripts": {
-    "start": "serve",
-    "test": "run-s test:'*'",
-    "test:eslint": "eslint -c .eslintrc.js --format unix packages/",
-    "build": "yarn workspaces foreach -t --include='@seine/*' exec yarn rollup --environment NODE_ENV:production -c ../../rollup.config.js",
+    "start": "yarn workspace seine-storybook serve",
+    "test": "yarn workspace seine-storybook test",
+    "build": "run-s build:'*'",
+    "build:library": "yarn workspaces foreach -t --include='@seine/*' exec yarn rollup --environment NODE_ENV:production -c ../../rollup.config.js",
+    "build:storybook": "yarn workspace seine-storybook build ",
     "release": "yarn workspaces foreach -t --include='@seine/*' exec npm publish",
     "deploy": "run-s deploy:'*'",
     "deploy:build": "docker build -t mi6gan/seine:${npm_package_version} .",
@@ -23,28 +24,20 @@
     "deploy:push": "docker push mi6gan/seine:latest",
     "dev": "yarn workspace seine-storybook start"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@babel/core": "7",
     "@devexpress/dx-chart-core": "<=2.7.1",
     "@devexpress/dx-react-chart": "<=2.7.1",
     "@devexpress/dx-react-chart-material-ui": "<=2.7.1",
     "@devexpress/dx-react-core": "<=2.7.1",
     "@material-ui/core": "^4.9",
     "@material-ui/icons": "^4.9",
-    "@seine/editor": "workspace:*",
-    "d3-interpolate": "1.4",
-    "draft-js": "^0.11.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "serve": "^11.1.0",
-    "styled-components": "^4.3.2"
-  },
-  "devDependencies": {
-    "@babel/core": "7",
-    "@rollup/plugin-alias": "^3.0.1",
     "@rollup/plugin-babel": "^5.0.4",
-    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
     "@yarnpkg/cli": "^2.2.2",
     "@yarnpkg/core": "^2.2.2",
     "babel-eslint": "^10.0.3",
@@ -53,44 +46,46 @@
     "babel-plugin-macros": "^2.6.1",
     "babel-plugin-named-asset-import": "^0.3.2",
     "babel-preset-react-app": "^9.0.1",
-    "draft-js": "^0.11.0",
-    "eslint": "^7.9.0",
+    "eslint": "^4.12.1 || ^5.0.0 || ^6.1.0",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-config-react-app": "^5.2.0",
+    "eslint-config-react-app": "^5.2.1",
     "eslint-import-resolver-node": "^0.3.4",
-    "eslint-plugin-flowtype": "^5.2.0",
-    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-flowtype": "4.x",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^30.4.2",
-    "eslint-plugin-jsx-a11y": "6.3.1",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "2.x",
     "flow-bin": "^0.109.0",
     "hooks.macro": "^1.0.1",
     "identity-obj-proxy": "^3.0.0",
     "minimist": "^1.2.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.1",
+    "prettier": "^1.13.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
     "rollup": "^2.18.2",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-flow-entry": "^0.3.1",
-    "rollup-plugin-pnp-resolve": "^2.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-terser": "^5.2.0",
-    "rollup-plugin-visualizer": "^2.5.4"
+    "seine-storybook": "portal:./storybook",
+    "uuid": "^3.4.0"
   },
   "workspaces": [
     "packages/*",
     "storybook"
   ],
-  "babelMacros": {
-    "styledComponents": {
-      "pure": true
-    }
-  },
   "dependenciesMeta": {
     "@storybook/core": {
       "unplugged": true
+    }
+  },
+  "babelMacros": {
+    "styledComponents": {
+      "pure": true
     }
   }
 }

@@ -19,6 +19,7 @@ async function yarn2Config({ resolve, resolveLoader, ...config }, mode) {
     ...config,
     resolve: {
       ...resolve,
+      extensions: ['.mjs', '.js', '.json'],
       plugins: [...((resolve && resolve.plugins) || []), PnpWebpackPlugin],
       alias:
         mode.configType.toLowerCase() === 'development'
@@ -41,7 +42,9 @@ async function yarn2Config({ resolve, resolveLoader, ...config }, mode) {
       ],
     },
   };
-  const jsRule = newConfig.module.rules.find((rule) => rule.test.test('.js'));
+  const jsRule = newConfig.module.rules.find(
+    (rule) => rule.test.test('.js') || rule.test.test('.mjs')
+  );
   jsRule.exclude = /node_modules/;
 
   return newConfig;

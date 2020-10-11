@@ -3,20 +3,21 @@ import * as React from 'react';
 import { Box, Checkbox } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import ChartPaletteSelect from './ChartPaletteSelect';
-import ChartStructureGroup from './ChartStructureGroup';
-import ChartElementColorButton from './ChartElementColorButton';
-import useChartBlock from './useChartBlock';
-
-import { UPDATE_BLOCK_FORMAT, chartTypes } from '@seine/core';
 import {
   SidebarGroup,
   SidebarInput,
   SidebarHeading,
   SidebarLabel,
   SidebarSection,
-  useBlocksDispatch,
-} from '@seine/editor';
+} from '../ui';
+import { useBlocksDispatch } from '../contexts';
+
+import ChartPaletteSelect from './ChartPaletteSelect';
+import ChartStructureGroup from './ChartStructureGroup';
+import ChartElementColorButton from './ChartElementColorButton';
+import useChartBlock from './useChartBlock';
+
+import { UPDATE_BLOCK_FORMAT, chartTypes } from '@seine/core';
 
 /**
  * @description Chart design panel.

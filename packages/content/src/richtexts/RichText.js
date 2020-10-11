@@ -9,10 +9,11 @@ import {
   getDefaultKeyBinding,
 } from 'draft-js';
 
+import { Item } from '../layouts';
+
 import { toDraftEditor } from './helpers';
 import RichTextStyle from './RichTextStyle';
 
-import { Item } from '@seine/content';
 import type { RichTextBody, RichTextFormat } from '@seine/core';
 
 export type Props = (RichTextBody & RichTextFormat) & {

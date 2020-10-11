@@ -1,11 +1,10 @@
 // @flow
 import { useAutoMemo } from 'hooks.macro';
 
-import {
-  defaultChartEditor,
-  useBlocksSelector,
-  defaultBlocksSelector,
-} from '@seine/editor';
+import { useBlocksSelector, defaultBlocksSelector } from '../contexts';
+
+import { defaultChartEditor } from '.';
+
 import { blockTypes } from '@seine/core';
 import { defaultChartFormat, useChartFormat } from '@seine/content';
 

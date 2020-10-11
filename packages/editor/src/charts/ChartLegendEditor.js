@@ -2,9 +2,12 @@
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 
+import { InlineInput } from '../ui';
+
+import { useChartDispatchElements } from '.';
+
 import { UPDATE_BLOCK_ELEMENT_BY_ID } from '@seine/core';
 import { ChartLegend } from '@seine/content';
-import { InlineInput, useChartDispatchElements } from '@seine/editor';
 
 // eslint-disable-next-line
 export default function ChartLegendEditor({ elements, ...legendProps }) {

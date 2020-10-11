@@ -2,6 +2,8 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 
+import { Item } from '../layouts';
+
 import BarChartContent from './BarChartContent';
 import ColumnChartContent from './ColumnChartContent';
 import LineChartContent from './LineChartContent';
@@ -12,7 +14,6 @@ import useChartFormat from './useChartFormat';
 import ChartLegend from './ChartLegend';
 import { titleIdentityElements } from './helpers';
 
-import { Item } from '@seine/content';
 import { chartTypes } from '@seine/core';
 import type { ChartBody, ChartFormat } from '@seine/core';
 

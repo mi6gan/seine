@@ -10,9 +10,7 @@ import {
   useBlocksSelector,
 } from './contexts';
 import { selectionSelector } from './selectors';
-import ToolbarMenu from './ui/ToolbarMenu';
-import CreateLayoutButton from './ui/CreateLayoutButton';
-import DeleteBlockButton from './ui/DeleteBlockButton';
+import { ToolbarMenu, CreateLayoutButton, DeleteBlockButton } from './ui';
 
 import type { Block } from '@seine/core';
 import {

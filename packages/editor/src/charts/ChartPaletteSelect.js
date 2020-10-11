@@ -3,15 +3,11 @@ import * as React from 'react';
 import { MenuItem, Select } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import { SidebarSelectLabel, SidebarGroup, SidebarLabel } from '../ui';
+import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+
 import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { chartPaletteKeyValues, defaultChartFormat } from '@seine/content';
-import {
-  SidebarSelectLabel,
-  useBlocksDispatch,
-  useBlocksSelector,
-  SidebarGroup,
-  SidebarLabel,
-} from '@seine/editor';
 
 /**
  * @description Buttons to select chart's default palette

@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
 
+import { Frame } from '../ui';
+
 import type { ImageProps } from '@seine/content';
 import { Image } from '@seine/content';
-import { Frame } from '@seine/editor';
 
 type Props = ImageProps & {
   onChange: (SyntheticInputEvent) => any,

@@ -5,11 +5,13 @@ import SketchPicker from 'react-color/lib/Sketch';
 import { Button, ClickAwayListener } from '@material-ui/core';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
+import { useBlocksDispatch } from '../contexts';
+import { SidebarGroup, SidebarLabel } from '../ui';
+
 import useChartBlock from './useChartBlock';
 
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { chartPaletteKeyValues, groupElements } from '@seine/content';
-import { useBlocksDispatch, SidebarGroup, SidebarLabel } from '@seine/editor';
 
 const StyledColorButton = styled(Button).attrs(({ children = '' }) => ({
   children,

@@ -3,17 +3,17 @@ import * as React from 'react';
 import { MenuItem, Select } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import FlexDesign from './FlexDesign';
-
 import {
   SidebarSelectLabel,
   SidebarGroup,
   SidebarHeading,
   SidebarLabel,
   SidebarSection,
-  useBlocksDispatch,
-  useBlocksSelector,
-} from '@seine/editor';
+} from '../ui';
+import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+
+import { FlexDesign } from '.';
+
 import {
   blockTypes,
   defaultLayoutFormat,

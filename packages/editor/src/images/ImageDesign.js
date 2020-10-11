@@ -5,15 +5,15 @@ import { useAutoCallback } from 'hooks.macro';
 import { Box, IconButton, InputAdornment } from '@material-ui/core';
 import { CloudUpload } from '@material-ui/icons';
 
-import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 import {
   SidebarGroup,
-  SidebarHeading,
   SidebarInput,
   SidebarSection,
-  useBlocksDispatch,
-  useBlocksSelector,
-} from '@seine/editor';
+  SidebarHeading,
+} from '../ui';
+import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+
+import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 
 type Props = {
   onChange: (SyntheticInputEvent) => void,
@@ -78,7 +78,7 @@ export default function TableDesign({ onChange, ...inputProps }) {
                     } else {
                       const reader = new FileReader();
                       reader.readAsDataURL(event.currentTarget.files[0]);
-                      reader.onload = function () {
+                      reader.onload = function() {
                         dispatch({
                           type: UPDATE_BLOCK_BODY,
                           id,

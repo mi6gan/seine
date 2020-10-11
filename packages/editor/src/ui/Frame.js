@@ -3,14 +3,15 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 
-import { SELECT_BLOCK } from '@seine/core';
-import { Item } from '@seine/content';
 import {
   useBlocksBuffer,
   useBlocksDispatch,
   useBlocksSelector,
-  useSelectedLayoutItems,
-} from '@seine/editor';
+} from '../contexts';
+import { useSelectedLayoutItems } from '../layouts';
+
+import { SELECT_BLOCK } from '@seine/core';
+import { Item } from '@seine/content';
 
 const StyledFrame = styled(Item)`
   transition: ${({ theme }) =>

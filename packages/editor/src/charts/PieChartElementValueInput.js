@@ -2,7 +2,9 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { SvgInput, useChartDispatchElements } from '@seine/editor';
+import { SvgInput } from '../ui';
+import { useChartDispatchElements } from '../charts';
+
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 
 type Props = {

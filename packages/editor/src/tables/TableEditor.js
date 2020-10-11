@@ -2,6 +2,10 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
+import { Frame, InlineInput } from '../ui';
+import { useBlocksDispatch } from '../contexts';
+import { useSelectedLayoutItems } from '../layouts';
+
 import { defaultTableEditor } from './constants';
 import TableCellEditor from './TableCellEditor';
 
@@ -9,12 +13,6 @@ import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 import type { BlockEditor } from '@seine/core';
 import { Table } from '@seine/content';
 import type { TableProps } from '@seine/content';
-import {
-  Frame,
-  useBlocksDispatch,
-  useSelectedLayoutItems,
-  InlineInput,
-} from '@seine/editor';
 
 type Props = TableProps & BlockEditor;
 

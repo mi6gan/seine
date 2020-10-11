@@ -1,10 +1,11 @@
+import fs from 'fs';
+import path from 'path';
+
 import { babel } from '@rollup/plugin-babel';
+import builtins from 'rollup-plugin-node-builtins';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
-import json from '@rollup/plugin-json';
-import postcss from 'rollup-plugin-postcss';
 import flowEntry from 'rollup-plugin-flow-entry';
-import cleanup from 'rollup-plugin-cleanup';
 import { getPluginConfiguration } from '@yarnpkg/cli';
 import { Configuration, Project } from '@yarnpkg/core';
 
@@ -35,27 +36,40 @@ async function rollupConfig() {
       ),
   ];
 
+  const dir = await fs.promises.opendir(workspace.cwd);
+  for await (const entry of dir) {
+    if (entry.isFile() && /^index\..+$/.test(entry.name)) {
+      await fs.promises.unlink(path.resolve(workspace.cwd, entry.name));
+    }
+  }
+
   stderr(`building ${workspace.manifest.raw.name}`);
 
   return {
     input: 'src/index.js',
-    output: {
-      file: 'index.js',
-      format: 'cjs',
-      sourcemap: true,
-    },
+    output: [
+      {
+        file: 'index.js',
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: 'index.mjs',
+        format: 'es',
+        sourcemap: true,
+      },
+    ],
     plugins: [
       flowEntry(),
       babel({
         babelHelpers: 'runtime',
         rootMode: 'upward',
       }),
-      json(),
-      nodeResolve({ browser: true }),
+      nodeResolve({ preferBuiltins: true }),
+      builtins({ crypto: false }),
       commonjs(),
-      postcss({ modules: true }),
-      cleanup(),
     ],
+
     external: (id) =>
       id.startsWith('@seine/') ||
       externalModuleIds.some(

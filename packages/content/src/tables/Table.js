@@ -3,10 +3,11 @@ import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 
+import { Item } from '../layouts';
+
 import TableCell from './TableCell';
 
 import type { TableBody, TableFormat } from '@seine/core';
-import { Item } from '@seine/content';
 import { useResizeTargetRef } from '@seine/styles';
 
 export type Props = TableBody & TableFormat;

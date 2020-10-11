@@ -5,16 +5,18 @@ import { Palette } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
+import { Item } from '../layouts';
+
 import {
-  ChartLabel,
-  ChartValue,
   defaultChartFraction,
   defaultChartPalette,
   defaultPieChartLegend,
   defaultPieChartUnits,
-  PieChartLegend,
-  Item,
-} from '@seine/content';
+} from './constants';
+import ChartLabel from './ChartLabel';
+import ChartValue from './ChartValue';
+import PieChartLegend from './PieChartLegend';
+
 import type { ChartElement } from '@seine/core';
 
 type Props = {

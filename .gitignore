@@ -13,8 +13,7 @@ node_modules/
 /coverage
 
 # production
-/dist
-/storybook-static
+dist
 /packages/*/index.*
 
 # idea

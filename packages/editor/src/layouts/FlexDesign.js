@@ -14,20 +14,20 @@ import { useAutoCallback } from 'hooks.macro';
 import { MenuItem, Select } from '@material-ui/core';
 
 import {
-  blockTypes,
-  defaultFlexFormat,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
-import {
   SidebarGroup,
   SidebarInput,
   SidebarLabel,
   SidebarSelectLabel,
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
-  useBlocksDispatch,
-  useBlocksSelector,
-} from '@seine/editor';
+} from '../ui';
+import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+
+import {
+  blockTypes,
+  defaultFlexFormat,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 
 /**
  * @description Layout design.

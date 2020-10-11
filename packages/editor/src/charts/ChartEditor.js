@@ -3,6 +3,9 @@ import * as React from 'react';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
+import { Frame } from '../ui';
+import { useSelectedLayoutItems } from '../layouts';
+
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
 import BarChartElementTitleInput from './BarChartElementTitleInput';
@@ -14,7 +17,6 @@ import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
 import ChartLegendEditor from './ChartLegendEditor';
 
-import { Frame, useSelectedLayoutItems } from '@seine/editor';
 import { useResizeTargetRef } from '@seine/styles';
 import {
   BarChartContent,
