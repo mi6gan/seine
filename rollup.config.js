@@ -65,7 +65,10 @@ async function rollupConfig() {
         babelHelpers: 'runtime',
         rootMode: 'upward',
       }),
-      nodeResolve({ preferBuiltins: true }),
+      nodeResolve({
+        browser: true,
+        preferBuiltins: true,
+      }),
       builtins({ crypto: false }),
       commonjs(),
     ],

@@ -19,7 +19,7 @@ async function yarn2Config({ resolve, resolveLoader, ...config }, mode) {
     ...config,
     resolve: {
       ...resolve,
-      extensions: ['.mjs', '.js', '.json'],
+      extensions: ['.js', '.mjs', '.json'],
       plugins: [...((resolve && resolve.plugins) || []), PnpWebpackPlugin],
       alias:
         mode.configType.toLowerCase() === 'development'
