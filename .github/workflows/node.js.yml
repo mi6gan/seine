@@ -57,7 +57,7 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GIT_EMAIL}"
           yarn workspaces foreach -t version patch
-          git add docs
           git commit -am "Release $(node -p -e "require('./package.json').version")"
-          git push -f origin HEAD:latest
           yarn release
+          git add docs
+          git push -f origin HEAD:latest
