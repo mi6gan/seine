@@ -1,6 +1,6 @@
 {
   "name": "@seine/editor",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "React components for editing block contents.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
@@ -16,6 +16,7 @@
     "react-color.macro": "^1.0.186",
     "rollup-plugin-pnp-resolve": "^2.0.0",
     "svg-patterns": "^1.0.0",
+    "uuid": "^3.4.0",
     "virtual-dom-stringify": "^3.0.1"
   },
   "peerDependencies": {
