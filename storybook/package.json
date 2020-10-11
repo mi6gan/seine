@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "yarn start-storybook",
-    "build": "yarn build-storybook -o dist"
+    "build": "yarn build-storybook"
   },
   "license": "MIT",
   "dependencies": {
