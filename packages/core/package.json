@@ -1,6 +1,6 @@
 {
   "name": "@seine/core",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Seine core utils and types.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
@@ -8,5 +8,9 @@
   "dependencies": {
     "ramda": "^0.26.1",
     "uuid": "^3.4.0"
+  },
+  "publishConfig": {
+    "main": "./index.cjs.js",
+    "module": "./index.es.js"
   }
 }

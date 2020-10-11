@@ -49,12 +49,12 @@ async function rollupConfig() {
     input: 'src/index.js',
     output: [
       {
-        file: 'index.js',
+        file: 'index.cjs.js',
         format: 'cjs',
         sourcemap: true,
       },
       {
-        file: 'index.mjs',
+        file: 'index.es.js',
         format: 'es',
         sourcemap: true,
       },
