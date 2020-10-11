@@ -8,26 +8,28 @@ import EditorItemMenu, { ItemMenuProvider } from './EditorItemMenu';
 import EditorTree from './EditorTree';
 import EditorDesign from './EditorDesign';
 import EditorToolbar from './EditorToolbar';
-import DeleteConfirmationDialog from './ui/DeleteConfirmationDialog';
 import { allBlocksSelector, deviceSelector } from './selectors';
 import defaultTheme from './defaultTheme';
-import Sidebar from './ui/Sidebar';
+import {
+  DeleteConfirmationDialog,
+  Sidebar,
+  SidebarGroup,
+  SidebarSection,
+  SidebarHeading,
+  SidebarLabel,
+} from './ui';
 import defaultBlockRenderMap from './blockRenderMap';
-import SidebarGroup from './ui/SidebarGroup';
-import SidebarSection from './ui/SidebarSection';
-import SidebarHeading from './ui/SidebarHeading';
-import SidebarLabel from './ui/SidebarLabel';
 import {
   BlocksProvider,
   ClipboardProvider,
   useBlocksDispatch,
   useBlocksSelector,
-} from './context';
+} from './contexts';
 
-import { Content } from '@seine/content';
 import type { Block, BlockType } from '@seine/core';
 import { DESELECT_ALL_BLOCKS } from '@seine/core';
 import { ThemeProvider } from '@seine/styles';
+import { Content } from '@seine/content';
 
 const Contents = styled(Box).attrs({
   width: '100%',

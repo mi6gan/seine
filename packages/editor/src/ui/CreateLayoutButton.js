@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
-import { useBlocksDispatch } from '../context';
+import { useBlocksDispatch } from '../contexts';
+import { useSelectedLayoutItems } from '../layouts';
 
 import {
   blockTypes,

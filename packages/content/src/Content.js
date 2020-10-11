@@ -9,9 +9,9 @@ import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
+  device?: 'mobile' | 'any',
   children: $ReadOnlyArray<Block>,
   parent: Block,
-  device: 'mobile' | 'any',
 };
 
 /**

@@ -1,16 +1,17 @@
 // @flow
+import { PageEditor } from './pages';
+import { LayoutEditor } from './layouts';
+import { ChartEditor } from './charts';
+import { RichTextEditor } from './richtexts';
+import { TableEditor } from './tables';
+import { ImageEditor } from './images';
 
-import { ChartEditor } from './chart';
-import { RichTextEditor } from './richtext';
-import { TableEditor } from './table';
-import LayoutEditor from './layout/LayoutEditor';
-import PageEditor from './PageEditor';
-
-import { blockRenderMap as defaultBlockRenderMap } from '@seine/content';
 import { blockTypes } from '@seine/core';
+import { blockRenderMap as defaultBlockRenderMap } from '@seine/content';
 
 export const blockRenderMap = {
   ...defaultBlockRenderMap,
+  [blockTypes.IMAGE]: ImageEditor,
   [blockTypes.CHART]: ChartEditor,
   [blockTypes.RICH_TEXT]: RichTextEditor,
   [blockTypes.PAGE]: PageEditor,

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Button, Dialog, DialogActions, DialogTitle } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import { BlocksContext } from '../context';
+import { BlocksContext } from '../contexts';
 
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 

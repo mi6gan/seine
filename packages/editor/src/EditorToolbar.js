@@ -6,14 +6,16 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import ActionButton from './ui/ActionButton';
 import { ItemMenuContext } from './EditorItemMenu';
 import { deviceSelector } from './selectors';
-import Toolbar from './ui/Toolbar';
-import ToolbarButton from './ui/ToolbarButton';
-import ToolbarSeparator from './ui/ToolbarSeparator';
-import { useBlocksDispatch, useBlocksSelector } from './context';
-import { BlockTypeIcon } from './ui';
+import { useBlocksDispatch, useBlocksSelector } from './contexts';
+import {
+  ActionButton,
+  Toolbar,
+  BlockTypeIcon,
+  ToolbarButton,
+  ToolbarSeparator,
+} from './ui';
 
 import type { Block } from '@seine/core';
 import {

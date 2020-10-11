@@ -7,7 +7,7 @@ import { ChevronRight, ExpandMore } from '@material-ui/icons';
 import { Box } from '@material-ui/core';
 
 import { ItemMenuContext } from './EditorItemMenu';
-import { useBlocksDispatch, useBlocksSelector } from './context';
+import { useBlocksDispatch, useBlocksSelector } from './contexts';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 
 import { DESELECT_ALL_BLOCKS, SELECT_BLOCK } from '@seine/core';

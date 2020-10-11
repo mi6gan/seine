@@ -7,11 +7,11 @@ import {
   useBlocksBuffer,
   useBlocksDispatch,
   useBlocksSelector,
-} from '../context';
-import useSelectedLayoutItems from '../layout/useSelectedLayoutItems';
+} from '../contexts';
+import { useSelectedLayoutItems } from '../layouts';
 
-import { Item } from '@seine/content';
 import { SELECT_BLOCK } from '@seine/core';
+import { Item } from '@seine/content';
 
 const StyledFrame = styled(Item)`
   transition: ${({ theme }) =>
@@ -90,8 +90,7 @@ export default function Frame({ children, id, onClick, ...props }) {
         event.preventDefault();
         event.stopPropagation();
       })}
-    >
-      {children}
-    </StyledFrame>
+      children={children}
+    />
   );
 }

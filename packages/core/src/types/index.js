@@ -1,5 +1,4 @@
 // @flow
-import type { BlocksAction } from '../reducers';
 
 import type { ChartBody, ChartElement, ChartFormat } from './charts';
 import { CHART } from './charts';
@@ -14,6 +13,8 @@ import { TABLE } from './tables';
 import type { ItemBody, ItemFormat } from './item';
 import type { LayoutBody, LayoutFormat } from './layout';
 import { LAYOUT } from './layout';
+
+import type { BlocksAction } from '@seine/core';
 
 export * from './item';
 export * from './charts';

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
-import { useBlocksDispatch } from '../context';
+import { useBlocksDispatch } from '../contexts';
 
 import type { Action } from '@seine/core';
 import {
