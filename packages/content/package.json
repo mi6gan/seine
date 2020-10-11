@@ -1,6 +1,6 @@
 {
   "name": "@seine/content",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "React components for rendering block contents.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
