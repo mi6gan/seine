@@ -1,6 +1,6 @@
 {
   "name": "@seine/editor",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "React components for editing block contents.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",

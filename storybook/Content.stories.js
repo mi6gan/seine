@@ -10,19 +10,21 @@ import { Content } from '@seine/content';
 
 export default { title: 'Content' };
 
-export const Page = ({ as: Container = Content, children = [], ...props }) => (
-  <Container
-    parent={{
-      id: null,
-      type: blockTypes.PAGE,
-      body: null,
-      format: null,
-      parent_id: null,
-    }}
-    {...props}
-    {...actions('onChange')}
-  >
-    {children}
+export const Page = ({
+  as: Container = Content,
+  children = [],
+  parent = {
+    id: 'root',
+    type: blockTypes.PAGE,
+    body: null,
+    format: null,
+    parent_id: null,
+  },
+
+  ...props
+}) => (
+  <Container parent={parent} {...props} {...actions('onChange')}>
+    {[parent, ...children]}
   </Container>
 );
 
@@ -31,7 +33,7 @@ export const Text = (props) => (
     {[
       {
         id: 'text',
-        parent_id: null,
+        parent_id: 'root',
         type: blockTypes.RICH_TEXT,
         body: {
           blocks: [
@@ -112,7 +114,7 @@ export const Image = (props) => (
     {[
       {
         id: 'image',
-        parent_id: null,
+        parent_id: 'root',
         type: blockTypes.IMAGE,
         body: {
           file: 'https://via.placeholder.com/150/0000FF/808080?text=Image',
@@ -122,7 +124,7 @@ export const Image = (props) => (
   </Page>
 );
 
-export const Table = ({ parent_id = null, ...props }) => (
+export const Table = ({ parent_id = 'root', ...props }) => (
   <Page {...props}>
     {[
       {
@@ -165,7 +167,7 @@ export const Flex = ({ children = [], ...props }) => (
     {[
       {
         id: 'grid',
-        parent_id: null,
+        parent_id: 'root',
 
         type: blockTypes.LAYOUT,
         body: {},
@@ -285,7 +287,7 @@ export const NestedFlex = ({ children = [], ...props }) => (
     {[
       {
         id: 'grid',
-        parent_id: null,
+        parent_id: 'root',
         type: 'grid',
         body: {},
         format: {
@@ -327,11 +329,11 @@ export const NestedFlex = ({ children = [], ...props }) => (
         format: {
           verticalAlignment: 'center',
         },
-        parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78',
+        parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78-2',
       },
       {
         id: 'table',
-        parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78',
+        parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78-3',
         type: 'table',
         body: {
           title: 'Table title',
