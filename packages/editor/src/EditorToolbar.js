@@ -258,6 +258,28 @@ export default function EditorToolbar(boxProps: Props) {
         >
           <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.PIE} />
         </ToolbarButton>
+
+        <ToolbarButton
+          as={ActionButton}
+          disabled={!isContainer}
+          type={CREATE_BLOCK}
+          block={useAutoMemo(
+            createBlock(
+              blockTypes.IMAGE,
+              {
+                file:
+                  'https://via.placeholder.com/150/0000FF/808080?text=empty%20image',
+              },
+              {
+                verticalAlignment: 'center',
+                kind: chartTypes.PIE,
+              }
+            )
+          )}
+          id={block && block.id}
+        >
+          <BlockTypeIcon type={blockTypes.IMAGE} />
+        </ToolbarButton>
       </Box>
 
       <Box width={'20%'} textAlign={'center'}>

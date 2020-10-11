@@ -8,6 +8,7 @@ import {
   Title as RichTextIcon,
   ViewCompact as LayoutIcon,
   Description as PageIcon,
+  Image as ImageIcon,
 } from '@material-ui/icons';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
@@ -56,6 +57,9 @@ export default function BlockTypeIcon({ type, kind, ...iconProps }: Props) {
 
       case blockTypes.LAYOUT:
         return LayoutIcon;
+
+      case blockTypes.IMAGE:
+        return ImageIcon;
 
       default:
         return null;
