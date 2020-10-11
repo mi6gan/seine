@@ -1,4 +1,5 @@
 // @flow
+import uuid from 'uuid/v4';
 import * as React from 'react';
 import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
@@ -56,7 +57,11 @@ export default function ActionButton({
                   type === CREATE_RIGHT_BLOCK ||
                   type === CREATE_TOP_BLOCK)))
             ? id
-              ? { id, block, type }
+              ? {
+                  id,
+                  block: block.id ? { ...block, id: uuid() } : block,
+                  type,
+                }
               : { block, type }
             : // update block
             body && UPDATE_BLOCK_BODY
