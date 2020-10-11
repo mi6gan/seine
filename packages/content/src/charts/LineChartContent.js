@@ -140,9 +140,8 @@ export default function LineChartContent({
           (_, index, { length }) =>
             !!((xAxis && index === 0) || (yAxis && index > 0)) && (
               <path
-                d={`m${yAxisWidth}  ${
-                  height - (index * (height - titleHeight)) / length
-                } ${graphWidth} 0`}
+                d={`m${yAxisWidth}  ${height -
+                  (index * (height - titleHeight)) / length} ${graphWidth} 0`}
                 key={index}
                 stroke={index > 0 ? '#f0f0f0' : 'black'}
               />

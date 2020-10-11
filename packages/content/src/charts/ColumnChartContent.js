@@ -154,9 +154,11 @@ export default function ColumnChartContent({
             );
           })}
           <path
-            d={`m${GUTTER_WIDTH + groupIndex * groupWidth + columnWidth / 4} ${
-              columnHeight + scaledTextHeight
-            }h${columnWidth * groupElements.length + columnWidth / 2}`}
+            d={`m${GUTTER_WIDTH +
+              groupIndex * groupWidth +
+              columnWidth / 4} ${columnHeight +
+              scaledTextHeight}h${columnWidth * groupElements.length +
+              columnWidth / 2}`}
             stroke={'black'}
           />
           <SvgTypography

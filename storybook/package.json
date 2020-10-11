@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "yarn start-storybook",
-    "build": "yarn build-storybook"
+    "build": "yarn build-storybook --quite --loglevel warn",
+    "test": "yarn eslint --max-warnings=0 --format unix ./*.stories.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -53,6 +54,7 @@
     "hooks.macro": "^1.0.1",
     "identity-obj-proxy": "^3.0.0",
     "pnp-webpack-plugin": "^1.6.4",
+    "prettier": "^1.13.0",
     "react": "^16.10.2",
     "react-app-polyfill": "^1.0.2",
     "react-dom": "^16.10.2",
