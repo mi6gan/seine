@@ -1,15 +1,15 @@
 // @flow
 import * as React from 'react';
+import styled from 'styled-components/macro';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+
 import {
   FormatAlignCenter,
   FormatAlignLeft,
   FormatAlignRight,
   FormatBold,
   FormatItalic,
-} from '@material-ui/icons';
-import styled from 'styled-components/macro';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
-
+} from '../../material-ui-icons.macro';
 import {
   ActionIconButton,
   SidebarButtonGroup,

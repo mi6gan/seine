@@ -1,5 +1,8 @@
 // @flow
 import * as React from 'react';
+import { useAutoCallback } from 'hooks.macro';
+
+import { MenuItem, Select } from '../../material-ui.macro';
 import {
   FormatAlignCenter,
   FormatAlignJustify,
@@ -9,10 +12,7 @@ import {
   VerticalAlignCenter,
   VerticalAlignTop,
   WrapText,
-} from '@material-ui/icons';
-import { useAutoCallback } from 'hooks.macro';
-import { MenuItem, Select } from '@material-ui/core';
-
+} from '../../material-ui-icons.macro';
 import {
   SidebarGroup,
   SidebarInput,

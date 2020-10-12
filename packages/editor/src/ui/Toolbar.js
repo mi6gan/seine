@@ -1,6 +1,7 @@
 // @flow
 import styled from 'styled-components/macro';
-import { Box } from '@material-ui/core';
+
+import { Box } from '../../material-ui.macro';
 
 const Toolbar = styled(Box).attrs({
   bgcolor: 'grey.700',

@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
-import { Box, Checkbox } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import { Box, Checkbox } from '../../material-ui.macro';
 import {
   SidebarGroup,
   SidebarInput,

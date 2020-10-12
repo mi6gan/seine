@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
-import { MenuItem, Select } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import { MenuItem, Select } from '../../material-ui.macro';
 import {
   SidebarSelectLabel,
   SidebarGroup,

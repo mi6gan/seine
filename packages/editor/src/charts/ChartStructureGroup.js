@@ -1,15 +1,15 @@
 // @flow
 import * as React from 'react';
+import styled from 'styled-components/macro';
+import { useAutoMemo } from 'hooks.macro';
+
 import {
   Add,
   ControlPoint,
   DeleteOutlined,
   HighlightOff,
-} from '@material-ui/icons';
-import { Button } from '@material-ui/core';
-import styled from 'styled-components/macro';
-import { useAutoMemo } from 'hooks.macro';
-
+} from '../../material-ui-icons.macro';
+import { Button } from '../../material-ui.macro';
 import { SidebarGroup, ActionButton, CompositeActionButton } from '../ui';
 import { useBlocksDispatch } from '../contexts';
 

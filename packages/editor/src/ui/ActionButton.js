@@ -1,9 +1,9 @@
 // @flow
 import uuid from 'uuid/v4';
 import * as React from 'react';
-import { Button as MuiButton } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import { Button as MuiButton } from '../../material-ui.macro';
 import { useBlocksDispatch } from '../contexts';
 
 import type { Action } from '@seine/core';

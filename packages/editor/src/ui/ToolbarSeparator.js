@@ -1,6 +1,7 @@
 // @flow
 import styled from 'styled-components/macro';
-import { Box } from '@material-ui/core';
+
+import { Box } from '../../material-ui.macro';
 
 const ToolbarSeparator = styled(Box).attrs({
   height: '1em',

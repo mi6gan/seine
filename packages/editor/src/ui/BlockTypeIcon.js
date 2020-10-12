@@ -1,5 +1,8 @@
 // @flow
 import * as React from 'react';
+import styled from 'styled-components/macro';
+import { useAutoMemo } from 'hooks.macro';
+
 import {
   BarChart as ColumnChartIcon,
   TableChart as TableIcon,
@@ -9,9 +12,7 @@ import {
   ViewCompact as LayoutIcon,
   Description as PageIcon,
   Image as ImageIcon,
-} from '@material-ui/icons';
-import styled from 'styled-components/macro';
-import { useAutoMemo } from 'hooks.macro';
+} from '../../material-ui-icons.macro';
 
 import type { BlockType } from '@seine/core';
 import { blockTypes, chartTypes } from '@seine/core';

@@ -2,9 +2,9 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
 import SketchPicker from 'react-color/lib/Sketch';
-import { Button, ClickAwayListener } from '@material-ui/core';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
+import { Button, ClickAwayListener } from '../../material-ui.macro';
 import { useBlocksDispatch } from '../contexts';
 import { SidebarGroup, SidebarLabel } from '../ui';
 

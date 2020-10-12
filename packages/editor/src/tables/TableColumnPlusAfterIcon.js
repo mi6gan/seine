@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
-import { SvgIcon } from '@material-ui/core';
+
+import { SvgIcon } from '../../material-ui.macro';
 
 // eslint-disable-next-line
 export default function TableColumnPlusAfterIcon(props) {

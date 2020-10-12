@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 import { RichUtils } from 'draft-js';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import styled from 'styled-components/macro';
+
 import {
   FormatAlignCenter,
   FormatAlignLeft,
@@ -10,11 +13,8 @@ import {
   FormatListBulleted,
   FormatListNumbered,
   FormatUnderlined,
-} from '@material-ui/icons';
-import { SvgIcon } from '@material-ui/core';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
-import styled from 'styled-components/macro';
-
+} from '../../material-ui-icons.macro';
+import { SvgIcon } from '../../material-ui.macro';
 import {
   SidebarHeading,
   SidebarSection,

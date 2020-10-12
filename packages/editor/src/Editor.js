@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react';
-import { Box, Paper } from '@material-ui/core';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
+
+import { Box, Paper } from '../material-ui.macro';
 
 import EditorItemMenu, { ItemMenuProvider } from './EditorItemMenu';
 import EditorTree from './EditorTree';

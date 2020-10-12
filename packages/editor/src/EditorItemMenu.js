@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
-import { Box, MenuItem } from '@material-ui/core';
 import styled from 'styled-components/macro';
+
+import { Box, MenuItem } from '../material-ui.macro';
 
 import {
   ClipboardContext,
