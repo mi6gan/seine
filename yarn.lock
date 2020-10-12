@@ -2197,11 +2197,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@seine/editor@workspace:packages/editor"
   dependencies:
+    "@babel/helper-module-imports": ^7.10.4
     "@material-ui/lab": ^4.0.0-alpha.56
     "@material-ui/system": ^4.9
     "@seine/content": "workspace:*"
     "@seine/core": "workspace:*"
     "@seine/styles": "workspace:*"
+    babel-plugin-macros: ^2.6.1
     draft-js-buttons: ^2.0.2
     react-color: ^2.18.1
     react-color.macro: ^1.0.186
@@ -14925,6 +14927,7 @@ fsevents@~2.1.2:
     rollup-plugin-postcss: ^2.0.3
     rollup-plugin-terser: ^5.2.0
     seine-storybook: "portal:./storybook"
+    typescript: 2.x
     uuid: ^3.4.0
   dependenciesMeta:
     "@storybook/core":
@@ -16394,6 +16397,16 @@ typescript@*:
   languageName: node
   linkType: hard
 
+typescript@2.x:
+  version: 2.9.2
+  resolution: "typescript@npm:2.9.2"
+  bin:
+    tsc: ./bin/tsc
+    tsserver: ./bin/tsserver
+  checksum: 2d01737c748f87dac48d9207c3b8897d5125795b2a6d6902bb5df70ce0ce9b29da36b02e4f60c820542cab4d4e239fa64e28ab378107379680711d162a6cccc2
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@*#builtin<compat/typescript>":
   version: 4.0.3
   resolution: "typescript@patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"
@@ -16401,6 +16414,16 @@ typescript@*:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 72db87d09f728c83062d64b5e12ed52effb6278963b6bc5c006219b22c104e02b8ce80164261de554923d3c47d894a1ca937ed542328caccb83ebaedeae98a69
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@2.x#builtin<compat/typescript>":
+  version: 2.9.2
+  resolution: "typescript@patch:typescript@npm%3A2.9.2#builtin<compat/typescript>::version=2.9.2&hash=5bf698"
+  bin:
+    tsc: ./bin/tsc
+    tsserver: ./bin/tsserver
+  checksum: 3391089abbcd7c9a674392c213685f2fa7bf2552f81cb67292753ebc6f5a004c471938774e62d6a9f07318d013cdc8361b795627efb01ae0331e945028d4451b
   languageName: node
   linkType: hard
 

@@ -2,9 +2,9 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
-import { Box, IconButton, InputAdornment } from '@material-ui/core';
-import { CloudUpload } from '@material-ui/icons';
 
+import { Box, IconButton, InputAdornment } from '../../material-ui.macro';
+import { CloudUpload } from '../../material-ui-icons.macro';
 import {
   SidebarGroup,
   SidebarInput,

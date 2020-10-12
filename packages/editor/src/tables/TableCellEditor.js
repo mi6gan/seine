@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { Box } from '@material-ui/core';
 import { useAutoCallback } from 'hooks.macro';
 
+import { Box } from '../../material-ui.macro';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
 import type { BlockEditor } from '@seine/core';

@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
-import type { BoxProps } from '@material-ui/core';
-import { Box, MenuItem, Select } from '@material-ui/core';
-import { Menu as MenuIcon } from '@material-ui/icons';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
+
+import { Menu as MenuIcon } from '../material-ui-icons.macro';
+import type { BoxProps } from '../material-ui.macro.d';
+import { Box, MenuItem, Select } from '../material-ui.macro';
 
 import { ItemMenuContext } from './EditorItemMenu';
 import { deviceSelector } from './selectors';

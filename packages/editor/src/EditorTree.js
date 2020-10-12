@@ -3,8 +3,9 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 import { TreeItem, TreeView } from '@material-ui/lab';
-import { ChevronRight, ExpandMore } from '@material-ui/icons';
-import { Box } from '@material-ui/core';
+
+import { ChevronRight, ExpandMore } from '../material-ui-icons.macro';
+import { Box } from '../material-ui.macro';
 
 import { ItemMenuContext } from './EditorItemMenu';
 import { useBlocksDispatch, useBlocksSelector } from './contexts';
