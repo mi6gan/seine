@@ -4,7 +4,7 @@ import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import { Menu as MenuIcon } from '../mui-icons.macro';
-import type { BoxProps } from '../mui-core.macro';
+import type { BoxProps } from '../mui-core.macro.d';
 import { Box, MenuItem, Select } from '../mui-core.macro';
 
 import { ItemMenuContext } from './EditorItemMenu';
