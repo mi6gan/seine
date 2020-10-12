@@ -9,6 +9,7 @@ import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 const StyledToolbarButton = styled(MuiButton).attrs(
   ({ color = 'inherit' }) => ({
     color,
+    size: 'small',
   })
 )`
   && {
@@ -16,6 +17,10 @@ const StyledToolbarButton = styled(MuiButton).attrs(
     ${palette};
     ${borders};
     min-width: 0;
+  }
+  &&&& {
+    border: none;
+    border-radius: 0;
   }
 `;
 

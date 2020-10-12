@@ -142,17 +142,22 @@ export default function FlexDesign() {
 
       <SidebarGroup>
         <SidebarLabel shrink>Wrap</SidebarLabel>
-        <ToolbarToggleButton
-          selected={wrap === 'wrap'}
-          onClick={useAutoCallback(() =>
+        <ToolbarToggleButtonGroup
+          value={alignItems}
+          onChange={useAutoCallback((event, wrap) =>
             dispatch({
               type: UPDATE_BLOCK_FORMAT,
-              format: { wrap: wrap === 'wrap' ? 'nowrap' : 'wrap' },
+              format: { wrap },
             })
           )}
         >
-          <WrapText />
-        </ToolbarToggleButton>
+          <ToolbarToggleButton
+            selected={wrap === 'wrap'}
+            value={wrap === 'wrap' ? 'nowrap' : 'wrap'}
+          >
+            <WrapText />
+          </ToolbarToggleButton>
+        </ToolbarToggleButtonGroup>
       </SidebarGroup>
     </>
   );
