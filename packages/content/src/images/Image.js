@@ -15,8 +15,6 @@ export const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   & > img {
-    height: auto;
-    max-width: 100%;
     @media (min-width: 1280px) {
       ${({ hasSibling = false }) => !hasSibling && { padding: '10%' }}
     }
