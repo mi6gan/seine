@@ -7,8 +7,18 @@ import * as data from './data';
 
 import { blockTypes, layoutTypes } from '@seine/core';
 import { Content } from '@seine/content';
+import { ThemeProvider } from '@seine/styles';
 
-export default { title: 'Content' };
+export default {
+  title: 'Content',
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
+};
 
 export const Page = ({
   as: Container = Content,

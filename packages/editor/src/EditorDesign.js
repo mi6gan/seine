@@ -15,6 +15,7 @@ type Props = {
   richTextDesignAs?: React.ComponentType,
   tableDesignAs?: React.ComponentType,
   chartDesignAs?: React.ComponentType,
+  imageDesignAs?: React.ComponentType,
 };
 
 /**
@@ -23,19 +24,19 @@ type Props = {
  * @returns {React.Node}
  */
 export default function EditorDesign({
-  itemDesignAs: ItemDesign = layoutDefaults.ItemDesign,
   layoutDesignAs: LayoutDesign = layoutDefaults.LayoutDesign,
+  itemDesignAs: ItemDesign = layoutDefaults.ItemDesign,
   richTextDesignAs: RichTextDesign = richTextDefaults.RichTextDesign,
   tableDesignAs: TableDesign = tableDefaults.TableDesign,
   chartDesignAs: ChartDesign = chartDefaults.ChartDesign,
-  imageDesign: ImageDesign = imageDefaults.ImageDesign,
+  imageDesignAs: ImageDesign = imageDefaults.ImageDesign,
 }: Props) {
   const { layout, item } = layoutDefaults.useSelectedLayoutItems();
 
   return (
     <>
-      {item && <ItemDesign />}
       {layout && <LayoutDesign />}
+      {item && <ItemDesign />}
       {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
       {item && item.type === blockTypes.TABLE && <TableDesign />}
       {item && item.type === blockTypes.CHART && <ChartDesign />}

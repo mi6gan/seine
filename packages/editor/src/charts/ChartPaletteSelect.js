@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { MenuItem, Select } from '../../mui-core.macro';
 import { SidebarSelectLabel, SidebarGroup, SidebarLabel } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
+import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { chartPaletteKeyValues, defaultChartFormat } from '@seine/content';
 
@@ -24,7 +24,7 @@ export default function ChartPaletteSelect() {
     block.format ||
     defaultChartFormat;
   return (
-    <SidebarGroup alignItems={'center'}>
+    <SidebarGroup>
       <SidebarLabel>palette</SidebarLabel>
       <Select
         value={paletteKey}

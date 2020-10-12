@@ -3,8 +3,6 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Box, IconButton, InputAdornment } from '../../mui-core.macro';
-import { CloudUpload } from '../../mui-icons.macro';
 import {
   SidebarGroup,
   SidebarInput,
@@ -13,6 +11,8 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
+import { Box, IconButton, InputAdornment } from '@seine/styles/mui-core.macro';
+import { CloudUpload } from '@seine/styles/mui-icons.macro';
 import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 
 type Props = {
@@ -45,7 +45,7 @@ export default function TableDesign({ onChange, ...inputProps }) {
   return (
     <SidebarSection>
       <SidebarHeading>Image</SidebarHeading>
-      <SidebarGroup alignItems={'center'}>
+      <SidebarGroup>
         <Box
           component={'form'}
           position={'relative'}

@@ -79,6 +79,9 @@
   "dependenciesMeta": {
     "@storybook/core": {
       "unplugged": true
+    },
+    "flow-bin": {
+      "unplugged": true
     }
   },
   "babelMacros": {

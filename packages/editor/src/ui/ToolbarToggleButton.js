@@ -4,8 +4,8 @@ import { ToggleButton } from '@material-ui/lab';
 
 import ToolbarButton from './ToolbarButton';
 
-const ToolbarToggleButton = styled(ToolbarButton).attrs({
-  forwardedAs: ToggleButton,
+const ToolbarToggleButton = styled(ToggleButton).attrs({
+  component: ToolbarButton,
 })`
   &&& {
     color: currentColor;

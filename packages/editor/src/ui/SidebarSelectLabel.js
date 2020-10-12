@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components/macro';
 
-import { Box, Typography } from '../../mui-core.macro';
+import { Box, Typography } from '@seine/styles/mui-core.macro';
 
 const SidebarSelectLabel = styled(Box).attrs({
   component: Typography,

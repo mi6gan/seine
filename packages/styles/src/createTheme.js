@@ -8,6 +8,14 @@ import {
 } from './constants';
 import createBreakpoints from './createBreakpoints';
 
+import type { Theme as MuiTheme } from '@seine/styles/mui-core.macro.d';
+
+export type Theme = {|
+  breakpoints: $PropertyType<MuiTheme, 'breakpoints'>,
+  typography: $PropertyType<MuiTheme, 'typography'>,
+  palette: $PropertyType<MuiTheme, 'palette'>,
+|};
+
 /**
  * @description create content theme
  * @param {{breakpoints?: object, palette?: object, typography?: object}} options
@@ -33,7 +41,7 @@ export default function createTheme({
     divider = defaultPalette.divider,
     text = defaultPalette.text,
   } = defaultPalette,
-} = defaultThemeOptions) {
+} = defaultThemeOptions): Theme {
   const breakpoints = createBreakpoints({ keys, values });
   const palette = {
     action,

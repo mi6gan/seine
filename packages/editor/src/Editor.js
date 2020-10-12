@@ -3,8 +3,6 @@ import * as React from 'react';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { Box, Paper } from '../mui-core.macro';
-
 import EditorItemMenu, { ItemMenuProvider } from './EditorItemMenu';
 import EditorTree from './EditorTree';
 import EditorDesign from './EditorDesign';
@@ -27,6 +25,7 @@ import {
   useBlocksSelector,
 } from './contexts';
 
+import { Box, Paper } from '@seine/styles/mui-core.macro';
 import type { Block, BlockType } from '@seine/core';
 import { DESELECT_ALL_BLOCKS } from '@seine/core';
 import { ThemeProvider } from '@seine/styles';

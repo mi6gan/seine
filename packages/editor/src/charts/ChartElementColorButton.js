@@ -4,12 +4,12 @@ import styled, { css } from 'styled-components/macro';
 import SketchPicker from 'react-color/lib/Sketch';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
-import { Button, ClickAwayListener } from '../../mui-core.macro';
 import { useBlocksDispatch } from '../contexts';
 import { SidebarGroup, SidebarLabel } from '../ui';
 
 import useChartBlock from './useChartBlock';
 
+import { Button, ClickAwayListener } from '@seine/styles/mui-core.macro';
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { chartPaletteKeyValues, groupElements } from '@seine/content';
 
@@ -60,10 +60,7 @@ export default function ChartElementColorButton() {
   const color = palette[colorIndex];
   const buttonRef = React.useRef(null);
   return (
-    <SidebarGroup
-      alignItems={'center'}
-      display={selection > -1 ? 'flex' : 'none'}
-    >
+    <SidebarGroup display={selection > -1 ? 'flex' : 'none'}>
       <SidebarLabel>color</SidebarLabel>
       <StyledColorButton
         ref={buttonRef}

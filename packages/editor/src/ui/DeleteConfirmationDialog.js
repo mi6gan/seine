@@ -2,14 +2,14 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
+import { BlocksContext } from '../contexts';
+
 import {
   Button,
   Dialog,
   DialogActions,
   DialogTitle,
-} from '../../mui-core.macro';
-import { BlocksContext } from '../contexts';
-
+} from '@seine/styles/mui-core.macro';
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 
 // eslint-disable-next-line

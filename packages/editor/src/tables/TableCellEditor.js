@@ -3,9 +3,9 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Box } from '../../mui-core.macro';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
+import { Box } from '@seine/styles/mui-core.macro';
 import type { BlockEditor } from '@seine/core';
 import {
   blockTypes,

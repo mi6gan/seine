@@ -2,17 +2,6 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { MenuItem, Select } from '../../mui-core.macro';
-import {
-  FormatAlignCenter,
-  FormatAlignJustify,
-  FormatAlignLeft,
-  FormatAlignRight,
-  VerticalAlignBottom,
-  VerticalAlignCenter,
-  VerticalAlignTop,
-  WrapText,
-} from '../../mui-icons.macro';
 import {
   SidebarGroup,
   SidebarInput,
@@ -23,6 +12,17 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
+import { MenuItem, Select } from '@seine/styles/mui-core.macro';
+import {
+  FormatAlignCenter,
+  FormatAlignJustify,
+  FormatAlignLeft,
+  FormatAlignRight,
+  VerticalAlignBottom,
+  VerticalAlignCenter,
+  VerticalAlignTop,
+  WrapText,
+} from '@seine/styles/mui-icons.macro';
 import {
   blockTypes,
   defaultFlexFormat,
@@ -54,7 +54,7 @@ export default function FlexDesign() {
   };
   return (
     <>
-      <SidebarGroup alignItems={'center'}>
+      <SidebarGroup>
         <SidebarLabel>Spacing</SidebarLabel>
         <SidebarInput
           value={spacing}
@@ -92,7 +92,7 @@ export default function FlexDesign() {
         </Select>
       </SidebarGroup>
 
-      <SidebarGroup alignItems={'center'}>
+      <SidebarGroup>
         <SidebarLabel>Justify</SidebarLabel>
         <ToolbarToggleButtonGroup
           value={justify}
@@ -118,7 +118,7 @@ export default function FlexDesign() {
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
 
-      <SidebarGroup alignItems={'center'}>
+      <SidebarGroup>
         <SidebarLabel>Align</SidebarLabel>
         <ToolbarToggleButtonGroup
           value={alignItems}

@@ -4,13 +4,12 @@ import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 import { TreeItem, TreeView } from '@material-ui/lab';
 
-import { ChevronRight, ExpandMore } from '../mui-icons.macro';
-import { Box } from '../mui-core.macro';
-
 import { ItemMenuContext } from './EditorItemMenu';
 import { useBlocksDispatch, useBlocksSelector } from './contexts';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 
+import { Box } from '@seine/styles/mui-core.macro';
+import { ChevronRight, ExpandMore } from '@seine/styles/mui-icons.macro';
 import { DESELECT_ALL_BLOCKS, SELECT_BLOCK } from '@seine/core';
 
 type Props = {

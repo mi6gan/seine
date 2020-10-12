@@ -3,10 +3,6 @@ import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { Menu as MenuIcon } from '../mui-icons.macro';
-import type { BoxProps } from '../mui-core.macro.d';
-import { Box, MenuItem, Select } from '../mui-core.macro';
-
 import { ItemMenuContext } from './EditorItemMenu';
 import { deviceSelector } from './selectors';
 import { useBlocksDispatch, useBlocksSelector } from './contexts';
@@ -18,6 +14,9 @@ import {
   ToolbarSeparator,
 } from './ui';
 
+import { Box, MenuItem, Select } from '@seine/styles/mui-core.macro';
+import type { BoxProps } from '@seine/styles/mui-core.macro.d';
+import { Menu as MenuIcon } from '@seine/styles/mui-icons.macro';
 import type { Block } from '@seine/core';
 import {
   blockTypes,
