@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { Box, Paper } from '../material-ui.macro';
+import { Box, Paper } from '../mui-core.macro';
 
 import EditorItemMenu, { ItemMenuProvider } from './EditorItemMenu';
 import EditorTree from './EditorTree';

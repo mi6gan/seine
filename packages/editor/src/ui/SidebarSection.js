@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components/macro';
 
-import { Box } from '../../material-ui.macro';
+import { Box } from '../../mui-core.macro';
 
 const SidebarSection = styled(Box).attrs(({ py = 2, display = 'block' }) => ({
   py,

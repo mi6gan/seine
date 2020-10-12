@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components/macro';
 
-import { Box, Menu } from '../../material-ui.macro';
+import { Box, Menu } from '../../mui-core.macro';
 
 const ToolbarMenu = styled(Box).attrs({ component: Menu })`
   .MuiMenu-paper {

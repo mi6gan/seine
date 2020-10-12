@@ -3,9 +3,9 @@ import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { Menu as MenuIcon } from '../material-ui-icons.macro';
-import type { BoxProps } from '../material-ui.macro.d';
-import { Box, MenuItem, Select } from '../material-ui.macro';
+import { Menu as MenuIcon } from '../mui-icons.macro';
+import type { BoxProps } from '../mui-core.macro';
+import { Box, MenuItem, Select } from '../mui-core.macro';
 
 import { ItemMenuContext } from './EditorItemMenu';
 import { deviceSelector } from './selectors';

@@ -13,8 +13,8 @@ import {
   FormatListBulleted,
   FormatListNumbered,
   FormatUnderlined,
-} from '../../material-ui-icons.macro';
-import { SvgIcon } from '../../material-ui.macro';
+} from '../../mui-icons.macro';
+import { SvgIcon } from '../../mui-core.macro';
 import {
   SidebarHeading,
   SidebarSection,
@@ -48,11 +48,10 @@ const SvgText = styled.text.attrs({
  * @returns {React.Node}
  */
 export default function RichTextDesign() {
-  const textAlignment = useBlocksSelector(
-    ({ format = defaultDraftFormat }) =>
-      (format && format.textAlignment) || defaultDraftFormat.textAlignment
-  );
   const {
+    format: {
+      textAlignment = defaultDraftFormat.textAlignment,
+    } = defaultDraftFormat,
     editor: {
       state: editorState = defaultDraftEditor.state,
     } = defaultDraftEditor,

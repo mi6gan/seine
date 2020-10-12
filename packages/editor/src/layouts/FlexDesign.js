@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { MenuItem, Select } from '../../material-ui.macro';
+import { MenuItem, Select } from '../../mui-core.macro';
 import {
   FormatAlignCenter,
   FormatAlignJustify,
@@ -12,7 +12,7 @@ import {
   VerticalAlignCenter,
   VerticalAlignTop,
   WrapText,
-} from '../../material-ui-icons.macro';
+} from '../../mui-icons.macro';
 import {
   SidebarGroup,
   SidebarInput,

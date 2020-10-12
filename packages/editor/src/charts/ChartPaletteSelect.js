@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { MenuItem, Select } from '../../material-ui.macro';
+import { MenuItem, Select } from '../../mui-core.macro';
 import { SidebarSelectLabel, SidebarGroup, SidebarLabel } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { Box, MenuItem } from '../material-ui.macro';
+import { Box, MenuItem } from '../mui-core.macro';
 
 import {
   ClipboardContext,

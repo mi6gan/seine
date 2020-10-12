@@ -4,8 +4,8 @@ import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 import { TreeItem, TreeView } from '@material-ui/lab';
 
-import { ChevronRight, ExpandMore } from '../material-ui-icons.macro';
-import { Box } from '../material-ui.macro';
+import { ChevronRight, ExpandMore } from '../mui-icons.macro';
+import { Box } from '../mui-core.macro';
 
 import { ItemMenuContext } from './EditorItemMenu';
 import { useBlocksDispatch, useBlocksSelector } from './contexts';

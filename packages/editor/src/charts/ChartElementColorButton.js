@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components/macro';
 import SketchPicker from 'react-color/lib/Sketch';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
-import { Button, ClickAwayListener } from '../../material-ui.macro';
+import { Button, ClickAwayListener } from '../../mui-core.macro';
 import { useBlocksDispatch } from '../contexts';
 import { SidebarGroup, SidebarLabel } from '../ui';
 

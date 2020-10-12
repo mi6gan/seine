@@ -1,5 +1,5 @@
 // @flow
-import { createMuiTheme } from '../material-ui-core-styles.macro';
+import { createMuiTheme } from '../mui-core-styles.macro';
 
 import { createTheme, deepmerge } from '@seine/styles';
 

@@ -8,8 +8,8 @@ import {
   ControlPoint,
   DeleteOutlined,
   HighlightOff,
-} from '../../material-ui-icons.macro';
-import { Button } from '../../material-ui.macro';
+} from '../../mui-icons.macro';
+import { Button } from '../../mui-core.macro';
 import { SidebarGroup, ActionButton, CompositeActionButton } from '../ui';
 import { useBlocksDispatch } from '../contexts';
 

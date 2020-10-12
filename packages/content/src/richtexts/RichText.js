@@ -1,4 +1,5 @@
 // @flow
+import { useAutoMemo, useAutoCallback } from 'hooks.macro';
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import {
@@ -27,37 +28,38 @@ export const defaultDraftBody = {
   blocks: defaultDraftBlocks,
   entityMap: defaultDraftEntityMap,
 };
-export const defaultDraftFormat: RichTextFormat = {
-  textAlignment: 'left',
-  verticalAlignment: 'start',
-};
+export const defaultDraftFormat: RichTextFormat = {};
 
 /**
  * @description Draft block component.
  * @param {Props} props
  * @returns {React.Node}
  */
-function Draft({
-  id,
-  className = '',
-  decorators = [],
-  blockRenderMap = DefaultDraftBlockRenderMap,
-  blockRendererFn = () => null,
-  blockStyleFn = () => '',
-  keyBindingFn = getDefaultKeyBinding,
-  readOnly = true,
-  spellCheck = false,
-  stripPastedStyles = false,
-  customStyleMap = DefaultDraftInlineStyle,
-  textAlignment = 'left',
-  blocks = defaultDraftBlocks,
-  entityMap = defaultDraftEntityMap,
-  ...editorProps
-}: Props) {
+const Draft = React.forwardRef(function Draft(
+  {
+    id,
+    className = '',
+    blockRenderMap = DefaultDraftBlockRenderMap,
+    blockRendererFn = () => null,
+    blockStyleFn = () => '',
+    keyBindingFn = getDefaultKeyBinding,
+    readOnly = true,
+    spellCheck = false,
+    stripPastedStyles = false,
+    customStyleMap = DefaultDraftInlineStyle,
+    textAlignment = 'left',
+    blocks = defaultDraftBlocks,
+    entityMap = defaultDraftEntityMap,
+    editorState = null,
+    as: EditorItem = Item,
+    ...editorProps
+  }: Props,
+  ref
+) {
   return (
     <>
       <RichTextStyle />
-      <Item
+      <EditorItem
         className={[
           className,
           ' DraftEditor/root',
@@ -71,35 +73,28 @@ function Draft({
         <Editor
           {...editorProps}
           editorKey={id}
+          ref={ref}
+          readOnly={readOnly}
+          textAlignment={textAlignment}
+          editorState={useAutoMemo(
+            editorState || toDraftEditor({ blocks, entityMap })
+          )}
           blockRenderMap={blockRenderMap}
           blockRendererFn={blockRendererFn}
-          blockStyleFn={(block) => `${blockStyleFn(block)} ${className}`.trim()}
-          keyBindingFn={keyBindingFn}
-          readOnly={readOnly}
-          spellChek={spellCheck}
-          stripPastedStyles={stripPastedStyles}
-          customStyleMap={customStyleMap}
-          editorState={React.useMemo(
-            () =>
-              toDraftEditor(
-                { blocks, entityMap },
-                new CompositeDecorator(decorators)
-              ),
-            [blocks, decorators, entityMap]
+          blockStyleFn={useAutoCallback((block) =>
+            `${blockStyleFn(block)} ${className}`.trim()
           )}
+          keyBindingFn={keyBindingFn}
+          spellChek={spellCheck}
+          customStyleMap={customStyleMap}
         />
-      </Item>
+      </EditorItem>
     </>
   );
-}
+});
 
 const RichText = styled(Draft)`
-  display: flex;
-  height: 100%;
-  align-items: ${({ verticalAlignment = 'start' }: RichTextFormat) =>
-    verticalAlignment};
-  justify-content: ${({ textAlignment = 'left' }: RichTextFormat) =>
-    textAlignment};
+  text-align: ${({ textAlignment = 'left' }: RichTextFormat) => textAlignment};
 `;
 
 export default RichText;

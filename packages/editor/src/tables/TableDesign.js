@@ -9,7 +9,7 @@ import {
   FormatAlignRight,
   FormatBold,
   FormatItalic,
-} from '../../material-ui-icons.macro';
+} from '../../mui-icons.macro';
 import {
   ActionIconButton,
   SidebarButtonGroup,
