@@ -12,7 +12,7 @@ import {
   ViewCompact as LayoutIcon,
   Description as PageIcon,
   Image as ImageIcon,
-} from '../../material-ui-icons.macro';
+} from '../../mui-icons.macro';
 
 import type { BlockType } from '@seine/core';
 import { blockTypes, chartTypes } from '@seine/core';

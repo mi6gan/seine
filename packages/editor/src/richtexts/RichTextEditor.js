@@ -13,8 +13,8 @@ import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 import {
   defaultDraftBody,
   defaultDraftFormat,
-  Item,
   RichTextStyle,
+  RichText,
 } from '@seine/content';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
@@ -22,11 +22,9 @@ type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   dispatch: Function,
 };
 
-const Container = styled(Item)`
-  cursor: text;
-  .public-DraftEditor-content {
-    display: flex;
-    align-items: ${({ verticalAlignment = 'start' }) => verticalAlignment};
+const StyledFrame = styled(Frame)`
+  .DraftEditor-root {
+    cursor: text;
   }
 `;
 
@@ -45,7 +43,6 @@ export default function RichTextEditor({
   blocks = defaultDraftBody.blocks,
   entityMap = defaultDraftBody.entityMap,
   textAlignment = defaultDraftFormat.textAlignment,
-  verticalAlignment = defaultDraftFormat.verticalAlignment,
   ...itemProps
 }: Props) {
   const { item } = useSelectedLayoutItems();
@@ -87,28 +84,22 @@ export default function RichTextEditor({
   return (
     <>
       <RichTextStyle />
-      <Frame
-        selected={selected}
-        as={Container}
-        id={id}
-        dispatch={dispatch}
-        verticalAlignment={verticalAlignment}
+      <RichText
         {...itemProps}
-      >
-        <Editor
-          editorKey={id}
-          textAlignment={textAlignment}
-          editorState={editorState}
-          ref={editorRef}
-          onChange={useAutoCallback((state) =>
-            dispatch({
-              type: UPDATE_BLOCK_EDITOR,
-              editor: { state },
-            })
-          )}
-          readOnly={!selected}
-        />
-      </Frame>
+        id={id}
+        ref={editorRef}
+        forwardedAs={StyledFrame}
+        selected={selected}
+        textAlignment={textAlignment}
+        editorState={editorState}
+        onChange={useAutoCallback((state) =>
+          dispatch({
+            type: UPDATE_BLOCK_EDITOR,
+            editor: { state },
+          })
+        )}
+        readOnly={!selected}
+      />
     </>
   );
 }

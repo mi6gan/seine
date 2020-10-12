@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Box, Checkbox } from '../../material-ui.macro';
+import { Box, Checkbox } from '../../mui-core.macro';
 import {
   SidebarGroup,
   SidebarInput,

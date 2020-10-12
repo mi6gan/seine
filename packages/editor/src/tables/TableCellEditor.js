@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Box } from '../../material-ui.macro';
+import { Box } from '../../mui-core.macro';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
 import type { BlockEditor } from '@seine/core';

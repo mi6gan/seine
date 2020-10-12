@@ -7,7 +7,7 @@ import {
   Dialog,
   DialogActions,
   DialogTitle,
-} from '../../material-ui.macro';
+} from '../../mui-core.macro';
 import { BlocksContext } from '../contexts';
 
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';

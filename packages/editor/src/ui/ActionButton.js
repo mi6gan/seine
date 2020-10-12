@@ -3,7 +3,7 @@ import uuid from 'uuid/v4';
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Button as MuiButton } from '../../material-ui.macro';
+import { Button as MuiButton } from '../../mui-core.macro';
 import { useBlocksDispatch } from '../contexts';
 
 import type { Action } from '@seine/core';
