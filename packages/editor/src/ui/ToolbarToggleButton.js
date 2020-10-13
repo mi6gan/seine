@@ -2,15 +2,16 @@
 import styled from 'styled-components/macro';
 import { ToggleButton } from '@material-ui/lab';
 
-import ToolbarButton from './ToolbarButton';
+import { IconButton } from '@seine/styles/mui-core.macro';
 
 const ToolbarToggleButton = styled(ToggleButton).attrs({
-  component: ToolbarButton,
+  component: IconButton,
+  disableRipple: true,
 })`
   &&& {
-    color: currentColor;
-    background-color: ${({ theme }) => theme.palette.action.active};
-    border-color: ${({ theme }) => theme.palette.grey.A100};
+    color: ${({ theme }) => theme.palette.text.hint};
+    background: none;
+    border: none;
     transition: ${({ theme }) =>
       theme.transitions.create(
         ['color', 'background-color', 'border-color', 'box-shadow'],
@@ -21,12 +22,13 @@ const ToolbarToggleButton = styled(ToggleButton).attrs({
       )}};
     transition: background-color 0.15s;
   }
-  &&&.Mui-selected {
-    color: currentColor;
-    background-color: ${({ theme }) => theme.palette.grey[200]};
+  &&&.Mui-selected,
+  &&&.Mui-selected:hover {
+    color: ${({ theme }) => theme.palette.text.primary};
   }
   &&&:hover {
-    background-color: ${({ theme }) => theme.palette.grey[300]};
+    background: none;
+    color: ${({ theme }) => theme.palette.text.secondary};
   }
 `;
 

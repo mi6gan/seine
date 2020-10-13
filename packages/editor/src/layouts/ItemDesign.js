@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
-import { ToggleButton } from '@material-ui/lab';
 
 import {
   SidebarGroup,
@@ -10,6 +9,7 @@ import {
   SidebarInput,
   SidebarLabel,
   SidebarSection,
+  ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
@@ -39,7 +39,9 @@ const PositionRightBottom = styled(PositionLeftTop)`
   transform: scale(-1);
 `;
 
-const PositionToggleButton = styled(ToggleButton)`
+const PositionToggleButton = styled(
+  React.forwardRef((props, ref) => <ToolbarToggleButton {...props} ref={ref} />)
+)`
   &&& {
     color: currentColor;
     border: none;
@@ -97,7 +99,7 @@ export default function ItemDesign() {
       <SidebarSection>
         <SidebarHeading>Constraints</SidebarHeading>
 
-        <SidebarGroup mb={2}>
+        <SidebarGroup alignItems={'baseline'} mb={0}>
           <SidebarLabel>width</SidebarLabel>
           <SidebarInput
             inputProps={{ placeholder: 'min' }}
@@ -125,7 +127,7 @@ export default function ItemDesign() {
           />
         </SidebarGroup>
 
-        <SidebarGroup mb={2}>
+        <SidebarGroup alignItems={'baseline'} mt={0}>
           <SidebarLabel>height</SidebarLabel>
           <SidebarInput
             inputProps={{ placeholder: 'min' }}
@@ -156,7 +158,7 @@ export default function ItemDesign() {
         <SidebarGroup>
           <SidebarLabel>position</SidebarLabel>
 
-          <Box display={'flex'} flexDirection={'column'}>
+          <Box display={'flex'} flexDirection={'column'} pl={1}>
             <ToolbarToggleButtonGroup
               value={position}
               onChange={togglePosition}

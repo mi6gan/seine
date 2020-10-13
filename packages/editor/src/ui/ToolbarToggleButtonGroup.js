@@ -8,6 +8,7 @@ const ToolbarToggleButtonGroup = styled(Box).attrs({
   component: ToggleButtonGroup,
   size: 'small',
   exclusive: true,
+  ml: -1,
 })``;
 
 export default ToolbarToggleButtonGroup;
