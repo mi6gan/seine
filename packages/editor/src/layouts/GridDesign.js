@@ -6,13 +6,11 @@ import {
   SidebarGroup,
   SidebarInput,
   SidebarLabel,
-  SidebarSelectLabel,
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
-import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {
   FormatAlignCenter,
   FormatAlignJustify,
@@ -21,7 +19,6 @@ import {
   VerticalAlignBottom,
   VerticalAlignCenter,
   VerticalAlignTop,
-  WrapText,
 } from '@seine/styles/mui-icons.macro';
 import {
   blockTypes,
@@ -33,7 +30,7 @@ import {
  * @description Layout design.
  * @returns {React.Node}
  */
-export default function GridDesign() {
+export default function FlexDesign() {
   const device = useBlocksSelector((state) => state.device);
   const layoutBlock = useBlocksSelector().find(
     ({ type }) => type === blockTypes.LAYOUT
@@ -45,7 +42,6 @@ export default function GridDesign() {
     justify = defaultFlexFormat.justify,
     alignItems = defaultFlexFormat.alignItems,
     direction = defaultFlexFormat.direction,
-    wrap = defaultFlexFormat.wrap,
   } = layoutBlock
     ? layoutBlock.format[device] || layoutBlock.format || defaultFlexFormat
     : defaultFlexFormat;
@@ -71,28 +67,6 @@ export default function GridDesign() {
       </SidebarGroup>
 
       <SidebarGroup>
-        <SidebarLabel>Direction</SidebarLabel>
-        <Select
-          value={direction}
-          onChange={useAutoCallback((event) =>
-            dispatch({
-              type: UPDATE_BLOCK_FORMAT,
-              format: {
-                direction: event.target.value,
-              },
-            })
-          )}
-        >
-          <MenuItem value={'row'}>
-            <SidebarSelectLabel>Row</SidebarSelectLabel>
-          </MenuItem>
-          <MenuItem value={'column'}>
-            <SidebarSelectLabel>Column</SidebarSelectLabel>
-          </MenuItem>
-        </Select>
-      </SidebarGroup>
-
-      <SidebarGroup>
         <SidebarLabel>Justify</SidebarLabel>
         <ToolbarToggleButtonGroup
           value={justify}
@@ -100,7 +74,7 @@ export default function GridDesign() {
             dispatch({ type: UPDATE_BLOCK_FORMAT, format: { justify } })
           )}
         >
-          <ToolbarToggleButton value={'flex-start'}>
+          <ToolbarToggleButton value={'start'}>
             <FormatAlignLeft {...iconProps} />
           </ToolbarToggleButton>
 
@@ -108,7 +82,7 @@ export default function GridDesign() {
             <FormatAlignCenter {...iconProps} />
           </ToolbarToggleButton>
 
-          <ToolbarToggleButton value={'flex-end'}>
+          <ToolbarToggleButton value={'end'}>
             <FormatAlignRight {...iconProps} />
           </ToolbarToggleButton>
 
@@ -126,7 +100,7 @@ export default function GridDesign() {
             dispatch({ type: UPDATE_BLOCK_FORMAT, format: { alignItems } })
           )}
         >
-          <ToolbarToggleButton value={'flex-start'}>
+          <ToolbarToggleButton value={'start'}>
             <VerticalAlignTop {...iconProps} />
           </ToolbarToggleButton>
 
@@ -134,28 +108,8 @@ export default function GridDesign() {
             <VerticalAlignCenter {...iconProps} />
           </ToolbarToggleButton>
 
-          <ToolbarToggleButton value={'flex-end'}>
+          <ToolbarToggleButton value={'end'}>
             <VerticalAlignBottom {...iconProps} />
-          </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
-      </SidebarGroup>
-
-      <SidebarGroup>
-        <SidebarLabel shrink>Wrap</SidebarLabel>
-        <ToolbarToggleButtonGroup
-          value={alignItems}
-          onChange={useAutoCallback((event, wrap) =>
-            dispatch({
-              type: UPDATE_BLOCK_FORMAT,
-              format: { wrap },
-            })
-          )}
-        >
-          <ToolbarToggleButton
-            selected={wrap === 'wrap'}
-            value={wrap === 'wrap' ? 'nowrap' : 'wrap'}
-          >
-            <WrapText />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>

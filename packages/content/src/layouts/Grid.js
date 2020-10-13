@@ -14,6 +14,8 @@ export const defaultGridColumns = 'repeat(auto-fit, minmax(150px, 1fr))';
 export const defaultGridColumnGap = 25;
 export const defaultGridRowGap = 12;
 export const defaultGridRows = '';
+export const defaultGridJustify = 'auto';
+export const defaultGridAlignItems = 'auto';
 
 /**
  * @description Grid container content component.
@@ -27,7 +29,11 @@ export default styled(Item)`
     columnGap = defaultGridColumnGap,
     rows = defaultGridRows,
     rowGap = defaultGridRowGap,
+    justify = defaultGridJustify,
+    alignItems = defaultGridAlignItems,
   }: Props) => css`
+    justify-content: ${justify};
+    align-items: ${alignItems};
     grid-template-columns: ${columns};
     grid-template-rows: ${rows};
     grid-row-gap: ${Number.isFinite(rowGap) ? `${rowGap}px` : rowGap};
