@@ -2213,6 +2213,8 @@ __metadata:
     "@devexpress/dx-chart-core": <=2.7.1
     "@devexpress/dx-react-chart": <=2.7.1
     "@devexpress/dx-react-core": <=2.7.1
+    "@material-ui/core": ^4.9
+    "@material-ui/icons": ^4.9
     d3-interpolate: 1.4
     draft-js: ^0.11.0
     react: ^16.10.2
