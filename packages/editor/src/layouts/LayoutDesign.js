@@ -11,7 +11,7 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
-import { FlexDesign, useSelectedLayoutItems } from '.';
+import { FlexDesign, GridDesign, useSelectedLayoutItems } from '.';
 
 import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {
@@ -60,6 +60,7 @@ export default function LayoutDesign() {
         </SidebarGroup>
 
         {kind === layoutTypes.FLEX && <FlexDesign />}
+        {kind === layoutTypes.GRID && <GridDesign />}
       </SidebarSection>
     </>
   );

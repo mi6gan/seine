@@ -14,28 +14,31 @@ const Item = styled.div.attrs((format: ItemFormat) => ({
   ${({ maxWidth, minWidth }) => ({
     minWidth,
     maxWidth,
-  })}
+  })};
 
   ${({ maxHeight, minHeight }) => ({
     minHeight,
     maxHeight,
-  })}
+  })};
 
-  ${({ layout, alignSelf }) =>
-    (layout === 'flex' || layout === 'grid') && { alignSelf }}}
+  ${({ layout, alignSelf, justifySelf }) =>
+    (layout === 'flex' || layout === 'grid') && {
+      alignSelf,
+      justifySelf,
+    }}};
 
   ${({ layout, flexGrow, flexBasis, flexShrink }) =>
     layout === 'flex' && {
       flexGrow,
       flexBasis,
       flexShrink,
-    }}
+    }};
 
   ${({ layout, gridRow, gridColumn }) =>
     layout === 'grid' && {
       gridRow,
       gridColumn,
-    }}
+    }};
 `;
 
 export default Item;
