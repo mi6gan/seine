@@ -1,14 +1,22 @@
 // @flow
 import styled from 'styled-components/macro';
 
-import { Box } from '../../mui-core.macro';
+import { Box } from '@seine/styles/mui-core.macro';
 
 const SidebarGroup = styled(Box).attrs(
-  ({ alignItems = 'flex-end', ml = 1, my = 1, display = 'flex' }) => ({
+  ({
+    alignItems = 'center',
+    my = 1,
+    mt = my,
+    mb = my,
+    ml = 1,
+    display = 'flex',
+  }) => ({
     display,
     alignItems,
     ml,
-    my,
+    mt,
+    mb,
   })
 )``;
 

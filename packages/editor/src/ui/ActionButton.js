@@ -3,9 +3,9 @@ import uuid from 'uuid/v4';
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Button as MuiButton } from '../../mui-core.macro';
 import { useBlocksDispatch } from '../contexts';
 
+import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 import type { Action } from '@seine/core';
 import {
   CREATE_BLOCK,

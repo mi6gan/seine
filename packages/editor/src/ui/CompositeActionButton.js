@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Button as MuiButton } from '../../mui-core.macro';
+import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 
 type Action = { type: string, [string]: any };
 

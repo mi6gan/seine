@@ -4,13 +4,6 @@ import styled from 'styled-components/macro';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
 import {
-  FormatAlignCenter,
-  FormatAlignLeft,
-  FormatAlignRight,
-  FormatBold,
-  FormatItalic,
-} from '../../mui-icons.macro';
-import {
   ActionIconButton,
   SidebarButtonGroup,
   SidebarGroup,
@@ -31,6 +24,13 @@ import TableRowPlusAfterIcon from './TableRowPlusAfterIcon';
 import TableRowPlusBeforeIcon from './TableRowPlusBeforeIcon';
 import TableRowRemoveIcon from './TableRowRemoveIcon';
 
+import {
+  FormatAlignCenter,
+  FormatAlignLeft,
+  FormatAlignRight,
+  FormatBold,
+  FormatItalic,
+} from '@seine/styles/mui-icons.macro';
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import { blockTypes, defaultItemFormat, UPDATE_BLOCK_BODY } from '@seine/core';
 
@@ -102,7 +102,7 @@ export default function TableDesign() {
     <>
       <SidebarSection {...(columnIndex === -1 && { display: 'none' })}>
         <SidebarHeading>Table</SidebarHeading>
-        <SidebarGroup alignItems={'center'}>
+        <SidebarGroup>
           <SidebarLabel>structure</SidebarLabel>
           <SidebarButtonGroup>
             <StructureActionButton
@@ -234,7 +234,7 @@ export default function TableDesign() {
           </SidebarButtonGroup>
         </SidebarGroup>
 
-        <SidebarGroup alignItems={'center'}>
+        <SidebarGroup>
           <SidebarLabel>style</SidebarLabel>
           <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
             {rowIndex > -1 && (
@@ -252,7 +252,7 @@ export default function TableDesign() {
           </ToolbarToggleButtonGroup>
         </SidebarGroup>
 
-        <SidebarGroup alignItems={'center'}>
+        <SidebarGroup>
           <SidebarLabel>alignment</SidebarLabel>
 
           <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
@@ -273,7 +273,7 @@ export default function TableDesign() {
           </ToolbarToggleButtonGroup>
         </SidebarGroup>
 
-        <SidebarGroup alignItems={'center'}>
+        <SidebarGroup>
           <SidebarLabel>column %</SidebarLabel>
           <SidebarInput
             disabled={layout === blockTypes.FLEX}
@@ -303,7 +303,7 @@ export default function TableDesign() {
         {...((columnIndex > -1 || rowIndex > -1) && { display: 'none' })}
       >
         <SidebarHeading>Table</SidebarHeading>
-        <SidebarGroup alignItems={'center'}>
+        <SidebarGroup>
           <SidebarLabel>alignment</SidebarLabel>
           <ToolbarToggleButtonGroup
             value={textAlignment}

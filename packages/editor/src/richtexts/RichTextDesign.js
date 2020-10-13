@@ -5,17 +5,6 @@ import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import {
-  FormatAlignCenter,
-  FormatAlignLeft,
-  FormatAlignRight,
-  FormatBold,
-  FormatItalic,
-  FormatListBulleted,
-  FormatListNumbered,
-  FormatUnderlined,
-} from '../../mui-icons.macro';
-import { SvgIcon } from '../../mui-core.macro';
-import {
   SidebarHeading,
   SidebarSection,
   ToolbarToggleButtonGroup,
@@ -27,6 +16,17 @@ import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
 import { defaultDraftEditor } from './RichTextEditor';
 
+import { SvgIcon } from '@seine/styles/mui-core.macro';
+import {
+  FormatAlignCenter,
+  FormatAlignLeft,
+  FormatAlignRight,
+  FormatBold,
+  FormatItalic,
+  FormatListBulleted,
+  FormatListNumbered,
+  FormatUnderlined,
+} from '@seine/styles/mui-icons.macro';
 import {
   blockTypes,
   UPDATE_BLOCK_EDITOR,
@@ -78,7 +78,7 @@ export default function RichTextDesign() {
   return (
     <SidebarSection>
       <SidebarHeading>Rich text</SidebarHeading>
-      <SidebarGroup alignItems={'center'}>
+      <SidebarGroup>
         <SidebarLabel>heading</SidebarLabel>
         <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
           <ToolbarToggleButton value={'header-one'}>
@@ -117,7 +117,7 @@ export default function RichTextDesign() {
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
 
-      <SidebarGroup alignItems={'center'}>
+      <SidebarGroup>
         <SidebarLabel>list</SidebarLabel>
         <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
           <ToolbarToggleButton value={'ordered-list-item'}>
@@ -130,7 +130,7 @@ export default function RichTextDesign() {
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
 
-      <SidebarGroup alignItems={'center'}>
+      <SidebarGroup>
         <SidebarLabel>style</SidebarLabel>
         <ToolbarToggleButtonGroup
           value={useAutoMemo(

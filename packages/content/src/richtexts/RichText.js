@@ -3,7 +3,6 @@ import { useAutoMemo, useAutoCallback } from 'hooks.macro';
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import {
-  CompositeDecorator,
   DefaultDraftBlockRenderMap,
   DefaultDraftInlineStyle,
   Editor,
@@ -18,7 +17,6 @@ import RichTextStyle from './RichTextStyle';
 import type { RichTextBody, RichTextFormat } from '@seine/core';
 
 export type Props = (RichTextBody & RichTextFormat) & {
-  decorators?: CompositeDecorator[],
   className: string,
 };
 

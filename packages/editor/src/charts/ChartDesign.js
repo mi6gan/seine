@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Box, Checkbox } from '../../mui-core.macro';
 import {
   SidebarGroup,
   SidebarInput,
@@ -17,6 +16,7 @@ import ChartStructureGroup from './ChartStructureGroup';
 import ChartElementColorButton from './ChartElementColorButton';
 import useChartBlock from './useChartBlock';
 
+import { Box, Checkbox } from '@seine/styles/mui-core.macro';
 import { UPDATE_BLOCK_FORMAT, chartTypes } from '@seine/core';
 
 /**
@@ -103,7 +103,7 @@ export default function ChartDesign() {
 
         <ChartPaletteSelect />
 
-        <SidebarGroup alignItems={'center'}>
+        <SidebarGroup>
           <SidebarLabel>legend</SidebarLabel>
           <Checkbox
             checked={!!legend}

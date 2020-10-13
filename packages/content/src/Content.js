@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
-import { useAutoMemo } from 'hooks.macro';
+import { useAutoMemo, useAutoEffect } from 'hooks.macro';
 
 import defaultBlockRenderMap from './blockRenderMap';
 
 import type { Block } from '@seine/core';
-import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
+import { ResizeObserverProvider, ThemeProvider, useTheme } from '@seine/styles';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
@@ -23,10 +23,33 @@ function Content({
   blockRenderMap = defaultBlockRenderMap,
   children,
   parent,
-  device = 'any',
+  device: initialDevice = 'auto',
   as: Container = parent['parent_id'] ? React.Fragment : Provider,
   ...containerProps
 }: Props): React.Node {
+  const theme = useTheme();
+  const mql = useAutoMemo(
+    initialDevice === 'auto' &&
+      window.matchMedia(theme.breakpoints.up('md').replace('@media ', ''))
+  );
+  const [screenDevice, setScreenDevice] = React.useState('any');
+
+  const device = initialDevice === 'auto' ? screenDevice : initialDevice;
+
+  useAutoEffect(() => {
+    if (mql) {
+      const handler = () => {
+        setScreenDevice(mql.matches ? 'any' : 'mobile');
+      };
+
+      mql.addEventListener('change', handler);
+
+      return () => {
+        mql.removeEventListener('change', handler);
+      };
+    }
+  });
+
   return (
     <Container {...containerProps}>
       {children

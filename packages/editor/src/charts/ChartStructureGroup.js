@@ -3,19 +3,19 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
-import {
-  Add,
-  ControlPoint,
-  DeleteOutlined,
-  HighlightOff,
-} from '../../mui-icons.macro';
-import { Button } from '../../mui-core.macro';
 import { SidebarGroup, ActionButton, CompositeActionButton } from '../ui';
 import { useBlocksDispatch } from '../contexts';
 
 import useChartBlock from './useChartBlock';
 import useElementSelector from './useElementSelector';
 
+import { Button } from '@seine/styles/mui-core.macro';
+import {
+  Add,
+  ControlPoint,
+  DeleteOutlined,
+  HighlightOff,
+} from '@seine/styles/mui-icons.macro';
 import { groupElements, titleIdentityElements } from '@seine/content';
 import {
   chartTypes,

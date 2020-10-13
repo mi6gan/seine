@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components/macro';
 
-import { Box, Input } from '../../mui-core.macro';
+import { Box, Input } from '@seine/styles/mui-core.macro';
 
 const SidebarInput = styled(Box).attrs(({ width = '3rem', mr = 1 }) => ({
   component: Input,

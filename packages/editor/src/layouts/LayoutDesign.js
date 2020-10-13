@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { MenuItem, Select } from '../../mui-core.macro';
 import {
   SidebarSelectLabel,
   SidebarGroup,
@@ -12,10 +11,10 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../contexts';
 
-import { FlexDesign } from '.';
+import { FlexDesign, useSelectedLayoutItems } from '.';
 
+import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {
-  blockTypes,
   defaultLayoutFormat,
   layoutTypes,
   UPDATE_BLOCK_FORMAT,
@@ -26,10 +25,8 @@ import {
  * @returns {React.Node}
  */
 export default function LayoutDesign() {
+  const { layout: layoutBlock } = useSelectedLayoutItems();
   const device = useBlocksSelector((state) => state.device);
-  const layoutBlock = useBlocksSelector().find(
-    ({ type }) => type === blockTypes.LAYOUT
-  );
   const id = layoutBlock && layoutBlock.id;
   const { kind = defaultLayoutFormat.kind } =
     layoutBlock && layoutBlock.format
@@ -41,7 +38,7 @@ export default function LayoutDesign() {
       <SidebarSection>
         <SidebarHeading>Layout</SidebarHeading>
 
-        <SidebarGroup alignItems={'center'}>
+        <SidebarGroup>
           <SidebarLabel>type</SidebarLabel>
           <Select
             value={kind}

@@ -6,9 +6,11 @@ import { useAutoEffect } from 'hooks.macro';
 import defaultTheme from './defaultTheme';
 import useTheme from './useTheme';
 
+import type { Theme } from '@seine/styles/mui-core.macro.d';
+
 type Props = {
   children: React.Node,
-  theme?: any,
+  theme?: Theme,
 };
 
 /**
@@ -22,7 +24,6 @@ export default function ThemeProvider({
 }: Props) {
   const currentTheme = useTheme();
   const [ready, setReady] = React.useState(false);
-
   useAutoEffect(() => {
     if (!currentTheme) {
       let cancelled = false;
@@ -42,6 +43,7 @@ export default function ThemeProvider({
       };
     }
   });
+
   return currentTheme ? (
     children
   ) : (

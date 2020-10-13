@@ -2,7 +2,6 @@
 import {
   EditorState,
   ContentState,
-  CompositeDecorator,
   convertFromHTML,
   convertFromRaw,
   convertToRaw,
@@ -11,14 +10,13 @@ import {
 /**
  * @description Transform a value to editor state of draft-js.
  * @param {any} value
- * @param {CompositeDecorator} decorator
  * @returns {EditorState}
  */
-export function toDraftEditor(value: any, decorator?: CompositeDecorator) {
+export function toDraftEditor(value: any) {
   if (value && value instanceof EditorState) {
     return value;
   }
-  return EditorState.createWithContent(toDraftContent(value), decorator);
+  return EditorState.createWithContent(toDraftContent(value));
 }
 
 /**

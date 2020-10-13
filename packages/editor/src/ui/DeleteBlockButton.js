@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { Button as MuiButton } from '../../mui-core.macro';
 import { BlocksContext } from '../contexts';
 import { useSelectedLayoutItems } from '../layouts';
 
+import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 
 // eslint-disable-next-line

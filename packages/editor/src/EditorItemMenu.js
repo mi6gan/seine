@@ -3,8 +3,6 @@ import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { Box, MenuItem } from '../mui-core.macro';
-
 import {
   ClipboardContext,
   useBlocksDispatch,
@@ -13,6 +11,7 @@ import {
 import { selectionSelector } from './selectors';
 import { ToolbarMenu, CreateLayoutButton, DeleteBlockButton } from './ui';
 
+import { Box, MenuItem } from '@seine/styles/mui-core.macro';
 import type { Block } from '@seine/core';
 import {
   blockTypes,

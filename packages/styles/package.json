@@ -2,17 +2,24 @@
   "name": "@seine/styles",
   "main": "./index.cjs.js",
   "module": "./index.es.js",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "description": "Seine styles library.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
+    "@babel/helper-module-imports": "^7.10.4",
+    "babel-plugin-macros": "^2.6.1",
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
+    "@material-ui/core": "^4.9",
+    "@material-ui/icons": "^4.9",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "@seine/styles": "workspace:*"
   }
 }
