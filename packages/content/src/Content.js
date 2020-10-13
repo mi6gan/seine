@@ -32,12 +32,14 @@ function Content({
     initialDevice === 'auto' &&
       window.matchMedia(theme.breakpoints.up('md').replace('@media ', ''))
   );
-  const [device, setDevice] = React.useState(initialDevice);
+  const [screenDevice, setScreenDevice] = React.useState('any');
+
+  const device = initialDevice === 'auto' ? screenDevice : initialDevice;
 
   useAutoEffect(() => {
     if (mql) {
       const handler = () => {
-        setDevice(mql.matches ? 'any' : 'mobile');
+        setScreenDevice(mql.matches ? 'any' : 'mobile');
       };
 
       mql.addEventListener('change', handler);
