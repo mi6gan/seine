@@ -2207,7 +2207,6 @@ __metadata:
     react-color.macro: ^1.0.186
     rollup-plugin-pnp-resolve: ^2.0.0
     svg-patterns: ^1.0.0
-    uuid: ^3.4.0
     virtual-dom-stringify: ^3.0.1
   peerDependencies:
     "@devexpress/dx-chart-core": <=2.7.1
