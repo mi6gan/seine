@@ -133,18 +133,17 @@ export default function EditorItemMenu() {
     replace: clipboardReplace,
     ...clipboard
   } = React.useContext(ClipboardContext);
-  const selected = useBlocksSelector(selectionSelector);
-  const [block = null, ...nextBlocks]: [Block] = useBlocksSelector(
+  const selectionBlocks: [Block] = useBlocksSelector(
     useAutoCallback(({ blocks, selection }) =>
       blocks.filter(({ id }) => selection.includes(id))
     )
   );
   const { isOpen, close, anchorEl } = React.useContext(ItemMenuContext);
 
-  const isContainer =
-    block &&
-    nextBlocks.length === 0 &&
-    (block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE);
+  const isContainer = selectionBlocks.every(
+    (block) =>
+      block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE
+  );
 
   return (
     <ToolbarMenu
@@ -158,27 +157,36 @@ export default function EditorItemMenu() {
     >
       <CreateLayoutButton
         as={MenuButton}
-        disabled={isContainer}
+        disabled={
+          selectionBlocks.length < 2 ||
+          selectionBlocks.some(
+            (nextBlock) =>
+              nextBlock['parent_id'] !== selectionBlocks[0]['parent_id']
+          )
+        }
         onClick={close}
         {...(isContainer && { display: 'none' })}
       >
         Create layout
       </CreateLayoutButton>
-      <MenuButton disabled={!selected.length === 0} onClick={useCopyCallback()}>
+
+      <MenuButton
+        disabled={selectionBlocks.length === 0}
+        onClick={useCopyCallback()}
+      >
         Copy
       </MenuButton>
 
       <MenuButton
-        disabled={isContainer}
+        disabled={selectionBlocks.length === 0}
         onClick={useCutCallback()}
-        {...(isContainer && { display: 'none' })}
       >
         Cut
       </MenuButton>
 
       <MenuButton
         disabled={
-          selected.length !== 1 ||
+          selectionBlocks.length !== 1 ||
           !isContainer ||
           clipboard.type !== CREATE_BLOCK
         }
