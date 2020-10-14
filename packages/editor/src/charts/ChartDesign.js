@@ -9,7 +9,7 @@ import {
   SidebarLabel,
   SidebarSection,
 } from '../ui';
-import { useBlocksDispatch } from '../contexts';
+import { useBlocksDispatch } from '../blocks';
 
 import ChartPaletteSelect from './ChartPaletteSelect';
 import ChartStructureGroup from './ChartStructureGroup';

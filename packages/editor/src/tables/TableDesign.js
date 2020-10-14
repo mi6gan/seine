@@ -4,7 +4,6 @@ import styled from 'styled-components/macro';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
 import {
-  ActionIconButton,
   SidebarButtonGroup,
   SidebarGroup,
   SidebarHeading,
@@ -14,7 +13,11 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+import {
+  BlocksActionIconButton,
+  useBlocksDispatch,
+  useBlocksSelector,
+} from '../blocks';
 
 import { defaultTableEditor } from './constants';
 import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
@@ -34,7 +37,7 @@ import {
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import { blockTypes, defaultItemFormat, UPDATE_BLOCK_BODY } from '@seine/core';
 
-const StructureActionButton = styled(ActionIconButton).attrs({
+const StructureActionButton = styled(BlocksActionIconButton).attrs({
   borderColor: 'transparent',
   variant: 'outlined',
   size: 'small',

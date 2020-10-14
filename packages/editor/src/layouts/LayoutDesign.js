@@ -9,7 +9,7 @@ import {
   SidebarLabel,
   SidebarSection,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+import { useBlocksDispatch, useBlocksSelector } from '../blocks';
 
 import { FlexDesign, GridDesign, useSelectedLayoutItems } from '.';
 

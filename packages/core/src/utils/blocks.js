@@ -37,6 +37,15 @@ export function createBlock(
 }
 
 /**
+ * @description Create clone of a block.
+ * @param {Block} block
+ * @returns {Block}
+ */
+export function cloneBlock(block: Block): Block {
+  return { ...block, id: uuid() };
+}
+
+/**
  * @description Create blocks from tree.
  * @param {Block} parent
  * @param {BlocksTree[]} tree

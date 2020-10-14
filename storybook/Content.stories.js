@@ -339,11 +339,11 @@ export const NestedFlex = ({ children = [], ...props }) => (
         format: {
           verticalAlignment: 'center',
         },
-        parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78-2',
+        parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78',
       },
       {
         id: 'table',
-        parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78-3',
+        parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78',
         type: 'table',
         body: {
           title: 'Table title',

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { BlocksContext } from '../contexts';
+import { BlocksContext } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
 
 import { Button as MuiButton } from '@seine/styles/mui-core.macro';

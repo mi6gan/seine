@@ -10,7 +10,7 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+import { useBlocksDispatch, useBlocksSelector } from '../blocks';
 
 import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {

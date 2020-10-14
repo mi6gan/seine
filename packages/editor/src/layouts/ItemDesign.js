@@ -13,7 +13,7 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+import { useBlocksDispatch, useBlocksSelector } from '../blocks';
 
 import { useSelectedLayoutItems } from '.';
 
