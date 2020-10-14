@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { BlocksContext, useBlocksBuffer, useBlocksDispatch } from '../contexts';
+import { BlocksContext, useBlocksBuffer, useBlocksDispatch } from '../blocks';
 
 import type { Block, BlockEditor } from '@seine/core';
 import { CREATE_BLOCK, SELECT_BLOCK } from '@seine/core';

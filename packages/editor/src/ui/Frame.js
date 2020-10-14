@@ -7,7 +7,7 @@ import {
   useBlocksBuffer,
   useBlocksDispatch,
   useBlocksSelector,
-} from '../contexts';
+} from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
 
 import { SELECT_BLOCK } from '@seine/core';

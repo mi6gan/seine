@@ -1,8 +1,5 @@
 // @flow
-export { default as ActionButton } from './ActionButton';
-export { default as ActionIconButton } from './ActionIconButton';
 export { default as BlockTypeIcon } from './BlockTypeIcon';
-export { default as CompositeActionButton } from './CompositeActionButton';
 export { default as CreateLayoutButton } from './CreateLayoutButton';
 export { default as DeleteBlockButton } from './DeleteBlockButton';
 export { default as DeleteConfirmationDialog } from './DeleteConfirmationDialog';

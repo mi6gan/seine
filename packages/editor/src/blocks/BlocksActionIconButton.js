@@ -1,16 +1,17 @@
 // @flow
 import * as React from 'react';
 
-import ToolbarButton from './ToolbarButton';
-import ActionButton from './ActionButton';
+import ToolbarButton from '../ui/ToolbarButton';
+
+import BlocksActionButton from './BlocksActionButton';
 
 import { blockTypes, CREATE_BLOCK } from '@seine/core';
 
 // eslint-disable-next-line
-export default function ActionIconButton({ Icon, ...action }) {
+export default function BlocksActionIconButton({ Icon, ...action }) {
   return (
     <ToolbarButton
-      as={ActionButton}
+      as={BlocksActionButton}
       title={
         action.type === CREATE_BLOCK
           ? `Add ${

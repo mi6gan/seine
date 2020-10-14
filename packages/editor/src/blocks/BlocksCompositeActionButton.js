@@ -16,7 +16,7 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function CompositeActionButton({
+export default function BlocksCompositeActionButton({
   actions,
   as: Button = MuiButton,
   dispatch,

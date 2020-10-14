@@ -9,7 +9,7 @@ import {
   SidebarSection,
   SidebarHeading,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+import { useBlocksDispatch, useBlocksSelector } from '../blocks';
 
 import { Box, IconButton, InputAdornment } from '@seine/styles/mui-core.macro';
 import { CloudUpload } from '@seine/styles/mui-icons.macro';

@@ -7,11 +7,16 @@ type ClipboardEntry = Block;
 
 export type Clipboard = ClipboardEntry & {
   replace: (ClipboardEntry) => void,
+  push: (ClipboardEntry) => any,
+  pop: () => ClipboardEntry,
+  toJSON: () => null | ClipboardEntry,
 };
 
 export const defaultClipboard = {
-  entry: null,
   replace: () => void 0,
+  push: () => void 0,
+  pop: () => void 0,
+  toJSON: () => null,
 };
 
 const ClipboardContext = React.createContext<Clipboard>(defaultClipboard);

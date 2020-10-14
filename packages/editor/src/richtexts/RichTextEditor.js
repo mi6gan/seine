@@ -5,7 +5,7 @@ import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
 import styled from 'styled-components/macro';
 
 import { Frame } from '../ui';
-import { useBlocksDispatch } from '../contexts';
+import { useBlocksDispatch } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
 
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';

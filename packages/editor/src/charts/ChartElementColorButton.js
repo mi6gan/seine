@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components/macro';
 import SketchPicker from 'react-color/lib/Sketch';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
-import { useBlocksDispatch } from '../contexts';
+import { useBlocksDispatch } from '../blocks';
 import { SidebarGroup, SidebarLabel } from '../ui';
 
 import useChartBlock from './useChartBlock';

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
 import { Frame, InlineInput } from '../ui';
-import { useBlocksDispatch } from '../contexts';
+import { useBlocksDispatch } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
 
 import { defaultTableEditor } from './constants';

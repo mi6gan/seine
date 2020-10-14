@@ -1,7 +1,7 @@
 // @flow
 import { useAutoCallback } from 'hooks.macro';
 
-import { useBlocksDispatch, defaultBlocksSelector } from '../contexts';
+import { useBlocksDispatch, defaultBlocksSelector } from '../blocks';
 
 import useChartBlock from './useChartBlock';
 

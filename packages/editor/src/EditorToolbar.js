@@ -4,15 +4,13 @@ import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import { ItemMenuContext } from './EditorItemMenu';
-import { deviceSelector } from './selectors';
-import { useBlocksDispatch, useBlocksSelector } from './contexts';
 import {
-  ActionButton,
-  Toolbar,
-  BlockTypeIcon,
-  ToolbarButton,
-  ToolbarSeparator,
-} from './ui';
+  deviceSelector,
+  BlocksActionButton,
+  useBlocksDispatch,
+  useBlocksSelector,
+} from './blocks';
+import { Toolbar, BlockTypeIcon, ToolbarButton, ToolbarSeparator } from './ui';
 
 import { Box, MenuItem, Select } from '@seine/styles/mui-core.macro';
 import type { BoxProps } from '@seine/styles/mui-core.macro.d';
@@ -73,7 +71,7 @@ export default function EditorToolbar(boxProps: Props) {
         <ToolbarSeparator />
 
         <ToolbarButton
-          as={ActionButton}
+          as={BlocksActionButton}
           disabled={!isContainer}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -89,7 +87,7 @@ export default function EditorToolbar(boxProps: Props) {
         <ToolbarSeparator />
 
         <ToolbarButton
-          as={ActionButton}
+          as={BlocksActionButton}
           disabled={!isContainer}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -116,7 +114,7 @@ export default function EditorToolbar(boxProps: Props) {
         <ToolbarSeparator />
 
         <ToolbarButton
-          as={ActionButton}
+          as={BlocksActionButton}
           disabled={!isContainer}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -146,7 +144,7 @@ export default function EditorToolbar(boxProps: Props) {
         </ToolbarButton>
 
         <ToolbarButton
-          as={ActionButton}
+          as={BlocksActionButton}
           disabled={!isContainer}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -188,7 +186,7 @@ export default function EditorToolbar(boxProps: Props) {
         </ToolbarButton>
 
         <ToolbarButton
-          as={ActionButton}
+          as={BlocksActionButton}
           disabled={!isContainer}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -230,7 +228,7 @@ export default function EditorToolbar(boxProps: Props) {
         </ToolbarButton>
 
         <ToolbarButton
-          as={ActionButton}
+          as={BlocksActionButton}
           disabled={!isContainer}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -260,7 +258,7 @@ export default function EditorToolbar(boxProps: Props) {
         </ToolbarButton>
 
         <ToolbarButton
-          as={ActionButton}
+          as={BlocksActionButton}
           disabled={!isContainer}
           type={CREATE_BLOCK}
           block={useAutoMemo(

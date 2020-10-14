@@ -1,7 +1,7 @@
 // @flow
 import { useAutoMemo } from 'hooks.macro';
 
-import { useBlocksSelector, defaultBlocksSelector } from '../contexts';
+import { useBlocksSelector, defaultBlocksSelector } from '../blocks';
 
 import { defaultChartEditor } from '.';
 

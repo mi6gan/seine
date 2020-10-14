@@ -4,10 +4,9 @@ import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import EditorItemMenu, { ItemMenuProvider } from './EditorItemMenu';
-import EditorTree from './EditorTree';
 import EditorDesign from './EditorDesign';
 import EditorToolbar from './EditorToolbar';
-import { allBlocksSelector, deviceSelector } from './selectors';
+import EditorTree from './EditorTree';
 import defaultTheme from './defaultTheme';
 import {
   DeleteConfirmationDialog,
@@ -19,11 +18,13 @@ import {
 } from './ui';
 import defaultBlockRenderMap from './blockRenderMap';
 import {
+  allBlocksSelector,
+  deviceSelector,
   BlocksProvider,
-  ClipboardProvider,
   useBlocksDispatch,
   useBlocksSelector,
-} from './contexts';
+} from './blocks';
+import { ClipboardProvider } from './clipboard';
 
 import { Box, Paper } from '@seine/styles/mui-core.macro';
 import type { Block, BlockType } from '@seine/core';

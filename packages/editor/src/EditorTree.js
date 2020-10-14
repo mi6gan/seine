@@ -5,7 +5,11 @@ import { useAutoCallback } from 'hooks.macro';
 import { TreeItem, TreeView } from '@material-ui/lab';
 
 import { ItemMenuContext } from './EditorItemMenu';
-import { useBlocksDispatch, useBlocksSelector } from './contexts';
+import {
+  useBlocksDispatch,
+  useBlocksSelector,
+  selectionSelector,
+} from './blocks';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 
 import { Box } from '@seine/styles/mui-core.macro';
@@ -24,7 +28,7 @@ const isExpandEvent = (event) => {
 
 const DefaultTreeView = styled(({ children, ...viewProps }) => {
   const dispatch = useBlocksDispatch();
-  const selection = useBlocksSelector((state) => state.selection);
+  const selection = useBlocksSelector(selectionSelector);
   const [expanded, setExpanded] = React.useState(
     useBlocksSelector(
       useAutoCallback((state) => state.blocks.map(({ id }) => id))
@@ -80,9 +84,13 @@ function EditorTree({
   ...treeProps
 }: Props) {
   const dispatch = useBlocksDispatch();
+  const selection = useBlocksSelector(selectionSelector);
   const itemMenu = React.useContext(ItemMenuContext);
   const openItemMenu = useAutoCallback((event) => {
-    dispatch({ type: SELECT_BLOCK, id: event.currentTarget.dataset.id });
+    const { id } = event.currentTarget.dataset;
+    if (!selection.includes(id)) {
+      dispatch({ type: SELECT_BLOCK, id });
+    }
     event.preventDefault();
     itemMenu.open(event.currentTarget);
   });

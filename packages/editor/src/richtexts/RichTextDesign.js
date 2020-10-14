@@ -12,7 +12,7 @@ import {
   SidebarGroup,
   SidebarLabel,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../contexts';
+import { useBlocksDispatch, useBlocksSelector } from '../blocks';
 
 import { defaultDraftEditor } from './RichTextEditor';
 

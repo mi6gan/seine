@@ -3,8 +3,12 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
-import { SidebarGroup, ActionButton, CompositeActionButton } from '../ui';
-import { useBlocksDispatch } from '../contexts';
+import {
+  BlocksActionButton,
+  useBlocksDispatch,
+  BlocksCompositeActionButton,
+  SidebarGroup,
+} from '..';
 
 import useChartBlock from './useChartBlock';
 import useElementSelector from './useElementSelector';
@@ -48,7 +52,7 @@ export default function ChartStructureGroup() {
   const [[, { length: count }]] = groupElements(elements);
   return (
     <SidebarGroup alignItems={'flex-start'}>
-      <ActionButton
+      <BlocksActionButton
         as={StyledButton}
         id={id}
         dispatch={dispatch}
@@ -76,13 +80,13 @@ export default function ChartStructureGroup() {
         variant={'text'}
       >
         <Add />
-      </ActionButton>
+      </BlocksActionButton>
       {useAutoMemo(() => {
         if (kind === chartTypes.LINE || kind === chartTypes.COLUMN) {
           const { length: groupsCount } = groupElements(elements);
           return (
             <>
-              <ActionButton
+              <BlocksActionButton
                 as={StyledButton}
                 id={id}
                 title={kind === chartTypes.LINE ? 'Add point' : 'Add group'}
@@ -106,9 +110,9 @@ export default function ChartStructureGroup() {
                 variant={'text'}
               >
                 <ControlPoint />
-              </ActionButton>
+              </BlocksActionButton>
               {element && kind === chartTypes.COLUMN && (
-                <ActionButton
+                <BlocksActionButton
                   as={StyledButton}
                   id={id}
                   title={'Remove group'}
@@ -123,14 +127,14 @@ export default function ChartStructureGroup() {
                   variant={'text'}
                 >
                   <HighlightOff />
-                </ActionButton>
+                </BlocksActionButton>
               )}
             </>
           );
         }
         return null;
       })}
-      <CompositeActionButton
+      <BlocksCompositeActionButton
         as={StyledButton}
         disabled={selection === -1 || count <= 1}
         dispatch={dispatch}
@@ -162,7 +166,7 @@ export default function ChartStructureGroup() {
         variant={'text'}
       >
         <DeleteOutlined />
-      </CompositeActionButton>
+      </BlocksCompositeActionButton>
     </SidebarGroup>
   );
 }
