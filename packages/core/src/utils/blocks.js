@@ -46,6 +46,24 @@ export function cloneBlock(block: Block): Block {
 }
 
 /**
+ * @description Get all block ancestors.
+ * @param {BlockId} id
+ * @param {Blocks[]} blocks
+ * @returns {Blocks[]}
+ */
+export function filterBlockAncestors(id: BlockId, blocks: Block[]): Block {
+  return blocks.reduce(
+    (acc, block, index) =>
+      block['parent_id'] === id
+        ? [...acc, ...filterBlockAncestors(block.id, blocks.slice(index))]
+        : block.id === id
+        ? [...acc, block]
+        : acc,
+    []
+  );
+}
+
+/**
  * @description Create blocks from tree.
  * @param {Block} parent
  * @param {BlocksTree[]} tree

@@ -1,7 +1,7 @@
 // @flow
 import { equals, filter } from 'ramda';
 
-import { createBlock } from '../utils';
+import { createBlock, filterBlockAncestors } from '../utils';
 import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
 import { blockTypes, defaultFlexFormat, layoutTypes } from '../types';
 
@@ -77,6 +77,12 @@ export type SelectBlockAction = {
   modifier?: 'add' | 'sub',
 };
 
+export const SET_BLOCKS_SELECTION = '@seine/core/setBlocksSelection';
+export type SetBlocksSelectionAction = {
+  type: typeof SET_BLOCKS_SELECTION,
+  selection: BlockId[],
+};
+
 export const UPDATE_BLOCK_BODY = '@seine/core/updateBlockBody';
 export type UpdateBlockDataAction = {
   type: typeof UPDATE_BLOCK_BODY,
@@ -131,6 +137,7 @@ export type BlocksAction =
   | UpdateBlockDataAction
   | UpdateBlockFormatAction
   | UpdateBlockEditorAction
+  | SetBlocksSelectionAction
   | SetBlockParentAction
   | SetDeviceAction;
 
@@ -255,34 +262,48 @@ export function reduceBlocks(
       };
     }
 
+    case SET_BLOCKS_SELECTION: {
+      return {
+        ...state,
+        selection: action.selection
+          .reduce(
+            (acc, id) => [...acc, ...filterBlockAncestors(id, state.blocks)],
+            []
+          )
+          .map(({ id }) => id),
+      };
+    }
+
     case SELECT_BLOCK: {
-      const index = state.selection.indexOf(action.id);
+      if (state.selection.includes(action.id) !== (action.modifier === 'sub')) {
+        return state;
+      }
+
+      const ancestors = filterBlockAncestors(action.id, state.blocks);
 
       switch (action.modifier) {
         case 'add': {
-          if (index !== -1) {
-            return state;
-          }
           return {
             ...state,
-            selection: [...state.selection, action.id],
+            selection: state.blocks
+              .filter((block) => ancestors.includes(block))
+              .map(({ id }) => id),
           };
         }
 
         case 'sub':
-          if (index === -1) {
-            return state;
-          }
           return {
             ...state,
-            selection: [
-              ...state.selection.slice(0, index),
-              ...state.selection.slice(index + 1),
-            ],
+            selection: state.blocks
+              .filter((block) => !ancestors.includes(block))
+              .map(({ id }) => id),
           };
 
         default:
-          return { ...state, selection: [action.id] };
+          return {
+            ...state,
+            selection: ancestors.map(({ id }) => id),
+          };
       }
     }
 
