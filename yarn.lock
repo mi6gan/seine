@@ -1942,7 +1942,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/styles@npm:^4.10.0":
+"@material-ui/styles@npm:*, @material-ui/styles@npm:^4.10.0, @material-ui/styles@npm:^4.9":
   version: 4.10.0
   resolution: "@material-ui/styles@npm:4.10.0"
   dependencies:
@@ -2176,6 +2176,7 @@ __metadata:
     "@devexpress/dx-react-core": <=2.7.1
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
+    "@material-ui/styles": ^4.9
     d3-interpolate: 1.4
     draft-js: ^0.11.0
     react: ^16.10.2
@@ -2214,6 +2215,7 @@ __metadata:
     "@devexpress/dx-react-core": <=2.7.1
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
+    "@material-ui/styles": ^4.9
     d3-interpolate: 1.4
     draft-js: ^0.11.0
     react: ^16.10.2
@@ -2233,6 +2235,7 @@ __metadata:
   peerDependencies:
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
+    "@material-ui/styles": ^4.9
     react: ^16.10.2
     react-dom: ^16.10.2
     styled-components: ^5.2.0
@@ -14775,6 +14778,7 @@ fsevents@~2.1.2:
     "@devexpress/dx-react-core": <=2.7.1
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
+    "@material-ui/styles": ^4.9
     "@seine/content": "workspace:packages/content"
     "@seine/core": "workspace:packages/core"
     "@seine/editor": "workspace:packages/editor"
@@ -14832,6 +14836,7 @@ fsevents@~2.1.2:
     "@devexpress/dx-react-core": <=2.7.1
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
+    "@material-ui/styles": ^4.9
     "@seine/content": "workspace:packages/content"
     "@seine/core": "workspace:packages/core"
     "@seine/editor": "workspace:packages/editor"
@@ -14889,6 +14894,7 @@ fsevents@~2.1.2:
     "@devexpress/dx-react-core": <=2.7.1
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
+    "@material-ui/styles": ^4.9
     "@rollup/plugin-babel": ^5.0.4
     "@rollup/plugin-commonjs": ^15.1.0
     "@rollup/plugin-json": ^4.1.0
