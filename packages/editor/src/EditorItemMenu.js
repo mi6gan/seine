@@ -4,6 +4,7 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import { useBlocksDispatch, useBlocksSelector } from './blocks';
+import { useSelectedLayoutIds } from './layouts';
 import { ClipboardContext } from './clipboard';
 import { CreateLayoutButton, DeleteBlockButton, ToolbarMenu } from './ui';
 
@@ -97,17 +98,7 @@ function usePasteCallback() {
   const clipboard = React.useContext(ClipboardContext);
   const { type = null, block = null } =
     clipboard.type === CREATE_BLOCK && clipboard.toJSON();
-  const [parentId = null] = useBlocksSelector(
-    useAutoCallback(({ selection, blocks }) =>
-      selection.filter((id) =>
-        blocks.some(
-          (block) =>
-            id === block.id &&
-            (block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE)
-        )
-      )
-    )
-  );
+  const [parentId = null] = useSelectedLayoutIds();
   const dispatch = useBlocksDispatch();
 
   const isActiveRef = React.useRef(false);

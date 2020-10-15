@@ -11,11 +11,11 @@ import {
   useBlocksSelector,
 } from './blocks';
 import { Toolbar, BlockTypeIcon, ToolbarButton, ToolbarSeparator } from './ui';
+import { useSelectedLayoutIds } from './layouts';
 
 import { Box, MenuItem, Select } from '@seine/styles/mui-core.macro';
 import type { BoxProps } from '@seine/styles/mui-core.macro.d';
 import { Menu as MenuIcon } from '@seine/styles/mui-icons.macro';
-import type { Block } from '@seine/core';
 import {
   blockTypes,
   chartTypes,
@@ -42,15 +42,7 @@ export default function EditorToolbar(boxProps: Props) {
   const menuAnchorRef = React.useRef(null);
   const itemMenu = React.useContext(ItemMenuContext);
 
-  const [block = null, ...nextBlocks]: [Block] = useBlocksSelector(
-    useAutoCallback(({ blocks, selection }) =>
-      blocks.filter(({ id }) => selection.includes(id))
-    )
-  );
-  const isContainer =
-    block &&
-    nextBlocks.length === 0 &&
-    (block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE);
+  const [parentId = null] = useSelectedLayoutIds();
 
   const dispatch = useBlocksDispatch();
   const device = useBlocksSelector(deviceSelector);
@@ -72,14 +64,14 @@ export default function EditorToolbar(boxProps: Props) {
 
         <ToolbarButton
           as={BlocksActionButton}
-          disabled={!isContainer}
+          disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
             createBlock(blockTypes.RICH_TEXT, toRawContent('Rich text'), {
               verticalAlignment: 'center',
             })
           )}
-          id={block && block.id}
+          id={parentId}
         >
           <BlockTypeIcon type={blockTypes.RICH_TEXT} />
         </ToolbarButton>
@@ -88,7 +80,7 @@ export default function EditorToolbar(boxProps: Props) {
 
         <ToolbarButton
           as={BlocksActionButton}
-          disabled={!isContainer}
+          disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
             createBlock(
@@ -106,7 +98,7 @@ export default function EditorToolbar(boxProps: Props) {
               null
             )
           )}
-          id={block && block.id}
+          id={parentId}
         >
           <BlockTypeIcon type={blockTypes.TABLE} />
         </ToolbarButton>
@@ -115,7 +107,7 @@ export default function EditorToolbar(boxProps: Props) {
 
         <ToolbarButton
           as={BlocksActionButton}
-          disabled={!isContainer}
+          disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
             createBlock(
@@ -138,14 +130,14 @@ export default function EditorToolbar(boxProps: Props) {
               }
             )
           )}
-          id={block && block.id}
+          id={parentId}
         >
           <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.BAR} />
         </ToolbarButton>
 
         <ToolbarButton
           as={BlocksActionButton}
-          disabled={!isContainer}
+          disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
             createBlock(
@@ -180,14 +172,14 @@ export default function EditorToolbar(boxProps: Props) {
               }
             )
           )}
-          id={block && block.id}
+          id={parentId}
         >
           <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.LINE} />
         </ToolbarButton>
 
         <ToolbarButton
           as={BlocksActionButton}
-          disabled={!isContainer}
+          disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
             createBlock(
@@ -222,14 +214,14 @@ export default function EditorToolbar(boxProps: Props) {
               }
             )
           )}
-          id={block && block.id}
+          id={parentId}
         >
           <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.COLUMN} />
         </ToolbarButton>
 
         <ToolbarButton
           as={BlocksActionButton}
-          disabled={!isContainer}
+          disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
             createBlock(
@@ -252,14 +244,14 @@ export default function EditorToolbar(boxProps: Props) {
               }
             )
           )}
-          id={block && block.id}
+          id={parentId}
         >
           <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.PIE} />
         </ToolbarButton>
 
         <ToolbarButton
           as={BlocksActionButton}
-          disabled={!isContainer}
+          disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
             createBlock(
@@ -274,7 +266,7 @@ export default function EditorToolbar(boxProps: Props) {
               }
             )
           )}
-          id={block && block.id}
+          id={parentId}
         >
           <BlockTypeIcon type={blockTypes.IMAGE} />
         </ToolbarButton>

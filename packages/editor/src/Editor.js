@@ -91,7 +91,7 @@ function DefaultEditor({
   });
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <>
       <DeleteConfirmationDialog />
       <EditorItemMenu />
       <EditorToolbar />
@@ -140,19 +140,21 @@ function DefaultEditor({
           </Sidebar>
         </Contents>
       </Box>
-    </ThemeProvider>
+    </>
   );
 }
 
 // eslint-disable-next-line
 export default function Editor({ children = defaultEditorChildren, ...props }) {
   return (
-    <BlocksProvider blocks={children}>
-      <ClipboardProvider>
-        <ItemMenuProvider>
-          <DefaultEditor {...props} />
-        </ItemMenuProvider>
-      </ClipboardProvider>
-    </BlocksProvider>
+    <ThemeProvider theme={defaultTheme}>
+      <BlocksProvider blocks={children}>
+        <ClipboardProvider>
+          <ItemMenuProvider>
+            <DefaultEditor {...props} />
+          </ItemMenuProvider>
+        </ClipboardProvider>
+      </BlocksProvider>
+    </ThemeProvider>
   );
 }
