@@ -1,73 +1,119 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
-import { TreeItem, TreeView } from '@material-ui/lab';
+import styled from 'styled-components/macro';
 
 import { ItemMenuContext } from './EditorItemMenu';
 import {
+  selectionSelector,
   useBlocksDispatch,
   useBlocksSelector,
-  selectionSelector,
 } from './blocks';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 
-import { Box } from '@seine/styles/mui-core.macro';
+import {
+  Box,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+  Typography,
+} from '@seine/styles/mui-core.macro';
 import { ChevronRight, ExpandMore } from '@seine/styles/mui-icons.macro';
-import { DESELECT_ALL_BLOCKS, SELECT_BLOCK } from '@seine/core';
+import { blockTypes, SET_BLOCKS_SELECTION } from '@seine/core';
 
 type Props = {
   as?: React.ComponentType,
-  root?: null | string,
+  id?: null | string,
 };
 
-const isExpandEvent = (event) => {
-  const target = event.target.viewportElement || event.target;
-  return target.dataset['toggle'];
-};
+const StyledListItem = styled(ListItem)`
+  &.MuiListItem-root {
+    padding-left: ${({ level, theme }) => theme.spacing(level)}px;
+  }
+`;
 
-const DefaultTreeView = styled(({ children, ...viewProps }) => {
+// eslint-disable-next-line
+function EditorTreeItem({
+  id = null,
+  expanded,
+  onExpand,
+  ...listItemProps
+}: Props) {
   const dispatch = useBlocksDispatch();
   const selection = useBlocksSelector(selectionSelector);
-  const [expanded, setExpanded] = React.useState(
-    useBlocksSelector(
-      useAutoCallback((state) => state.blocks.map(({ id }) => id))
+  const block = useBlocksSelector(
+    useAutoCallback(
+      ({ blocks }) => id && blocks.find((block) => id === block.id)
     )
   );
+  const itemMenu = React.useContext(ItemMenuContext);
+  const openItemMenu = useAutoCallback((event) => {
+    if (!selection.includes(id)) {
+      dispatch({ type: SET_BLOCKS_SELECTION, selection: [...selection, id] });
+    }
+    event.preventDefault();
+    itemMenu.open(event.currentTarget);
+  });
+  const isLayout =
+    block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE;
 
   return (
-    <TreeView
-      {...viewProps}
-      multiSelect
-      defaultExpandIcon={<ChevronRight data-toggle={true} />}
-      defaultCollapseIcon={<ExpandMore data-toggle={true} />}
-      expanded={expanded}
-      selected={selection}
-      onNodeToggle={useAutoCallback((event: SyntheticInputEvent, nodeIds) => {
-        event.stopPropagation();
+    <StyledListItem
+      {...listItemProps}
+      dense
+      button
+      selected={selection.includes(id)}
+      onClick={useAutoCallback((event) => {
         event.preventDefault();
-        if (isExpandEvent(event)) {
-          setExpanded(nodeIds);
-        }
-      })}
-      onNodeSelect={useAutoCallback((event: SyntheticInputEvent, nodeIds) => {
         event.stopPropagation();
-        event.preventDefault();
-        if (!isExpandEvent(event)) {
-          dispatch({ type: DESELECT_ALL_BLOCKS });
-          nodeIds.forEach((id) =>
-            dispatch({
-              type: SELECT_BLOCK,
-              id,
-              modifier: event.ctrlKey || event.shiftKey ? 'add' : null,
-            })
-          );
-        }
+        dispatch({
+          type: SET_BLOCKS_SELECTION,
+          selection:
+            event.shiftKey || event.ctrlKey
+              ? selection.includes(id)
+                ? selection.filter((block) => id !== block.id)
+                : [...selection, id]
+              : [id],
+        });
       })}
+      onContextMenu={openItemMenu}
+      alignItems={'center'}
     >
-      {children}
-    </TreeView>
+      <ListItemIcon>
+        <BlockTypeIcon
+          type={block.type}
+          {...block.format}
+          titleAccess={block.type}
+        />
+      </ListItemIcon>
+      <ListItemText disableTypography>
+        <Typography variant={'caption'}>
+          {id ? id.slice(0, 6) : block.type}
+        </Typography>
+      </ListItemText>
+      <ListItemSecondaryAction>
+        <IconButton
+          size={'small'}
+          component={Box}
+          {...(!isLayout && { display: 'none' })}
+          onClick={useAutoCallback((event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            onExpand(event);
+          })}
+        >
+          {expanded ? <ExpandMore /> : <ChevronRight />}
+        </IconButton>
+      </ListItemSecondaryAction>
+    </StyledListItem>
   );
+}
+
+const StyledList = styled(List).attrs({
+  disablePadding: true,
 })`
   width: 100%;
 `;
@@ -77,54 +123,35 @@ const DefaultTreeView = styled(({ children, ...viewProps }) => {
  * @param {Props} props
  * @returns {React.Node}
  */
-function EditorTree({
-  as: Tree = DefaultTreeView,
-  labelAs: Label = 'span',
-  root = null,
-  ...treeProps
-}: Props) {
-  const dispatch = useBlocksDispatch();
-  const selection = useBlocksSelector(selectionSelector);
-  const itemMenu = React.useContext(ItemMenuContext);
-  const openItemMenu = useAutoCallback((event) => {
-    const { id } = event.currentTarget.dataset;
-    if (!selection.includes(id)) {
-      dispatch({ type: SELECT_BLOCK, id });
-    }
-    event.preventDefault();
-    itemMenu.open(event.currentTarget);
+function EditorTree({ id = null, level = 0 }: Props) {
+  const children = useBlocksSelector(
+    useAutoCallback((state) =>
+      state.blocks.filter((block) => block['parent_id'] === id)
+    )
+  );
+  const [expanded, setExpanded] = React.useState(id === null);
+  const toggleExpand = useAutoCallback(() => {
+    setExpanded(!expanded);
   });
 
   return (
-    <Tree {...treeProps}>
-      {useBlocksSelector(
-        useAutoCallback((state) =>
-          state.blocks.filter((block) => block['parent_id'] === root)
-        )
-      ).map(({ id, type, format }) => (
-        <EditorTree
-          as={TreeItem}
-          root={id}
-          key={id}
-          nodeId={id}
-          labelAs={Label}
-          label={
-            <Box
-              display={'flex'}
-              width={1}
-              justifyContent={'space-between'}
-              alignItems={'center'}
-              px={1}
-            >
-              <Label onContextMenu={openItemMenu} data-id={id}>
-                {id ? id.slice(0, 6) : type}
-              </Label>
-              <BlockTypeIcon type={type} {...format} />
-            </Box>
-          }
+    <>
+      {id && (
+        <EditorTreeItem
+          id={id}
+          onExpand={toggleExpand}
+          expanded={expanded}
+          level={level}
         />
-      ))}
-    </Tree>
+      )}
+      <StyledList>
+        {expanded &&
+          children.length > 0 &&
+          children.map(({ id }) => (
+            <EditorTree key={id} id={id} level={level + 1} />
+          ))}
+      </StyledList>
+    </>
   );
 }
 

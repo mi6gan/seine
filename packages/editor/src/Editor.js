@@ -12,15 +12,14 @@ import {
   DeleteConfirmationDialog,
   Sidebar,
   SidebarGroup,
-  SidebarSection,
   SidebarHeading,
-  SidebarLabel,
+  SidebarSection,
 } from './ui';
 import defaultBlockRenderMap from './blockRenderMap';
 import {
   allBlocksSelector,
-  deviceSelector,
   BlocksProvider,
+  deviceSelector,
   useBlocksDispatch,
   useBlocksSelector,
 } from './blocks';
@@ -114,7 +113,7 @@ function DefaultEditor({
             <SidebarSection>
               <SidebarHeading>Structure</SidebarHeading>
               <SidebarGroup>
-                <EditorTree labelAs={SidebarLabel} />
+                <EditorTree />
               </SidebarGroup>
             </SidebarSection>
           </Sidebar>

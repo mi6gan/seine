@@ -1,21 +1,17 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoMemo, useAutoEffect } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import {
-  useBlocksDispatch,
-  useBlocksSelector,
-  selectionSelector,
-} from './blocks';
+import { useBlocksDispatch, useBlocksSelector } from './blocks';
 import { ClipboardContext } from './clipboard';
-import { ToolbarMenu, CreateLayoutButton, DeleteBlockButton } from './ui';
+import { CreateLayoutButton, DeleteBlockButton, ToolbarMenu } from './ui';
 
 import { Box, MenuItem } from '@seine/styles/mui-core.macro';
 import type { Block } from '@seine/core';
 import {
-  cloneBlock,
   blockTypes,
+  cloneBlock,
   CREATE_BLOCK,
   createBlocksAction,
   DELETE_SELECTED_BLOCKS,
@@ -101,7 +97,17 @@ function usePasteCallback() {
   const clipboard = React.useContext(ClipboardContext);
   const { type = null, block = null } =
     clipboard.type === CREATE_BLOCK && clipboard.toJSON();
-  const [parentId = null] = useBlocksSelector(selectionSelector);
+  const [parentId = null] = useBlocksSelector(
+    useAutoCallback(({ selection, blocks }) =>
+      selection.filter((id) =>
+        blocks.some(
+          (block) =>
+            id === block.id &&
+            (block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE)
+        )
+      )
+    )
+  );
   const dispatch = useBlocksDispatch();
 
   const isActiveRef = React.useRef(false);
@@ -140,7 +146,7 @@ export default function EditorItemMenu() {
   );
   const { isOpen, close, anchorEl } = React.useContext(ItemMenuContext);
 
-  const isContainer = selectionBlocks.every(
+  const isContainer = selectionBlocks.some(
     (block) =>
       block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE
   );
@@ -185,13 +191,8 @@ export default function EditorItemMenu() {
       </MenuButton>
 
       <MenuButton
-        disabled={
-          selectionBlocks.length !== 1 ||
-          !isContainer ||
-          clipboard.type !== CREATE_BLOCK
-        }
+        disabled={!isContainer || clipboard.type !== CREATE_BLOCK}
         onClick={usePasteCallback()}
-        {...(!isContainer && { display: 'none' })}
       >
         Paste
       </MenuButton>
