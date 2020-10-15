@@ -50,9 +50,17 @@ export const defaultFlexFormat = {
   alignContent: 'normal',
 };
 
-export const defaultLayoutFormat = {
+export const defaultGridFormat = {
   kind: layoutTypes.GRID,
+  columns: 'repeat(auto-fit, minmax(150px, 1fr))',
+  columnGap: 25,
+  rowGap: 12,
+  rows: '',
+  justify: 'auto',
+  alignItems: 'auto',
 };
+
+export const defaultLayoutFormat = defaultGridFormat;
 
 export type LayoutFormat = FlexFormat | GridFormat;
 export type LayoutBody = FlexBody | GridBody;

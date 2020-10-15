@@ -20,11 +20,14 @@ import {
   VerticalAlignCenter,
   VerticalAlignTop,
 } from '@seine/styles/mui-icons.macro';
+import { Box } from '@seine/styles/mui-core.macro';
 import {
   blockTypes,
-  defaultFlexFormat,
+  defaultGridFormat,
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
+
+const MAX_GAP = 100;
 
 /**
  * @description Layout design.
@@ -38,32 +41,51 @@ export default function FlexDesign() {
   const dispatch = useBlocksDispatch();
   const id = layoutBlock && layoutBlock.id;
   const {
-    spacing = defaultFlexFormat.spacing,
-    justify = defaultFlexFormat.justify,
-    alignItems = defaultFlexFormat.alignItems,
-    direction = defaultFlexFormat.direction,
+    columnGap = defaultGridFormat.columnGap,
+    rowGap = defaultGridFormat.rowGap,
+    justify = defaultGridFormat.justify,
+    alignItems = defaultGridFormat.alignItems,
   } = layoutBlock
-    ? layoutBlock.format[device] || layoutBlock.format || defaultFlexFormat
-    : defaultFlexFormat;
-  const iconProps = direction === 'column' && {
-    style: { transform: 'rotate(-90deg)' },
-  };
+    ? layoutBlock.format[device] || layoutBlock.format || defaultGridFormat
+    : defaultGridFormat;
   return (
     <>
       <SidebarGroup>
         <SidebarLabel>Spacing</SidebarLabel>
-        <SidebarInput
-          value={spacing}
-          onChange={useAutoCallback(({ currentTarget }) => {
-            dispatch({
-              type: UPDATE_BLOCK_FORMAT,
-              id,
-              format: { spacing: +currentTarget.value },
-            });
-          })}
-          type={'number'}
-          inputProps={{ min: 0, max: 10 }}
-        />
+
+        <Box display={'flex'} width={1}>
+          <Box width={1 / 2}>
+            <SidebarLabel mr={1}>x:</SidebarLabel>
+            <SidebarInput
+              value={Math.min(columnGap, MAX_GAP)}
+              onChange={useAutoCallback(({ currentTarget }) => {
+                dispatch({
+                  type: UPDATE_BLOCK_FORMAT,
+                  id,
+                  format: { columnGap: +currentTarget.value },
+                });
+              })}
+              type={'number'}
+              inputProps={{ min: 0, max: MAX_GAP }}
+            />
+          </Box>
+
+          <Box width={1 / 2}>
+            <SidebarLabel mr={1}>y:</SidebarLabel>
+            <SidebarInput
+              value={Math.min(rowGap, MAX_GAP)}
+              onChange={useAutoCallback(({ currentTarget }) => {
+                dispatch({
+                  type: UPDATE_BLOCK_FORMAT,
+                  id,
+                  format: { rowGap: +currentTarget.value },
+                });
+              })}
+              type={'number'}
+              inputProps={{ min: 0, max: MAX_GAP }}
+            />
+          </Box>
+        </Box>
       </SidebarGroup>
 
       <SidebarGroup>
@@ -75,19 +97,19 @@ export default function FlexDesign() {
           )}
         >
           <ToolbarToggleButton value={'start'}>
-            <FormatAlignLeft {...iconProps} />
+            <FormatAlignLeft />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'center'}>
-            <FormatAlignCenter {...iconProps} />
+            <FormatAlignCenter />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'end'}>
-            <FormatAlignRight {...iconProps} />
+            <FormatAlignRight />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'space-between'}>
-            <FormatAlignJustify {...iconProps} />
+            <FormatAlignJustify />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
@@ -101,15 +123,15 @@ export default function FlexDesign() {
           )}
         >
           <ToolbarToggleButton value={'start'}>
-            <VerticalAlignTop {...iconProps} />
+            <VerticalAlignTop />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'center'}>
-            <VerticalAlignCenter {...iconProps} />
+            <VerticalAlignCenter />
           </ToolbarToggleButton>
 
           <ToolbarToggleButton value={'end'}>
-            <VerticalAlignBottom {...iconProps} />
+            <VerticalAlignBottom />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
