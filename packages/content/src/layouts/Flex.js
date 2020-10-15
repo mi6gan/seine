@@ -18,6 +18,7 @@ export type Props = (FlexBody & FlexFormat) & {
  */
 const Flex = styled(Item).attrs(
   ({
+    theme,
     direction = defaultFlexFormat.direction,
     wrap = defaultFlexFormat.wrap,
     justify = defaultFlexFormat.justify,
@@ -30,7 +31,7 @@ const Flex = styled(Item).attrs(
     justify,
     alignItems,
     alignContent,
-    spacing: spacing * 4,
+    spacing: theme.spacing(spacing),
   })
 )`
   display: flex;
