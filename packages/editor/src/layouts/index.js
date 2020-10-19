@@ -6,3 +6,4 @@ export { default as ItemDesign } from './ItemDesign';
 export { default as LayoutEditor } from './LayoutEditor';
 export { default as useSelectedLayoutItems } from './useSelectedLayoutItems';
 export { default as useSelectedLayoutIds } from './useSelectedLayoutIds';
+export { default as CreateLayoutButton } from './CreateLayoutButton';

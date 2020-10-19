@@ -1,10 +1,11 @@
 // @flow
 import styled from 'styled-components/macro';
 
-import { Box, Typography } from '@seine/styles/mui-core.macro';
+import { Typography } from '@seine/styles/mui-core.macro';
+import { Box } from '@seine/styles';
 
 const SidebarSelectLabel = styled(Box).attrs({
-  component: Typography,
+  as: Typography,
   variant: 'caption',
   minWidth: '5rem',
 })``;

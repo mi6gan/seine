@@ -25,10 +25,10 @@ import {
 } from './blocks';
 import { ClipboardProvider } from './clipboard';
 
-import { Box, Paper } from '@seine/styles/mui-core.macro';
+import { Paper } from '@seine/styles/mui-core.macro';
+import { ThemeProvider, Box } from '@seine/styles';
 import type { Block, BlockType } from '@seine/core';
 import { DESELECT_ALL_BLOCKS } from '@seine/core';
-import { ThemeProvider } from '@seine/styles';
 import { Content } from '@seine/content';
 
 const Contents = styled(Box).attrs({

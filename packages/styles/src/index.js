@@ -16,3 +16,4 @@ export { default as useResizeObserver } from './useResizeObserver';
 export { default as useResizeTargetRef } from './useResizeTargetRef';
 export { default as useTypographyChildren } from './useTypographyChildren';
 export { default as useTheme } from './useTheme';
+export { default as Box } from './Box';

@@ -4,11 +4,12 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import { useBlocksDispatch, useBlocksSelector } from './blocks';
-import { useSelectedLayoutIds } from './layouts';
+import { useSelectedLayoutIds, CreateLayoutButton } from './layouts';
 import { ClipboardContext } from './clipboard';
-import { CreateLayoutButton, DeleteBlockButton, ToolbarMenu } from './ui';
+import { DeleteBlockButton, ToolbarMenu } from './ui';
 
-import { Box, MenuItem } from '@seine/styles/mui-core.macro';
+import { MenuItem } from '@seine/styles/mui-core.macro';
+import { Box } from '@seine/styles';
 import type { Block } from '@seine/core';
 import {
   blockTypes,
@@ -19,7 +20,7 @@ import {
 } from '@seine/core';
 
 const MenuButton = styled(Box).attrs(({ disabled }) => ({
-  component: MenuItem,
+  as: MenuItem,
   color: disabled ? 'grey.500' : 'inherit',
   width: 1,
 }))``;

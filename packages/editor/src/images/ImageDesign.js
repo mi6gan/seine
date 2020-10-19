@@ -11,7 +11,8 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useBlocksSelector } from '../blocks';
 
-import { Box, IconButton, InputAdornment } from '@seine/styles/mui-core.macro';
+import { IconButton, InputAdornment } from '@seine/styles/mui-core.macro';
+import { Box } from '@seine/styles';
 import { CloudUpload } from '@seine/styles/mui-icons.macro';
 import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 
@@ -20,7 +21,7 @@ type Props = {
 };
 
 const FileInput = styled(Box).attrs({
-  component: 'input',
+  as: 'input',
   type: 'file',
   position: 'absolute',
   display: 'inline-block',
@@ -47,7 +48,7 @@ export default function TableDesign({ onChange, ...inputProps }) {
       <SidebarHeading>Image</SidebarHeading>
       <SidebarGroup>
         <Box
-          component={'form'}
+          as={'form'}
           position={'relative'}
           onSubmit={useAutoCallback((event: SyntheticInputEvent) => {
             event.preventDefault();

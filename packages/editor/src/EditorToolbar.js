@@ -13,7 +13,8 @@ import {
 import { Toolbar, BlockTypeIcon, ToolbarButton, ToolbarSeparator } from './ui';
 import { useSelectedLayoutIds } from './layouts';
 
-import { Box, MenuItem, Select } from '@seine/styles/mui-core.macro';
+import { MenuItem, Select } from '@seine/styles/mui-core.macro';
+import { Box } from '@seine/styles';
 import type { BoxProps } from '@seine/styles/mui-core.macro.d';
 import { Menu as MenuIcon } from '@seine/styles/mui-icons.macro';
 import {

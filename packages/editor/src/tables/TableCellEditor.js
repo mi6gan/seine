@@ -5,7 +5,7 @@ import { useAutoCallback } from 'hooks.macro';
 
 import { useBlocksDispatch, useBlocksSelector } from '../blocks';
 
-import { Box } from '@seine/styles/mui-core.macro';
+import { Box, useResizeTargetRef } from '@seine/styles';
 import type { BlockEditor } from '@seine/core';
 import {
   blockTypes,
@@ -15,7 +15,6 @@ import {
 } from '@seine/core';
 import type { TableProps } from '@seine/content';
 import { TableCell } from '@seine/content';
-import { useResizeTargetRef } from '@seine/styles';
 
 type Props = TableProps & BlockEditor;
 
