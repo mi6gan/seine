@@ -49,6 +49,10 @@ const EditorPaper = styled(Paper).attrs(() => ({
   overflow-x: hidden;
   ${({ device, theme }) => ({
     width: device === 'mobile' ? theme.breakpoints.width('sm') : '100%',
+    minWidth:
+      device === 'mobile'
+        ? theme.breakpoints.width('sm')
+        : theme.breakpoints.width('lg'),
   })}
 `;
 
