@@ -20,7 +20,7 @@ import {
   VerticalAlignCenter,
   VerticalAlignTop,
 } from '@seine/styles/mui-icons.macro';
-import { Box } from '@seine/styles/mui-core.macro';
+import { Box } from '@seine/styles';
 import {
   blockTypes,
   defaultGridFormat,

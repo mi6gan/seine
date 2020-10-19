@@ -11,8 +11,8 @@ import {
 } from './blocks';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 
+import { Box } from '@seine/styles';
 import {
-  Box,
   IconButton,
   List,
   ListItem,

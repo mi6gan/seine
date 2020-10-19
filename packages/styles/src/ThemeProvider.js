@@ -6,8 +6,7 @@ import { useAutoEffect } from 'hooks.macro';
 import defaultTheme from './defaultTheme';
 import useTheme from './useTheme';
 
-import { StylesProvider } from '@seine/styles/mui-styles.macro';
-import type { Theme } from '@seine/styles/mui-styles.macro.d';
+import type { Theme } from '@seine/styles/mui-core.macro.d';
 
 type Props = {
   children: React.Node,
@@ -48,8 +47,6 @@ export default function ThemeProvider({
   return currentTheme ? (
     children
   ) : (
-    <StylesProvider injectFirst>
-      <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
-    </StylesProvider>
+    <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
   );
 }

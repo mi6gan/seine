@@ -16,7 +16,8 @@ import ChartStructureGroup from './ChartStructureGroup';
 import ChartElementColorButton from './ChartElementColorButton';
 import useChartBlock from './useChartBlock';
 
-import { Box, Checkbox } from '@seine/styles/mui-core.macro';
+import { Checkbox } from '@seine/styles/mui-core.macro';
+import { Box } from '@seine/styles';
 import { UPDATE_BLOCK_FORMAT, chartTypes } from '@seine/core';
 
 /**
@@ -119,7 +120,7 @@ export default function ChartDesign() {
 
       <SidebarSection>
         <Box
-          component={SidebarHeading}
+          as={SidebarHeading}
           display={'flex'}
           justifyContent={'space-between'}
         >

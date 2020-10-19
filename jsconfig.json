@@ -1,5 +1,5 @@
 {
-  "exclude": ["packages/*/index.*", "dist"],
+  "include": ["packages/*/src/**", "storybook/src/**"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

@@ -25,7 +25,8 @@ import {
   BorderStyle as PositionLeftTop,
   BorderTop as PositionTop,
 } from '@seine/styles/mui-icons.macro';
-import { Box, MenuItem, Select } from '@seine/styles/mui-core.macro';
+import { MenuItem, Select } from '@seine/styles/mui-core.macro';
+import { Box } from '@seine/styles';
 import { defaultItemFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 const PositionRightTop = styled(PositionLeftTop)`
