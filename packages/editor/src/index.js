@@ -5,7 +5,6 @@ export * from './ui';
 export * from './images';
 export * from './layouts';
 export * from './charts';
-export * from './pages';
 export * from './richtexts';
 export * from './tables';
 
