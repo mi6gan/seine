@@ -3,8 +3,9 @@ import styled from 'styled-components/macro';
 
 import type { ItemFormat } from '@seine/core';
 import { defaultItemFormat } from '@seine/core';
+import { Box } from '@seine/styles';
 
-const Item = styled.div.attrs((format: ItemFormat) => ({
+const Item = styled(Box).attrs((format: ItemFormat) => ({
   ...defaultItemFormat,
   ...format,
 }))`

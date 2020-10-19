@@ -129,7 +129,7 @@ function EditorTree({ id = null, level = 0 }: Props) {
       state.blocks.filter((block) => block['parent_id'] === id)
     )
   );
-  const [expanded, setExpanded] = React.useState(id === null);
+  const [expanded, setExpanded] = React.useState(true);
   const toggleExpand = useAutoCallback(() => {
     setExpanded(!expanded);
   });

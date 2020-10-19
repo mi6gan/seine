@@ -21,11 +21,8 @@ import {
   VerticalAlignTop,
 } from '@seine/styles/mui-icons.macro';
 import { Box } from '@seine/styles';
-import {
-  blockTypes,
-  defaultGridFormat,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
+import { defaultGridFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { useSelectedLayoutItems } from '@seine/editor';
 
 const MAX_GAP = 100;
 
@@ -35,9 +32,7 @@ const MAX_GAP = 100;
  */
 export default function FlexDesign() {
   const device = useBlocksSelector((state) => state.device);
-  const layoutBlock = useBlocksSelector().find(
-    ({ type }) => type === blockTypes.LAYOUT
-  );
+  const { layout: layoutBlock } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const id = layoutBlock && layoutBlock.id;
   const {
@@ -45,9 +40,10 @@ export default function FlexDesign() {
     rowGap = defaultGridFormat.rowGap,
     justify = defaultGridFormat.justify,
     alignItems = defaultGridFormat.alignItems,
-  } = layoutBlock
-    ? layoutBlock.format[device] || layoutBlock.format || defaultGridFormat
-    : defaultGridFormat;
+  } =
+    layoutBlock && layoutBlock.format
+      ? layoutBlock.format[device] || layoutBlock.format || defaultGridFormat
+      : defaultGridFormat;
   return (
     <>
       <SidebarGroup>
@@ -93,7 +89,11 @@ export default function FlexDesign() {
         <ToolbarToggleButtonGroup
           value={justify}
           onChange={useAutoCallback((event, justify) =>
-            dispatch({ type: UPDATE_BLOCK_FORMAT, format: { justify } })
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              id,
+              format: { justify },
+            })
           )}
         >
           <ToolbarToggleButton value={'start'}>
@@ -119,7 +119,11 @@ export default function FlexDesign() {
         <ToolbarToggleButtonGroup
           value={alignItems}
           onChange={useAutoCallback((event, alignItems) =>
-            dispatch({ type: UPDATE_BLOCK_FORMAT, format: { alignItems } })
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              id,
+              format: { alignItems },
+            })
           )}
         >
           <ToolbarToggleButton value={'start'}>

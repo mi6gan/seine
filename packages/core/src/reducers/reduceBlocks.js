@@ -279,32 +279,34 @@ export function reduceBlocks(
         return state;
       }
 
-      const ancestors = filterBlockAncestors(action.id, state.blocks);
-
-      switch (action.modifier) {
-        case 'add': {
-          return {
-            ...state,
-            selection: state.blocks
-              .filter((block) => ancestors.includes(block))
-              .map(({ id }) => id),
-          };
-        }
-
-        case 'sub':
-          return {
-            ...state,
-            selection: state.blocks
-              .filter((block) => !ancestors.includes(block))
-              .map(({ id }) => id),
-          };
-
-        default:
-          return {
-            ...state,
-            selection: ancestors.map(({ id }) => id),
-          };
+      let selectedBlocks = filterBlockAncestors(action.id, state.blocks);
+      if (action.modifier === 'add') {
+        selectedBlocks = state.blocks.filter(
+          (block) =>
+            selectedBlocks.includes(block) || state.selection.includes(block.id)
+        );
+      } else if (action.modifier === 'sub') {
+        selectedBlocks = state.blocks.filter(
+          (block) => !selectedBlocks.includes(block)
+        );
       }
+      return {
+        ...state,
+        selection: state.blocks
+          .filter((parent) => {
+            if (selectedBlocks.includes(parent)) {
+              return true;
+            }
+            const selectedChildren = selectedBlocks.filter(
+              (block) => block['parent_id'] === parent.id
+            );
+            const children =
+              selectedChildren.length > 0 &&
+              state.blocks.filter((block) => block['parent_id'] === parent.id);
+            return children && children.length === selectedChildren.length;
+          })
+          .map(({ id }) => id),
+      };
     }
 
     case DELETE_SELECTED_BLOCKS:
@@ -314,7 +316,9 @@ export function reduceBlocks(
       if (selection.length === 0) {
         return state;
       }
-      const blocks = state.blocks.filter(({ id }) => !selection.includes(id));
+      const blocks = state.blocks.filter(
+        ({ id, type }) => !selection.includes(id) || type === blockTypes.PAGE
+      );
       const redundant = blocks.filter(
         ({ id, type }, _, blocks) =>
           type === blockTypes.LAYOUT &&

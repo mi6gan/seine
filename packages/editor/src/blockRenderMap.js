@@ -1,6 +1,4 @@
 // @flow
-import { PageEditor } from './pages';
-import { LayoutEditor } from './layouts';
 import { ChartEditor } from './charts';
 import { RichTextEditor } from './richtexts';
 import { TableEditor } from './tables';
@@ -14,9 +12,7 @@ export const blockRenderMap = {
   [blockTypes.IMAGE]: ImageEditor,
   [blockTypes.CHART]: ChartEditor,
   [blockTypes.RICH_TEXT]: RichTextEditor,
-  [blockTypes.PAGE]: PageEditor,
   [blockTypes.TABLE]: TableEditor,
-  [blockTypes.LAYOUT]: LayoutEditor,
 };
 
 export default blockRenderMap;

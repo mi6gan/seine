@@ -23,11 +23,8 @@ import {
   VerticalAlignTop,
   WrapText,
 } from '@seine/styles/mui-icons.macro';
-import {
-  blockTypes,
-  defaultFlexFormat,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
+import { defaultFlexFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { useSelectedLayoutItems } from '@seine/editor';
 
 /**
  * @description Layout design.
@@ -35,9 +32,7 @@ import {
  */
 export default function GridDesign() {
   const device = useBlocksSelector((state) => state.device);
-  const layoutBlock = useBlocksSelector().find(
-    ({ type }) => type === blockTypes.LAYOUT
-  );
+  const { layout: layoutBlock } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const id = layoutBlock && layoutBlock.id;
   const {
@@ -46,9 +41,10 @@ export default function GridDesign() {
     alignItems = defaultFlexFormat.alignItems,
     direction = defaultFlexFormat.direction,
     wrap = defaultFlexFormat.wrap,
-  } = layoutBlock
-    ? layoutBlock.format[device] || layoutBlock.format || defaultFlexFormat
-    : defaultFlexFormat;
+  } =
+    layoutBlock && layoutBlock.format
+      ? layoutBlock.format[device] || layoutBlock.format || defaultFlexFormat
+      : defaultFlexFormat;
   const iconProps = direction === 'column' && {
     style: { transform: 'rotate(-90deg)' },
   };
@@ -77,6 +73,7 @@ export default function GridDesign() {
           onChange={useAutoCallback((event) =>
             dispatch({
               type: UPDATE_BLOCK_FORMAT,
+              id,
               format: {
                 direction: event.target.value,
               },
@@ -97,7 +94,11 @@ export default function GridDesign() {
         <ToolbarToggleButtonGroup
           value={justify}
           onChange={useAutoCallback((event, justify) =>
-            dispatch({ type: UPDATE_BLOCK_FORMAT, format: { justify } })
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              id,
+              format: { justify },
+            })
           )}
         >
           <ToolbarToggleButton value={'flex-start'}>
@@ -123,7 +124,11 @@ export default function GridDesign() {
         <ToolbarToggleButtonGroup
           value={alignItems}
           onChange={useAutoCallback((event, alignItems) =>
-            dispatch({ type: UPDATE_BLOCK_FORMAT, format: { alignItems } })
+            dispatch({
+              type: UPDATE_BLOCK_FORMAT,
+              id,
+              format: { alignItems },
+            })
           )}
         >
           <ToolbarToggleButton value={'flex-start'}>
@@ -147,6 +152,7 @@ export default function GridDesign() {
           onChange={useAutoCallback((event, wrap) =>
             dispatch({
               type: UPDATE_BLOCK_FORMAT,
+              id,
               format: { wrap },
             })
           )}
