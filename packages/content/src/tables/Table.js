@@ -31,6 +31,7 @@ const StyledTable = styled.table`
       line-height: 1.5;
       padding: 0.5rem 1.25rem;
       white-space: pre-wrap;
+      ${({ readOnly }) => !readOnly && { cursor: 'text' }};
     }
 
     & > thead {
@@ -68,6 +69,8 @@ function TableCellText({
   return (
     <RichText
       {...props}
+      data-row-index={rowIndex}
+      data-column-index={columnIndex}
       editorState={editorState}
       onChange={setEditorState}
       onBlur={useAutoCallback(() => {

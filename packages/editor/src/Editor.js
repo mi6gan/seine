@@ -24,6 +24,7 @@ import {
   useEditorSelector,
 } from './blocks';
 import { ClipboardProvider } from './clipboard';
+import RichTextProvider from './richtexts/RichTextProvider';
 
 import { Paper } from '@seine/styles/mui-core.macro';
 import { Box, ThemeProvider } from '@seine/styles';
@@ -147,7 +148,9 @@ export default function Editor({ children, ...editorProps }) {
       <EditorProvider blocks={children}>
         <ClipboardProvider>
           <ItemMenuProvider>
-            <DefaultEditor {...editorProps} />
+            <RichTextProvider>
+              <DefaultEditor {...editorProps} />
+            </RichTextProvider>
           </ItemMenuProvider>
         </ClipboardProvider>
       </EditorProvider>

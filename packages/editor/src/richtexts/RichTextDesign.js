@@ -5,34 +5,24 @@ import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import {
-  SidebarHeading,
-  SidebarSection,
-  ToolbarToggleButtonGroup,
-  ToolbarToggleButton,
   SidebarGroup,
+  SidebarHeading,
   SidebarLabel,
+  SidebarSection,
+  ToolbarToggleButton,
+  ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
-import { defaultDraftEditor } from './RichTextEditor';
+import RichTextContext from './RichTextContext';
 
 import { SvgIcon } from '@seine/styles/mui-core.macro';
 import {
-  FormatAlignCenter,
-  FormatAlignLeft,
-  FormatAlignRight,
   FormatBold,
   FormatItalic,
   FormatListBulleted,
   FormatListNumbered,
   FormatUnderlined,
 } from '@seine/styles/mui-icons.macro';
-import {
-  blockTypes,
-  UPDATE_BLOCK_EDITOR,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
-import { defaultDraftFormat } from '@seine/content';
 
 const SvgText = styled.text.attrs({
   textAnchor: 'middle',
@@ -48,17 +38,7 @@ const SvgText = styled.text.attrs({
  * @returns {React.Node}
  */
 export default function RichTextDesign() {
-  const {
-    format: {
-      textAlignment = defaultDraftFormat.textAlignment,
-    } = defaultDraftFormat,
-    editor: {
-      state: editorState = defaultDraftEditor.state,
-    } = defaultDraftEditor,
-  } =
-    useEditorSelector().find(({ type }) => type === blockTypes.RICH_TEXT) || {};
-  const dispatch = useBlocksDispatch();
-
+  const { editorState, onChange } = React.useContext(RichTextContext);
   const blockType = useAutoMemo(
     editorState &&
       editorState
@@ -67,17 +47,13 @@ export default function RichTextDesign() {
         .getType()
   );
   const toggleBlockType = useAutoCallback((event, blockType) => {
-    dispatch({
-      type: UPDATE_BLOCK_EDITOR,
-      editor: {
-        state: RichUtils.toggleBlockType(editorState, blockType),
-      },
-    });
+    onChange(RichUtils.toggleBlockType(editorState, blockType));
   });
 
   return (
     <SidebarSection>
       <SidebarHeading>Rich text</SidebarHeading>
+
       <SidebarGroup>
         <SidebarLabel>heading</SidebarLabel>
         <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
@@ -100,6 +76,7 @@ export default function RichTextDesign() {
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
+
       <SidebarGroup alignItems={'center'}>
         <SidebarLabel>&nbsp;</SidebarLabel>
         <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
@@ -137,12 +114,9 @@ export default function RichTextDesign() {
             editorState ? [...editorState.getCurrentInlineStyle()] : []
           )}
           onChange={useAutoCallback((event, style) => {
-            dispatch({
-              type: UPDATE_BLOCK_EDITOR,
-              editor: {
-                state: RichUtils.toggleInlineStyle(editorState, style),
-              },
-            });
+            event.preventDefault();
+            event.stopPropagation();
+            onChange(RichUtils.toggleInlineStyle(editorState, style));
           })}
         >
           <ToolbarToggleButton value={'BOLD'}>
@@ -155,31 +129,6 @@ export default function RichTextDesign() {
 
           <ToolbarToggleButton value={'UNDERLINE'}>
             <FormatUnderlined />
-          </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
-      </SidebarGroup>
-
-      <SidebarGroup alignItems={'center'}>
-        <SidebarLabel>alignment</SidebarLabel>
-        <ToolbarToggleButtonGroup
-          value={textAlignment}
-          onChange={useAutoCallback((event, textAlignment) => {
-            dispatch({
-              type: UPDATE_BLOCK_FORMAT,
-              format: { textAlignment },
-            });
-          })}
-        >
-          <ToolbarToggleButton value={'left'}>
-            <FormatAlignLeft />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'center'}>
-            <FormatAlignCenter />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'right'}>
-            <FormatAlignRight />
           </ToolbarToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>

@@ -21,11 +21,11 @@ export default function useSelectedLayoutItems() {
       : blocks
   );
 
-  return {
+  return useAutoMemo({
     layouts,
     items,
     layout: layouts[0] || null,
     item:
       items.length === 1 ? items[0] : layouts.length > 0 ? layouts[0] : null,
-  };
+  });
 }

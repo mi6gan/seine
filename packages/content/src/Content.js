@@ -23,10 +23,10 @@ export type Props = {
  */
 function ContentBlock({
   id,
-  device: initialDevice = 'any',
+  device: initialDevice = 'auto',
   ...blockProps
 }): React.Node {
-  const block = useBlock(id);
+  const { body, format, ...block } = useBlock(id);
   const blockChildren = useBlockChildren(id);
   const BlockComponent = useBlockComponent(block.type);
 
@@ -55,16 +55,16 @@ function ContentBlock({
 
   return (
     <BlockComponent
-      id={id}
-      {...blockProps}
-      {...(block.format &&
+      {...(format &&
         (device === 'any'
-          ? block.format
+          ? format
           : {
-              ...block.format,
-              ...block.format[device],
+              ...format,
+              ...format[device],
             }))}
-      {...block.body}
+      {...body}
+      {...block}
+      {...blockProps}
     >
       {blockChildren.length
         ? blockChildren.map(({ id }, index, { length }) => (
@@ -103,7 +103,7 @@ export default function Content({
             blocks: children,
           })}
         >
-          {rootBlock && <ContentBlock id={rootBlock.id} {...contentProps} />}
+          <ContentBlock id={rootBlock && rootBlock.id} {...contentProps} />
         </BlocksContext.Provider>
       </ThemeProvider>
     </ResizeObserverProvider>

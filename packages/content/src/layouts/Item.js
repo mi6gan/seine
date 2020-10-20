@@ -8,6 +8,8 @@ const Item = styled.div.attrs((format: ItemFormat) => ({
   ...defaultItemFormat,
   ...format,
 }))`
+  position: relative;
+  box-sizing: content-box;
   ${({ maxWidth, minWidth }) => ({
     minWidth,
     maxWidth,
