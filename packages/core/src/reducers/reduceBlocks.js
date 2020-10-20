@@ -406,19 +406,7 @@ export function reduceBlocks(
                           },
                   }),
             },
-            ...(action.type === UPDATE_BLOCK_FORMAT && action.format.layout
-              ? state.blocks.slice(index + 1).map((block) =>
-                  block['parent_id'] === action.id
-                    ? {
-                        ...block,
-                        format: {
-                          ...block.format,
-                          layout: action.format.layout,
-                        },
-                      }
-                    : block
-                )
-              : state.blocks.slice(index + 1)),
+            ...state.blocks.slice(index + 1),
           ],
         };
       }

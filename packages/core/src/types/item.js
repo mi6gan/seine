@@ -22,7 +22,6 @@ export type ItemFormat = {
 };
 
 export const defaultItemFormat = {
-  layout: 'flex',
   alignSelf: 'auto',
   justifySelf: 'auto',
   maxWidth: 'none',

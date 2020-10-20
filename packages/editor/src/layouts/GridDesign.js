@@ -30,7 +30,7 @@ const MAX_GAP = 100;
  * @description Layout design.
  * @returns {React.Node}
  */
-export default function FlexDesign() {
+export default function GridDesign() {
   const device = useBlocksSelector((state) => state.device);
   const { layout: layoutBlock } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
@@ -44,6 +44,7 @@ export default function FlexDesign() {
     layoutBlock && layoutBlock.format
       ? layoutBlock.format[device] || layoutBlock.format || defaultGridFormat
       : defaultGridFormat;
+
   return (
     <>
       <SidebarGroup>

@@ -3,15 +3,11 @@ import styled from 'styled-components/macro';
 
 import type { ItemFormat } from '@seine/core';
 import { defaultItemFormat } from '@seine/core';
-import { Box } from '@seine/styles';
 
-const Item = styled(Box).attrs((format: ItemFormat) => ({
+const Item = styled.div.attrs((format: ItemFormat) => ({
   ...defaultItemFormat,
   ...format,
 }))`
-  box-sizing: border-box;
-  position: relative;
-
   ${({ maxWidth, minWidth }) => ({
     minWidth,
     maxWidth,
@@ -22,24 +18,21 @@ const Item = styled(Box).attrs((format: ItemFormat) => ({
     maxHeight,
   })};
 
-  ${({ layout, alignSelf, justifySelf }) =>
-    (layout === 'flex' || layout === 'grid') && {
-      alignSelf,
-      justifySelf,
-    }}};
+  ${({ alignSelf, justifySelf }) => ({
+    alignSelf,
+    justifySelf,
+  })};
 
-  ${({ layout, flexGrow, flexBasis, flexShrink }) =>
-    layout === 'flex' && {
-      flexGrow,
-      flexBasis,
-      flexShrink,
-    }};
+  ${({ flexGrow, flexBasis, flexShrink }) => ({
+    flexGrow,
+    flexBasis,
+    flexShrink,
+  })};
 
-  ${({ layout, gridRow, gridColumn }) =>
-    layout === 'grid' && {
-      gridRow,
-      gridColumn,
-    }};
+  ${({ gridRow, gridColumn }) => ({
+    gridRow,
+    gridColumn,
+  })};
 `;
 
 export default Item;
