@@ -1,4 +1,7 @@
 // @flow
+import { createMuiTheme } from '../mui-core-styles.macro';
+import type { Theme as MuiTheme } from '../mui-core.macro.d';
+
 import createTypography from './createTypography';
 import {
   defaultBreakpoints,
@@ -7,8 +10,7 @@ import {
   defaultTypography,
 } from './constants';
 import createBreakpoints from './createBreakpoints';
-
-import type { Theme as MuiTheme } from '@seine/styles/mui-core.macro.d';
+import { deepmerge } from './utils';
 
 export type Theme = {|
   breakpoints: $PropertyType<MuiTheme, 'breakpoints'>,
@@ -59,5 +61,9 @@ export default function createTheme({
     htmlFontSize,
   });
 
-  return { breakpoints, typography, palette };
+  return deepmerge(
+    createMuiTheme(),
+    { breakpoints, typography, palette },
+    { clone: false }
+  );
 }

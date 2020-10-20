@@ -2,20 +2,17 @@
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 
-import { useBlocksSelector } from '../blocks';
+import { useEditorSelector } from '../blocks';
 
-import { blockTypes } from '@seine/core';
+import { isBlockContainer } from '@seine/core';
 
 /**
  * @description Use layout items list from current selection.
  * @returns {React.Node}
  */
 export default function useSelectedLayoutItems() {
-  const blocks = useBlocksSelector();
-
-  const layouts = useAutoMemo(
-    blocks.filter(({ type }) => type === blockTypes.LAYOUT)
-  );
+  const blocks = useEditorSelector();
+  const layouts = useAutoMemo(blocks.filter(isBlockContainer));
   const items = useAutoMemo(
     layouts.length
       ? blocks.filter((block) =>

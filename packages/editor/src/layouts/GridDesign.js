@@ -9,7 +9,7 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../blocks';
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import {
   FormatAlignCenter,
@@ -31,7 +31,7 @@ const MAX_GAP = 100;
  * @returns {React.Node}
  */
 export default function GridDesign() {
-  const device = useBlocksSelector((state) => state.device);
+  const device = useEditorSelector((state) => state.device);
   const { layout: layoutBlock } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const id = layoutBlock && layoutBlock.id;

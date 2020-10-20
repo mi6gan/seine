@@ -14,9 +14,9 @@ import {
   ToolbarToggleButtonGroup,
 } from '../ui';
 import {
-  BlocksActionIconButton,
+  EditorActionIconButton,
   useBlocksDispatch,
-  useBlocksSelector,
+  useEditorSelector,
 } from '../blocks';
 
 import { defaultTableEditor } from './constants';
@@ -37,7 +37,7 @@ import {
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 
-const StructureActionButton = styled(BlocksActionIconButton).attrs({
+const StructureActionButton = styled(EditorActionIconButton).attrs({
   borderColor: 'transparent',
   variant: 'outlined',
   size: 'small',
@@ -64,7 +64,7 @@ export default function TableDesign() {
       rows = defaultTableBody.rows,
       textAlignment = defaultTableBody.textAlignment,
     } = defaultTableBody,
-  } = useBlocksSelector().find(({ type }) => type === blockTypes.TABLE) || {};
+  } = useEditorSelector().find(({ type }) => type === blockTypes.TABLE) || {};
   const row = rowIndex === -1 ? header : rows && rows[rowIndex];
   const cell = row && row[columnIndex];
   const isBold = cell && cell.bold;

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { BlocksContext } from '../blocks';
+import { EditorContext } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
 
 import { Button as MuiButton } from '@seine/styles/mui-core.macro';
@@ -16,7 +16,7 @@ export default function DeleteBlockButton({
   ...buttonProps
 }) {
   const { items } = useSelectedLayoutItems();
-  const { setBuffer } = React.useContext(BlocksContext);
+  const { setBuffer } = React.useContext(EditorContext);
 
   return (
     <Button

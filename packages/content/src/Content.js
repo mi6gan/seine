@@ -2,57 +2,34 @@
 import * as React from 'react';
 import { useAutoEffect, useAutoMemo } from 'hooks.macro';
 
-import defaultBlockRenderMap from './blockRenderMap';
+import BlocksContext from './BlocksContext';
+import useBlock from './useBlock';
+import useBlockChildren from './useBlockChildren';
+import useBlockComponent from './useBlockComponent';
 
-import type { Block, BlockId } from '@seine/core';
 import { ResizeObserverProvider, ThemeProvider, useTheme } from '@seine/styles';
+import type { Block } from '@seine/core';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
   device?: 'mobile' | 'any',
-  children: $ReadOnlyArray<Block>,
-  parent: BlockId,
+  children: Array<Block>,
 };
-
-// eslint-disable-next-line
-function ContentBlock({
-  blockRenderMap,
-  body,
-  format,
-  device,
-  children,
-  ...block
-}: Block) {
-  const ContentRender = blockRenderMap[block.type];
-  return (
-    <ContentRender
-      key={block.id}
-      {...(format
-        ? device === 'any'
-          ? format
-          : { ...format, ...format[device] }
-        : {})}
-      {...(body ? body : {})}
-      {...block}
-    >
-      {children}
-    </ContentRender>
-  );
-}
 
 /**
  * @description Content blocks renderer.
  * @param {Props} props
  * @returns {React.Node}
  */
-function Content({
-  blockRenderMap = defaultBlockRenderMap,
-  children,
-  parent,
-  device: initialDevice = 'auto',
-  as: Container = parent['parent_id'] ? React.Fragment : Provider,
-  ...containerProps
-}: Props): React.Node {
+function ContentBlock({
+  id,
+  device: initialDevice = 'any',
+  ...blockProps
+}): React.Node {
+  const block = useBlock(id);
+  const blockChildren = useBlockChildren(id);
+  const BlockComponent = useBlockComponent(block.type);
+
   const theme = useTheme();
   const mql = useAutoMemo(
     initialDevice === 'auto' &&
@@ -77,53 +54,58 @@ function Content({
   });
 
   return (
-    <Container {...containerProps}>
-      {children
-        .filter((block: Block) => block['parent_id'] === parent.id)
-        .map((block: Block, { length }) => {
-          const blockChildren = children.filter(
-            (content) => content.id !== block.id
-          );
-          return (
+    <BlockComponent
+      id={id}
+      {...blockProps}
+      {...(block.format &&
+        (device === 'any'
+          ? block.format
+          : {
+              ...block.format,
+              ...block.format[device],
+            }))}
+      {...block.body}
+    >
+      {blockChildren.length
+        ? blockChildren.map(({ id }, index, { length }) => (
             <ContentBlock
-              {...block}
-              blockRenderMap={blockRenderMap}
+              id={id}
+              key={id}
               device={device}
-              key={block.id}
               hasSibling={length > 1}
-              parentType={parent.type}
-            >
-              {blockChildren.length ? (
-                <Content
-                  device={device}
-                  parent={block}
-                  blockRenderMap={blockRenderMap}
-                >
-                  {blockChildren}
-                </Content>
-              ) : null}
-            </ContentBlock>
-          );
-        })}
-    </Container>
+              parentType={block.type}
+            />
+          ))
+        : null}
+    </BlockComponent>
   );
 }
-
-type ProviderProps = {
-  children?: React.Node,
-};
 
 /**
- * @description Content provider.
- * @param {ProviderProps} props
+ * @description Content blocks renderer.
+ * @param {Props} props
  * @returns {React.Node}
  */
-function Provider({ children = null }: ProviderProps) {
+export default function Content({
+  children,
+  blockRenderMap = null,
+  ...contentProps
+}: Props) {
+  const defaultBlocks = React.useContext(BlocksContext);
+  const [rootBlock = null] = children;
   return (
-    <ThemeProvider>
-      <ResizeObserverProvider>{children}</ResizeObserverProvider>
-    </ThemeProvider>
+    <ResizeObserverProvider>
+      <ThemeProvider>
+        <BlocksContext.Provider
+          value={useAutoMemo({
+            ...defaultBlocks,
+            ...(blockRenderMap && { blockRenderMap }),
+            blocks: children,
+          })}
+        >
+          {rootBlock && <ContentBlock id={rootBlock.id} {...contentProps} />}
+        </BlocksContext.Provider>
+      </ThemeProvider>
+    </ResizeObserverProvider>
   );
 }
-
-export default Content;

@@ -8,6 +8,7 @@ import type {
   BlockId,
   BlockType,
 } from '../types';
+import { blockTypes } from '../types';
 
 type Blocks = $ReadOnlyArray<Block>;
 type BlocksTree = Block & {
@@ -80,4 +81,13 @@ export function createBlocksFromTree(parent, tree: BlocksTree[]): Blocks[] {
       ];
     }, []),
   ];
+}
+
+/**
+ * @description  Return true if block is a container (may have children blocks).
+ * @param {Block} block
+ * @returns {boolean}
+ */
+export function isBlockContainer(block: Block) {
+  return block.type === blockTypes.PAGE || block.type === blockTypes.LAYOUT;
 }

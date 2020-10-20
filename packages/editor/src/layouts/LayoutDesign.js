@@ -9,7 +9,7 @@ import {
   SidebarLabel,
   SidebarSection,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../blocks';
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import { FlexDesign, GridDesign, useSelectedLayoutItems } from '.';
 
@@ -26,7 +26,7 @@ import {
  */
 export default function LayoutDesign() {
   const { layout: layoutBlock } = useSelectedLayoutItems();
-  const device = useBlocksSelector((state) => state.device);
+  const device = useEditorSelector((state) => state.device);
   const id = layoutBlock && layoutBlock.id;
   const { kind = defaultLayoutFormat.kind } =
     layoutBlock && layoutBlock.format

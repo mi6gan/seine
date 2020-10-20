@@ -6,9 +6,9 @@ import styled from 'styled-components/macro';
 import { ItemMenuContext } from './EditorItemMenu';
 import {
   deviceSelector,
-  BlocksActionButton,
+  EditorActionButton,
   useBlocksDispatch,
-  useBlocksSelector,
+  useEditorSelector,
 } from './blocks';
 import { Toolbar, BlockTypeIcon, ToolbarButton, ToolbarSeparator } from './ui';
 import { useSelectedLayoutIds } from './layouts';
@@ -46,7 +46,7 @@ export default function EditorToolbar(boxProps: Props) {
   const [parentId = null] = useSelectedLayoutIds();
 
   const dispatch = useBlocksDispatch();
-  const device = useBlocksSelector(deviceSelector);
+  const device = useEditorSelector(deviceSelector);
 
   return (
     <Toolbar {...boxProps} ref={menuAnchorRef}>
@@ -64,7 +64,7 @@ export default function EditorToolbar(boxProps: Props) {
         <ToolbarSeparator />
 
         <ToolbarButton
-          as={BlocksActionButton}
+          as={EditorActionButton}
           disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -80,7 +80,7 @@ export default function EditorToolbar(boxProps: Props) {
         <ToolbarSeparator />
 
         <ToolbarButton
-          as={BlocksActionButton}
+          as={EditorActionButton}
           disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -107,7 +107,7 @@ export default function EditorToolbar(boxProps: Props) {
         <ToolbarSeparator />
 
         <ToolbarButton
-          as={BlocksActionButton}
+          as={EditorActionButton}
           disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -137,7 +137,7 @@ export default function EditorToolbar(boxProps: Props) {
         </ToolbarButton>
 
         <ToolbarButton
-          as={BlocksActionButton}
+          as={EditorActionButton}
           disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -179,7 +179,7 @@ export default function EditorToolbar(boxProps: Props) {
         </ToolbarButton>
 
         <ToolbarButton
-          as={BlocksActionButton}
+          as={EditorActionButton}
           disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -221,7 +221,7 @@ export default function EditorToolbar(boxProps: Props) {
         </ToolbarButton>
 
         <ToolbarButton
-          as={BlocksActionButton}
+          as={EditorActionButton}
           disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(
@@ -251,7 +251,7 @@ export default function EditorToolbar(boxProps: Props) {
         </ToolbarButton>
 
         <ToolbarButton
-          as={BlocksActionButton}
+          as={EditorActionButton}
           disabled={parentId === null}
           type={CREATE_BLOCK}
           block={useAutoMemo(

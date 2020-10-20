@@ -3,8 +3,8 @@ import * as React from 'react';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
-import { useBlocksDispatch, useBlocksSelector } from './blocks';
-import { useSelectedLayoutIds, CreateLayoutButton } from './layouts';
+import { useBlocksDispatch, useEditorSelector } from './blocks';
+import { CreateLayoutButton, useSelectedLayoutIds } from './layouts';
 import { ClipboardContext } from './clipboard';
 import { DeleteBlockButton, ToolbarMenu } from './ui';
 
@@ -12,11 +12,11 @@ import { MenuItem } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
 import type { Block } from '@seine/core';
 import {
-  blockTypes,
   cloneBlock,
   CREATE_BLOCK,
   createBlocksAction,
   DELETE_SELECTED_BLOCKS,
+  isBlockContainer,
 } from '@seine/core';
 
 const MenuButton = styled(Box).attrs(({ disabled }) => ({
@@ -67,7 +67,7 @@ export function ItemMenuProvider({ children }) {
 // eslint-disable-next-line
 function useCopyCallback() {
   const clipboard = React.useContext(ClipboardContext);
-  const blocks: [Block] = useBlocksSelector();
+  const blocks: [Block] = useEditorSelector();
 
   return useAutoCallback(() => {
     const clones = [];
@@ -131,17 +131,14 @@ export default function EditorItemMenu() {
     replace: clipboardReplace,
     ...clipboard
   } = React.useContext(ClipboardContext);
-  const selectionBlocks: [Block] = useBlocksSelector(
+  const selectionBlocks: [Block] = useEditorSelector(
     useAutoCallback(({ blocks, selection }) =>
       blocks.filter(({ id }) => selection.includes(id))
     )
   );
   const { isOpen, close, anchorEl } = React.useContext(ItemMenuContext);
 
-  const isContainer = selectionBlocks.some(
-    (block) =>
-      block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE
-  );
+  const isContainer = selectionBlocks.some(isBlockContainer);
 
   return (
     <ToolbarMenu

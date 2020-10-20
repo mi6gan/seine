@@ -7,7 +7,7 @@ import { ItemMenuContext } from './EditorItemMenu';
 import {
   selectionSelector,
   useBlocksDispatch,
-  useBlocksSelector,
+  useEditorSelector,
 } from './blocks';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 
@@ -22,7 +22,7 @@ import {
   Typography,
 } from '@seine/styles/mui-core.macro';
 import { ChevronRight, ExpandMore } from '@seine/styles/mui-icons.macro';
-import { blockTypes, SET_BLOCKS_SELECTION } from '@seine/core';
+import { isBlockContainer, SET_BLOCKS_SELECTION } from '@seine/core';
 
 type Props = {
   as?: React.ComponentType,
@@ -43,8 +43,8 @@ function EditorTreeItem({
   ...listItemProps
 }: Props) {
   const dispatch = useBlocksDispatch();
-  const selection = useBlocksSelector(selectionSelector);
-  const block = useBlocksSelector(
+  const selection = useEditorSelector(selectionSelector);
+  const block = useEditorSelector(
     useAutoCallback(
       ({ blocks }) => id && blocks.find((block) => id === block.id)
     )
@@ -57,8 +57,7 @@ function EditorTreeItem({
     event.preventDefault();
     itemMenu.open(event.currentTarget);
   });
-  const isLayout =
-    block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE;
+  const isLayout = block && isBlockContainer(block);
 
   return (
     <StyledListItem
@@ -124,7 +123,7 @@ const StyledList = styled(List).attrs({
  * @returns {React.Node}
  */
 function EditorTree({ id = null, level = 0 }: Props) {
-  const children = useBlocksSelector(
+  const children = useEditorSelector(
     useAutoCallback((state) =>
       state.blocks.filter((block) => block['parent_id'] === id)
     )

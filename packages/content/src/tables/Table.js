@@ -5,26 +5,25 @@ import { useAutoCallback } from 'hooks.macro';
 
 import { Item } from '../layouts';
 
-import TableCell from './TableCell';
-
 import type { TableBody, TableFormat } from '@seine/core';
-import { useResizeTargetRef } from '@seine/styles';
+import { RichText, toDraftEditor, toRawContent } from '@seine/content';
 
-export type Props = TableBody & TableFormat;
+export type Props = TableBody &
+  TableFormat & {
+    onChange: ?(SyntheticInputEvent) => any,
+  };
 
 const Container = styled(Item)``;
 
 const StyledTable = styled.table`
   ${({
-    scale,
     theme: {
       typography: { body1 },
     },
   }) => css`
     ${body1};
     width: 100%;
-    transform-origin: left top;
-    transform: scale(${scale});
+
     th,
     td {
       border-left: 1px solid #fff;
@@ -54,72 +53,88 @@ const StyledTable = styled.table`
   `}
 `;
 
+// eslint-disable-next-line
+function TableCellText({
+  children,
+  onChange,
+  rowIndex,
+  columnIndex,
+  ...props
+}) {
+  const [editorState, setEditorState] = React.useState(() =>
+    toDraftEditor(children)
+  );
+
+  return (
+    <RichText
+      {...props}
+      editorState={editorState}
+      onChange={setEditorState}
+      onBlur={useAutoCallback(() => {
+        if (onChange) {
+          onChange({
+            rowIndex,
+            columnIndex,
+            state: toRawContent(editorState.getCurrentContent()),
+          });
+        }
+      })}
+    />
+  );
+}
+
 /**
  * @description Table block render component.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default React.forwardRef(function Table(
-  {
-    title,
-    header,
-    rows,
-    textAlignment,
-    cellAs: Cell = TableCell,
-    children = null,
-    ...containerProps
-  }: Props,
-  ref
-) {
-  const containerRef = useResizeTargetRef();
-  const tableRef = React.useRef<HTMLElement>(null);
-
-  const { current: container } = containerRef;
-  const { current: table } = tableRef;
-
-  const scale =
-    container && table ? container.offsetWidth / table.offsetWidth : 1;
-
+export default function Table({
+  title,
+  header,
+  rows,
+  textAlignment,
+  onChange,
+  readOnly = true,
+  ...containerProps
+}: Props) {
   return (
-    <Container
-      {...containerProps}
-      ref={useAutoCallback((container) => {
-        containerRef.current = container;
-        ref && ref(container);
-      })}
-    >
-      <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
+    <Container {...containerProps}>
+      <StyledTable>
         <thead>
           <tr>
-            {header.map(({ text, ...cell }, index) => (
-              <Cell
-                as={'th'}
-                key={index}
-                meta={{ rowIndex: -1, columnIndex: index }}
-                {...cell}
-              >
-                {text}
-              </Cell>
+            {header.map(({ text }, index) => (
+              <th key={index}>
+                <TableCellText
+                  rowIndex={-1}
+                  columnIndex={index}
+                  onChange={onChange}
+                  readOnly={readOnly}
+                >
+                  {`<b>${text}</b>`}
+                </TableCellText>
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((columns, rowIndex) => (
             <tr key={rowIndex}>
-              {columns.map(({ text, ...cell }, columnIndex) => (
-                <Cell
-                  key={columnIndex}
-                  meta={{ rowIndex, columnIndex }}
-                  {...cell}
-                >
-                  {text || ' '}
-                </Cell>
+              {columns.map(({ text }, columnIndex) => (
+                <td key={columnIndex}>
+                  <TableCellText
+                    rowIndex={rowIndex}
+                    columnIndex={columnIndex}
+                    onChange={onChange}
+                    readOnly={readOnly}
+                  >
+                    {text}
+                  </TableCellText>
+                </td>
               ))}
             </tr>
           ))}
         </tbody>
       </StyledTable>
-      {children}
     </Container>
   );
-});
+}

@@ -12,7 +12,7 @@ import {
   SidebarGroup,
   SidebarLabel,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../blocks';
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import { defaultDraftEditor } from './RichTextEditor';
 
@@ -56,7 +56,7 @@ export default function RichTextDesign() {
       state: editorState = defaultDraftEditor.state,
     } = defaultDraftEditor,
   } =
-    useBlocksSelector().find(({ type }) => type === blockTypes.RICH_TEXT) || {};
+    useEditorSelector().find(({ type }) => type === blockTypes.RICH_TEXT) || {};
   const dispatch = useBlocksDispatch();
 
   const blockType = useAutoMemo(

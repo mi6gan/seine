@@ -10,7 +10,7 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../blocks';
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {
@@ -31,7 +31,7 @@ import { useSelectedLayoutItems } from '@seine/editor';
  * @returns {React.Node}
  */
 export default function GridDesign() {
-  const device = useBlocksSelector((state) => state.device);
+  const device = useEditorSelector((state) => state.device);
   const { layout: layoutBlock } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const id = layoutBlock && layoutBlock.id;

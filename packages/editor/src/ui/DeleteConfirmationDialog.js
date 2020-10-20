@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { BlocksContext } from '../blocks';
+import { EditorContext } from '../blocks';
 
 import {
   Button,
@@ -14,7 +14,7 @@ import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 
 // eslint-disable-next-line
 export default function DeleteConfirmationDialog() {
-  const { buffer, setBuffer, dispatch } = React.useContext(BlocksContext);
+  const { buffer, setBuffer, dispatch } = React.useContext(EditorContext);
 
   return (
     <Dialog open={buffer !== null && buffer.type === DELETE_SELECTED_BLOCKS}>
