@@ -1,18 +1,44 @@
 // @flow
 import * as React from 'react';
-import { useAutoMemo, useAutoEffect } from 'hooks.macro';
+import { useAutoEffect, useAutoMemo } from 'hooks.macro';
 
 import defaultBlockRenderMap from './blockRenderMap';
 
-import type { Block } from '@seine/core';
+import type { Block, BlockId } from '@seine/core';
 import { ResizeObserverProvider, ThemeProvider, useTheme } from '@seine/styles';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
   device?: 'mobile' | 'any',
   children: $ReadOnlyArray<Block>,
-  parent: Block,
+  parent: BlockId,
 };
+
+// eslint-disable-next-line
+function ContentBlock({
+  blockRenderMap,
+  body,
+  format,
+  device,
+  children,
+  ...block
+}: Block) {
+  const ContentRender = blockRenderMap[block.type];
+  return (
+    <ContentRender
+      key={block.id}
+      {...(format
+        ? device === 'any'
+          ? format
+          : { ...format, ...format[device] }
+        : {})}
+      {...(body ? body : {})}
+      {...block}
+    >
+      {children}
+    </ContentRender>
+  );
+}
 
 /**
  * @description Content blocks renderer.
@@ -54,23 +80,18 @@ function Content({
     <Container {...containerProps}>
       {children
         .filter((block: Block) => block['parent_id'] === parent.id)
-        .map(({ body, format, ...block }: Block, { length }) => {
-          const ContentBlock = blockRenderMap[block.type];
+        .map((block: Block, { length }) => {
           const blockChildren = children.filter(
             (content) => content.id !== block.id
           );
           return (
             <ContentBlock
-              key={block.id}
-              parentType={parent.type}
-              {...(format
-                ? device === 'any'
-                  ? format
-                  : { ...format, ...format[device] }
-                : {})}
-              {...(body ? body : {})}
               {...block}
+              blockRenderMap={blockRenderMap}
+              device={device}
+              key={block.id}
               hasSibling={length > 1}
+              parentType={parent.type}
             >
               {blockChildren.length ? (
                 <Content
@@ -100,7 +121,7 @@ type ProviderProps = {
 function Provider({ children = null }: ProviderProps) {
   return (
     <ThemeProvider>
-      {useAutoMemo(<ResizeObserverProvider>{children}</ResizeObserverProvider>)}
+      <ResizeObserverProvider>{children}</ResizeObserverProvider>
     </ThemeProvider>
   );
 }

@@ -10,9 +10,7 @@ export default function useSelectedLayoutIds() {
     useAutoCallback(({ selection, blocks }) =>
       selection.filter((id) =>
         blocks.some(
-          (block) =>
-            id === block.id &&
-            (block.type === blockTypes.LAYOUT || block.type === blockTypes.PAGE)
+          (block) => id === block.id && block.type === blockTypes.LAYOUT
         )
       )
     )

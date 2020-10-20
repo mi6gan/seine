@@ -35,7 +35,7 @@ import {
   FormatItalic,
 } from '@seine/styles/mui-icons.macro';
 import { defaultTableBody, defaultTableCell } from '@seine/content';
-import { blockTypes, defaultItemFormat, UPDATE_BLOCK_BODY } from '@seine/core';
+import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 
 const StructureActionButton = styled(BlocksActionIconButton).attrs({
   borderColor: 'transparent',
@@ -64,7 +64,6 @@ export default function TableDesign() {
       rows = defaultTableBody.rows,
       textAlignment = defaultTableBody.textAlignment,
     } = defaultTableBody,
-    format: { layout = defaultItemFormat.layout },
   } = useBlocksSelector().find(({ type }) => type === blockTypes.TABLE) || {};
   const row = rowIndex === -1 ? header : rows && rows[rowIndex];
   const cell = row && row[columnIndex];
@@ -279,7 +278,6 @@ export default function TableDesign() {
         <SidebarGroup>
           <SidebarLabel>column %</SidebarLabel>
           <SidebarInput
-            disabled={layout === blockTypes.FLEX}
             type={'number'}
             inputProps={{ min: 0, max: 100 }}
             value={header[columnIndex] ? header[columnIndex].width : ''}

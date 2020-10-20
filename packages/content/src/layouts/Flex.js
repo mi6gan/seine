@@ -36,21 +36,13 @@ const Flex = styled(Item).attrs(
 )`
   display: flex;
 
-  ${({
-    direction,
-    wrap,
-    justify,
-    alignItems,
-    alignContent,
-    spacing,
-  }: Props) => ({
+  ${({ direction, wrap, justify, alignItems, alignContent }: Props) => ({
     flexDirection: direction,
     flexWrap: wrap,
     justifyContent: justify,
     alignItems,
     alignContent,
-    margin: -spacing / 2,
-    width: `calc(100% + ${spacing}px)`,
+    width: '100%',
   })};
 
   & > ${Item} {

@@ -42,13 +42,13 @@ export default function LayoutDesign() {
           <SidebarLabel>type</SidebarLabel>
           <Select
             value={kind}
-            onChange={useAutoCallback((e) =>
+            onChange={useAutoCallback((e) => {
               dispatch({
                 id,
                 type: UPDATE_BLOCK_FORMAT,
-                format: { kind: e.target.value },
-              })
-            )}
+                format: { kind: `${e.target.value}` },
+              });
+            })}
           >
             <MenuItem value={layoutTypes.FLEX}>
               <SidebarSelectLabel>flex</SidebarSelectLabel>

@@ -6,9 +6,10 @@ import { useBlocksDispatch, useBlocksSelector } from '../blocks';
 
 import { DESELECT_ALL_BLOCKS, SELECT_BLOCK } from '@seine/core';
 import { Item } from '@seine/content';
+import { Box } from '@seine/styles';
 
 // eslint-disable-next-line
-export default function Frame({ children, id, onClick, ...props }) {
+export default function Frame({ children, id, onClick, as, ...props }) {
   const dispatch = useBlocksDispatch();
   const selected = useBlocksSelector(
     useAutoCallback(({ selection }) => selection.includes(id))
@@ -17,11 +18,12 @@ export default function Frame({ children, id, onClick, ...props }) {
   return (
     <Item
       {...props}
+      as={Box}
+      forwardedAs={as}
       id={id}
       border={1}
       borderColor={selected ? 'primary.main' : 'transparent'}
       cursor={'pointer'}
-      selected={selected}
       onClick={useAutoCallback((event) => {
         event.preventDefault();
         event.stopPropagation();

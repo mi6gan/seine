@@ -26,7 +26,7 @@ import {
 import { ClipboardProvider } from './clipboard';
 
 import { Paper } from '@seine/styles/mui-core.macro';
-import { ThemeProvider, Box } from '@seine/styles';
+import { Box, ThemeProvider } from '@seine/styles';
 import type { Block, BlockType } from '@seine/core';
 import { DESELECT_ALL_BLOCKS } from '@seine/core';
 import { Content } from '@seine/content';
@@ -39,12 +39,13 @@ const Contents = styled(Box).attrs({
   overflow: auto;
 `;
 
-const EditorPaper = styled(Paper).attrs(() => ({
+const EditorPaper = styled(Paper).attrs({
+  square: true,
   component: Box,
   height: 600,
   m: 10,
-  p: 2,
-}))`
+  p: 0,
+})`
   overflow: auto;
   overflow-x: hidden;
   ${({ device, theme }) => ({
@@ -75,8 +76,6 @@ function DefaultEditor({
   blockRenderMap = defaultBlockRenderMap,
   ...contentProps
 }: Props) {
-  const ParentBlock = blockRenderMap[parent.type];
-
   const dispatch = useBlocksDispatch();
   const blocks = useBlocksSelector(allBlocksSelector);
   const device = useBlocksSelector(deviceSelector);
@@ -123,16 +122,14 @@ function DefaultEditor({
           </Sidebar>
 
           <EditorPaper device={device}>
-            <ParentBlock>
-              <Content
-                device={device}
-                blockRenderMap={blockRenderMap}
-                parent={parent}
-                {...contentProps}
-              >
-                {blocks}
-              </Content>
-            </ParentBlock>
+            <Content
+              device={device}
+              blockRenderMap={blockRenderMap}
+              parent={parent}
+              {...contentProps}
+            >
+              {blocks}
+            </Content>
           </EditorPaper>
 
           <Sidebar
