@@ -1,13 +1,14 @@
 // @flow
 import * as React from 'react';
-import { useAutoEffect, useAutoMemo } from 'hooks.macro';
+import { useAutoMemo } from 'hooks.macro';
 
 import BlocksContext from './BlocksContext';
 import useBlock from './useBlock';
 import useBlockChildren from './useBlockChildren';
 import useBlockComponent from './useBlockComponent';
+import useScreenDevice from './useScreenDevice';
 
-import { ResizeObserverProvider, ThemeProvider, useTheme } from '@seine/styles';
+import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 import type { Block } from '@seine/core';
 
 export type Props = {
@@ -21,63 +22,34 @@ export type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-function ContentBlock({
-  id,
-  device: initialDevice = 'auto',
-  ...blockProps
-}): React.Node {
-  const { body, format, ...block } = useBlock(id);
+function ContentBlock({ id, device: initialDevice }): React.Node {
+  const block = useBlock(id);
+  const body = block.body;
   const blockChildren = useBlockChildren(id);
   const BlockComponent = useBlockComponent(block.type);
-
-  const theme = useTheme();
-  const mql = useAutoMemo(
-    initialDevice === 'auto' &&
-      window.matchMedia(theme.breakpoints.up('md').replace('@media ', ''))
-  );
-  const [screenDevice, setScreenDevice] = React.useState('any');
-
-  const device = initialDevice === 'auto' ? screenDevice : initialDevice;
-
-  useAutoEffect(() => {
-    if (mql) {
-      const handler = () => {
-        setScreenDevice(mql.matches ? 'any' : 'mobile');
-      };
-
-      mql.addEventListener('change', handler);
-
-      return () => {
-        mql.removeEventListener('change', handler);
-      };
-    }
-  });
+  const device = useScreenDevice(initialDevice);
+  const format = {
+    ...block.format,
+    ...(block.format && block.format[device]),
+  };
 
   return (
     <BlockComponent
-      {...(format &&
-        (device === 'any'
-          ? format
-          : {
-              ...format,
-              ...format[device],
-            }))}
+      id={id}
+      editor={block.editor}
+      {...format}
       {...body}
-      {...block}
-      {...blockProps}
-    >
-      {blockChildren.length
-        ? blockChildren.map(({ id }, index, { length }) => (
-            <ContentBlock
-              id={id}
-              key={id}
-              device={device}
-              hasSibling={length > 1}
-              parentType={block.type}
-            />
-          ))
-        : null}
-    </BlockComponent>
+      {...(blockChildren.length > 0 && {
+        children: blockChildren.map((block, index, { length }) => (
+          <ContentBlock
+            {...block}
+            key={block.id}
+            device={device}
+            hasSibling={length > 1}
+          />
+        )),
+      })}
+    />
   );
 }
 
@@ -88,24 +60,24 @@ function ContentBlock({
  */
 export default function Content({
   children,
+  device,
   blockRenderMap = null,
-  ...contentProps
 }: Props) {
   const defaultBlocks = React.useContext(BlocksContext);
   const [rootBlock = null] = children;
   return (
-    <ResizeObserverProvider>
-      <ThemeProvider>
-        <BlocksContext.Provider
-          value={useAutoMemo({
-            ...defaultBlocks,
-            ...(blockRenderMap && { blockRenderMap }),
-            blocks: children,
-          })}
-        >
-          <ContentBlock id={rootBlock && rootBlock.id} {...contentProps} />
-        </BlocksContext.Provider>
-      </ThemeProvider>
-    </ResizeObserverProvider>
+    <ThemeProvider>
+      <BlocksContext.Provider
+        value={useAutoMemo({
+          ...defaultBlocks,
+          ...(blockRenderMap && { blockRenderMap }),
+          blocks: children,
+        })}
+      >
+        <ResizeObserverProvider>
+          <ContentBlock id={rootBlock && rootBlock.id} device={device} />
+        </ResizeObserverProvider>
+      </BlocksContext.Provider>
+    </ThemeProvider>
   );
 }

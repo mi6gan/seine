@@ -23,6 +23,7 @@ import {
   CREATE_BLOCK,
   createBlock,
   createTitleIdentityBlockElements,
+  defaultImageFormat,
   SET_DEVICE,
 } from '@seine/core';
 import { defaultTableCell, toRawContent } from '@seine/content';
@@ -261,10 +262,7 @@ export default function EditorToolbar(boxProps: Props) {
                 file:
                   'https://via.placeholder.com/150/0000FF/808080?text=empty%20image',
               },
-              {
-                verticalAlignment: 'center',
-                kind: chartTypes.PIE,
-              }
+              defaultImageFormat
             )
           )}
           id={parentId}

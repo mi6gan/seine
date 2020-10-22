@@ -33,6 +33,8 @@ export const blockTypes = {
   LAYOUT,
 };
 
+export type ScreenDevice = 'any' | 'mobile';
+
 export type BlockElement = ChartElement;
 
 export type BlockType = $Values<typeof blockTypes>;
@@ -55,7 +57,10 @@ export type BlockId = string | null;
 export type Block = {
   id: BlockId,
   body: BlockBody,
-  format: BlockFormat,
+  format: {
+    [ScreenDevice]: BlockFormat,
+    ...BlockFormat,
+  },
   parent_id: BlockId,
   type: BlockType,
 };
