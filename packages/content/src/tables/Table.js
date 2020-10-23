@@ -1,12 +1,19 @@
 // @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
-import { useAutoCallback } from 'hooks.macro';
+import { useAutoCallback, useAutoMemo, useAutoEffect } from 'hooks.macro';
 
 import { Item } from '../layouts';
+import useBlock from '../useBlock';
 
 import type { TableBody, TableFormat } from '@seine/core';
-import { RichText, toDraftEditor, toRawContent } from '@seine/content';
+import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
+import {
+  defaultTableBody,
+  RichText,
+  toDraftEditor,
+  toRawContent,
+} from '@seine/content';
 
 export type Props = TableBody &
   TableFormat & {
@@ -56,31 +63,91 @@ const StyledTable = styled.table`
 
 // eslint-disable-next-line
 function TableCellText({
+  id,
   children,
-  onChange,
   rowIndex,
   columnIndex,
+  onChange: dispatch,
   ...props
 }) {
-  const [editorState, setEditorState] = React.useState(() =>
-    toDraftEditor(children)
+  const block = useBlock(id);
+  const { rows, header } = (block && block.body) || defaultTableBody;
+  const row = rows && (rowIndex === -1 ? header : rows && rows[rowIndex]);
+  const cell = row && row[columnIndex];
+  const cellId = `${rowIndex}:${columnIndex}`;
+  const editorState = useAutoMemo(
+    (block && block.editor && block.editor[cellId]) || toDraftEditor(children)
   );
+  const editorRef = React.useRef<?Editor>(null);
+  const selected = !!(
+    block &&
+    block.editor &&
+    block.editor.rowIndex === rowIndex &&
+    block.editor.columnIndex === columnIndex
+  );
+  useAutoEffect(() => {
+    const { current } = editorRef;
+    if (
+      editorState &&
+      selected &&
+      current &&
+      !(
+        document.activeElement &&
+        document.activeElement instanceof HTMLInputElement
+      )
+    ) {
+      current.focus();
+    }
+  });
 
   return (
     <RichText
       {...props}
+      textAlignment={cell && cell.align}
+      ref={editorRef}
       data-row-index={rowIndex}
       data-column-index={columnIndex}
       editorState={editorState}
-      onChange={setEditorState}
+      onChange={useAutoCallback((state) => {
+        dispatch({
+          id,
+          type: UPDATE_BLOCK_EDITOR,
+          editor: { [cellId]: state },
+        });
+      })}
+      onFocus={useAutoCallback(() => {
+        dispatch({
+          id,
+          type: UPDATE_BLOCK_EDITOR,
+          editor: { rowIndex, columnIndex },
+        });
+      })}
       onBlur={useAutoCallback(() => {
-        if (onChange) {
-          onChange({
-            rowIndex,
-            columnIndex,
-            state: toRawContent(editorState.getCurrentContent()),
-          });
-        }
+        const text = toRawContent(editorState);
+        dispatch({
+          id,
+          type: UPDATE_BLOCK_BODY,
+          body:
+            rowIndex === -1
+              ? {
+                  header: [
+                    ...header.slice(0, columnIndex),
+                    { ...cell, text },
+                    ...header.slice(columnIndex + 1),
+                  ],
+                }
+              : {
+                  rows: [
+                    ...rows.slice(0, rowIndex),
+                    [
+                      ...row.slice(0, columnIndex),
+                      { ...cell, text },
+                      ...row.slice(columnIndex + 1),
+                    ],
+                    ...rows.slice(rowIndex + 1),
+                  ],
+                },
+        });
       })}
     />
   );
@@ -92,6 +159,7 @@ function TableCellText({
  * @returns {React.Node}
  */
 export default function Table({
+  id,
   title,
   header,
   rows,
@@ -101,19 +169,20 @@ export default function Table({
   ...containerProps
 }: Props) {
   return (
-    <Container {...containerProps}>
+    <Container {...containerProps} id={id}>
       <StyledTable>
         <thead>
           <tr>
             {header.map(({ text }, index) => (
               <th key={index}>
                 <TableCellText
+                  id={id}
                   rowIndex={-1}
                   columnIndex={index}
                   onChange={onChange}
                   readOnly={readOnly}
                 >
-                  {`<b>${text}</b>`}
+                  {typeof text === 'string' ? `<b>${text}</b>` : text}
                 </TableCellText>
               </th>
             ))}
@@ -125,6 +194,7 @@ export default function Table({
               {columns.map(({ text }, columnIndex) => (
                 <td key={columnIndex}>
                   <TableCellText
+                    id={id}
                     rowIndex={rowIndex}
                     columnIndex={columnIndex}
                     onChange={onChange}

@@ -10,12 +10,7 @@ import { useSelectedLayoutItems } from '../layouts';
 
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
-import {
-  defaultDraftBody,
-  defaultDraftFormat,
-  RichTextStyle,
-  RichText,
-} from '@seine/content';
+import { defaultDraftBody, defaultDraftFormat, RichText } from '@seine/content';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
@@ -66,7 +61,15 @@ export default function RichTextEditor({
 
   useAutoEffect(() => {
     const { current } = editorRef;
-    if (editorState && selected && current) {
+    if (
+      editorState &&
+      selected &&
+      current &&
+      !(
+        document.activeElement &&
+        document.activeElement instanceof HTMLInputElement
+      )
+    ) {
       current.focus();
     }
   });
@@ -74,6 +77,7 @@ export default function RichTextEditor({
   React.useEffect(() => {
     if (editorState && !selected) {
       dispatch({
+        id,
         type: UPDATE_BLOCK_BODY,
         body: convertToRaw(editorState.getCurrentContent()),
       });
@@ -82,24 +86,22 @@ export default function RichTextEditor({
   }, [selected]);
 
   return (
-    <>
-      <RichTextStyle />
-      <RichText
-        {...itemProps}
-        id={id}
-        ref={editorRef}
-        forwardedAs={StyledFrame}
-        selected={selected}
-        textAlignment={textAlignment}
-        editorState={editorState}
-        onChange={useAutoCallback((state) =>
-          dispatch({
-            type: UPDATE_BLOCK_EDITOR,
-            editor: { state },
-          })
-        )}
-        readOnly={!selected}
-      />
-    </>
+    <RichText
+      {...itemProps}
+      id={id}
+      ref={editorRef}
+      forwardedAs={StyledFrame}
+      selected={selected}
+      textAlignment={textAlignment}
+      editorState={editorState}
+      onChange={useAutoCallback((state) =>
+        dispatch({
+          id,
+          type: UPDATE_BLOCK_EDITOR,
+          editor: { state },
+        })
+      )}
+      readOnly={!selected}
+    />
   );
 }

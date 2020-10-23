@@ -2,6 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { RichUtils } from 'draft-js';
 
 import {
   SidebarButtonGroup,
@@ -13,11 +14,7 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import {
-  EditorActionIconButton,
-  useBlocksDispatch,
-  useEditorSelector,
-} from '../blocks';
+import { EditorActionIconButton, useBlocksDispatch } from '../blocks';
 
 import { defaultTableEditor } from './constants';
 import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
@@ -33,9 +30,14 @@ import {
   FormatAlignRight,
   FormatBold,
   FormatItalic,
+  FormatListBulleted,
+  FormatListNumbered,
+  FormatUnderlined,
 } from '@seine/styles/mui-icons.macro';
 import { defaultTableBody, defaultTableCell } from '@seine/content';
-import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
+import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
+import { SvgIcon } from '@seine/styles/mui-core.macro';
+import { useSelectedLayoutItems } from '@seine/editor';
 
 const StructureActionButton = styled(EditorActionIconButton).attrs({
   borderColor: 'transparent',
@@ -47,58 +49,57 @@ const StructureActionButton = styled(EditorActionIconButton).attrs({
   }
 `;
 
+const SvgText = styled.text.attrs({
+  textAnchor: 'middle',
+  dominantBaseline: 'middle',
+  fontSize: '1rem',
+  fontWeight: 600,
+  x: '50%',
+  y: '50%',
+})``;
+
 /**
  * @description Table design panel.
  * @returns {React.Node}
  */
 export default function TableDesign() {
   const dispatch = useBlocksDispatch();
+  const { item } = useSelectedLayoutItems();
   const {
     id,
     editor: {
       rowIndex = defaultTableEditor.rowIndex,
       columnIndex = defaultTableEditor.columnIndex,
+      [`${rowIndex}:${columnIndex}`]: editorState,
     } = defaultTableEditor,
     body: {
       header = defaultTableBody.header,
       rows = defaultTableBody.rows,
-      textAlignment = defaultTableBody.textAlignment,
     } = defaultTableBody,
-  } = useEditorSelector().find(({ type }) => type === blockTypes.TABLE) || {};
+  } = item || {};
+  const cellId = `${rowIndex}:${columnIndex}`;
   const row = rowIndex === -1 ? header : rows && rows[rowIndex];
   const cell = row && row[columnIndex];
-  const isBold = cell && cell.bold;
-  const isItalic = cell && cell.italic;
+
+  const blockType = useAutoMemo(
+    editorState &&
+      editorState
+        .getCurrentContent()
+        .getBlockForKey(editorState.getSelection().getStartKey())
+        .getType()
+  );
+  const toggleBlockType = useAutoCallback((event, blockType) => {
+    dispatch({
+      id,
+      type: UPDATE_BLOCK_EDITOR,
+      editor: {
+        [cellId]: RichUtils.toggleBlockType(editorState, blockType),
+      },
+    });
+  });
   const isLeft = cell && cell.align === 'left';
   const isCenter = cell && cell.align === 'center';
   const isRight = cell && cell.align === 'right';
-
-  const updateCurrentCell = useAutoCallback((event, updates) =>
-    dispatch({
-      id,
-      type: UPDATE_BLOCK_BODY,
-      body:
-        rowIndex === -1
-          ? {
-              header: [
-                ...header.slice(0, columnIndex),
-                { ...cell, ...updates },
-                ...header.slice(columnIndex + 1),
-              ],
-            }
-          : {
-              rows: [
-                ...rows.slice(0, rowIndex),
-                [
-                  ...row.slice(0, columnIndex),
-                  { ...cell, ...updates },
-                  ...row.slice(columnIndex + 1),
-                ],
-                ...rows.slice(rowIndex + 1),
-              ],
-            },
-    })
-  );
 
   return (
     <>
@@ -237,45 +238,6 @@ export default function TableDesign() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarLabel>style</SidebarLabel>
-          <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
-            {rowIndex > -1 && (
-              <ToolbarToggleButton selected={isBold} value={{ bold: !isBold }}>
-                <FormatBold />
-              </ToolbarToggleButton>
-            )}
-
-            <ToolbarToggleButton
-              selected={isItalic}
-              value={{ italic: !isItalic }}
-            >
-              <FormatItalic />
-            </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarLabel>alignment</SidebarLabel>
-
-          <ToolbarToggleButtonGroup value={cell} onChange={updateCurrentCell}>
-            <ToolbarToggleButton value={{ align: 'left' }} selected={isLeft}>
-              <FormatAlignLeft />
-            </ToolbarToggleButton>
-
-            <ToolbarToggleButton
-              value={{ align: 'center' }}
-              selected={isCenter}
-            >
-              <FormatAlignCenter />
-            </ToolbarToggleButton>
-
-            <ToolbarToggleButton value={{ align: 'right' }} selected={isRight}>
-              <FormatAlignRight />
-            </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
-        </SidebarGroup>
-
-        <SidebarGroup>
           <SidebarLabel>column %</SidebarLabel>
           <SidebarInput
             type={'number'}
@@ -299,31 +261,142 @@ export default function TableDesign() {
           />
         </SidebarGroup>
       </SidebarSection>
+      <SidebarSection>
+        <SidebarHeading>Rich text</SidebarHeading>
+        <SidebarGroup>
+          <SidebarLabel>heading</SidebarLabel>
+          <ToolbarToggleButtonGroup
+            value={blockType}
+            onChange={toggleBlockType}
+          >
+            <ToolbarToggleButton value={'header-one'}>
+              <SvgIcon>
+                <SvgText>H1</SvgText>
+              </SvgIcon>
+            </ToolbarToggleButton>
 
-      <SidebarSection
-        {...((columnIndex > -1 || rowIndex > -1) && { display: 'none' })}
-      >
-        <SidebarHeading>Table</SidebarHeading>
+            <ToolbarToggleButton value={'header-two'}>
+              <SvgIcon>
+                <SvgText>H2</SvgText>
+              </SvgIcon>
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'header-three'}>
+              <SvgIcon>
+                <SvgText>H3</SvgText>
+              </SvgIcon>
+            </ToolbarToggleButton>
+          </ToolbarToggleButtonGroup>
+        </SidebarGroup>
+        <SidebarGroup alignItems={'center'}>
+          <SidebarLabel>&nbsp;</SidebarLabel>
+          <ToolbarToggleButtonGroup
+            value={blockType}
+            onChange={toggleBlockType}
+          >
+            <ToolbarToggleButton value={'header-four'}>
+              <SvgIcon>
+                <SvgText>H4</SvgText>
+              </SvgIcon>
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'header-five'}>
+              <SvgIcon>
+                <SvgText>H5</SvgText>
+              </SvgIcon>
+            </ToolbarToggleButton>
+          </ToolbarToggleButtonGroup>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarLabel>list</SidebarLabel>
+          <ToolbarToggleButtonGroup
+            value={blockType}
+            onChange={toggleBlockType}
+          >
+            <ToolbarToggleButton value={'ordered-list-item'}>
+              <FormatListNumbered />
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'unordered-list-item'}>
+              <FormatListBulleted />
+            </ToolbarToggleButton>
+          </ToolbarToggleButtonGroup>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarLabel>style</SidebarLabel>
+          <ToolbarToggleButtonGroup
+            value={useAutoMemo(
+              editorState ? [...editorState.getCurrentInlineStyle()] : []
+            )}
+            onChange={useAutoCallback((event, style) => {
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_EDITOR,
+                editor: {
+                  [cellId]: RichUtils.toggleInlineStyle(editorState, style),
+                },
+              });
+            })}
+          >
+            <ToolbarToggleButton value={'BOLD'}>
+              <FormatBold />
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'ITALIC'}>
+              <FormatItalic />
+            </ToolbarToggleButton>
+
+            <ToolbarToggleButton value={'UNDERLINE'}>
+              <FormatUnderlined />
+            </ToolbarToggleButton>
+          </ToolbarToggleButtonGroup>
+        </SidebarGroup>
+
         <SidebarGroup>
           <SidebarLabel>alignment</SidebarLabel>
+
           <ToolbarToggleButtonGroup
-            value={textAlignment}
-            onChange={useAutoCallback((event, textAlignment) =>
+            value={cell && cell.align}
+            onChange={useAutoCallback((event, align) => {
+              const { align: lastAlign, ...value } = cell;
               dispatch({
+                id,
                 type: UPDATE_BLOCK_BODY,
-                body: { textAlignment },
-              })
-            )}
+                body:
+                  rowIndex === -1
+                    ? {
+                        header: [
+                          ...header.slice(0, columnIndex),
+                          align ? { ...value, align } : value,
+                          ...header.slice(columnIndex + 1),
+                        ],
+                      }
+                    : {
+                        rows: [
+                          ...rows.slice(0, rowIndex),
+                          [
+                            ...row.slice(0, columnIndex),
+                            align ? { ...value, align } : value,
+                            ...row.slice(columnIndex + 1),
+                          ],
+                          ...rows.slice(rowIndex + 1),
+                        ],
+                      },
+              });
+            })}
+            exclusive
           >
-            <ToolbarToggleButton value={'left'}>
+            <ToolbarToggleButton value={'left'} selected={isLeft}>
               <FormatAlignLeft />
             </ToolbarToggleButton>
 
-            <ToolbarToggleButton value={'center'}>
+            <ToolbarToggleButton value={'center'} selected={isCenter}>
               <FormatAlignCenter />
             </ToolbarToggleButton>
 
-            <ToolbarToggleButton value={'right'}>
+            <ToolbarToggleButton value={'right'} selected={isRight}>
               <FormatAlignRight />
             </ToolbarToggleButton>
           </ToolbarToggleButtonGroup>

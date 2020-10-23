@@ -7,6 +7,7 @@ import useBlock from './useBlock';
 import useBlockChildren from './useBlockChildren';
 import useBlockComponent from './useBlockComponent';
 import useScreenDevice from './useScreenDevice';
+import defaultBlockRenderMap from './blockRenderMap';
 
 import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
 import type { Block } from '@seine/core';
@@ -23,33 +24,25 @@ export type Props = {
  * @returns {React.Node}
  */
 function ContentBlock({ id, device: initialDevice }): React.Node {
-  const block = useBlock(id);
-  const body = block.body;
   const blockChildren = useBlockChildren(id);
-  const BlockComponent = useBlockComponent(block.type);
   const device = useScreenDevice(initialDevice);
-  const format = {
-    ...block.format,
-    ...(block.format && block.format[device]),
-  };
+  const { type, format, body, editor } = useBlock(id);
+  const BlockComponent = useBlockComponent(type);
 
   return (
     <BlockComponent
       id={id}
-      editor={block.editor}
       {...format}
+      {...(format && format[device])}
       {...body}
-      {...(blockChildren.length > 0 && {
-        children: blockChildren.map((block, index, { length }) => (
-          <ContentBlock
-            {...block}
-            key={block.id}
-            device={device}
-            hasSibling={length > 1}
-          />
-        )),
-      })}
-    />
+      editor={editor}
+    >
+      {blockChildren.length > 0
+        ? blockChildren.map(({ id }) => (
+            <ContentBlock id={id} key={id} device={device} />
+          ))
+        : null}
+    </BlockComponent>
   );
 }
 
@@ -61,7 +54,7 @@ function ContentBlock({ id, device: initialDevice }): React.Node {
 export default function Content({
   children,
   device,
-  blockRenderMap = null,
+  blockRenderMap = defaultBlockRenderMap,
 }: Props) {
   const defaultBlocks = React.useContext(BlocksContext);
   const [rootBlock = null] = children;
@@ -70,7 +63,10 @@ export default function Content({
       <BlocksContext.Provider
         value={useAutoMemo({
           ...defaultBlocks,
-          ...(blockRenderMap && { blockRenderMap }),
+          blockRenderMap: {
+            ...defaultBlocks.blockRenderMap,
+            ...blockRenderMap,
+          },
           blocks: children,
         })}
       >

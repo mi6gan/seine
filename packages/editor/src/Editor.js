@@ -70,7 +70,6 @@ type Props = {
 function DefaultEditor({
   onChange,
   blockRenderMap = defaultBlockRenderMap,
-  ...contentProps
 }: Props) {
   const dispatch = useBlocksDispatch();
   const blocks = useEditorSelector(allBlocksSelector);
@@ -118,11 +117,7 @@ function DefaultEditor({
           </Sidebar>
 
           <EditorPaper device={device}>
-            <Content
-              device={device}
-              blockRenderMap={blockRenderMap}
-              {...contentProps}
-            >
+            <Content device={device} blockRenderMap={blockRenderMap}>
               {blocks}
             </Content>
           </EditorPaper>
