@@ -24,7 +24,7 @@ import { Box } from '@seine/styles';
 import { defaultGridFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { useSelectedLayoutItems } from '@seine/editor';
 
-const MAX_GAP = 100;
+const MAX_GAP = 19;
 
 /**
  * @description Layout design.
