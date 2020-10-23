@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
-import { useAutoCallback, useAutoMemo, useAutoEffect } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 
 import { Item } from '../layouts';
 import useBlock from '../useBlock';
+import * as layoutDefaults from '../../../editor/src/layouts';
 
 import type { TableBody, TableFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
@@ -100,6 +101,37 @@ function TableCellText({
     }
   });
 
+  React.useEffect(() => {
+    if (!selected) {
+      const text = toRawContent(editorState);
+      dispatch({
+        id,
+        type: UPDATE_BLOCK_BODY,
+        body:
+          rowIndex === -1
+            ? {
+                header: [
+                  ...header.slice(0, columnIndex),
+                  { ...cell, text },
+                  ...header.slice(columnIndex + 1),
+                ],
+              }
+            : {
+                rows: [
+                  ...rows.slice(0, rowIndex),
+                  [
+                    ...row.slice(0, columnIndex),
+                    { ...cell, text },
+                    ...row.slice(columnIndex + 1),
+                  ],
+                  ...rows.slice(rowIndex + 1),
+                ],
+              },
+      });
+    }
+    // eslint-disable-next-line
+  }, [selected]);
+
   return (
     <RichText
       {...props}
@@ -122,33 +154,6 @@ function TableCellText({
           editor: { rowIndex, columnIndex },
         });
       })}
-      onBlur={useAutoCallback(() => {
-        const text = toRawContent(editorState);
-        dispatch({
-          id,
-          type: UPDATE_BLOCK_BODY,
-          body:
-            rowIndex === -1
-              ? {
-                  header: [
-                    ...header.slice(0, columnIndex),
-                    { ...cell, text },
-                    ...header.slice(columnIndex + 1),
-                  ],
-                }
-              : {
-                  rows: [
-                    ...rows.slice(0, rowIndex),
-                    [
-                      ...row.slice(0, columnIndex),
-                      { ...cell, text },
-                      ...row.slice(columnIndex + 1),
-                    ],
-                    ...rows.slice(rowIndex + 1),
-                  ],
-                },
-        });
-      })}
     />
   );
 }
@@ -168,6 +173,9 @@ export default function Table({
   readOnly = true,
   ...containerProps
 }: Props) {
+  const { item } = layoutDefaults.useSelectedLayoutItems();
+  const selected = !!(item && item.id === id);
+
   return (
     <Container {...containerProps} id={id}>
       <StyledTable>
@@ -180,7 +188,7 @@ export default function Table({
                   rowIndex={-1}
                   columnIndex={index}
                   onChange={onChange}
-                  readOnly={readOnly}
+                  readOnly={readOnly || !selected}
                 >
                   {typeof text === 'string' ? `<b>${text}</b>` : text}
                 </TableCellText>
@@ -198,7 +206,7 @@ export default function Table({
                     rowIndex={rowIndex}
                     columnIndex={columnIndex}
                     onChange={onChange}
-                    readOnly={readOnly}
+                    readOnly={readOnly || !selected}
                   >
                     {text}
                   </TableCellText>
