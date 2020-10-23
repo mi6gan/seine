@@ -4,7 +4,7 @@ import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import EditorItemMenu, { ItemMenuProvider } from './EditorItemMenu';
-import EditorDesign from './EditorDesign';
+import DefaultEditorDesign from './EditorDesign';
 import EditorToolbar from './EditorToolbar';
 import EditorTree from './EditorTree';
 import defaultTheme from './defaultTheme';
@@ -28,7 +28,7 @@ import { ClipboardProvider } from './clipboard';
 import { Paper } from '@seine/styles/mui-core.macro';
 import { Box, ThemeProvider } from '@seine/styles';
 import type { Block, BlockType } from '@seine/core';
-import { DESELECT_ALL_BLOCKS } from '@seine/core';
+import { blockTypes, createBlock, DESELECT_ALL_BLOCKS } from '@seine/core';
 import { Content } from '@seine/content';
 
 const Contents = styled(Box).attrs({
@@ -60,6 +60,7 @@ const EditorPaper = styled(Paper).attrs({
 type Props = {
   onChange: (Block[]) => any,
   blockRenderMap?: (BlockType) => React.Node,
+  editorDesignAs?: React.ComponentType,
 };
 
 /**
@@ -70,6 +71,7 @@ type Props = {
 function DefaultEditor({
   onChange,
   blockRenderMap = defaultBlockRenderMap,
+  editorDesignAs: EditorDesign = DefaultEditorDesign,
 }: Props) {
   const dispatch = useBlocksDispatch();
   const blocks = useEditorSelector(allBlocksSelector);
@@ -135,8 +137,13 @@ function DefaultEditor({
   );
 }
 
+const defaultEditorChildren = [createBlock(blockTypes.PAGE)];
+
 // eslint-disable-next-line
-export default function Editor({ children, ...editorProps }) {
+export default function Editor({
+  children = defaultEditorChildren,
+  ...editorProps
+}) {
   return (
     <ThemeProvider theme={defaultTheme}>
       <EditorProvider blocks={children}>

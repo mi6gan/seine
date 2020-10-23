@@ -17,7 +17,7 @@ import { CloudUpload } from '@seine/styles/mui-icons.macro';
 import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 
 type Props = {
-  onChange: (SyntheticInputEvent) => void,
+  onChange?: (SyntheticInputEvent) => void,
 };
 
 const FileInput = styled(Box).attrs({
@@ -39,7 +39,7 @@ const FileInput = styled(Box).attrs({
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function TableDesign({ onChange, ...inputProps }) {
+export default function ImageDesign({ onChange, ...inputProps }: Props) {
   const dispatch = useBlocksDispatch();
   const { id, body } =
     useEditorSelector().find(({ type }) => type === blockTypes.IMAGE) || {};
@@ -70,9 +70,9 @@ export default function TableDesign({ onChange, ...inputProps }) {
             endAdornment={
               <InputAdornment position={'end'}>
                 <FileInput
-                  {...inputProps}
                   name={'file'}
                   accept={'image/*'}
+                  {...inputProps}
                   onChange={useAutoCallback((event: SyntheticInputEvent) => {
                     if (onChange) {
                       return onChange(event);
