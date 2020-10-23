@@ -22,13 +22,18 @@ const LegendRoot = styled(List)`
     padding-bottom: 0;
     margin: 0;
   }
+  .MuiTypography-body1 {
+    ${({ theme }) => theme.typography.body1};
+  }
 `;
 
 export const LegendMarker = styled.svg.attrs([
-  ({ color }) => ({ fill: color }),
+  ({ color, theme }) => ({
+    fill: color,
+    width: theme.spacing(2),
+    height: theme.spacing(2),
+  }),
   {
-    width: 20,
-    height: 20,
     children: <rect x={0} y={0} width={'100%'} height={'100%'} />,
   },
 ])``;

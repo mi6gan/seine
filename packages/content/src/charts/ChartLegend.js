@@ -13,13 +13,14 @@ const Container = styled.div`
 
 const LegendBox = styled.div`
   background-color: ${({ color }) => color};
-  padding: 10px;
+  padding: ${({ theme }) => theme.spacing(1, 1)};
 `;
 
 const LegendLabel = styled.div`
   white-space: pre-wrap;
   word-break: break-all;
-  padding: 0 0.75rem;
+  padding: ${({ theme }) => theme.spacing(0, 1)};
+  ${({ theme }) => theme.typography.body1};
 `;
 
 const LegendItem = styled.div`
