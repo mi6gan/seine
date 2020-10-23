@@ -25,15 +25,14 @@ export default styled(Item)`
     rowGap = defaultGridFormat.rowGap,
     justify = defaultGridFormat.justify,
     alignItems = defaultGridFormat.alignItems,
+    theme,
   }: Props) => ({
     justifyContent: justify,
     alignItems,
     gridTemplateColumns: columns,
     gridTemplateRows: rows,
-    rowGap: rowGap,
-    columnGap: columnGap,
-    [`& > ${Item}`]: {
-      padding: `${rowGap}px ${columnGap}px`,
-    },
+    rowGap: theme.spacing(rowGap),
+    columnGap: theme.spacing(columnGap),
+    padding: theme.spacing(rowGap, columnGap),
   })}
 `;

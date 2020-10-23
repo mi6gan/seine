@@ -46,7 +46,7 @@ const Flex = styled(Item).attrs(
   })};
 
   & > ${Item} {
-    ${({ spacing }) => ({ padding: spacing / 2 })}
+    ${({ spacing }) => ({ padding: spacing })}
   }
 `;
 

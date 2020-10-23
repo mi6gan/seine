@@ -26,6 +26,8 @@ import {
 import { defaultFlexFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { useSelectedLayoutItems } from '@seine/editor';
 
+const MAX_SPACING = 19;
+
 /**
  * @description Layout design.
  * @returns {React.Node}
@@ -62,7 +64,7 @@ export default function GridDesign() {
             });
           })}
           type={'number'}
-          inputProps={{ min: 0, max: 10 }}
+          inputProps={{ min: 0, max: MAX_SPACING }}
         />
       </SidebarGroup>
 
