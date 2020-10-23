@@ -1,24 +1,31 @@
 {
   "name": "@seine/content",
-  "version": "0.3.291",
-  "description": "Seine content renderer.",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "files": [
-    "lib/"
-  ],
-  "repository": "redchiliorg/seine",
+  "main": "./index.cjs.js",
+  "module": "./index.es.js",
+  "version": "0.4.27",
+  "description": "React components for rendering block contents.",
+  "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/charts": "0.3",
-    "@seine/core": "0.3",
-    "@seine/draft": "0.3",
-    "@seine/styles": "0.3",
-    "@seine/tables": "0.3"
+    "@material-ui/system": "^4.9",
+    "@seine/core": "workspace:*",
+    "@seine/styles": "workspace:*",
+    "invert-color": "^2.0.0",
+    "ramda": "^0.26.1"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "styled-components": "^4.3.2"
+    "@devexpress/dx-chart-core": "<=2.7.1",
+    "@devexpress/dx-react-chart": "<=2.7.1",
+    "@devexpress/dx-react-chart-material-ui": "<=2.7.1",
+    "@devexpress/dx-react-core": "<=2.7.1",
+    "@material-ui/core": "^4.9",
+    "@material-ui/icons": "^4.9",
+    "@material-ui/styles": "^4.9",
+    "d3-interpolate": "1.4",
+    "draft-js": "^0.11.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-components": "^5.2.0"
   }
 }

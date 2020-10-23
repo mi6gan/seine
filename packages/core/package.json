@@ -1,16 +1,14 @@
 {
   "name": "@seine/core",
-  "version": "0.3.291",
+  "main": "./index.cjs.js",
+  "module": "./index.es.js",
+  "version": "0.4.27",
   "description": "Seine core utils and types.",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "files": [
-    "lib/"
-  ],
-  "repository": "redchiliorg/seine",
+  "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "uuid": "^3.3.2"
+    "ramda": "^0.26.1",
+    "uuid": "^3.4.0"
   }
 }

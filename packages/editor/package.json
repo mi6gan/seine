@@ -1,31 +1,36 @@
 {
   "name": "@seine/editor",
-  "version": "0.3.291",
-  "description": "Seine structured content renderer.",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "files": [
-    "lib/"
-  ],
-  "repository": "redchiliorg/seine",
+  "main": "./index.cjs.js",
+  "module": "./index.es.js",
+  "version": "0.4.27",
+  "description": "React components for editing block contents.",
+  "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "@seine/charts": "0.3",
-    "@seine/charts-editor": "0.3",
-    "@seine/content": "0.3",
-    "@seine/core": "0.3",
-    "@seine/draft": "0.3",
-    "@seine/draft-editor": "0.3",
-    "@seine/styles": "0.3",
-    "@seine/tables": "0.3",
-    "@seine/tables-editor": "0.3",
-    "@seine/ui": "0.3"
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/system": "^4.9",
+    "@seine/content": "workspace:*",
+    "@seine/core": "workspace:*",
+    "@seine/styles": "workspace:*",
+    "draft-js-buttons": "^2.0.2",
+    "react-color": "^2.18.1",
+    "react-color.macro": "^1.0.186",
+    "rollup-plugin-pnp-resolve": "^2.0.0",
+    "svg-patterns": "^1.0.0",
+    "virtual-dom-stringify": "^3.0.1"
   },
   "peerDependencies": {
-    "@material-ui/core": "4.9",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "styled-components": "^4.3.2"
+    "@devexpress/dx-chart-core": "<=2.7.1",
+    "@devexpress/dx-react-chart": "<=2.7.1",
+    "@devexpress/dx-react-core": "<=2.7.1",
+    "@material-ui/core": "^4.9",
+    "@material-ui/icons": "^4.9",
+    "@material-ui/styles": "^4.9",
+    "d3-interpolate": "1.4",
+    "draft-js": "^0.11.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-components": "^5.2.0"
   }
 }
