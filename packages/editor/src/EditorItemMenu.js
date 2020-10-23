@@ -3,10 +3,14 @@ import * as React from 'react';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
+import { ToolbarMenu } from './ui';
 import { useBlocksDispatch, useEditorSelector } from './blocks';
-import { CreateLayoutButton, useSelectedLayoutIds } from './layouts';
+import {
+  CreateLayoutButton,
+  DeleteBlockButton,
+  useSelectedLayoutIds,
+} from './layouts';
 import { ClipboardContext } from './clipboard';
-import { DeleteBlockButton, ToolbarMenu } from './ui';
 
 import { MenuItem } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';

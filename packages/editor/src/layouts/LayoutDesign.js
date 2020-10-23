@@ -11,7 +11,9 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
-import { FlexDesign, GridDesign, useSelectedLayoutItems } from '.';
+import useSelectedLayoutItems from './useSelectedLayoutItems';
+import GridDesign from './GridDesign';
+import FlexDesign from './FlexDesign';
 
 import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {

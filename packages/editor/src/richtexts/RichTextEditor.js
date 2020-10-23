@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
-import { convertFromRaw, convertToRaw, Editor, EditorState } from 'draft-js';
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import styled from 'styled-components/macro';
 
 import { Frame } from '../ui';
@@ -44,7 +44,7 @@ export default function RichTextEditor({
   const selected = !!(item && item.id === id);
   const dispatch = useBlocksDispatch();
 
-  const editorRef = React.useRef<?Editor>(null);
+  const editorRef = React.useRef(null);
 
   const editorState = React.useMemo(
     () =>

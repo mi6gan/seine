@@ -33,7 +33,7 @@ export default styled(Item)`
     rowGap: rowGap,
     columnGap: columnGap,
     [`& > ${Item}`]: {
-      padding: `${columnGap}px ${rowGap}px`,
+      padding: `${rowGap}px ${columnGap}px`,
     },
   })}
 `;

@@ -3,7 +3,7 @@ import { useAutoMemo } from 'hooks.macro';
 
 import { useEditorSelector, defaultEditorSelector } from '../blocks';
 
-import { defaultChartEditor } from '.';
+import { defaultChartEditor } from './constants';
 
 import { blockTypes } from '@seine/core';
 import { defaultChartFormat, useChartFormat } from '@seine/content';

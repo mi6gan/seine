@@ -15,7 +15,7 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
-import { useSelectedLayoutItems } from '.';
+import useSelectedLayoutItems from './useSelectedLayoutItems';
 
 import {
   BorderBottom as PositionBottom,

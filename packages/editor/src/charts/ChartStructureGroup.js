@@ -4,11 +4,11 @@ import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
 import {
-  EditorActionButton,
   useBlocksDispatch,
   EditorCompositeActionButton,
-  SidebarGroup,
-} from '..';
+  EditorActionButton,
+} from '../blocks';
+import { SidebarGroup } from '../ui';
 
 import useChartBlock from './useChartBlock';
 import useElementSelector from './useElementSelector';
