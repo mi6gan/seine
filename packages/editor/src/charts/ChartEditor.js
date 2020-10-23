@@ -126,7 +126,6 @@ export default function ChartEditor(props: Props) {
     <ColumnChart
       {...chart}
       {...(selectedBlock && {
-        elementRectAs: GroupedChartElementRect,
         elementValueAs: ChartGroupElementValueInput,
         groupTitleAs: ChartGroupTitleInput,
       })}

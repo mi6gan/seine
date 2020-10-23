@@ -36,9 +36,7 @@ type Props = {
 
   parentType: BlockType,
 
-  elementTitleAs: React.ComponentType,
   elementValueAs: React.ComponentType,
-  elementRectAs: React.ComponentType,
   groupTitleAs: React.ComponentType,
 };
 
@@ -102,7 +100,6 @@ export default function ColumnChart({
   textAlignment,
 
   elementValueAs: ElementValue = SvgTypography,
-  elementRectAs: ElementRect = 'rect',
   groupTitleAs: GroupTitle = SvgTypography,
 
   parentType,
