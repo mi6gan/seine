@@ -22,6 +22,7 @@ import {
   chartTypes,
   CREATE_BLOCK,
   createBlock,
+  createBlockElements,
   createTitleIdentityBlockElements,
   defaultImageFormat,
   SET_DEVICE,
@@ -187,7 +188,7 @@ export default function EditorToolbar(boxProps: Props) {
             createBlock(
               blockTypes.CHART,
               {
-                elements: createTitleIdentityBlockElements([
+                elements: createBlockElements([
                   {
                     title: 'First item',
                     group: 'Group 1',
@@ -195,12 +196,12 @@ export default function EditorToolbar(boxProps: Props) {
                   },
                   {
                     title: 'Second item',
-                    group: 'Group 2',
+                    group: 'Group 1',
                     value: 70,
                   },
                   {
                     title: 'First item',
-                    group: 'Group 1',
+                    group: 'Group 2',
                     value: 40,
                   },
                   {

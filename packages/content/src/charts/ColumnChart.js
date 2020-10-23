@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoMemo, useAutoCallback } from 'hooks.macro';
+import { useAutoMemo, useAutoCallback, useAutoEffect } from 'hooks.macro';
 import { Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
@@ -118,7 +118,7 @@ export default function ColumnChart({
     ).map(([group, values]) => ({ ...values, group }))
   );
 
-  const valueFields = useAutoMemo(() => {
+  const newValueFields = useAutoMemo(() => {
     const valueFieldsSet = new Set();
     data.forEach(({ group, ...values }) => {
       Object.keys(values).forEach((valueField) => {
@@ -127,12 +127,18 @@ export default function ColumnChart({
     });
     return [...valueFieldsSet];
   });
+  const [valueFields, setValueFields] = React.useState(newValueFields);
+  const forceRemount = valueFields.length !== newValueFields.length;
+
+  useAutoEffect(() => {
+    setValueFields(newValueFields);
+  });
 
   const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
     <ValueLabel {...props} as={GroupTitle} text={text} meta={text} />
   ));
 
-  return (
+  return forceRemount ? null : (
     <Item forwardedAs={Chart} data={data} {...itemProps}>
       {!!xAxis && (
         <ArgumentAxis
