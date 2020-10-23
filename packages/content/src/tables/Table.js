@@ -20,7 +20,9 @@ export type Props = TableBody &
     onChange: ?(SyntheticInputEvent) => any,
   };
 
-const Container = styled(Item)``;
+const Container = styled(Item)`
+  overflow: auto;
+`;
 
 const StyledTable = styled.table`
   ${({
