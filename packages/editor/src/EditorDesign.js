@@ -16,6 +16,7 @@ type Props = {
   tableDesignAs?: React.ComponentType,
   chartDesignAs?: React.ComponentType,
   imageDesignAs?: React.ComponentType,
+  children?: React.Node,
 };
 
 /**
@@ -30,6 +31,7 @@ export default function EditorDesign({
   tableDesignAs: TableDesign = tableDefaults.TableDesign,
   chartDesignAs: ChartDesign = chartDefaults.ChartDesign,
   imageDesignAs: ImageDesign = imageDefaults.ImageDesign,
+  children = null,
 }: Props) {
   const { layout, item } = layoutDefaults.useSelectedLayoutItems();
 
@@ -41,6 +43,7 @@ export default function EditorDesign({
       {item && item.type === blockTypes.TABLE && <TableDesign />}
       {item && item.type === blockTypes.CHART && <ChartDesign />}
       {item && item.type === blockTypes.IMAGE && <ImageDesign />}
+      {children}
     </>
   );
 }
