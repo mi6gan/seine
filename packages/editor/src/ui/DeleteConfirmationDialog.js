@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { EditorContext } from '../blocks';
+import { useBlocksDispatch } from '../blocks';
 
 import {
   Button,
@@ -11,21 +11,22 @@ import {
   DialogTitle,
 } from '@seine/styles/mui-core.macro';
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
+import { ClipboardContext } from '@seine/editor';
 
 // eslint-disable-next-line
 export default function DeleteConfirmationDialog() {
-  const { buffer, setBuffer, dispatch } = React.useContext(EditorContext);
+  const dispatch = useBlocksDispatch();
+  const clipboard = React.useContext(ClipboardContext);
 
   return (
-    <Dialog open={buffer !== null && buffer.type === DELETE_SELECTED_BLOCKS}>
+    <Dialog open={clipboard.type === DELETE_SELECTED_BLOCKS}>
       <DialogTitle>
         Are you sure you want to delete selected blocks?
       </DialogTitle>
       <DialogActions>
         <Button
           onClick={useAutoCallback(() => {
-            setBuffer(null);
-            dispatch(buffer);
+            dispatch(clipboard.pop());
           })}
           color={'primary'}
         >
@@ -33,7 +34,7 @@ export default function DeleteConfirmationDialog() {
         </Button>
         <Button
           onClick={useAutoCallback(() => {
-            setBuffer(null);
+            clipboard.pop();
           })}
           color={'secondary'}
         >

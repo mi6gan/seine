@@ -18,12 +18,14 @@ export default function ClipboardProvider({ children }) {
         ...entry,
         toJSON: () => entry,
         pop: useAutoCallback(() => {
-          buffer.pop();
+          const head = buffer.pop();
           setEntry(buffer[buffer.length - 1] || null);
+          return head;
         }),
         push: useAutoCallback((nextEntry) => {
-          buffer.push(nextEntry);
+          const count = buffer.push(nextEntry);
           setEntry(nextEntry);
+          return count;
         }),
         replace: setEntry,
       }}
