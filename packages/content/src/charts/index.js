@@ -12,6 +12,5 @@ export { default as ChartLabel } from './ChartLabel';
 export { default as ChartSvg } from './ChartSvg';
 export { default as ChartSvgDefs } from './ChartSvgDefs';
 export { default as ChartValue } from './ChartValue';
-export { default as ColumnChartContent } from './ColumnChartContent';
 export { default as LineChartContent } from './LineChartContent';
 export { default as PieChartLegend } from './PieChartLegend';

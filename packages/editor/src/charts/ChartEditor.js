@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoEffect } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
 import { useSelectedLayoutItems } from '../layouts';
+import ColumnChart from '../../../content/src/charts/ColumnChart';
 
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
@@ -22,7 +23,6 @@ import {
   BarChartContent,
   ChartSvg,
   ChartSvgDefs,
-  ColumnChartContent,
   LineChartContent,
   PieChart,
   titleIdentityElements,
@@ -35,7 +35,7 @@ import {
 } from '@seine/core';
 
 // eslint-disable-next-line
-function SelectionFrame({ children, ...frame }) {
+function SelectionFrame({ children, data, ...frame }) {
   const selectionRef = React.useRef([]);
   const { current: selection } = selectionRef;
 
@@ -45,11 +45,23 @@ function SelectionFrame({ children, ...frame }) {
     )
   );
 
+  const isGrouped = data.length > 1 && 'group' in data[0];
+
+  const size = useAutoMemo(() => {
+    const valueFieldsSet = new Set();
+    data.forEach(({ group, ...values }) => {
+      Object.keys(values).forEach((valueField) => {
+        valueFieldsSet.add(valueField);
+      });
+    });
+    return valueFieldsSet.size;
+  });
+
   const select = useAutoCallback((selection) => {
     for (const target of selection) {
       dispatchElements({
         type: SELECT_BLOCK_ELEMENT,
-        index: target.point,
+        index: isGrouped ? size * target.point + target.order : target.point,
       });
     }
     selectionRef.current = selection;
@@ -60,20 +72,31 @@ function SelectionFrame({ children, ...frame }) {
   });
 
   return (
-    <Frame {...frame}>
+    <Frame {...frame} data={data}>
       {children}
       <EventTracker
         onClick={useAutoCallback(({ targets }) => {
           for (const target of selection) {
             dispatchElements({
               type: DESELECT_BLOCK_ELEMENT,
-              index: target.point,
+              index: isGrouped
+                ? size * target.point + target.order
+                : target.point,
             });
           }
           select(targets);
         })}
       />
-      <SelectionState selection={selection} />
+      <SelectionState
+        selection={
+          isGrouped && selection.length === 1
+            ? data.map((_, point) => ({
+                ...selection[0],
+                point,
+              }))
+            : selection
+        }
+      />
     </Frame>
   );
 }
@@ -99,6 +122,16 @@ export default function ChartEditor(props: Props) {
       })}
       as={SelectionFrame}
     />
+  ) : kind === chartTypes.COLUMN ? (
+    <ColumnChart
+      {...chart}
+      {...(selectedBlock && {
+        elementRectAs: GroupedChartElementRect,
+        elementValueAs: ChartGroupElementValueInput,
+        groupTitleAs: ChartGroupTitleInput,
+      })}
+      as={SelectionFrame}
+    />
   ) : (
     <Frame {...chart}>
       <ChartSvg {...chart} ref={resizeTargetRef}>
@@ -109,15 +142,6 @@ export default function ChartEditor(props: Props) {
             {...(selectedBlock && {
               elementRectAs: GroupedChartElementRect,
               elementTitleAs: BarChartElementTitleInput,
-              elementValueAs: ChartGroupElementValueInput,
-              groupTitleAs: ChartGroupTitleInput,
-            })}
-          />
-        ) : kind === chartTypes.COLUMN ? (
-          <ColumnChartContent
-            {...chart}
-            {...(selectedBlock && {
-              elementRectAs: GroupedChartElementRect,
               elementValueAs: ChartGroupElementValueInput,
               groupTitleAs: ChartGroupTitleInput,
             })}
