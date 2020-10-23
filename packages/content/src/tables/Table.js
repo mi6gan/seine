@@ -5,7 +5,6 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 
 import { Item } from '../layouts';
 import useBlock from '../useBlock';
-import * as layoutDefaults from '../../../editor/src/layouts';
 
 import type { TableBody, TableFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
@@ -79,7 +78,7 @@ function TableCellText({
   const editorState = useAutoMemo(
     (block && block.editor && block.editor[cellId]) || toDraftEditor(children)
   );
-  const editorRef = React.useRef<?Editor>(null);
+  const editorRef = React.useRef(null);
   const selected = !!(
     block &&
     block.editor &&
@@ -102,7 +101,7 @@ function TableCellText({
   });
 
   React.useEffect(() => {
-    if (!selected) {
+    if (!selected && dispatch) {
       const text = toRawContent(editorState);
       dispatch({
         id,
@@ -135,10 +134,8 @@ function TableCellText({
   return (
     <RichText
       {...props}
-      textAlignment={cell && cell.align}
       ref={editorRef}
-      data-row-index={rowIndex}
-      data-column-index={columnIndex}
+      textAlignment={cell && cell.align}
       editorState={editorState}
       onChange={useAutoCallback((state) => {
         dispatch({
@@ -173,9 +170,6 @@ export default function Table({
   readOnly = true,
   ...containerProps
 }: Props) {
-  const { item } = layoutDefaults.useSelectedLayoutItems();
-  const selected = !!(item && item.id === id);
-
   return (
     <Container {...containerProps} id={id}>
       <StyledTable>
@@ -188,7 +182,7 @@ export default function Table({
                   rowIndex={-1}
                   columnIndex={index}
                   onChange={onChange}
-                  readOnly={readOnly || !selected}
+                  readOnly={readOnly}
                 >
                   {typeof text === 'string' ? `<b>${text}</b>` : text}
                 </TableCellText>
@@ -206,7 +200,7 @@ export default function Table({
                     rowIndex={rowIndex}
                     columnIndex={columnIndex}
                     onChange={onChange}
-                    readOnly={readOnly || !selected}
+                    readOnly={readOnly}
                   >
                     {text}
                   </TableCellText>

@@ -9,7 +9,7 @@ const Item = styled.div.attrs((format: ItemFormat) => ({
   ...format,
 }))`
   position: relative;
-  box-sizing: content-box;
+  box-sizing: border-box;
   ${({ maxWidth, minWidth }) => ({
     minWidth,
     maxWidth,

@@ -1,9 +1,8 @@
 // @flow
 import * as React from 'react';
 
-import blockRenderMap from './blockRenderMap';
-
 import type { Block, BlockBody, BlockFormat, BlockType } from '@seine/core';
+import { blockTypes } from '@seine/core';
 
 export type BlocksContextType = {
   blocks: Array<Block>,
@@ -14,7 +13,14 @@ export type BlocksContextType = {
 
 const BlocksContext = React.createContext<BlocksContextType>({
   blocks: [],
-  blockRenderMap,
+  blockRenderMap: {
+    [blockTypes.LAYOUT]: () => null,
+    [blockTypes.PAGE]: () => null,
+    [blockTypes.TABLE]: () => null,
+    [blockTypes.CHART]: () => null,
+    [blockTypes.RICH_TEXT]: () => null,
+    [blockTypes.IMAGE]: () => null,
+  },
 });
 
 export default BlocksContext;

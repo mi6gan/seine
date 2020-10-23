@@ -2,6 +2,7 @@
 import * as React from 'react';
 
 import { Frame } from '../ui';
+import { useSelectedLayoutItems } from '../layouts';
 
 import type { BlockEditor } from '@seine/core';
 import type { TableProps } from '@seine/content';
@@ -15,13 +16,15 @@ type Props = TableProps & BlockEditor;
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function TableEditor(props: Props) {
+export default function TableEditor({ id, ...tableProps }: Props) {
+  const { item } = useSelectedLayoutItems();
   return (
     <Frame
-      {...props}
+      {...tableProps}
+      id={id}
       as={Table}
       onChange={useBlocksDispatch()}
-      readOnly={false}
+      readOnly={!(item && item.id === id)}
     />
   );
 }

@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { useAutoMemo } from 'hooks.macro';
 
 import BlocksContext from './BlocksContext';
 import useBlock from './useBlock';
@@ -51,24 +50,18 @@ function ContentBlock({ id, device: initialDevice }): React.Node {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Content({
-  children,
-  device,
-  blockRenderMap = defaultBlockRenderMap,
-}: Props) {
-  const defaultBlocks = React.useContext(BlocksContext);
+export default function Content({ children, device, blockRenderMap }: Props) {
   const [rootBlock = null] = children;
   return (
     <ThemeProvider>
       <BlocksContext.Provider
-        value={useAutoMemo({
-          ...defaultBlocks,
+        value={{
           blockRenderMap: {
-            ...defaultBlocks.blockRenderMap,
+            ...defaultBlockRenderMap,
             ...blockRenderMap,
           },
           blocks: children,
-        })}
+        }}
       >
         <ResizeObserverProvider>
           <ContentBlock id={rootBlock && rootBlock.id} device={device} />

@@ -32,5 +32,8 @@ export default styled(Item)`
     gridTemplateRows: rows,
     rowGap: rowGap,
     columnGap: columnGap,
+    [`& > ${Item}`]: {
+      padding: `${columnGap}px ${rowGap}px`,
+    },
   })}
 `;

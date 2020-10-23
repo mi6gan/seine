@@ -3,8 +3,8 @@ import { Layout } from './layouts';
 import { Page } from './pages';
 import { Chart } from './charts';
 import { Image } from './images';
-import { Table } from './tables';
 import { RichText } from './richtexts';
+import { Table } from './tables';
 
 import { blockTypes } from '@seine/core';
 
