@@ -1,7 +1,7 @@
 {
-  "name": "@seine/styles",
+  "name": "@seine/charts",
   "version": "0.3.291",
-  "description": "Seine styles library.",
+  "description": "Seine charts renderer.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "files": [
@@ -11,14 +11,13 @@
   "author": "Mikhail Boyarov",
   "license": "MIT",
   "dependencies": {
-    "resize-observer-polyfill": "^1.5.1"
-  },
-  "devDependencies": {
-    "babel-plugin-inline-import-data-uri": "^1.0.1"
+    "@seine/core": "0.3",
+    "@seine/styles": "0.3",
+    "invert-color": "^2.0.0",
+    "ramda": "^0.26.1"
   },
   "peerDependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"
   }
 }
