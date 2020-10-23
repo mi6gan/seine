@@ -128,7 +128,7 @@ export default function ColumnChart({
     return [...valueFieldsSet];
   });
   const [valueFields, setValueFields] = React.useState(newValueFields);
-  const valueFieldsUpdated = valueFields.length !== newValueFields.length;
+  const forceRemount = valueFields.length !== newValueFields.length;
 
   useAutoEffect(() => {
     setValueFields(newValueFields);
@@ -138,31 +138,29 @@ export default function ColumnChart({
     <ValueLabel {...props} as={GroupTitle} text={text} meta={text} />
   ));
 
-  return (
-    !valueFieldsUpdated && (
-      <Item forwardedAs={Chart} data={data} {...itemProps}>
-        {!!xAxis && (
-          <ArgumentAxis
-            labelComponent={ArgumentAxisLabel}
-            lineComponent={ArgumentAxisLine}
-          />
-        )}
+  return forceRemount ? null : (
+    <Item forwardedAs={Chart} data={data} {...itemProps}>
+      {!!xAxis && (
+        <ArgumentAxis
+          labelComponent={ArgumentAxisLabel}
+          lineComponent={ArgumentAxisLine}
+        />
+      )}
 
-        {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid={false} />}
-        {valueFields.map((valueField, index) => (
-          <BarSeries
-            key={valueField}
-            name={valueField}
-            valueField={valueField}
-            argumentField={'group'}
-            color={palette[index % palette.length]}
-            pointComponent={BarLabel}
-            elementValueAs={ElementValue}
-            valueFieldsLength={valueFields.length}
-          />
-        ))}
-        <Stack />
-      </Item>
-    )
+      {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid={false} />}
+      {valueFields.map((valueField, index) => (
+        <BarSeries
+          key={valueField}
+          name={valueField}
+          valueField={valueField}
+          argumentField={'group'}
+          color={palette[index % palette.length]}
+          pointComponent={BarLabel}
+          elementValueAs={ElementValue}
+          valueFieldsLength={valueFields.length}
+        />
+      ))}
+      <Stack />
+    </Item>
   );
 }
