@@ -4,9 +4,9 @@ import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
 import {
-  useBlocksDispatch,
-  EditorCompositeActionButton,
   EditorActionButton,
+  EditorCompositeActionButton,
+  useBlocksDispatch,
 } from '../blocks';
 import { SidebarGroup } from '../ui';
 
@@ -24,7 +24,6 @@ import { groupElements, titleIdentityElements } from '@seine/content';
 import {
   chartTypes,
   createBlockElement,
-  createTitleIdentityBlockElements,
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
@@ -49,7 +48,8 @@ export default function ChartStructureGroup() {
   const min = useAutoMemo(minValue || Math.min(...values));
   const max = useAutoMemo(maxValue || Math.max(...values));
   const { selection, element } = useElementSelector();
-  const [[, { length: count }]] = groupElements(elements);
+  const groups = groupElements(elements);
+  const [[, { length: count }]] = groups;
   return (
     <SidebarGroup alignItems={'flex-start'}>
       <EditorActionButton
@@ -57,25 +57,32 @@ export default function ChartStructureGroup() {
         id={id}
         dispatch={dispatch}
         type={UPDATE_BLOCK_BODY}
-        body={useAutoMemo({
-          elements: [
-            ...elements,
-            ...(kind === chartTypes.PIE
-              ? [
+        body={useAutoMemo(
+          kind === chartTypes.PIE
+            ? {
+                elements: [
+                  ...elements,
                   createBlockElement({
-                    title: `Item #${elements.length + 1}`,
+                    title: `Item ${elements.length + 1}`,
                     value: Math.floor(min + (max - min) / 2),
                   }),
-                ]
-              : createTitleIdentityBlockElements(
-                  groupElements(elements).map(([group, { length }]) => ({
-                    ...(group ? { group } : {}),
-                    title: `Item #${length}`,
-                    value: Math.floor(min + (max - min) / 2),
-                  }))
-                )),
-          ],
-        })}
+                ],
+              }
+            : {
+                elements: groups.reduce(
+                  (acc, [group, groupElements]) => [
+                    ...acc,
+                    ...groupElements.map(({ index }) => elements[index]),
+                    createBlockElement({
+                      group,
+                      title: `Item ${groupElements.length + 1}`,
+                      value: Math.floor(min + (max - min) / 2),
+                    }),
+                  ],
+                  []
+                ),
+              }
+        )}
         title={kind === chartTypes.LINE ? 'Add line' : 'add item'}
         variant={'text'}
       >
@@ -153,6 +160,10 @@ export default function ChartStructureGroup() {
                 kind === chartTypes.LINE
                   ? element
                     ? elements.filter(({ id }) => id !== element.id)
+                    : []
+                  : kind === chartTypes.COLUMN
+                  ? element
+                    ? elements.filter(({ title }) => title !== element.title)
                     : []
                   : [
                       ...elements.slice(0, selection),

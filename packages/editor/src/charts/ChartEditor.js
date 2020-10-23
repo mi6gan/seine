@@ -88,14 +88,14 @@ function SelectionFrame({ children, data, ...frame }) {
         })}
       />
       <SelectionState
-        selection={
+        selection={useAutoMemo(
           isGrouped && selection.length === 1
             ? data.map((_, point) => ({
                 ...selection[0],
                 point,
               }))
             : selection
-        }
+        )}
       />
     </Frame>
   );

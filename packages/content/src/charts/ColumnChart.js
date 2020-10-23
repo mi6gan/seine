@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoMemo, useAutoCallback } from 'hooks.macro';
+import { useAutoMemo, useAutoCallback, useAutoEffect } from 'hooks.macro';
 import { Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
@@ -118,7 +118,7 @@ export default function ColumnChart({
     ).map(([group, values]) => ({ ...values, group }))
   );
 
-  const valueFields = useAutoMemo(() => {
+  const newValueFields = useAutoMemo(() => {
     const valueFieldsSet = new Set();
     data.forEach(({ group, ...values }) => {
       Object.keys(values).forEach((valueField) => {
@@ -127,34 +127,42 @@ export default function ColumnChart({
     });
     return [...valueFieldsSet];
   });
+  const [valueFields, setValueFields] = React.useState(newValueFields);
+  const valueFieldsUpdated = valueFields.length !== newValueFields.length;
+
+  useAutoEffect(() => {
+    setValueFields(newValueFields);
+  });
 
   const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
     <ValueLabel {...props} as={GroupTitle} text={text} meta={text} />
   ));
 
   return (
-    <Item forwardedAs={Chart} data={data} {...itemProps}>
-      {!!xAxis && (
-        <ArgumentAxis
-          labelComponent={ArgumentAxisLabel}
-          lineComponent={ArgumentAxisLine}
-        />
-      )}
+    !valueFieldsUpdated && (
+      <Item forwardedAs={Chart} data={data} {...itemProps}>
+        {!!xAxis && (
+          <ArgumentAxis
+            labelComponent={ArgumentAxisLabel}
+            lineComponent={ArgumentAxisLine}
+          />
+        )}
 
-      {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid={false} />}
-      {valueFields.map((valueField, index) => (
-        <BarSeries
-          key={valueField}
-          name={valueField}
-          valueField={valueField}
-          argumentField={'group'}
-          color={palette[index % palette.length]}
-          pointComponent={BarLabel}
-          elementValueAs={ElementValue}
-          valueFieldsLength={valueFields.length}
-        />
-      ))}
-      <Stack />
-    </Item>
+        {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid={false} />}
+        {valueFields.map((valueField, index) => (
+          <BarSeries
+            key={valueField}
+            name={valueField}
+            valueField={valueField}
+            argumentField={'group'}
+            color={palette[index % palette.length]}
+            pointComponent={BarLabel}
+            elementValueAs={ElementValue}
+            valueFieldsLength={valueFields.length}
+          />
+        ))}
+        <Stack />
+      </Item>
+    )
   );
 }
