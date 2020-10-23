@@ -1,7 +1,7 @@
 // @flow
 import { useAutoMemo } from 'hooks.macro';
 
-import { defaultBlocksSelector } from '../blocks';
+import { defaultEditorSelector } from '../blocks';
 
 import useChartBlock from './useChartBlock';
 
@@ -18,7 +18,7 @@ const elementSelector = (block) => {
 };
 
 // eslint-disable-next-line
-export default function useElementSelector(selector = defaultBlocksSelector) {
+export default function useElementSelector(selector = defaultEditorSelector) {
   const block = useChartBlock(selector);
   return useAutoMemo(elementSelector(block));
 }

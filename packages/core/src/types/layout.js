@@ -54,7 +54,7 @@ export const defaultGridFormat = {
   kind: layoutTypes.GRID,
   columns: 'repeat(auto-fit, minmax(150px, 1fr))',
   columnGap: 25,
-  rowGap: 12,
+  rowGap: 25,
   rows: '',
   justify: 'auto',
   alignItems: 'auto',

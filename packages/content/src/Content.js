@@ -1,42 +1,47 @@
 // @flow
 import * as React from 'react';
-import { useAutoEffect, useAutoMemo } from 'hooks.macro';
 
+import BlocksContext from './BlocksContext';
+import useBlock from './useBlock';
+import useBlockChildren from './useBlockChildren';
+import useBlockComponent from './useBlockComponent';
+import useScreenDevice from './useScreenDevice';
 import defaultBlockRenderMap from './blockRenderMap';
 
-import type { Block, BlockId } from '@seine/core';
-import { ResizeObserverProvider, ThemeProvider, useTheme } from '@seine/styles';
+import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
+import type { Block } from '@seine/core';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
   device?: 'mobile' | 'any',
-  children: $ReadOnlyArray<Block>,
-  parent: BlockId,
+  children: Array<Block>,
 };
 
-// eslint-disable-next-line
-function ContentBlock({
-  blockRenderMap,
-  body,
-  format,
-  device,
-  children,
-  ...block
-}: Block) {
-  const ContentRender = blockRenderMap[block.type];
+/**
+ * @description Content blocks renderer.
+ * @param {Props} props
+ * @returns {React.Node}
+ */
+function ContentBlock({ id, device: initialDevice }): React.Node {
+  const blockChildren = useBlockChildren(id);
+  const device = useScreenDevice(initialDevice);
+  const { type, format, body, editor } = useBlock(id);
+  const BlockComponent = useBlockComponent(type);
+
   return (
-    <ContentRender
-      key={block.id}
-      {...(format
-        ? device === 'any'
-          ? format
-          : { ...format, ...format[device] }
-        : {})}
-      {...(body ? body : {})}
-      {...block}
+    <BlockComponent
+      id={id}
+      {...format}
+      {...(format && format[device])}
+      {...body}
+      editor={editor}
     >
-      {children}
-    </ContentRender>
+      {blockChildren.length > 0
+        ? blockChildren.map(({ id }) => (
+            <ContentBlock id={id} key={id} device={device} />
+          ))
+        : null}
+    </BlockComponent>
   );
 }
 
@@ -45,85 +50,23 @@ function ContentBlock({
  * @param {Props} props
  * @returns {React.Node}
  */
-function Content({
-  blockRenderMap = defaultBlockRenderMap,
-  children,
-  parent,
-  device: initialDevice = 'auto',
-  as: Container = parent['parent_id'] ? React.Fragment : Provider,
-  ...containerProps
-}: Props): React.Node {
-  const theme = useTheme();
-  const mql = useAutoMemo(
-    initialDevice === 'auto' &&
-      window.matchMedia(theme.breakpoints.up('md').replace('@media ', ''))
-  );
-  const [screenDevice, setScreenDevice] = React.useState('any');
-
-  const device = initialDevice === 'auto' ? screenDevice : initialDevice;
-
-  useAutoEffect(() => {
-    if (mql) {
-      const handler = () => {
-        setScreenDevice(mql.matches ? 'any' : 'mobile');
-      };
-
-      mql.addEventListener('change', handler);
-
-      return () => {
-        mql.removeEventListener('change', handler);
-      };
-    }
-  });
-
-  return (
-    <Container {...containerProps}>
-      {children
-        .filter((block: Block) => block['parent_id'] === parent.id)
-        .map((block: Block, { length }) => {
-          const blockChildren = children.filter(
-            (content) => content.id !== block.id
-          );
-          return (
-            <ContentBlock
-              {...block}
-              blockRenderMap={blockRenderMap}
-              device={device}
-              key={block.id}
-              hasSibling={length > 1}
-              parentType={parent.type}
-            >
-              {blockChildren.length ? (
-                <Content
-                  device={device}
-                  parent={block}
-                  blockRenderMap={blockRenderMap}
-                >
-                  {blockChildren}
-                </Content>
-              ) : null}
-            </ContentBlock>
-          );
-        })}
-    </Container>
-  );
-}
-
-type ProviderProps = {
-  children?: React.Node,
-};
-
-/**
- * @description Content provider.
- * @param {ProviderProps} props
- * @returns {React.Node}
- */
-function Provider({ children = null }: ProviderProps) {
+export default function Content({ children, device, blockRenderMap }: Props) {
+  const [rootBlock = null] = children;
   return (
     <ThemeProvider>
-      <ResizeObserverProvider>{children}</ResizeObserverProvider>
+      <BlocksContext.Provider
+        value={{
+          blockRenderMap: {
+            ...defaultBlockRenderMap,
+            ...blockRenderMap,
+          },
+          blocks: children,
+        }}
+      >
+        <ResizeObserverProvider>
+          <ContentBlock id={rootBlock && rootBlock.id} device={device} />
+        </ResizeObserverProvider>
+      </BlocksContext.Provider>
     </ThemeProvider>
   );
 }
-
-export default Content;

@@ -9,9 +9,11 @@ import {
   SidebarLabel,
   SidebarSection,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../blocks';
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
-import { FlexDesign, GridDesign, useSelectedLayoutItems } from '.';
+import useSelectedLayoutItems from './useSelectedLayoutItems';
+import GridDesign from './GridDesign';
+import FlexDesign from './FlexDesign';
 
 import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {
@@ -26,7 +28,7 @@ import {
  */
 export default function LayoutDesign() {
   const { layout: layoutBlock } = useSelectedLayoutItems();
-  const device = useBlocksSelector((state) => state.device);
+  const device = useEditorSelector((state) => state.device);
   const id = layoutBlock && layoutBlock.id;
   const { kind = defaultLayoutFormat.kind } =
     layoutBlock && layoutBlock.format

@@ -13,9 +13,9 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../blocks';
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
-import { useSelectedLayoutItems } from '.';
+import useSelectedLayoutItems from './useSelectedLayoutItems';
 
 import {
   BorderBottom as PositionBottom,
@@ -75,7 +75,7 @@ const SIZE_UNITS = ['%', 'px', 'rem'];
  * @returns {React.Node}
  */
 export default function ItemDesign() {
-  const device = useBlocksSelector((state) => state.device);
+  const device = useEditorSelector((state) => state.device);
   const { item } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const {

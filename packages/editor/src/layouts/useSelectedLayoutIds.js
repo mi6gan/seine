@@ -1,17 +1,15 @@
 // @flow
 import { useAutoCallback } from 'hooks.macro';
 
-import { useBlocksSelector } from '@seine/editor';
-import { blockTypes } from '@seine/core';
+import { useEditorSelector } from '@seine/editor';
+import { isBlockContainer } from '@seine/core';
 
 // eslint-disable-next-line
 export default function useSelectedLayoutIds() {
-  return useBlocksSelector(
+  return useEditorSelector(
     useAutoCallback(({ selection, blocks }) =>
       selection.filter((id) =>
-        blocks.some(
-          (block) => id === block.id && block.type === blockTypes.LAYOUT
-        )
+        blocks.some((block) => id === block.id && isBlockContainer(block))
       )
     )
   );

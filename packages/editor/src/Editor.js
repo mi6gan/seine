@@ -18,10 +18,10 @@ import {
 import defaultBlockRenderMap from './blockRenderMap';
 import {
   allBlocksSelector,
-  BlocksProvider,
+  EditorProvider,
   deviceSelector,
   useBlocksDispatch,
-  useBlocksSelector,
+  useEditorSelector,
 } from './blocks';
 import { ClipboardProvider } from './clipboard';
 
@@ -57,10 +57,7 @@ const EditorPaper = styled(Paper).attrs({
   })}
 `;
 
-const defaultEditorChildren = [];
-
 type Props = {
-  parent: Block,
   onChange: (Block[]) => any,
   blockRenderMap?: (BlockType) => React.Node,
 };
@@ -71,14 +68,12 @@ type Props = {
  * @returns {React.Node}
  */
 function DefaultEditor({
-  parent,
   onChange,
   blockRenderMap = defaultBlockRenderMap,
-  ...contentProps
 }: Props) {
   const dispatch = useBlocksDispatch();
-  const blocks = useBlocksSelector(allBlocksSelector);
-  const device = useBlocksSelector(deviceSelector);
+  const blocks = useEditorSelector(allBlocksSelector);
+  const device = useEditorSelector(deviceSelector);
 
   useAutoEffect(() => {
     onChange(
@@ -122,12 +117,7 @@ function DefaultEditor({
           </Sidebar>
 
           <EditorPaper device={device}>
-            <Content
-              device={device}
-              blockRenderMap={blockRenderMap}
-              parent={parent}
-              {...contentProps}
-            >
+            <Content device={device} blockRenderMap={blockRenderMap}>
               {blocks}
             </Content>
           </EditorPaper>
@@ -146,16 +136,16 @@ function DefaultEditor({
 }
 
 // eslint-disable-next-line
-export default function Editor({ children = defaultEditorChildren, ...props }) {
+export default function Editor({ children, ...editorProps }) {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BlocksProvider blocks={children}>
+      <EditorProvider blocks={children}>
         <ClipboardProvider>
           <ItemMenuProvider>
-            <DefaultEditor {...props} />
+            <DefaultEditor {...editorProps} />
           </ItemMenuProvider>
         </ClipboardProvider>
-      </BlocksProvider>
+      </EditorProvider>
     </ThemeProvider>
   );
 }

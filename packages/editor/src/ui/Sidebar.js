@@ -9,6 +9,7 @@ const Sidebar = styled(Box).attrs({
   height: 760,
   minWidth: 280,
   px: 2,
+  overflow: 'auto',
 })``;
 
 export default Sidebar;

@@ -4,7 +4,7 @@ import { useAutoCallback } from 'hooks.macro';
 
 import { SvgInput } from '../ui';
 
-import { useChartDispatchElements } from '.';
+import useChartDispatchElements from './useChartDispatchElements';
 
 import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
 

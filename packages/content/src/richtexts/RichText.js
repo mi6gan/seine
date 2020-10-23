@@ -45,7 +45,6 @@ const Draft = React.forwardRef(function Draft(
     spellCheck = false,
     stripPastedStyles = false,
     customStyleMap = DefaultDraftInlineStyle,
-    textAlignment = 'left',
     blocks = defaultDraftBlocks,
     entityMap = defaultDraftEntityMap,
     editorState = null,
@@ -58,13 +57,9 @@ const Draft = React.forwardRef(function Draft(
     <>
       <RichTextStyle />
       <EditorItem
-        className={[
-          className,
-          ' DraftEditor/root',
-          ' DraftEditor/align',
-          textAlignment[0].toUpperCase(),
-          textAlignment.slice(1),
-        ].join('')}
+        className={[className, ' DraftEditor/root', ' DraftEditor/align'].join(
+          ''
+        )}
         id={id}
         {...editorProps}
       >
@@ -73,7 +68,6 @@ const Draft = React.forwardRef(function Draft(
           editorKey={id}
           ref={ref}
           readOnly={readOnly}
-          textAlignment={textAlignment}
           editorState={useAutoMemo(
             editorState || toDraftEditor({ blocks, entityMap })
           )}
@@ -91,8 +85,6 @@ const Draft = React.forwardRef(function Draft(
   );
 });
 
-const RichText = styled(Draft)`
-  text-align: ${({ textAlignment = 'left' }: RichTextFormat) => textAlignment};
-`;
+const RichText = styled(Draft)``;
 
 export default RichText;

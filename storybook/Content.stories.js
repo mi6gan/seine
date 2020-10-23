@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { actions } from '@storybook/addon-actions';
 import { Box } from '@material-ui/core';
 
 import * as data from './data';
@@ -30,13 +29,8 @@ export const Page = ({
     format: null,
     parent_id: null,
   },
-
   ...props
-}) => (
-  <Container parent={parent} {...props} {...actions('onChange')}>
-    {[parent, ...children]}
-  </Container>
-);
+}) => <Container {...props}>{[parent, ...children]}</Container>;
 
 export const Text = (props) => (
   <Page {...props}>
@@ -479,9 +473,7 @@ export const NestedFlex = ({ children = [], ...props }) => (
 export const Data = ({ as: Container = Content, children = [], ...props }) =>
   Object.entries(data).map(([key, blocks]) => (
     <Box key={key} p={8} borderBottom={'1px dashed currentColor'}>
-      <Container parent={blocks[0]} {...actions('onChange')} {...props}>
-        {blocks}
-      </Container>
+      <Container {...props}>{blocks}</Container>
     </Box>
   ));
 Data.parameters = {

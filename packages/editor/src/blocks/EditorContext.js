@@ -11,11 +11,11 @@ export type BlocksContextType = {
   setBuffer: (Action) => any,
 };
 
-const BlocksContext = React.createContext<BlocksContextType>({
+const EditorContext = React.createContext<BlocksContextType>({
   dispatch: () => {},
   state: initialBlocksState,
   buffer: null,
   setBuffer: () => {},
 });
 
-export default BlocksContext;
+export default EditorContext;

@@ -1,9 +1,9 @@
 // @flow
 import styled from 'styled-components/macro';
 
-import { Item } from '../layouts';
+import { Layout } from '../layouts';
 
-const Page = styled(Item)`
+const Page = styled(Layout)`
   min-height: 100%;
 `;
 

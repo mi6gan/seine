@@ -5,14 +5,14 @@ import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import {
-  SidebarHeading,
-  SidebarSection,
-  ToolbarToggleButtonGroup,
-  ToolbarToggleButton,
   SidebarGroup,
+  SidebarHeading,
   SidebarLabel,
+  SidebarSection,
+  ToolbarToggleButton,
+  ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../blocks';
+import { useBlocksDispatch } from '../blocks';
 
 import { defaultDraftEditor } from './RichTextEditor';
 
@@ -27,12 +27,9 @@ import {
   FormatListNumbered,
   FormatUnderlined,
 } from '@seine/styles/mui-icons.macro';
-import {
-  blockTypes,
-  UPDATE_BLOCK_EDITOR,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
+import { UPDATE_BLOCK_EDITOR, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { defaultDraftFormat } from '@seine/content';
+import { useSelectedLayoutItems } from '@seine/editor';
 
 const SvgText = styled.text.attrs({
   textAnchor: 'middle',
@@ -48,6 +45,7 @@ const SvgText = styled.text.attrs({
  * @returns {React.Node}
  */
 export default function RichTextDesign() {
+  const { item } = useSelectedLayoutItems();
   const {
     format: {
       textAlignment = defaultDraftFormat.textAlignment,
@@ -55,8 +53,7 @@ export default function RichTextDesign() {
     editor: {
       state: editorState = defaultDraftEditor.state,
     } = defaultDraftEditor,
-  } =
-    useBlocksSelector().find(({ type }) => type === blockTypes.RICH_TEXT) || {};
+  } = item || {};
   const dispatch = useBlocksDispatch();
 
   const blockType = useAutoMemo(

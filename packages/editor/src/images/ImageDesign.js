@@ -9,7 +9,7 @@ import {
   SidebarSection,
   SidebarHeading,
 } from '../ui';
-import { useBlocksDispatch, useBlocksSelector } from '../blocks';
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import { IconButton, InputAdornment } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
@@ -42,7 +42,7 @@ const FileInput = styled(Box).attrs({
 export default function TableDesign({ onChange, ...inputProps }) {
   const dispatch = useBlocksDispatch();
   const { id, body } =
-    useBlocksSelector().find(({ type }) => type === blockTypes.IMAGE) || {};
+    useEditorSelector().find(({ type }) => type === blockTypes.IMAGE) || {};
   return (
     <SidebarSection>
       <SidebarHeading>Image</SidebarHeading>

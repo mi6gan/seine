@@ -1,7 +1,7 @@
 // @flow
 import { useAutoCallback } from 'hooks.macro';
 
-import { useBlocksDispatch, defaultBlocksSelector } from '../blocks';
+import { useBlocksDispatch, defaultEditorSelector } from '../blocks';
 
 import useChartBlock from './useChartBlock';
 
@@ -14,7 +14,7 @@ import {
 
 // eslint-disable-next-line
 export default function useChartDispatchElements(
-  blocksSelector = defaultBlocksSelector
+  blocksSelector = defaultEditorSelector
 ) {
   const { body, editor } = useChartBlock(blocksSelector);
   const dispatch = useBlocksDispatch();

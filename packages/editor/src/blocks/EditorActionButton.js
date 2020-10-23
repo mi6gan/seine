@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import useBlocksDispatch from './useBlocksDispatch';
+import useEditorDispatch from './useEditorDispatch';
 
 import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 import type { Action } from '@seine/core';
@@ -15,7 +15,7 @@ export type Props = Action & React.ElementProps<HTMLButtonElement>;
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function BlocksActionButton({
+export default function EditorActionButton({
   as: Button = MuiButton,
   block,
   body,
@@ -30,7 +30,7 @@ export default function BlocksActionButton({
   onClick,
   ...buttonProps
 }: Props) {
-  const dispatch = useBlocksDispatch();
+  const dispatch = useEditorDispatch();
   return (
     <Button
       {...buttonProps}

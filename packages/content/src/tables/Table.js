@@ -1,30 +1,36 @@
 // @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
-import { useAutoCallback } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 
 import { Item } from '../layouts';
-
-import TableCell from './TableCell';
+import useBlock from '../useBlock';
 
 import type { TableBody, TableFormat } from '@seine/core';
-import { useResizeTargetRef } from '@seine/styles';
+import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
+import {
+  defaultTableBody,
+  RichText,
+  toDraftEditor,
+  toRawContent,
+} from '@seine/content';
 
-export type Props = TableBody & TableFormat;
+export type Props = TableBody &
+  TableFormat & {
+    onChange: ?(SyntheticInputEvent) => any,
+  };
 
 const Container = styled(Item)``;
 
 const StyledTable = styled.table`
   ${({
-    scale,
     theme: {
       typography: { body1 },
     },
   }) => css`
     ${body1};
     width: 100%;
-    transform-origin: left top;
-    transform: scale(${scale});
+
     th,
     td {
       border-left: 1px solid #fff;
@@ -32,6 +38,7 @@ const StyledTable = styled.table`
       line-height: 1.5;
       padding: 0.5rem 1.25rem;
       white-space: pre-wrap;
+      ${({ readOnly }) => !readOnly && { cursor: 'text' }};
     }
 
     & > thead {
@@ -54,72 +61,155 @@ const StyledTable = styled.table`
   `}
 `;
 
+// eslint-disable-next-line
+function TableCellText({
+  id,
+  children,
+  rowIndex,
+  columnIndex,
+  onChange: dispatch,
+  ...props
+}) {
+  const block = useBlock(id);
+  const { rows, header } = (block && block.body) || defaultTableBody;
+  const row = rows && (rowIndex === -1 ? header : rows && rows[rowIndex]);
+  const cell = row && row[columnIndex];
+  const cellId = `${rowIndex}:${columnIndex}`;
+  const editorState = useAutoMemo(
+    (block && block.editor && block.editor[cellId]) || toDraftEditor(children)
+  );
+  const editorRef = React.useRef(null);
+  const selected = !!(
+    block &&
+    block.editor &&
+    block.editor.rowIndex === rowIndex &&
+    block.editor.columnIndex === columnIndex
+  );
+  useAutoEffect(() => {
+    const { current } = editorRef;
+    if (
+      editorState &&
+      selected &&
+      current &&
+      !(
+        document.activeElement &&
+        document.activeElement instanceof HTMLInputElement
+      )
+    ) {
+      current.focus();
+    }
+  });
+
+  React.useEffect(() => {
+    if (!selected && dispatch) {
+      const text = toRawContent(editorState);
+      dispatch({
+        id,
+        type: UPDATE_BLOCK_BODY,
+        body:
+          rowIndex === -1
+            ? {
+                header: [
+                  ...header.slice(0, columnIndex),
+                  { ...cell, text },
+                  ...header.slice(columnIndex + 1),
+                ],
+              }
+            : {
+                rows: [
+                  ...rows.slice(0, rowIndex),
+                  [
+                    ...row.slice(0, columnIndex),
+                    { ...cell, text },
+                    ...row.slice(columnIndex + 1),
+                  ],
+                  ...rows.slice(rowIndex + 1),
+                ],
+              },
+      });
+    }
+    // eslint-disable-next-line
+  }, [selected]);
+
+  return (
+    <RichText
+      {...props}
+      ref={editorRef}
+      textAlignment={cell && cell.align}
+      editorState={editorState}
+      onChange={useAutoCallback((state) => {
+        dispatch({
+          id,
+          type: UPDATE_BLOCK_EDITOR,
+          editor: { [cellId]: state },
+        });
+      })}
+      onFocus={useAutoCallback(() => {
+        dispatch({
+          id,
+          type: UPDATE_BLOCK_EDITOR,
+          editor: { rowIndex, columnIndex },
+        });
+      })}
+    />
+  );
+}
+
 /**
  * @description Table block render component.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default React.forwardRef(function Table(
-  {
-    title,
-    header,
-    rows,
-    textAlignment,
-    cellAs: Cell = TableCell,
-    children = null,
-    ...containerProps
-  }: Props,
-  ref
-) {
-  const containerRef = useResizeTargetRef();
-  const tableRef = React.useRef<HTMLElement>(null);
-
-  const { current: container } = containerRef;
-  const { current: table } = tableRef;
-
-  const scale =
-    container && table ? container.offsetWidth / table.offsetWidth : 1;
-
+export default function Table({
+  id,
+  title,
+  header,
+  rows,
+  textAlignment,
+  onChange,
+  readOnly = true,
+  ...containerProps
+}: Props) {
   return (
-    <Container
-      {...containerProps}
-      ref={useAutoCallback((container) => {
-        containerRef.current = container;
-        ref && ref(container);
-      })}
-    >
-      <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
+    <Container {...containerProps} id={id}>
+      <StyledTable>
         <thead>
           <tr>
-            {header.map(({ text, ...cell }, index) => (
-              <Cell
-                as={'th'}
-                key={index}
-                meta={{ rowIndex: -1, columnIndex: index }}
-                {...cell}
-              >
-                {text}
-              </Cell>
+            {header.map(({ text }, index) => (
+              <th key={index}>
+                <TableCellText
+                  id={id}
+                  rowIndex={-1}
+                  columnIndex={index}
+                  onChange={onChange}
+                  readOnly={readOnly}
+                >
+                  {typeof text === 'string' ? `<b>${text}</b>` : text}
+                </TableCellText>
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((columns, rowIndex) => (
             <tr key={rowIndex}>
-              {columns.map(({ text, ...cell }, columnIndex) => (
-                <Cell
-                  key={columnIndex}
-                  meta={{ rowIndex, columnIndex }}
-                  {...cell}
-                >
-                  {text || ' '}
-                </Cell>
+              {columns.map(({ text }, columnIndex) => (
+                <td key={columnIndex}>
+                  <TableCellText
+                    id={id}
+                    rowIndex={rowIndex}
+                    columnIndex={columnIndex}
+                    onChange={onChange}
+                    readOnly={readOnly}
+                  >
+                    {text}
+                  </TableCellText>
+                </td>
               ))}
             </tr>
           ))}
         </tbody>
       </StyledTable>
-      {children}
     </Container>
   );
-});
+}

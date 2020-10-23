@@ -1,9 +1,9 @@
 // @flow
 import { useAutoMemo } from 'hooks.macro';
 
-import { useBlocksSelector, defaultBlocksSelector } from '../blocks';
+import { useEditorSelector, defaultEditorSelector } from '../blocks';
 
-import { defaultChartEditor } from '.';
+import { defaultChartEditor } from './constants';
 
 import { blockTypes } from '@seine/core';
 import { defaultChartFormat, useChartFormat } from '@seine/content';
@@ -11,9 +11,9 @@ import { defaultChartFormat, useChartFormat } from '@seine/content';
 const deviceSelector = (state) => state.device;
 
 // eslint-disable-next-line
-export default function useChartBlock(blocksSelector = defaultBlocksSelector) {
-  const device = useBlocksSelector(deviceSelector);
-  const [block = {}] = useBlocksSelector(blocksSelector).filter(
+export default function useChartBlock(blocksSelector = defaultEditorSelector) {
+  const device = useEditorSelector(deviceSelector);
+  const [block = {}] = useEditorSelector(blocksSelector).filter(
     ({ type }) => type === blockTypes.CHART
   );
   const {

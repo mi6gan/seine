@@ -3,7 +3,8 @@ import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
 import { useBlocksDispatch } from '../blocks';
-import { useSelectedLayoutItems } from '../layouts';
+
+import useSelectedLayoutItems from './useSelectedLayoutItems';
 
 import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 import {

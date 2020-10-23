@@ -4,7 +4,7 @@ import { useAutoMemo } from 'hooks.macro';
 
 import { InlineInput } from '../ui';
 
-import { useChartDispatchElements } from '.';
+import useChartDispatchElements from './useChartDispatchElements';
 
 import { UPDATE_BLOCK_ELEMENT_BY_ID } from '@seine/core';
 import { ChartLegend } from '@seine/content';
