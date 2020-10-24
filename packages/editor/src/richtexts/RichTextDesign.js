@@ -46,14 +46,12 @@ const SvgText = styled.text.attrs({
  */
 export default function RichTextDesign() {
   const { item } = useSelectedLayoutItems();
-  const {
-    format: {
-      textAlignment = defaultDraftFormat.textAlignment,
-    } = defaultDraftFormat,
-    editor: {
-      state: editorState = defaultDraftEditor.state,
-    } = defaultDraftEditor,
-  } = item || {};
+  const { textAlignment = defaultDraftFormat.textAlignment } =
+    (item && item.format) || defaultDraftFormat;
+  const { state: editorState = defaultDraftEditor.state } =
+    (item && item.editor) || defaultDraftEditor;
+  const id = item && item.id;
+
   const dispatch = useBlocksDispatch();
 
   const blockType = useAutoMemo(
@@ -65,6 +63,7 @@ export default function RichTextDesign() {
   );
   const toggleBlockType = useAutoCallback((event, blockType) => {
     dispatch({
+      id,
       type: UPDATE_BLOCK_EDITOR,
       editor: {
         state: RichUtils.toggleBlockType(editorState, blockType),
@@ -135,6 +134,7 @@ export default function RichTextDesign() {
           )}
           onChange={useAutoCallback((event, style) => {
             dispatch({
+              id,
               type: UPDATE_BLOCK_EDITOR,
               editor: {
                 state: RichUtils.toggleInlineStyle(editorState, style),
@@ -162,6 +162,7 @@ export default function RichTextDesign() {
           value={textAlignment}
           onChange={useAutoCallback((event, textAlignment) => {
             dispatch({
+              id,
               type: UPDATE_BLOCK_FORMAT,
               format: { textAlignment },
             });
