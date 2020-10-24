@@ -50,6 +50,7 @@ const EditorPaper = styled(Paper).attrs({
   overflow-x: hidden;
   ${({ device, theme }) => ({
     width: device === 'mobile' ? theme.breakpoints.width('sm') : '100%',
+    maxWidth: theme.breakpoints.width('xl'),
     minWidth:
       device === 'mobile'
         ? theme.breakpoints.width('sm')
@@ -109,7 +110,7 @@ function DefaultEditor({
         height={'100%'}
       >
         <Contents>
-          <Sidebar>
+          <Sidebar open anchor={'left'}>
             <SidebarSection>
               <SidebarHeading>Structure</SidebarHeading>
               <SidebarGroup>
@@ -118,13 +119,31 @@ function DefaultEditor({
             </SidebarSection>
           </Sidebar>
 
-          <EditorPaper device={device}>
-            <Content device={device} blockRenderMap={blockRenderMap}>
-              {blocks}
-            </Content>
-          </EditorPaper>
+          <Box width={1} overflow={'auto'}>
+            <Box
+              width={'300vw'}
+              display={'flex'}
+              justifyContent={'space-around'}
+            >
+              <EditorPaper
+                device={device}
+                ref={useAutoCallback((element) => {
+                  element.scrollIntoView({
+                    block: 'center',
+                    inline: 'center',
+                  });
+                })}
+              >
+                <Content device={device} blockRenderMap={blockRenderMap}>
+                  {blocks}
+                </Content>
+              </EditorPaper>
+            </Box>
+          </Box>
 
           <Sidebar
+            open
+            anchor={'right'}
             onClick={useAutoCallback((event) => {
               event.stopPropagation();
             })}
