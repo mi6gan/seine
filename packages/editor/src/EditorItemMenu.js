@@ -149,7 +149,6 @@ export default function EditorItemMenu() {
       onClose={close}
       open={isOpen}
       anchorEl={anchorEl}
-      keepMounted
       autoFocus
       mt={3}
       onClick={close}
