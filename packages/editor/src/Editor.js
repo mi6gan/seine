@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoEffect } from 'hooks.macro';
+import { useAutoCallback } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import EditorItemMenu, { ItemMenuProvider } from './EditorItemMenu';
@@ -18,12 +18,13 @@ import {
 import defaultBlockRenderMap from './blockRenderMap';
 import {
   allBlocksSelector,
-  EditorProvider,
   deviceSelector,
+  EditorProvider,
   useBlocksDispatch,
   useEditorSelector,
 } from './blocks';
 import { ClipboardProvider } from './clipboard';
+import useBlocksChange from './useBlocksChange';
 
 import { Paper } from '@seine/styles/mui-core.macro';
 import { Box, ThemeProvider } from '@seine/styles';
@@ -78,18 +79,7 @@ function DefaultEditor({
   const blocks = useEditorSelector(allBlocksSelector);
   const device = useEditorSelector(deviceSelector);
 
-  useAutoEffect(() => {
-    onChange(
-      // no extra data should be passed, like `editor` key value
-      blocks.map(({ id, type, body, format, parent_id }) => ({
-        id,
-        type,
-        body,
-        format,
-        parent_id,
-      }))
-    );
-  });
+  useBlocksChange(onChange);
 
   return (
     <>
