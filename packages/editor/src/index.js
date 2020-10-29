@@ -10,7 +10,13 @@ export * from './tables';
 
 export { default as defaultTheme } from './defaultTheme';
 export { default as EditorDesign } from './EditorDesign';
+export {
+  ItemMenuProvider,
+  ItemMenuContext,
+  default as EditorItemMenu,
+} from './EditorItemMenu';
 export { default as EditorToolbar } from './EditorToolbar';
 export { default as EditorTree } from './EditorTree';
 export { default as defaultBlockRenderMap } from './blockRenderMap';
+export { default as useBlocksChange } from './useBlocksChange';
 export { default as Editor } from './Editor';
