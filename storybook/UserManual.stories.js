@@ -1,19 +1,21 @@
 // @flow
 import * as React from 'react';
 import { action } from '@storybook/addon-actions';
+import { useAutoMemo, useAutoCallback } from 'hooks.macro';
+import styled from 'styled-components/macro';
 
-import { ThemeProvider, Box } from '@seine/styles';
-import { Paper, Tooltip, Typography } from '@seine/styles/mui-core.macro';
+import { Box, ThemeProvider } from '@seine/styles';
+import { Paper, Popover, Typography } from '@seine/styles/mui-core.macro';
 import {
   allBlocksSelector,
   defaultBlockRenderMap,
+  EditorItemMenu,
   EditorProvider,
+  EditorToolbar,
+  EditorTree,
+  ItemMenuProvider,
   useBlocksChange,
   useEditorSelector,
-  EditorTree,
-  EditorToolbar,
-  EditorItemMenu,
-  ItemMenuProvider,
 } from '@seine/editor';
 import { Content } from '@seine/content';
 import { blockTypes, createBlock } from '@seine/core';
@@ -35,53 +37,89 @@ export default {
   ],
 };
 
+const ManualStep = () => null;
+
+const StyledPopover = styled(Popover)`
+  pointer-events: none;
+`;
+
+// eslint-disable-next-line
+function ManualPopover({ children, container }) {
+  const step = React.Children.toArray(children).find(
+    ({ props }) => props.current
+  );
+  const { selector = null, ...popoverProps } = (step && step.props) || {};
+  const anchorEl = useAutoMemo(
+    step && selector && container ? container.querySelector(selector) : null
+  );
+  return (
+    <StyledPopover
+      {...popoverProps}
+      anchorEl={anchorEl}
+      open={anchorEl !== null}
+      keepMounted
+    />
+  );
+}
+
 // eslint-disable-next-line
 export const AddRichText = () => {
   useBlocksChange(action('onChange'));
-  const rootIsSelected = useEditorSelector(({ selection }) =>
-    selection.includes(rootBlock.id)
+  const [rootIsSelected, blocksCount] = useEditorSelector(
+    useAutoCallback(({ selection, blocks }) => [
+      selection.includes(rootBlock.id),
+      blocks.length,
+    ])
   );
 
+  const [container, setContainer] = React.useState(null);
+
   return (
-    <Box display={'flex'} flexDirection={'column'}>
-      <Tooltip
-        placement={'bottom-start'}
-        open={rootIsSelected}
-        arrow
-        title={
-          <Typography variant={'body1'}>
-            This is block addition toolbar.
-            <br />
-            Click on text block icon to add it to the root.
-          </Typography>
-        }
-      >
+    <>
+      <Box display={'flex'} flexDirection={'column'} ref={setContainer}>
         <EditorToolbar position={'relative'} />
-      </Tooltip>
-      <EditorItemMenu />
-      <Box display={'flex'} width={1}>
-        <Tooltip
-          open={!rootIsSelected}
-          arrow
-          title={
-            <Typography variant={'body1'}>
-              This is the root block in content structure panel.
-              <br />
-              To select it as current edit target click it.
-            </Typography>
-          }
-          placement={'right-start'}
-        >
+        <EditorItemMenu />
+        <Box display={'flex'} width={1}>
           <Box width={1 / 6}>
             <EditorTree />
           </Box>
-        </Tooltip>
-        <Box as={Paper} width={1} minHeight={'75vh'} squared>
-          <Content blockRenderMap={defaultBlockRenderMap}>
-            {useEditorSelector(allBlocksSelector)}
-          </Content>
+          <Box as={Paper} width={1} minHeight={'75vh'} squared>
+            <Content blockRenderMap={defaultBlockRenderMap}>
+              {useEditorSelector(allBlocksSelector)}
+            </Content>
+          </Box>
         </Box>
       </Box>
-    </Box>
+      {container && (
+        <ManualPopover container={container}>
+          <ManualStep
+            current={!rootIsSelected && blocksCount === 1}
+            selector={'[data-tree="block"]'}
+            anchorOrigin={{ vertical: 'center', horizontal: 'right' }}
+          >
+            <Typography>
+              This is the root block in content structure panel. <br />
+              To select it as current edit target click it.
+            </Typography>
+          </ManualStep>
+
+          <ManualStep
+            current={rootIsSelected && blocksCount === 1}
+            selector={'[data-create="rich-text"]'}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          >
+            <Typography>This is toolbar.</Typography>
+          </ManualStep>
+
+          <ManualStep
+            current={blocksCount === 2}
+            selector={'[data-tree="block"]'}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          >
+            <Typography>This is toolbar.</Typography>
+          </ManualStep>
+        </ManualPopover>
+      )}
+    </>
   );
 };

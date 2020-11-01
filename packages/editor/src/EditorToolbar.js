@@ -79,6 +79,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
               })
             )}
             id={parentId}
+            data-create={'rich-text'}
           >
             <BlockTypeIcon type={blockTypes.RICH_TEXT} />
           </ToolbarButton>

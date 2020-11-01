@@ -107,6 +107,7 @@ function EditorTreeItem({
           {expanded ? <ExpandMore /> : <ChevronRight />}
         </IconButton>
       </ListItemSecondaryAction>
+      <span data-tree={'block'} />
     </StyledListItem>
   );
 }
