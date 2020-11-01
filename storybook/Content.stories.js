@@ -9,7 +9,7 @@ import { Content } from '@seine/content';
 import { ThemeProvider } from '@seine/styles';
 
 export default {
-  title: 'Content',
+  title: 'Development/Content',
   decorators: [
     (Story) => (
       <ThemeProvider>
