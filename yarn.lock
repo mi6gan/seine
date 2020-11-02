@@ -2226,7 +2226,7 @@ __metadata:
   languageName: node
   linkType: soft
 
-"@seine/editor@workspace:packages/editor":
+"@seine/editor@workspace:*, @seine/editor@workspace:packages/editor":
   version: 0.0.0-use.local
   resolution: "@seine/editor@workspace:packages/editor"
   dependencies:
@@ -14899,8 +14899,16 @@ fsevents@~2.1.2:
   dependencies:
     "@babel/core": 7
     "@devexpress/dx-chart-core": ^2.7.1
+    "@devexpress/dx-react-chart": ^2.7.1
+    "@devexpress/dx-react-chart-material-ui": ^2.7.1
     "@devexpress/dx-react-core": ^2.7.1
     "@material-ui/core": ^4.9
+    "@material-ui/icons": ^4.9
+    "@material-ui/styles": ^4.9
+    "@seine/content": "workspace:*"
+    "@seine/core": "workspace:*"
+    "@seine/editor": "workspace:*"
+    "@seine/styles": "workspace:*"
     "@storybook/addon-actions": ^6.0.28
     "@storybook/addon-viewport": ^6.0.28
     "@storybook/addons": ^6.0.28
@@ -14951,8 +14959,16 @@ fsevents@~2.1.2:
   dependencies:
     "@babel/core": 7
     "@devexpress/dx-chart-core": ^2.7.1
+    "@devexpress/dx-react-chart": ^2.7.1
+    "@devexpress/dx-react-chart-material-ui": ^2.7.1
     "@devexpress/dx-react-core": ^2.7.1
     "@material-ui/core": ^4.9
+    "@material-ui/icons": ^4.9
+    "@material-ui/styles": ^4.9
+    "@seine/content": "workspace:*"
+    "@seine/core": "workspace:*"
+    "@seine/editor": "workspace:*"
+    "@seine/styles": "workspace:*"
     "@storybook/addon-actions": ^6.0.28
     "@storybook/addon-viewport": ^6.0.28
     "@storybook/addons": ^6.0.28
