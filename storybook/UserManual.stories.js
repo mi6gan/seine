@@ -14,8 +14,10 @@ import {
   EditorToolbar,
   EditorTree,
   ItemMenuProvider,
+  ClipboardProvider,
   useBlocksChange,
   useEditorSelector,
+  defaultTheme,
 } from '@seine/editor';
 import { Content } from '@seine/content';
 import { blockTypes, createBlock } from '@seine/core';
@@ -26,11 +28,13 @@ export default {
   title: 'User Manual/Blocks',
   decorators: [
     (Story) => (
-      <ThemeProvider>
+      <ThemeProvider theme={defaultTheme}>
         <EditorProvider blocks={[rootBlock]}>
-          <ItemMenuProvider>
-            <Story />
-          </ItemMenuProvider>
+          <ClipboardProvider>
+            <ItemMenuProvider>
+              <Story />
+            </ItemMenuProvider>
+          </ClipboardProvider>
         </EditorProvider>
       </ThemeProvider>
     ),

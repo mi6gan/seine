@@ -11,14 +11,15 @@
     "@material-ui/system": "^4.9",
     "@seine/core": "workspace:*",
     "@seine/styles": "workspace:*",
+    "hooks.macro": "^1.0.1",
     "invert-color": "^2.0.0",
     "ramda": "^0.26.1"
   },
   "peerDependencies": {
-    "@devexpress/dx-chart-core": "<=2.7.1",
-    "@devexpress/dx-react-chart": "<=2.7.1",
-    "@devexpress/dx-react-chart-material-ui": "<=2.7.1",
-    "@devexpress/dx-react-core": "<=2.7.1",
+    "@devexpress/dx-chart-core": "^2.7.1",
+    "@devexpress/dx-react-chart": "^2.7.1",
+    "@devexpress/dx-react-chart-material-ui": "^2.7.1",
+    "@devexpress/dx-react-core": "^2.7.1",
     "@material-ui/core": "^4.9",
     "@material-ui/icons": "^4.9",
     "@material-ui/styles": "^4.9",
@@ -26,6 +27,17 @@
     "draft-js": "^0.11.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "@devexpress/dx-react-chart": "^2.7.1",
+    "@devexpress/dx-react-chart-material-ui": "^2.7.1",
+    "@material-ui/core": "^4.9",
+    "@material-ui/icons": "^4.9",
+    "@material-ui/styles": "^4.9",
+    "core-js": "^3.0.1",
+    "draft-js": "^0.11.0",
+    "rollup": "^2.18.2",
     "styled-components": "^5.2.0"
   }
 }

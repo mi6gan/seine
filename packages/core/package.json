@@ -10,5 +10,9 @@
   "dependencies": {
     "ramda": "^0.26.1",
     "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "core-js": "^3.0.1",
+    "rollup": "^2.18.2"
   }
 }
