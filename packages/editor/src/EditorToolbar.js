@@ -38,10 +38,13 @@ type Props = BoxProps;
 
 /**
  * @description Default content editor.
- * @param {Props} boxProps
+ * @param {Props} props
  * @returns {React.Node}
  */
-export default function EditorToolbar(boxProps: Props) {
+const EditorToolbar = React.forwardRef(function EditorToolbar(
+  { position = 'fixed', ...boxProps }: Props,
+  ref
+) {
   const menuAnchorRef = React.useRef(null);
   const itemMenu = React.useContext(ItemMenuContext);
 
@@ -51,7 +54,7 @@ export default function EditorToolbar(boxProps: Props) {
   const device = useEditorSelector(deviceSelector);
 
   return (
-    <AppBar position={'fixed'}>
+    <AppBar position={position} ref={ref}>
       <Toolbar {...boxProps} ref={menuAnchorRef}>
         <Box width={'40%'}>
           <ToolbarButton
@@ -76,6 +79,7 @@ export default function EditorToolbar(boxProps: Props) {
               })
             )}
             id={parentId}
+            data-create={'rich-text'}
           >
             <BlockTypeIcon type={blockTypes.RICH_TEXT} />
           </ToolbarButton>
@@ -288,4 +292,5 @@ export default function EditorToolbar(boxProps: Props) {
       </Toolbar>
     </AppBar>
   );
-}
+});
+export default EditorToolbar;

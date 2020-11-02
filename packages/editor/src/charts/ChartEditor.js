@@ -5,14 +5,11 @@ import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
 import { useSelectedLayoutItems } from '../layouts';
-import ColumnChart from '../../../content/src/charts/ColumnChart';
 
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
-import BarChartElementTitleInput from './BarChartElementTitleInput';
 import ChartGroupElementValueInput from './ChartGroupElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
-import GroupedChartElementRect from './GroupedChartElementRect';
 import LineChartElementPath from './LineChartElementPath';
 import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
@@ -20,9 +17,10 @@ import ChartLegendEditor from './ChartLegendEditor';
 
 import { useResizeTargetRef } from '@seine/styles';
 import {
-  BarChartContent,
   ChartSvg,
   ChartSvgDefs,
+  BarChart,
+  ColumnChart,
   LineChartContent,
   PieChart,
   titleIdentityElements,
@@ -131,21 +129,20 @@ export default function ChartEditor(props: Props) {
       })}
       as={SelectionFrame}
     />
+  ) : kind === chartTypes.BAR ? (
+    <BarChart
+      {...chart}
+      {...(selectedBlock && {
+        elementValueAs: ChartGroupElementValueInput,
+        groupTitleAs: ChartGroupTitleInput,
+      })}
+      as={SelectionFrame}
+    />
   ) : (
     <Frame {...chart}>
       <ChartSvg {...chart} ref={resizeTargetRef}>
         <ChartSvgDefs />
-        {kind === chartTypes.BAR ? (
-          <BarChartContent
-            {...chart}
-            {...(selectedBlock && {
-              elementRectAs: GroupedChartElementRect,
-              elementTitleAs: BarChartElementTitleInput,
-              elementValueAs: ChartGroupElementValueInput,
-              groupTitleAs: ChartGroupTitleInput,
-            })}
-          />
-        ) : kind === chartTypes.LINE ? (
+        {kind === chartTypes.LINE ? (
           <LineChartContent
             {...chart}
             {...(selectedBlock && {
