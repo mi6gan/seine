@@ -16,7 +16,7 @@ import { Editor } from '@seine/editor';
 import { ThemeProvider } from '@seine/styles';
 
 export default {
-  title: 'Editor',
+  title: 'Development/Editor',
   decorators: [
     (Story) => (
       <ThemeProvider>

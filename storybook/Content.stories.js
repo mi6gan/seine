@@ -9,7 +9,7 @@ import { Content } from '@seine/content';
 import { ThemeProvider } from '@seine/styles';
 
 export default {
-  title: 'Content',
+  title: 'Development/Content',
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -476,6 +476,7 @@ export const Data = ({ as: Container = Content, children = [], ...props }) =>
       <Container {...props}>{blocks}</Container>
     </Box>
   ));
+
 Data.parameters = {
   storyshots: {
     disable: true,

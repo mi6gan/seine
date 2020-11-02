@@ -4,7 +4,6 @@ import styled from 'styled-components/macro';
 
 import { Item } from '../layouts';
 
-import BarChartContent from './BarChartContent';
 import LineChartContent from './LineChartContent';
 import PieChart from './PieChart';
 import ChartSvg from './ChartSvg';
@@ -13,6 +12,7 @@ import useChartFormat from './useChartFormat';
 import ChartLegend from './ChartLegend';
 import { titleIdentityElements } from './helpers';
 import ColumnChart from './ColumnChart';
+import BarChart from './BarChart';
 
 import type { ChartBody, ChartFormat } from '@seine/core';
 import { chartTypes } from '@seine/core';
@@ -36,15 +36,14 @@ export default function Chart(props: Props) {
     <PieChart {...chartProps} as={ChartItem} />
   ) : kind === chartTypes.COLUMN ? (
     <ColumnChart {...chartProps} as={ChartItem} />
+  ) : kind === chartTypes.BAR ? (
+    <BarChart {...chartProps} as={ChartItem} />
   ) : (
     <ChartItem {...chartProps}>
       <ChartSvg {...chartProps}>
         <ChartSvgDefs />
-        {kind === chartTypes.BAR ? (
-          <BarChartContent {...chartProps} />
         ) : kind === chartTypes.LINE ? (
-          <LineChartContent {...chartProps} />
-        ) : null}
+        <LineChartContent {...chartProps} />) : null}
       </ChartSvg>
       {!!chartProps.legend && (
         <ChartLegend
