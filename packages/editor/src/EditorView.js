@@ -67,7 +67,7 @@ type Props = {
 export type { Props as EditorViewProps };
 
 /**
- * @description Default content editor.
+ * @description Default content editor view.
  * @param {Props} props
  * @returns {React.Node}
  */

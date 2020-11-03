@@ -10,7 +10,7 @@ type Props = {
 };
 
 /**
- * @description Block type icon.
+ * @description Block type name.
  * @param {Props} props
  * @returns {React.Node}
  */
