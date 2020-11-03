@@ -22,18 +22,15 @@ import {
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
 
-/**
- * @description Flex layout design.
- * @returns {React.Node}
- */
-export default function LayoutDesign() {
+// eslint-disable-next-line
+export default function LayoutDesign({ defaults = defaultLayoutFormat }) {
   const { layout: layoutBlock } = useSelectedLayoutItems();
   const device = useEditorSelector((state) => state.device);
   const id = layoutBlock && layoutBlock.id;
-  const { kind = defaultLayoutFormat.kind } =
+  const { kind = defaults.kind } =
     layoutBlock && layoutBlock.format
       ? layoutBlock.format[device] || layoutBlock.format
-      : defaultLayoutFormat;
+      : defaults;
   const dispatch = useBlocksDispatch();
   return (
     <>

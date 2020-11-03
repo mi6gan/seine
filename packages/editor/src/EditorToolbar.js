@@ -7,17 +7,22 @@ import { ItemMenuContext } from './EditorItemMenu';
 import {
   deviceSelector,
   EditorActionButton,
+  pageSelector,
   useBlocksDispatch,
   useEditorSelector,
 } from './blocks';
 import { BlockTypeIcon, Toolbar, ToolbarButton, ToolbarSeparator } from './ui';
 import { useSelectedLayoutIds } from './layouts';
 import { EditorActionButtonProps } from './blocks/EditorActionButton';
+import { defaultPageEditor } from './pages/PageEditor';
 
 import { AppBar, MenuItem, Select } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
 import type { BoxProps } from '@seine/styles/mui-core.macro.d';
-import { Menu as MenuIcon } from '@seine/styles/mui-icons.macro';
+import {
+  Menu as MenuIcon,
+  ZoomIn as ScaleIcon,
+} from '@seine/styles/mui-icons.macro';
 import {
   blockTypes,
   chartTypes,
@@ -27,14 +32,31 @@ import {
   createTitleIdentityBlockElements,
   defaultImageFormat,
   SET_DEVICE,
+  UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 import { defaultTableCell, toRawContent } from '@seine/content';
 
-const StyledSelect = styled(Select)`
+const StyledSelect = styled(({ className, ...props }) => (
+  <Select
+    {...props}
+    className={className}
+    MenuProps={{
+      classes: {
+        list: className,
+      },
+    }}
+  />
+))`
   && {
-    color: ${({ theme }) => theme.palette.grey[50]}};
+    width: ${({ width = 'auto' }) => width};
+    color: ${({ theme }) => theme.palette.grey[50]};
+    background-color: ${({ theme }) => theme.palette.grey[700]};
+    .MuiSelect-root {
+      padding-left: ${({ theme }) => theme.spacing(1)}px;
+    }
   }
 `;
+
 type Props = BoxProps & {
   actionButtonAs?: React.ComponentType<EditorActionButtonProps>,
 };
@@ -59,6 +81,10 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
 
   const dispatch = useBlocksDispatch();
   const device = useEditorSelector(deviceSelector);
+  const {
+    id: pageId,
+    editor: { scale } = defaultPageEditor,
+  } = useEditorSelector(pageSelector);
 
   return (
     <AppBar position={position} ref={ref}>
@@ -284,6 +310,28 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
         </Box>
 
         <Box width={'20%'} textAlign={'center'}>
+          <StyledSelect
+            renderValue={useAutoCallback(() => (
+              <Box as={ToolbarButton} p={0}>
+                <ScaleIcon />
+              </Box>
+            ))}
+            width={'5rem'}
+            value={`${scale}`}
+            onChange={useAutoCallback((event) =>
+              dispatch({
+                type: UPDATE_BLOCK_EDITOR,
+                id: pageId,
+                editor: { scale: event.target.value },
+              })
+            )}
+          >
+            <MenuItem value={25}>25%</MenuItem>
+            <MenuItem value={50}>50%</MenuItem>
+            <MenuItem value={100}>100%</MenuItem>
+            <MenuItem value={'auto'}>Fit</MenuItem>
+          </StyledSelect>
+
           <StyledSelect
             value={device}
             onChange={useAutoCallback((event) =>

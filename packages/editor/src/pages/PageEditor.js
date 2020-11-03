@@ -1,0 +1,57 @@
+// @flow
+import * as React from 'react';
+import styled from 'styled-components/macro';
+import { useAutoCallback } from 'hooks.macro';
+
+import { Paper } from '@seine/styles/mui-core.macro';
+import { Page } from '@seine/content';
+import type { LayoutProps } from '@seine/content';
+import { useEditorSelector } from '@seine/editor';
+
+type Props = LayoutProps & {
+  scale?: number | 'auto',
+};
+
+export const defaultPageEditor = {
+  scale: 'auto',
+};
+
+const PageFrame = styled(Paper).attrs({
+  square: true,
+})`
+  && {
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    ${({ scale }: Props) =>
+      Number.isFinite(parseFloat(+scale)) && {
+        transform: `scale(${scale}%)`,
+      }}
+    & > * {
+      border: ${({ selected, theme }) =>
+        `1px solid ${selected ? theme.palette.primary.main : 'transparent'}`};
+    }
+  }
+`;
+
+/**
+ * @description Image block default editor render component.
+ * @param {Props} props
+ * @returns {React.Node}
+ */
+export default function PageEditor({
+  editor: { scale = defaultPageEditor.scale } = defaultPageEditor,
+  id,
+  ...pageProps
+}: Props) {
+  return (
+    <PageFrame
+      scale={scale}
+      selected={useEditorSelector(
+        useAutoCallback(({ selection }) => selection.includes(id))
+      )}
+    >
+      <Page {...pageProps} id={id} />
+    </PageFrame>
+  );
+}
