@@ -1,10 +1,12 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/macro';
+import { useAutoCallback } from 'hooks.macro';
 
 import { Paper } from '@seine/styles/mui-core.macro';
 import { Page } from '@seine/content';
 import type { LayoutProps } from '@seine/content';
+import { useEditorSelector } from '@seine/editor';
 
 type Props = LayoutProps & {
   scale?: number | 'auto',
@@ -25,6 +27,10 @@ const PageFrame = styled(Paper).attrs({
       Number.isFinite(parseFloat(+scale)) && {
         transform: `scale(${scale}%)`,
       }}
+    & > * {
+      border: ${({ selected, theme }) =>
+        `1px solid ${selected ? theme.palette.primary.main : 'transparent'}`};
+    }
   }
 `;
 
@@ -35,11 +41,17 @@ const PageFrame = styled(Paper).attrs({
  */
 export default function PageEditor({
   editor: { scale = defaultPageEditor.scale } = defaultPageEditor,
+  id,
   ...pageProps
 }: Props) {
   return (
-    <PageFrame scale={scale}>
-      <Page {...pageProps} />
+    <PageFrame
+      scale={scale}
+      selected={useEditorSelector(
+        useAutoCallback(({ selection }) => selection.includes(id))
+      )}
+    >
+      <Page {...pageProps} id={id} />
     </PageFrame>
   );
 }
