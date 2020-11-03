@@ -17,6 +17,10 @@ export {
 } from './EditorItemMenu';
 export { default as EditorToolbar } from './EditorToolbar';
 export { default as EditorTree } from './EditorTree';
+export { default as EditorTreeItem } from './EditorTreeItem';
 export { default as defaultBlockRenderMap } from './blockRenderMap';
 export { default as useBlocksChange } from './useBlocksChange';
 export { default as Editor } from './Editor';
+
+export type { EditorTreeItemProps } from './EditorTreeItem';
+export type { EditorActionButtonProps } from './blocks/EditorActionButton';
