@@ -48,16 +48,18 @@ function BarLabel({
   valueFieldsLength,
   ...props
 }) {
-  const { arg, val, value, seriesIndex, index } = props;
+  const { arg, val, value, seriesIndex, index, rotated } = props;
+  const x = rotated ? val : arg;
+  const y = rotated ? arg : val + 8;
   return (
     <>
-      <BarSeries.Point {...props} val={val + 10} />
+      <BarSeries.Point {...props} val={val + (rotated ? -14 : 10)} />
       <ChartLabel
         as={ElementValue}
         textAnchor={'middle'}
-        x={arg}
-        y={val + 8}
         meta={{ value, index: index * valueFieldsLength + seriesIndex }}
+        x={x}
+        y={y}
       >
         <ChartValue fraction={fraction}>{value}</ChartValue>
         {units}
@@ -73,7 +75,7 @@ function ArgumentAxisLine({ y1, y2, ...props }) {
 
 // eslint-disable-next-line
 function ValueLabel({ text, ...props }) {
-  return <ChartLabel {...props}>{text}</ChartLabel>;
+  return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
 }
 
 /**
@@ -81,7 +83,7 @@ function ValueLabel({ text, ...props }) {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ColumnChart({
+export default function BarChart({
   elements,
 
   dx = defaultChartDx,
