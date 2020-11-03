@@ -10,8 +10,9 @@ import {
   useBlocksDispatch,
   useEditorSelector,
 } from './blocks';
-import { Toolbar, BlockTypeIcon, ToolbarButton, ToolbarSeparator } from './ui';
+import { BlockTypeIcon, Toolbar, ToolbarButton, ToolbarSeparator } from './ui';
 import { useSelectedLayoutIds } from './layouts';
+import { EditorActionButtonProps } from './blocks/EditorActionButton';
 
 import { AppBar, MenuItem, Select } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
@@ -34,7 +35,9 @@ const StyledSelect = styled(Select)`
     color: ${({ theme }) => theme.palette.grey[50]}};
   }
 `;
-type Props = BoxProps;
+type Props = BoxProps & {
+  actionButtonAs?: React.ComponentType<EditorActionButtonProps>,
+};
 
 /**
  * @description Default content editor.
@@ -42,7 +45,11 @@ type Props = BoxProps;
  * @returns {React.Node}
  */
 const EditorToolbar = React.forwardRef(function EditorToolbar(
-  { position = 'fixed', ...boxProps }: Props,
+  {
+    position = 'fixed',
+    actionButtonAs: ActionButton = EditorActionButton,
+    ...boxProps
+  }: Props,
   ref
 ) {
   const menuAnchorRef = React.useRef(null);
@@ -70,7 +77,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           <ToolbarSeparator />
 
           <ToolbarButton
-            as={EditorActionButton}
+            as={ActionButton}
             disabled={parentId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
@@ -79,7 +86,6 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
               })
             )}
             id={parentId}
-            data-create={'rich-text'}
           >
             <BlockTypeIcon type={blockTypes.RICH_TEXT} />
           </ToolbarButton>
@@ -87,7 +93,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           <ToolbarSeparator />
 
           <ToolbarButton
-            as={EditorActionButton}
+            as={ActionButton}
             disabled={parentId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
@@ -114,7 +120,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           <ToolbarSeparator />
 
           <ToolbarButton
-            as={EditorActionButton}
+            as={ActionButton}
             disabled={parentId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
@@ -144,7 +150,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           </ToolbarButton>
 
           <ToolbarButton
-            as={EditorActionButton}
+            as={ActionButton}
             disabled={parentId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
@@ -186,7 +192,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           </ToolbarButton>
 
           <ToolbarButton
-            as={EditorActionButton}
+            as={ActionButton}
             disabled={parentId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
@@ -228,7 +234,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           </ToolbarButton>
 
           <ToolbarButton
-            as={EditorActionButton}
+            as={ActionButton}
             disabled={parentId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
@@ -258,7 +264,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           </ToolbarButton>
 
           <ToolbarButton
-            as={EditorActionButton}
+            as={ActionButton}
             disabled={parentId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
@@ -293,4 +299,5 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
     </AppBar>
   );
 });
-export default EditorToolbar;
+
+export default (EditorToolbar: React.ComponentType<Props>);

@@ -1,5 +1,6 @@
 // @flow
 export { default as BlockTypeIcon } from './BlockTypeIcon';
+export { default as BlockTypeName } from './BlockTypeName';
 export { default as DeleteConfirmationDialog } from './DeleteConfirmationDialog';
 export { default as Frame } from './Frame';
 export { default as InlineInput } from './InlineInput';
