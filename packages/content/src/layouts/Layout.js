@@ -8,6 +8,8 @@ import type { LayoutBody, LayoutFormat } from '@seine/core';
 
 type Props = LayoutFormat & LayoutBody;
 
+export type { Props as LayoutProps };
+
 /**
  * @description Layout content component.
  * @param {Props} props

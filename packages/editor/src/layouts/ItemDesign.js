@@ -70,29 +70,24 @@ const StyledSelect = styled(Select)`
 
 const SIZE_UNITS = ['%', 'px', 'rem'];
 
-/**
- * @description Layout design.
- * @returns {React.Node}
- */
-export default function ItemDesign() {
+// eslint-disable-next-line
+export default function ItemDesign({ defaults = defaultItemFormat }) {
   const device = useEditorSelector((state) => state.device);
   const { item } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const {
-    minWidth = defaultItemFormat.minWidth,
-    maxWidth = defaultItemFormat.maxWidth,
-    minHeight = defaultItemFormat.minHeight,
-    maxHeight = defaultItemFormat.maxHeight,
-    alignSelf = defaultItemFormat.alignSelf,
-    justifySelf = defaultItemFormat.justifySelf,
-  } =
-    (item && item.format && (item.format[device] || item.format)) ||
-    defaultItemFormat;
+    minWidth = defaults.minWidth,
+    maxWidth = defaults.maxWidth,
+    minHeight = defaults.minHeight,
+    maxHeight = defaults.maxHeight,
+    alignSelf = defaults.alignSelf,
+    justifySelf = defaults.justifySelf,
+  } = (item && item.format && (item.format[device] || item.format)) || defaults;
   const id = item && item.id;
   const togglePosition = useAutoCallback((event, value) => {
     const [
-      justifySelf = defaultItemFormat.justifySelf,
-      alignSelf = defaultItemFormat.alignSelf,
+      justifySelf = defaults.justifySelf,
+      alignSelf = defaults.alignSelf,
     ] = value ? value.split(' ') : [];
     dispatch({
       id,

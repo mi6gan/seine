@@ -23,29 +23,27 @@ import EditorItemMenu from './EditorItemMenu';
 import EditorToolbar from './EditorToolbar';
 import EditorTree from './EditorTree';
 
-import { Box } from '@seine/styles';
+import { Box } from '@seine/styles/mui-core.macro';
 import { DESELECT_ALL_BLOCKS } from '@seine/core';
 import { Content } from '@seine/content';
-import { Paper } from '@seine/styles/mui-core.macro';
 import type { Block, BlockType } from '@seine/core';
 
 const Contents = styled(Box).attrs({
-  width: '100%',
+  width: 1,
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'stretch',
 })`
   overflow: auto;
 `;
 
-const EditorPaper = styled(Paper).attrs({
-  square: true,
-  component: Box,
-  height: 600,
-  m: 10,
-  p: 0,
+const EditorLayout = styled(Box).attrs({
+  minHeight: 600,
+  alignSelf: 'center',
+  display: 'flex',
+  p: 4,
 })`
   overflow: auto;
-  overflow-x: hidden;
   ${({ device, theme }) => ({
     width: device === 'mobile' ? theme.breakpoints.width('sm') : '100%',
     maxWidth: theme.breakpoints.width('xl'),
@@ -100,7 +98,7 @@ export default function EditorView({
         justifyContent={'space-between'}
         bgcolor={'grey.300'}
         position={'relative'}
-        height={'100%'}
+        minHeight={'100%'}
       >
         <Contents>
           <Sidebar open anchor={'left'}>
@@ -112,28 +110,20 @@ export default function EditorView({
             </SidebarSection>
           </Sidebar>
 
-          <Box width={1} overflow={'auto'}>
-            <Box
-              width={'300vw'}
-              display={'flex'}
-              justifyContent={'space-around'}
-            >
-              <EditorPaper
-                device={device}
-                ref={useAutoCallback((element) => {
-                  element &&
-                    element.scrollIntoView({
-                      block: 'center',
-                      inline: 'center',
-                    });
-                })}
-              >
-                <Content device={device} blockRenderMap={blockRenderMap}>
-                  {blocks}
-                </Content>
-              </EditorPaper>
-            </Box>
-          </Box>
+          <EditorLayout
+            device={device}
+            ref={useAutoCallback((element) => {
+              element &&
+                element.scrollIntoView({
+                  block: 'center',
+                  inline: 'center',
+                });
+            })}
+          >
+            <Content device={device} blockRenderMap={blockRenderMap}>
+              {blocks}
+            </Content>
+          </EditorLayout>
 
           <Sidebar
             open
