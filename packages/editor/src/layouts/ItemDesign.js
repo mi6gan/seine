@@ -45,7 +45,6 @@ const PositionToggleButton = styled(
   React.forwardRef((props, ref) => <ToolbarToggleButton {...props} ref={ref} />)
 )`
   &&& {
-    color: currentColor;
     border: none;
     padding: 0;
     ${({ value }) =>
