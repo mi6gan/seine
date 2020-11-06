@@ -6,7 +6,7 @@ import useEditorDispatch from './useEditorDispatch';
 
 import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 import type { Action } from '@seine/core';
-import { createBlocksAction, cloneBlock } from '@seine/core';
+import { cloneBlock, createBlocksAction } from '@seine/core';
 
 type Props = Action & React.ElementProps<HTMLButtonElement>;
 
@@ -31,6 +31,7 @@ const EditorActionButton = React.forwardRef(function EditorActionButton(
     modifier,
     type,
     onClick,
+    blockId = null,
     ...buttonProps
   }: Props,
   ref
@@ -45,7 +46,13 @@ const EditorActionButton = React.forwardRef(function EditorActionButton(
         dispatch(
           createBlocksAction(
             type,
-            (block && cloneBlock(block)) ||
+            (block &&
+              (blockId
+                ? {
+                    ...block,
+                    id: blockId,
+                  }
+                : cloneBlock(block))) ||
               body ||
               editor ||
               format ||

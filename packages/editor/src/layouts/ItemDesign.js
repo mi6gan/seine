@@ -69,8 +69,10 @@ const StyledSelect = styled(Select)`
 
 const SIZE_UNITS = ['%', 'px', 'rem'];
 
-// eslint-disable-next-line
-export default function ItemDesign({ defaults = defaultItemFormat }) {
+const ItemDesign = React.forwardRef(function ItemDesign(
+  { defaults = defaultItemFormat, ...sectionProps },
+  ref
+) {
   const device = useEditorSelector((state) => state.device);
   const { item } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
@@ -103,163 +105,163 @@ export default function ItemDesign({ defaults = defaultItemFormat }) {
   const [heightUnits, setHeightUnits] = React.useState('%');
 
   return (
-    <>
-      <SidebarSection>
-        <SidebarHeading>Constraints</SidebarHeading>
+    <SidebarSection ref={ref} {...sectionProps}>
+      <SidebarHeading>Constraints</SidebarHeading>
 
-        <SidebarGroup alignItems={'baseline'} mb={0}>
-          <SidebarLabel>width</SidebarLabel>
-          <SidebarInput
-            inputProps={{ placeholder: 'min' }}
-            disabled={!id}
-            value={parseInt(minWidth) || ''}
-            onChange={useAutoCallback((event) =>
-              dispatch({
-                id,
-                type: UPDATE_BLOCK_FORMAT,
-                format: {
-                  minWidth: `${event.currentTarget.value || 0}${widthUnits}`,
-                },
-              })
-            )}
-          />
-          <SidebarInput
-            inputProps={{ placeholder: 'max' }}
-            disabled={!id}
-            value={maxWidth === 'none' ? '' : parseInt(maxWidth)}
-            onChange={useAutoCallback((event) =>
-              dispatch({
-                id,
-                type: UPDATE_BLOCK_FORMAT,
-                format: {
-                  maxWidth: event.currentTarget.value
-                    ? `${event.currentTarget.value}${widthUnits}`
-                    : 'none',
-                },
-              })
-            )}
-          />
-          <StyledSelect
-            value={widthUnits}
-            onChange={useAutoCallback((event) => {
-              setWidthUnits(event.target.value);
-            })}
+      <SidebarGroup alignItems={'baseline'} mb={0}>
+        <SidebarLabel>width</SidebarLabel>
+        <SidebarInput
+          inputProps={{ placeholder: 'min' }}
+          disabled={!id}
+          value={parseInt(minWidth) || ''}
+          onChange={useAutoCallback((event) =>
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format: {
+                minWidth: `${event.currentTarget.value || 0}${widthUnits}`,
+              },
+            })
+          )}
+        />
+        <SidebarInput
+          inputProps={{ placeholder: 'max' }}
+          disabled={!id}
+          value={maxWidth === 'none' ? '' : parseInt(maxWidth)}
+          onChange={useAutoCallback((event) =>
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format: {
+                maxWidth: event.currentTarget.value
+                  ? `${event.currentTarget.value}${widthUnits}`
+                  : 'none',
+              },
+            })
+          )}
+        />
+        <StyledSelect
+          value={widthUnits}
+          onChange={useAutoCallback((event) => {
+            setWidthUnits(event.target.value);
+          })}
+        >
+          {SIZE_UNITS.map((unit) => (
+            <MenuItem key={unit} value={unit}>
+              <SidebarSelectLabel>{unit}</SidebarSelectLabel>
+            </MenuItem>
+          ))}
+        </StyledSelect>
+      </SidebarGroup>
+
+      <SidebarGroup alignItems={'baseline'} mt={0}>
+        <SidebarLabel>height</SidebarLabel>
+        <SidebarInput
+          inputProps={{ placeholder: 'min' }}
+          disabled={!id}
+          value={parseInt(minHeight) || ''}
+          onChange={useAutoCallback((event) =>
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format: {
+                minHeight: `${event.currentTarget.value || 0}${heightUnits}`,
+              },
+            })
+          )}
+        />
+        <SidebarInput
+          inputProps={{ placeholder: 'max' }}
+          disabled={!id}
+          value={maxHeight === 'none' ? '' : parseInt(maxHeight)}
+          onChange={useAutoCallback((event) =>
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format: {
+                maxHeight: event.currentTarget.value
+                  ? `${event.currentTarget.value}${heightUnits}`
+                  : 'none',
+              },
+            })
+          )}
+        />
+        <StyledSelect
+          value={heightUnits}
+          onChange={useAutoCallback((event) => {
+            setHeightUnits(event.target.value);
+          })}
+        >
+          {SIZE_UNITS.map((unit) => (
+            <MenuItem key={unit} value={unit}>
+              <SidebarSelectLabel>{unit}</SidebarSelectLabel>
+            </MenuItem>
+          ))}
+        </StyledSelect>
+      </SidebarGroup>
+
+      <SidebarGroup>
+        <SidebarLabel>position</SidebarLabel>
+
+        <Box display={'flex'} flexDirection={'column'} pl={1}>
+          <ToolbarToggleButtonGroup
+            value={position}
+            onChange={togglePosition}
+            mb={0}
           >
-            {SIZE_UNITS.map((unit) => (
-              <MenuItem key={unit} value={unit}>
-                <SidebarSelectLabel>{unit}</SidebarSelectLabel>
-              </MenuItem>
-            ))}
-          </StyledSelect>
-        </SidebarGroup>
+            <PositionToggleButton value={'flex-start flex-start'}>
+              <PositionLeftTop />
+            </PositionToggleButton>
 
-        <SidebarGroup alignItems={'baseline'} mt={0}>
-          <SidebarLabel>height</SidebarLabel>
-          <SidebarInput
-            inputProps={{ placeholder: 'min' }}
-            disabled={!id}
-            value={parseInt(minHeight) || ''}
-            onChange={useAutoCallback((event) =>
-              dispatch({
-                id,
-                type: UPDATE_BLOCK_FORMAT,
-                format: {
-                  minHeight: `${event.currentTarget.value || 0}${heightUnits}`,
-                },
-              })
-            )}
-          />
-          <SidebarInput
-            inputProps={{ placeholder: 'max' }}
-            disabled={!id}
-            value={maxHeight === 'none' ? '' : parseInt(maxHeight)}
-            onChange={useAutoCallback((event) =>
-              dispatch({
-                id,
-                type: UPDATE_BLOCK_FORMAT,
-                format: {
-                  maxHeight: event.currentTarget.value
-                    ? `${event.currentTarget.value}${heightUnits}`
-                    : 'none',
-                },
-              })
-            )}
-          />
-          <StyledSelect
-            value={heightUnits}
-            onChange={useAutoCallback((event) => {
-              setHeightUnits(event.target.value);
-            })}
+            <PositionToggleButton value={'center flex-start'}>
+              <PositionTop />
+            </PositionToggleButton>
+
+            <PositionToggleButton value={'flex-end flex-start'}>
+              <PositionRightTop />
+            </PositionToggleButton>
+          </ToolbarToggleButtonGroup>
+
+          <ToolbarToggleButtonGroup
+            my={0}
+            value={position}
+            onChange={togglePosition}
           >
-            {SIZE_UNITS.map((unit) => (
-              <MenuItem key={unit} value={unit}>
-                <SidebarSelectLabel>{unit}</SidebarSelectLabel>
-              </MenuItem>
-            ))}
-          </StyledSelect>
-        </SidebarGroup>
+            <PositionToggleButton value={'flex-start center'}>
+              <PositionLeft />
+            </PositionToggleButton>
 
-        <SidebarGroup>
-          <SidebarLabel>position</SidebarLabel>
+            <PositionToggleButton value={'center center'}>
+              <PositionCenter />
+            </PositionToggleButton>
 
-          <Box display={'flex'} flexDirection={'column'} pl={1}>
-            <ToolbarToggleButtonGroup
-              value={position}
-              onChange={togglePosition}
-              mb={0}
-            >
-              <PositionToggleButton value={'flex-start flex-start'}>
-                <PositionLeftTop />
-              </PositionToggleButton>
+            <PositionToggleButton value={'flex-end center'}>
+              <PositionRight />
+            </PositionToggleButton>
+          </ToolbarToggleButtonGroup>
 
-              <PositionToggleButton value={'center flex-start'}>
-                <PositionTop />
-              </PositionToggleButton>
+          <ToolbarToggleButtonGroup
+            mt={0}
+            position={'relative'}
+            value={position}
+            onChange={togglePosition}
+          >
+            <PositionToggleButton value={'flex-start flex-end'}>
+              <PositionLeftBottom />
+            </PositionToggleButton>
 
-              <PositionToggleButton value={'flex-end flex-start'}>
-                <PositionRightTop />
-              </PositionToggleButton>
-            </ToolbarToggleButtonGroup>
+            <PositionToggleButton value={'center flex-end'}>
+              <PositionBottom />
+            </PositionToggleButton>
 
-            <ToolbarToggleButtonGroup
-              my={0}
-              value={position}
-              onChange={togglePosition}
-            >
-              <PositionToggleButton value={'flex-start center'}>
-                <PositionLeft />
-              </PositionToggleButton>
-
-              <PositionToggleButton value={'center center'}>
-                <PositionCenter />
-              </PositionToggleButton>
-
-              <PositionToggleButton value={'flex-end center'}>
-                <PositionRight />
-              </PositionToggleButton>
-            </ToolbarToggleButtonGroup>
-
-            <ToolbarToggleButtonGroup
-              mt={0}
-              position={'relative'}
-              value={position}
-              onChange={togglePosition}
-            >
-              <PositionToggleButton value={'flex-start flex-end'}>
-                <PositionLeftBottom />
-              </PositionToggleButton>
-
-              <PositionToggleButton value={'center flex-end'}>
-                <PositionBottom />
-              </PositionToggleButton>
-
-              <PositionToggleButton value={'flex-end flex-end'}>
-                <PositionRightBottom />
-              </PositionToggleButton>
-            </ToolbarToggleButtonGroup>
-          </Box>
-        </SidebarGroup>
-      </SidebarSection>
-    </>
+            <PositionToggleButton value={'flex-end flex-end'}>
+              <PositionRightBottom />
+            </PositionToggleButton>
+          </ToolbarToggleButtonGroup>
+        </Box>
+      </SidebarGroup>
+    </SidebarSection>
   );
-}
+});
+
+export default ItemDesign;

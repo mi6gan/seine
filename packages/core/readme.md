@@ -17,6 +17,6 @@ const block = createBlock(blockTypes.RICH_TEXT);
 Create rich text data from string
 
 ```jsx
-import { toDraftContent } from '@seine/core';
+import { toDraftContent } from '@seine/content';
 const block = createBlock(blockTypes.RICH_TEXT, toDraftContent(''));
 ```

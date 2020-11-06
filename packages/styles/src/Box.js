@@ -60,7 +60,8 @@ export const box = breakpoints(
     style({ prop: 'pointerEvents' }),
     style({ prop: 'cursor' }),
     style({ prop: 'opacity' }),
-    style({ prop: 'texTransform' }),
+    style({ prop: 'textTransform' }),
+    style({ prop: 'textDecoration' }),
     style({ prop: 'filter' }),
     style({ prop: 'transform' })
   )
