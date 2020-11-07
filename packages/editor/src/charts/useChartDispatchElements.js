@@ -22,13 +22,13 @@ export default function useChartDispatchElements(
   return useAutoCallback((action: ElementsAction) => {
     const { elements, selection } = reduceElements(
       {
-        elements: body.elements,
+        elements: body && body.elements,
         selection: editor.selection,
       },
       action
     );
 
-    if (elements !== body.elements) {
+    if (body && elements !== body.elements) {
       dispatch({
         type: UPDATE_BLOCK_BODY,
         body: { elements },

@@ -31,6 +31,7 @@ import {
 const StyledButton = styled(Button)`
   && {
     min-width: 0;
+    padding: 0;
     color: ${({ theme, stroke = 'primary', light = false }) =>
       theme.palette[stroke][light ? 'light' : 'main']};
   }
@@ -51,7 +52,7 @@ export default function ChartStructureGroup() {
   const groups = groupElements(elements);
   const [[, { length: count }]] = groups;
   return (
-    <SidebarGroup alignItems={'flex-start'}>
+    <SidebarGroup alignItems={'flex-start'} my={0}>
       <EditorActionButton
         as={StyledButton}
         id={id}
@@ -147,7 +148,7 @@ export default function ChartStructureGroup() {
         dispatch={dispatch}
         stroke={'error'}
         light
-        title={kind === chartTypes.LINE ? 'remove line' : 'remove item'}
+        title={kind === chartTypes.LINE ? 'remove line' : 'remove selected'}
         actions={useAutoMemo([
           {
             editor: { selection: -1 },

@@ -27,10 +27,7 @@ import {
 import { SvgTypography } from '@seine/styles';
 import type { BlockType, ChartElement } from '@seine/core';
 
-type LineChartSeriesProps = LineSeries.SeriesProps & {
-  elementValueAs: (Chart.LabelProps) => React.Node,
-  groupTitleAs: (Chart.LabelProps) => React.Node,
-};
+type LineChartSeriesProps = LineSeries.SeriesProps;
 
 // eslint-disable-next-line
 function LineChartSeries({
@@ -49,7 +46,6 @@ function LineChartSeries({
           val,
           value,
           elementValueAs: ElementValue,
-          valueFieldsLength,
           index: seriesIndex,
           units,
         }) => (
@@ -58,7 +54,6 @@ function LineChartSeries({
             <ChartLabel
               as={ElementValue}
               textAnchor={'middle'}
-              meta={{ value, index: seriesIndex * valueFieldsLength + index }}
               x={arg}
               y={val - 6}
             >
@@ -81,9 +76,6 @@ type Props = {
   xAxis?: boolean,
 
   parentType: BlockType,
-
-  elementValueAs?: React.ComponentType,
-  groupTitleAs?: React.ComponentType,
 };
 
 // eslint-disable-next-line
@@ -126,10 +118,6 @@ const LineChart = React.forwardRef(function LineChart(
     yAxis,
     textAlignment,
 
-    elementValueAs: ElementValue = SvgTypography,
-    elementTitleAs: ElementTitle = ChartLegend.Label,
-    groupTitleAs: GroupTitle = SvgTypography,
-
     parentType,
 
     ...itemProps
@@ -165,7 +153,7 @@ const LineChart = React.forwardRef(function LineChart(
   });
 
   const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
-    <ValueLabel {...props} as={GroupTitle} text={text} meta={text} />
+    <ValueLabel {...props} as={SvgTypography} text={text} meta={text} />
   ));
 
   return forceRemount ? null : (
@@ -188,7 +176,6 @@ const LineChart = React.forwardRef(function LineChart(
           argumentField={'group'}
           color={palette[index % palette.length]}
           seriesComponent={LineChartSeries}
-          elementValueAs={ElementValue}
           valueFieldsLength={valueFields.length}
           fraction={fraction}
           units={units}

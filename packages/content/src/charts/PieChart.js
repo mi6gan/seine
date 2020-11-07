@@ -17,7 +17,8 @@ import ChartLegend from './ChartLegend';
 import ChartItem from './ChartItem';
 
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
-import { ItemProps } from '@seine/content';
+import type { ItemProps } from '@seine/content';
+import { SvgTypography } from '@seine/styles';
 
 const PieChartItem = styled(ChartItem)`
   && {
@@ -30,9 +31,6 @@ type PieChartPointProps = {
 
   palette?: string[],
   units?: string,
-
-  elementTitleAs?: React.ElementType,
-  elementValueAs?: React.ElementType,
 };
 
 // eslint-disable-next-line
@@ -41,20 +39,10 @@ function PieChartPoint({
   legend,
   fraction,
   maxTextLength = 15,
-  elementTitleAs: ElementTitle,
-  elementValueAs: ElementValue,
+  pane,
   ...props
 }: PieChartPointProps) {
-  const {
-    argument,
-    value,
-    arg,
-    val,
-    maxRadius,
-    startAngle,
-    endAngle,
-    index,
-  } = props;
+  const { argument, value, arg, val, maxRadius, startAngle, endAngle } = props;
   const { x, y } = useAutoMemo(() => {
     const angle = startAngle + (endAngle - startAngle) / 2;
     const radius = maxRadius / 2;
@@ -68,7 +56,7 @@ function PieChartPoint({
     <>
       <PieSeries.Point {...props} />
       <ChartLabel
-        as={ElementValue}
+        as={SvgTypography}
         textAnchor={'middle'}
         dominantBaseline={legend ? 'middle' : 'baseline'}
         variant={'h5'}
@@ -76,23 +64,25 @@ function PieChartPoint({
         x={arg + x}
         y={val - y}
         color={'common.white'}
-        meta={{ value, index }}
       >
         <ChartValue fraction={fraction}>{value}</ChartValue>
         {units}
       </ChartLabel>
-      <ChartLabel
-        as={ElementTitle}
-        textAnchor={'middle'}
-        dominantBaseline={'hanging'}
-        variant={'caption'}
-        x={arg + x}
-        y={val - y}
-        color={'common.white'}
-        meta={{ title: argument, index }}
-      >
-        {argument}
-      </ChartLabel>
+      {!legend && (
+        <ChartLabel
+          as={SvgTypography}
+          textAnchor={'middle'}
+          dominantBaseline={'hanging'}
+          variant={'body2'}
+          x={arg + x}
+          y={val - y}
+          color={'common.white'}
+          width={pane.width / 5}
+          whiteSpace={'pre-wrap'}
+        >
+          {argument}
+        </ChartLabel>
+      )}
     </>
   );
 }
@@ -112,8 +102,6 @@ const PieChart = React.forwardRef(function PieChart(
     fraction = defaultChartFraction,
 
     elements,
-    elementTitleAs = ChartLabel,
-    elementValueAs = ChartLabel,
 
     dx,
     dy,
@@ -141,8 +129,6 @@ const PieChart = React.forwardRef(function PieChart(
         units={units}
         fraction={fraction}
         pointComponent={PieChartPoint}
-        elementTitleAs={elementTitleAs}
-        elementValueAs={elementValueAs}
       />
       {!!legend && <ChartLegend />}
     </PieChartItem>

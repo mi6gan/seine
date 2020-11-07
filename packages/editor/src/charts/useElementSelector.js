@@ -11,9 +11,9 @@ const elementSelector = (block) => {
   return {
     selection,
     element:
-      selection >= 0
-        ? elements.find(({ id }, index) => index === selection)
-        : null,
+      (selection >= 0 &&
+        elements.find(({ id }, index) => index === selection)) ||
+      null,
   };
 };
 
