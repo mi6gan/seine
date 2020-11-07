@@ -75,9 +75,6 @@ type Props = {
   xAxis?: boolean,
 
   parentType: BlockType,
-
-  elementValueAs: React.ComponentType,
-  groupTitleAs: React.ComponentType,
 };
 
 /**
@@ -103,10 +100,6 @@ const ColumnChart = React.forwardRef(function ColumnChart(
     paletteKey,
     yAxis,
     textAlignment,
-
-    elementValueAs: ElementValue = SvgTypography,
-    groupTitleAs: GroupTitle = SvgTypography,
-
     parentType,
 
     ...itemProps
@@ -142,7 +135,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   });
 
   const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
-    <ValueLabel {...props} as={GroupTitle} text={text} meta={text} />
+    <ValueLabel {...props} as={SvgTypography} text={text} meta={text} />
   ));
 
   return forceRemount ? null : (

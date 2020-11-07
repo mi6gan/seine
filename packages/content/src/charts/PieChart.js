@@ -30,9 +30,6 @@ type PieChartPointProps = {
 
   palette?: string[],
   units?: string,
-
-  elementTitleAs?: React.ElementType,
-  elementValueAs?: React.ElementType,
 };
 
 // eslint-disable-next-line

@@ -23,9 +23,6 @@ type Props = {
   xAxis?: boolean,
 
   parentType: BlockType,
-
-  elementValueAs: React.ComponentType,
-  groupTitleAs: React.ComponentType,
 };
 
 /**

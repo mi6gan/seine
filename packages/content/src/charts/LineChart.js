@@ -27,10 +27,7 @@ import {
 import { SvgTypography } from '@seine/styles';
 import type { BlockType, ChartElement } from '@seine/core';
 
-type LineChartSeriesProps = LineSeries.SeriesProps & {
-  elementValueAs: (Chart.LabelProps) => React.Node,
-  groupTitleAs: (Chart.LabelProps) => React.Node,
-};
+type LineChartSeriesProps = LineSeries.SeriesProps;
 
 // eslint-disable-next-line
 function LineChartSeries({
@@ -79,9 +76,6 @@ type Props = {
   xAxis?: boolean,
 
   parentType: BlockType,
-
-  elementValueAs?: React.ComponentType,
-  groupTitleAs?: React.ComponentType,
 };
 
 // eslint-disable-next-line
@@ -124,8 +118,6 @@ const LineChart = React.forwardRef(function LineChart(
     yAxis,
     textAlignment,
 
-    groupTitleAs: GroupTitle = SvgTypography,
-
     parentType,
 
     ...itemProps
@@ -161,7 +153,7 @@ const LineChart = React.forwardRef(function LineChart(
   });
 
   const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
-    <ValueLabel {...props} as={GroupTitle} text={text} meta={text} />
+    <ValueLabel {...props} as={SvgTypography} text={text} meta={text} />
   ));
 
   return forceRemount ? null : (
