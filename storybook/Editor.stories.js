@@ -10,6 +10,8 @@ import {
   Page,
   Table,
   Text,
+  PieChart,
+  LineChart,
 } from './Content.stories';
 
 import { Editor } from '@seine/editor';
@@ -46,4 +48,12 @@ export const EditorOfData = () => <Data as={Editor} {...actions('onChange')} />;
 
 export const EditorOfNestedFlex = () => (
   <NestedFlex as={Editor} {...actions('onChange')} />
+);
+
+export const EditorOfPieChart = () => (
+  <PieChart as={Editor} {...actions('onChange')} />
+);
+
+export const EditorOfLineChart = () => (
+  <LineChart as={Editor} {...actions('onChange')} />
 );

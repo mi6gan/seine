@@ -2,13 +2,11 @@
 import * as React from 'react';
 import { Box } from '@material-ui/core';
 
+import { chartTypes } from '../packages/core/src/types';
+
 import * as data from './data';
 
-import {
-  blockTypes,
-  layoutTypes,
-  createTitleIdentityBlockElements,
-} from '@seine/core';
+import { blockTypes, layoutTypes } from '@seine/core';
 import { Content } from '@seine/content';
 import { ThemeProvider } from '@seine/styles';
 
@@ -296,18 +294,18 @@ export const NestedFlex = ({ children = [], ...props }) => (
       {
         id: 'grid',
         parent_id: 'root',
-        type: 'grid',
+        type: blockTypes.LAYOUT,
         body: {},
         format: {
-          kind: 'flex',
+          kind: layoutTypes.FLEX,
         },
       },
       {
         id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78',
-        type: 'grid',
+        type: blockTypes.LAYOUT,
         body: {},
         format: {
-          kind: 'flex',
+          kind: layoutTypes.FLEX,
           direction: 'column',
           wrap: 'nowrap',
           spacing: 8,
@@ -319,7 +317,7 @@ export const NestedFlex = ({ children = [], ...props }) => (
       },
       {
         id: '27053ca8-1f37-4cf6-bb97-a51847b34dc8',
-        type: 'draft',
+        type: blockTypes.RICH_TEXT,
         body: {
           blocks: [
             {
@@ -342,7 +340,7 @@ export const NestedFlex = ({ children = [], ...props }) => (
       {
         id: 'table',
         parent_id: 'b3e6d581-6df8-47ee-b2cf-6cb9119edd78',
-        type: 'table',
+        type: blockTypes.TABLE,
         body: {
           title: 'Table title',
           header: [
@@ -397,7 +395,7 @@ export const NestedFlex = ({ children = [], ...props }) => (
       {
         id: 'text',
         parent_id: 'grid',
-        type: 'draft',
+        type: blockTypes.RICH_TEXT,
         body: {
           blocks: [
             {
@@ -480,7 +478,7 @@ export const PieChart = ({ children = [], ...props }) => (
       {
         id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
         parent_id: 'root',
-        type: 'chart',
+        type: blockTypes.CHART,
         body: {
           elements: [
             {
@@ -511,7 +509,7 @@ export const PieChart = ({ children = [], ...props }) => (
             },
           ],
         },
-        format: { kind: 'pie' },
+        format: { kind: chartTypes.PIE },
       },
     ]}
   </Page>
@@ -523,9 +521,9 @@ export const LineChart = ({ children = [], ...props }) => (
       {
         id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
         parent_id: 'root',
-        type: 'chart',
+        type: blockTypes.CHART,
         body: {
-          elements: createTitleIdentityBlockElements([
+          elements: [
             { title: 'Easymode', value: 1750, group: 'Year 1' },
             { title: 'Rest', value: 650, group: 'Year 1' },
 
@@ -543,9 +541,9 @@ export const LineChart = ({ children = [], ...props }) => (
 
             { title: 'Easymode', value: 3390, group: 'Year 6' },
             { title: 'Rest', value: 900, group: 'Year 6' },
-          ]),
+          ],
         },
-        format: { kind: 'line' },
+        format: { kind: chartTypes.LINE },
       },
     ]}
   </Page>

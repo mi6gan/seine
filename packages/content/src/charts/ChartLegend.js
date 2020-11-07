@@ -1,58 +1,50 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/macro';
+import { List } from '@material-ui/core';
+import { Legend } from '@devexpress/dx-react-chart-material-ui';
 
-import { defaultChartBody, defaultChartPalette } from './constants';
-
-import type { ChartElement } from '@seine/core';
-
-const Container = styled.div`
+const LegendRoot = styled(List)`
   display: flex;
   flex-wrap: wrap;
+  && {
+    padding: ${({ theme }) => theme.spacing(2, 0, 0, 0)};
+  }
+  .MuiListItem-root {
+    height: 2.25em;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+  }
+  .MuiListItemText-root {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
+  .MuiTypography-body1 {
+    ${({ theme }) => theme.typography.body1};
+  }
 `;
 
-const LegendBox = styled.div`
-  background-color: ${({ color }) => color};
-  padding: ${({ theme }) => theme.spacing(1, 1)};
-`;
+export const LegendMarker = styled.svg.attrs([
+  ({ color, theme }) => ({
+    fill: color,
+    width: theme.spacing(2),
+    height: theme.spacing(2),
+  }),
+  {
+    children: <rect x={0} y={0} width={'100%'} height={'100%'} />,
+  },
+])``;
 
-const LegendLabel = styled.div`
-  white-space: pre-wrap;
-  word-break: break-all;
-  padding: ${({ theme }) => theme.spacing(0, 1)};
-  ${({ theme }) => theme.typography.body1};
-`;
-
-const LegendItem = styled.div`
-  display: flex;
-  align-items: center;
-  ${({ minWidth }) => minWidth && { minWidth }};
-  line-height: 2;
-`;
-
-export type Props = {
-  elements: ChartElement[],
-  palette?: string[],
-};
-
-/**
- * @description Chart legend.
- * @param {Props} props
- * @returns {React.Node}
- */
-export default function ChartLegend({
-  elements = defaultChartBody.elements,
-  palette = defaultChartPalette,
-}: Props) {
-  const minItemWidth = `${100 / elements.length}%`;
+// eslint-disable-next-line
+export default function ChartLegend() {
   return (
-    <Container>
-      {elements.map(({ title }, index) => (
-        <LegendItem key={index} minWidth={minItemWidth}>
-          <LegendBox color={palette[index % palette.length]} />
-          <LegendLabel>{title}</LegendLabel>
-        </LegendItem>
-      ))}
-    </Container>
+    <Legend
+      position={'bottom'}
+      rootComponent={LegendRoot}
+      markerComponent={LegendMarker}
+    />
   );
 }

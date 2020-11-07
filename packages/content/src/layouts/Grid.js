@@ -7,16 +7,18 @@ import Item from './Item';
 import type { GridBody, GridFormat } from '@seine/core';
 import { defaultGridFormat } from '@seine/core';
 
-export type Props = (GridBody & GridFormat) & {
+type Props = (GridBody & GridFormat) & {
   children: React.ChildrenArray<React.Node>,
 };
+
+export type { Props as GridProps };
 
 /**
  * @description Grid container content component.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default styled(Item)`
+const Grid = styled(Item)`
   display: grid;
   ${({
     columns = defaultGridFormat.columns,
@@ -36,3 +38,5 @@ export default styled(Item)`
     padding: theme.spacing(rowGap, columnGap),
   })}
 `;
+
+export default (Grid: React.ComponentType<Props>);

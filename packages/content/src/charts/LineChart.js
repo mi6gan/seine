@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import styled from 'styled-components/macro';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { Stack } from '@devexpress/dx-react-chart';
 import {
@@ -11,6 +12,8 @@ import {
 
 import ChartLabel from './ChartLabel';
 import ChartItem from './ChartItem';
+import ChartValue from './ChartValue';
+import ChartLegend from './ChartLegend';
 
 import {
   defaultChartDx,
@@ -24,6 +27,51 @@ import {
 import { SvgTypography } from '@seine/styles';
 import type { BlockType, ChartElement } from '@seine/core';
 
+type LineChartSeriesProps = LineSeries.SeriesProps & {
+  elementValueAs: (Chart.LabelProps) => React.Node,
+  groupTitleAs: (Chart.LabelProps) => React.Node,
+};
+
+// eslint-disable-next-line
+function LineChartSeries({
+  legend,
+  fraction,
+  maxTextLength = 15,
+  ...props
+}: LineChartSeriesProps) {
+  const { color, coordinates, index } = props;
+  return (
+    <>
+      <LineSeries.Path {...props} />
+      {coordinates.map(
+        ({
+          arg,
+          val,
+          value,
+          elementValueAs: ElementValue,
+          valueFieldsLength,
+          index: seriesIndex,
+          units,
+        }) => (
+          <React.Fragment key={seriesIndex}>
+            <circle key={index} cx={arg} cy={val} r={3} fill={color} />
+            <ChartLabel
+              as={ElementValue}
+              textAnchor={'middle'}
+              meta={{ value, index: seriesIndex * valueFieldsLength + index }}
+              x={arg}
+              y={val - 6}
+            >
+              <ChartValue fraction={fraction}>{value}</ChartValue>
+              {units}
+            </ChartLabel>
+          </React.Fragment>
+        )
+      )}
+    </>
+  );
+}
+
 type Props = {
   elements: ChartElement[],
 
@@ -34,8 +82,8 @@ type Props = {
 
   parentType: BlockType,
 
-  elementValueAs: React.ComponentType,
-  groupTitleAs: React.ComponentType,
+  elementValueAs?: React.ComponentType,
+  groupTitleAs?: React.ComponentType,
 };
 
 // eslint-disable-next-line
@@ -47,6 +95,12 @@ function ArgumentAxisLine({ y1, y2, ...props }) {
 function ValueLabel({ text, ...props }) {
   return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
 }
+
+const LineChartItem = styled(ChartItem)`
+  && {
+    padding: ${({ theme }) => theme.spacing(4, 2, 0)};
+  }
+`;
 
 /**
  * @description Bar chart block renderer.
@@ -73,6 +127,7 @@ const LineChart = React.forwardRef(function LineChart(
     textAlignment,
 
     elementValueAs: ElementValue = SvgTypography,
+    elementTitleAs: ElementTitle = ChartLegend.Label,
     groupTitleAs: GroupTitle = SvgTypography,
 
     parentType,
@@ -114,7 +169,7 @@ const LineChart = React.forwardRef(function LineChart(
   ));
 
   return forceRemount ? null : (
-    <ChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
+    <LineChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
@@ -122,7 +177,9 @@ const LineChart = React.forwardRef(function LineChart(
         />
       )}
 
-      {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid={false} />}
+      {!!yAxis && (
+        <ValueAxis labelComponent={ValueLabel} showGrid tickSize={dy} />
+      )}
       {valueFields.map((valueField, index) => (
         <LineSeries
           key={valueField}
@@ -130,10 +187,16 @@ const LineChart = React.forwardRef(function LineChart(
           valueField={valueField}
           argumentField={'group'}
           color={palette[index % palette.length]}
+          seriesComponent={LineChartSeries}
+          elementValueAs={ElementValue}
+          valueFieldsLength={valueFields.length}
+          fraction={fraction}
+          units={units}
         />
       ))}
+      {!!legend && <ChartLegend />}
       <Stack />
-    </ChartItem>
+    </LineChartItem>
   );
 });
 

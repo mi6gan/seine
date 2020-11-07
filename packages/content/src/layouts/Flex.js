@@ -7,9 +7,11 @@ import Item from './Item';
 import type { FlexBody, FlexFormat } from '@seine/core';
 import { defaultFlexFormat } from '@seine/core';
 
-export type Props = (FlexBody & FlexFormat) & {
+type Props = (FlexBody & FlexFormat) & {
   children: React.ChildrenArray<React.Node>,
 };
+
+export type { Props as FlexProps };
 
 /**
  * @description Flex content layout container.
@@ -50,4 +52,4 @@ const Flex = styled(Item).attrs(
   }
 `;
 
-export default Flex;
+export default (Flex: React.ComponentType<Props>);

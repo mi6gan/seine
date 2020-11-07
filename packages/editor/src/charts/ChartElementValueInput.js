@@ -16,7 +16,7 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default React.forwardRef(function ChartGroupElementValueInput(
+const CharElementValueInput = React.forwardRef(function ChartElementValueInput(
   { meta: { index, value }, ...inputProps }: Props,
   ref
 ) {
@@ -36,3 +36,5 @@ export default React.forwardRef(function ChartGroupElementValueInput(
     />
   );
 });
+
+export default CharElementValueInput;

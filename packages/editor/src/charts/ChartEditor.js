@@ -9,10 +9,11 @@ import LineChart from '../../../content/src/charts/LineChart';
 
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
-import ChartGroupElementValueInput from './ChartGroupElementValueInput';
+import ChartElementValueInput from './ChartElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
 import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
+import ChartElementTitleInput from './ChartElementTitleInput';
 
 import {
   BarChart,
@@ -121,7 +122,7 @@ const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
     <ColumnChart
       {...chart}
       {...(selectedBlock && {
-        elementValueAs: ChartGroupElementValueInput,
+        elementValueAs: ChartElementValueInput,
         groupTitleAs: ChartGroupTitleInput,
       })}
       as={SelectionFrame}
@@ -131,7 +132,7 @@ const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
     <BarChart
       {...chart}
       {...(selectedBlock && {
-        elementValueAs: ChartGroupElementValueInput,
+        elementValueAs: ChartElementValueInput,
         groupTitleAs: ChartGroupTitleInput,
       })}
       as={SelectionFrame}
@@ -141,8 +142,9 @@ const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
     <LineChart
       {...chart}
       {...(selectedBlock && {
-        elementValueAs: ChartGroupElementValueInput,
+        elementValueAs: ChartElementValueInput,
         groupTitleAs: ChartGroupTitleInput,
+        elementTitleAs: ChartElementTitleInput,
       })}
       as={SelectionFrame}
       ref={ref}

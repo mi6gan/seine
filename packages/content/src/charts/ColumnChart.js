@@ -8,10 +8,12 @@ import {
   Chart,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
+import styled from 'styled-components/macro';
 
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartItem from './ChartItem';
+import ChartLegend from './ChartLegend';
 
 import {
   defaultChartDx,
@@ -25,22 +27,14 @@ import {
 import { SvgTypography } from '@seine/styles';
 import type { BlockType, ChartElement } from '@seine/core';
 
-type Props = {
-  elements: ChartElement[],
-
-  dx?: number,
-  palette?: string[],
-  units?: string,
-  xAxis?: boolean,
-
-  parentType: BlockType,
-
-  elementValueAs: React.ComponentType,
-  groupTitleAs: React.ComponentType,
-};
+const ColumnChartItem = styled(ChartItem)`
+  && {
+    padding: ${({ theme }) => theme.spacing(4, 2, 0)};
+  }
+`;
 
 // eslint-disable-next-line
-function BarLabel({
+function ColumnChartPoint({
   units,
   fraction,
   elementValueAs: ElementValue,
@@ -76,6 +70,20 @@ function ArgumentAxisLine({ y1, y2, ...props }) {
 function ValueLabel({ text, ...props }) {
   return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
 }
+
+type Props = {
+  elements: ChartElement[],
+
+  dx?: number,
+  palette?: string[],
+  units?: string,
+  xAxis?: boolean,
+
+  parentType: BlockType,
+
+  elementValueAs: React.ComponentType,
+  groupTitleAs: React.ComponentType,
+};
 
 /**
  * @description Bar chart block renderer.
@@ -143,7 +151,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   ));
 
   return forceRemount ? null : (
-    <ChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
+    <ColumnChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
@@ -159,13 +167,14 @@ const ColumnChart = React.forwardRef(function ColumnChart(
           valueField={valueField}
           argumentField={'group'}
           color={palette[index % palette.length]}
-          pointComponent={BarLabel}
+          pointComponent={ColumnChartPoint}
           elementValueAs={ElementValue}
           valueFieldsLength={valueFields.length}
         />
       ))}
+      {!!legend && <ChartLegend />}
       <Stack />
-    </ChartItem>
+    </ColumnChartItem>
   );
 });
 
