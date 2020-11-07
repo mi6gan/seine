@@ -70,7 +70,9 @@ const RichTextEditor = React.forwardRef(function RichTextEditor(
       current &&
       !(
         document.activeElement &&
-        document.activeElement instanceof HTMLInputElement
+        (document.activeElement instanceof HTMLInputElement ||
+          document.activeElement instanceof HTMLSelectElement ||
+          document.activeElement.getAttribute('role') === 'option')
       )
     ) {
       current.focus();
