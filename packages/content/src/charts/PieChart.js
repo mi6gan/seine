@@ -17,7 +17,8 @@ import ChartLegend from './ChartLegend';
 import ChartItem from './ChartItem';
 
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
-import { ItemProps } from '@seine/content';
+import type { ItemProps } from '@seine/content';
+import { SvgTypography } from '@seine/styles';
 
 const PieChartItem = styled(ChartItem)`
   && {
