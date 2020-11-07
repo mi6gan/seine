@@ -2231,6 +2231,7 @@ __metadata:
   resolution: "@seine/editor@workspace:packages/editor"
   dependencies:
     "@devexpress/dx-react-chart": ^2.7.1
+    "@devexpress/dx-react-chart-material-ui": ^2.7.1
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
     "@material-ui/lab": ^4.0.0-alpha.56
