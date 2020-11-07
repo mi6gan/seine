@@ -4,21 +4,14 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
-import { useSelectedLayoutItems } from '../layouts';
-import LineChart from '../../../content/src/charts/LineChart';
 
-import PieChartElementTitleInput from './PieChartElementTitleInput';
-import PieChartElementValueInput from './PieChartElementValueInput';
-import ChartElementValueInput from './ChartElementValueInput';
-import ChartGroupTitleInput from './ChartGroupTitleInput';
-import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
-import ChartElementTitleInput from './ChartElementTitleInput';
 
 import {
   BarChart,
   ColumnChart,
   PieChart,
+  LineChart,
   useChartFormat,
 } from '@seine/content';
 import {
@@ -26,6 +19,7 @@ import {
   DESELECT_BLOCK_ELEMENT,
   SELECT_BLOCK_ELEMENT,
 } from '@seine/core';
+import { useChartDispatchElements } from '@seine/editor';
 
 // eslint-disable-next-line
 const SelectionFrame = React.forwardRef(function SelectionFrame(
@@ -35,11 +29,7 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
   const selectionRef = React.useRef([]);
   const { current: selection } = selectionRef;
 
-  const dispatchElements = useChartDispatchElements(
-    useAutoCallback(({ blocks }) =>
-      blocks.filter((block) => block.id === frame.id)
-    )
-  );
+  const dispatchElements = useChartDispatchElements();
 
   const isGrouped = data.length > 1 && 'group' in data[0];
 
@@ -57,7 +47,11 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
     for (const target of selection) {
       dispatchElements({
         type: SELECT_BLOCK_ELEMENT,
-        index: isGrouped ? size * target.point + target.order : target.point,
+        index: isGrouped
+          ? size * target.point + target.order
+          : target.series === 'slices'
+          ? target.point
+          : target.order,
       });
     }
     selectionRef.current = selection;
@@ -104,51 +98,15 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
  */
 const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
   const { kind, ...chart } = useChartFormat(props);
-  const { item } = useSelectedLayoutItems();
-
-  const selectedBlock = item && item.id === chart.id ? item : null;
 
   return kind === chartTypes.PIE ? (
-    <PieChart
-      {...chart}
-      {...(selectedBlock && {
-        elementTitleAs: PieChartElementTitleInput,
-        elementValueAs: PieChartElementValueInput,
-      })}
-      as={SelectionFrame}
-      ref={ref}
-    />
+    <PieChart {...chart} as={SelectionFrame} ref={ref} />
   ) : kind === chartTypes.COLUMN ? (
-    <ColumnChart
-      {...chart}
-      {...(selectedBlock && {
-        elementValueAs: ChartElementValueInput,
-        groupTitleAs: ChartGroupTitleInput,
-      })}
-      as={SelectionFrame}
-      ref={ref}
-    />
+    <ColumnChart {...chart} as={SelectionFrame} ref={ref} />
   ) : kind === chartTypes.BAR ? (
-    <BarChart
-      {...chart}
-      {...(selectedBlock && {
-        elementValueAs: ChartElementValueInput,
-        groupTitleAs: ChartGroupTitleInput,
-      })}
-      as={SelectionFrame}
-      ref={ref}
-    />
+    <BarChart {...chart} as={SelectionFrame} ref={ref} />
   ) : (
-    <LineChart
-      {...chart}
-      {...(selectedBlock && {
-        elementValueAs: ChartElementValueInput,
-        groupTitleAs: ChartGroupTitleInput,
-        elementTitleAs: ChartElementTitleInput,
-      })}
-      as={SelectionFrame}
-      ref={ref}
-    />
+    <LineChart {...chart} as={SelectionFrame} ref={ref} />
   );
 });
 

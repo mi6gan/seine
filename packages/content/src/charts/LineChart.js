@@ -49,7 +49,6 @@ function LineChartSeries({
           val,
           value,
           elementValueAs: ElementValue,
-          valueFieldsLength,
           index: seriesIndex,
           units,
         }) => (
@@ -58,7 +57,6 @@ function LineChartSeries({
             <ChartLabel
               as={ElementValue}
               textAnchor={'middle'}
-              meta={{ value, index: seriesIndex * valueFieldsLength + index }}
               x={arg}
               y={val - 6}
             >
@@ -126,8 +124,6 @@ const LineChart = React.forwardRef(function LineChart(
     yAxis,
     textAlignment,
 
-    elementValueAs: ElementValue = SvgTypography,
-    elementTitleAs: ElementTitle = ChartLegend.Label,
     groupTitleAs: GroupTitle = SvgTypography,
 
     parentType,
@@ -188,7 +184,6 @@ const LineChart = React.forwardRef(function LineChart(
           argumentField={'group'}
           color={palette[index % palette.length]}
           seriesComponent={LineChartSeries}
-          elementValueAs={ElementValue}
           valueFieldsLength={valueFields.length}
           fraction={fraction}
           units={units}

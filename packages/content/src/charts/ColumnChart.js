@@ -34,21 +34,16 @@ const ColumnChartItem = styled(ChartItem)`
 `;
 
 // eslint-disable-next-line
-function ColumnChartPoint({
-  units,
-  fraction,
-  elementValueAs: ElementValue,
-  valueFieldsLength,
-  ...props
-}) {
+function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
   const { arg, val, value, seriesIndex, index, rotated } = props;
   const x = rotated ? val : arg;
-  const y = rotated ? arg : val + 8;
+  const y = rotated ? arg : val;
   return (
     <>
       <BarSeries.Point {...props} val={val + (rotated ? -14 : 10)} />
       <ChartLabel
-        as={ElementValue}
+        as={SvgTypography}
+        dominantBaseline={'middle'}
         textAnchor={'middle'}
         meta={{ value, index: index * valueFieldsLength + seriesIndex }}
         x={x}
@@ -168,7 +163,6 @@ const ColumnChart = React.forwardRef(function ColumnChart(
           argumentField={'group'}
           color={palette[index % palette.length]}
           pointComponent={ColumnChartPoint}
-          elementValueAs={ElementValue}
           valueFieldsLength={valueFields.length}
         />
       ))}

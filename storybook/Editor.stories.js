@@ -12,6 +12,8 @@ import {
   Text,
   PieChart,
   LineChart,
+  ColumnChart,
+  BarChart,
 } from './Content.stories';
 
 import { Editor } from '@seine/editor';
@@ -56,4 +58,11 @@ export const EditorOfPieChart = () => (
 
 export const EditorOfLineChart = () => (
   <LineChart as={Editor} {...actions('onChange')} />
+);
+
+export const EditorOfColumnChart = () => (
+  <ColumnChart as={Editor} {...actions('onChange')} />
+);
+export const EditorOfBarChart = () => (
+  <BarChart as={Editor} {...actions('onChange')} />
 );

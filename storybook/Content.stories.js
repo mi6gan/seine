@@ -515,6 +515,105 @@ export const PieChart = ({ children = [], ...props }) => (
   </Page>
 );
 
+export const ColumnChart = ({ children = [], ...props }) => (
+  <Page {...props}>
+    {[
+      {
+        id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
+        parent_id: 'root',
+        type: blockTypes.CHART,
+        body: {
+          elements: [
+            {
+              id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+              title: 'Maelstorm',
+              value: 50.1,
+            },
+            {
+              id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+              title: 'Spring',
+              value: 60.33,
+            },
+            {
+              id: 'empty',
+              title: 'Empty',
+              value: 0,
+            },
+            {
+              id: '23ec0b37-6da2-434c-8484-818f753deb63',
+              title: 'Electro',
+              value: 13,
+            },
+          ],
+        },
+        format: { kind: chartTypes.COLUMN },
+      },
+    ]}
+  </Page>
+);
+
+export const BarChart = ({ children = [], ...props }) => (
+  <Page {...props}>
+    {[
+      {
+        id: '63d30846-a1dc-4c50-a32a-21ca99c38bce',
+        parent_id: 'root',
+        type: blockTypes.CHART,
+        body: {
+          elements: [
+            {
+              title: 'WFLA',
+              value: 20.8,
+              id: '3d7ace6b-2eef-4bf7-a534-f794323be5b2',
+            },
+            {
+              title: 'Region A',
+              value: 35.7,
+              id: '8df0406e-473d-4956-a8d4-1e9c42c45cbf',
+            },
+            {
+              title: 'Region B',
+              value: 15.8,
+              id: 'e80e6d00-1e34-43b1-8b11-67a44bca921a',
+            },
+            {
+              title: 'Region C',
+              value: 40.9,
+              id: '23ec0b37-6da2-434c-8484-818f753deb63',
+            },
+            {
+              title: 'Region D',
+              value: 23.6,
+              id: '524fd9d7-047c-441e-9d61-fee72abcbe35',
+            },
+            {
+              title: 'Region E',
+              value: 17.6,
+              id: '8235cdd7-2f4b-4f7b-8208-1500a8826816',
+            },
+            {
+              title: 'Region F',
+              value: 38.1,
+              id: '745f78c0-7a74-4984-aefe-e2e0c5b86c27',
+            },
+            {
+              title: 'Region G',
+              value: 43.8,
+              id: '8a4b2ae0-0f2d-45b1-9d22-9444f7e16cee',
+            },
+            {
+              title: 'Region H',
+              value: 16.4,
+              id: '85c7aeb7-ea55-44ad-bf96-13fe9c833583',
+            },
+          ],
+        },
+        format: { kind: chartTypes.BAR },
+      },
+    ]}
+  </Page>
+);
+
 export const LineChart = ({ children = [], ...props }) => (
   <Page {...props}>
     {[
