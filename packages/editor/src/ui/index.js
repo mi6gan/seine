@@ -12,6 +12,7 @@ export { default as SidebarGroup } from './SidebarGroup';
 export { default as SidebarHeading } from './SidebarHeading';
 export { default as SidebarInput } from './SidebarInput';
 export { default as SidebarLabel } from './SidebarLabel';
+export { default as SidebarSelect } from './SidebarSelect';
 export { default as SidebarSection } from './SidebarSection';
 export { default as SidebarSelectLabel } from './SidebarSelectLabel';
 export { default as SvgInput } from './SvgInput';

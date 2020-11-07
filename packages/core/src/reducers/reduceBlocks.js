@@ -301,7 +301,7 @@ export function reduceBlocks(
               (block) => block['parent_id'] === parent.id
             );
             const children =
-              selectedChildren.length > 0 &&
+              selectedChildren.length > 1 &&
               state.blocks.filter((block) => block['parent_id'] === parent.id);
             return children && children.length === selectedChildren.length;
           })

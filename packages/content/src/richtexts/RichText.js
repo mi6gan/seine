@@ -49,6 +49,7 @@ const Draft = React.forwardRef(function Draft(
     entityMap = defaultDraftEntityMap,
     editorState = null,
     as: EditorItem = Item,
+    itemRef,
     ...editorProps
   }: Props,
   ref
@@ -57,6 +58,7 @@ const Draft = React.forwardRef(function Draft(
     <>
       <RichTextStyle />
       <EditorItem
+        ref={itemRef}
         className={[className, ' DraftEditor/root', ' DraftEditor/align'].join(
           ''
         )}

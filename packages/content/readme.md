@@ -1,57 +1,54 @@
 # Installation
 
-Dependencies
 
+Install React
 ```bash
-yarn add react react-dom draft-js styled-components d3-interpolate @devexpress/dx-chart-core @devexpress/dx-react-core @devexpress/dx-react-chart
+yarn add react react-dom
 ```
 
-Content editor
+Material UI
 ```bash
-yarn add @seine/editor
+yarn add @material-ui/core @material-ui/icons @material-ui/styles
 ```
 
 # Usage
-
-Default blocks editor
-
+Rendering blocks
 ```jsx
-import { Editor } from '@seine/editor';
+import { Content } from '@seine/content';
 
 const data = [
   {
-    id: '5eec4cb7',
-    type: 'page',
-    parent_id: null,
-    body: {},
-    format: {},
-    schema: null,
+    "id": "5eec4cb7",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
   },
   {
-    id: '61272942',
-    type: 'draft',
-    parent_id: '5eec4cb7',
-    body: {
-      blocks: [
+    "id": "61272942",
+    "type": "draft",
+    "parent_id": "5eec4cb7",
+    "body": {
+      "blocks": [
         {
-          key: '2n1g7',
-          data: {},
-          text: 'Text content',
-          type: 'unstyled',
-          depth: 0,
-          entityRanges: [],
-          inlineStyleRanges: [],
-        },
+          "key": "2n1g7",
+          "data": {},
+          "text": "Text content",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
       ],
-      entityMap: {},
+      "entityMap": {}
     },
-    format: {},
-    schema: null,
+    "format": {},
+    "schema": null
   },
-];
+]
 
-function DataEditor() {
-  const [blocks, setBlocks] = React.useState();
-  return <Editor onChange={setBlocks}>{blocks}</Editor>;
+function DataContent() {
+  return <Content>{data}</Content>;
 }
 ```

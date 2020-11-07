@@ -32,14 +32,17 @@ export const defaultDraftEditor = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function RichTextEditor({
-  id,
-  editor: { state = defaultDraftEditor.state } = defaultDraftEditor,
-  blocks = defaultDraftBody.blocks,
-  entityMap = defaultDraftBody.entityMap,
-  textAlignment = defaultDraftFormat.textAlignment,
-  ...itemProps
-}: Props) {
+const RichTextEditor = React.forwardRef(function RichTextEditor(
+  {
+    id,
+    editor: { state = defaultDraftEditor.state } = defaultDraftEditor,
+    blocks = defaultDraftBody.blocks,
+    entityMap = defaultDraftBody.entityMap,
+    textAlignment = defaultDraftFormat.textAlignment,
+    ...itemProps
+  }: Props,
+  ref
+) {
   const { item } = useSelectedLayoutItems();
   const selected = !!(item && item.id === id);
   const dispatch = useBlocksDispatch();
@@ -90,6 +93,7 @@ export default function RichTextEditor({
       {...itemProps}
       id={id}
       ref={editorRef}
+      itemRef={ref}
       forwardedAs={StyledFrame}
       selected={selected}
       textAlignment={textAlignment}
@@ -104,4 +108,6 @@ export default function RichTextEditor({
       readOnly={!selected}
     />
   );
-}
+});
+
+export default RichTextEditor;

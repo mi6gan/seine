@@ -3,9 +3,6 @@ import * as React from 'react';
 import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
-import styled from 'styled-components/macro';
-
-import { Item } from '../layouts';
 
 import {
   defaultChartFraction,
@@ -16,6 +13,7 @@ import {
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import PieChartLegend from './PieChartLegend';
+import ChartItem from './ChartItem';
 
 import type { ChartElement } from '@seine/core';
 
@@ -91,43 +89,39 @@ function PieLabel({
   );
 }
 
-const PieChartItem = styled(Item)`
-  && {
-    height: 100% !important;
-    padding: 0;
-  }
-`;
-
 /**
  * @description Pie chart block renderer.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function PieChart({
-  legend = defaultPieChartLegend,
-  palette = defaultChartPalette,
-  units = defaultPieChartUnits,
-  fraction = defaultChartFraction,
+const PieChart = React.forwardRef(function PieChart(
+  {
+    legend = defaultPieChartLegend,
+    palette = defaultChartPalette,
+    units = defaultPieChartUnits,
+    fraction = defaultChartFraction,
 
-  elements,
-  elementTitleAs = ChartLabel,
-  elementValueAs = ChartLabel,
+    elements,
+    elementTitleAs = ChartLabel,
+    elementValueAs = ChartLabel,
 
-  dx,
-  dy,
-  title,
-  minValue,
-  maxValue,
-  paletteKey,
-  xAxis,
-  yAxis,
+    dx,
+    dy,
+    title,
+    minValue,
+    maxValue,
+    paletteKey,
+    xAxis,
+    yAxis,
 
-  children,
+    children,
 
-  ...itemProps
-}): Props {
+    ...itemProps
+  },
+  ref
+): Props {
   return (
-    <PieChartItem forwardedAs={Chart} data={elements} {...itemProps}>
+    <ChartItem ref={ref} forwardedAs={Chart} data={elements} {...itemProps}>
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
@@ -141,6 +135,8 @@ export default function PieChart({
         elementValueAs={elementValueAs}
       />
       {!!legend && <PieChartLegend />}
-    </PieChartItem>
+    </ChartItem>
   );
-}
+});
+
+export default PieChart;

@@ -4,13 +4,12 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
-  BarSeries,
   Chart,
+  LineSeries,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
 import ChartLabel from './ChartLabel';
-import ChartValue from './ChartValue';
 import ChartItem from './ChartItem';
 
 import {
@@ -40,34 +39,6 @@ type Props = {
 };
 
 // eslint-disable-next-line
-function BarLabel({
-  units,
-  fraction,
-  elementValueAs: ElementValue,
-  valueFieldsLength,
-  ...props
-}) {
-  const { arg, val, value, seriesIndex, index, rotated } = props;
-  const x = rotated ? val : arg;
-  const y = rotated ? arg : val + 8;
-  return (
-    <>
-      <BarSeries.Point {...props} val={val + (rotated ? -14 : 10)} />
-      <ChartLabel
-        as={ElementValue}
-        textAnchor={'middle'}
-        meta={{ value, index: index * valueFieldsLength + seriesIndex }}
-        x={x}
-        y={y}
-      >
-        <ChartValue fraction={fraction}>{value}</ChartValue>
-        {units}
-      </ChartLabel>
-    </>
-  );
-}
-
-// eslint-disable-next-line
 function ArgumentAxisLine({ y1, y2, ...props }) {
   return <ArgumentAxis.Line y1={y1 - 14} y2={y2 - 14} {...props} />;
 }
@@ -82,7 +53,7 @@ function ValueLabel({ text, ...props }) {
  * @param {Props} props
  * @returns {React.Node}
  */
-const ColumnChart = React.forwardRef(function ColumnChart(
+const LineChart = React.forwardRef(function LineChart(
   {
     elements,
 
@@ -153,15 +124,12 @@ const ColumnChart = React.forwardRef(function ColumnChart(
 
       {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid={false} />}
       {valueFields.map((valueField, index) => (
-        <BarSeries
+        <LineSeries
           key={valueField}
           name={valueField}
           valueField={valueField}
           argumentField={'group'}
           color={palette[index % palette.length]}
-          pointComponent={BarLabel}
-          elementValueAs={ElementValue}
-          valueFieldsLength={valueFields.length}
         />
       ))}
       <Stack />
@@ -169,4 +137,4 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   );
 });
 
-export default ColumnChart;
+export default LineChart;

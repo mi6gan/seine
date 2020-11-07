@@ -5,25 +5,19 @@ import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
 import { useSelectedLayoutItems } from '../layouts';
+import LineChart from '../../../content/src/charts/LineChart';
 
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
 import ChartGroupElementValueInput from './ChartGroupElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
-import LineChartElementPath from './LineChartElementPath';
 import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
-import ChartLegendEditor from './ChartLegendEditor';
 
-import { useResizeTargetRef } from '@seine/styles';
 import {
-  ChartSvg,
-  ChartSvgDefs,
   BarChart,
   ColumnChart,
-  LineChartContent,
   PieChart,
-  titleIdentityElements,
   useChartFormat,
 } from '@seine/content';
 import {
@@ -33,7 +27,10 @@ import {
 } from '@seine/core';
 
 // eslint-disable-next-line
-function SelectionFrame({ children, data, ...frame }) {
+const SelectionFrame = React.forwardRef(function SelectionFrame(
+  { children, data, ...frame },
+  ref
+) {
   const selectionRef = React.useRef([]);
   const { current: selection } = selectionRef;
 
@@ -70,7 +67,7 @@ function SelectionFrame({ children, data, ...frame }) {
   });
 
   return (
-    <Frame {...frame} data={data}>
+    <Frame {...frame} data={data} ref={ref}>
       {children}
       <EventTracker
         onClick={useAutoCallback(({ targets }) => {
@@ -97,17 +94,16 @@ function SelectionFrame({ children, data, ...frame }) {
       />
     </Frame>
   );
-}
+});
 
 /**
  * @description Chart editor component.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ChartEditor(props: Props) {
+const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
   const { kind, ...chart } = useChartFormat(props);
   const { item } = useSelectedLayoutItems();
-  const resizeTargetRef = useResizeTargetRef();
 
   const selectedBlock = item && item.id === chart.id ? item : null;
 
@@ -119,6 +115,7 @@ export default function ChartEditor(props: Props) {
         elementValueAs: PieChartElementValueInput,
       })}
       as={SelectionFrame}
+      ref={ref}
     />
   ) : kind === chartTypes.COLUMN ? (
     <ColumnChart
@@ -128,6 +125,7 @@ export default function ChartEditor(props: Props) {
         groupTitleAs: ChartGroupTitleInput,
       })}
       as={SelectionFrame}
+      ref={ref}
     />
   ) : kind === chartTypes.BAR ? (
     <BarChart
@@ -137,28 +135,19 @@ export default function ChartEditor(props: Props) {
         groupTitleAs: ChartGroupTitleInput,
       })}
       as={SelectionFrame}
+      ref={ref}
     />
   ) : (
-    <Frame {...chart}>
-      <ChartSvg {...chart} ref={resizeTargetRef}>
-        <ChartSvgDefs />
-        {kind === chartTypes.LINE ? (
-          <LineChartContent
-            {...chart}
-            {...(selectedBlock && {
-              elementPathAs: LineChartElementPath,
-              elementValueAs: ChartGroupElementValueInput,
-              groupTitleAs: ChartGroupTitleInput,
-            })}
-          />
-        ) : null}
-      </ChartSvg>
-      {!!chart.legend && (
-        <ChartLegendEditor
-          elements={titleIdentityElements(chart.elements)}
-          palette={chart.palette}
-        />
-      )}
-    </Frame>
+    <LineChart
+      {...chart}
+      {...(selectedBlock && {
+        elementValueAs: ChartGroupElementValueInput,
+        groupTitleAs: ChartGroupTitleInput,
+      })}
+      as={SelectionFrame}
+      ref={ref}
+    />
   );
-}
+});
+
+export default ChartEditor;
