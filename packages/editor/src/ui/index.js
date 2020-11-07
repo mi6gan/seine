@@ -23,3 +23,4 @@ export { default as ToolbarMenu } from './ToolbarMenu';
 export { default as ToolbarSeparator } from './ToolbarSeparator';
 export { default as ToolbarToggleButton } from './ToolbarToggleButton';
 export { default as ToolbarToggleButtonGroup } from './ToolbarToggleButtonGroup';
+export { default as ToolbarSelect } from './ToolbarSelect';

@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
-import styled from 'styled-components/macro';
 
 import { ItemMenuContext } from './EditorItemMenu';
 import {
@@ -11,18 +10,21 @@ import {
   useBlocksDispatch,
   useEditorSelector,
 } from './blocks';
-import { BlockTypeIcon, Toolbar, ToolbarButton, ToolbarSeparator } from './ui';
+import {
+  BlockTypeIcon,
+  ToolbarSelect,
+  Toolbar,
+  ToolbarButton,
+  ToolbarSeparator,
+} from './ui';
 import { useSelectedLayoutIds } from './layouts';
 import { EditorActionButtonProps } from './blocks/EditorActionButton';
 import { defaultPageEditor } from './pages/PageEditor';
 
-import { AppBar, MenuItem, Select } from '@seine/styles/mui-core.macro';
+import { AppBar } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
 import type { BoxProps } from '@seine/styles/mui-core.macro.d';
-import {
-  Menu as MenuIcon,
-  ZoomIn as ScaleIcon,
-} from '@seine/styles/mui-icons.macro';
+import { Menu as MenuIcon } from '@seine/styles/mui-icons.macro';
 import {
   blockTypes,
   chartTypes,
@@ -35,27 +37,6 @@ import {
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 import { defaultTableCell, toRawContent } from '@seine/content';
-
-const StyledSelect = styled(({ className, ...props }) => (
-  <Select
-    {...props}
-    className={className}
-    MenuProps={{
-      classes: {
-        list: className,
-      },
-    }}
-  />
-))`
-  && {
-    width: ${({ width = 'auto' }) => width};
-    color: ${({ theme }) => theme.palette.grey[50]};
-    background-color: ${({ theme }) => theme.palette.grey[700]};
-    .MuiSelect-root {
-      padding-left: ${({ theme }) => theme.spacing(1)}px;
-    }
-  }
-`;
 
 type Props = BoxProps & {
   actionButtonAs?: React.ComponentType<EditorActionButtonProps>,
@@ -310,37 +291,34 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
         </Box>
 
         <Box width={'20%'} textAlign={'center'}>
-          <StyledSelect
-            renderValue={useAutoCallback(() => (
-              <Box as={ToolbarButton} p={0}>
-                <ScaleIcon />
-              </Box>
-            ))}
+          <ToolbarSelect
+            native
             width={'5rem'}
             value={`${scale}`}
             onChange={useAutoCallback((event) =>
               dispatch({
                 type: UPDATE_BLOCK_EDITOR,
                 id: pageId,
-                editor: { scale: event.target.value },
+                editor: { scale: +event.target.value },
               })
             )}
           >
-            <MenuItem value={25}>25%</MenuItem>
-            <MenuItem value={50}>50%</MenuItem>
-            <MenuItem value={100}>100%</MenuItem>
-            <MenuItem value={'auto'}>Fit</MenuItem>
-          </StyledSelect>
+            <option value={25}>25%</option>
+            <option value={50}>50%</option>
+            <option value={100}>100%</option>
+            <option value={'auto'}>Fit</option>
+          </ToolbarSelect>
 
-          <StyledSelect
+          <ToolbarSelect
+            native
             value={device}
             onChange={useAutoCallback((event) =>
               dispatch({ type: SET_DEVICE, device: event.target.value })
             )}
           >
-            <MenuItem value={'any'}>Any device</MenuItem>
-            <MenuItem value={'mobile'}>Mobile only</MenuItem>
-          </StyledSelect>
+            <option value={'any'}>Any device</option>
+            <option value={'mobile'}>Mobile only</option>
+          </ToolbarSelect>
         </Box>
         <Box width={'40%'} />
       </Toolbar>
