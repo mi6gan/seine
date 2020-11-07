@@ -83,31 +83,34 @@ function ValueLabel({ text, ...props }) {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function BarChart({
-  elements,
+const ColumnChart = React.forwardRef(function ColumnChart(
+  {
+    elements,
 
-  dx = defaultChartDx,
-  legend = defaultChartLegend,
-  palette = defaultChartPalette,
-  units = defaultChartUnits,
-  xAxis = defaultChartXAxis,
-  fraction = defaultChartFraction,
-  minValue: initialMinValue = defaultChartMinValue,
-  maxValue: initialMaxValue,
+    dx = defaultChartDx,
+    legend = defaultChartLegend,
+    palette = defaultChartPalette,
+    units = defaultChartUnits,
+    xAxis = defaultChartXAxis,
+    fraction = defaultChartFraction,
+    minValue: initialMinValue = defaultChartMinValue,
+    maxValue: initialMaxValue,
 
-  dy,
+    dy,
 
-  paletteKey,
-  yAxis,
-  textAlignment,
+    paletteKey,
+    yAxis,
+    textAlignment,
 
-  elementValueAs: ElementValue = SvgTypography,
-  groupTitleAs: GroupTitle = SvgTypography,
+    elementValueAs: ElementValue = SvgTypography,
+    groupTitleAs: GroupTitle = SvgTypography,
 
-  parentType,
+    parentType,
 
-  ...itemProps
-}): Props {
+    ...itemProps
+  },
+  ref
+): Props {
   const data = useAutoMemo(
     Object.entries(
       elements.reduce(
@@ -141,7 +144,7 @@ export default function BarChart({
   ));
 
   return forceRemount ? null : (
-    <Item forwardedAs={Chart} data={data} {...itemProps}>
+    <Item forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
@@ -165,4 +168,6 @@ export default function BarChart({
       <Stack />
     </Item>
   );
-}
+});
+
+export default ColumnChart;

@@ -15,6 +15,8 @@ type Props = ImageProps & {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ImageEditor(props: Props) {
-  return <Frame {...props} as={Image} />;
-}
+const ImageEditor = React.forwardRef(function ImageEditor(props: Props, ref) {
+  return <Frame {...props} as={Image} ref={ref} />;
+});
+
+export default ImageEditor;
