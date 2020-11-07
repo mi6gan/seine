@@ -28,11 +28,19 @@ import { useSelectedLayoutItems } from '@seine/editor';
 
 const MAX_SPACING = 19;
 
+type Props = {
+  inputAs?: React.ComponentType,
+};
+
 /**
- * @description Layout design.
+ * @description Flex design.
+ * @param {Props} props
  * @returns {React.Node}
  */
-export default function GridDesign() {
+export default function FlexDesign({
+  inputAs: Input = SidebarInput,
+  toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
+}: Props) {
   const device = useEditorSelector((state) => state.device);
   const { layout: layoutBlock } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
@@ -54,7 +62,7 @@ export default function GridDesign() {
     <>
       <SidebarGroup>
         <SidebarLabel>Spacing</SidebarLabel>
-        <SidebarInput
+        <Input
           value={spacing}
           onChange={useAutoCallback(({ currentTarget }) => {
             dispatch({
@@ -93,7 +101,8 @@ export default function GridDesign() {
 
       <SidebarGroup>
         <SidebarLabel>Justify</SidebarLabel>
-        <ToolbarToggleButtonGroup
+        <ToggleButtonGroup
+          name={'justify'}
           value={justify}
           onChange={useAutoCallback((event, justify) =>
             dispatch({
@@ -118,12 +127,13 @@ export default function GridDesign() {
           <ToolbarToggleButton value={'space-between'}>
             <FormatAlignJustify {...iconProps} />
           </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+        </ToggleButtonGroup>
       </SidebarGroup>
 
       <SidebarGroup>
         <SidebarLabel>Align</SidebarLabel>
-        <ToolbarToggleButtonGroup
+        <ToggleButtonGroup
+          name={'alignItems'}
           value={alignItems}
           onChange={useAutoCallback((event, alignItems) =>
             dispatch({
@@ -144,12 +154,13 @@ export default function GridDesign() {
           <ToolbarToggleButton value={'flex-end'}>
             <VerticalAlignBottom {...iconProps} />
           </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+        </ToggleButtonGroup>
       </SidebarGroup>
 
       <SidebarGroup>
         <SidebarLabel shrink>Wrap</SidebarLabel>
-        <ToolbarToggleButtonGroup
+        <ToggleButtonGroup
+          name={'wrap'}
           value={alignItems}
           onChange={useAutoCallback((event, wrap) =>
             dispatch({
@@ -165,7 +176,7 @@ export default function GridDesign() {
           >
             <WrapText />
           </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+        </ToggleButtonGroup>
       </SidebarGroup>
     </>
   );

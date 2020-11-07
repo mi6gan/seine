@@ -39,11 +39,14 @@ const PageFrame = styled(Paper).attrs({
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function PageEditor({
-  editor: { scale = defaultPageEditor.scale } = defaultPageEditor,
-  id,
-  ...pageProps
-}: Props) {
+const PageEditor = React.forwardRef(function PageEditor(
+  {
+    editor: { scale = defaultPageEditor.scale } = defaultPageEditor,
+    id,
+    ...pageProps
+  }: Props,
+  ref
+) {
   return (
     <PageFrame
       scale={scale}
@@ -51,7 +54,9 @@ export default function PageEditor({
         useAutoCallback(({ selection }) => selection.includes(id))
       )}
     >
-      <Page {...pageProps} id={id} />
+      <Page {...pageProps} id={id} ref={ref} />
     </PageFrame>
   );
-}
+});
+
+export default PageEditor;

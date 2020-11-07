@@ -9,7 +9,10 @@ import { Item } from '@seine/content';
 import { Box } from '@seine/styles';
 
 // eslint-disable-next-line
-export default function Frame({ children, id, onClick, as, ...props }) {
+const Frame = React.forwardRef(function Frame(
+  { children, id, onClick, as, ...props },
+  ref
+) {
   const dispatch = useBlocksDispatch();
   const selected = useEditorSelector(
     useAutoCallback(({ selection }) => selection.includes(id))
@@ -18,6 +21,7 @@ export default function Frame({ children, id, onClick, as, ...props }) {
   return (
     <Item
       {...props}
+      ref={ref}
       as={Box}
       forwardedAs={as}
       id={id}
@@ -44,4 +48,6 @@ export default function Frame({ children, id, onClick, as, ...props }) {
       children={children}
     />
   );
-}
+});
+
+export default Frame;

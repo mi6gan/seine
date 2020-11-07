@@ -15,9 +15,14 @@ export type { Props as LayoutProps };
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Layout({ kind, ...layoutProps }: Props) {
+const Layout = React.forwardRef(function Layout(
+  { kind, ...layoutProps }: Props,
+  ref
+) {
   if (kind === 'flex') {
-    return <Flex {...layoutProps} />;
+    return <Flex {...layoutProps} ref={ref} />;
   }
-  return <Grid {...layoutProps} />;
-}
+  return <Grid {...layoutProps} ref={ref} />;
+});
+
+export default Layout;

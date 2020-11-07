@@ -33,7 +33,10 @@ import {
 } from '@seine/core';
 
 // eslint-disable-next-line
-function SelectionFrame({ children, data, ...frame }) {
+const SelectionFrame = React.forwardRef(function SelectionFrame(
+  { children, data, ...frame },
+  ref
+) {
   const selectionRef = React.useRef([]);
   const { current: selection } = selectionRef;
 
@@ -70,7 +73,7 @@ function SelectionFrame({ children, data, ...frame }) {
   });
 
   return (
-    <Frame {...frame} data={data}>
+    <Frame {...frame} data={data} ref={ref}>
       {children}
       <EventTracker
         onClick={useAutoCallback(({ targets }) => {
@@ -97,14 +100,14 @@ function SelectionFrame({ children, data, ...frame }) {
       />
     </Frame>
   );
-}
+});
 
 /**
  * @description Chart editor component.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function ChartEditor(props: Props) {
+const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
   const { kind, ...chart } = useChartFormat(props);
   const { item } = useSelectedLayoutItems();
   const resizeTargetRef = useResizeTargetRef();
@@ -118,6 +121,7 @@ export default function ChartEditor(props: Props) {
         elementTitleAs: PieChartElementTitleInput,
         elementValueAs: PieChartElementValueInput,
       })}
+      ref={ref}
       as={SelectionFrame}
     />
   ) : kind === chartTypes.COLUMN ? (
@@ -127,6 +131,7 @@ export default function ChartEditor(props: Props) {
         elementValueAs: ChartGroupElementValueInput,
         groupTitleAs: ChartGroupTitleInput,
       })}
+      ref={ref}
       as={SelectionFrame}
     />
   ) : kind === chartTypes.BAR ? (
@@ -136,10 +141,11 @@ export default function ChartEditor(props: Props) {
         elementValueAs: ChartGroupElementValueInput,
         groupTitleAs: ChartGroupTitleInput,
       })}
+      ref={ref}
       as={SelectionFrame}
     />
   ) : (
-    <Frame {...chart}>
+    <Frame {...chart} ref={ref}>
       <ChartSvg {...chart} ref={resizeTargetRef}>
         <ChartSvgDefs />
         {kind === chartTypes.LINE ? (
@@ -161,4 +167,6 @@ export default function ChartEditor(props: Props) {
       )}
     </Frame>
   );
-}
+});
+
+export default ChartEditor;

@@ -33,19 +33,23 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function BarChart({
-  dx = defaultChartDx,
-  legend = defaultChartLegend,
-  palette = defaultChartPalette,
-  units = defaultChartUnits,
-  xAxis = defaultChartXAxis,
-  fraction = defaultChartFraction,
-  minValue = defaultChartMinValue,
-  ...barChartProps
-}): Props {
+const BarChart = React.forwardRef(function BarChart(
+  {
+    dx = defaultChartDx,
+    legend = defaultChartLegend,
+    palette = defaultChartPalette,
+    units = defaultChartUnits,
+    xAxis = defaultChartXAxis,
+    fraction = defaultChartFraction,
+    minValue = defaultChartMinValue,
+    ...barChartProps
+  },
+  ref
+): Props {
   return (
     <ColumnChart
       {...barChartProps}
+      ref={ref}
       rotated
       dx={dx}
       legend={legend}
@@ -56,4 +60,6 @@ export default function BarChart({
       minValue={minValue}
     />
   );
-}
+});
+
+export default BarChart;

@@ -103,31 +103,34 @@ const PieChartItem = styled(Item)`
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function PieChart({
-  legend = defaultPieChartLegend,
-  palette = defaultChartPalette,
-  units = defaultPieChartUnits,
-  fraction = defaultChartFraction,
+const PieChart = React.forwardRef(function PieChart(
+  {
+    legend = defaultPieChartLegend,
+    palette = defaultChartPalette,
+    units = defaultPieChartUnits,
+    fraction = defaultChartFraction,
 
-  elements,
-  elementTitleAs = ChartLabel,
-  elementValueAs = ChartLabel,
+    elements,
+    elementTitleAs = ChartLabel,
+    elementValueAs = ChartLabel,
 
-  dx,
-  dy,
-  title,
-  minValue,
-  maxValue,
-  paletteKey,
-  xAxis,
-  yAxis,
+    dx,
+    dy,
+    title,
+    minValue,
+    maxValue,
+    paletteKey,
+    xAxis,
+    yAxis,
 
-  children,
+    children,
 
-  ...itemProps
-}): Props {
+    ...itemProps
+  },
+  ref
+): Props {
   return (
-    <PieChartItem forwardedAs={Chart} data={elements} {...itemProps}>
+    <PieChartItem forwardedAs={Chart} data={elements} {...itemProps} ref={ref}>
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
@@ -143,4 +146,6 @@ export default function PieChart({
       {!!legend && <PieChartLegend />}
     </PieChartItem>
   );
-}
+});
+
+export default PieChart;

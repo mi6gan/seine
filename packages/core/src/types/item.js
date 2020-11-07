@@ -15,6 +15,8 @@ export type ItemFormat = {
   justifySelf: 'normal' | 'center' | 'flex-start' | 'flex-end' | 'stretch',
   maxWidth: 'none' | string | number,
   minWidth: 0 | string | number,
+  maxHeight: 'none' | string | number,
+  minHeight: 0 | string | number,
   flexGrow: number,
   flexBasis: 'auto' | string | number,
   gridRow: string,

@@ -23,7 +23,10 @@ import {
 } from '@seine/core';
 
 // eslint-disable-next-line
-export default function LayoutDesign({ defaults = defaultLayoutFormat }) {
+const LayoutDesign = React.forwardRef(function LayoutDesign(
+  { defaults = defaultLayoutFormat, ...props },
+  ref
+) {
   const { layout: layoutBlock } = useSelectedLayoutItems();
   const device = useEditorSelector((state) => state.device);
   const id = layoutBlock && layoutBlock.id;
@@ -34,7 +37,7 @@ export default function LayoutDesign({ defaults = defaultLayoutFormat }) {
   const dispatch = useBlocksDispatch();
   return (
     <>
-      <SidebarSection>
+      <SidebarSection ref={ref}>
         <SidebarHeading>Layout</SidebarHeading>
 
         <SidebarGroup>
@@ -58,9 +61,11 @@ export default function LayoutDesign({ defaults = defaultLayoutFormat }) {
           </Select>
         </SidebarGroup>
 
-        {kind === layoutTypes.FLEX && <FlexDesign />}
-        {kind === layoutTypes.GRID && <GridDesign />}
+        {kind === layoutTypes.FLEX && <FlexDesign {...props} />}
+        {kind === layoutTypes.GRID && <GridDesign {...props} />}
       </SidebarSection>
     </>
   );
-}
+});
+
+export default LayoutDesign;
