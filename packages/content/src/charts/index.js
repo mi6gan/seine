@@ -11,5 +11,4 @@ export { default as Chart } from './Chart';
 
 export { default as ChartLabel } from './ChartLabel';
 export { default as ChartValue } from './ChartValue';
-export { default as LineChartContent } from './LineChartContent';
 export { default as PieChartLegend } from './ChartLegend';
