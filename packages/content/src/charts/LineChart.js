@@ -1,18 +1,18 @@
 // @flow
 import * as React from 'react';
+import styled from 'styled-components/macro';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
-  BarSeries,
   Chart,
+  LineSeries,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
-import styled from 'styled-components/macro';
 
 import ChartLabel from './ChartLabel';
-import ChartValue from './ChartValue';
 import ChartItem from './ChartItem';
+import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 
 import {
@@ -27,48 +27,49 @@ import {
 import { SvgTypography } from '@seine/styles';
 import type { BlockType, ChartElement } from '@seine/core';
 
-const ColumnChartItem = styled(ChartItem)`
-  && {
-    padding: ${({ theme }) => theme.spacing(4, 2, 0)};
-  }
-`;
+type LineChartSeriesProps = LineSeries.SeriesProps & {
+  elementValueAs: (Chart.LabelProps) => React.Node,
+  groupTitleAs: (Chart.LabelProps) => React.Node,
+};
 
 // eslint-disable-next-line
-function ColumnChartPoint({
-  units,
+function LineChartSeries({
+  legend,
   fraction,
-  elementValueAs: ElementValue,
-  valueFieldsLength,
+  maxTextLength = 15,
   ...props
-}) {
-  const { arg, val, value, seriesIndex, index, rotated } = props;
-  const x = rotated ? val : arg;
-  const y = rotated ? arg : val + 8;
+}: LineChartSeriesProps) {
+  const { color, coordinates, index } = props;
   return (
     <>
-      <BarSeries.Point {...props} val={val + (rotated ? -14 : 10)} />
-      <ChartLabel
-        as={ElementValue}
-        textAnchor={'middle'}
-        meta={{ value, index: index * valueFieldsLength + seriesIndex }}
-        x={x}
-        y={y}
-      >
-        <ChartValue fraction={fraction}>{value}</ChartValue>
-        {units}
-      </ChartLabel>
+      <LineSeries.Path {...props} />
+      {coordinates.map(
+        ({
+          arg,
+          val,
+          value,
+          elementValueAs: ElementValue,
+          valueFieldsLength,
+          index: seriesIndex,
+          units,
+        }) => (
+          <React.Fragment key={seriesIndex}>
+            <circle key={index} cx={arg} cy={val} r={3} fill={color} />
+            <ChartLabel
+              as={ElementValue}
+              textAnchor={'middle'}
+              meta={{ value, index: seriesIndex * valueFieldsLength + index }}
+              x={arg}
+              y={val - 6}
+            >
+              <ChartValue fraction={fraction}>{value}</ChartValue>
+              {units}
+            </ChartLabel>
+          </React.Fragment>
+        )
+      )}
     </>
   );
-}
-
-// eslint-disable-next-line
-function ArgumentAxisLine({ y1, y2, ...props }) {
-  return <ArgumentAxis.Line y1={y1 - 14} y2={y2 - 14} {...props} />;
-}
-
-// eslint-disable-next-line
-function ValueLabel({ text, ...props }) {
-  return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
 }
 
 type Props = {
@@ -81,16 +82,32 @@ type Props = {
 
   parentType: BlockType,
 
-  elementValueAs: React.ComponentType,
-  groupTitleAs: React.ComponentType,
+  elementValueAs?: React.ComponentType,
+  groupTitleAs?: React.ComponentType,
 };
+
+// eslint-disable-next-line
+function ArgumentAxisLine({ y1, y2, ...props }) {
+  return <ArgumentAxis.Line y1={y1 - 14} y2={y2 - 14} {...props} />;
+}
+
+// eslint-disable-next-line
+function ValueLabel({ text, ...props }) {
+  return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
+}
+
+const LineChartItem = styled(ChartItem)`
+  && {
+    padding: ${({ theme }) => theme.spacing(4, 2, 0)};
+  }
+`;
 
 /**
  * @description Bar chart block renderer.
  * @param {Props} props
  * @returns {React.Node}
  */
-const ColumnChart = React.forwardRef(function ColumnChart(
+const LineChart = React.forwardRef(function LineChart(
   {
     elements,
 
@@ -110,6 +127,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
     textAlignment,
 
     elementValueAs: ElementValue = SvgTypography,
+    elementTitleAs: ElementTitle = ChartLegend.Label,
     groupTitleAs: GroupTitle = SvgTypography,
 
     parentType,
@@ -151,7 +169,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   ));
 
   return forceRemount ? null : (
-    <ColumnChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
+    <LineChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
@@ -159,23 +177,27 @@ const ColumnChart = React.forwardRef(function ColumnChart(
         />
       )}
 
-      {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid={false} />}
+      {!!yAxis && (
+        <ValueAxis labelComponent={ValueLabel} showGrid tickSize={dy} />
+      )}
       {valueFields.map((valueField, index) => (
-        <BarSeries
+        <LineSeries
           key={valueField}
           name={valueField}
           valueField={valueField}
           argumentField={'group'}
           color={palette[index % palette.length]}
-          pointComponent={ColumnChartPoint}
+          seriesComponent={LineChartSeries}
           elementValueAs={ElementValue}
           valueFieldsLength={valueFields.length}
+          fraction={fraction}
+          units={units}
         />
       ))}
       {!!legend && <ChartLegend />}
       <Stack />
-    </ColumnChartItem>
+    </LineChartItem>
   );
 });
 
-export default ColumnChart;
+export default LineChart;

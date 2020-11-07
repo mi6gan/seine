@@ -42,16 +42,17 @@ type UpdateBlockElementAction = {
   body: $Shape<BlockElement>,
 };
 
-export const UPDATE_BLOCK_ELEMENT_BY_ID = '@seine/core/updateBlockElementById';
+export const UPDATE_BLOCK_ELEMENT_BY_TITLE =
+  '@seine/core/updateBlockElementByTitle';
 type UpdateBlockElementByIdAction = {
-  type: typeof UPDATE_BLOCK_ELEMENT,
-  id: string,
+  type: typeof UPDATE_BLOCK_ELEMENT_BY_TITLE,
+  title: string,
   body: BlockElement,
 };
 
 export const UPDATE_BLOCK_ELEMENT_BY_GROUP = '@seine/core/updateElementByGroup';
 type UpdateBlockElementByGroup = {
-  type: typeof UPDATE_BLOCK_ELEMENT,
+  type: typeof UPDATE_BLOCK_ELEMENT_BY_GROUP,
   group: string,
   body: BlockElement,
 };
@@ -90,11 +91,13 @@ export function reduceElements(
           ...state.elements.slice(action.index + 1),
         ],
       };
-    case UPDATE_BLOCK_ELEMENT_BY_ID:
+    case UPDATE_BLOCK_ELEMENT_BY_TITLE:
       return {
         ...state,
         elements: state.elements.map((element) =>
-          element.id === action.id ? { ...element, ...action.body } : element
+          element.title === action.title
+            ? { ...element, ...action.body }
+            : element
         ),
       };
     case UPDATE_BLOCK_ELEMENT_BY_GROUP:

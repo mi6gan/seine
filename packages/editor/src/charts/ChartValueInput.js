@@ -6,6 +6,7 @@ import styled from 'styled-components/macro';
 import { SvgInput } from '../ui';
 
 import { SvgTypography } from '@seine/styles';
+import { ChartValue } from '@seine/content';
 
 type Props = {
   children?: any,
@@ -28,20 +29,25 @@ const StyledInput = styled(SvgInput)`
  * @param {Props} props
  * @returns {React.Node}
  */
-export default React.forwardRef(function ChartValueInput(
-  { onChange, value, ...typographyProps }: Props,
+const ChartValueInput = React.forwardRef(function ChartValueInput(
+  { onChange, value, children, ...typographyProps }: Props,
   ref
 ) {
   const [focused, setFocused] = React.useState(false);
+  children = React.Children.map(children, (child) =>
+    child && child.type === ChartValue ? value : child
+  );
   return (
     <>
       <StyledTypography
         {...typographyProps}
+        children={children}
         opacity={focused ? 0.0 : 1.0}
         ref={ref}
       />
       <StyledInput
         {...typographyProps}
+        children={children}
         opacity={focused ? 1.0 : 0.0}
         onFocus={useAutoCallback(() => setFocused(true))}
         onBlur={useAutoCallback(() => setFocused(false))}
@@ -52,3 +58,5 @@ export default React.forwardRef(function ChartValueInput(
     </>
   );
 });
+
+export default ChartValueInput;

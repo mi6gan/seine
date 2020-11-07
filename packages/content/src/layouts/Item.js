@@ -1,10 +1,15 @@
 // @flow
+import type { ComponentType } from 'react';
 import styled from 'styled-components/macro';
 
-import type { ItemFormat } from '@seine/core';
+import type { ItemBody, ItemFormat } from '@seine/core';
 import { defaultItemFormat } from '@seine/core';
 
-const Item = styled.div.attrs((format: ItemFormat) => ({
+type Props = ItemBody & $Shape<ItemFormat>;
+
+export type { Props as ItemProps };
+
+const Item = styled.div.attrs((format: Props) => ({
   ...defaultItemFormat,
   ...format,
 }))`
@@ -37,4 +42,4 @@ const Item = styled.div.attrs((format: ItemFormat) => ({
   })};
 `;
 
-export default Item;
+export default (Item: ComponentType<Props>);

@@ -74,7 +74,7 @@ function getUnits(min, max) {
   const value =
     min && min !== 'none' ? min : max && max !== 'none' ? max : null;
   if (value) {
-    return min.split(parseFloat(value))[1];
+    return `${value}`.split(`${parseFloat(value)}`)[1];
   }
   return '%';
 }

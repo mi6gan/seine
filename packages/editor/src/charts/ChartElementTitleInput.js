@@ -6,7 +6,7 @@ import { SvgInput } from '../ui';
 
 import useChartDispatchElements from './useChartDispatchElements';
 
-import { UPDATE_BLOCK_ELEMENT } from '@seine/core';
+import { UPDATE_BLOCK_ELEMENT_BY_TITLE } from '@seine/core';
 
 type Props = {
   children?: any,
@@ -17,8 +17,8 @@ type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default React.forwardRef(function BarChartElementTitleInput(
-  { meta: { index, title }, ...inputProps }: Props,
+const ChartElementTitleInput = React.forwardRef(function ChartElementTitleInput(
+  { meta: title, ...inputProps }: Props,
   ref
 ) {
   const dispatchElements = useChartDispatchElements();
@@ -29,11 +29,13 @@ export default React.forwardRef(function BarChartElementTitleInput(
       value={title}
       onChange={useAutoCallback(({ currentTarget }) =>
         dispatchElements({
-          type: UPDATE_BLOCK_ELEMENT,
-          index,
+          type: UPDATE_BLOCK_ELEMENT_BY_TITLE,
+          title,
           body: { title: currentTarget.value },
         })
       )}
     />
   );
 });
+
+export default ChartElementTitleInput;

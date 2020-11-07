@@ -4,8 +4,8 @@ import { useAutoCallback } from 'hooks.macro';
 
 import {
   SidebarGroup,
-  SidebarInput,
   SidebarHeading,
+  SidebarInput,
   SidebarLabel,
   SidebarSection,
 } from '../ui';
@@ -18,7 +18,7 @@ import useChartBlock from './useChartBlock';
 
 import { Checkbox } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
-import { UPDATE_BLOCK_FORMAT, chartTypes } from '@seine/core';
+import { chartTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 /**
  * @description Chart design panel.
@@ -27,7 +27,7 @@ import { UPDATE_BLOCK_FORMAT, chartTypes } from '@seine/core';
 export default function ChartDesign() {
   const {
     id,
-    format: { kind, units, minValue, maxValue, dx, dy, fraction, legend },
+    format: { kind, units, fraction, legend, xAxis, yAxis },
   } = useChartBlock();
   const dispatch = useBlocksDispatch();
   const formatInput = useAutoCallback(
@@ -53,44 +53,6 @@ export default function ChartDesign() {
           />
         </SidebarGroup>
 
-        <SidebarGroup display={kind !== chartTypes.PIE ? 'flex' : 'none'}>
-          <SidebarLabel>limits</SidebarLabel>
-          <SidebarInput
-            disabled={!id}
-            value={minValue}
-            name={'minValue'}
-            type={'number'}
-            onChange={formatInput}
-          />
-          <SidebarInput
-            disabled={!id}
-            value={maxValue}
-            name={'maxValue'}
-            type={'number'}
-            onChange={formatInput}
-          />
-        </SidebarGroup>
-
-        <SidebarGroup display={kind !== chartTypes.PIE ? 'flex' : 'none'}>
-          <SidebarLabel>step</SidebarLabel>
-          <SidebarInput
-            hidden={kind !== chartTypes.BAR}
-            disabled={!id}
-            value={dx}
-            name={'dx'}
-            type={'number'}
-            onChange={formatInput}
-          />
-          <SidebarInput
-            hidden={kind === chartTypes.BAR}
-            disabled={!id}
-            value={dy}
-            name={'dy'}
-            type={'number'}
-            onChange={formatInput}
-          />
-        </SidebarGroup>
-
         <SidebarGroup>
           <SidebarLabel>fraction</SidebarLabel>
           <SidebarInput
@@ -112,6 +74,32 @@ export default function ChartDesign() {
               dispatch({
                 type: UPDATE_BLOCK_FORMAT,
                 format: { legend: !legend },
+              });
+            })}
+          />
+        </SidebarGroup>
+
+        <SidebarGroup {...(kind !== chartTypes.BAR && { display: 'none' })}>
+          <SidebarLabel>x axis</SidebarLabel>
+          <Checkbox
+            checked={!!xAxis}
+            onChange={useAutoCallback(() => {
+              dispatch({
+                type: UPDATE_BLOCK_FORMAT,
+                format: { xAxis: !xAxis },
+              });
+            })}
+          />
+        </SidebarGroup>
+
+        <SidebarGroup {...(kind === chartTypes.BAR && { display: 'none' })}>
+          <SidebarLabel>y axis</SidebarLabel>
+          <Checkbox
+            checked={!!yAxis}
+            onChange={useAutoCallback(() => {
+              dispatch({
+                type: UPDATE_BLOCK_FORMAT,
+                format: { yAxis: !yAxis },
               });
             })}
           />

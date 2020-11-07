@@ -25,4 +25,4 @@ const Layout = React.forwardRef(function Layout(
   return <Grid {...layoutProps} ref={ref} />;
 });
 
-export default Layout;
+export default (Layout: React.ComponentType<Props>);

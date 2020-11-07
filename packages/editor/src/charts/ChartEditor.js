@@ -5,25 +5,20 @@ import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
 import { useSelectedLayoutItems } from '../layouts';
+import LineChart from '../../../content/src/charts/LineChart';
 
 import PieChartElementTitleInput from './PieChartElementTitleInput';
 import PieChartElementValueInput from './PieChartElementValueInput';
-import ChartGroupElementValueInput from './ChartGroupElementValueInput';
+import ChartElementValueInput from './ChartElementValueInput';
 import ChartGroupTitleInput from './ChartGroupTitleInput';
-import LineChartElementPath from './LineChartElementPath';
 import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
-import ChartLegendEditor from './ChartLegendEditor';
+import ChartElementTitleInput from './ChartElementTitleInput';
 
-import { useResizeTargetRef } from '@seine/styles';
 import {
-  ChartSvg,
-  ChartSvgDefs,
   BarChart,
   ColumnChart,
-  LineChartContent,
   PieChart,
-  titleIdentityElements,
   useChartFormat,
 } from '@seine/content';
 import {
@@ -110,7 +105,6 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
 const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
   const { kind, ...chart } = useChartFormat(props);
   const { item } = useSelectedLayoutItems();
-  const resizeTargetRef = useResizeTargetRef();
 
   const selectedBlock = item && item.id === chart.id ? item : null;
 
@@ -121,51 +115,40 @@ const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
         elementTitleAs: PieChartElementTitleInput,
         elementValueAs: PieChartElementValueInput,
       })}
-      ref={ref}
       as={SelectionFrame}
+      ref={ref}
     />
   ) : kind === chartTypes.COLUMN ? (
     <ColumnChart
       {...chart}
       {...(selectedBlock && {
-        elementValueAs: ChartGroupElementValueInput,
+        elementValueAs: ChartElementValueInput,
         groupTitleAs: ChartGroupTitleInput,
       })}
-      ref={ref}
       as={SelectionFrame}
+      ref={ref}
     />
   ) : kind === chartTypes.BAR ? (
     <BarChart
       {...chart}
       {...(selectedBlock && {
-        elementValueAs: ChartGroupElementValueInput,
+        elementValueAs: ChartElementValueInput,
         groupTitleAs: ChartGroupTitleInput,
       })}
-      ref={ref}
       as={SelectionFrame}
+      ref={ref}
     />
   ) : (
-    <Frame {...chart} ref={ref}>
-      <ChartSvg {...chart} ref={resizeTargetRef}>
-        <ChartSvgDefs />
-        {kind === chartTypes.LINE ? (
-          <LineChartContent
-            {...chart}
-            {...(selectedBlock && {
-              elementPathAs: LineChartElementPath,
-              elementValueAs: ChartGroupElementValueInput,
-              groupTitleAs: ChartGroupTitleInput,
-            })}
-          />
-        ) : null}
-      </ChartSvg>
-      {!!chart.legend && (
-        <ChartLegendEditor
-          elements={titleIdentityElements(chart.elements)}
-          palette={chart.palette}
-        />
-      )}
-    </Frame>
+    <LineChart
+      {...chart}
+      {...(selectedBlock && {
+        elementValueAs: ChartElementValueInput,
+        groupTitleAs: ChartGroupTitleInput,
+        elementTitleAs: ChartElementTitleInput,
+      })}
+      as={SelectionFrame}
+      ref={ref}
+    />
   );
 });
 

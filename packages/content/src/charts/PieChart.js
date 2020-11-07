@@ -2,10 +2,8 @@
 import * as React from 'react';
 import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
-import { useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
-
-import { Item } from '../layouts';
+import { useAutoMemo } from 'hooks.macro';
 
 import {
   defaultChartFraction,
@@ -15,11 +13,19 @@ import {
 } from './constants';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
-import PieChartLegend from './PieChartLegend';
+import ChartLegend from './ChartLegend';
+import ChartItem from './ChartItem';
 
-import type { ChartElement } from '@seine/core';
+import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
+import { ItemProps } from '@seine/content';
 
-type Props = {
+const PieChartItem = styled(ChartItem)`
+  && {
+    padding: ${({ theme }) => theme.spacing(4, 2, 0)};
+  }
+`;
+
+type PieChartPointProps = {
   elements: ChartElement[],
 
   palette?: string[],
@@ -30,7 +36,7 @@ type Props = {
 };
 
 // eslint-disable-next-line
-function PieLabel({
+function PieChartPoint({
   units,
   legend,
   fraction,
@@ -38,7 +44,7 @@ function PieLabel({
   elementTitleAs: ElementTitle,
   elementValueAs: ElementValue,
   ...props
-}) {
+}: PieChartPointProps) {
   const {
     argument,
     value,
@@ -91,12 +97,7 @@ function PieLabel({
   );
 }
 
-const PieChartItem = styled(Item)`
-  && {
-    height: 100% !important;
-    padding: 0;
-  }
-`;
+type Props = ItemProps & ChartBody & $Shape<ChartFormat>;
 
 /**
  * @description Pie chart block renderer.
@@ -130,7 +131,7 @@ const PieChart = React.forwardRef(function PieChart(
   ref
 ): Props {
   return (
-    <PieChartItem forwardedAs={Chart} data={elements} {...itemProps} ref={ref}>
+    <PieChartItem ref={ref} forwardedAs={Chart} data={elements} {...itemProps}>
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
@@ -139,11 +140,11 @@ const PieChart = React.forwardRef(function PieChart(
         legend={legend}
         units={units}
         fraction={fraction}
-        pointComponent={PieLabel}
+        pointComponent={PieChartPoint}
         elementTitleAs={elementTitleAs}
         elementValueAs={elementValueAs}
       />
-      {!!legend && <PieChartLegend />}
+      {!!legend && <ChartLegend />}
     </PieChartItem>
   );
 });
