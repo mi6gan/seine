@@ -2,7 +2,7 @@
   "name": "@seine/styles",
   "main": "./index.cjs.js",
   "module": "./index.es.js",
-  "version": "0.4.42",
+  "version": "0.4.43",
   "description": "Seine styles library.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
