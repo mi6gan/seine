@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react';
 
+import { Item } from '../layouts';
+
 import type { ImageBody, ImageFormat } from '@seine/core';
-import { Item } from '@seine/content';
 import { defaultImageBody, defaultImageFormat } from '@seine/core';
 
 export type Props = ImageBody & ImageFormat & $Shape<HTMLImageElement>;

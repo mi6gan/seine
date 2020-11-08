@@ -12,6 +12,8 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
+import useSelectedLayoutItems from './useSelectedLayoutItems';
+
 import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {
   FormatAlignCenter,
@@ -24,7 +26,6 @@ import {
   WrapText,
 } from '@seine/styles/mui-icons.macro';
 import { defaultFlexFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { useSelectedLayoutItems } from '@seine/editor';
 
 const MAX_SPACING = 19;
 

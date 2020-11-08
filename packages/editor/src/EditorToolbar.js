@@ -18,7 +18,7 @@ import {
   ToolbarSeparator,
 } from './ui';
 import { useSelectedLayoutIds } from './layouts';
-import { EditorActionButtonProps } from './blocks/EditorActionButton';
+import type { EditorActionButtonProps } from './blocks/EditorActionButton';
 import { defaultPageEditor } from './pages/PageEditor';
 
 import { AppBar } from '@seine/styles/mui-core.macro';

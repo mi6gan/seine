@@ -5,6 +5,7 @@ import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
 
+import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
 
 import {
@@ -19,7 +20,6 @@ import {
   DESELECT_BLOCK_ELEMENT,
   SELECT_BLOCK_ELEMENT,
 } from '@seine/core';
-import { useChartDispatchElements } from '@seine/editor';
 
 // eslint-disable-next-line
 const SelectionFrame = React.forwardRef(function SelectionFrame(

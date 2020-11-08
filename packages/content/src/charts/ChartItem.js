@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components/macro';
 
-import { Item } from '@seine/content';
+import { Item } from '../layouts';
 
 const ChartItem = styled(Item)`
   max-height: 100%;
