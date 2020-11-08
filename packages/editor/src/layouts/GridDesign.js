@@ -11,6 +11,8 @@ import {
 } from '../ui';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
+import useSelectedLayoutItems from './useSelectedLayoutItems';
+
 import {
   FormatAlignCenter,
   FormatAlignJustify,
@@ -22,7 +24,6 @@ import {
 } from '@seine/styles/mui-icons.macro';
 import { Box } from '@seine/styles';
 import { defaultGridFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { useSelectedLayoutItems } from '@seine/editor';
 
 const MAX_GAP = 19;
 

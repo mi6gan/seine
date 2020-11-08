@@ -14,7 +14,6 @@ import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartItem from './ChartItem';
 import ChartLegend from './ChartLegend';
-
 import {
   defaultChartDx,
   defaultChartFraction,
@@ -23,7 +22,8 @@ import {
   defaultChartPalette,
   defaultChartUnits,
   defaultChartXAxis,
-} from '@seine/content';
+} from './constants';
+
 import { SvgTypography } from '@seine/styles';
 import type { BlockType, ChartElement } from '@seine/core';
 

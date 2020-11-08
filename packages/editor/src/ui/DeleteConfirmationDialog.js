@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
 import { useBlocksDispatch } from '../blocks';
+import { ClipboardContext } from '../clipboard';
 
 import {
   Button,
@@ -11,7 +12,6 @@ import {
   DialogTitle,
 } from '@seine/styles/mui-core.macro';
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
-import { ClipboardContext } from '@seine/editor';
 
 // eslint-disable-next-line
 export default function DeleteConfirmationDialog() {

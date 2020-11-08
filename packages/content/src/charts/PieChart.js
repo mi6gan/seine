@@ -5,6 +5,8 @@ import { Palette } from '@devexpress/dx-react-chart';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
+import type { ItemProps } from '../layouts';
+
 import {
   defaultChartFraction,
   defaultChartPalette,
@@ -17,7 +19,6 @@ import ChartLegend from './ChartLegend';
 import ChartItem from './ChartItem';
 
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
-import type { ItemProps } from '@seine/content';
 import { SvgTypography } from '@seine/styles';
 
 const PieChartItem = styled(ChartItem)`

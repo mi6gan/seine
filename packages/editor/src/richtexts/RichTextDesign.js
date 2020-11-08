@@ -13,6 +13,7 @@ import {
   ToolbarToggleButtonGroup,
 } from '../ui';
 import { useBlocksDispatch } from '../blocks';
+import { useSelectedLayoutItems } from '../layouts';
 
 import { defaultDraftEditor } from './RichTextEditor';
 
@@ -29,7 +30,6 @@ import {
 } from '@seine/styles/mui-icons.macro';
 import { UPDATE_BLOCK_EDITOR, UPDATE_BLOCK_FORMAT } from '@seine/core';
 import { defaultDraftFormat } from '@seine/content';
-import { useSelectedLayoutItems } from '@seine/editor';
 
 const SvgText = styled.text.attrs({
   textAnchor: 'middle',

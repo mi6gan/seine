@@ -1,7 +1,8 @@
 // @flow
 import { useAutoCallback } from 'hooks.macro';
 
-import { useEditorSelector } from '@seine/editor';
+import { useEditorSelector } from '../blocks';
+
 import { isBlockContainer } from '@seine/core';
 
 // eslint-disable-next-line

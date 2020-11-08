@@ -15,6 +15,7 @@ import {
   ToolbarToggleButtonGroup,
 } from '../ui';
 import { EditorActionIconButton, useBlocksDispatch } from '../blocks';
+import { useSelectedLayoutItems } from '../layouts';
 
 import { defaultTableEditor } from './constants';
 import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
@@ -37,7 +38,6 @@ import {
 import { defaultTableBody, defaultTableCell } from '@seine/content';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 import { SvgIcon } from '@seine/styles/mui-core.macro';
-import { useSelectedLayoutItems } from '@seine/editor';
 
 const StructureActionButton = styled(EditorActionIconButton).attrs({
   borderColor: 'transparent',

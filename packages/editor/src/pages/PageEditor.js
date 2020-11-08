@@ -3,10 +3,11 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
 
+import { useEditorSelector } from '../blocks';
+
 import { Paper } from '@seine/styles/mui-core.macro';
 import { Page } from '@seine/content';
 import type { LayoutProps } from '@seine/content';
-import { useEditorSelector } from '@seine/editor';
 
 type Props = LayoutProps & {
   scale?: number | 'auto',

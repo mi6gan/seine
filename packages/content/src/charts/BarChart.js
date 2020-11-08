@@ -2,7 +2,6 @@
 import * as React from 'react';
 
 import ColumnChart from './ColumnChart';
-
 import {
   defaultChartDx,
   defaultChartFraction,
@@ -11,7 +10,8 @@ import {
   defaultChartPalette,
   defaultChartUnits,
   defaultChartXAxis,
-} from '@seine/content';
+} from './constants';
+
 import type { BlockType, ChartElement } from '@seine/core';
 
 type Props = {

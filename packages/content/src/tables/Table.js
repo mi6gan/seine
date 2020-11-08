@@ -5,15 +5,12 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 
 import { Item } from '../layouts';
 import useBlock from '../useBlock';
+import { RichText, toDraftEditor, toRawContent } from '../richtexts';
+
+import { defaultTableBody } from './constants';
 
 import type { TableBody, TableFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
-import {
-  defaultTableBody,
-  RichText,
-  toDraftEditor,
-  toRawContent,
-} from '@seine/content';
 
 export type Props = TableBody &
   TableFormat & {

@@ -3,11 +3,11 @@ import * as React from 'react';
 
 import { Frame } from '../ui';
 import { useSelectedLayoutItems } from '../layouts';
+import { useBlocksDispatch } from '../blocks';
 
 import type { BlockEditor } from '@seine/core';
 import type { TableProps } from '@seine/content';
 import { Table } from '@seine/content';
-import { useBlocksDispatch } from '@seine/editor';
 
 type Props = TableProps & BlockEditor;
 
