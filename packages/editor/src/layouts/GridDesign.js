@@ -24,27 +24,33 @@ import {
 } from '@seine/styles/mui-icons.macro';
 import { Box } from '@seine/styles';
 import { defaultGridFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import type { GridFormat } from '@seine/core';
 
 const MAX_GAP = 19;
 
+type Props = {
+  defaults?: GridFormat,
+};
+
 /**
- * @description Layout design.
+ * @description Grid design.
+ * @param {Props} props
  * @returns {React.Node}
  */
-export default function GridDesign() {
+export default function GridDesign({ defaults = defaultGridFormat }: Props) {
   const device = useEditorSelector((state) => state.device);
   const { layout: layoutBlock } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const id = layoutBlock && layoutBlock.id;
   const {
-    columnGap = defaultGridFormat.columnGap,
-    rowGap = defaultGridFormat.rowGap,
-    justify = defaultGridFormat.justify,
-    alignItems = defaultGridFormat.alignItems,
+    columnGap = defaults.columnGap,
+    rowGap = defaults.rowGap,
+    justify = defaults.justify,
+    alignItems = defaults.alignItems,
   } =
     layoutBlock && layoutBlock.format
-      ? layoutBlock.format[device] || layoutBlock.format || defaultGridFormat
-      : defaultGridFormat;
+      ? layoutBlock.format[device] || layoutBlock.format || defaults
+      : defaults;
 
   return (
     <>

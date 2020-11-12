@@ -55,9 +55,7 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
   );
   const itemMenu = React.useContext(ItemMenuContext);
   const openItemMenu = useAutoCallback((event) => {
-    if (!selection.includes(id)) {
-      dispatch({ type: SET_BLOCKS_SELECTION, selection: [...selection, id] });
-    }
+    dispatch({ type: SET_BLOCKS_SELECTION, selection: [id] });
     event.preventDefault();
     itemMenu.open(event.currentTarget);
   });

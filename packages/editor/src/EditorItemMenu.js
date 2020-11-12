@@ -1,9 +1,8 @@
 // @flow
 import * as React from 'react';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
-import styled from 'styled-components/macro';
 
-import { ToolbarMenu } from './ui';
+import { ToolbarMenu, MenuButton } from './ui';
 import { useBlocksDispatch, useEditorSelector } from './blocks';
 import {
   CreateLayoutButton,
@@ -12,8 +11,6 @@ import {
 } from './layouts';
 import { ClipboardContext } from './clipboard';
 
-import { MenuItem } from '@seine/styles/mui-core.macro';
-import { Box } from '@seine/styles';
 import type { Block } from '@seine/core';
 import {
   cloneBlock,
@@ -22,12 +19,6 @@ import {
   DELETE_SELECTED_BLOCKS,
   isBlockContainer,
 } from '@seine/core';
-
-const MenuButton = styled(Box).attrs(({ disabled }) => ({
-  as: MenuItem,
-  color: disabled ? 'grey.500' : 'inherit',
-  width: 1,
-}))``;
 
 type ItemMenuType = {
   isOpen: boolean,
@@ -124,11 +115,18 @@ function usePasteCallback() {
   });
 }
 
+type Props = {
+  menuButtonAs?: React.ComponentType,
+};
+
 /**
  * @description Selected item context menu.
+ * @param {Props} props
  * @returns {React.Node}
  */
-export default function EditorItemMenu() {
+export default function EditorItemMenu({
+  menuButtonAs: ItemMenuButton = MenuButton,
+}: Props) {
   const {
     pop: clipboardPop,
     push: clipboardPush,
@@ -154,7 +152,7 @@ export default function EditorItemMenu() {
       onClick={close}
     >
       <CreateLayoutButton
-        as={MenuButton}
+        as={ItemMenuButton}
         disabled={
           selectionBlocks.length < 2 ||
           selectionBlocks.some(
@@ -168,28 +166,28 @@ export default function EditorItemMenu() {
         Create layout
       </CreateLayoutButton>
 
-      <MenuButton
+      <ItemMenuButton
         disabled={selectionBlocks.length === 0}
         onClick={useCopyCallback()}
       >
         Copy
-      </MenuButton>
+      </ItemMenuButton>
 
-      <MenuButton
+      <ItemMenuButton
         disabled={selectionBlocks.length === 0}
         onClick={useCutCallback()}
       >
         Cut
-      </MenuButton>
+      </ItemMenuButton>
 
-      <MenuButton
+      <ItemMenuButton
         disabled={!isContainer || clipboard.type !== CREATE_BLOCK}
         onClick={usePasteCallback()}
       >
         Paste
-      </MenuButton>
+      </ItemMenuButton>
 
-      <DeleteBlockButton as={MenuItem} onClick={close}>
+      <DeleteBlockButton as={ItemMenuButton} onClick={close}>
         Delete
       </DeleteBlockButton>
     </ToolbarMenu>

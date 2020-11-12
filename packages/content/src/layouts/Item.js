@@ -15,6 +15,7 @@ const Item = styled.div.attrs((format: Props) => ({
 }))`
   position: relative;
   box-sizing: border-box;
+  width: 100%;
   ${({ maxWidth, minWidth }) => ({
     minWidth,
     maxWidth,

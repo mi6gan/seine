@@ -21,6 +21,8 @@ import {
   SidebarInput,
   SidebarSelect,
   ToolbarToggleButtonGroup,
+  EditorItemMenu,
+  MenuButton,
 } from '@seine/editor';
 import { blockTypes } from '@seine/core';
 
@@ -39,7 +41,9 @@ function TutorialProvider({ children, scenario }) {
         ...scenario[index],
         find: (fn) => scenario.find(fn),
         back: () => setIndex(index - 1),
-        next: () => setIndex(index + 1),
+        next: () => {
+          setTimeout(() => setIndex(index + 1), 500);
+        },
       })}
     >
       {children}
@@ -166,7 +170,7 @@ const TutorialItemDesignInput = ({ name, onChange, ...props }) => {
 };
 
 // eslint-disable-next-line
-const TutorialItemDesignSelect = ({ name, ...props }) => {
+const TutorialItemDesignSelect = ({ name, onChange, ...props }) => {
   const manualRef = React.useRef(null);
   return (
     <TutorialTooltip ref={manualRef} anchor={`design#select(name=${name})`}>
@@ -180,6 +184,7 @@ const TutorialItemDesignSelect = ({ name, ...props }) => {
           ) {
             manualRef.current.next();
           }
+          onChange && onChange(event);
         })}
       />
     </TutorialTooltip>
@@ -222,7 +227,39 @@ const TutorialLayoutToggleButton = ({ name, onChange, ...props }) => {
 
 // eslint-disable-next-line
 const TutorialLayoutDesign = (props) => {
-  return <LayoutDesign {...props} toggleAs={TutorialLayoutToggleButton} />;
+  return (
+    <LayoutDesign
+      {...props}
+      toggleAs={TutorialLayoutToggleButton}
+      selectAs={TutorialItemDesignSelect}
+    />
+  );
+};
+
+// eslint-disable-next-line
+const TutorialItemMenuButton = ({ onClick, ...props }) => {
+  const manualRef = React.useRef(null);
+  return (
+    <TutorialTooltip
+      ref={manualRef}
+      anchor={`item-menu#${
+        typeof props.children === 'string' ? props.children : 'null'
+      }`}
+    >
+      <MenuButton
+        {...props}
+        onClick={useAutoCallback((event) => {
+          manualRef.current.next();
+          onClick && onClick(event);
+        })}
+      />
+    </TutorialTooltip>
+  );
+};
+
+// eslint-disable-next-line
+const TutorialItemMenu = (props) => {
+  return <EditorItemMenu {...props} menuButtonAs={TutorialItemMenuButton} />;
 };
 
 const blockRenderMap = {
@@ -265,6 +302,7 @@ export default function TutorialStory({ scenario, blocks }) {
             layoutDesignAs={TutorialLayoutDesign}
           />
         ))}
+        itemMenuAs={TutorialItemMenu}
       >
         {blocks}
       </Editor>

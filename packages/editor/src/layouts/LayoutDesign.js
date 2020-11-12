@@ -3,11 +3,11 @@ import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
 import {
-  SidebarSelectLabel,
   SidebarGroup,
   SidebarHeading,
   SidebarLabel,
   SidebarSection,
+  SidebarSelect,
 } from '../ui';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
@@ -15,7 +15,6 @@ import useSelectedLayoutItems from './useSelectedLayoutItems';
 import GridDesign from './GridDesign';
 import FlexDesign from './FlexDesign';
 
-import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {
   defaultLayoutFormat,
   layoutTypes,
@@ -23,10 +22,11 @@ import {
 } from '@seine/core';
 
 // eslint-disable-next-line
-const LayoutDesign = React.forwardRef(function LayoutDesign(
-  { defaults = defaultLayoutFormat, ...props },
-  ref
-) {
+const LayoutDesign = React.forwardRef(function LayoutDesign(props, ref) {
+  const {
+    defaults = defaultLayoutFormat,
+    selectAs: Select = SidebarSelect,
+  } = props;
   const { layout: layoutBlock } = useSelectedLayoutItems();
   const device = useEditorSelector((state) => state.device);
   const id = layoutBlock && layoutBlock.id;
@@ -44,6 +44,8 @@ const LayoutDesign = React.forwardRef(function LayoutDesign(
           <SidebarLabel>type</SidebarLabel>
           <Select
             value={kind}
+            name={'kind'}
+            native
             onChange={useAutoCallback((e) => {
               dispatch({
                 id,
@@ -52,12 +54,8 @@ const LayoutDesign = React.forwardRef(function LayoutDesign(
               });
             })}
           >
-            <MenuItem value={layoutTypes.FLEX}>
-              <SidebarSelectLabel>flex</SidebarSelectLabel>
-            </MenuItem>
-            <MenuItem value={layoutTypes.GRID}>
-              <SidebarSelectLabel>grid</SidebarSelectLabel>
-            </MenuItem>
+            <option value={layoutTypes.FLEX}>flex</option>
+            <option value={layoutTypes.GRID}>grid</option>
           </Select>
         </SidebarGroup>
 

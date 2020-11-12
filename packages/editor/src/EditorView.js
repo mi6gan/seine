@@ -60,6 +60,7 @@ type Props = {
   designAs?: React.ComponentType,
   toolbarAs?: React.ComponentType,
   treeAs?: React.ComponentType,
+  itemMenuAs?: React.ComponentType,
 };
 
 export type { Props as EditorViewProps };
@@ -75,6 +76,7 @@ export default function EditorView({
   designAs: Design = EditorDesign,
   toolbarAs: Toolbar = EditorToolbar,
   treeAs: Tree = EditorTree,
+  itemMenuAs: ItemMenu = EditorItemMenu,
 }: Props) {
   const dispatch = useBlocksDispatch();
   const blocks = useEditorSelector(allBlocksSelector);
@@ -85,7 +87,7 @@ export default function EditorView({
   return (
     <>
       <DeleteConfirmationDialog />
-      <EditorItemMenu />
+      <ItemMenu />
       <Toolbar />
 
       <Box

@@ -22,6 +22,9 @@ const StyledToolbarButton = styled(MuiButton).attrs(
     border: none;
     border-radius: 0;
   }
+  &:disabled {
+    display: none;
+  }
 `;
 
 // eslint-disable-next-line
