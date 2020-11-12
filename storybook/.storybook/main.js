@@ -3,6 +3,7 @@ module.exports = {
   addons: [
     require.resolve('./yarn-preset.js'),
     '@storybook/addon-viewport',
-    '@storybook/addon-actions'
+    '@storybook/addon-actions',
+    '@storybook/addon-docs',
   ],
 };

@@ -58,6 +58,7 @@ export const defaultGridFormat = {
   rows: '',
   justify: 'auto',
   alignItems: 'auto',
+  minWidth: '100%',
 };
 
 export const defaultLayoutFormat = defaultGridFormat;

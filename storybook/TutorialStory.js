@@ -132,7 +132,13 @@ function TutorialBlock({ type, kind, anchor, ...props }) {
 
   return (
     <TutorialTooltip ref={manualRef} anchor={`block#${props.id}`}>
-      <Block type={type} kind={kind} onClick={next} {...props} />
+      <Block
+        type={type}
+        kind={kind}
+        onClick={next}
+        onMouseDown={next}
+        {...props}
+      />
     </TutorialTooltip>
   );
 }
