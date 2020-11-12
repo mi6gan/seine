@@ -158,6 +158,7 @@ export function reduceBlocks(
     case CREATE_BLOCK:
       return {
         ...state,
+        selection: [action.block.id],
         blocks: [
           ...state.blocks,
           action.id ? { ...action.block, parent_id: action.id } : action.block,

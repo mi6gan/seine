@@ -81,7 +81,8 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           >
             <MenuIcon />
           </ToolbarButton>
-          <ToolbarSeparator />
+
+          {parentId !== null && <ToolbarSeparator />}
 
           <ToolbarButton
             as={ActionButton}
@@ -97,7 +98,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
             <BlockTypeIcon type={blockTypes.RICH_TEXT} />
           </ToolbarButton>
 
-          <ToolbarSeparator />
+          {parentId !== null && <ToolbarSeparator />}
 
           <ToolbarButton
             as={ActionButton}
@@ -124,7 +125,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
             <BlockTypeIcon type={blockTypes.TABLE} />
           </ToolbarButton>
 
-          <ToolbarSeparator />
+          {parentId !== null && <ToolbarSeparator />}
 
           <ToolbarButton
             as={ActionButton}

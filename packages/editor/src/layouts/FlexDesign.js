@@ -6,7 +6,7 @@ import {
   SidebarGroup,
   SidebarInput,
   SidebarLabel,
-  SidebarSelectLabel,
+  SidebarSelect,
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
@@ -14,7 +14,6 @@ import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import useSelectedLayoutItems from './useSelectedLayoutItems';
 
-import { MenuItem, Select } from '@seine/styles/mui-core.macro';
 import {
   FormatAlignCenter,
   FormatAlignJustify,
@@ -25,12 +24,15 @@ import {
   VerticalAlignTop,
   WrapText,
 } from '@seine/styles/mui-icons.macro';
+import type { FlexFormat } from '@seine/core';
 import { defaultFlexFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 const MAX_SPACING = 19;
 
 type Props = {
+  defaults?: FlexFormat,
   inputAs?: React.ComponentType,
+  toggleAs?: React.ComponentType,
 };
 
 /**
@@ -39,7 +41,9 @@ type Props = {
  * @returns {React.Node}
  */
 export default function FlexDesign({
+  defaults = defaultFlexFormat,
   inputAs: Input = SidebarInput,
+  selectAs: Select = SidebarSelect,
   toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
 }: Props) {
   const device = useEditorSelector((state) => state.device);
@@ -47,15 +51,15 @@ export default function FlexDesign({
   const dispatch = useBlocksDispatch();
   const id = layoutBlock && layoutBlock.id;
   const {
-    spacing = defaultFlexFormat.spacing,
-    justify = defaultFlexFormat.justify,
-    alignItems = defaultFlexFormat.alignItems,
-    direction = defaultFlexFormat.direction,
-    wrap = defaultFlexFormat.wrap,
+    spacing = defaults.spacing,
+    justify = defaults.justify,
+    alignItems = defaults.alignItems,
+    direction = defaults.direction,
+    wrap = defaults.wrap,
   } =
     layoutBlock && layoutBlock.format
-      ? layoutBlock.format[device] || layoutBlock.format || defaultFlexFormat
-      : defaultFlexFormat;
+      ? layoutBlock.format[device] || layoutBlock.format || defaults
+      : defaults;
   const iconProps = direction === 'column' && {
     style: { transform: 'rotate(-90deg)' },
   };
@@ -80,6 +84,8 @@ export default function FlexDesign({
       <SidebarGroup>
         <SidebarLabel>Direction</SidebarLabel>
         <Select
+          name={'direction'}
+          native
           value={direction}
           onChange={useAutoCallback((event) =>
             dispatch({
@@ -91,12 +97,8 @@ export default function FlexDesign({
             })
           )}
         >
-          <MenuItem value={'row'}>
-            <SidebarSelectLabel>Row</SidebarSelectLabel>
-          </MenuItem>
-          <MenuItem value={'column'}>
-            <SidebarSelectLabel>Column</SidebarSelectLabel>
-          </MenuItem>
+          <option value={'row'}>Row</option>
+          <option value={'column'}>Column</option>
         </Select>
       </SidebarGroup>
 
