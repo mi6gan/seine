@@ -5,8 +5,7 @@ import { useEditorSelector, defaultEditorSelector } from '../blocks';
 
 import { defaultChartEditor } from './constants';
 
-import { blockTypes } from '@seine/core';
-import { defaultChartFormat, useChartFormat } from '@seine/content';
+import { blockTypes, defaultChartFormat, normalizeBlock } from '@seine/core';
 
 const deviceSelector = (state) => state.device;
 
@@ -21,10 +20,12 @@ export default function useChartBlock(blocksSelector = defaultEditorSelector) {
     editor = defaultChartEditor,
   } = block;
 
-  const format = useChartFormat({ ...defaultFormat, ...deviceFormat });
-  return useAutoMemo({
-    ...block,
-    format,
-    editor,
-  });
+  return useAutoMemo(
+    normalizeBlock({
+      ...block,
+      ...block,
+      format: { ...deviceFormat, ...defaultFormat },
+      editor,
+    })
+  );
 }

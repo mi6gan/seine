@@ -2,7 +2,7 @@
   "name": "@seine/editor",
   "main": "./index.cjs.js",
   "module": "./index.es.js",
-  "version": "0.4.47",
+  "version": "0.4.48",
   "description": "React components for editing block contents.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
@@ -31,8 +31,8 @@
     "@material-ui/styles": "^4.9",
     "d3-interpolate": "1.4",
     "draft-js": "^0.11.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {

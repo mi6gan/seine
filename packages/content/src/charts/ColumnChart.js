@@ -14,6 +14,7 @@ import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartItem from './ChartItem';
 import ChartLegend from './ChartLegend';
+
 import {
   defaultChartDx,
   defaultChartFraction,
@@ -22,10 +23,9 @@ import {
   defaultChartPalette,
   defaultChartUnits,
   defaultChartXAxis,
-} from './constants';
-
+} from '@seine/core';
 import { SvgTypography } from '@seine/styles';
-import type { BlockType, ChartElement } from '@seine/core';
+import type { ChartElement } from '@seine/core';
 
 const ColumnChartItem = styled(ChartItem)`
   && {
@@ -41,17 +41,19 @@ function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
   return (
     <>
       <BarSeries.Point {...props} val={val + (rotated ? -14 : 10)} />
-      <ChartLabel
-        as={SvgTypography}
-        dominantBaseline={'middle'}
-        textAnchor={'middle'}
-        meta={{ value, index: index * valueFieldsLength + seriesIndex }}
-        x={x}
-        y={y}
-      >
-        <ChartValue fraction={fraction}>{value}</ChartValue>
-        {units}
-      </ChartLabel>
+      {(value || rotated) && (
+        <ChartLabel
+          as={SvgTypography}
+          dominantBaseline={'middle'}
+          textAnchor={'middle'}
+          meta={{ value, index: index * valueFieldsLength + seriesIndex }}
+          x={x}
+          y={y}
+        >
+          <ChartValue fraction={fraction}>{value}</ChartValue>
+          {units}
+        </ChartLabel>
+      )}
     </>
   );
 }
@@ -73,8 +75,6 @@ type Props = {
   palette?: string[],
   units?: string,
   xAxis?: boolean,
-
-  parentType: BlockType,
 };
 
 /**
@@ -100,7 +100,6 @@ const ColumnChart = React.forwardRef(function ColumnChart(
     paletteKey,
     yAxis,
     textAlignment,
-    parentType,
 
     ...itemProps
   },

@@ -5,7 +5,6 @@ import styled from 'styled-components/macro';
 import { Item } from '../layouts';
 
 import PieChart from './PieChart';
-import useChartFormat from './useChartFormat';
 import ColumnChart from './ColumnChart';
 import BarChart from './BarChart';
 import LineChart from './LineChart';
@@ -13,7 +12,7 @@ import LineChart from './LineChart';
 import type { ChartBody, ChartFormat } from '@seine/core';
 import { chartTypes } from '@seine/core';
 
-type Props = $Shape<ChartFormat> & ChartBody & { parentType: string };
+type Props = $Shape<ChartFormat> & ChartBody;
 
 const ChartItem = styled(Item)`
   display: flex;
@@ -25,9 +24,7 @@ const ChartItem = styled(Item)`
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Chart(props: Props) {
-  const { kind, ...chartProps } = useChartFormat(props);
-
+export default function Chart({ kind, ...chartProps }: Props) {
   return kind === chartTypes.PIE ? (
     <PieChart {...chartProps} as={ChartItem} />
   ) : kind === chartTypes.COLUMN ? (

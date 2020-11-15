@@ -2,12 +2,16 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { SidebarSelectLabel, SidebarGroup, SidebarLabel } from '../ui';
+import { SidebarGroup, SidebarLabel, SidebarSelectLabel } from '../ui';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import { MenuItem, Select } from '@seine/styles/mui-core.macro';
-import { blockTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { chartPaletteKeyValues, defaultChartFormat } from '@seine/content';
+import {
+  blockTypes,
+  chartPaletteKeyValues,
+  defaultChartFormat,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 
 /**
  * @description Buttons to select chart's default palette

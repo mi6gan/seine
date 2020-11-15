@@ -8,13 +8,7 @@ import { Frame } from '../ui';
 import useChartDispatchElements from './useChartDispatchElements';
 import type { ChartEditorProps as Props } from './types';
 
-import {
-  BarChart,
-  ColumnChart,
-  PieChart,
-  LineChart,
-  useChartFormat,
-} from '@seine/content';
+import { BarChart, ColumnChart, PieChart, LineChart } from '@seine/content';
 import {
   chartTypes,
   DESELECT_BLOCK_ELEMENT,
@@ -96,17 +90,18 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
  * @param {Props} props
  * @returns {React.Node}
  */
-const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
-  const { kind, ...chart } = useChartFormat(props);
-
+const ChartEditor = React.forwardRef(function ChartEditor(
+  { kind, ...chartProps }: Props,
+  ref
+) {
   return kind === chartTypes.PIE ? (
-    <PieChart {...chart} as={SelectionFrame} ref={ref} />
+    <PieChart {...chartProps} as={SelectionFrame} ref={ref} />
   ) : kind === chartTypes.COLUMN ? (
-    <ColumnChart {...chart} as={SelectionFrame} ref={ref} />
+    <ColumnChart {...chartProps} as={SelectionFrame} ref={ref} />
   ) : kind === chartTypes.BAR ? (
-    <BarChart {...chart} as={SelectionFrame} ref={ref} />
+    <BarChart {...chartProps} as={SelectionFrame} ref={ref} />
   ) : (
-    <LineChart {...chart} as={SelectionFrame} ref={ref} />
+    <LineChart {...chartProps} as={SelectionFrame} ref={ref} />
   );
 });
 

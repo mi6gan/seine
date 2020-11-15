@@ -6,31 +6,29 @@ import type { ChartBody, ChartElement, ChartFormat } from './charts';
 import { CHART } from './charts';
 import type { RichTextBody, RichTextFormat } from './richText';
 import { RICH_TEXT } from './richText';
-import type { ImageBody, ImageFormat } from './image';
-import { IMAGE } from './image';
+import type { ImageBody, ImageFormat } from './images';
+import { Images } from './images';
 import type { PageBody, PageFormat } from './page';
 import { PAGE } from './page';
 import type { TableBody, TableFormat } from './tables';
 import { TABLE } from './tables';
-import type { ItemBody, ItemFormat } from './item';
-import type { LayoutBody, LayoutFormat } from './layout';
+import type { ItemBody, LayoutBody, LayoutFormat } from './layout';
 import { LAYOUT } from './layout';
 
-export * from './item';
 export * from './charts';
 export * from './richText';
 export * from './layout';
-export * from './image';
+export * from './images';
 export * from './page';
 export * from './tables';
 
 export const blockTypes = {
   CHART,
-  RICH_TEXT,
-  IMAGE,
-  PAGE,
-  TABLE,
+  IMAGE: Images,
   LAYOUT,
+  PAGE,
+  RICH_TEXT,
+  TABLE,
 };
 
 export type ScreenDevice = 'any' | 'mobile';
@@ -42,15 +40,13 @@ export type BlockType = $Values<typeof blockTypes>;
 export type BlockBody = ItemBody &
   (ChartBody | RichTextBody | ImageBody | PageBody | TableBody | LayoutBody);
 
-export type BlockFormat = ItemFormat &
-  (
-    | ChartFormat
-    | RichTextFormat
-    | ImageFormat
-    | PageFormat
-    | TableFormat
-    | LayoutFormat
-  );
+export type BlockFormat =
+  | ChartFormat
+  | RichTextFormat
+  | ImageFormat
+  | PageFormat
+  | TableFormat
+  | LayoutFormat;
 
 export type BlockId = string | null;
 

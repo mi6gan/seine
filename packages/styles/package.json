@@ -2,7 +2,7 @@
   "name": "@seine/styles",
   "main": "./index.cjs.js",
   "module": "./index.es.js",
-  "version": "0.4.47",
+  "version": "0.4.48",
   "description": "Seine styles library.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
@@ -18,8 +18,8 @@
     "@material-ui/icons": "^4.9",
     "@material-ui/styles": "^4.9",
     "@material-ui/system": "^4.9",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
