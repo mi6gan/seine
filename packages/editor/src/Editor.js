@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { useAutoMemo } from 'hooks.macro';
 
 import { ItemMenuProvider } from './EditorItemMenu';
 import defaultTheme from './defaultTheme';
@@ -10,7 +11,7 @@ import type { EditorViewProps } from './EditorView';
 
 import { ThemeProvider } from '@seine/styles';
 import type { BlockType } from '@seine/core';
-import { blockTypes, createBlock } from '@seine/core';
+import { blockTypes, createBlock, normalizeBlock } from '@seine/core';
 
 type Props = EditorViewProps & {
   blockRenderMap?: (BlockType) => React.Node,
@@ -27,7 +28,7 @@ export default function Editor({
 }: Props) {
   return (
     <ThemeProvider theme={theme}>
-      <EditorProvider blocks={children}>
+      <EditorProvider blocks={useAutoMemo(children.map(normalizeBlock))}>
         <ClipboardProvider>
           <ItemMenuProvider>
             <View {...viewProps} />

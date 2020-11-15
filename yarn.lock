@@ -1782,7 +1782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@devexpress/dx-react-chart-material-ui@npm:^2.7.1":
+"@devexpress/dx-react-chart-material-ui@npm:2.7.2, @devexpress/dx-react-chart-material-ui@npm:^2.7.1":
   version: 2.7.2
   resolution: "@devexpress/dx-react-chart-material-ui@npm:2.7.2"
   dependencies:
@@ -1799,7 +1799,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@devexpress/dx-react-chart@npm:^2.7.1":
+"@devexpress/dx-react-chart@npm:2.7.2, @devexpress/dx-react-chart@npm:^2.7.1":
   version: 2.7.2
   resolution: "@devexpress/dx-react-chart@npm:2.7.2"
   dependencies:
@@ -1814,7 +1814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@devexpress/dx-react-core@npm:^2.7.1":
+"@devexpress/dx-react-core@npm:2.7.2, @devexpress/dx-react-core@npm:^2.7.1":
   version: 2.7.2
   resolution: "@devexpress/dx-react-core@npm:2.7.2"
   dependencies:
@@ -2377,8 +2377,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@seine/content@workspace:packages/content"
   dependencies:
-    "@devexpress/dx-react-chart": ^2.7.1
-    "@devexpress/dx-react-chart-material-ui": ^2.7.1
+    "@devexpress/dx-react-chart": 2.7.2
+    "@devexpress/dx-react-chart-material-ui": 2.7.2
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
     "@material-ui/styles": ^4.9
@@ -2393,17 +2393,17 @@ __metadata:
     rollup: ^2.18.2
     styled-components: ^5.2.0
   peerDependencies:
-    "@devexpress/dx-chart-core": ^2.7.1
-    "@devexpress/dx-react-chart": ^2.7.1
-    "@devexpress/dx-react-chart-material-ui": ^2.7.1
-    "@devexpress/dx-react-core": ^2.7.1
+    "@devexpress/dx-chart-core": 2.7.2
+    "@devexpress/dx-react-chart": 2.7.2
+    "@devexpress/dx-react-chart-material-ui": 2.7.2
+    "@devexpress/dx-react-core": 2.7.2
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
     "@material-ui/styles": ^4.9
     d3-interpolate: 1.4
     draft-js: ^0.11.0
-    react: ^16.10.2
-    react-dom: ^16.10.2
+    react: ^16.13.1
+    react-dom: ^16.13.1
     styled-components: ^5.2.0
   languageName: unknown
   linkType: soft
@@ -2465,8 +2465,8 @@ __metadata:
     "@material-ui/styles": ^4.9
     d3-interpolate: 1.4
     draft-js: ^0.11.0
-    react: ^16.10.2
-    react-dom: ^16.10.2
+    react: ^16.13.1
+    react-dom: ^16.13.1
     styled-components: ^5.2.0
   languageName: unknown
   linkType: soft
@@ -2497,8 +2497,8 @@ __metadata:
     "@material-ui/icons": ^4.9
     "@material-ui/styles": ^4.9
     "@material-ui/system": ^4.9
-    react: ^16.10.2
-    react-dom: ^16.10.2
+    react: ^16.13.1
+    react-dom: ^16.13.1
     styled-components: ^5.2.0
   languageName: unknown
   linkType: soft
@@ -14877,7 +14877,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-dom@npm:*, react-dom@npm:^16.10.2, react-dom@npm:^16.8.3":
+"react-dom@npm:*, react-dom@npm:^16.8.3":
   version: 16.13.1
   resolution: "react-dom@npm:16.13.1"
   dependencies:
@@ -14888,6 +14888,20 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ^16.13.1
   checksum: fb5c3ad41360c6a8674f33916aa895d05e79d063d31a6963074220c1cda9e07e880799d01670b4ebd570b4d3457584f13cc898b5033a05641e8e801f5611607e
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:^16.13.1":
+  version: 16.14.0
+  resolution: "react-dom@npm:16.14.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    prop-types: ^15.6.2
+    scheduler: ^0.19.1
+  peerDependencies:
+    react: ^16.14.0
+  checksum: a13558f0e7c6d1a98684214460bcd4b9005500015b5048fb1b0d2856786b8764dbc713e6b078a5b1a56e17866400e1d862183c7a0a513ae8351de11f6f6749d2
   languageName: node
   linkType: hard
 
@@ -14968,17 +14982,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-is@npm:*, react-is@npm:^16.7.0, react-is@npm:^16.8.0, react-is@npm:^16.8.1, react-is@npm:^16.8.6":
+"react-is@npm:*, react-is@npm:^16.13.1, react-is@npm:^16.7.0, react-is@npm:^16.8.0, react-is@npm:^16.8.1, react-is@npm:^16.8.6":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 11bcf1267a314a522615f626f3ce3727a3a24cdbf61c4d452add3550a7875326669631326cfb1ba3e92b6f72244c32ffecf93ad21c0cad8455d3e169d0e3f060
-  languageName: node
-  linkType: hard
-
-"react-is@npm:^17.0.1":
-  version: 17.0.1
-  resolution: "react-is@npm:17.0.1"
-  checksum: 5a83dfc78e7adcb93d632bf367b0733db650e3abd2e9c57c33b87e50d201212c1884b0d7bcf13e692f1556189fa1b87f9f3e0ba10fe858fd6aebe83ed4fcd1ea
   languageName: node
   linkType: hard
 
@@ -15049,17 +15056,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-test-renderer@npm:^16.10.2":
-  version: 16.13.1
-  resolution: "react-test-renderer@npm:16.13.1"
+"react-test-renderer@npm:^16.13.1":
+  version: 16.14.0
+  resolution: "react-test-renderer@npm:16.14.0"
   dependencies:
     object-assign: ^4.1.1
     prop-types: ^15.6.2
     react-is: ^16.8.6
     scheduler: ^0.19.1
   peerDependencies:
-    react: ^16.13.1
-  checksum: e9c3c068d09a4252103eed270635d05897e23cbb86c6f0f74beced9345ed1b94a0fff44f16f97526e6f7a8337669156616e1e02eacb6d7b8f40295c92d91be12
+    react: ^16.14.0
+  checksum: 0905787bfd68865098743ca2d18d874ef09929b80730131c017ced55bcf7082e84f66ec76685799a759812d376de6db718f6d643a2705779a491003d01d45956
   languageName: node
   linkType: hard
 
@@ -15091,7 +15098,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react@npm:*, react@npm:^16.10.2, react@npm:^16.8.3":
+"react@npm:*, react@npm:^16.8.3":
   version: 16.13.1
   resolution: "react@npm:16.13.1"
   dependencies:
@@ -15099,6 +15106,17 @@ fsevents@^1.2.7:
     object-assign: ^4.1.1
     prop-types: ^15.6.2
   checksum: 13dcc9ba8a7521ecc3d7e69998dbc5703ae9515308d06a94a474ad34b42f1fc109372265e924a8c9b11d20fa1828407c290b8f61617c36734c4ca907ae7e5f45
+  languageName: node
+  linkType: hard
+
+"react@npm:^16.13.1":
+  version: 16.14.0
+  resolution: "react@npm:16.14.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    prop-types: ^15.6.2
+  checksum: 2769580b22952a52de3b5b2ea0f09cb904030b762d759739f49ab4da0b1f550e5c087ce3728c4be90f423d09481e0c075483c0c30b1ea9c549445c8b12020fd3
   languageName: node
   linkType: hard
 
@@ -15931,10 +15949,10 @@ fsevents@^1.2.7:
   resolution: "seine-storybook@portal:./storybook::locator=seine%40workspace%3A."
   dependencies:
     "@babel/core": 7
-    "@devexpress/dx-chart-core": ^2.7.1
-    "@devexpress/dx-react-chart": ^2.7.1
-    "@devexpress/dx-react-chart-material-ui": ^2.7.1
-    "@devexpress/dx-react-core": ^2.7.1
+    "@devexpress/dx-chart-core": 2.7.2
+    "@devexpress/dx-react-chart": 2.7.2
+    "@devexpress/dx-react-chart-material-ui": 2.7.2
+    "@devexpress/dx-react-core": 2.7.2
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
     "@material-ui/styles": ^4.9
@@ -15976,10 +15994,11 @@ fsevents@^1.2.7:
     identity-obj-proxy: ^3.0.0
     pnp-webpack-plugin: ^1.6.4
     prettier: ^1.13.0
-    react: ^16.10.2
+    react: ^16.13.1
     react-app-polyfill: ^1.0.2
-    react-dom: ^16.10.2
-    react-test-renderer: ^16.10.2
+    react-dom: ^16.13.1
+    react-is: ^16.13.1
+    react-test-renderer: ^16.13.1
     serve: ^11.1.0
     styled-components: ^5.2.0
     uuid: ^3.4.0
@@ -15992,10 +16011,10 @@ fsevents@^1.2.7:
   resolution: "seine-storybook@workspace:storybook"
   dependencies:
     "@babel/core": 7
-    "@devexpress/dx-chart-core": ^2.7.1
-    "@devexpress/dx-react-chart": ^2.7.1
-    "@devexpress/dx-react-chart-material-ui": ^2.7.1
-    "@devexpress/dx-react-core": ^2.7.1
+    "@devexpress/dx-chart-core": 2.7.2
+    "@devexpress/dx-react-chart": 2.7.2
+    "@devexpress/dx-react-chart-material-ui": 2.7.2
+    "@devexpress/dx-react-core": 2.7.2
     "@material-ui/core": ^4.9
     "@material-ui/icons": ^4.9
     "@material-ui/styles": ^4.9
@@ -16037,11 +16056,11 @@ fsevents@^1.2.7:
     identity-obj-proxy: ^3.0.0
     pnp-webpack-plugin: ^1.6.4
     prettier: ^1.13.0
-    react: ^16.10.2
+    react: ^16.13.1
     react-app-polyfill: ^1.0.2
-    react-dom: ^16.10.2
-    react-is: ^17.0.1
-    react-test-renderer: ^16.10.2
+    react-dom: ^16.13.1
+    react-is: ^16.13.1
+    react-test-renderer: ^16.13.1
     serve: ^11.1.0
     styled-components: ^5.2.0
     uuid: ^3.4.0
@@ -16090,8 +16109,8 @@ fsevents@^1.2.7:
     minimist: ^1.2.0
     npm-run-all: ^4.1.5
     prettier: ^1.13.0
-    react: ^16.10.2
-    react-dom: ^16.10.2
+    react: ^16.13.1
+    react-dom: ^16.13.1
     rollup: ^2.18.2
     rollup-plugin-cleanup: ^3.1.1
     rollup-plugin-flow-entry: ^0.3.1
@@ -17021,6 +17040,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"supports-color@npm:*, supports-color@npm:^5.3.0, supports-color@npm:^5.5.0":
+  version: 5.5.0
+  resolution: "supports-color@npm:5.5.0"
+  dependencies:
+    has-flag: ^3.0.0
+  checksum: edacee6425498440744c418be94b0660181aad2a1828bcf2be85c42bd385da2fd8b2b358d9b62b0c5b03ff5cd3e992458d7b8f879d9fb42f2201fe05a4848a29
+  languageName: node
+  linkType: hard
+
 "supports-color@npm:^2.0.0":
   version: 2.0.0
   resolution: "supports-color@npm:2.0.0"
@@ -17037,15 +17065,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^5.3.0, supports-color@npm:^5.5.0":
-  version: 5.5.0
-  resolution: "supports-color@npm:5.5.0"
-  dependencies:
-    has-flag: ^3.0.0
-  checksum: edacee6425498440744c418be94b0660181aad2a1828bcf2be85c42bd385da2fd8b2b358d9b62b0c5b03ff5cd3e992458d7b8f879d9fb42f2201fe05a4848a29
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^6.1.0":
   version: 6.1.0
   resolution: "supports-color@npm:6.1.0"
@@ -17055,7 +17074,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^7.0.0, supports-color@npm:^7.1.0, supports-color@npm:^7.2.0":
+"supports-color@npm:^7.0.0, supports-color@npm:^7.1.0":
   version: 7.2.0
   resolution: "supports-color@npm:7.2.0"
   dependencies:

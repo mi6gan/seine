@@ -1,15 +1,13 @@
 // @flow
 import * as React from 'react';
-import styled, { css } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 
 import { Item } from '../layouts';
 import useBlock from '../useBlock';
 import { RichText, toDraftEditor, toRawContent } from '../richtexts';
 
-import { defaultTableBody } from './constants';
-
-import type { TableBody, TableFormat } from '@seine/core';
+import type { TableBody, TableFormat, defaultTableBody } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 
 export type Props = TableBody &
@@ -26,38 +24,37 @@ const StyledTable = styled.table`
     theme: {
       typography: { body1 },
     },
-  }) => css`
-    ${body1};
-    width: 100%;
+  }) => body1};
 
-    th,
-    td {
-      border-left: 1px solid #fff;
-      border-right: 1px solid #fff;
-      line-height: 1.5;
-      padding: 0.5rem 1.25rem;
-      white-space: pre-wrap;
-      ${({ readOnly }) => !readOnly && { cursor: 'text' }};
-    }
+  width: 100%;
 
-    & > thead {
-      background-color: #ebebeb;
-      & > tr > th {
-        font-weight: 600;
-      }
-    }
+  th,
+  td {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    line-height: 1.5;
+    padding: 0.5rem 1.25rem;
+    white-space: pre-wrap;
+    ${({ readOnly }) => !readOnly && { cursor: 'text' }};
+  }
 
-    & > tbody {
-      & > tr:nth-child(2n + 1) {
-        background-color: #fdfdfd;
-        border: none;
-      }
-      & > tr:nth-child(2n) {
-        background-color: #f7f7f7;
-        border: none;
-      }
+  & > thead {
+    background-color: #ebebeb;
+    & > tr > th {
+      font-weight: 600;
     }
-  `}
+  }
+
+  & > tbody {
+    & > tr:nth-child(2n + 1) {
+      background-color: #fdfdfd;
+      border: none;
+    }
+    & > tr:nth-child(2n) {
+      background-color: #f7f7f7;
+      border: none;
+    }
+  }
 `;
 
 // eslint-disable-next-line

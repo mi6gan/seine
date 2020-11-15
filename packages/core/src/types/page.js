@@ -1,10 +1,10 @@
 // @flow
-import type { LayoutFormat } from './layout';
+import type { ItemFormat, LayoutFormat } from './layout';
 import { layoutTypes } from './layout';
 
 export type PageBody = {};
 
-export type PageFormat = LayoutFormat & {
+export type PageFormat = (LayoutFormat & ItemFormat) & {
   scale: number | 'auto',
 };
 

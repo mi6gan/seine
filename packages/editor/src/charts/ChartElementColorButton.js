@@ -10,8 +10,8 @@ import { SidebarGroup, SidebarLabel } from '../ui';
 import useChartBlock from './useChartBlock';
 
 import { Button, ClickAwayListener } from '@seine/styles/mui-core.macro';
-import { UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { chartPaletteKeyValues, groupElements } from '@seine/content';
+import { UPDATE_BLOCK_FORMAT, chartPaletteKeyValues } from '@seine/core';
+import { groupElements } from '@seine/content';
 
 const StyledColorButton = styled(Button).attrs(({ children = '' }) => ({
   children,

@@ -8,7 +8,23 @@ import type {
   BlockId,
   BlockType,
 } from '../types';
-import { blockTypes } from '../types';
+import {
+  blockTypes,
+  chartTypes,
+  defaultBarChartFormat,
+  defaultChartFormat,
+  defaultColumnChartFormat,
+  defaultFlexFormat,
+  defaultGridFormat,
+  defaultImageFormat,
+  defaultLayoutFormat,
+  defaultLineChartFormat,
+  defaultPageFormat,
+  defaultPieChartFormat,
+  defaultRichTextFormat,
+  defaultTableFormat,
+  layoutTypes,
+} from '../types';
 
 type Blocks = $ReadOnlyArray<Block>;
 type BlocksTree = Block & {
@@ -90,4 +106,78 @@ export function createBlocksFromTree(parent, tree: BlocksTree[]): Blocks[] {
  */
 export function isBlockContainer(block: Block) {
   return block.type === blockTypes.PAGE || block.type === blockTypes.LAYOUT;
+}
+
+/**
+ * @description  Return default block format.
+ * @param {Block} block
+ * @returns {BlockFormat}
+ */
+export function getDefaultBlockFormat({ type, format }: Block) {
+  switch (type) {
+    case blockTypes.CHART: {
+      switch (format && format.kind) {
+        case chartTypes.COLUMN:
+          return defaultColumnChartFormat;
+        case chartTypes.BAR:
+          return defaultBarChartFormat;
+        case chartTypes.PIE:
+          return defaultPieChartFormat;
+        case chartTypes.LINE:
+          return defaultLineChartFormat;
+        default:
+          return defaultChartFormat;
+      }
+    }
+
+    case blockTypes.IMAGE:
+      return defaultImageFormat;
+
+    case blockTypes.LAYOUT: {
+      switch (format && format.kind) {
+        case layoutTypes.FLEX:
+          return defaultFlexFormat;
+        case layoutTypes.GRID:
+          return defaultGridFormat;
+        default:
+          return defaultLayoutFormat;
+      }
+    }
+
+    case blockTypes.PAGE:
+      return defaultPageFormat;
+
+    case blockTypes.RICH_TEXT:
+      return defaultRichTextFormat;
+
+    case blockTypes.TABLE:
+      return defaultTableFormat;
+
+    default:
+      return format;
+  }
+}
+
+/**
+ * @description  Return normalized block format.
+ * @param {Block} block
+ * @returns {BlockFormat}
+ */
+export function getBlockFormat(block: Block) {
+  return {
+    ...getDefaultBlockFormat(block),
+    ...block.format,
+  };
+}
+
+/**
+ * @description  Return normalized block.
+ * @param {Block} block
+ * @returns {BlockFormat}
+ */
+export function normalizeBlock(block: Block) {
+  return {
+    ...block,
+    format: getBlockFormat(block),
+  };
 }

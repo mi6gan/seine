@@ -18,8 +18,8 @@
     "@material-ui/icons": "^4.9",
     "@material-ui/styles": "^4.9",
     "@material-ui/system": "^4.9",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {

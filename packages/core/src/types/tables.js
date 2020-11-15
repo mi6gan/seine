@@ -1,6 +1,10 @@
 // @flow
+import type { ItemFormat } from './layout';
+
+import type { RichTextBody } from '@seine/core';
+
 export type TableCell = {
-  text: React$Node,
+  text: RichTextBody,
   align?: 'left' | 'center' | 'right',
   bold?: boolean,
   italic?: boolean,
@@ -11,11 +15,21 @@ export type TableHeaderCell = TableCell & {
 };
 
 export type TableBody = {
-  title?: string,
   header: TableHeaderCell[],
   rows: TableCell[][],
 };
 
-export type TableFormat = {};
+export type TableFormat = ItemFormat;
 
 export const TABLE = 'table';
+
+export const defaultTableBody = {
+  header: [],
+  rows: [],
+};
+
+export const defaultTableFormat = {};
+
+export const defaultTableCell = {
+  text: '',
+};

@@ -7,17 +7,17 @@ import { useAutoMemo } from 'hooks.macro';
 
 import type { ItemProps } from '../layouts';
 
-import {
-  defaultChartFraction,
-  defaultChartPalette,
-  defaultPieChartLegend,
-  defaultPieChartUnits,
-} from './constants';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 import ChartItem from './ChartItem';
 
+import {
+  defaultChartFraction,
+  defaultChartPalette,
+  defaultPieChartLegend,
+  defaultPieChartUnits,
+} from '@seine/core';
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
 import { SvgTypography } from '@seine/styles';
 

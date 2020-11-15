@@ -14,6 +14,7 @@ import ChartLabel from './ChartLabel';
 import ChartItem from './ChartItem';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
+
 import {
   defaultChartDx,
   defaultChartFraction,
@@ -22,10 +23,9 @@ import {
   defaultChartPalette,
   defaultChartUnits,
   defaultChartXAxis,
-} from './constants';
-
+} from '@seine/core';
 import { SvgTypography } from '@seine/styles';
-import type { BlockType, ChartElement } from '@seine/core';
+import type { ChartElement } from '@seine/core';
 
 type LineChartSeriesProps = LineSeries.SeriesProps;
 
@@ -74,8 +74,6 @@ type Props = {
   palette?: string[],
   units?: string,
   xAxis?: boolean,
-
-  parentType: BlockType,
 };
 
 // eslint-disable-next-line
@@ -117,8 +115,6 @@ const LineChart = React.forwardRef(function LineChart(
     paletteKey,
     yAxis,
     textAlignment,
-
-    parentType,
 
     ...itemProps
   },

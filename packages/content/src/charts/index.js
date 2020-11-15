@@ -1,8 +1,6 @@
 // @flow
-export * from './constants';
 export * from './helpers';
 
-export { default as useChartFormat } from './useChartFormat';
 export { default as ChartItem } from './ChartItem';
 export { default as PieChart } from './PieChart';
 export { default as BarChart } from './BarChart';

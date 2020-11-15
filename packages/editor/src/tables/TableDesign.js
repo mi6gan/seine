@@ -35,8 +35,12 @@ import {
   FormatListNumbered,
   FormatUnderlined,
 } from '@seine/styles/mui-icons.macro';
-import { defaultTableBody, defaultTableCell } from '@seine/content';
-import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
+import {
+  defaultTableBody,
+  defaultTableCell,
+  UPDATE_BLOCK_BODY,
+  UPDATE_BLOCK_EDITOR,
+} from '@seine/core';
 import { SvgIcon } from '@seine/styles/mui-core.macro';
 
 const StructureActionButton = styled(EditorActionIconButton).attrs({
