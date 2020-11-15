@@ -2,7 +2,7 @@
   "name": "@seine/core",
   "main": "./index.cjs.js",
   "module": "./index.es.js",
-  "version": "0.4.48",
+  "version": "0.4.49",
   "description": "Seine core utils and types.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
