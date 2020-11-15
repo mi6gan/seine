@@ -10,4 +10,5 @@ export { default as BlocksContext } from './BlocksContext';
 export { default as blockRenderMap } from './blockRenderMap';
 export { default as useBlock } from './useBlock';
 export { default as useBlockChildren } from './useBlockChildren';
+export { default as useNormalizedBlocks } from './useNormalizedBlocks';
 export { default as Content } from './Content';

@@ -9,31 +9,23 @@ import {
   SidebarSection,
   SidebarSelect,
 } from '../ui';
-import { useBlocksDispatch, useEditorSelector } from '../blocks';
+import { useBlocksDispatch } from '../blocks';
 
 import useSelectedLayoutItems from './useSelectedLayoutItems';
 import GridDesign from './GridDesign';
 import FlexDesign from './FlexDesign';
 
-import {
-  defaultLayoutFormat,
-  layoutTypes,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
+import { layoutTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 // eslint-disable-next-line
 const LayoutDesign = React.forwardRef(function LayoutDesign(props, ref) {
+  const { selectAs: Select = SidebarSelect } = props;
   const {
-    defaults = defaultLayoutFormat,
-    selectAs: Select = SidebarSelect,
-  } = props;
-  const { layout: layoutBlock } = useSelectedLayoutItems();
-  const device = useEditorSelector((state) => state.device);
-  const id = layoutBlock && layoutBlock.id;
-  const { kind = defaults.kind } =
-    layoutBlock && layoutBlock.format
-      ? layoutBlock.format[device] || layoutBlock.format
-      : defaults;
+    layout: {
+      id,
+      format: { kind },
+    },
+  } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   return (
     <>

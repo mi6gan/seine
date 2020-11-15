@@ -7,11 +7,11 @@ import styled from 'styled-components/macro';
 import { Frame } from '../ui';
 import { useBlocksDispatch } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
+import { ItemMenuContext } from '../EditorItemMenu';
 
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';
 import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
 import { defaultDraftBody, defaultDraftFormat, RichText } from '@seine/content';
-import { ItemMenuContext } from '@seine/editor';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,

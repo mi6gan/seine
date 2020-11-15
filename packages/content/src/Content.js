@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { useAutoMemo } from 'hooks.macro';
 
 import BlocksContext from './BlocksContext';
 import useBlock from './useBlock';
@@ -8,14 +7,14 @@ import useBlockChildren from './useBlockChildren';
 import useBlockComponent from './useBlockComponent';
 import useScreenDevice from './useScreenDevice';
 import defaultBlockRenderMap from './blockRenderMap';
+import useNormalizedBlocks from './useNormalizedBlocks';
 
 import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
-import type { Block } from '@seine/core';
-import { normalizeBlock } from '@seine/core';
+import type { Block, ScreenDevice } from '@seine/core';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
-  device?: 'mobile' | 'any',
+  device?: ScreenDevice | 'auto',
   children: Array<Block>,
 };
 
@@ -24,24 +23,15 @@ export type Props = {
  * @param {Props} props
  * @returns {React.Node}
  */
-function ContentBlock({ id, device: initialDevice }): React.Node {
+function ContentBlock({ id }): React.Node {
   const blockChildren = useBlockChildren(id);
-  const device = useScreenDevice(initialDevice);
   const { type, format, body, editor } = useBlock(id);
   const BlockComponent = useBlockComponent(type);
 
   return (
-    <BlockComponent
-      id={id}
-      {...format}
-      {...(format && format[device])}
-      {...body}
-      editor={editor}
-    >
+    <BlockComponent id={id} {...format} {...body} editor={editor}>
       {blockChildren.length > 0
-        ? blockChildren.map(({ id }) => (
-            <ContentBlock id={id} key={id} device={device} />
-          ))
+        ? blockChildren.map(({ id }) => <ContentBlock id={id} key={id} />)
         : null}
     </BlockComponent>
   );
@@ -52,9 +42,14 @@ function ContentBlock({ id, device: initialDevice }): React.Node {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Content({ children, device, blockRenderMap }: Props) {
-  children = useAutoMemo(children.map(normalizeBlock));
+export default function Content({
+  children,
+  device: initialDevice,
+  blockRenderMap,
+}: Props) {
   const [rootBlock = null] = children;
+  const device = useScreenDevice(initialDevice);
+  const blocks = useNormalizedBlocks(children, device);
   return (
     <ThemeProvider>
       <BlocksContext.Provider
@@ -63,11 +58,11 @@ export default function Content({ children, device, blockRenderMap }: Props) {
             ...defaultBlockRenderMap,
             ...blockRenderMap,
           },
-          blocks: children,
+          blocks,
         }}
       >
         <ResizeObserverProvider>
-          <ContentBlock id={rootBlock && rootBlock.id} device={device} />
+          <ContentBlock id={rootBlock && rootBlock.id} />
         </ResizeObserverProvider>
       </BlocksContext.Provider>
     </ThemeProvider>

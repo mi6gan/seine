@@ -307,7 +307,9 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
             <option value={25}>25%</option>
             <option value={50}>50%</option>
             <option value={100}>100%</option>
-            <option value={'auto'}>Fit</option>
+            <option value={125}>125%</option>
+            <option value={150}>150%</option>
+            <option value={200}>200%</option>
           </ToolbarSelect>
 
           <ToolbarSelect
@@ -319,6 +321,8 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           >
             <option value={'any'}>Any device</option>
             <option value={'mobile'}>Mobile only</option>
+            <option value={'tablet'}>Tablet only</option>
+            <option value={'desktop'}>Desktop only</option>
           </ToolbarSelect>
         </Box>
         <Box width={'40%'} />

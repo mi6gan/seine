@@ -1,6 +1,6 @@
 // @flow
 import type { ItemFormat, LayoutFormat } from './layout';
-import { layoutTypes } from './layout';
+import { defaultFlexFormat, defaultGridFormat } from './layout';
 
 export type PageBody = {};
 
@@ -9,13 +9,11 @@ export type PageFormat = (LayoutFormat & ItemFormat) & {
 };
 
 export const defaultPageFormat = {
-  kind: layoutTypes.FLEX,
-  direction: 'row',
-  wrap: 'nowrap',
+  ...defaultGridFormat,
+  ...defaultFlexFormat,
   spacing: 0,
-  justify: 'normal',
-  alignItems: 'normal',
-  alignContent: 'normal',
+  columnGap: 0,
+  rowGap: 0,
   minWidth: '100%',
   maxWidth: '100%',
   maxHeight: 'none',

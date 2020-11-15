@@ -22,11 +22,11 @@ import {
 import EditorItemMenu from './EditorItemMenu';
 import EditorToolbar from './EditorToolbar';
 import EditorTree from './EditorTree';
+import EditorContent from './EditorContent';
 
 import { Box } from '@seine/styles/mui-core.macro';
-import { DESELECT_ALL_BLOCKS } from '@seine/core';
-import { Content } from '@seine/content';
 import type { Block, BlockType } from '@seine/core';
+import { DESELECT_ALL_BLOCKS } from '@seine/core';
 
 const Contents = styled(Box).attrs({
   width: 1,
@@ -35,23 +35,6 @@ const Contents = styled(Box).attrs({
   alignItems: 'stretch',
 })`
   overflow: auto;
-`;
-
-const EditorLayout = styled(Box).attrs({
-  minHeight: 600,
-  alignSelf: 'center',
-  display: 'flex',
-  p: 4,
-})`
-  overflow: auto;
-  ${({ device, theme }) => ({
-    width: device === 'mobile' ? theme.breakpoints.width('sm') : '100%',
-    maxWidth: theme.breakpoints.width('xl'),
-    minWidth:
-      device === 'mobile'
-        ? theme.breakpoints.width('sm')
-        : theme.breakpoints.width('lg'),
-  })}
 `;
 
 type Props = {
@@ -112,7 +95,7 @@ export default function EditorView({
             </SidebarSection>
           </Sidebar>
 
-          <EditorLayout
+          <EditorContent
             device={device}
             ref={useAutoCallback((element) => {
               element &&
@@ -121,11 +104,10 @@ export default function EditorView({
                   inline: 'center',
                 });
             })}
+            blockRenderMap={blockRenderMap}
           >
-            <Content device={device} blockRenderMap={blockRenderMap}>
-              {blocks}
-            </Content>
-          </EditorLayout>
+            {blocks}
+          </EditorContent>
 
           <Sidebar
             open
