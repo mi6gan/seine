@@ -29,7 +29,6 @@ import {
   FormatUnderlined,
 } from '@seine/styles/mui-icons.macro';
 import { UPDATE_BLOCK_EDITOR, UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { defaultDraftFormat } from '@seine/content';
 
 const SvgText = styled.text.attrs({
   textAnchor: 'middle',
@@ -45,12 +44,15 @@ const SvgText = styled.text.attrs({
  * @returns {React.Node}
  */
 export default function RichTextDesign() {
-  const { item } = useSelectedLayoutItems();
-  const { textAlignment = defaultDraftFormat.textAlignment } =
-    (item && item.format) || defaultDraftFormat;
-  const { state: editorState = defaultDraftEditor.state } =
-    (item && item.editor) || defaultDraftEditor;
-  const id = item && item.id;
+  const {
+    item: {
+      id,
+      format: { textAlignment },
+      editor: {
+        state: editorState = defaultDraftEditor.state,
+      } = defaultDraftEditor,
+    },
+  } = useSelectedLayoutItems();
 
   const dispatch = useBlocksDispatch();
 

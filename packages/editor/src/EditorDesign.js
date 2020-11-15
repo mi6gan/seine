@@ -7,7 +7,7 @@ import * as layoutDefaults from './layouts';
 import * as chartDefaults from './charts';
 import * as imageDefaults from './images';
 
-import { blockTypes, defaultPageFormat } from '@seine/core';
+import { blockTypes } from '@seine/core';
 
 type Props = {
   itemDesignAs?: React.ComponentType,
@@ -35,13 +35,10 @@ export default function EditorDesign({
 }: Props) {
   const { layout, item } = layoutDefaults.useSelectedLayoutItems();
 
-  const defaults =
-    layout && layout.type === blockTypes.PAGE ? defaultPageFormat : void 0;
-
   return (
     <>
-      {item && <ItemDesign defaults={defaults} />}
-      {layout && <LayoutDesign defaults={defaults} />}
+      {item && <ItemDesign />}
+      {layout && <LayoutDesign />}
       {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
       {item && item.type === blockTypes.TABLE && <TableDesign />}
       {item && item.type === blockTypes.CHART && <ChartDesign />}

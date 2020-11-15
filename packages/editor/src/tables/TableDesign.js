@@ -68,19 +68,17 @@ const SvgText = styled.text.attrs({
  */
 export default function TableDesign() {
   const dispatch = useBlocksDispatch();
-  const { item } = useSelectedLayoutItems();
   const {
-    id,
-    editor: {
-      rowIndex = defaultTableEditor.rowIndex,
-      columnIndex = defaultTableEditor.columnIndex,
-      [`${rowIndex}:${columnIndex}`]: editorState,
-    } = defaultTableEditor,
-    body: {
-      header = defaultTableBody.header,
-      rows = defaultTableBody.rows,
-    } = defaultTableBody,
-  } = item || {};
+    item: {
+      id,
+      editor: {
+        rowIndex = defaultTableEditor.rowIndex,
+        columnIndex = defaultTableEditor.columnIndex,
+        [`${rowIndex}:${columnIndex}`]: editorState,
+      } = defaultTableEditor,
+      body: { header = defaultTableBody.header, rows = defaultTableBody.rows },
+    },
+  } = useSelectedLayoutItems();
   const cellId = `${rowIndex}:${columnIndex}`;
   const row = rowIndex === -1 ? header : rows && rows[rowIndex];
   const cell = row && row[columnIndex];

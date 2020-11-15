@@ -1,6 +1,7 @@
 // @flow
 
 import type { ItemFormat } from './layout';
+import { defaultItemFormat } from './layout';
 
 export type ImageBody = {
   alt: string,
@@ -12,7 +13,7 @@ export type ImageFormat = ItemFormat & {
   align: 'top' | 'bottom' | 'middle' | 'left' | 'right',
 };
 
-export const defaultImageFormat = {};
+export const defaultImageFormat = defaultItemFormat;
 
 export const defaultImageBody = {};
 

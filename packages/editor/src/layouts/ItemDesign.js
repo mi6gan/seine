@@ -1,19 +1,19 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback } from 'hooks.macro';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import {
   SidebarGroup,
   SidebarHeading,
   SidebarInput,
-  SidebarSelect,
   SidebarLabel,
   SidebarSection,
+  SidebarSelect,
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useEditorSelector } from '../blocks';
+import { useBlocksDispatch } from '../blocks';
 
 import useSelectedLayoutItems from './useSelectedLayoutItems';
 
@@ -27,7 +27,7 @@ import {
 } from '@seine/styles/mui-icons.macro';
 import { Box } from '@seine/styles';
 import type { ItemFormat } from '@seine/core';
-import { defaultItemFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { getDefaultBlockFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 const PositionRightTop = styled(PositionLeftTop)`
   transform: scaleX(-1);
@@ -81,36 +81,34 @@ function getUnits(min, max) {
 
 const ItemDesign = React.forwardRef(function ItemDesign(
   {
-    defaults = defaultItemFormat,
     inputAs: Input = SidebarInput,
     selectAs: Select = SidebarSelect,
     ...sectionProps
   }: Props,
   ref
 ) {
-  const device = useEditorSelector((state) => state.device);
   const { item } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const {
-    minWidth = defaults.minWidth,
-    maxWidth = defaults.maxWidth,
-    minHeight = defaults.minHeight,
-    maxHeight = defaults.maxHeight,
-    alignSelf = defaults.alignSelf,
-    justifySelf = defaults.justifySelf,
-  } = (item && item.format && (item.format[device] || item.format)) || defaults;
+    minWidth,
+    maxWidth,
+    minHeight,
+    maxHeight,
+    alignSelf,
+    justifySelf,
+  } = item.format;
   const id = item && item.id;
+  const defaults = useAutoMemo(getDefaultBlockFormat(item));
   const togglePosition = useAutoCallback((event, value) => {
-    const [
-      justifySelf = defaults.justifySelf,
-      alignSelf = defaults.alignSelf,
-    ] = value ? value.split(' ') : [];
+    const [justify = defaults.justifySelf, align = defaults.alignSelf] = value
+      ? value.split(' ')
+      : [];
     dispatch({
       id,
       type: UPDATE_BLOCK_FORMAT,
       format: {
-        justifySelf,
-        alignSelf,
+        justifySelf: justify,
+        alignSelf: align,
       },
     });
   });

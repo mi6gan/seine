@@ -5,25 +5,27 @@ import { useAutoEffect, useAutoMemo } from 'hooks.macro';
 import type { ScreenDevice } from '@seine/core';
 import { useTheme } from '@seine/styles';
 
-/**
- * @description Use current screen device identified.
- * @param {?ScreenDevice} initialDevice
- * @returns {'any' | 'mobile'}
- */
-export default function useScreenDevice(initialDevice = 'auto'): ScreenDevice {
+// eslint-disable-next-line
+function useMatchMedia(alias, setDevice, start = null, end = null) {
   const theme = useTheme();
+  const query =
+    start === null && end === null
+      ? null
+      : start === null
+      ? theme.breakpoints.down(end)
+      : end === null
+      ? theme.breakpoints.up(start)
+      : theme.breakpoints.between(start, end);
   const mql = useAutoMemo(
-    initialDevice === 'auto' &&
-      window.matchMedia(theme.breakpoints.up('md').replace('@media ', ''))
+    query && window.matchMedia(query.replace('@media ', ''))
   );
-  const [screenDevice, setScreenDevice] = React.useState('any');
-
-  const device = initialDevice === 'auto' ? screenDevice : initialDevice;
 
   useAutoEffect(() => {
     if (mql) {
       const handler = () => {
-        setScreenDevice(mql.matches ? 'any' : 'mobile');
+        if (mql.matches) {
+          setDevice(alias);
+        }
       };
 
       mql.addEventListener('change', handler);
@@ -33,6 +35,22 @@ export default function useScreenDevice(initialDevice = 'auto'): ScreenDevice {
       };
     }
   });
+}
 
-  return device;
+/**
+ * @description Use current screen device identified.
+ * @param {?ScreenDevice} initialDevice
+ * @returns {'any' | 'mobile'}
+ */
+export default function useScreenDevice(initialDevice = 'auto'): ScreenDevice {
+  const [screenDevice, setScreenDevice] = React.useState('any');
+
+  const md = initialDevice === 'auto' ? 'md' : null;
+  const lg = initialDevice === 'auto' ? 'lg' : null;
+
+  useMatchMedia('desktop', setScreenDevice, lg, null);
+  useMatchMedia('tablet', setScreenDevice, md, lg);
+  useMatchMedia('mobile', setScreenDevice, null, md);
+
+  return initialDevice === 'auto' ? screenDevice : initialDevice;
 }

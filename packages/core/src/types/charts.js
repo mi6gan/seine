@@ -2,6 +2,7 @@
 import { initialElementsState } from '../reducers';
 
 import type { ItemFormat } from './layout';
+import { defaultItemFormat } from './layout';
 
 export const CHART = 'chart';
 export const chartTypes = {
@@ -125,6 +126,7 @@ export const defaultChartFraction = 0;
 export const defaultChartHeight = 100;
 
 export const defaultChartFormat = {
+  ...defaultItemFormat,
   palette: defaultChartPalette,
   paletteKey: defaultChartPaletteKey,
   textAlignment: defaultChartTextAlignment,

@@ -31,7 +31,10 @@ export const blockTypes = {
   TABLE,
 };
 
-export type ScreenDevice = 'any' | 'mobile';
+export const defaultBlockFormat = {};
+export const defaultBlockBody = {};
+
+export type ScreenDevice = 'any' | 'mobile' | 'tablet' | 'desktop';
 
 export type BlockElement = ChartElement;
 

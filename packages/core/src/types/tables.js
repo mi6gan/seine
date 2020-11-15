@@ -1,7 +1,7 @@
 // @flow
 import type { ItemFormat } from './layout';
-
-import type { RichTextBody } from '@seine/core';
+import type { RichTextBody } from './richText';
+import { defaultItemFormat } from './layout';
 
 export type TableCell = {
   text: RichTextBody,
@@ -28,7 +28,7 @@ export const defaultTableBody = {
   rows: [],
 };
 
-export const defaultTableFormat = {};
+export const defaultTableFormat = defaultItemFormat;
 
 export const defaultTableCell = {
   text: '',

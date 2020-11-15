@@ -1,4 +1,7 @@
 // @flow
+import type { BlockId } from '../types';
+import type { BlocksAction } from '../reducers';
+
 import {
   CREATE_BLOCK,
   CREATE_BOTTOM_BLOCK,
@@ -10,8 +13,6 @@ import {
   UPDATE_BLOCK_EDITOR,
   UPDATE_BLOCK_FORMAT,
 } from './reduceBlocks';
-
-import type { BlockId, BlocksAction } from '@seine/core';
 
 type BlocksActionType = $PropertyType<BlocksAction, 'type'>;
 type BlocksActionPayload = $Rest<BlocksAction, BlocksActionType>;

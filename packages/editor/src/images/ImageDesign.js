@@ -5,16 +5,17 @@ import { useAutoCallback } from 'hooks.macro';
 
 import {
   SidebarGroup,
+  SidebarHeading,
   SidebarInput,
   SidebarSection,
-  SidebarHeading,
 } from '../ui';
-import { useBlocksDispatch, useEditorSelector } from '../blocks';
+import { useBlocksDispatch } from '../blocks';
+import { useSelectedLayoutItems } from '../layouts';
 
 import { IconButton, InputAdornment } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
 import { CloudUpload } from '@seine/styles/mui-icons.macro';
-import { blockTypes, UPDATE_BLOCK_BODY } from '@seine/core';
+import { UPDATE_BLOCK_BODY } from '@seine/core';
 
 type Props = {
   onChange?: (SyntheticInputEvent) => void,
@@ -41,8 +42,9 @@ const FileInput = styled(Box).attrs({
  */
 export default function ImageDesign({ onChange, ...inputProps }: Props) {
   const dispatch = useBlocksDispatch();
-  const { id, body } =
-    useEditorSelector().find(({ type }) => type === blockTypes.IMAGE) || {};
+  const {
+    item: { id, body },
+  } = useSelectedLayoutItems();
   return (
     <SidebarSection>
       <SidebarHeading>Image</SidebarHeading>

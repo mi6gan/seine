@@ -14,7 +14,7 @@ type Props = LayoutProps & {
 };
 
 export const defaultPageEditor = {
-  scale: 'auto',
+  scale: 100,
 };
 
 const PageFrame = styled(Paper).attrs({

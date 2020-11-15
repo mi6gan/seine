@@ -10,7 +10,7 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch, useEditorSelector } from '../blocks';
+import { useBlocksDispatch } from '../blocks';
 
 import useSelectedLayoutItems from './useSelectedLayoutItems';
 
@@ -25,7 +25,7 @@ import {
   WrapText,
 } from '@seine/styles/mui-icons.macro';
 import type { FlexFormat } from '@seine/core';
-import { defaultFlexFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 const MAX_SPACING = 19;
 
@@ -41,25 +41,17 @@ type Props = {
  * @returns {React.Node}
  */
 export default function FlexDesign({
-  defaults = defaultFlexFormat,
   inputAs: Input = SidebarInput,
   selectAs: Select = SidebarSelect,
   toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
 }: Props) {
-  const device = useEditorSelector((state) => state.device);
-  const { layout: layoutBlock } = useSelectedLayoutItems();
-  const dispatch = useBlocksDispatch();
-  const id = layoutBlock && layoutBlock.id;
   const {
-    spacing = defaults.spacing,
-    justify = defaults.justify,
-    alignItems = defaults.alignItems,
-    direction = defaults.direction,
-    wrap = defaults.wrap,
-  } =
-    layoutBlock && layoutBlock.format
-      ? layoutBlock.format[device] || layoutBlock.format || defaults
-      : defaults;
+    layout: {
+      id,
+      format: { spacing, justify, alignItems, direction, wrap },
+    },
+  } = useSelectedLayoutItems();
+  const dispatch = useBlocksDispatch();
   const iconProps = direction === 'column' && {
     style: { transform: 'rotate(-90deg)' },
   };

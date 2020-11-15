@@ -10,11 +10,11 @@ import {
   SidebarSection,
 } from '../ui';
 import { useBlocksDispatch } from '../blocks';
+import { useSelectedLayoutItems } from '../layouts';
 
 import ChartPaletteSelect from './ChartPaletteSelect';
 import ChartStructureGroup from './ChartStructureGroup';
 import ChartElementColorButton from './ChartElementColorButton';
-import useChartBlock from './useChartBlock';
 import useElementSelector from './useElementSelector';
 import useChartDispatchElements from './useChartDispatchElements';
 
@@ -33,9 +33,11 @@ import {
  */
 export default function ChartDesign() {
   const {
-    id,
-    format: { kind, units, fraction, legend, xAxis, yAxis },
-  } = useChartBlock();
+    item: {
+      id,
+      format: { kind, units, fraction, legend, xAxis, yAxis },
+    },
+  } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const dispatchElements = useChartDispatchElements();
   const formatInput = useAutoCallback(
