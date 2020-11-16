@@ -20,16 +20,16 @@ type Props = $Shape<ChartFormat> & ChartBody;
  */
 export default function Chart({
   kind,
-  as: Component = Item,
+  as: ChartItem = Item,
   ...chartProps
 }: Props) {
   return kind === chartTypes.PIE ? (
-    <PieChart {...chartProps} as={Component} />
+    <PieChart {...chartProps} as={ChartItem} />
   ) : kind === chartTypes.COLUMN ? (
-    <ColumnChart {...chartProps} as={Component} />
+    <ColumnChart {...chartProps} as={ChartItem} />
   ) : kind === chartTypes.BAR ? (
-    <BarChart {...chartProps} as={Component} />
+    <BarChart {...chartProps} as={ChartItem} />
   ) : (
-    <LineChart {...chartProps} as={Component} />
+    <LineChart {...chartProps} as={ChartItem} />
   );
 }
