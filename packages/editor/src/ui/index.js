@@ -15,7 +15,6 @@ export { default as SidebarLabel } from './SidebarLabel';
 export { default as SidebarSelect } from './SidebarSelect';
 export { default as SidebarSection } from './SidebarSection';
 export { default as SidebarSelectLabel } from './SidebarSelectLabel';
-export { default as SvgInput } from './SvgInput';
 export { default as Textarea } from './Textarea';
 export { default as Toolbar } from './Toolbar';
 export { default as ToolbarButton } from './ToolbarButton';

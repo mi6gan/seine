@@ -16,7 +16,6 @@ import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 
 import type { ChartElement } from '@seine/core';
-import { SvgTypography } from '@seine/styles';
 
 type LineChartSeriesProps = LineSeries.SeriesProps;
 
@@ -69,7 +68,7 @@ type Props = {
 
 // eslint-disable-next-line
 function ArgumentAxisLine({ y1, y2, ...props }) {
-  return <ArgumentAxis.Line y1={y1 - 14} y2={y2 - 14} {...props} />;
+  return <ArgumentAxis.Line y1={y1} y2={y2} {...props} />;
 }
 
 // eslint-disable-next-line
@@ -121,7 +120,7 @@ const LineChart = React.forwardRef(function LineChart(
   });
 
   const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
-    <ValueLabel {...props} as={SvgTypography} text={text} meta={text} />
+    <ValueLabel {...props} text={text} meta={text} />
   ));
 
   return forceRemount ? null : (

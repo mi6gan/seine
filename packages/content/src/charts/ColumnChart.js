@@ -16,7 +16,6 @@ import ChartItem from './ChartItem';
 import ChartLegend from './ChartLegend';
 
 import type { ChartElement } from '@seine/core';
-import { SvgTypography } from '@seine/styles';
 
 const ColumnChartItem = styled(ChartItem)`
   && {
@@ -26,7 +25,7 @@ const ColumnChartItem = styled(ChartItem)`
 
 // eslint-disable-next-line
 function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
-  const { arg, val, value, seriesIndex, index, rotated } = props;
+  const { arg, val, value, rotated } = props;
   const x = rotated ? val : arg;
   const y = rotated ? arg : val;
   return (
@@ -34,10 +33,8 @@ function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
       <BarSeries.Point {...props} val={val + (rotated ? -14 : 10)} />
       {(value || rotated) && (
         <ChartLabel
-          as={SvgTypography}
           dominantBaseline={'middle'}
           textAnchor={'middle'}
-          meta={{ value, index: index * valueFieldsLength + seriesIndex }}
           x={x}
           y={y}
         >
@@ -51,7 +48,7 @@ function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
 
 // eslint-disable-next-line
 function ArgumentAxisLine({ y1, y2, ...props }) {
-  return <ArgumentAxis.Line y1={y1 - 14} y2={y2 - 14} {...props} />;
+  return <ArgumentAxis.Line y1={y1} y2={y2} {...props} />;
 }
 
 // eslint-disable-next-line
@@ -106,7 +103,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   });
 
   const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
-    <ValueLabel {...props} as={SvgTypography} text={text} meta={text} />
+    <ValueLabel {...props} text={text} meta={text} />
   ));
 
   return forceRemount ? null : (
