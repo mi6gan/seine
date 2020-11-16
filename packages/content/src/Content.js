@@ -61,9 +61,7 @@ export default function Content({
           blocks,
         }}
       >
-        <ResizeObserverProvider>
-          <ContentBlock id={rootBlock && rootBlock.id} />
-        </ResizeObserverProvider>
+        <ContentBlock id={rootBlock && rootBlock.id} />
       </BlocksContext.Provider>
     </ThemeProvider>
   );
