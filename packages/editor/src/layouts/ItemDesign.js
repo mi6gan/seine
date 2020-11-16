@@ -191,7 +191,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
   });
 
   return (
-    <SidebarSection {...sectionProps} as={'form'} ref={ref}>
+    <SidebarSection {...sectionProps} as={'form'} ref={ref} key={id}>
       <SidebarHeading>Constraints</SidebarHeading>
 
       <SidebarGroup alignItems={'baseline'} mb={0}>
