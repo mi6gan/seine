@@ -69,15 +69,42 @@ type Props = {
   selectAs?: React.ComponentType,
 };
 
-// eslint-disable-next-line
-function getUnits(min, max) {
-  const value =
-    min && min !== 'none' ? min : max && max !== 'none' ? max : null;
-  if (value) {
-    return `${value}`.split(`${parseFloat(value)}`)[1];
-  }
-  return '';
-}
+const ConstrainInput = ({
+  inputAs: Input,
+  selectAs: Select,
+  name,
+  value,
+  onChange,
+  ...InputProps
+}) => (
+  <Input
+    {...InputProps}
+    type={'number'}
+    name={`${name}.value`}
+    onChange={onChange}
+    defaultValue={parseInt(value) || ''}
+    width={'5.5rem'}
+    mr={0}
+    endAdornment={
+      <Select
+        native
+        width={'4ch'}
+        textAlign={'right'}
+        fontSize={'0.75rem'}
+        name={`${name}.units`}
+        onChange={onChange}
+        defaultValue={`${value}`.replace(/\d/g, '')}
+        disableUnderline
+      >
+        {SIZE_UNITS.map((unit) => (
+          <option key={unit} value={unit}>
+            {unit}
+          </option>
+        ))}
+      </Select>
+    }
+  />
+);
 
 const ItemDesign = React.forwardRef(function ItemDesign(
   {
@@ -117,24 +144,54 @@ const ItemDesign = React.forwardRef(function ItemDesign(
       },
     });
   });
+  const timeoutsRef = React.useRef({});
   const position = `${justifySelf} ${alignSelf}`;
+  const changeConstraint = useAutoCallback(({ currentTarget }) => {
+    const { form } = currentTarget;
 
-  const initialWidthUnits = useAutoMemo(getUnits(minWidth, maxWidth));
-  const initialHeightUnits = useAutoMemo(getUnits(minHeight, maxHeight));
+    const [name, field] = currentTarget.name.split('.');
 
-  const [widthUnits, setWidthUnits] = React.useState(initialWidthUnits);
-  const [heightUnits, setHeightUnits] = React.useState(initialHeightUnits);
+    const valueElement: HTMLInputElement = form.elements.namedItem(
+      `${name}.value`
+    );
+    const unitsElement = form.elements.namedItem(`${name}.units`);
 
-  useAutoEffect(() => {
-    if (initialWidthUnits !== '') {
-      setWidthUnits(initialWidthUnits);
+    const { value } = valueElement;
+    const { value: units } = unitsElement;
+
+    const submit = () => {
+      dispatch({
+        id,
+        type: UPDATE_BLOCK_FORMAT,
+        format: {
+          [name]: field === 'value' && value ? `${value}${units}` : null,
+        },
+      });
+    };
+
+    if (field === 'units') {
+      submit();
+      valueElement.value = '';
+      valueElement.focus();
+    } else {
+      const {
+        current: { [name]: timeout = null, ...timeouts },
+      } = timeoutsRef;
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      timeoutsRef.current = {
+        ...timeouts,
+        [name]: setTimeout(submit, 500),
+      };
     }
   });
 
-  useAutoEffect(() => {
-    if (initialHeightUnits !== '') {
-      setHeightUnits(initialHeightUnits);
-    }
+  useAutoEffect(() => () => {
+    Object.values(timeoutsRef.current).forEach((timeout) => {
+      clearTimeout(timeout);
+    });
+    timeoutsRef.current = {};
   });
 
   return (
@@ -143,128 +200,50 @@ const ItemDesign = React.forwardRef(function ItemDesign(
 
       <SidebarGroup alignItems={'baseline'} mb={0}>
         <SidebarLabel>width</SidebarLabel>
-        <Input
-          inputProps={{ placeholder: 'min' }}
-          disabled={!id}
-          value={parseInt(minWidth) || ''}
-          name={'minWidth'}
-          onChange={useAutoCallback((event) => {
-            dispatch({
-              id,
-              type: UPDATE_BLOCK_FORMAT,
-              format: {
-                [event.currentTarget.name]: `${event.currentTarget.value ||
-                  0}${widthUnits || '%'}`,
-              },
-            });
-          })}
-        />
-        <Input
-          inputProps={{ placeholder: 'max' }}
-          disabled={!id}
-          value={parseInt(maxWidth) || ''}
-          name={'maxWidth'}
-          onChange={useAutoCallback((event) => {
-            dispatch({
-              id,
-              type: UPDATE_BLOCK_FORMAT,
-              format: {
-                [event.currentTarget.name]: event.currentTarget.value
-                  ? `${event.currentTarget.value}${widthUnits || '%'}`
-                  : 'none',
-              },
-            });
-          })}
-        />
-        <Select
-          name={'widthUnits'}
-          value={widthUnits}
-          onChange={useAutoCallback((event) => {
-            const format = {};
-            const { value: units } = event.currentTarget;
-            for (const key of ['minWidth', 'maxWidth']) {
-              const { value } = event.currentTarget.form.elements.namedItem(
-                key
-              );
-              format[key] = value ? `${value}${units}` : 'none';
-            }
-            dispatch({
-              id,
-              type: UPDATE_BLOCK_FORMAT,
-              format,
-            });
-          })}
-          native
-        >
-          {SIZE_UNITS.map((unit) => (
-            <option key={unit} value={unit}>
-              {unit}
-            </option>
-          ))}
-        </Select>
+        <Box display={'flex'} mr={1}>
+          <ConstrainInput
+            inputAs={Input}
+            inputProps={{ placeholder: 'min' }}
+            selectAs={Select}
+            name={'minWidth'}
+            value={minWidth}
+            onChange={changeConstraint}
+          />
+        </Box>
+        <Box display={'flex'}>
+          <ConstrainInput
+            inputAs={Input}
+            inputProps={{ placeholder: 'max' }}
+            selectAs={Select}
+            name={'maxWidth'}
+            value={maxWidth}
+            onChange={changeConstraint}
+          />
+        </Box>
       </SidebarGroup>
 
-      <SidebarGroup alignItems={'baseline'} mt={0}>
+      <SidebarGroup alignItems={'baseline'} mb={0}>
         <SidebarLabel>height</SidebarLabel>
-        <Input
-          inputProps={{ placeholder: 'min' }}
-          disabled={!id}
-          value={parseInt(minHeight) || ''}
-          name={'minHeight'}
-          onChange={useAutoCallback((event) => {
-            dispatch({
-              id,
-              type: UPDATE_BLOCK_FORMAT,
-              format: {
-                [event.currentTarget.name]: `${event.currentTarget.value ||
-                  0}${heightUnits}`,
-              },
-            });
-          })}
-        />
-        <Input
-          inputProps={{ placeholder: 'max' }}
-          disabled={!id}
-          value={parseInt(maxHeight) || ''}
-          name={'maxHeight'}
-          onChange={useAutoCallback((event) => {
-            dispatch({
-              id,
-              type: UPDATE_BLOCK_FORMAT,
-              format: {
-                [event.currentTarget.name]: event.currentTarget.value
-                  ? `${event.currentTarget.value}${heightUnits}`
-                  : 'none',
-              },
-            });
-          })}
-        />
-        <Select
-          name={'heightUnits'}
-          value={heightUnits}
-          onChange={useAutoCallback((event) => {
-            const format = {};
-            const { value: units } = event.currentTarget;
-            for (const key of ['minHeight', 'maxHeight']) {
-              const { value } = event.currentTarget.form.elements.namedItem(
-                key
-              );
-              format[key] = value ? `${value}${units}` : 'none';
-            }
-            dispatch({
-              id,
-              type: UPDATE_BLOCK_FORMAT,
-              format,
-            });
-          })}
-          native
-        >
-          {SIZE_UNITS.map((unit) => (
-            <option key={unit} value={unit}>
-              {unit}
-            </option>
-          ))}
-        </Select>
+        <Box display={'flex'} mr={1}>
+          <ConstrainInput
+            inputAs={Input}
+            inputProps={{ placeholder: 'min' }}
+            selectAs={Select}
+            name={'minHeight'}
+            value={minHeight}
+            onChange={changeConstraint}
+          />
+        </Box>
+        <Box display={'flex'}>
+          <ConstrainInput
+            inputAs={Input}
+            inputProps={{ placeholder: 'max' }}
+            selectAs={Select}
+            name={'maxHeight'}
+            value={maxHeight}
+            onChange={changeConstraint}
+          />
+        </Box>
       </SidebarGroup>
 
       <SidebarGroup>
