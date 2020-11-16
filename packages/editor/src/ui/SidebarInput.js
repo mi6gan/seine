@@ -10,8 +10,17 @@ const SidebarInput = styled(Box).attrs(({ width = '3rem', mr = 1 }) => ({
   width,
 }))`
   && {
-    ${({ hidden }) => hidden && { display: 'none' }}
-    ${({ theme }) => theme.typography.caption}
+    ${({ hidden }) => hidden && { display: 'none' }};
+    ${({ theme }) => theme.typography.caption};
+  }
+  & input {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
   }
 `;
 

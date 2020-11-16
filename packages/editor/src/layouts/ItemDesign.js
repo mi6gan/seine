@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoMemo, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import {
@@ -107,6 +107,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
       },
     });
   });
+  const timeoutsRef = React.useRef({});
   const position = `${justifySelf} ${alignSelf}`;
   const changeConstraint = useAutoCallback(({ currentTarget }) => {
     const { form } = currentTarget;
@@ -121,17 +122,37 @@ const ItemDesign = React.forwardRef(function ItemDesign(
     const { value } = valueElement;
     const { value: units } = unitsElement;
 
-    dispatch({
-      id,
-      type: UPDATE_BLOCK_FORMAT,
-      format: {
-        [name]: field === 'value' && value ? `${value}${units}` : null,
-      },
-    });
+    const submit = () => {
+      dispatch({
+        id,
+        type: UPDATE_BLOCK_FORMAT,
+        format: {
+          [name]: field === 'value' && value ? `${value}${units}` : null,
+        },
+      });
+    };
 
     if (field === 'units') {
+      submit();
       valueElement.focus();
+    } else {
+      const {
+        current: { [name]: timeout = null, ...timeouts },
+      } = timeoutsRef;
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      timeoutsRef.current = {
+        ...timeouts,
+        [name]: setTimeout(submit, 250),
+      };
     }
+  });
+
+  useAutoEffect(() => () => {
+    Object.values(timeoutsRef.current).forEach((timeout) => {
+      clearTimeout(timeout);
+    });
   });
 
   return (
@@ -142,10 +163,11 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         <SidebarLabel>width</SidebarLabel>
         <Box display={'flex'} mr={1}>
           <Input
+            type={'number'}
             inputProps={{ placeholder: 'min' }}
             name={'minWidth.value'}
             onChange={changeConstraint}
-            value={parseInt(minWidth) || ''}
+            defaultValue={parseInt(minWidth) || ''}
             mr={0}
           />
           <Select
@@ -163,10 +185,11 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         </Box>
         <Box display={'flex'}>
           <Input
+            type={'number'}
             inputProps={{ placeholder: 'max' }}
             name={'maxWidth.value'}
             onChange={changeConstraint}
-            value={parseInt(maxWidth) || ''}
+            defaultValue={parseInt(maxWidth) || ''}
             mr={0}
           />
           <Select
@@ -188,10 +211,11 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         <SidebarLabel>height</SidebarLabel>
         <Box display={'flex'} mr={1}>
           <Input
+            type={'number'}
             inputProps={{ placeholder: 'min' }}
             name={'minHeight.value'}
             onChange={changeConstraint}
-            value={parseInt(minHeight) || ''}
+            defaultValue={parseInt(minHeight) || ''}
             mr={0}
           />
           <Select
@@ -209,10 +233,11 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         </Box>
         <Box display={'flex'}>
           <Input
+            type={'number'}
             inputProps={{ placeholder: 'max' }}
             name={'maxHeight.value'}
             onChange={changeConstraint}
-            value={parseInt(maxHeight) || ''}
+            defaultValue={parseInt(maxHeight) || ''}
             mr={0}
           />
           <Select
