@@ -1,9 +1,9 @@
 // @flow
 import { equals, filter } from 'ramda';
 
-import { createBlock, filterBlockAncestors } from '../utils';
+import { filterBlockAncestors, isBlockContainer } from '../utils';
 import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
-import { blockTypes, defaultFlexFormat, layoutTypes } from '../types';
+import { blockTypes } from '../types';
 
 opaque type BlockExtension = {
   editor: { [string]: any },
@@ -23,34 +23,6 @@ export const CREATE_BLOCK = '@seine/core/createBlock';
 export type CreateBlockAction = {
   type: typeof CREATE_BLOCK,
   id?: BlockId,
-  block: $Shape<Block>,
-};
-
-export const CREATE_BOTTOM_BLOCK = '@seine/core/createBottomBlock';
-export type CreateBottomBlockAction = {
-  type: typeof CREATE_BOTTOM_BLOCK,
-  id: BlockId,
-  block: $Shape<Block>,
-};
-
-export const CREATE_LEFT_BLOCK = '@seine/core/createLeftBlock';
-export type CreateLeftBlockAction = {
-  type: typeof CREATE_LEFT_BLOCK,
-  id: BlockId,
-  block: $Shape<Block>,
-};
-
-export const CREATE_RIGHT_BLOCK = '@seine/core/createRightBlock';
-export type CreateRightBlockAction = {
-  type: typeof CREATE_RIGHT_BLOCK,
-  id: BlockId,
-  block: $Shape<Block>,
-};
-
-export const CREATE_TOP_BLOCK = '@seine/core/createTopBlock';
-export type CreateTopBlockAction = {
-  type: typeof CREATE_TOP_BLOCK,
-  id: BlockId,
   block: $Shape<Block>,
 };
 
@@ -109,6 +81,14 @@ export type SetDeviceAction = {
   device: 'mobile' | 'any',
 };
 
+export const MOVE_BLOCK = '@seine/core/moveBlock';
+export type MoveBlockAction = {
+  type: typeof MOVE_BLOCK,
+  id: BlockId,
+  targetId: BlockId,
+  position: 'before' | 'after',
+};
+
 //
 // Memoize editor's inner state.
 //
@@ -121,15 +101,8 @@ export type UpdateBlockEditorAction = {
   editor: { [string]: any },
 };
 
-export type BlocksCreateAction =
-  | CreateBlockAction
-  | CreateBottomBlockAction
-  | CreateLeftBlockAction
-  | CreateRightBlockAction
-  | CreateTopBlockAction;
-
 export type BlocksAction =
-  | BlocksCreateAction
+  | CreateBlockAction
   | DeleteSelectedBlocksAction
   | DeselectAllBlocksAction
   | DeleteBlockAction
@@ -139,7 +112,8 @@ export type BlocksAction =
   | UpdateBlockEditorAction
   | SetBlocksSelectionAction
   | SetBlockParentAction
-  | SetDeviceAction;
+  | SetDeviceAction
+  | MoveBlockAction;
 
 /**
  * @description Reduce Content editor actions
@@ -164,104 +138,6 @@ export function reduceBlocks(
           action.id ? { ...action.block, parent_id: action.id } : action.block,
         ],
       };
-
-    case CREATE_TOP_BLOCK:
-    case CREATE_BOTTOM_BLOCK: {
-      let index = state.blocks.findIndex(({ id }) => id === action.id);
-      if (index === -1) {
-        return state;
-      }
-      const parentIndex = state.blocks.findIndex(
-        ({ id, type, format, direction }) =>
-          id === state.blocks[index].parent_id &&
-          type === blockTypes.LAYOUT &&
-          format &&
-          format === 'flex' &&
-          direction === 'column'
-      );
-      if (parentIndex > -1) {
-        index = parentIndex;
-      }
-
-      if (state.blocks[parentIndex]) {
-        return {
-          ...state,
-          blocks: [
-            ...state.blocks.slice(
-              0,
-              index + +(action.type === CREATE_BOTTOM_BLOCK)
-            ),
-            { ...action.block, parent_id: state.blocks[parentIndex].id },
-            ...state.blocks.slice(
-              index + +(action.type === CREATE_BOTTOM_BLOCK)
-            ),
-          ],
-        };
-      } else {
-        const parent = createBlock(
-          blockTypes.LAYOUT,
-          {},
-          { ...defaultFlexFormat, direction: 'column' },
-          state.blocks[index].parent_id
-        );
-        const blocks = [
-          { ...action.block, parent_id: parent.id },
-          { ...state.blocks[index], parent_id: parent.id },
-        ];
-        if (action.type === CREATE_BOTTOM_BLOCK) {
-          blocks.reverse();
-        }
-
-        return {
-          ...state,
-          blocks: [
-            ...state.blocks.slice(0, index),
-            parent,
-            ...blocks,
-            ...state.blocks.slice(index + 1),
-          ],
-        };
-      }
-    }
-
-    case CREATE_LEFT_BLOCK:
-    case CREATE_RIGHT_BLOCK: {
-      const index = state.blocks.findIndex(({ id }) => id === action.id);
-      if (index === -1) {
-        return state;
-      }
-      const parentIndex = state.blocks.findIndex(
-        ({ id, type }) =>
-          id === state.blocks[index].parent_id && type === blockTypes.LAYOUT
-      );
-
-      const parent =
-        state.blocks[parentIndex] ||
-        createBlock(
-          blockTypes.LAYOUT,
-          null,
-          { kind: layoutTypes.GRID },
-          state.blocks[index]['parent_id']
-        );
-
-      const block = { ...action.block, parent_id: parent.id };
-      const target =
-        state.blocks[index].parent_id !== parent.id
-          ? { ...state.blocks[index], parent_id: parent.id }
-          : state.blocks[index];
-
-      return {
-        ...state,
-        blocks: [
-          ...state.blocks.slice(0, index),
-          ...(parentIndex === -1 ? [parent] : []),
-          ...(action.type === CREATE_LEFT_BLOCK
-            ? [block, target]
-            : [target, block]),
-          ...state.blocks.slice(index + 1),
-        ],
-      };
-    }
 
     case SET_BLOCKS_SELECTION: {
       return {
@@ -432,6 +308,39 @@ export function reduceBlocks(
       return {
         ...state,
         device: action.device,
+      };
+    }
+
+    case MOVE_BLOCK: {
+      const index = state.blocks.findIndex(({ id }) => action.id === id);
+      const targetIndex = state.blocks.findIndex(
+        ({ id }) => action.targetId === id
+      );
+      const { parent_id } = state.blocks[targetIndex];
+      const [firstIndex, lastIndex] = [index, targetIndex].sort();
+
+      const insertion = [
+        { ...state.blocks[index], parent_id },
+        state.blocks[targetIndex],
+      ];
+      if (action.position === 'after') {
+        insertion.reverse();
+      }
+
+      return {
+        ...state,
+        device: action.device,
+        blocks: [
+          ...state.blocks.slice(0, firstIndex),
+          ...(firstIndex === targetIndex ? insertion : []),
+          ...state.blocks.slice(firstIndex + 1, lastIndex),
+          ...(lastIndex === targetIndex ? insertion : []),
+          ...state.blocks.slice(lastIndex + 1),
+        ].filter(
+          (block, index, blocks) =>
+            !isBlockContainer(block) ||
+            blocks.slice(index).some((child) => child.parent_id === block.id)
+        ),
       };
     }
 

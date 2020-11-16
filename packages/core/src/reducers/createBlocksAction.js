@@ -1,13 +1,10 @@
 // @flow
 import type { BlockId } from '../types';
 import type { BlocksAction } from '../reducers';
+import { MOVE_BLOCK } from '../reducers';
 
 import {
   CREATE_BLOCK,
-  CREATE_BOTTOM_BLOCK,
-  CREATE_LEFT_BLOCK,
-  CREATE_RIGHT_BLOCK,
-  CREATE_TOP_BLOCK,
   SELECT_BLOCK,
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
@@ -30,17 +27,11 @@ export default function createBlocksAction(
   id: ?BlockId = null
 ) {
   const { mode = null, modifier = null } = type === SELECT_BLOCK && data;
-  const block =
-    type === CREATE_BLOCK ||
-    type === CREATE_BOTTOM_BLOCK ||
-    type === CREATE_RIGHT_BLOCK ||
-    type === CREATE_LEFT_BLOCK ||
-    type === CREATE_TOP_BLOCK
-      ? data
-      : null;
+  const block = type === CREATE_BLOCK ? data : null;
   const body = type === UPDATE_BLOCK_BODY ? data : null;
   const format = type === UPDATE_BLOCK_FORMAT ? data : null;
   const editor = type === UPDATE_BLOCK_EDITOR ? data : null;
+  const { position = null, targetId = null } = type === MOVE_BLOCK && data;
 
   return {
     ...(id && { id }),
@@ -50,6 +41,8 @@ export default function createBlocksAction(
     ...(mode && { mode }),
     ...(modifier && { modifier }),
     ...(block && { block }),
+    ...(position && { position }),
+    ...(targetId && { targetId }),
     type,
   };
 }
