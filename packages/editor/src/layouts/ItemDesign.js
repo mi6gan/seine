@@ -182,7 +182,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
       }
       timeoutsRef.current = {
         ...timeouts,
-        [name]: setTimeout(submit, 250),
+        [name]: setTimeout(submit, 500),
       };
     }
   });
