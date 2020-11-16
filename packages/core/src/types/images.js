@@ -13,7 +13,10 @@ export type ImageFormat = ItemFormat & {
   align: 'top' | 'bottom' | 'middle' | 'left' | 'right',
 };
 
-export const defaultImageFormat = defaultItemFormat;
+export const defaultImageFormat = {
+  ...defaultItemFormat,
+  maxWidth: 'auto',
+};
 
 export const defaultImageBody = {};
 

@@ -127,6 +127,8 @@ export const defaultLineChartFormat = {
 export const defaultPieChartFormat = {
   ...defaultChartFormat,
   kind: chartTypes.PIE,
-  legend: true,
+  legend: false,
+  mobile: { legend: true },
+  tablet: { legend: true },
   units: '%',
 };

@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoMemo, useAutoEffect } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import {
@@ -76,7 +76,7 @@ function getUnits(min, max) {
   if (value) {
     return `${value}`.split(`${parseFloat(value)}`)[1];
   }
-  return '%';
+  return '';
 }
 
 const ItemDesign = React.forwardRef(function ItemDesign(
@@ -87,18 +87,23 @@ const ItemDesign = React.forwardRef(function ItemDesign(
   }: Props,
   ref
 ) {
-  const { item } = useSelectedLayoutItems();
-  const dispatch = useBlocksDispatch();
   const {
-    minWidth,
-    maxWidth,
-    minHeight,
-    maxHeight,
-    alignSelf,
-    justifySelf,
-  } = item.format;
-  const id = item && item.id;
-  const defaults = useAutoMemo(getDefaultBlockFormat(item));
+    item: {
+      id,
+      type,
+      format: {
+        kind,
+        minWidth,
+        maxWidth,
+        minHeight,
+        maxHeight,
+        alignSelf,
+        justifySelf,
+      },
+    },
+  } = useSelectedLayoutItems();
+  const dispatch = useBlocksDispatch();
+  const defaults = useAutoMemo(getDefaultBlockFormat(type, kind));
   const togglePosition = useAutoCallback((event, value) => {
     const [justify = defaults.justifySelf, align = defaults.alignSelf] = value
       ? value.split(' ')
@@ -114,6 +119,24 @@ const ItemDesign = React.forwardRef(function ItemDesign(
   });
   const position = `${justifySelf} ${alignSelf}`;
 
+  const initialWidthUnits = useAutoMemo(getUnits(minWidth, maxWidth));
+  const initialHeightUnits = useAutoMemo(getUnits(minHeight, maxHeight));
+
+  const [widthUnits, setWidthUnits] = React.useState(initialWidthUnits);
+  const [heightUnits, setHeightUnits] = React.useState(initialHeightUnits);
+
+  useAutoEffect(() => {
+    if (initialWidthUnits !== '') {
+      setWidthUnits(initialWidthUnits);
+    }
+  });
+
+  useAutoEffect(() => {
+    if (initialHeightUnits !== '') {
+      setHeightUnits(initialHeightUnits);
+    }
+  });
+
   return (
     <SidebarSection {...sectionProps} as={'form'} ref={ref}>
       <SidebarHeading>Constraints</SidebarHeading>
@@ -126,15 +149,12 @@ const ItemDesign = React.forwardRef(function ItemDesign(
           value={parseInt(minWidth) || ''}
           name={'minWidth'}
           onChange={useAutoCallback((event) => {
-            const widthUnits = event.currentTarget.form.elements.namedItem(
-              'widthUnits'
-            ).value;
             dispatch({
               id,
               type: UPDATE_BLOCK_FORMAT,
               format: {
                 [event.currentTarget.name]: `${event.currentTarget.value ||
-                  0}${widthUnits}`,
+                  0}${widthUnits || '%'}`,
               },
             });
           })}
@@ -145,21 +165,37 @@ const ItemDesign = React.forwardRef(function ItemDesign(
           value={parseInt(maxWidth) || ''}
           name={'maxWidth'}
           onChange={useAutoCallback((event) => {
-            const widthUnits = event.currentTarget.form.elements.namedItem(
-              'widthUnits'
-            ).value;
             dispatch({
               id,
               type: UPDATE_BLOCK_FORMAT,
               format: {
                 [event.currentTarget.name]: event.currentTarget.value
-                  ? `${event.currentTarget.value}${widthUnits}`
+                  ? `${event.currentTarget.value}${widthUnits || '%'}`
                   : 'none',
               },
             });
           })}
         />
-        <Select name={'widthUnits'} value={getUnits(minWidth, maxWidth)} native>
+        <Select
+          name={'widthUnits'}
+          value={widthUnits}
+          onChange={useAutoCallback((event) => {
+            const format = {};
+            const { value: units } = event.currentTarget;
+            for (const key of ['minWidth', 'maxWidth']) {
+              const { value } = event.currentTarget.form.elements.namedItem(
+                key
+              );
+              format[key] = value ? `${value}${units}` : 'none';
+            }
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format,
+            });
+          })}
+          native
+        >
           {SIZE_UNITS.map((unit) => (
             <option key={unit} value={unit}>
               {unit}
@@ -176,9 +212,6 @@ const ItemDesign = React.forwardRef(function ItemDesign(
           value={parseInt(minHeight) || ''}
           name={'minHeight'}
           onChange={useAutoCallback((event) => {
-            const heightUnits = event.currentTarget.form.elements.namedItem(
-              'heightUnits'
-            ).value;
             dispatch({
               id,
               type: UPDATE_BLOCK_FORMAT,
@@ -195,9 +228,6 @@ const ItemDesign = React.forwardRef(function ItemDesign(
           value={parseInt(maxHeight) || ''}
           name={'maxHeight'}
           onChange={useAutoCallback((event) => {
-            const heightUnits = event.currentTarget.form.elements.namedItem(
-              'heightUnits'
-            ).value;
             dispatch({
               id,
               type: UPDATE_BLOCK_FORMAT,
@@ -211,7 +241,22 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         />
         <Select
           name={'heightUnits'}
-          value={getUnits(minHeight, maxHeight)}
+          value={heightUnits}
+          onChange={useAutoCallback((event) => {
+            const format = {};
+            const { value: units } = event.currentTarget;
+            for (const key of ['minHeight', 'maxHeight']) {
+              const { value } = event.currentTarget.form.elements.namedItem(
+                key
+              );
+              format[key] = value ? `${value}${units}` : 'none';
+            }
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format,
+            });
+          })}
           native
         >
           {SIZE_UNITS.map((unit) => (

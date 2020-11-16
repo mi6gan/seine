@@ -131,10 +131,15 @@ export function getDefaultBlockFormat(
  * @param {?ScreenDevice} device
  * @returns {BlockFormat}
  */
-export function getBlockFormat(block: Block, device: ?ScreenDevice = 'any') {
-  const { type, format } = block;
+export function getBlockFormat(
+  { type, format }: Block,
+  device: ?ScreenDevice = 'any'
+) {
+  format = {
+    ...getDefaultBlockFormat(type, format && format.kind),
+    ...format,
+  };
   return {
-    ...getDefaultBlockFormat(type, format),
     ...format,
     ...(device !== 'any' && format && format[device]),
   };

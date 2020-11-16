@@ -509,11 +509,7 @@ export const PieChart = ({ children = [], ...props }) => (
             },
           ],
         },
-        format: {
-          kind: chartTypes.PIE,
-          mobile: { legend: true },
-          legend: false,
-        },
+        format: { kind: chartTypes.PIE },
       },
     ]}
   </Page>

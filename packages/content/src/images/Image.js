@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import styled from 'styled-components/macro';
 
 import { Item } from '../layouts';
 
@@ -8,6 +9,11 @@ import { defaultImageBody, defaultImageFormat } from '@seine/core';
 
 export type Props = ImageBody & ImageFormat & $Shape<HTMLImageElement>;
 
+const StyledItem = styled(Item)`
+  display: block;
+  width: initial;
+`;
+
 /**
  * @description Image block default render component.
  * @param {Props} props
@@ -15,7 +21,7 @@ export type Props = ImageBody & ImageFormat & $Shape<HTMLImageElement>;
  */
 export default function Image({ file, as = Item, ...imgProps }: Props) {
   return (
-    <Item
+    <StyledItem
       {...defaultImageFormat}
       {...defaultImageBody}
       {...imgProps}
