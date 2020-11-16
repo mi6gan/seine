@@ -142,7 +142,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         <Input
           inputProps={{ placeholder: 'max' }}
           disabled={!id}
-          value={maxWidth === 'none' ? '' : parseInt(maxWidth)}
+          value={parseInt(maxWidth) || ''}
           name={'maxWidth'}
           onChange={useAutoCallback((event) => {
             const widthUnits = event.currentTarget.form.elements.namedItem(
@@ -196,7 +196,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         <Input
           inputProps={{ placeholder: 'max' }}
           disabled={!id}
-          value={maxHeight === 'none' ? '' : parseInt(maxHeight)}
+          value={parseInt(maxHeight) || ''}
           name={'maxHeight'}
           onChange={useAutoCallback((event) => {
             const heightUnits = event.currentTarget.form.elements.namedItem(

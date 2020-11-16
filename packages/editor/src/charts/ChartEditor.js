@@ -6,14 +6,17 @@ import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 import { Frame } from '../ui';
 
 import useChartDispatchElements from './useChartDispatchElements';
-import type { ChartEditorProps as Props } from './types';
 
-import { BarChart, ColumnChart, PieChart, LineChart } from '@seine/content';
-import {
-  chartTypes,
-  DESELECT_BLOCK_ELEMENT,
-  SELECT_BLOCK_ELEMENT,
-} from '@seine/core';
+import { Chart } from '@seine/content';
+import { DESELECT_BLOCK_ELEMENT, SELECT_BLOCK_ELEMENT } from '@seine/core';
+import type { BlockEditor, ChartBody, ChartFormat } from '@seine/core';
+import { useSelectedLayoutItems } from '@seine/editor';
+
+export type Props = ChartBody &
+  $Shape<ChartFormat> &
+  BlockEditor & {
+    editor: { selection: number },
+  };
 
 // eslint-disable-next-line
 const SelectionFrame = React.forwardRef(function SelectionFrame(
@@ -90,18 +93,14 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
  * @param {Props} props
  * @returns {React.Node}
  */
-const ChartEditor = React.forwardRef(function ChartEditor(
-  { kind, ...chartProps }: Props,
-  ref
-) {
-  return kind === chartTypes.PIE ? (
-    <PieChart {...chartProps} as={SelectionFrame} ref={ref} />
-  ) : kind === chartTypes.COLUMN ? (
-    <ColumnChart {...chartProps} as={SelectionFrame} ref={ref} />
-  ) : kind === chartTypes.BAR ? (
-    <BarChart {...chartProps} as={SelectionFrame} ref={ref} />
-  ) : (
-    <LineChart {...chartProps} as={SelectionFrame} ref={ref} />
+const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
+  const { item } = useSelectedLayoutItems();
+  return (
+    <Chart
+      {...props}
+      as={item && item.id === props.id ? SelectionFrame : Frame}
+      ref={ref}
+    />
   );
 });
 

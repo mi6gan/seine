@@ -6,11 +6,14 @@ import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
 import { useBlocksDispatch } from '../blocks';
 import { SidebarGroup, SidebarLabel } from '../ui';
-
-import useChartBlock from './useChartBlock';
+import { useSelectedLayoutItems } from '../layouts';
 
 import { Button, ClickAwayListener } from '@seine/styles/mui-core.macro';
-import { UPDATE_BLOCK_FORMAT, chartPaletteKeyValues } from '@seine/core';
+import {
+  UPDATE_BLOCK_FORMAT,
+  chartPaletteKeyValues,
+  initialElementsState,
+} from '@seine/core';
 import { groupElements } from '@seine/content';
 
 const StyledColorButton = styled(Button).attrs(({ children = '' }) => ({
@@ -41,11 +44,13 @@ const ColorPickerContainer = styled.div`
 // eslint-disable-next-line
 export default function ChartElementColorButton() {
   const {
-    id,
-    editor: { selection },
-    format: { paletteKey, palette },
-    body: { elements },
-  } = useChartBlock();
+    item: {
+      id,
+      editor: { selection = initialElementsState.selection } = {},
+      format: { paletteKey, palette },
+      body: { elements },
+    },
+  } = useSelectedLayoutItems();
   const colorIndex = useAutoMemo(
     groupElements(elements).reduce(
       (acc, [_, group]) =>

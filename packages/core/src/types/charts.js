@@ -1,6 +1,4 @@
 // @flow
-import { initialElementsState } from '../reducers';
-
 import type { ItemFormat } from './layout';
 import { defaultItemFormat } from './layout';
 
@@ -115,9 +113,6 @@ export const chartPaletteKeyValues = {
 export const defaultChartPaletteKey = 'default';
 export const defaultChartBody = {
   elements: [],
-};
-export const defaultChartEditor = {
-  selection: initialElementsState.selection,
 };
 export const defaultChartTextAlignment = 'left';
 export const defaultChartLegend = true;
