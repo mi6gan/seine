@@ -134,6 +134,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
 
     if (field === 'units') {
       submit();
+      valueElement.value = '';
       valueElement.focus();
     } else {
       const {
