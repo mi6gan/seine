@@ -13,7 +13,6 @@ import ChartLegend from './ChartLegend';
 import ChartItem from './ChartItem';
 
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
-import { SvgTypography } from '@seine/styles';
 
 const PieChartItem = styled(ChartItem)`
   && {
@@ -51,7 +50,6 @@ function PieChartPoint({
     <>
       <PieSeries.Point {...props} />
       <ChartLabel
-        as={SvgTypography}
         textAnchor={'middle'}
         dominantBaseline={legend ? 'middle' : 'baseline'}
         variant={'h5'}
@@ -65,7 +63,6 @@ function PieChartPoint({
       </ChartLabel>
       {!legend && (
         <ChartLabel
-          as={SvgTypography}
           textAnchor={'middle'}
           dominantBaseline={'hanging'}
           variant={'body2'}

@@ -9,7 +9,7 @@ import useScreenDevice from './useScreenDevice';
 import defaultBlockRenderMap from './blockRenderMap';
 import useNormalizedBlocks from './useNormalizedBlocks';
 
-import { ResizeObserverProvider, ThemeProvider } from '@seine/styles';
+import { ThemeProvider } from '@seine/styles';
 import type { Block, ScreenDevice } from '@seine/core';
 
 export type Props = {
