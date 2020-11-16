@@ -15,17 +15,8 @@ import ChartItem from './ChartItem';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 
-import {
-  defaultChartDx,
-  defaultChartFraction,
-  defaultChartLegend,
-  defaultChartMinValue,
-  defaultChartPalette,
-  defaultChartUnits,
-  defaultChartXAxis,
-} from '@seine/core';
-import { SvgTypography } from '@seine/styles';
 import type { ChartElement } from '@seine/core';
+import { SvgTypography } from '@seine/styles';
 
 type LineChartSeriesProps = LineSeries.SeriesProps;
 
@@ -98,26 +89,7 @@ const LineChartItem = styled(ChartItem)`
  * @returns {React.Node}
  */
 const LineChart = React.forwardRef(function LineChart(
-  {
-    elements,
-
-    dx = defaultChartDx,
-    legend = defaultChartLegend,
-    palette = defaultChartPalette,
-    units = defaultChartUnits,
-    xAxis = defaultChartXAxis,
-    fraction = defaultChartFraction,
-    minValue: initialMinValue = defaultChartMinValue,
-    maxValue: initialMaxValue,
-
-    dy,
-
-    paletteKey,
-    yAxis,
-    textAlignment,
-
-    ...itemProps
-  },
+  { elements, xAxis, yAxis, palette, fraction, units, legend, ...itemProps },
   ref
 ): Props {
   const data = useAutoMemo(
@@ -161,9 +133,7 @@ const LineChart = React.forwardRef(function LineChart(
         />
       )}
 
-      {!!yAxis && (
-        <ValueAxis labelComponent={ValueLabel} showGrid tickSize={dy} />
-      )}
+      {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid />}
       {valueFields.map((valueField, index) => (
         <LineSeries
           key={valueField}

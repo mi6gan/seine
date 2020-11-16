@@ -159,11 +159,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
             });
           })}
         />
-        <Select
-          name={'widthUnits'}
-          defaultValue={getUnits(minWidth, maxWidth)}
-          native
-        >
+        <Select name={'widthUnits'} value={getUnits(minWidth, maxWidth)} native>
           {SIZE_UNITS.map((unit) => (
             <option key={unit} value={unit}>
               {unit}
@@ -215,7 +211,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         />
         <Select
           name={'heightUnits'}
-          defaultValue={getUnits(minHeight, maxHeight)}
+          value={getUnits(minHeight, maxHeight)}
           native
         >
           {SIZE_UNITS.map((unit) => (
