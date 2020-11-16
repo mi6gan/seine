@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 
-import Item from './Item';
+import Item, { ColumnChartItem, BarChartItem, LineChartItem } from './Item';
 
 import type { FlexBody, FlexFormat } from '@seine/core';
 
@@ -33,6 +33,19 @@ const Flex = styled(Item).attrs(({ theme, spacing }: FlexFormat) => ({
 
   & > ${Item} {
     ${({ spacing }) => ({ padding: spacing })}
+  }
+  & > ${ColumnChartItem}, & > ${LineChartItem} {
+    ${({ spacing }) => ({
+      paddingTop:
+        typeof spacing === 'string' ? `calc(${spacing} + 20px)` : spacing + 20,
+    })}
+  }
+
+  & > ${BarChartItem} {
+    ${({ spacing }) => ({
+      paddingRight:
+        typeof spacing === 'string' ? `calc(${spacing} + 20px)` : spacing + 20,
+    })}
   }
 `;
 

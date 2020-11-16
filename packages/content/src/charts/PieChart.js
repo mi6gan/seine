@@ -2,23 +2,16 @@
 import * as React from 'react';
 import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
-import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
 import type { ItemProps } from '../layouts';
+import { PieChartItem } from '../layouts';
 
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
-import ChartItem from './ChartItem';
 
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
-
-const PieChartItem = styled(ChartItem)`
-  && {
-    padding: ${({ theme }) => theme.spacing(4, 2, 0)};
-  }
-`;
 
 type PieChartPointProps = {
   elements: ChartElement[],
@@ -52,7 +45,7 @@ function PieChartPoint({
       <ChartLabel
         textAnchor={'middle'}
         dominantBaseline={legend ? 'middle' : 'baseline'}
-        variant={'h5'}
+        variant={'body1'}
         fontWeight={400}
         x={arg + x}
         y={val - y}
