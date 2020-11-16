@@ -69,6 +69,43 @@ type Props = {
   selectAs?: React.ComponentType,
 };
 
+const ConstrainInput = ({
+  inputAs: Input,
+  selectAs: Select,
+  name,
+  value,
+  onChange,
+  ...InputProps
+}) => (
+  <Input
+    {...InputProps}
+    type={'number'}
+    name={`${name}.value`}
+    onChange={onChange}
+    defaultValue={parseInt(value) || ''}
+    width={'5.5rem'}
+    mr={0}
+    endAdornment={
+      <Select
+        native
+        width={'4ch'}
+        textAlign={'right'}
+        fontSize={'0.75rem'}
+        name={`${name}.units`}
+        onChange={onChange}
+        defaultValue={`${value}`.replace(/\d/g, '')}
+        disableUnderline
+      >
+        {SIZE_UNITS.map((unit) => (
+          <option key={unit} value={unit}>
+            {unit}
+          </option>
+        ))}
+      </Select>
+    }
+  />
+);
+
 const ItemDesign = React.forwardRef(function ItemDesign(
   {
     inputAs: Input = SidebarInput,
@@ -154,6 +191,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
     Object.values(timeoutsRef.current).forEach((timeout) => {
       clearTimeout(timeout);
     });
+    timeoutsRef.current = {};
   });
 
   return (
@@ -163,96 +201,48 @@ const ItemDesign = React.forwardRef(function ItemDesign(
       <SidebarGroup alignItems={'baseline'} mb={0}>
         <SidebarLabel>width</SidebarLabel>
         <Box display={'flex'} mr={1}>
-          <Input
-            type={'number'}
+          <ConstrainInput
+            inputAs={Input}
             inputProps={{ placeholder: 'min' }}
-            name={'minWidth.value'}
+            selectAs={Select}
+            name={'minWidth'}
+            value={minWidth}
             onChange={changeConstraint}
-            defaultValue={parseInt(minWidth) || ''}
-            mr={0}
           />
-          <Select
-            native
-            name={'minWidth.units'}
-            onChange={changeConstraint}
-            defaultValue={`${minWidth}`.replace(/\d/g, '')}
-          >
-            {SIZE_UNITS.map((unit) => (
-              <option key={unit} value={unit}>
-                {unit}
-              </option>
-            ))}
-          </Select>
         </Box>
         <Box display={'flex'}>
-          <Input
-            type={'number'}
+          <ConstrainInput
+            inputAs={Input}
             inputProps={{ placeholder: 'max' }}
-            name={'maxWidth.value'}
+            selectAs={Select}
+            name={'maxWidth'}
+            value={maxWidth}
             onChange={changeConstraint}
-            defaultValue={parseInt(maxWidth) || ''}
-            mr={0}
           />
-          <Select
-            native
-            name={'maxWidth.units'}
-            onChange={changeConstraint}
-            defaultValue={`${maxWidth}`.replace(/\d/g, '')}
-          >
-            {SIZE_UNITS.map((unit) => (
-              <option key={unit} value={unit}>
-                {unit}
-              </option>
-            ))}
-          </Select>
         </Box>
       </SidebarGroup>
 
       <SidebarGroup alignItems={'baseline'} mb={0}>
         <SidebarLabel>height</SidebarLabel>
         <Box display={'flex'} mr={1}>
-          <Input
-            type={'number'}
+          <ConstrainInput
+            inputAs={Input}
             inputProps={{ placeholder: 'min' }}
-            name={'minHeight.value'}
+            selectAs={Select}
+            name={'minHeight'}
+            value={minHeight}
             onChange={changeConstraint}
-            defaultValue={parseInt(minHeight) || ''}
-            mr={0}
           />
-          <Select
-            native
-            name={'minHeight.units'}
-            onChange={changeConstraint}
-            defaultValue={`${minHeight}`.replace(/\d/g, '')}
-          >
-            {SIZE_UNITS.map((unit) => (
-              <option key={unit} value={unit}>
-                {unit}
-              </option>
-            ))}
-          </Select>
         </Box>
         <Box display={'flex'}>
-          <Input
-            type={'number'}
+          <ConstrainInput
+            inputAs={Input}
             inputProps={{ placeholder: 'max' }}
-            name={'maxHeight.value'}
+            selectAs={Select}
+            name={'maxHeight'}
+            value={maxHeight}
             onChange={changeConstraint}
-            defaultValue={parseInt(maxHeight) || ''}
-            mr={0}
           />
-          <Select
-            native
-            name={'maxHeight.units'}
-            onChange={changeConstraint}
-            defaultValue={`${maxHeight}`.replace(/\d/g, '')}
-          >
-            {SIZE_UNITS.map((unit) => (
-              <option key={unit} value={unit}>
-                {unit}
-              </option>
-            ))}
-          </Select>
         </Box>
       </SidebarGroup>
 
