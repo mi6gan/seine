@@ -7,7 +7,7 @@ const Sidebar = styled(Box).attrs({
   bgcolor: 'background.paper',
   color: 'grey.700',
   height: 760,
-  minWidth: 280,
+  minWidth: 290,
   px: 2,
   overflow: 'auto',
 })``;

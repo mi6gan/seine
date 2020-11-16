@@ -61,8 +61,6 @@ const PositionToggleButton = styled(
           }}
 `;
 
-const SIZE_UNITS = ['%', 'px', 'rem'];
-
 type Props = {
   defaults: ItemFormat,
   inputAs?: React.ComponentType,
@@ -96,11 +94,9 @@ const ConstrainInput = ({
         defaultValue={`${value}`.replace(/\d/g, '')}
         disableUnderline
       >
-        {SIZE_UNITS.map((unit) => (
-          <option key={unit} value={unit}>
-            {unit}
-          </option>
-        ))}
+        <option value={'%'}>%</option>
+        <option value={'px'}>px</option>
+        <option value={'rem'}>rem</option>
       </Select>
     }
   />
@@ -195,7 +191,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
   });
 
   return (
-    <SidebarSection {...sectionProps} as={'form'} ref={ref}>
+    <SidebarSection {...sectionProps} as={'form'} ref={ref} key={id}>
       <SidebarHeading>Constraints</SidebarHeading>
 
       <SidebarGroup alignItems={'baseline'} mb={0}>
