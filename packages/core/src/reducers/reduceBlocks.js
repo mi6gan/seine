@@ -1,7 +1,7 @@
 // @flow
 import { equals, filter } from 'ramda';
 
-import { filterBlockAncestors } from '../utils';
+import { filterBlockAncestors, isBlockContainer } from '../utils';
 import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
 import { blockTypes } from '../types';
 
@@ -336,7 +336,11 @@ export function reduceBlocks(
           ...state.blocks.slice(firstIndex + 1, lastIndex),
           ...(lastIndex === targetIndex ? insertion : []),
           ...state.blocks.slice(lastIndex + 1),
-        ],
+        ].filter(
+          (block, index, blocks) =>
+            !isBlockContainer(block) ||
+            blocks.slice(index).some((child) => child.parent_id === block.id)
+        ),
       };
     }
 
