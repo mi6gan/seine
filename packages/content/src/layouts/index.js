@@ -4,7 +4,7 @@ export { default as Flex } from './Flex';
 export { default as Grid } from './Grid';
 export { default as Layout } from './Layout';
 
-export type * from './Item';
-export type * from './Flex';
-export type * from './Grid';
-export type * from './Layout';
+export * from './Item';
+export * from './Flex';
+export * from './Grid';
+export * from './Layout';

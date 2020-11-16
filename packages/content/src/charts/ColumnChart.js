@@ -8,20 +8,12 @@ import {
   Chart,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
-import styled from 'styled-components/macro';
+
+import { BarChartItem, ColumnChartItem } from '../layouts/Item';
 
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
-import ChartItem from './ChartItem';
 import ChartLegend from './ChartLegend';
-
-import type { ChartElement } from '@seine/core';
-
-const ColumnChartItem = styled(ChartItem)`
-  && {
-    padding: ${({ theme }) => theme.spacing(4, 2, 0)};
-  }
-`;
 
 // eslint-disable-next-line
 function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
@@ -74,6 +66,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   { elements, legend, palette, paletteKey, xAxis, yAxis, ...itemProps },
   ref
 ): Props {
+  const ChartItem = itemProps.rotated ? BarChartItem : ColumnChartItem;
   const data = useAutoMemo(
     Object.entries(
       elements.reduce(
@@ -107,7 +100,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   ));
 
   return forceRemount ? null : (
-    <ColumnChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
+    <ChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
@@ -129,7 +122,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
       ))}
       {!!legend && <ChartLegend />}
       <Stack />
-    </ColumnChartItem>
+    </ChartItem>
   );
 });
 

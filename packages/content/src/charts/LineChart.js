@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components/macro';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { Stack } from '@devexpress/dx-react-chart';
 import {
@@ -10,8 +9,9 @@ import {
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
+import { LineChartItem } from '../layouts/Item';
+
 import ChartLabel from './ChartLabel';
-import ChartItem from './ChartItem';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 
@@ -76,12 +76,6 @@ function ValueLabel({ text, ...props }) {
   return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
 }
 
-const LineChartItem = styled(ChartItem)`
-  && {
-    padding: ${({ theme }) => theme.spacing(4, 2, 0)};
-  }
-`;
-
 /**
  * @description Bar chart block renderer.
  * @param {Props} props
@@ -124,7 +118,7 @@ const LineChart = React.forwardRef(function LineChart(
   ));
 
   return forceRemount ? null : (
-    <LineChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
+    <LineChartItem {...itemProps} ref={ref} forwardedAs={Chart} data={data}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
