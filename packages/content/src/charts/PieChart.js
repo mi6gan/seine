@@ -12,12 +12,6 @@ import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 import ChartItem from './ChartItem';
 
-import {
-  defaultChartFraction,
-  defaultChartPalette,
-  defaultPieChartLegend,
-  defaultPieChartUnits,
-} from '@seine/core';
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
 import { SvgTypography } from '@seine/styles';
 
@@ -96,27 +90,7 @@ type Props = ItemProps & ChartBody & $Shape<ChartFormat>;
  * @returns {React.Node}
  */
 const PieChart = React.forwardRef(function PieChart(
-  {
-    legend = defaultPieChartLegend,
-    palette = defaultChartPalette,
-    units = defaultPieChartUnits,
-    fraction = defaultChartFraction,
-
-    elements,
-
-    dx,
-    dy,
-    title,
-    minValue,
-    maxValue,
-    paletteKey,
-    xAxis,
-    yAxis,
-
-    children,
-
-    ...itemProps
-  },
+  { legend, palette, units, fraction, elements, ...itemProps },
   ref
 ): Props {
   return (

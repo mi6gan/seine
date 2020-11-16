@@ -9,8 +9,8 @@ import {
   useBlocksDispatch,
 } from '../blocks';
 import { SidebarGroup } from '../ui';
+import { useSelectedLayoutItems } from '../layouts';
 
-import useChartBlock from './useChartBlock';
 import useElementSelector from './useElementSelector';
 
 import { Button } from '@seine/styles/mui-core.macro';
@@ -40,10 +40,12 @@ const StyledButton = styled(Button)`
 // eslint-disable-next-line
 export default function ChartStructureGroup() {
   const {
-    id,
-    body: { elements },
-    format: { minValue, maxValue, kind },
-  } = useChartBlock();
+    item: {
+      id,
+      body: { elements },
+      format: { minValue, maxValue, kind },
+    },
+  } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
   const values = useAutoMemo(elements.map(({ value }) => value));
   const min = useAutoMemo(minValue || Math.min(...values));

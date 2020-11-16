@@ -17,7 +17,6 @@ import {
 import { EditorActionIconButton, useBlocksDispatch } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
 
-import { defaultTableEditor } from './constants';
 import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
 import TableColumnPlusBeforeIcon from './TableColumnPlusBeforeIcon';
 import TableColumnRemoveIcon from './TableColumnRemoveIcon';
@@ -72,10 +71,10 @@ export default function TableDesign() {
     item: {
       id,
       editor: {
-        rowIndex = defaultTableEditor.rowIndex,
-        columnIndex = defaultTableEditor.columnIndex,
+        rowIndex = -1,
+        columnIndex = -1,
         [`${rowIndex}:${columnIndex}`]: editorState,
-      } = defaultTableEditor,
+      } = {},
       body: { header = defaultTableBody.header, rows = defaultTableBody.rows },
     },
   } = useSelectedLayoutItems();

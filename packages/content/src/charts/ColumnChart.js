@@ -15,17 +15,8 @@ import ChartValue from './ChartValue';
 import ChartItem from './ChartItem';
 import ChartLegend from './ChartLegend';
 
-import {
-  defaultChartDx,
-  defaultChartFraction,
-  defaultChartLegend,
-  defaultChartMinValue,
-  defaultChartPalette,
-  defaultChartUnits,
-  defaultChartXAxis,
-} from '@seine/core';
-import { SvgTypography } from '@seine/styles';
 import type { ChartElement } from '@seine/core';
+import { SvgTypography } from '@seine/styles';
 
 const ColumnChartItem = styled(ChartItem)`
   && {
@@ -83,26 +74,7 @@ type Props = {
  * @returns {React.Node}
  */
 const ColumnChart = React.forwardRef(function ColumnChart(
-  {
-    elements,
-
-    dx = defaultChartDx,
-    legend = defaultChartLegend,
-    palette = defaultChartPalette,
-    units = defaultChartUnits,
-    xAxis = defaultChartXAxis,
-    fraction = defaultChartFraction,
-    minValue: initialMinValue = defaultChartMinValue,
-    maxValue: initialMaxValue,
-
-    dy,
-
-    paletteKey,
-    yAxis,
-    textAlignment,
-
-    ...itemProps
-  },
+  { elements, legend, palette, paletteKey, xAxis, yAxis, ...itemProps },
   ref
 ): Props {
   const data = useAutoMemo(

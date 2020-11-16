@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components/macro';
 
 import { Item } from '../layouts';
 
@@ -14,17 +13,16 @@ import { chartTypes } from '@seine/core';
 
 type Props = $Shape<ChartFormat> & ChartBody;
 
-const ChartItem = styled(Item)`
-  display: flex;
-  flex-direction: column;
-`;
-
 /**
  * @description Switch to chart render components by its kind.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Chart({ kind, ...chartProps }: Props) {
+export default function Chart({
+  kind,
+  as: ChartItem = Item,
+  ...chartProps
+}: Props) {
   return kind === chartTypes.PIE ? (
     <PieChart {...chartProps} as={ChartItem} />
   ) : kind === chartTypes.COLUMN ? (
