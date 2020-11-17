@@ -24,14 +24,15 @@ const LegendRoot = styled(List)`
   }
   .MuiTypography-body1 {
     ${({ theme }) => theme.typography.body1};
+    margin-bottom: 0;
   }
 `;
 
 export const LegendMarker = styled.svg.attrs([
-  ({ color, theme }) => ({
+  ({ color }) => ({
     fill: color,
-    width: theme.spacing(2),
-    height: theme.spacing(2),
+    width: '1.5em',
+    height: '1.5em',
   }),
   {
     children: <rect x={0} y={0} width={'100%'} height={'100%'} />,
