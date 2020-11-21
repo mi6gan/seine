@@ -2,7 +2,7 @@
   "name": "@seine/content",
   "main": "./index.cjs.js",
   "module": "./index.es.js",
-  "version": "0.4.57",
+  "version": "0.4.58",
   "description": "React components for rendering block contents.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
