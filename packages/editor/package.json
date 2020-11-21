@@ -2,7 +2,7 @@
   "name": "@seine/editor",
   "main": "./index.cjs.js",
   "module": "./index.es.js",
-  "version": "0.4.57",
+  "version": "0.4.58",
   "description": "React components for editing block contents.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
