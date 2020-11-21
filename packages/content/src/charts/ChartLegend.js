@@ -16,6 +16,7 @@ const LegendRoot = styled(List)`
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 0;
+    white-space: nowrap;
   }
   .MuiListItemText-root {
     padding-top: 0;

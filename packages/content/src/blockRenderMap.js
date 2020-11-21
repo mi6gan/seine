@@ -1,9 +1,25 @@
 // @flow
 import * as React from 'react';
 
-import { defaultBlockRenderMap as blockRenderMap_v0_3 } from '../v0.3';
-
 import defaultBlockRenderMap from './defaultBlockRenderMap';
+import {
+  Image_v0_3,
+  Layout_v0_3,
+  Page_v0_3,
+  RichText_v0_3,
+  Table_v0_3,
+} from './v0.3';
+
+import { blockTypes } from '@seine/core';
+
+const blockRenderMap_v0_3 = {
+  [blockTypes.IMAGE]: Image_v0_3,
+  [blockTypes.LAYOUT]: Layout_v0_3,
+  [blockTypes.PAGE]: Page_v0_3,
+  [blockTypes.RICH_TEXT]: RichText_v0_3,
+  [blockTypes.TABLE]: Table_v0_3,
+  [blockTypes.CHART]: defaultBlockRenderMap[blockTypes.CHART],
+};
 
 const blockRenderMap = Object.keys(defaultBlockRenderMap).reduce(
   (acc, blockType) => ({
