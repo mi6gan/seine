@@ -1,7 +1,6 @@
 // @flow
 import type { BlockId } from '../types';
 import type { BlocksAction } from '../reducers';
-import { MOVE_BLOCK } from '../reducers';
 
 import {
   CREATE_BLOCK,
@@ -9,6 +8,7 @@ import {
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
   UPDATE_BLOCK_FORMAT,
+  MOVE_BLOCK,
 } from './reduceBlocks';
 
 type BlocksActionType = $PropertyType<BlocksAction, 'type'>;
