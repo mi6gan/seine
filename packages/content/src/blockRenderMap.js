@@ -1,20 +1,21 @@
 // @flow
-import { Layout } from './layouts';
-import { Page } from './pages';
-import { Chart } from './charts';
-import { Image } from './images';
-import { RichText } from './richtexts';
-import { Table } from './tables';
+import * as React from 'react';
 
-import { blockTypes } from '@seine/core';
+import { defaultBlockRenderMap as blockRenderMap_v0_3 } from '../v0.3';
 
-const blockRenderMap = {
-  [blockTypes.LAYOUT]: Layout,
-  [blockTypes.PAGE]: Page,
-  [blockTypes.TABLE]: Table,
-  [blockTypes.CHART]: Chart,
-  [blockTypes.RICH_TEXT]: RichText,
-  [blockTypes.IMAGE]: Image,
-};
+import defaultBlockRenderMap from './defaultBlockRenderMap';
+
+const blockRenderMap = Object.keys(defaultBlockRenderMap).reduce(
+  (acc, blockType) => ({
+    ...acc,
+    [blockType]: ({ version, ...props }) => {
+      const Block = (version === '0.3'
+        ? blockRenderMap_v0_3
+        : defaultBlockRenderMap)[blockType];
+      return <Block {...props} />;
+    },
+  }),
+  {}
+);
 
 export default blockRenderMap;

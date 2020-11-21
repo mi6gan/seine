@@ -78,16 +78,16 @@ export default function FlexDesign({
         <Select
           name={'direction'}
           native
-          value={direction}
-          onChange={useAutoCallback((event) =>
+          defaultValue={direction}
+          onChange={useAutoCallback((event) => {
             dispatch({
               type: UPDATE_BLOCK_FORMAT,
               id,
               format: {
                 direction: event.target.value,
               },
-            })
-          )}
+            });
+          })}
         >
           <option value={'row'}>Row</option>
           <option value={'column'}>Column</option>

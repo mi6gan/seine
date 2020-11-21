@@ -35,7 +35,7 @@ const LayoutDesign = React.forwardRef(function LayoutDesign(props, ref) {
         <SidebarGroup>
           <SidebarLabel>type</SidebarLabel>
           <Select
-            value={kind}
+            defaultValue={kind}
             name={'kind'}
             native
             onChange={useAutoCallback((e) => {
