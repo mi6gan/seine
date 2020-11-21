@@ -39,6 +39,7 @@ export const defaultItemFormat = {
   flexBasis: 'auto',
   gridRow: '',
   gridColumn: '',
+  version: '0.4',
 };
 
 export type GridBody = {};
