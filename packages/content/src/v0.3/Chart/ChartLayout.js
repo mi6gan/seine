@@ -26,7 +26,7 @@ const ChartLayoutContainer = styled.div`
   ${ChartLayoutDescription} {
     width: 100%;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
   ${({ theme: { breakpoints } }) => css`
     max-width: 65vw;
     ${breakpoints.up('md')} {
