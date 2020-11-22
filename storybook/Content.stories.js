@@ -660,3 +660,25 @@ Data.parameters = {
     disable: true,
   },
 };
+
+export const Data_v0_3 = ({
+  as: Container = Content,
+  children = [],
+  ...props
+}) =>
+  Object.entries(data).map(([key, blocks]) => (
+    <Box key={key} p={8} borderBottom={'1px dashed currentColor'}>
+      <Container {...props}>
+        {blocks.map(({ format, ...block }) => ({
+          ...block,
+          format: { ...format, version: '0.3' },
+        }))}
+      </Container>
+    </Box>
+  ));
+
+Data_v0_3.parameters = {
+  storyshots: {
+    disable: true,
+  },
+};

@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
-import { useAutoEffect, useAutoCallback } from 'hooks.macro';
+
+import { useResizeTargetRef } from './Page';
 
 import { Typography } from '@seine/styles';
 
@@ -70,33 +71,14 @@ const StyledTableCell = styled.td`
 
 // eslint-disable-next-line
 export default function Table_v0_3({ title, header, rows, textAlignment }) {
-  const containerRef = React.useRef(null);
+  const containerRef = useResizeTargetRef();
   const tableRef = React.useRef(null);
 
-  const [scale, setScale] = React.useState(1);
+  const { current: container } = containerRef;
+  const { current: table } = tableRef;
 
-  const resize = useAutoCallback(() => {
-    const { current: container } = containerRef;
-    const { current: table } = tableRef;
-    if (container && table) {
-      setScale(container.offsetWidth / table.offsetWidth);
-    }
-  });
-
-  React.useEffect(
-    () => {
-      setTimeout(resize, 100);
-    },
-    // eslint-disable-next-line
-    []
-  );
-
-  useAutoEffect(() => {
-    window.addEventListener('resize', resize);
-    return () => {
-      window.removeEventListener('resize', resize);
-    };
-  });
+  const scale =
+    container && table ? container.offsetWidth / table.offsetWidth : 1;
 
   return (
     <Container ref={containerRef}>
