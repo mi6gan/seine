@@ -29,7 +29,13 @@ function ContentBlock({ id }): React.Node {
   const BlockComponent = useBlockComponent(type);
 
   return (
-    <BlockComponent id={id} {...format} {...body} editor={editor}>
+    <BlockComponent
+      id={id}
+      {...format}
+      {...body}
+      editor={editor}
+      parentType={type}
+    >
       {blockChildren.length > 0
         ? blockChildren.map(({ id }) => <ContentBlock id={id} key={id} />)
         : null}

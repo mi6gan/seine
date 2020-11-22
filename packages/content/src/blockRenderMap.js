@@ -8,6 +8,7 @@ import {
   Page_v0_3,
   RichText_v0_3,
   Table_v0_3,
+  Chart_v0_3,
 } from './v0.3';
 
 import { blockTypes } from '@seine/core';
@@ -18,7 +19,7 @@ const blockRenderMap_v0_3 = {
   [blockTypes.PAGE]: Page_v0_3,
   [blockTypes.RICH_TEXT]: RichText_v0_3,
   [blockTypes.TABLE]: Table_v0_3,
-  [blockTypes.CHART]: defaultBlockRenderMap[blockTypes.CHART],
+  [blockTypes.CHART]: Chart_v0_3,
 };
 
 const blockRenderMap = Object.keys(defaultBlockRenderMap).reduce(
