@@ -6,10 +6,10 @@ import { defaultEditorSelector, useEditorSelector } from '../blocks';
 import { blockTypes, isBlockContainer } from '@seine/core';
 
 // eslint-disable-next-line
-export default function useSelectedLayoutItems(obsolete = false) {
+export default function useSelectedLayoutItems(includeObsolete = false) {
   const blocks = useEditorSelector((state) =>
     defaultEditorSelector(state).filter(
-      ({ type }) => obsolete || !/^.+\//.test(type)
+      ({ type }) => includeObsolete || !/^.+\//.test(type)
     )
   );
   const layouts = useAutoMemo(blocks.filter(isBlockContainer));
