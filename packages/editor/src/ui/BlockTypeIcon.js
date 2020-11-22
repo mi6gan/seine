@@ -12,6 +12,7 @@ import {
   ViewCompact as LayoutIcon,
   Description as PageIcon,
   Image as ImageIcon,
+  Lock as LockIcon,
 } from '@seine/styles/mui-icons.macro';
 import type { BlockType } from '@seine/core';
 import { blockTypes, chartTypes } from '@seine/core';
@@ -24,14 +25,24 @@ const BarChartIcon = styled(ColumnChartIcon).attrs({
   transform: 'rotate(90)',
 })``;
 
+const LockContainer = styled.div`
+  svg:last-of-type {
+    position: relative;
+    font-size: 0.7rem;
+    left: -0.35rem;
+    color: ${({ theme }) => theme.palette.error.main};
+  }
+`;
+
 /**
  * @description Block type icon.
  * @param {Props} props
  * @returns {React.Node}
  */
 export default function BlockTypeIcon({ type, kind, ...iconProps }: Props) {
+  const iconType = type.replace(/^.+\//, '');
   const Icon = useAutoMemo(() => {
-    switch (type) {
+    switch (iconType) {
       case blockTypes.PAGE:
         return PageIcon;
 
@@ -65,5 +76,15 @@ export default function BlockTypeIcon({ type, kind, ...iconProps }: Props) {
         return null;
     }
   });
-  return Icon && <Icon {...iconProps} />;
+  return (
+    Icon &&
+    (type === iconType ? (
+      <Icon {...iconProps} />
+    ) : (
+      <LockContainer>
+        <Icon {...iconProps} />
+        <LockIcon />
+      </LockContainer>
+    ))
+  );
 }

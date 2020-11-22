@@ -6,6 +6,7 @@ import * as tableDefaults from './tables';
 import * as layoutDefaults from './layouts';
 import * as chartDefaults from './charts';
 import * as imageDefaults from './images';
+import ObsoleteDesign from './v3.0/ObsoleteDesign';
 
 import { blockTypes } from '@seine/core';
 
@@ -34,9 +35,11 @@ export default function EditorDesign({
   children = null,
 }: Props) {
   const { layout, item } = layoutDefaults.useSelectedLayoutItems();
+  const { item: obsoleteItem } = layoutDefaults.useSelectedLayoutItems(true);
 
   return (
     <>
+      {!item && obsoleteItem && <ObsoleteDesign />}
       {item && <ItemDesign />}
       {layout && <LayoutDesign />}
       {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}

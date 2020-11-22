@@ -10,7 +10,12 @@ export default function useSelectedLayoutIds() {
   return useEditorSelector(
     useAutoCallback(({ selection, blocks }) =>
       selection.filter((id) =>
-        blocks.some((block) => id === block.id && isBlockContainer(block))
+        blocks.some(
+          (block) =>
+            id === block.id &&
+            isBlockContainer(block) &&
+            !/^.+\//.test(block.type)
+        )
       )
     )
   );
