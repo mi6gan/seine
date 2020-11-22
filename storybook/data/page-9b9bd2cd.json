@@ -1,0 +1,218 @@
+[
+  {
+    "id": "9b9bd2cd-5885-4d7d-8284-248eb9a0fb9b",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "496e830c-138b-4350-82f2-c5c51be75fc3",
+    "type": "grid",
+    "parent_id": "9b9bd2cd-5885-4d7d-8284-248eb9a0fb9b",
+    "body": {},
+    "format": {
+      "columns": "100%"
+    },
+    "schema": null
+  },
+  {
+    "id": "fdd78c55-5cf0-4a17-9381-127cf11d1e3f",
+    "type": "draft",
+    "parent_id": "496e830c-138b-4350-82f2-c5c51be75fc3",
+    "body": {
+      "blocks": [
+        {
+          "key": "6cab3",
+          "data": {},
+          "text": "Commercial trucks are classified into three categories according to the gross vehicle weight:",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "1v51j",
+          "data": {},
+          "text": "Light-duty trucks (0 to 5  tonnes)",
+          "type": "ordered-list-item",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "e54v8",
+          "data": {},
+          "text": "Medium-duty trucks (6 to 9  tonnes)",
+          "type": "ordered-list-item",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "6j2m1",
+          "data": {},
+          "text": "Heavy-duty trucks (10 to 16  tonnes and above)",
+          "type": "ordered-list-item",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "38tn",
+          "data": {},
+          "text": "The heavy-duty truck segment can be further broken down into two groups:",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "dmd6c",
+          "data": {},
+          "text": "Regular-duty (10 to 15 tonnes)",
+          "type": "unordered-list-item",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "234bo",
+          "data": {},
+          "text": "Severe-duty (16 tonnes and above)",
+          "type": "unordered-list-item",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "2g94m",
+          "data": {},
+          "text": "Customers are increasingly shifting from using medium-duty trucks to light-duty trucks and heavy-duty trucks. The main benefits of light-duty trucks include fuel efficiency, increased mobility, and modification possibilities. Conversely, heavy-duty trucks provide better economic efficiency for long-distance transportation.",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": {
+      "verticalAlignment": "start"
+    },
+    "schema": null
+  },
+  {
+    "id": "ba5a0ff0-493d-492a-ae80-325491689c05",
+    "type": "grid",
+    "parent_id": "496e830c-138b-4350-82f2-c5c51be75fc3",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "2492f781-f856-45aa-8394-9cebb1b4e8f3",
+    "type": "chart",
+    "parent_id": "ba5a0ff0-493d-492a-ae80-325491689c05",
+    "body": {
+      "elements": [
+        {
+          "id": "d5eb05a2-93dc-41b8-8fc5-28b1879e3454",
+          "title": "First line",
+          "value": 35
+        },
+        {
+          "id": "4442691f-d1fb-4eff-9afc-1ecf6ed94135",
+          "title": "Second line",
+          "value": 70
+        }
+      ]
+    },
+    "format": {
+      "kind": "bar",
+      "xAxis": true,
+      "yAxis": true,
+      "height": 100,
+      "legend": true,
+      "palette": [
+        "#71a2ff",
+        "#c0d4e2",
+        "#cbcbcb",
+        "#e57878",
+        "#8adb96",
+        "#6895eb",
+        "#b8c8d8",
+        "#ebebeb",
+        "#ff7171",
+        "#fdc91d",
+        "#618bdb",
+        "#acbecb",
+        "#707070"
+      ],
+      "fraction": 0,
+      "paletteKey": "default",
+      "textAlignment": "left"
+    },
+    "schema": null
+  },
+  {
+    "id": "5dacc600-5920-41f5-8e5b-a5d8ef2ccb63",
+    "type": "chart",
+    "parent_id": "ba5a0ff0-493d-492a-ae80-325491689c05",
+    "body": {
+      "elements": [
+        {
+          "id": "b9303575-df6e-4551-8c88-512d839625ad",
+          "group": "group 1",
+          "title": "Top",
+          "value": 100
+        },
+        {
+          "id": "b5d95e4d-6c47-4537-8058-11eb3555bfcd",
+          "group": "group 1",
+          "title": "Bottom",
+          "value": 10
+        },
+        {
+          "id": "b9303575-df6e-4551-8c88-512d839625ad",
+          "group": "group 2",
+          "title": "Top",
+          "value": 100
+        },
+        {
+          "id": "b5d95e4d-6c47-4537-8058-11eb3555bfcd",
+          "group": "group 2",
+          "title": "Bottom",
+          "value": 10
+        }
+      ]
+    },
+    "format": {
+      "kind": "line",
+      "xAxis": true,
+      "yAxis": true,
+      "height": 100,
+      "legend": true,
+      "palette": [
+        "#71a2ff",
+        "#c0d4e2",
+        "#cbcbcb",
+        "#e57878",
+        "#8adb96",
+        "#6895eb",
+        "#b8c8d8",
+        "#ebebeb",
+        "#ff7171",
+        "#fdc91d",
+        "#618bdb",
+        "#acbecb",
+        "#707070"
+      ],
+      "fraction": 0,
+      "paletteKey": "default",
+      "textAlignment": "left"
+    },
+    "schema": null
+  }
+]

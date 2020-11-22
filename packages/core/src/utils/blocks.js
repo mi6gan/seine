@@ -135,6 +135,9 @@ export function getBlockFormat(
   { type, format }: Block,
   device: ?ScreenDevice = 'any'
 ) {
+  if (format && format.version === '0.3') {
+    return format;
+  }
   format = {
     ...getDefaultBlockFormat(type, format && format.kind),
     ...format,
