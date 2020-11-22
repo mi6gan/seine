@@ -3,7 +3,7 @@ import { equals, filter } from 'ramda';
 
 import { filterBlockAncestors, isBlockContainer } from '../utils';
 import type { Block, BlockBody, BlockFormat, BlockId } from '../types';
-import { blockTypes } from '../types';
+import { blockTypes, defaultItemFormat } from '../types';
 
 opaque type BlockExtension = {
   editor: { [string]: any },
@@ -89,6 +89,12 @@ export type MoveBlockAction = {
   position: 'before' | 'after',
 };
 
+export const UPGRADE_BLOCK_VERSION = '@seine/core/upgradeBlockVersion';
+export type UpgradeBlockVersionAction = {
+  type: typeof UPGRADE_BLOCK_VERSION,
+  id?: BlockId,
+};
+
 //
 // Memoize editor's inner state.
 //
@@ -113,7 +119,8 @@ export type BlocksAction =
   | SetBlocksSelectionAction
   | SetBlockParentAction
   | SetDeviceAction
-  | MoveBlockAction;
+  | MoveBlockAction
+  | UpgradeBlockVersionAction;
 
 /**
  * @description Reduce Content editor actions
@@ -229,7 +236,8 @@ export function reduceBlocks(
 
     case UPDATE_BLOCK_BODY:
     case UPDATE_BLOCK_EDITOR:
-    case UPDATE_BLOCK_FORMAT: {
+    case UPDATE_BLOCK_FORMAT:
+    case UPGRADE_BLOCK_VERSION: {
       const index = state.blocks.findIndex(({ id }) =>
         'id' in action ? action.id === id : state.selection.includes(id)
       );
@@ -266,6 +274,14 @@ export function reduceBlocks(
                 ? { body: { ...block.body, ...action.body } }
                 : action.type === UPDATE_BLOCK_EDITOR
                 ? { editor: { ...block.editor, ...action.editor } }
+                : action.type === UPGRADE_BLOCK_VERSION
+                ? {
+                    type: block.type.replace(/^.+\//, ''),
+                    format: {
+                      ...block.format,
+                      version: defaultItemFormat.version,
+                    },
+                  }
                 : {
                     format:
                       state.device === 'any'

@@ -14,6 +14,7 @@ import {
   LineChart,
   ColumnChart,
   BarChart,
+  DataV03,
 } from './Content.stories';
 
 import { Editor } from '@seine/editor';
@@ -47,6 +48,10 @@ export const EditorOfImage = () => (
 export const EditorOfFlex = () => <Flex as={Editor} {...actions('onChange')} />;
 
 export const EditorOfData = () => <Data as={Editor} {...actions('onChange')} />;
+
+export const EditorOfData_v0_3 = () => (
+  <DataV03 as={Editor} {...actions('onChange')} />
+);
 
 export const EditorOfNestedFlex = () => (
   <NestedFlex as={Editor} {...actions('onChange')} />

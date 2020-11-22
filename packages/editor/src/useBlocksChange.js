@@ -13,7 +13,7 @@ export default function useBlocksChange(onChange: (Block[]) => void) {
       // no extra data should be passed, like `editor` key value
       blocks.map(({ id, type, body, format, parent_id }) => ({
         id,
-        type,
+        type: type.replace(/^.+\//, ''),
         body,
         format,
         parent_id,

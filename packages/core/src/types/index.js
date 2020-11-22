@@ -22,6 +22,8 @@ export * from './images';
 export * from './page';
 export * from './tables';
 
+export * from './v0.3';
+
 export const blockTypes = {
   CHART,
   IMAGE: Images,
@@ -57,6 +59,7 @@ export type Block = {
   id: BlockId,
   body: BlockBody,
   format: {
+    version: string,
     [ScreenDevice]: BlockFormat,
     ...BlockFormat,
   },

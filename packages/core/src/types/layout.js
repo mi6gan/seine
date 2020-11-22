@@ -44,7 +44,7 @@ export const defaultItemFormat = {
 
 export type GridBody = {};
 
-export type GridFormat = {
+export type GridFormat = ItemFormat & {
   kind: 'grid',
   columns?: string,
   columnGap?: string,
@@ -54,7 +54,7 @@ export type GridFormat = {
 
 export type FlexBody = {};
 
-export type FlexFormat = {
+export type FlexFormat = ItemFormat & {
   kind: 'flex',
   direction: 'row' | 'column',
   wrap: 'wrap' | 'nowrap',

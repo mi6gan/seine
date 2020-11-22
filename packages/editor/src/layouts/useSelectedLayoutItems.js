@@ -1,17 +1,17 @@
 // @flow
-import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 
-import { useEditorSelector } from '../blocks';
+import { defaultEditorSelector, useEditorSelector } from '../blocks';
 
 import { blockTypes, isBlockContainer } from '@seine/core';
 
-/**
- * @description Use layout items list from current selection.
- * @returns {React.Node}
- */
-export default function useSelectedLayoutItems() {
-  const blocks = useEditorSelector();
+// eslint-disable-next-line
+export default function useSelectedLayoutItems(includeObsolete = false) {
+  const blocks = useEditorSelector((state) =>
+    defaultEditorSelector(state).filter(
+      ({ type }) => includeObsolete || !/^.+\//.test(type)
+    )
+  );
   const layouts = useAutoMemo(blocks.filter(isBlockContainer));
   const items = useAutoMemo(
     layouts.length

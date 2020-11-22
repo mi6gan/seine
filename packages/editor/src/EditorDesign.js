@@ -6,6 +6,7 @@ import * as tableDefaults from './tables';
 import * as layoutDefaults from './layouts';
 import * as chartDefaults from './charts';
 import * as imageDefaults from './images';
+import ObsoleteDesign from './v0.3/ObsoleteDesign';
 
 import { blockTypes } from '@seine/core';
 
@@ -34,15 +35,20 @@ export default function EditorDesign({
   children = null,
 }: Props) {
   const { layout, item } = layoutDefaults.useSelectedLayoutItems();
+  const { item: obsoleteItem } = layoutDefaults.useSelectedLayoutItems(true);
+  const isObsolete = item !== obsoleteItem && obsoleteItem;
 
   return (
     <>
-      {item && <ItemDesign />}
-      {layout && <LayoutDesign />}
-      {item && item.type === blockTypes.RICH_TEXT && <RichTextDesign />}
-      {item && item.type === blockTypes.TABLE && <TableDesign />}
-      {item && item.type === blockTypes.CHART && <ChartDesign />}
-      {item && item.type === blockTypes.IMAGE && <ImageDesign />}
+      {isObsolete && <ObsoleteDesign />}
+      {item && !isObsolete && <ItemDesign />}
+      {layout && !isObsolete && <LayoutDesign />}
+      {item && !isObsolete && item.type === blockTypes.RICH_TEXT && (
+        <RichTextDesign />
+      )}
+      {item && !isObsolete && item.type === blockTypes.TABLE && <TableDesign />}
+      {item && !isObsolete && item.type === blockTypes.CHART && <ChartDesign />}
+      {item && !isObsolete && item.type === blockTypes.IMAGE && <ImageDesign />}
       {children}
     </>
   );

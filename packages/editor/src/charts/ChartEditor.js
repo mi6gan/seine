@@ -4,13 +4,13 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
+import { useSelectedLayoutItems } from '../layouts';
 
 import useChartDispatchElements from './useChartDispatchElements';
 
 import { Chart } from '@seine/content';
 import { DESELECT_BLOCK_ELEMENT, SELECT_BLOCK_ELEMENT } from '@seine/core';
 import type { BlockEditor, ChartBody, ChartFormat } from '@seine/core';
-import { useSelectedLayoutItems } from '@seine/editor';
 
 export type Props = ChartBody &
   $Shape<ChartFormat> &

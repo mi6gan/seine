@@ -13,6 +13,7 @@ import type {
 } from '../types';
 import {
   blockTypes,
+  blockTypes_v0_3,
   chartTypes,
   defaultBarChartFormat,
   defaultBlockFormat,
@@ -21,6 +22,7 @@ import {
   defaultFlexFormat,
   defaultGridFormat,
   defaultImageFormat,
+  defaultItemFormat,
   defaultLayoutFormat,
   defaultLineChartFormat,
   defaultPageFormat,
@@ -68,7 +70,12 @@ export function filterBlockAncestors(id: BlockId, blocks: Block[]): Block {
  * @returns {boolean}
  */
 export function isBlockContainer(block: Block) {
-  return block.type === blockTypes.PAGE || block.type === blockTypes.LAYOUT;
+  return (
+    block.type === blockTypes.PAGE ||
+    block.type === blockTypes.LAYOUT ||
+    block.type === blockTypes_v0_3.PAGE ||
+    block.type === blockTypes_v0_3.LAYOUT
+  );
 }
 
 /**
@@ -155,8 +162,18 @@ export function getBlockFormat(
  * @returns {BlockFormat}
  */
 export function normalizeBlock(block: Block, device: ?ScreenDevice = 'any') {
+  const typePrefix =
+    block.format &&
+    block.format.version &&
+    block.format.version !== defaultItemFormat.version &&
+    `v${block.format.version}/`;
+
   return {
     ...block,
+    type:
+      !typePrefix || block.type.startsWith(typePrefix)
+        ? block.type
+        : `${typePrefix}${block.type}`,
     format: getBlockFormat(block, device),
   };
 }

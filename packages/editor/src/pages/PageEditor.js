@@ -6,7 +6,7 @@ import { useAutoCallback } from 'hooks.macro';
 import { useEditorSelector } from '../blocks';
 
 import { Paper } from '@seine/styles/mui-core.macro';
-import { Page } from '@seine/content';
+import { Page as DefaultPage } from '@seine/content';
 import type { LayoutProps } from '@seine/content';
 
 type Props = LayoutProps & {
@@ -24,6 +24,7 @@ const PageFrame = styled(Paper).attrs({
     padding: 0;
     width: 100%;
     min-height: 100%;
+    overflow: auto;
     ${({ scale }: Props) =>
       Number.isFinite(parseFloat(+scale)) && {
         transform: `scale(${scale}%)`,
@@ -42,6 +43,7 @@ const PageFrame = styled(Paper).attrs({
  */
 const PageEditor = React.forwardRef(function PageEditor(
   {
+    as: Page = DefaultPage,
     editor: { scale = defaultPageEditor.scale } = defaultPageEditor,
     id,
     ...pageProps
