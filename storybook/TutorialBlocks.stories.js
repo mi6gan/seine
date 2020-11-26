@@ -34,6 +34,11 @@ export const AddRichText = () => {
     />
   );
 };
+AddRichText.parameters = {
+  storyshots: {
+    disable: true,
+  },
+};
 
 // eslint-disable-next-line
 export const AddTable = () => {
@@ -56,6 +61,11 @@ export const AddTable = () => {
       blocks={[rootBlock]}
     />
   );
+};
+AddTable.parameters = {
+  storyshots: {
+    disable: true,
+  },
 };
 
 // eslint-disable-next-line
@@ -80,6 +90,11 @@ export const AddPieChart = () => {
     />
   );
 };
+AddPieChart.parameters = {
+  storyshots: {
+    disable: true,
+  },
+};
 
 // eslint-disable-next-line
 export const AddImage = () => {
@@ -103,4 +118,9 @@ export const AddImage = () => {
       blocks={[rootBlock]}
     />
   );
+};
+AddImage.parameters = {
+  storyshots: {
+    disable: true,
+  },
 };

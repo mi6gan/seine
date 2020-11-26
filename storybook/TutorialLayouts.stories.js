@@ -2,8 +2,6 @@
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 
-import { layoutTypes } from '../packages/core/src/types';
-
 import TutorialStory from './TutorialStory';
 
 import {
@@ -11,6 +9,7 @@ import {
   CREATE_BLOCK,
   createBlock,
   createBlocksFromTree,
+  layoutTypes,
 } from '@seine/core';
 import { toRawContent } from '@seine/content';
 
@@ -74,6 +73,11 @@ export const FlexLayout = () => {
     />
   );
 };
+FlexLayout.parameters = {
+  storyshots: {
+    disable: true,
+  },
+};
 
 // eslint-disable-next-line
 export const GridLayout = () => {
@@ -96,4 +100,9 @@ export const GridLayout = () => {
       blocks={[rootBlock]}
     />
   );
+};
+GridLayout.parameters = {
+  storyshots: {
+    disable: true,
+  },
 };

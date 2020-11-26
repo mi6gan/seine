@@ -6,13 +6,13 @@ import { Box } from '@seine/styles/mui-core.macro';
 import { Content } from '@seine/content';
 
 const EditorContent = styled(
-  ({ children, device, blockRenderMap, ...boxProps }) => (
-    <Box {...boxProps}>
+  React.forwardRef(({ children, device, blockRenderMap, ...boxProps }, ref) => (
+    <Box {...boxProps} ref={ref}>
       <Content device={device} blockRenderMap={blockRenderMap}>
         {children}
       </Content>
     </Box>
-  )
+  ))
 ).attrs({
   minHeight: 600,
   alignSelf: 'center',

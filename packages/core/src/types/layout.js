@@ -29,6 +29,7 @@ export type ItemFormat = {
 };
 
 export const defaultItemFormat = {
+  parentType: null,
   alignSelf: 'auto',
   justifySelf: 'auto',
   maxWidth: 'none',
@@ -40,6 +41,7 @@ export const defaultItemFormat = {
   gridRow: '',
   gridColumn: '',
   version: '0.4',
+  whiteSpace: null,
 };
 
 export type GridBody = {};

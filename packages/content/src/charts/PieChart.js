@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
+import { PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Palette } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
 
@@ -10,6 +10,7 @@ import { PieChartItem } from '../layouts';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
+import ChartBase from './ChartBase';
 
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
 
@@ -63,7 +64,6 @@ function PieChartPoint({
           y={val - y}
           color={'common.white'}
           width={pane.width / 5}
-          whiteSpace={'pre-wrap'}
         >
           {argument}
         </ChartLabel>
@@ -84,7 +84,12 @@ const PieChart = React.forwardRef(function PieChart(
   ref
 ): Props {
   return (
-    <PieChartItem ref={ref} forwardedAs={Chart} data={elements} {...itemProps}>
+    <PieChartItem
+      ref={ref}
+      forwardedAs={ChartBase}
+      data={elements}
+      {...itemProps}
+    >
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
