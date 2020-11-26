@@ -13,7 +13,7 @@ import {
   ToolbarToggleButton,
   ToolbarToggleButtonGroup,
 } from '../ui';
-import { useBlocksDispatch } from '../blocks';
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import useSelectedLayoutItems from './useSelectedLayoutItems';
 
@@ -59,6 +59,8 @@ const PositionToggleButton = styled(
             borderBottomLeftRadius: 0,
             borderBottomRightRadius: 0,
           }}
+    ${({ theme, disabled }) => disabled && { color: theme.palette.grey[300] }};
+  }
 `;
 
 type Props = {
@@ -80,7 +82,7 @@ const ConstrainInput = ({
     type={'number'}
     name={`${name}.value`}
     onChange={onChange}
-    defaultValue={parseInt(value) || ''}
+    defaultValue={parseFloat(value) || ''}
     width={'5.5rem'}
     mr={0}
     endAdornment={
@@ -113,6 +115,7 @@ const ItemDesign = React.forwardRef(function ItemDesign(
   const {
     item: {
       id,
+      parent_id: parentId,
       type,
       format: {
         kind,
@@ -125,6 +128,11 @@ const ItemDesign = React.forwardRef(function ItemDesign(
       },
     },
   } = useSelectedLayoutItems();
+  const layout = useEditorSelector((state) =>
+    state.blocks.find(({ id }) => id === parentId)
+  );
+  const layoutDirection = layout && layout.format && layout.format.direction;
+  const layoutType = layout && layout.format && layout.format.kind;
   const dispatch = useBlocksDispatch();
   const defaults = useAutoMemo(getDefaultBlockFormat(type, kind));
   const togglePosition = useAutoCallback((event, value) => {
@@ -135,8 +143,14 @@ const ItemDesign = React.forwardRef(function ItemDesign(
       id,
       type: UPDATE_BLOCK_FORMAT,
       format: {
-        justifySelf: justify,
-        alignSelf: align,
+        justifySelf:
+          layoutType !== 'flex' || layoutDirection !== 'column'
+            ? justify
+            : align,
+        alignSelf:
+          layoutType !== 'flex' || layoutDirection !== 'column'
+            ? align
+            : justify,
       },
     });
   });
@@ -251,15 +265,24 @@ const ItemDesign = React.forwardRef(function ItemDesign(
             onChange={togglePosition}
             mb={0}
           >
-            <PositionToggleButton value={'flex-start flex-start'}>
+            <PositionToggleButton
+              value={'flex-start flex-start'}
+              disabled={layoutType === 'flex'}
+            >
               <PositionLeftTop />
             </PositionToggleButton>
 
-            <PositionToggleButton value={'center flex-start'}>
+            <PositionToggleButton
+              value={'center flex-start'}
+              disabled={layoutType === 'flex' && layoutDirection === 'column'}
+            >
               <PositionTop />
             </PositionToggleButton>
 
-            <PositionToggleButton value={'flex-end flex-start'}>
+            <PositionToggleButton
+              value={'flex-end flex-start'}
+              disabled={layoutType === 'flex'}
+            >
               <PositionRightTop />
             </PositionToggleButton>
           </ToolbarToggleButtonGroup>
@@ -269,7 +292,10 @@ const ItemDesign = React.forwardRef(function ItemDesign(
             value={position}
             onChange={togglePosition}
           >
-            <PositionToggleButton value={'flex-start center'}>
+            <PositionToggleButton
+              value={'flex-start center'}
+              disabled={layoutType === 'flex' && layoutDirection !== 'column'}
+            >
               <PositionLeft />
             </PositionToggleButton>
 
@@ -277,7 +303,10 @@ const ItemDesign = React.forwardRef(function ItemDesign(
               <PositionCenter />
             </PositionToggleButton>
 
-            <PositionToggleButton value={'flex-end center'}>
+            <PositionToggleButton
+              value={'flex-end center'}
+              disabled={layoutType === 'flex' && layoutDirection !== 'column'}
+            >
               <PositionRight />
             </PositionToggleButton>
           </ToolbarToggleButtonGroup>
@@ -288,15 +317,24 @@ const ItemDesign = React.forwardRef(function ItemDesign(
             value={position}
             onChange={togglePosition}
           >
-            <PositionToggleButton value={'flex-start flex-end'}>
+            <PositionToggleButton
+              value={'flex-start flex-end'}
+              disabled={layoutType === 'flex'}
+            >
               <PositionLeftBottom />
             </PositionToggleButton>
 
-            <PositionToggleButton value={'center flex-end'}>
+            <PositionToggleButton
+              value={'center flex-end'}
+              disabled={layoutType === 'flex' && layoutDirection === 'column'}
+            >
               <PositionBottom />
             </PositionToggleButton>
 
-            <PositionToggleButton value={'flex-end flex-end'}>
+            <PositionToggleButton
+              value={'flex-end flex-end'}
+              disabled={layoutType === 'flex'}
+            >
               <PositionRightBottom />
             </PositionToggleButton>
           </ToolbarToggleButtonGroup>

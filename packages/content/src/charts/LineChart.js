@@ -8,7 +8,7 @@ import {
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
-import { LineChartItem } from '../layouts/Item';
+import { Item } from '../layouts';
 
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
@@ -118,7 +118,7 @@ const LineChart = React.forwardRef(function LineChart(
   ));
 
   return forceRemount ? null : (
-    <LineChartItem {...itemProps} ref={ref} forwardedAs={ChartBase} data={data}>
+    <Item {...itemProps} ref={ref} forwardedAs={ChartBase} data={data}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
@@ -142,7 +142,7 @@ const LineChart = React.forwardRef(function LineChart(
       ))}
       {!!legend && <ChartLegend />}
       <Stack />
-    </LineChartItem>
+    </Item>
   );
 });
 

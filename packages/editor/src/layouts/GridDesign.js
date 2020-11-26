@@ -49,12 +49,14 @@ export default function GridDesign() {
           <Box width={1 / 2}>
             <SidebarLabel mr={1}>x:</SidebarLabel>
             <SidebarInput
-              value={Math.min(columnGap, MAX_GAP)}
+              value={columnGap}
               onChange={useAutoCallback(({ currentTarget }) => {
                 dispatch({
                   type: UPDATE_BLOCK_FORMAT,
                   id,
-                  format: { columnGap: +currentTarget.value },
+                  format: {
+                    columnGap: Math.min(+currentTarget.value, MAX_GAP),
+                  },
                 });
               })}
               type={'number'}
@@ -65,12 +67,12 @@ export default function GridDesign() {
           <Box width={1 / 2}>
             <SidebarLabel mr={1}>y:</SidebarLabel>
             <SidebarInput
-              value={Math.min(rowGap, MAX_GAP)}
+              value={rowGap}
               onChange={useAutoCallback(({ currentTarget }) => {
                 dispatch({
                   type: UPDATE_BLOCK_FORMAT,
                   id,
-                  format: { rowGap: +currentTarget.value },
+                  format: { rowGap: Math.min(+currentTarget.value, MAX_GAP) },
                 });
               })}
               type={'number'}

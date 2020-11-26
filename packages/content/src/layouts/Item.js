@@ -43,9 +43,4 @@ const Item = styled.div.attrs((format: Props) => ({
   })};
 `;
 
-export const LineChartItem = styled(Item)``;
-export const ColumnChartItem = styled(Item)``;
-export const BarChartItem = styled(Item)``;
-export const PieChartItem = styled(Item)``;
-
 export default (Item: ComponentType<Props>);

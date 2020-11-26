@@ -8,7 +8,7 @@ import {
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
-import { BarChartItem, ColumnChartItem } from '../layouts/Item';
+import { Item } from '../layouts';
 
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
@@ -66,7 +66,6 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   { elements, legend, palette, paletteKey, xAxis, yAxis, ...itemProps },
   ref
 ): Props {
-  const ChartItem = itemProps.rotated ? BarChartItem : ColumnChartItem;
   const data = useAutoMemo(
     Object.entries(
       elements.reduce(
@@ -100,7 +99,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   ));
 
   return forceRemount ? null : (
-    <ChartItem forwardedAs={ChartBase} data={data} {...itemProps} ref={ref}>
+    <Item forwardedAs={ChartBase} data={data} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
@@ -122,7 +121,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
       ))}
       {!!legend && <ChartLegend />}
       <Stack />
-    </ChartItem>
+    </Item>
   );
 });
 

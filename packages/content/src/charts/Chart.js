@@ -24,12 +24,12 @@ export default function Chart({
   ...chartProps
 }: Props) {
   return kind === chartTypes.PIE ? (
-    <PieChart {...chartProps} as={ChartItem} />
+    <PieChart {...chartProps} as={ChartItem} data-type={'pie'} />
   ) : kind === chartTypes.COLUMN ? (
-    <ColumnChart {...chartProps} as={ChartItem} />
+    <ColumnChart {...chartProps} as={ChartItem} data-type={'column'} />
   ) : kind === chartTypes.BAR ? (
-    <BarChart {...chartProps} as={ChartItem} />
+    <BarChart {...chartProps} as={ChartItem} data-type={'bar'} />
   ) : (
-    <LineChart {...chartProps} as={ChartItem} />
+    <LineChart {...chartProps} as={ChartItem} data-type={'line'} />
   );
 }

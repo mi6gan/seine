@@ -41,7 +41,7 @@ export default function EditorDesign({
   return (
     <>
       {isObsolete && <ObsoleteDesign />}
-      {item && !isObsolete && <ItemDesign />}
+      {item && item.type !== blockTypes.PAGE && !isObsolete && <ItemDesign />}
       {layout && !isObsolete && <LayoutDesign />}
       {item && !isObsolete && item.type === blockTypes.RICH_TEXT && (
         <RichTextDesign />

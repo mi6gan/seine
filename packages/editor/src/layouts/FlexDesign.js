@@ -60,7 +60,7 @@ export default function FlexDesign({
       <SidebarGroup>
         <SidebarLabel>Spacing</SidebarLabel>
         <Input
-          value={spacing}
+          defaultValue={spacing}
           onChange={useAutoCallback(({ currentTarget }) => {
             dispatch({
               type: UPDATE_BLOCK_FORMAT,
