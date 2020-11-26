@@ -220,6 +220,7 @@ export default function LineChartContent({
 
       {!!yAxis && (
         <ChartYAxis
+          maxWidth={valueMaxWidth}
           length={height - titleHeight}
           max={maxValue}
           min={minValue}
