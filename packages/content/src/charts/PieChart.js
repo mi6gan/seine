@@ -5,7 +5,7 @@ import { Palette } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
 
 import type { ItemProps } from '../layouts';
-import { PieChartItem } from '../layouts';
+import { Item } from '../layouts';
 
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
@@ -84,12 +84,7 @@ const PieChart = React.forwardRef(function PieChart(
   ref
 ): Props {
   return (
-    <PieChartItem
-      ref={ref}
-      forwardedAs={ChartBase}
-      data={elements}
-      {...itemProps}
-    >
+    <Item ref={ref} forwardedAs={ChartBase} data={elements} {...itemProps}>
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
@@ -101,7 +96,7 @@ const PieChart = React.forwardRef(function PieChart(
         pointComponent={PieChartPoint}
       />
       {!!legend && <ChartLegend />}
-    </PieChartItem>
+    </Item>
   );
 });
 

@@ -345,7 +345,6 @@ export function reduceBlocks(
 
       return {
         ...state,
-        device: action.device,
         blocks: [
           ...state.blocks.slice(0, firstIndex),
           ...(firstIndex === targetIndex ? insertion : []),
