@@ -73,15 +73,14 @@ function PieChartPoint({
 }
 
 // eslint-disable-next-line
-function PieChartBase(props) {
-  return (
-    <Chart
-      {...Object.fromEntries(
-        Object.entries(props).filter(([k]) => !(k in defaultPieChartFormat))
-      )}
-    />
-  );
-}
+const PieChartBase = React.forwardRef((props, ref) => (
+  <Chart
+    ref={ref}
+    {...Object.fromEntries(
+      Object.entries(props).filter(([k]) => !(k in defaultPieChartFormat))
+    )}
+  />
+));
 
 type Props = ItemProps & ChartBody & $Shape<ChartFormat>;
 

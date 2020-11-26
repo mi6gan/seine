@@ -41,15 +41,14 @@ function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
 }
 
 // eslint-disable-next-line
-function ColumnChartBase(props) {
-  return (
-    <Chart
-      {...Object.fromEntries(
-        Object.entries(props).filter(([k]) => !(k in defaultColumnChartFormat))
-      )}
-    />
-  );
-}
+const ColumnChartBase = React.forwardRef((props, ref) => (
+  <Chart
+    {...Object.fromEntries(
+      Object.entries(props).filter(([k]) => !(k in defaultColumnChartFormat))
+    )}
+    ref={ref}
+  />
+));
 
 // eslint-disable-next-line
 function ArgumentAxisLine({ y1, y2, ...props }) {

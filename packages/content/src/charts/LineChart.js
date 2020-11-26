@@ -78,15 +78,14 @@ function ValueLabel({ text, ...props }) {
 }
 
 // eslint-disable-next-line
-function LineChartBase(props) {
-  return (
-    <Chart
-      {...Object.fromEntries(
-        Object.entries(props).filter(([k]) => !(k in defaultLineChartFormat))
-      )}
-    />
-  );
-}
+const LineChartBase = React.forwardRef((props, ref) => (
+  <Chart
+    {...Object.fromEntries(
+      Object.entries(props).filter(([k]) => !(k in defaultLineChartFormat))
+    )}
+    ref={ref}
+  />
+));
 
 /**
  * @description Bar chart block renderer.
