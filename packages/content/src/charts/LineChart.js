@@ -16,6 +16,7 @@ import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 
 import type { ChartElement } from '@seine/core';
+import { defaultLineChartFormat } from '@seine/core';
 
 type LineChartSeriesProps = LineSeries.SeriesProps;
 
@@ -76,6 +77,17 @@ function ValueLabel({ text, ...props }) {
   return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
 }
 
+// eslint-disable-next-line
+function LineChartBase(props) {
+  return (
+    <Chart
+      {...Object.fromEntries(
+        Object.entries(props).filter(([k]) => !(k in defaultLineChartFormat))
+      )}
+    />
+  );
+}
+
 /**
  * @description Bar chart block renderer.
  * @param {Props} props
@@ -118,7 +130,12 @@ const LineChart = React.forwardRef(function LineChart(
   ));
 
   return forceRemount ? null : (
-    <LineChartItem {...itemProps} ref={ref} forwardedAs={Chart} data={data}>
+    <LineChartItem
+      {...itemProps}
+      ref={ref}
+      forwardedAs={LineChartBase}
+      data={data}
+    >
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}

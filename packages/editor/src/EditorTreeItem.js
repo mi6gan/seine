@@ -123,7 +123,8 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
         <ListItemIcon>
           <BlockTypeIcon
             type={block.type}
-            {...block.format}
+            {...(block.format &&
+              block.format.kind && { kind: block.format.kind })}
             titleAccess={block.type}
           />
         </ListItemIcon>
@@ -132,20 +133,6 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
             {id ? id.slice(0, 6) : block.type}
           </Typography>
         </ListItemText>
-        <ListItemSecondaryAction>
-          <IconButton
-            size={'small'}
-            component={Box}
-            {...(!isLayout && { display: 'none' })}
-            onClick={useAutoCallback((event) => {
-              event.preventDefault();
-              event.stopPropagation();
-              onExpand(event);
-            })}
-          >
-            {expanded ? <ExpandMore /> : <ChevronRight />}
-          </IconButton>
-        </ListItemSecondaryAction>
         {blockIndex > 0 && (
           <Box
             data-position={'before'}
@@ -190,6 +177,20 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
             borderColor={'common.black'}
           />
         )}
+        <ListItemSecondaryAction>
+          <IconButton
+            size={'small'}
+            component={Box}
+            {...(!isLayout && { display: 'none' })}
+            onClick={useAutoCallback((event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onExpand(event);
+            })}
+          >
+            {expanded ? <ExpandMore /> : <ChevronRight />}
+          </IconButton>
+        </ListItemSecondaryAction>
       </StyledListItem>
     </>
   );

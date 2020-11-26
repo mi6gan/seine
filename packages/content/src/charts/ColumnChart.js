@@ -15,6 +15,8 @@ import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 
+import { defaultColumnChartFormat } from '@seine/core';
+
 // eslint-disable-next-line
 function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
   const { arg, val, value, rotated } = props;
@@ -35,6 +37,17 @@ function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
         </ChartLabel>
       )}
     </>
+  );
+}
+
+// eslint-disable-next-line
+function ColumnChartBase(props) {
+  return (
+    <Chart
+      {...Object.fromEntries(
+        Object.entries(props).filter(([k]) => !(k in defaultColumnChartFormat))
+      )}
+    />
   );
 }
 
@@ -100,7 +113,12 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   ));
 
   return forceRemount ? null : (
-    <ChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
+    <ChartItem
+      forwardedAs={ColumnChartBase}
+      data={data}
+      {...itemProps}
+      ref={ref}
+    >
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}

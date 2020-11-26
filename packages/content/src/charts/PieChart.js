@@ -12,6 +12,7 @@ import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
 
 import type { ChartBody, ChartElement, ChartFormat } from '@seine/core';
+import { defaultPieChartFormat } from '@seine/core';
 
 type PieChartPointProps = {
   elements: ChartElement[],
@@ -63,12 +64,22 @@ function PieChartPoint({
           y={val - y}
           color={'common.white'}
           width={pane.width / 5}
-          whiteSpace={'pre-wrap'}
         >
           {argument}
         </ChartLabel>
       )}
     </>
+  );
+}
+
+// eslint-disable-next-line
+function PieChartBase(props) {
+  return (
+    <Chart
+      {...Object.fromEntries(
+        Object.entries(props).filter(([k]) => !(k in defaultPieChartFormat))
+      )}
+    />
   );
 }
 
@@ -84,7 +95,12 @@ const PieChart = React.forwardRef(function PieChart(
   ref
 ): Props {
   return (
-    <PieChartItem ref={ref} forwardedAs={Chart} data={elements} {...itemProps}>
+    <PieChartItem
+      ref={ref}
+      forwardedAs={PieChartBase}
+      data={elements}
+      {...itemProps}
+    >
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}

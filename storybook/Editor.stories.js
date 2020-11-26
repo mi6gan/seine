@@ -49,6 +49,12 @@ export const EditorOfFlex = () => <Flex as={Editor} {...actions('onChange')} />;
 
 export const EditorOfData = () => <Data as={Editor} {...actions('onChange')} />;
 
+EditorOfData.parameters = {
+  storyshots: {
+    disable: true,
+  },
+};
+
 export const EditorOfData_v0_3 = () => (
   <DataV03 as={Editor} {...actions('onChange')} />
 );
@@ -68,6 +74,7 @@ export const EditorOfLineChart = () => (
 export const EditorOfColumnChart = () => (
   <ColumnChart as={Editor} {...actions('onChange')} />
 );
+
 export const EditorOfBarChart = () => (
   <BarChart as={Editor} {...actions('onChange')} />
 );

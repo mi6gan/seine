@@ -53,6 +53,12 @@ export const ItemRelativeWidth = () => {
     />
   );
 };
+ItemRelativeWidth.parameters = {
+  storyshots: {
+    disable: true,
+  },
+};
+
 // eslint-disable-next-line
 export const ItemAbsoluteHeight = () => {
   const rootBlock = useAutoMemo(
@@ -103,6 +109,11 @@ export const ItemAbsoluteHeight = () => {
     />
   );
 };
+ItemAbsoluteHeight.parameters = {
+  storyshots: {
+    disable: true,
+  },
+};
 
 // eslint-disable-next-line
 export const LayoutAlignment = () => {
@@ -143,4 +154,9 @@ export const LayoutAlignment = () => {
       blocks={blocks}
     />
   );
+};
+LayoutAlignment.parameters = {
+  storyshots: {
+    disable: true,
+  },
 };
