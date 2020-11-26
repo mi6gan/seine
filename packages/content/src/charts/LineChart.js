@@ -4,7 +4,6 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
-  Chart,
   LineSeries,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
@@ -14,6 +13,7 @@ import { LineChartItem } from '../layouts/Item';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
+import ChartBase from './ChartBase';
 
 import type { ChartElement } from '@seine/core';
 
@@ -118,7 +118,7 @@ const LineChart = React.forwardRef(function LineChart(
   ));
 
   return forceRemount ? null : (
-    <LineChartItem {...itemProps} ref={ref} forwardedAs={Chart} data={data}>
+    <LineChartItem {...itemProps} ref={ref} forwardedAs={ChartBase} data={data}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}

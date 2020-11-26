@@ -5,7 +5,6 @@ import { Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
   BarSeries,
-  Chart,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
@@ -14,6 +13,7 @@ import { BarChartItem, ColumnChartItem } from '../layouts/Item';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
+import ChartBase from './ChartBase';
 
 // eslint-disable-next-line
 function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
@@ -100,7 +100,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
   ));
 
   return forceRemount ? null : (
-    <ChartItem forwardedAs={Chart} data={data} {...itemProps} ref={ref}>
+    <ChartItem forwardedAs={ChartBase} data={data} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}

@@ -68,6 +68,7 @@ export const EditorOfLineChart = () => (
 export const EditorOfColumnChart = () => (
   <ColumnChart as={Editor} {...actions('onChange')} />
 );
+
 export const EditorOfBarChart = () => (
   <BarChart as={Editor} {...actions('onChange')} />
 );

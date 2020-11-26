@@ -22,8 +22,6 @@ export * from './images';
 export * from './page';
 export * from './tables';
 
-export * from './v0.3';
-
 export const blockTypes = {
   CHART,
   IMAGE: Images,
@@ -31,6 +29,15 @@ export const blockTypes = {
   PAGE,
   RICH_TEXT,
   TABLE,
+};
+
+export const blockTypes_v0_3 = {
+  CHART: `v0.3/${CHART}`,
+  IMAGE: `v0.3/${Images}`,
+  LAYOUT: `v0.3/${LAYOUT}`,
+  PAGE: `v0.3/${PAGE}`,
+  RICH_TEXT: `v0.3/${RICH_TEXT}`,
+  TABLE: `v0.3/${TABLE}`,
 };
 
 export const defaultBlockFormat = {};

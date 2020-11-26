@@ -107,6 +107,8 @@ export const defaultChartFormat = {
   yAxis: true,
   legend: true,
   fraction: 0,
+  maxValue: null,
+  minValue: null,
 };
 
 export const defaultBarChartFormat = {

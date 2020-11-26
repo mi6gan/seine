@@ -78,7 +78,7 @@ export default function Table_v0_3({ title, header, rows, textAlignment }) {
   const { current: table } = tableRef;
 
   const scale =
-    container && table ? container.offsetWidth / table.offsetWidth : 1;
+    (container && table && container.offsetWidth / table.offsetWidth) || 1;
 
   return (
     <Container ref={containerRef}>
