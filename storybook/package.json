@@ -7,7 +7,7 @@
   "scripts": {
     "start": "yarn start-storybook",
     "build": "yarn build-storybook --quiet --loglevel warn",
-    "test": "run-s test:*",
+    "test": "run-s test:'*'",
     "test:eslint": "yarn eslint --max-warnings=0 --format unix ./*.stories.js",
     "test:jest": "yarn jest"
   },
