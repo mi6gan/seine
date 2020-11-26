@@ -12,10 +12,10 @@
   "repository": "https://github.com/mi6gan/seine",
   "scripts": {
     "start": "yarn workspace seine-storybook serve",
-    "release": "run-s release:'*'",
+    "release": "yarn run-s release:'*'",
     "release:library": "yarn workspaces foreach -t --include='@seine/*' exec npm publish",
     "release:storybook": "yarn workspace seine-storybook build -o $(pwd)/docs",
-    "test": "run-s test:'*'",
+    "test": "yarn run-s test:'*'",
     "test:library": "yarn eslint --max-warnings=0 --format unix ./packages/*/src",
     "test:storybook": "yarn workspace seine-storybook test",
     "build": "yarn workspaces foreach -t --include='@seine/*' exec yarn rollup --environment NODE_ENV:production -c ../../rollup.config.js",
