@@ -11,6 +11,8 @@ SVGElement.prototype.getBBox = () => ({
   height: 100,
 });
 
+HTMLElement.prototype.scrollIntoView = () => void 0;
+
 global.ResizeObserver = ResizeObserver;
 
 Object.assign(global.window, {

@@ -4,7 +4,6 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
-  Chart,
   LineSeries,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
@@ -14,9 +13,9 @@ import { LineChartItem } from '../layouts/Item';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
+import ChartBase from './ChartBase';
 
 import type { ChartElement } from '@seine/core';
-import { defaultLineChartFormat } from '@seine/core';
 
 type LineChartSeriesProps = LineSeries.SeriesProps;
 
@@ -77,16 +76,6 @@ function ValueLabel({ text, ...props }) {
   return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
 }
 
-// eslint-disable-next-line
-const LineChartBase = React.forwardRef((props, ref) => (
-  <Chart
-    {...Object.fromEntries(
-      Object.entries(props).filter(([k]) => !(k in defaultLineChartFormat))
-    )}
-    ref={ref}
-  />
-));
-
 /**
  * @description Bar chart block renderer.
  * @param {Props} props
@@ -129,12 +118,7 @@ const LineChart = React.forwardRef(function LineChart(
   ));
 
   return forceRemount ? null : (
-    <LineChartItem
-      {...itemProps}
-      ref={ref}
-      forwardedAs={LineChartBase}
-      data={data}
-    >
+    <LineChartItem {...itemProps} ref={ref} forwardedAs={ChartBase} data={data}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ArgumentAxisLabel}
