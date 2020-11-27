@@ -15,10 +15,6 @@ export type Props = TableBody &
     onChange: ?(SyntheticInputEvent) => any,
   };
 
-const Container = styled(Item)`
-  overflow: auto;
-`;
-
 const StyledTable = styled.table`
   ${({
     theme: {
@@ -27,6 +23,7 @@ const StyledTable = styled.table`
   }) => body1};
 
   width: 100%;
+  table-layout: fixed;
 
   th,
   td {
@@ -164,10 +161,10 @@ export default function Table({
   textAlignment,
   onChange,
   readOnly = true,
-  ...containerProps
+  ...itemProps
 }: Props) {
   return (
-    <Container {...containerProps} id={id}>
+    <Item {...itemProps}>
       <StyledTable>
         <thead>
           <tr>
@@ -206,6 +203,6 @@ export default function Table({
           ))}
         </tbody>
       </StyledTable>
-    </Container>
+    </Item>
   );
 }

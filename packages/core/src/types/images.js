@@ -15,7 +15,6 @@ export type ImageFormat = ItemFormat & {
 
 export const defaultImageFormat = {
   ...defaultItemFormat,
-  maxWidth: 'auto',
 };
 
 export const defaultImageBody = {};
