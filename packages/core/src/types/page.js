@@ -17,7 +17,7 @@ export const defaultPageFormat = {
   minWidth: '100%',
   maxWidth: '100%',
   maxHeight: 'none',
-  minHeight: 0,
+  minHeight: '100%',
 };
 
 export const PAGE = 'page';

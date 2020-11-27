@@ -27,7 +27,11 @@ import {
 } from '@seine/styles/mui-icons.macro';
 import { Box } from '@seine/styles';
 import type { ItemFormat } from '@seine/core';
-import { getDefaultBlockFormat, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import {
+  blockTypes,
+  getDefaultBlockFormat,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 
 const PositionRightTop = styled(PositionLeftTop)`
   transform: scaleX(-1);
@@ -213,23 +217,25 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         <Box display={'flex'} mr={1}>
           <ConstrainInput
             inputAs={Input}
-            inputProps={{ placeholder: 'min' }}
+            inputProps={{ placeholder: 'min', min: 0 }}
             selectAs={Select}
             name={'minWidth'}
             value={minWidth}
             onChange={changeConstraint}
           />
         </Box>
-        <Box display={'flex'}>
-          <ConstrainInput
-            inputAs={Input}
-            inputProps={{ placeholder: 'max' }}
-            selectAs={Select}
-            name={'maxWidth'}
-            value={maxWidth}
-            onChange={changeConstraint}
-          />
-        </Box>
+        {type !== blockTypes.IMAGE && (
+          <Box display={'flex'}>
+            <ConstrainInput
+              inputAs={Input}
+              inputProps={{ placeholder: 'max', min: 0 }}
+              selectAs={Select}
+              name={'maxWidth'}
+              value={maxWidth}
+              onChange={changeConstraint}
+            />
+          </Box>
+        )}
       </SidebarGroup>
 
       <SidebarGroup alignItems={'baseline'} mb={0}>
@@ -237,23 +243,25 @@ const ItemDesign = React.forwardRef(function ItemDesign(
         <Box display={'flex'} mr={1}>
           <ConstrainInput
             inputAs={Input}
-            inputProps={{ placeholder: 'min' }}
+            inputProps={{ placeholder: 'min', min: 0 }}
             selectAs={Select}
             name={'minHeight'}
             value={minHeight}
             onChange={changeConstraint}
           />
         </Box>
-        <Box display={'flex'}>
-          <ConstrainInput
-            inputAs={Input}
-            inputProps={{ placeholder: 'max' }}
-            selectAs={Select}
-            name={'maxHeight'}
-            value={maxHeight}
-            onChange={changeConstraint}
-          />
-        </Box>
+        {type !== blockTypes.IMAGE && (
+          <Box display={'flex'}>
+            <ConstrainInput
+              inputAs={Input}
+              inputProps={{ placeholder: 'max', min: 0 }}
+              selectAs={Select}
+              name={'maxHeight'}
+              value={maxHeight}
+              onChange={changeConstraint}
+            />
+          </Box>
+        )}
       </SidebarGroup>
 
       <SidebarGroup>

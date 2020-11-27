@@ -3,6 +3,7 @@ import { createGlobalStyle, css } from 'styled-components/macro';
 
 const RichTextStyle = createGlobalStyle`
   .DraftEditor\\/root, .DraftEditor-root {
+  overflow: auto;
   ${({
     theme: {
       typography: { h1, h2, h3, h4, h5, h6, body1 },
