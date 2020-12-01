@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
-import { PieSeries } from '@devexpress/dx-react-chart-material-ui';
-import { Palette } from '@devexpress/dx-react-chart';
+import { Palette, PieSeries } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
 
 import type { ItemProps } from '../layouts';

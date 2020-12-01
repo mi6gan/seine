@@ -19,11 +19,21 @@ export type { Props as GridProps };
  */
 const Grid = styled(Item)`
   display: grid;
-  ${({ columnGap, rowGap, theme }: Props) => ({
-    rowGap: theme.spacing(rowGap),
-    columnGap: theme.spacing(columnGap),
+  ${({ columns, rows, columnGap, rowGap, theme }: Props) => ({
+    ...(columns && { gridTemplateColumns: columns }),
+    ...(rows && { gridTemplateRows: rows }),
+    ...(rowGap && { gridRowGap: theme.spacing(rowGap) }),
+    ...(columnGap && { gridColumnGap: theme.spacing(columnGap) }),
     padding: theme.spacing(rowGap, columnGap),
   })}
+
+  & > ${Item}[data-type="line"],
+  & > ${Item}[data-type="column"] {
+     padding-top: 20px;
+  }
+  & > ${Item}[data-type="bar"] {
+    padding-right: 20px;
+  }
 `;
 
 export default (Grid: React.ComponentType<Props>);

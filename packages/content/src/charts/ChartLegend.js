@@ -1,32 +1,28 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { List } from '@material-ui/core';
-import { Legend } from '@devexpress/dx-react-chart-material-ui';
+import { Legend } from '@devexpress/dx-react-chart';
 
-const LegendRoot = styled(List)`
+import ChartLabel from './ChartLabel';
+
+const LegendRoot = styled.div`
   display: flex;
   flex-wrap: wrap;
+  ${({ theme }) => theme.typography.body1};
+  margin-bottom: 0;
   && {
     padding: ${({ theme }) => theme.spacing(2, 0, 0, 0)};
   }
-  .MuiListItem-root {
-    height: 2.25em;
-    width: auto;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    white-space: nowrap;
-  }
-  .MuiListItemText-root {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 0;
-  }
-  .MuiTypography-body1 {
-    ${({ theme }) => theme.typography.body1};
-    margin-bottom: 0;
-  }
+`;
+const LegendItem = styled.div`
+  height: 2.25em;
+  width: auto;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  ${ChartLabel} {
+    padding: ${({ theme }) => theme.spacing(0, 2)};
+
 `;
 
 export const LegendMarker = styled.svg.attrs([
@@ -47,6 +43,8 @@ export default function ChartLegend() {
       position={'bottom'}
       rootComponent={LegendRoot}
       markerComponent={LegendMarker}
+      labelComponent={ChartLabel}
+      itemComponent={LegendItem}
     />
   );
 }
