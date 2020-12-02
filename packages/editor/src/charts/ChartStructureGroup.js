@@ -20,7 +20,7 @@ import {
   DeleteOutlined,
   HighlightOff,
 } from '@seine/styles/mui-icons.macro';
-import { groupElements, titleIdentityElements } from '@seine/content';
+import { groupElements } from '@seine/content';
 import {
   chartTypes,
   createBlockElement,
@@ -52,6 +52,7 @@ export default function ChartStructureGroup() {
   const max = useAutoMemo(maxValue || Math.max(...values));
   const { selection, element } = useElementSelector();
   const groups = groupElements(elements);
+  const { length: groupsCount } = groups;
   const [[, { length: count }]] = groups;
   return (
     <SidebarGroup alignItems={'flex-start'} my={0}>
@@ -93,7 +94,15 @@ export default function ChartStructureGroup() {
       </EditorActionButton>
       {useAutoMemo(() => {
         if (kind === chartTypes.LINE || kind === chartTypes.COLUMN) {
-          const { length: groupsCount } = groupElements(elements);
+          let groupNumber = 0;
+          while (true) {
+            const group = `Group #${groupNumber}`;
+            if (!groups.some(([otherGroup]) => otherGroup === group)) {
+              break;
+            }
+            groupNumber += 1;
+          }
+
           return (
             <>
               <EditorActionButton
@@ -105,16 +114,12 @@ export default function ChartStructureGroup() {
                 body={{
                   elements: [
                     ...elements,
-                    ...titleIdentityElements(elements).map((element) => ({
-                      ...element,
-                      group: `Group #${groupsCount + 1}`,
-                      value:
-                        minValue ||
-                        (element &&
-                          elements
-                            .filter(({ id }) => id === element.id)
-                            .reverse()[0].value),
-                    })),
+                    ...groups[0][1].map(({ index }) =>
+                      createBlockElement({
+                        ...elements[index],
+                        group: `Group #${groupNumber}`,
+                      })
+                    ),
                   ],
                 }}
                 variant={'text'}

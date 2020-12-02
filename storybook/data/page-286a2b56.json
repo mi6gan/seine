@@ -1,0 +1,342 @@
+[
+  {
+    "id": "286a2b56-5102-4e1a-86b6-de453e790300",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "2f739de9-f37f-4e0e-955d-93e113f9f703",
+    "type": "draft",
+    "parent_id": "286a2b56-5102-4e1a-86b6-de453e790300",
+    "body": {
+      "blocks": [
+        {
+          "key": "douh1",
+          "data": {},
+          "text": "Kura is projecting a 2% increase in its production of chicken in 2021. In addition to Kura, there are four other major players in the chicken market in Mexico: Eggy, Combomeat, M-Fresh and Wings. ",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "5i6m5",
+          "data": {},
+          "text": "",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": {
+      "verticalAlignment": "center"
+    },
+    "schema": null
+  },
+  {
+    "id": "5d559c2d-143c-4682-b4fb-3d086829756c",
+    "type": "grid",
+    "parent_id": "286a2b56-5102-4e1a-86b6-de453e790300",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "f91459db-7993-4fbf-8017-53566f8326e1",
+    "type": "table",
+    "parent_id": "5d559c2d-143c-4682-b4fb-3d086829756c",
+    "body": {
+      "rows": [
+        [
+          {
+            "text": "Eggy"
+          },
+          {
+            "text": "467,000"
+          },
+          {
+            "text": "+5%"
+          }
+        ],
+        [
+          {
+            "text": "Combomeat"
+          },
+          {
+            "text": "263,000"
+          },
+          {
+            "text": "+9%"
+          }
+        ],
+        [
+          {
+            "text": "M-Fresh"
+          },
+          {
+            "text": "423,000"
+          },
+          {
+            "text": "+23%"
+          }
+        ],
+        [
+          {
+            "text": "Wings"
+          },
+          {
+            "text": "257,000"
+          },
+          {
+            "text": "+32%"
+          }
+        ]
+      ],
+      "title": "Production of Chicken by Company",
+      "header": [
+        {
+          "text": ""
+        },
+        {
+          "text": " 2020 \n(tonnes)"
+        },
+        {
+          "text": "2021 \n(expected growth)"
+        }
+      ]
+    },
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "fd422674-0538-4192-a32f-296fc7fb494e",
+    "type": "table",
+    "parent_id": "5d559c2d-143c-4682-b4fb-3d086829756c",
+    "body": {
+      "rows": [
+        [
+          {
+            "text": "Eggy"
+          },
+          {
+            "text": "11.0%"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "5.0%"
+          },
+          {
+            "text": "20.0%"
+          }
+        ],
+        [
+          {
+            "text": "Combomeat"
+          },
+          {
+            "text": "6.2%"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "15.0%"
+          },
+          {
+            "text": "15.0%"
+          }
+        ],
+        [
+          {
+            "text": "M-Fresh"
+          },
+          {
+            "text": "10.0%"
+          },
+          {
+            "text": "28.0%"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "Wings"
+          },
+          {
+            "text": "6.1%"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "20.0%"
+          }
+        ]
+      ],
+      "title": "Meat Market Share by Company ",
+      "header": [
+        {
+          "text": ""
+        },
+        {
+          "text": "Chicken"
+        },
+        {
+          "text": "Beef"
+        },
+        {
+          "text": "Pork"
+        },
+        {
+          "text": "Other"
+        }
+      ]
+    },
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "51cc626f-1d2b-4a2a-9d82-6bc92ecfcd73",
+    "type": "chart",
+    "parent_id": "286a2b56-5102-4e1a-86b6-de453e790300",
+    "body": {
+      "title": "Domestic Production of Meat (thousand tonnes)",
+      "elements": [
+        {
+          "id": "e54cbb70-820f-402e-b3e2-29281f794159",
+          "group": "2017",
+          "title": "Chicken",
+          "value": 3168
+        },
+        {
+          "id": "6e41a373-b234-458d-964a-4583ffc8d462",
+          "group": "2017",
+          "title": "Pork",
+          "value": 2816
+        },
+        {
+          "id": "e54cbb70-820f-402e-b3e2-29281f794159",
+          "group": "2018",
+          "title": "Chicken",
+          "value": 3458
+        },
+        {
+          "id": "6e41a373-b234-458d-964a-4583ffc8d462",
+          "group": "2018",
+          "title": "Pork",
+          "value": 2974
+        },
+        {
+          "id": "31587f8d-b445-4abd-bb43-1f171d68a87b",
+          "group": "2017",
+          "title": "Beef",
+          "value": 1642
+        },
+        {
+          "id": "31587f8d-b445-4abd-bb43-1f171d68a87b",
+          "group": "2018",
+          "title": "Beef",
+          "value": 1633
+        },
+        {
+          "id": "268589e8-b651-4b93-83b0-a82f1bc6c1c7",
+          "group": "2017",
+          "title": "Other",
+          "value": 464
+        },
+        {
+          "id": "268589e8-b651-4b93-83b0-a82f1bc6c1c7",
+          "group": "2018",
+          "title": "Other",
+          "value": 479
+        },
+        {
+          "id": "e54cbb70-820f-402e-b3e2-29281f794159",
+          "group": "2019",
+          "title": "Chicken",
+          "value": 3901
+        },
+        {
+          "id": "6e41a373-b234-458d-964a-4583ffc8d462",
+          "group": "2019",
+          "title": "Pork",
+          "value": 3087
+        },
+        {
+          "id": "31587f8d-b445-4abd-bb43-1f171d68a87b",
+          "group": "2019",
+          "title": "Beef",
+          "value": 1654
+        },
+        {
+          "id": "268589e8-b651-4b93-83b0-a82f1bc6c1c7",
+          "group": "2019",
+          "title": "Other",
+          "value": 428
+        },
+        {
+          "id": "e54cbb70-820f-402e-b3e2-29281f794159",
+          "group": "2020",
+          "title": "Chicken",
+          "value": 4103
+        },
+        {
+          "id": "6e41a373-b234-458d-964a-4583ffc8d462",
+          "group": "2020",
+          "title": "Pork",
+          "value": 3204
+        },
+        {
+          "id": "31587f8d-b445-4abd-bb43-1f171d68a87b",
+          "group": "2020",
+          "title": "Beef",
+          "value": 1636
+        },
+        {
+          "id": "268589e8-b651-4b93-83b0-a82f1bc6c1c7",
+          "group": "2020",
+          "title": "Other",
+          "value": 541
+        }
+      ]
+    },
+    "format": {
+      "dy": 500,
+      "kind": "line",
+      "xAxis": true,
+      "yAxis": true,
+      "legend": true,
+      "palette": [
+        "rgba(27,89,29,1)",
+        "rgba(41,161,71,1)",
+        "rgba(127,199,145,1)",
+        "rgba(170,210,150,1)",
+        "#7fc791",
+        "#aad296",
+        "#daebd1"
+      ],
+      "fraction": 0,
+      "maxValue": 4500,
+      "minValue": 0,
+      "paletteKey": "bcg",
+      "textAlignment": "left"
+    },
+    "schema": null
+  }
+]

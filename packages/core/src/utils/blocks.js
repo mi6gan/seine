@@ -156,6 +156,23 @@ export function getBlockFormat(
 }
 
 /**
+ * @description Return normalized block body.
+ * @param {Block} block
+ * @returns {BlockFormat}
+ */
+export function getBlockBody({ type, body }: Block) {
+  if (type === blockTypes.CHART) {
+    return {
+      ...body,
+      elements: body.elements.map((element) =>
+        element.group ? element : { ...element, group: 'null' }
+      ),
+    };
+  }
+  return body;
+}
+
+/**
  * @description  Return normalized block.
  * @param {Block} block
  * @param {?ScreenDevice} device
@@ -174,6 +191,7 @@ export function normalizeBlock(block: Block, device: ?ScreenDevice = 'any') {
       !typePrefix || block.type.startsWith(typePrefix)
         ? block.type
         : `${typePrefix}${block.type}`,
+    body: getBlockBody(block),
     format: getBlockFormat(block, device),
   };
 }

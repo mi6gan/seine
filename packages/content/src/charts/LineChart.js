@@ -8,7 +8,6 @@ import {
   ValueAxis,
 } from '@devexpress/dx-react-chart';
 import styled from 'styled-components/macro';
-import { useAutoMemo } from 'hooks.macro';
 
 import { Item } from '../layouts';
 
@@ -86,33 +85,21 @@ const ChartGridLine = styled(Axis.Line)`
  * @returns {React.Node}
  */
 const LineChart = React.forwardRef(function LineChart(
-  { elements, xAxis, yAxis, palette, fraction, units, legend, ...itemProps },
+  {
+    elements,
+    xAxis,
+    yAxis,
+    palette,
+    fraction,
+    units,
+    legend,
+    valueFields,
+    ...itemProps
+  },
   ref
 ): Props {
-  const data = useAutoMemo(
-    Object.entries(
-      elements.reduce(
-        (acc, { group = null, title, value }) => ({
-          ...acc,
-          [group]: { ...acc[group], [title]: value },
-        }),
-        {}
-      )
-    ).map(([group, values]) => ({ ...values, group }))
-  );
-
-  const valueFields = useAutoMemo(() => {
-    const valueFieldsSet = new Set();
-    data.forEach(({ group, ...values }) => {
-      Object.keys(values).forEach((valueField) => {
-        valueFieldsSet.add(valueField);
-      });
-    });
-    return [...valueFieldsSet];
-  });
-
   return (
-    <Item forwardedAs={ChartBase} data={data} {...itemProps} ref={ref}>
+    <Item forwardedAs={ChartBase} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ChartLabel}

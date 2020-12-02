@@ -8,7 +8,6 @@ import {
 } from '@devexpress/dx-react-chart';
 import styled from 'styled-components/macro';
 import * as React from 'react';
-import { useAutoMemo } from 'hooks.macro';
 
 import { Item } from '../layouts';
 
@@ -24,18 +23,15 @@ function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
   const y = rotated ? arg : val;
   return (
     <>
-      <BarSeries.Point {...props} val={val + (rotated ? -14 : 10)} />
-      {(value || rotated) && (
-        <ChartLabel
-          dominantBaseline={'middle'}
-          textAnchor={'middle'}
-          x={x}
-          y={y}
-        >
-          <ChartValue fraction={fraction}>{value}</ChartValue>
-          {units}
-        </ChartLabel>
-      )}
+      <BarSeries.Point
+        {...props}
+        val={val + (rotated ? -14 : 10)}
+        {...(!value && { startVal: 0 })}
+      />
+      <ChartLabel dominantBaseline={'middle'} textAnchor={'middle'} x={x} y={y}>
+        <ChartValue fraction={fraction}>{value}</ChartValue>
+        {units}
+      </ChartLabel>
     </>
   );
 }
@@ -61,33 +57,11 @@ type Props = {
  * @returns {React.Node}
  */
 const ColumnChart = React.forwardRef(function ColumnChart(
-  { elements, legend, palette, paletteKey, xAxis, yAxis, ...itemProps },
+  { legend, palette, paletteKey, xAxis, yAxis, valueFields, ...itemProps },
   ref
 ): Props {
-  const data = useAutoMemo(
-    Object.entries(
-      elements.reduce(
-        (acc, { group = null, title, value }) => ({
-          ...acc,
-          [group]: { ...acc[group], [title]: value },
-        }),
-        {}
-      )
-    ).map(([group, values]) => ({ ...values, group }))
-  );
-
-  const valueFields = useAutoMemo(() => {
-    const valueFieldsSet = new Set();
-    data.forEach(({ group, ...values }) => {
-      Object.keys(values).forEach((valueField) => {
-        valueFieldsSet.add(valueField);
-      });
-    });
-    return [...valueFieldsSet];
-  });
-
   return (
-    <Item forwardedAs={ChartBase} data={data} {...itemProps} ref={ref}>
+    <Item forwardedAs={ChartBase} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
           labelComponent={ChartLabel}
