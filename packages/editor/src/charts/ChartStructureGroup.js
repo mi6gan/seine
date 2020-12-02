@@ -52,7 +52,6 @@ export default function ChartStructureGroup() {
   const max = useAutoMemo(maxValue || Math.max(...values));
   const { selection, element } = useElementSelector();
   const groups = groupElements(elements);
-  const { length: groupsCount } = groups;
   const [[, { length: count }]] = groups;
   return (
     <SidebarGroup alignItems={'flex-start'} my={0}>
