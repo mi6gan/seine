@@ -1,19 +1,20 @@
 // @flow
-import * as React from 'react';
-import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
-import { Stack } from '@devexpress/dx-react-chart';
 import {
   ArgumentAxis,
+  Axis,
   BarSeries,
+  Stack,
   ValueAxis,
-} from '@devexpress/dx-react-chart-material-ui';
+} from '@devexpress/dx-react-chart';
+import styled from 'styled-components/macro';
+import * as React from 'react';
 
 import { Item } from '../layouts';
 
+import ChartBase from './ChartBase';
 import ChartLabel from './ChartLabel';
 import ChartValue from './ChartValue';
 import ChartLegend from './ChartLegend';
-import ChartBase from './ChartBase';
 
 // eslint-disable-next-line
 function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
@@ -22,31 +23,24 @@ function ColumnChartPoint({ units, fraction, valueFieldsLength, ...props }) {
   const y = rotated ? arg : val;
   return (
     <>
-      <BarSeries.Point {...props} val={val + (rotated ? -14 : 10)} />
-      {(value || rotated) && (
-        <ChartLabel
-          dominantBaseline={'middle'}
-          textAnchor={'middle'}
-          x={x}
-          y={y}
-        >
-          <ChartValue fraction={fraction}>{value}</ChartValue>
-          {units}
-        </ChartLabel>
-      )}
+      <BarSeries.Point
+        {...props}
+        val={val + (rotated ? -14 : 10)}
+        {...(!value && { startVal: 0 })}
+      />
+      <ChartLabel dominantBaseline={'middle'} textAnchor={'middle'} x={x} y={y}>
+        <ChartValue fraction={fraction}>{value}</ChartValue>
+        {units}
+      </ChartLabel>
     </>
   );
 }
 
 // eslint-disable-next-line
-function ArgumentAxisLine({ y1, y2, ...props }) {
-  return <ArgumentAxis.Line y1={y1} y2={y2} {...props} />;
-}
-
-// eslint-disable-next-line
-function ValueLabel({ text, ...props }) {
-  return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
-}
+const ChartAxisLine = styled(Axis.Line)`
+  stroke: ${({ theme }) => theme.palette.text.secondary};
+  shape-rendering: crispEdges;
+`;
 
 type Props = {
   elements: ChartElement[],
@@ -63,51 +57,18 @@ type Props = {
  * @returns {React.Node}
  */
 const ColumnChart = React.forwardRef(function ColumnChart(
-  { elements, legend, palette, paletteKey, xAxis, yAxis, ...itemProps },
+  { legend, palette, paletteKey, xAxis, yAxis, valueFields, ...itemProps },
   ref
 ): Props {
-  const data = useAutoMemo(
-    Object.entries(
-      elements.reduce(
-        (acc, { group = null, title, value }) => ({
-          ...acc,
-          [group]: { ...acc[group], [title]: value },
-        }),
-        {}
-      )
-    ).map(([group, values]) => ({ ...values, group }))
-  );
-
-  const newValueFields = useAutoMemo(() => {
-    const valueFieldsSet = new Set();
-    data.forEach(({ group, ...values }) => {
-      Object.keys(values).forEach((valueField) => {
-        valueFieldsSet.add(valueField);
-      });
-    });
-    return [...valueFieldsSet];
-  });
-  const [valueFields, setValueFields] = React.useState(newValueFields);
-  const forceRemount = valueFields.length !== newValueFields.length;
-
-  useAutoEffect(() => {
-    setValueFields(newValueFields);
-  });
-
-  const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
-    <ValueLabel {...props} text={text} meta={text} />
-  ));
-
-  return forceRemount ? null : (
-    <Item forwardedAs={ChartBase} data={data} {...itemProps} ref={ref}>
+  return (
+    <Item forwardedAs={ChartBase} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
-          labelComponent={ArgumentAxisLabel}
-          lineComponent={ArgumentAxisLine}
+          labelComponent={ChartLabel}
+          lineComponent={ChartAxisLine}
         />
       )}
-
-      {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid={false} />}
+      {!!yAxis && <ValueAxis labelComponent={ChartLabel} showGrid={false} />}
       {valueFields.map((valueField, index) => (
         <BarSeries
           key={valueField}

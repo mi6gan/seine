@@ -2,11 +2,9 @@
 import * as React from 'react';
 import { Box } from '@material-ui/core';
 
-import { chartTypes } from '../packages/core/src/types';
-
 import * as data from './data';
 
-import { blockTypes, layoutTypes } from '@seine/core';
+import { blockTypes, layoutTypes, chartTypes } from '@seine/core';
 import { Content } from '@seine/content';
 import { ThemeProvider } from '@seine/styles';
 

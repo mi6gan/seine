@@ -98,8 +98,8 @@ export const defaultChartBody = {
 };
 export const defaultChartFormat = {
   ...defaultItemFormat,
-  minWidth: '99px',
-  minHeight: '70px',
+  minWidth: '210px',
+  minHeight: '297px',
   palette: chartPaletteKeyValues.default,
   paletteKey: 'default',
   textAlignment: 'left',

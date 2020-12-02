@@ -1,12 +1,13 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
-import { Stack } from '@devexpress/dx-react-chart';
 import {
+  Axis,
   ArgumentAxis,
   LineSeries,
+  Stack,
   ValueAxis,
-} from '@devexpress/dx-react-chart-material-ui';
+} from '@devexpress/dx-react-chart';
+import styled from 'styled-components/macro';
 
 import { Item } from '../layouts';
 
@@ -67,14 +68,16 @@ type Props = {
 };
 
 // eslint-disable-next-line
-function ArgumentAxisLine({ y1, y2, ...props }) {
-  return <ArgumentAxis.Line y1={y1} y2={y2} {...props} />;
-}
+const ChartAxisLine = styled(Axis.Line)`
+  stroke: ${({ theme }) => theme.palette.text.secondary};
+  shape-rendering: crispEdges;
+`;
 
 // eslint-disable-next-line
-function ValueLabel({ text, ...props }) {
-  return text !== 'null' && <ChartLabel {...props}>{text}</ChartLabel>;
-}
+const ChartGridLine = styled(Axis.Line)`
+  stroke: ${({ theme }) => theme.palette.grey[200]};
+  shape-rendering: crispEdges;
+`;
 
 /**
  * @description Bar chart block renderer.
@@ -82,51 +85,36 @@ function ValueLabel({ text, ...props }) {
  * @returns {React.Node}
  */
 const LineChart = React.forwardRef(function LineChart(
-  { elements, xAxis, yAxis, palette, fraction, units, legend, ...itemProps },
+  {
+    elements,
+    xAxis,
+    yAxis,
+    palette,
+    fraction,
+    units,
+    legend,
+    valueFields,
+    ...itemProps
+  },
   ref
 ): Props {
-  const data = useAutoMemo(
-    Object.entries(
-      elements.reduce(
-        (acc, { group = null, title, value }) => ({
-          ...acc,
-          [group]: { ...acc[group], [title]: value },
-        }),
-        {}
-      )
-    ).map(([group, values]) => ({ ...values, group }))
-  );
-
-  const newValueFields = useAutoMemo(() => {
-    const valueFieldsSet = new Set();
-    data.forEach(({ group, ...values }) => {
-      Object.keys(values).forEach((valueField) => {
-        valueFieldsSet.add(valueField);
-      });
-    });
-    return [...valueFieldsSet];
-  });
-  const [valueFields, setValueFields] = React.useState(newValueFields);
-  const forceRemount = valueFields.length !== newValueFields.length;
-
-  useAutoEffect(() => {
-    setValueFields(newValueFields);
-  });
-
-  const ArgumentAxisLabel = useAutoCallback(({ text, ...props }) => (
-    <ValueLabel {...props} text={text} meta={text} />
-  ));
-
-  return forceRemount ? null : (
-    <Item {...itemProps} ref={ref} forwardedAs={ChartBase} data={data}>
+  return (
+    <Item forwardedAs={ChartBase} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
-          labelComponent={ArgumentAxisLabel}
-          lineComponent={ArgumentAxisLine}
+          labelComponent={ChartLabel}
+          lineComponent={ChartAxisLine}
         />
       )}
 
-      {!!yAxis && <ValueAxis labelComponent={ValueLabel} showGrid />}
+      {!!yAxis && (
+        <ValueAxis
+          labelComponent={ChartLabel}
+          lineComponent={ChartAxisLine}
+          gridComponent={ChartGridLine}
+          showGrid
+        />
+      )}
       {valueFields.map((valueField, index) => (
         <LineSeries
           key={valueField}

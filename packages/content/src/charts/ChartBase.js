@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
-import { Chart } from '@devexpress/dx-react-chart-material-ui';
+import { Chart } from '@devexpress/dx-react-chart';
+import styled from 'styled-components/macro';
 
 import {
   defaultBarChartFormat,
@@ -21,13 +22,19 @@ const formatKeys = Object.keys({
 });
 
 // eslint-disable-next-line
-const ChartBase = React.forwardRef((props, ref) => (
-  <Chart
-    ref={ref}
-    {...Object.fromEntries(
-      Object.entries(props).filter(([k]) => !formatKeys.includes(k))
-    )}
-  />
-));
+const ChartBase = styled(
+  React.forwardRef((props, ref) => (
+    <Chart
+      ref={ref}
+      {...Object.fromEntries(
+        Object.entries(props).filter(([k]) => !formatKeys.includes(k))
+      )}
+      height={'100%'}
+    />
+  ))
+)`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default ChartBase;

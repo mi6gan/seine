@@ -92,10 +92,10 @@ export const defaultFlexFormat = {
 export const defaultGridFormat = {
   ...defaultItemFormat,
   kind: layoutTypes.GRID,
-  columns: 'repeat(auto-fit, minmax(150px, 1fr))',
+  columns: 'repeat(auto-fit,minmax(25ch,1fr))',
   columnGap: 2,
   rowGap: 2,
-  rows: '',
+  rows: 'auto',
   justify: 'auto',
   alignItems: 'auto',
 };

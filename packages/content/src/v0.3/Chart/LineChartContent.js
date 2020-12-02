@@ -221,7 +221,7 @@ export default function LineChartContent({
       {!!yAxis && (
         <ChartYAxis
           length={height - titleHeight}
-          maxWidth={valueMaxWidth}
+          maxWidth={Math.ceil(valueMaxWidth)}
           max={maxValue}
           min={minValue}
           step={dy}

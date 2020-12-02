@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
-import { PieSeries } from '@devexpress/dx-react-chart-material-ui';
-import { Palette } from '@devexpress/dx-react-chart';
+import { Palette, PieSeries } from '@devexpress/dx-react-chart';
 import { useAutoMemo } from 'hooks.macro';
 
 import type { ItemProps } from '../layouts';
@@ -80,11 +79,11 @@ type Props = ItemProps & ChartBody & $Shape<ChartFormat>;
  * @returns {React.Node}
  */
 const PieChart = React.forwardRef(function PieChart(
-  { legend, palette, units, fraction, elements, ...itemProps },
+  { legend, palette, units, fraction, ...itemProps },
   ref
 ): Props {
   return (
-    <Item ref={ref} forwardedAs={ChartBase} data={elements} {...itemProps}>
+    <Item ref={ref} forwardedAs={ChartBase} {...itemProps}>
       <Palette scheme={palette} />
       <PieSeries
         name={'slices'}
