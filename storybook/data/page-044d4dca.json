@@ -1,0 +1,146 @@
+[
+  {
+    "id": "044d4dca-4924-4a9d-9e6b-55b9be006b70",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "2f9669af-b052-4374-8fa3-8b225e6d5c3b",
+    "type": "draft",
+    "parent_id": "044d4dca-4924-4a9d-9e6b-55b9be006b70",
+    "body": {
+      "blocks": [
+        {
+          "key": "2fpgn",
+          "data": {},
+          "text": "Car Dealership Sales by Type of Vehicle, in number of cars sold",
+          "type": "header-three",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": [
+            {
+              "style": "BOLD",
+              "length": 63,
+              "offset": 0
+            }
+          ]
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": {
+      "textAlignment": "center",
+      "verticalAlignment": "center"
+    },
+    "schema": null
+  },
+  {
+    "id": "69130c1c-de7d-44f2-ab08-2111b7836fc9",
+    "type": "grid",
+    "parent_id": "044d4dca-4924-4a9d-9e6b-55b9be006b70",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "beb4e518-de5f-44ab-99e5-6a3e24e369ee",
+    "type": "chart",
+    "parent_id": "69130c1c-de7d-44f2-ab08-2111b7836fc9",
+    "body": {
+      "title": "2019",
+      "elements": [
+        {
+          "title": "Luxury cars",
+          "value": 2584
+        },
+        {
+          "id": "a2910ac5-d9a9-4907-aabf-7e59872b988c",
+          "title": "SUVs",
+          "value": 7065
+        },
+        {
+          "id": "2f2507fc-4a10-4968-96b0-69b6ba80d7e1",
+          "title": "Hatchbacks",
+          "value": 9222
+        }
+      ]
+    },
+    "format": {
+      "kind": "pie",
+      "units": " ",
+      "xAxis": true,
+      "yAxis": true,
+      "legend": 1,
+      "palette": [
+        "rgba(97,139,219,1)",
+        "rgba(138,219,150,1)",
+        "rgba(172,190,203,1)",
+        "#e57878",
+        "#8adb96",
+        "#6895eb",
+        "#b8c8d8",
+        "#ebebeb",
+        "#ff7171",
+        "#fdc91d",
+        "#618bdb",
+        "#acbecb",
+        "#707070"
+      ],
+      "paletteKey": "default",
+      "textAlignment": "left"
+    },
+    "schema": null
+  },
+  {
+    "id": "54e112c1-6abd-4975-8cdb-d67c63fff88b",
+    "type": "chart",
+    "parent_id": "69130c1c-de7d-44f2-ab08-2111b7836fc9",
+    "body": {
+      "title": "2018",
+      "elements": [
+        {
+          "title": "Luxury cars",
+          "value": 2349
+        },
+        {
+          "id": "0412897f-a61b-4197-be13-bcd2f8be9f5d",
+          "title": "SUVs",
+          "value": 6423
+        },
+        {
+          "id": "4935fddf-c48e-49aa-9076-eae40bd68803",
+          "title": "Hatchbacks",
+          "value": 8234
+        }
+      ]
+    },
+    "format": {
+      "kind": "pie",
+      "units": " ",
+      "xAxis": true,
+      "yAxis": true,
+      "legend": 1,
+      "palette": [
+        "rgba(97,139,219,1)",
+        "rgba(138,219,150,1)",
+        "rgba(172,190,203,1)",
+        "#e57878",
+        "#8adb96",
+        "#6895eb",
+        "#b8c8d8",
+        "#ebebeb",
+        "#ff7171",
+        "#fdc91d",
+        "#618bdb",
+        "#acbecb",
+        "#707070"
+      ],
+      "paletteKey": "default",
+      "textAlignment": "left"
+    },
+    "schema": null
+  }
+]

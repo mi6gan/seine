@@ -26,18 +26,34 @@ export function useResizeTargetRef() {
   return resizeTargetRef;
 }
 
+const THROTTLE_MS = 250;
+
 // eslint-disable-next-line
 export default function Page_v0_3({ children }) {
   const [count, setCount] = React.useState(0);
+  const timeoutRef = React.useRef(null);
 
   const observer = useAutoMemo(
     new ResizeObserver(() => {
-      setCount((n) => (n === Number.MAX_VALUE ? 1 : n + 1));
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        timeoutRef.current = null;
+        setCount((n) => (n === Number.MAX_VALUE ? 1 : n + 1));
+      }, THROTTLE_MS);
     })
   );
 
   useAutoEffect(() => {
     setCount(1);
+    return () => {
+      if (timeoutRef.current) {
+        const { current: timeoutId } = timeoutRef;
+        timeoutRef.current = null;
+        clearTimeout(timeoutId);
+      }
+    };
   });
 
   return (
