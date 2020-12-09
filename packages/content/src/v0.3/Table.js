@@ -15,6 +15,7 @@ const TableTitle = styled(Typography).attrs(() => ({
 `;
 
 const Container = styled.div`
+  ${({ height }) => height && { height }};
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -72,7 +73,7 @@ const StyledTableCell = styled.td`
 // eslint-disable-next-line
 export default function Table_v0_3({ title, header, rows, textAlignment }) {
   const containerRef = useResizeTargetRef();
-  const tableRef = React.useRef(null);
+  const tableRef = React.useRef<HTMLElement>(null);
 
   const { current: container } = containerRef;
   const { current: table } = tableRef;
@@ -81,7 +82,7 @@ export default function Table_v0_3({ title, header, rows, textAlignment }) {
     (container && table && container.offsetWidth / table.offsetWidth) || 1;
 
   return (
-    <Container ref={containerRef}>
+    <Container ref={containerRef} height={table && table.offsetHeight}>
       <TableTitle textAlignment={textAlignment}>{title}</TableTitle>
       <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
         <thead>

@@ -1,0 +1,296 @@
+[
+  {
+    "id": "7352724a-e896-4cf6-a8d7-d846ea284d12",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "623f6224-fd31-4ced-9bdc-d5950abec0c5",
+    "type": "grid",
+    "parent_id": "7352724a-e896-4cf6-a8d7-d846ea284d12",
+    "body": {},
+    "format": {
+      "columns": "100%"
+    },
+    "schema": null
+  },
+  {
+    "id": "57a47245-8247-4e91-b8b2-7270d075aee8",
+    "type": "draft",
+    "parent_id": "623f6224-fd31-4ced-9bdc-d5950abec0c5",
+    "body": {
+      "blocks": [
+        {
+          "key": "t70f",
+          "data": {},
+          "text": "Kura has five factories for the production, cooling and packaging of chicken. Each of the factories is located in a different region where meat consumption is not fully balanced with available production capacities. To maximize sales, Kura transports meat from regions with surpluses to other regions where demand exceeds local production capacities. An overview of key management information for each region is shown in the figure below.",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": {
+      "verticalAlignment": "start"
+    },
+    "schema": null
+  },
+  {
+    "id": "4d722a7c-aa9b-43a7-a7c6-862837460b3f",
+    "type": "grid",
+    "parent_id": "623f6224-fd31-4ced-9bdc-d5950abec0c5",
+    "body": {},
+    "format": {
+      "columns": "100%"
+    },
+    "schema": null
+  },
+  {
+    "id": "28853d92-871c-4f2f-90f2-76524325fdf6",
+    "type": "table",
+    "parent_id": "4d722a7c-aa9b-43a7-a7c6-862837460b3f",
+    "body": {
+      "rows": [
+        [
+          {
+            "text": "1",
+            "align": "center"
+          },
+          {
+            "text": "36%",
+            "align": "center"
+          },
+          {
+            "text": "29%",
+            "align": "center"
+          },
+          {
+            "text": "$1,600",
+            "align": "center"
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "2",
+            "align": "center"
+          },
+          {
+            "text": "28%",
+            "align": "center"
+          },
+          {
+            "text": "30%",
+            "align": "center"
+          },
+          {
+            "text": "$2,000",
+            "align": "center"
+          },
+          {
+            "text": "Delivery from region 1"
+          }
+        ],
+        [
+          {
+            "text": "3",
+            "align": "center"
+          },
+          {
+            "text": "17%",
+            "align": "center"
+          },
+          {
+            "text": "20%",
+            "align": "center"
+          },
+          {
+            "text": "$1,300",
+            "align": "center"
+          },
+          {
+            "text": "Delivery from region 4"
+          }
+        ],
+        [
+          {
+            "text": "4",
+            "align": "center"
+          },
+          {
+            "text": "11%",
+            "align": "center"
+          },
+          {
+            "text": "8%",
+            "align": "center"
+          },
+          {
+            "text": "$2,200",
+            "align": "center"
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "5",
+            "align": "center"
+          },
+          {
+            "text": "8%",
+            "align": "center"
+          },
+          {
+            "text": "13%",
+            "align": "center"
+          },
+          {
+            "text": "$1,700",
+            "align": "center"
+          },
+          {
+            "text": "Delivery from region 1"
+          }
+        ]
+      ],
+      "title": "Key information for each region",
+      "header": [
+        {
+          "0": {
+            "text": "% of Production"
+          },
+          "1": {
+            "text": "% of Sales"
+          },
+          "2": {
+            "text": "Cost of Production \nper Tonne"
+          },
+          "3": {
+            "text": "Current Delivery to the Region \nfrom Neighboring Regions"
+          },
+          "text": "Region",
+          "align": "center"
+        },
+        {
+          "text": "% of Production"
+        },
+        {
+          "text": "% of Sales"
+        },
+        {
+          "text": "Cost of Production \nper Tonne"
+        },
+        {
+          "text": "Current Delivery to the Region \nfrom Neighboring Regions"
+        }
+      ]
+    },
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "576b0cc4-c8ab-4633-abdf-c4ec976ff06b",
+    "type": "grid",
+    "parent_id": "4d722a7c-aa9b-43a7-a7c6-862837460b3f",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "284d6527-2724-4276-a4d1-1e5895c3df87",
+    "type": "draft",
+    "parent_id": "576b0cc4-c8ab-4633-abdf-c4ec976ff06b",
+    "body": {
+      "blocks": [
+        {
+          "key": "97i82",
+          "data": {},
+          "text": "The design of the current delivery network allows each factory to supply end-products to only two neighboring regions. The cost of delivery per tonne to the neighboring region is also presented in the table (on the right). Thanks to a well-organized distribution strategy, Kura is able to sell 100% of the chicken it produces.",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": {
+      "verticalAlignment": "start"
+    },
+    "schema": null
+  },
+  {
+    "id": "2f5e9c66-051d-46c9-9293-3a6afb241bee",
+    "type": "table",
+    "parent_id": "576b0cc4-c8ab-4633-abdf-c4ec976ff06b",
+    "body": {
+      "rows": [
+        [
+          {
+            "text": "between 1 and 2"
+          },
+          {
+            "text": "$200",
+            "align": "center"
+          }
+        ],
+        [
+          {
+            "text": "between 2 and 3"
+          },
+          {
+            "text": "$500",
+            "align": "center"
+          }
+        ],
+        [
+          {
+            "text": "between 3 and 4"
+          },
+          {
+            "text": "$100",
+            "align": "center"
+          }
+        ],
+        [
+          {
+            "text": "between 4 and 5"
+          },
+          {
+            "text": "$300",
+            "align": "center"
+          }
+        ],
+        [
+          {
+            "text": "between 5 and 1"
+          },
+          {
+            "text": "$200",
+            "align": "center"
+          }
+        ]
+      ],
+      "title": "Kura’s Delivery Network ",
+      "header": [
+        {
+          "text": "Channel"
+        },
+        {
+          "text": "Сost per tonne to deliver \nto neighboring regions"
+        }
+      ]
+    },
+    "format": {},
+    "schema": null
+  }
+]
