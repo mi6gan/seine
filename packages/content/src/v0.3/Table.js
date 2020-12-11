@@ -96,12 +96,10 @@ export default function Table_v0_3({ title, header, rows, textAlignment }) {
     }
     timeoutRef.current = setTimeout(() => {
       timeoutRef.current = null;
-      if (tableRef.current) {
-        setHeight(
-          (tableRef.current && tableRef.current.offsetHeight) +
-            (titleRef.current && titleRef.current.offsetHeight)
-        );
-      }
+      setHeight(
+        (tableRef.current && tableRef.current.offsetHeight) +
+          (titleRef.current && titleRef.current.offsetHeight)
+      );
     }, THROTTLE_MS);
     return () => {
       if (timeoutRef.current) {
