@@ -1,0 +1,221 @@
+[
+  {
+    "id": "26332126-555e-447e-991a-c9aa844f15bb",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "67cca0e0-ff4d-4f5c-9e56-ea5ba97d2c3b",
+    "type": "grid",
+    "parent_id": "26332126-555e-447e-991a-c9aa844f15bb",
+    "body": {},
+    "format": {
+      "columns": "100%"
+    },
+    "schema": null
+  },
+  {
+    "id": "845810c6-629c-48c8-b447-23e1418ae9fe",
+    "type": "grid",
+    "parent_id": "67cca0e0-ff4d-4f5c-9e56-ea5ba97d2c3b",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "1ab626aa-6dd4-4dfa-ae41-994099e71c64",
+    "type": "draft",
+    "parent_id": "845810c6-629c-48c8-b447-23e1418ae9fe",
+    "body": {
+      "blocks": [
+        {
+          "key": "ahevm",
+          "data": {},
+          "text": "At the end of the previous year, one major competitor left the market, which positively affected Onekey. The withdrawal of this competitor resulted in a 155% increase in the number of sales transactions in Q1 of this year.",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "4j76t",
+          "data": {},
+          "text": "",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        },
+        {
+          "key": "cbuav",
+          "data": {},
+          "text": "*A forecasted figure is used for September of the current year.",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": {
+      "verticalAlignment": "start"
+    },
+    "schema": null
+  },
+  {
+    "id": "348cd222-a8e7-4f2f-bd40-1265446d5678",
+    "type": "table",
+    "parent_id": "845810c6-629c-48c8-b447-23e1418ae9fe",
+    "body": {
+      "rows": [
+        [
+          {
+            "text": "Previous year"
+          },
+          {
+            "text": "10,903",
+            "align": "center"
+          },
+          {
+            "text": "19,510",
+            "align": "center"
+          },
+          {
+            "text": "14,633",
+            "align": "center"
+          }
+        ],
+        [
+          {
+            "text": "Current year"
+          },
+          {
+            "text": "37,003",
+            "align": "center"
+          },
+          {
+            "text": "51,815",
+            "align": "center"
+          },
+          {
+            "text": "35,924",
+            "align": "center"
+          }
+        ]
+      ],
+      "title": "Number of Sales Transactions from New Clients at Onekey*",
+      "header": [
+        {
+          "0": {
+            "text": "Q1",
+            "align": "center"
+          },
+          "1": {
+            "text": "Q2",
+            "align": "center"
+          },
+          "2": {
+            "text": "Q3",
+            "align": "center"
+          },
+          "text": "  ",
+          "align": "center"
+        },
+        {
+          "text": "Q1",
+          "align": "center"
+        },
+        {
+          "text": "Q2",
+          "align": "center"
+        },
+        {
+          "text": "Q3",
+          "align": "center"
+        }
+      ]
+    },
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "b58171a6-e85e-4fa9-aa07-56eacd96f342",
+    "type": "grid",
+    "parent_id": "67cca0e0-ff4d-4f5c-9e56-ea5ba97d2c3b",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "867f6c6e-2b67-4ef8-bd90-9d4f016792e9",
+    "type": "draft",
+    "parent_id": "b58171a6-e85e-4fa9-aa07-56eacd96f342",
+    "body": {
+      "blocks": [
+        {
+          "key": "aismk",
+          "data": {},
+          "text": "A massive Q1 advertising campaign also had a strong influence on figures. Onekey uses various marketing tools to promote its services, but the company does not track client referrals. Any clients attracted by word of mouth are attributed to one of the advertising channels. ",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": {
+      "verticalAlignment": "start"
+    },
+    "schema": null
+  },
+  {
+    "id": "2a1c2762-4aed-4f1e-8c10-462bc2647aad",
+    "type": "grid",
+    "parent_id": "b58171a6-e85e-4fa9-aa07-56eacd96f342",
+    "body": {},
+    "format": {
+      "columns": "100%"
+    },
+    "schema": null
+  },
+  {
+    "id": "1627a9e3-a316-4d7d-aadf-58bef07e96df",
+    "type": "draft",
+    "parent_id": "2a1c2762-4aed-4f1e-8c10-462bc2647aad",
+    "body": {
+      "blocks": [
+        {
+          "key": "4u8f9",
+          "data": {},
+          "text": "Q1 Effect on Sales by Type of Advertising",
+          "type": "header-three",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": {
+      "verticalAlignment": "start"
+    },
+    "schema": null
+  },
+  {
+    "id": "b2541aca-9aad-4144-8bac-92cf7aaff33b",
+    "type": "image",
+    "parent_id": "2a1c2762-4aed-4f1e-8c10-462bc2647aad",
+    "body": {
+      "file": "attachment/8b/a8/8ba8d48b422aa15c87f8c252c2e5a85f.jpg"
+    },
+    "format": {
+      "align": "middle"
+    },
+    "schema": null
+  }
+]
