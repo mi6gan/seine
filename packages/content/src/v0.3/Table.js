@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { useAutoEffect } from 'hooks.macro';
 import styled, { css } from 'styled-components/macro';
 
 import { useResizeTargetRef } from './Page';
@@ -18,7 +19,7 @@ const Container = styled.div`
   ${({ height }) => height && { height }};
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 `;
 
 const StyledTable = styled.table`
@@ -70,20 +71,52 @@ const StyledTableCell = styled.td`
   `}
 `;
 
+const THROTTLE_MS = 250;
+
 // eslint-disable-next-line
 export default function Table_v0_3({ title, header, rows, textAlignment }) {
   const containerRef = useResizeTargetRef();
   const tableRef = React.useRef<HTMLElement>(null);
+  const titleRef = React.useRef<HTMLElement>(null);
 
   const { current: container } = containerRef;
-  const { current: table } = tableRef;
+  const [height, setHeight] = React.useState(0);
 
   const scale =
-    (container && table && container.offsetWidth / table.offsetWidth) || 1;
+    (container &&
+      tableRef.current &&
+      container.offsetWidth / tableRef.current.offsetWidth) ||
+    1;
+
+  const timeoutRef = React.useRef(null);
+
+  useAutoEffect(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      timeoutRef.current = null;
+      if (tableRef.current) {
+        setHeight(
+          (tableRef.current && tableRef.current.offsetHeight) +
+            (titleRef.current && titleRef.current.offsetHeight)
+        );
+      }
+    }, THROTTLE_MS);
+    return () => {
+      if (timeoutRef.current) {
+        const { current: timeoutId } = timeoutRef;
+        timeoutRef.current = null;
+        clearTimeout(timeoutId);
+      }
+    };
+  });
 
   return (
-    <Container ref={containerRef} height={table && table.offsetHeight}>
-      <TableTitle textAlignment={textAlignment}>{title}</TableTitle>
+    <Container ref={containerRef} height={height}>
+      <TableTitle textAlignment={textAlignment} ref={titleRef}>
+        {title}
+      </TableTitle>
       <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
         <thead>
           <tr>

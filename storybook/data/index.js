@@ -5,3 +5,4 @@ export { default as page_ae102d9a } from './page-ae102d9a.json';
 export { default as page_286a2b56 } from './page-286a2b56.json';
 export { default as page_044d4dca } from './page-044d4dca.json';
 export { default as page_7352724a } from './page-7352724a.json';
+export { default as page_26332126 } from './page-26332126.json';
