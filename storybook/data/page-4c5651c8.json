@@ -1,0 +1,101 @@
+[
+  {
+    "id": "4c5651c8-9c54-4181-8241-c40208a9c5c5",
+    "type": "page",
+    "parent_id": null,
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "50a2c03f-d0b8-4811-9779-0e15d9e2bdbf",
+    "type": "grid",
+    "parent_id": "4c5651c8-9c54-4181-8241-c40208a9c5c5",
+    "body": {},
+    "format": {},
+    "schema": null
+  },
+  {
+    "id": "e03887dc-0619-4f78-8862-271885951f09",
+    "type": "draft",
+    "parent_id": "50a2c03f-d0b8-4811-9779-0e15d9e2bdbf",
+    "body": {
+      "blocks": [
+        {
+          "key": "c0h0i",
+          "data": {},
+          "text": "Trado is a popular, membership-only, online marketplace for consumer goods. Members of Trado receive access to a wide variety of brand name products with discounts of 3% to 17% off the average market price. Additionally, for each transaction, Trado customers get back 2% to 5% of the purchase amount in rewards points. One reward point is equivalent to one dollar. Points can be redeemed beginning one month after the purchase and only on specified products. Customers do not receive rewards for purchases made by redeeming points. The Trado membership costs $25 per month after a 30-day free trial. Trado considers members active if they make at least one transaction in the current month. The average lifetime of a customer is six months.",
+          "type": "unstyled",
+          "depth": 0,
+          "entityRanges": [],
+          "inlineStyleRanges": []
+        }
+      ],
+      "entityMap": {}
+    },
+    "format": { "verticalAlignment": "start" },
+    "schema": null
+  },
+  {
+    "id": "c37761bc-ea99-464a-ab9f-6b8938bd344d",
+    "type": "table",
+    "parent_id": "50a2c03f-d0b8-4811-9779-0e15d9e2bdbf",
+    "body": {
+      "rows": [
+        [
+          { "text": "July" },
+          { "text": "995", "align": "center" },
+          { "text": "122", "align": "center" },
+          { "text": "97", "align": "center" }
+        ],
+        [
+          { "text": "August " },
+          { "text": "934", "align": "center" },
+          { "text": "131", "align": "center" },
+          { "text": "102", "align": "center" }
+        ],
+        [
+          { "text": "September " },
+          { "text": "1,082", "align": "center" },
+          { "text": "166", "align": "center" },
+          { "text": "126", "align": "center" }
+        ],
+        [
+          { "text": "October " },
+          { "text": "1,438", "align": "center" },
+          { "text": "189", "align": "center" },
+          { "text": "146", "align": "center" }
+        ],
+        [
+          { "text": "November " },
+          { "text": "1,632", "align": "center" },
+          { "text": "209", "align": "center" },
+          { "text": "161", "align": "center" }
+        ],
+        [
+          { "text": "December " },
+          { "text": "1,790", "align": "center" },
+          { "text": "222", "align": "center" },
+          { "text": "169", "align": "center" }
+        ]
+      ],
+      "header": [
+        { "text": "Month" },
+        {
+          "0": { "text": "Members, \nthousands" },
+          "1": { "text": "Active \nMembers, \nthousands" },
+          "text": "Number of \nTransactions, \nthousands",
+          "align": "center"
+        },
+        {
+          "0": { "text": "Active \nMembers, \nthousands" },
+          "text": "Members, \nthousands",
+          "align": "center"
+        },
+        { "text": "Active \nMembers, \nthousands", "align": "center" }
+      ]
+    },
+    "format": {},
+    "schema": null
+  }
+]

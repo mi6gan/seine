@@ -97,7 +97,7 @@ export default function Table_v0_3({ title, header, rows, textAlignment }) {
     timeoutRef.current = setTimeout(() => {
       timeoutRef.current = null;
       setHeight(
-        (tableRef.current && tableRef.current.offsetHeight) +
+        (tableRef.current && tableRef.current.offsetHeight) * scale +
           (titleRef.current && titleRef.current.offsetHeight)
       );
     }, THROTTLE_MS);
@@ -112,9 +112,11 @@ export default function Table_v0_3({ title, header, rows, textAlignment }) {
 
   return (
     <Container ref={containerRef} height={height}>
-      <TableTitle textAlignment={textAlignment} ref={titleRef}>
-        {title}
-      </TableTitle>
+      {!!title && (
+        <TableTitle textAlignment={textAlignment} ref={titleRef}>
+          {title}
+        </TableTitle>
+      )}
       <StyledTable ref={tableRef} scale={Math.min(1, scale)}>
         <thead>
           <tr>
