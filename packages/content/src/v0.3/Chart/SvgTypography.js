@@ -111,11 +111,12 @@ const SvgTypography = React.forwardRef(function SvgTypography(
   }: Props,
   ref
 ) {
-  const isWebkit = useAutoMemo(navigator.vendor === 'Apple Computer, Inc.');
+  const isWebkit = useAutoMemo(
+    navigator.vendor === 'Apple Computer, Inc.' ||
+      /AppleWebKit/i.test(navigator.userAgent)
+  );
   const isBlink = useAutoMemo(
-    !isWebkit &&
-      /applewebkit/i.test(navigator.userAgent) &&
-      !/android 8/i.test(navigator.userAgent)
+    !isWebkit && /applewebkit/i.test(navigator.userAgent)
   );
 
   const foreignObjectRef = React.useRef(null);
