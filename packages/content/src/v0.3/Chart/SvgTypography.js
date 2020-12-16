@@ -113,7 +113,7 @@ const SvgTypography = React.forwardRef(function SvgTypography(
 ) {
   const isWebkit = useAutoMemo(
     navigator.vendor === 'Apple Computer, Inc.' ||
-      /AppleWebKit/i.test(navigator.userAgent)
+      /android 8/i.test(navigator.userAgent)
   );
   const isBlink = useAutoMemo(
     !isWebkit && /applewebkit/i.test(navigator.userAgent)
