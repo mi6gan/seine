@@ -3,21 +3,22 @@ import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import { actions } from '@storybook/addon-actions';
 
-import { useBlocksDispatch } from '../packages/editor/src/blocks';
-import { useSelectedLayoutItems } from '../packages/editor/src/layouts';
 import {
   createBlock,
   createBlocksFromTree,
   UPDATE_BLOCK_BODY,
-} from '../packages/core/src';
-import {
   blockTypes,
   defaultImageBody,
   defaultImageFormat,
-} from '../packages/core/src/types';
-
+} from '@seine/core';
 import { ThemeProvider } from '@seine/styles';
-import { Editor, EditorDesign, ImageDesign } from '@seine/editor';
+import {
+  Editor,
+  EditorDesign,
+  ImageDesign,
+  useBlocksDispatch,
+  useSelectedLayoutItems,
+} from '@seine/editor';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
