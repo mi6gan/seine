@@ -7,6 +7,7 @@ import TutorialStory from './TutorialStory';
 import { blockTypes, createBlock, createBlocksFromTree } from '@seine/core';
 import { toRawContent } from '@seine/content';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Tutorial/Size And Position',
 };

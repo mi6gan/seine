@@ -3,19 +3,24 @@ import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import { actions } from '@storybook/addon-actions';
 
-import { UPDATE_BLOCK_BODY } from '../packages/core/src/reducers';
-import { useBlocksDispatch } from '../packages/editor/src/blocks';
-import { useSelectedLayoutItems } from '../packages/editor/src/layouts';
-import { createBlock, createBlocksFromTree } from '../packages/core/src/utils';
 import {
+  createBlock,
+  createBlocksFromTree,
+  UPDATE_BLOCK_BODY,
   blockTypes,
   defaultImageBody,
   defaultImageFormat,
-} from '../packages/core/src/types';
-
+} from '@seine/core';
 import { ThemeProvider } from '@seine/styles';
-import { Editor, EditorDesign, ImageDesign } from '@seine/editor';
+import {
+  Editor,
+  EditorDesign,
+  ImageDesign,
+  useBlocksDispatch,
+  useSelectedLayoutItems,
+} from '@seine/editor';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Development/Custom Editor',
   decorators: [

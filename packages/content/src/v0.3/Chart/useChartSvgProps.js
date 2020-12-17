@@ -35,9 +35,10 @@ export default function useChartSvgProps(
       if (chartProps.parentType !== 'grid') {
         return {
           maxHeight,
-          viewBox: `0 0 ${VIEWPORT_WIDTH} ${VIEWPORT_HEIGHT +
-            (VIEWPORT_HEIGHT * Math.max(0, chartProps.elements.length - 5)) /
-              4}`,
+          viewBox: `0 0 ${VIEWPORT_WIDTH} ${
+            VIEWPORT_HEIGHT +
+            (VIEWPORT_HEIGHT * Math.max(0, chartProps.elements.length - 5)) / 4
+          }`,
         };
       }
       return {

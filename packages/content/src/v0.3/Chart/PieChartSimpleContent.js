@@ -113,14 +113,16 @@ export default function PieChartContent({
             {...metaProps}
             meta={meta}
             d={[
-              `M ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${CENTER +
-                RADIUS * endY}`,
-              `A ${RADIUS} ${RADIUS} 0 ${+(length > Math.PI)} 0 ${GUTTER_WIDTH +
-                CENTER +
-                RADIUS * startX} ${CENTER + RADIUS * startY}`,
+              `M ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${
+                CENTER + RADIUS * endY
+              }`,
+              `A ${RADIUS} ${RADIUS} 0 ${+(length > Math.PI)} 0 ${
+                GUTTER_WIDTH + CENTER + RADIUS * startX
+              } ${CENTER + RADIUS * startY}`,
               `L ${GUTTER_WIDTH + CENTER} ${CENTER}`,
-              `L ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${CENTER +
-                RADIUS * endY}`,
+              `L ${GUTTER_WIDTH + CENTER + RADIUS * endX} ${
+                CENTER + RADIUS * endY
+              }`,
             ].join(' ')}
             fill={palette[index % palette.length]}
             key={`slice.${index}`}

@@ -36,8 +36,7 @@ const Flex = styled(Item).attrs(({ theme, spacing }: FlexFormat) => ({
   }
 
   & > ${Item}[data-type="line"],
-  & > ${Item}[data-type="column"]
-   {
+  & > ${Item}[data-type="column"] {
     ${({ spacing }) => ({
       paddingTop:
         typeof spacing === 'string' ? `calc(${spacing} + 20px)` : spacing + 20,

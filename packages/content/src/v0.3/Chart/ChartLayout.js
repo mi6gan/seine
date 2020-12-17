@@ -27,12 +27,12 @@ const ChartLayoutContainer = styled.div`
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-  ${({ theme: { breakpoints } }) => css`
-    max-width: 65vw;
-    ${breakpoints.up('md')} {
-      max-width: 35vw;
-    }
-  `}
+    ${({ theme: { breakpoints } }) => css`
+      max-width: 65vw;
+      ${breakpoints.up('md')} {
+        max-width: 35vw;
+      }
+    `}
   }
   ${({ visibility }) => visibility && { visibility }};
   max-height: ${({ height }) => height}vh;
