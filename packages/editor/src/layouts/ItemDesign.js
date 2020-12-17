@@ -140,26 +140,29 @@ const ItemDesign = React.forwardRef(function ItemDesign(
   const dispatch = useBlocksDispatch();
   const defaults = useAutoMemo(getDefaultBlockFormat(type, kind));
   const togglePosition = useAutoCallback((event, value) => {
-    const [justify = defaults.justifySelf, align = defaults.alignSelf] = value
+    let [justify = defaults.justifySelf, align = defaults.alignSelf] = value
       ? value.split(' ')
       : [];
+    if (layoutType === 'flex' && layoutDirection === 'column') {
+      [align, justify] = [justify, align];
+    }
     dispatch({
       id,
       type: UPDATE_BLOCK_FORMAT,
       format: {
-        justifySelf:
-          layoutType !== 'flex' || layoutDirection !== 'column'
-            ? justify
-            : align,
-        alignSelf:
-          layoutType !== 'flex' || layoutDirection !== 'column'
-            ? align
-            : justify,
+        justifySelf: justify,
+        alignSelf: align,
       },
     });
   });
   const timeoutsRef = React.useRef({});
-  const position = `${justifySelf} ${alignSelf}`;
+
+  let position = [justifySelf, alignSelf];
+  if (layoutType === 'flex' && layoutDirection === 'column') {
+    position.reverse();
+  }
+  position = position.join(' ');
+
   const changeConstraint = useAutoCallback(({ currentTarget }) => {
     const { form } = currentTarget;
 

@@ -29,7 +29,7 @@ const Grid = styled(Item)`
 
   & > ${Item}[data-type="line"],
   & > ${Item}[data-type="column"] {
-     padding-top: 20px;
+    padding-top: 20px;
   }
   & > ${Item}[data-type="bar"] {
     padding-right: 20px;

@@ -81,7 +81,7 @@ export default function ImageDesign({ onChange, ...inputProps }: Props) {
                     } else {
                       const reader = new FileReader();
                       reader.readAsDataURL(event.currentTarget.files[0]);
-                      reader.onload = function() {
+                      reader.onload = function () {
                         dispatch({
                           type: UPDATE_BLOCK_BODY,
                           id,

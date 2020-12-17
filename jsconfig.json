@@ -1,5 +1,5 @@
 {
-  "include": ["packages/*/src/**", "storybook/src/**"],
+  "include": ["packages/*/src/**", "storybook/**"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

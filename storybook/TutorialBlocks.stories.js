@@ -6,6 +6,7 @@ import TutorialStory from './TutorialStory';
 
 import { blockTypes, chartTypes, CREATE_BLOCK, createBlock } from '@seine/core';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Tutorial/Structure',
 };

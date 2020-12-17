@@ -133,8 +133,9 @@ export default function PieChartFormattedContent({
         meta={meta}
         d={[
           `M ${centerX + radius * endX} ${centerY + radius * endY}`,
-          `A ${radius} ${radius} 0 ${+(length > Math.PI)} 0 ${centerX +
-            radius * startX} ${centerY + radius * startY}`,
+          `A ${radius} ${radius} 0 ${+(length > Math.PI)} 0 ${
+            centerX + radius * startX
+          } ${centerY + radius * startY}`,
           `L ${centerX} ${centerY}`,
           `L ${centerX + radius * endX} ${centerY + radius * endY}`,
         ].join(' ')}
