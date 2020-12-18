@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import { useAutoEffect, useAutoMemo } from 'hooks.macro';
+import ResizeObserver from 'resize-observer-polyfill';
 
 const PageContext = React.createContext({
   observer: null,
