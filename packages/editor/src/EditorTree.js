@@ -22,7 +22,7 @@ type Props = {
 };
 
 /**
- * @description Editor blocks tree view.
+ * @description Default blocks tree view.
  * @param {Props} props
  * @returns {React.Node}
  */

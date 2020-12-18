@@ -17,20 +17,11 @@ import { useNormalizedBlocks } from '@seine/content';
 export const defaultEditorChildren = [createBlock(blockTypes.PAGE)];
 
 type Props = EditorViewProps & {
-  /**
-   * @description Array of block objects.
-   * @default {@link defaultEditorChildren}
-   */
+  /** Array of block objects. */
   children?: Block[],
-  /**
-   * @description Editor view component.
-   * @default {@link EditorView}
-   */
+  /** Editor view component. */
   as?: React.ComponentType<EditorViewProps>,
-  /**
-   * @description Editor UI theme.
-   * @default {@link defaultTheme}
-   */
+  /** Editor UI theme. */
   theme?: Theme,
 };
 

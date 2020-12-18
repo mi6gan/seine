@@ -38,46 +38,24 @@ const Contents = styled(Box).attrs({
 `;
 
 type Props = {
-  /**
-   * Function to be called on each edit or selection.
-   */
+  /** Function to be called on each edit or selection. */
   onChange: (Block[]) => any,
-  /**
-   * Block components map.
-   *
-   * @default {@link defaultBlockRenderMap}
-   */
+  /** Block components map. */
   blockRenderMap?: { [BlockType]: React.ComponentType },
-  /**
-   * Design panel component.
-   *
-   * @default {@link EditorDesign}
-   */
+  /** Design panel component. */
   designAs?: React.ComponentType,
-  /**
-   * Toolbar component.
-   *
-   * @default {@link EditorToolbar}
-   */
+  /** Toolbar component. */
   toolbarAs?: React.ComponentType,
-  /**
-   * Custom structure tree panel component.
-   *
-   * @default {@link EditorTree}
-   */
+  /** Custom structure tree panel component. */
   treeAs?: React.ComponentType,
-  /**
-   * Block context menu component.
-   *
-   * @default {@link EditorItemMenu}
-   */
+  /** Block context menu component. */
   itemMenuAs?: React.ComponentType,
 };
 
 export type { Props as EditorViewProps };
 
 /**
- * @description Default content editor view.
+ * @description Default layout view.
  * @param {Props} props
  * @returns {React.Node}
  */

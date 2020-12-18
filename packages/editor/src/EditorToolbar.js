@@ -39,11 +39,14 @@ import {
 import { defaultTableCell, toRawContent } from '@seine/content';
 
 type Props = BoxProps & {
+  /** Container block CSS position value. */
+  position?: 'static' | 'relative' | 'absolute' | 'fixed',
+  /** Action button component. */
   actionButtonAs?: React.ComponentType<EditorActionButtonProps>,
 };
 
 /**
- * @description Default content editor.
+ * @description Default toolbar.
  * @param {Props} props
  * @returns {React.Node}
  */
@@ -330,5 +333,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
     </AppBar>
   );
 });
+
+EditorToolbar.name = 'EditorToolbar';
 
 export default (EditorToolbar: React.ComponentType<Props>);
