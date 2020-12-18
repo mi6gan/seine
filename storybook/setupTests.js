@@ -17,8 +17,8 @@ global.ResizeObserver = ResizeObserver;
 
 Object.assign(global.window, {
   matchMedia: () => ({
-    addEventListener: () => void 0,
-    removeEventListener: () => void 0,
+    addListener: () => void 0,
+    removeListener: () => void 0,
     matches: true,
   }),
 });
