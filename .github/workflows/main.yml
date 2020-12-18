@@ -59,6 +59,15 @@ jobs:
           yarn cypress run
         working-directory: storybook/
 
+      - name: Upload artifacts
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/upload-artifacts@v2
+        with:
+          name: cypress
+          path: |
+            storybook/cypress/snapshots/
+            storybook/cypress/videos/
+
       - name: Release version
         if: ${{ github.event_name == 'push' }}
         env:
