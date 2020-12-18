@@ -28,10 +28,10 @@ function useMatchMedia(alias, setDevice, start = null, end = null) {
         }
       };
 
-      mql.addListener('change', handler);
+      mql.addListener(handler);
 
       return () => {
-        mql.removeListener('change', handler);
+        mql.removeListener(handler);
       };
     }
   });
