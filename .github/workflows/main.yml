@@ -43,9 +43,19 @@ jobs:
       - name: Build sources
         run: yarn build
 
-      - name: Run all tests
+      - name: Run eslint tests
         if: ${{ github.event_name == 'pull_request' }}
-        run: yarn test
+        run: yarn test:eslint
+
+      - name: Run unit tests
+        if: ${{ github.event_name == 'pull_request' }}
+        run: yarn test:jest
+
+      - name: Run integration tests
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn workspaces seine-storybook start
 
       - name: Release version
         if: ${{ github.event_name == 'push' }}

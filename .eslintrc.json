@@ -3,7 +3,8 @@
     "react-app",
     "plugin:prettier/recommended",
     "plugin:import/recommended",
-    "plugin:jsdoc/recommended"
+    "plugin:jsdoc/recommended",
+    "plugin:cypress/recommended"
   ],
   "rules": {
     "no-console": "error",

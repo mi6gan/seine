@@ -11,15 +11,18 @@
   "private": true,
   "repository": "https://github.com/mi6gan/seine",
   "scripts": {
+    "dev": "yarn workspace seine-storybook start",
     "start": "yarn workspace seine-storybook serve",
     "release": "yarn run-s release:'*'",
     "release:library": "yarn workspaces foreach -t --include='@seine/*' exec npm publish",
     "release:storybook": "yarn workspace seine-storybook build -o $(pwd)/docs",
     "test": "yarn run-s test:'*'",
-    "test:eslint": "yarn eslint --max-warnings=0 --format unix ./packages/*/src ./storybook/*.stories.js",
-    "test:storybook": "yarn workspace seine-storybook test",
-    "build": "yarn workspaces foreach -t --include='@seine/*' exec yarn rollup --environment NODE_ENV:production -c ../../rollup.config.js",
-    "dev": "yarn workspace seine-storybook start"
+    "test:eslint": "yarn eslint --max-warnings=0 --format unix ./packages/*/src ./storybook/*.js",
+    "test:jest": "yarn workspace seine-storybook jest",
+    "test:storybook": "",
+    ":storybook": "yarn workspace seine-storybook test",
+    ":cypress": "wait-on http://localhost:3000 && yarn workspace seine-storybook cypress run",
+    "build": "yarn workspaces foreach -t --include='@seine/*' exec yarn rollup --environment NODE_ENV:production -c ../../rollup.config.js"
   },
   "dependencies": {
     "@babel/core": "7",
@@ -53,6 +56,7 @@
     "eslint": "7.x",
     "eslint-config-react-app": "6.x",
     "eslint-import-resolver-node": "0.x",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-flowtype": "5.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsdoc": "30.x",
@@ -76,7 +80,9 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-terser": "^5.2.0",
     "seine-storybook": "portal:./storybook",
-    "typescript": "4.x"
+    "typescript": "4.x",
+    "wait-on": "^5.2.0",
+    "webpack": "^5.3.2"
   },
   "workspaces": [
     "packages/*",
