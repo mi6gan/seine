@@ -19,9 +19,6 @@
     "test": "yarn run-s test:'*'",
     "test:eslint": "yarn eslint --max-warnings=0 --format unix ./packages/*/src ./storybook/*.js",
     "test:jest": "yarn workspace seine-storybook jest",
-    "test:storybook": "",
-    ":storybook": "yarn workspace seine-storybook test",
-    ":cypress": "wait-on http://localhost:3000 && yarn workspace seine-storybook cypress run",
     "build": "yarn workspaces foreach -t --include='@seine/*' exec yarn rollup --environment NODE_ENV:production -c ../../rollup.config.js"
   },
   "dependencies": {

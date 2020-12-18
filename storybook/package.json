@@ -5,9 +5,6 @@
   "author": "Mikhail Boyarov",
   "private": true,
   "scripts": {
-    "test": "yarn run-p ci cypress:run",
-    "cypress:run": "yarn wait-on http://localhost:3000 && yarn cypress run",
-    "ci": "yarn start --ci",
     "start": "yarn start-storybook --port 3000",
     "build": "yarn build-storybook --quiet --loglevel warn"
   },
