@@ -1,6 +1,12 @@
 module.exports = {
-  setupFiles: ['react-app-polyfill/jsdom', '<rootDir>/setupTests.js'],
+  testPathIgnorePatterns: ['/cypress/'],
+  setupFiles: ['<rootDir>/setupTests.js'],
   moduleNameMapper: {
-    '\\.(css|less)$': 'identity-obj-proxy',
+    'cypress-storybook/react': 'identity-obj-proxy',
+    '\\.(svg|css|less)$': 'identity-obj-proxy',
+  },
+  transform: {
+    '\\.[jt]sx?$': ['babel-jest', { rootMode: 'upward' }],
+    '\\.mdx?$': '@storybook/addon-docs/jest-transform-mdx',
   },
 };

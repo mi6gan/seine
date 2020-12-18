@@ -1,0 +1,7 @@
+screenshots
+snapshots
+videos
+out.js
+examples/*/cypress/logs
+examples/*/cypress/downloads
+fixtures/example.json
