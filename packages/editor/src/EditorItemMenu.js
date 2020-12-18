@@ -120,7 +120,7 @@ type Props = {
 };
 
 /**
- * @description Selected item context menu.
+ * @description Default context menu.
  * @param {Props} props
  * @returns {React.Node}
  */

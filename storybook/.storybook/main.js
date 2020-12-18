@@ -1,5 +1,5 @@
 module.exports = {
-  stories: [`${__dirname}/../*.stories.js`],
+  stories: [`${__dirname}/../*.stories.@(js|mdx)`],
   addons: [
     require.resolve('./yarn-preset.js'),
     '@storybook/addon-viewport',

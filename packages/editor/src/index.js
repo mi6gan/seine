@@ -21,7 +21,9 @@ export { default as EditorTreeItem } from './EditorTreeItem';
 export { default as defaultBlockRenderMap } from './blockRenderMap';
 export { default as useBlocksChange } from './useBlocksChange';
 export { default as EditorContent } from './EditorContent';
+export { default as EditorView } from './EditorView';
 export { default as Editor } from './Editor';
+export * from './Editor';
 
 export type { EditorTreeItemProps } from './EditorTreeItem';
 export type { EditorActionButtonProps } from './blocks/EditorActionButton';

@@ -21,7 +21,7 @@ type Props = {
 };
 
 /**
- * @description Editor design panel.
+ * @description Default design panel.
  * @param {Props} props
  * @returns {React.Node}
  */
