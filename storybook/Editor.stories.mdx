@@ -1,0 +1,26 @@
+import { Meta, Story, ArgsTable } from '@storybook/addon-docs/blocks';
+import { EditorView, Editor } from '@seine/editor';
+import { action } from '@storybook/addon-actions';
+
+import Description from './Description';
+
+<Meta
+  title="Documentation"
+  parameters={{ docs: { disabled: false } }}
+  component={Editor}
+/>
+
+# Editor
+
+<Description of={Editor} />
+
+<Story name="Editor">
+  <Editor onChange={action('onChange')} />
+</Story>
+
+<ArgsTable of={'.'} />
+
+## EditorView
+
+<Description of={EditorView} />
+<ArgsTable of={EditorView} />

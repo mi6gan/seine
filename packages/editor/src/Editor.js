@@ -8,18 +8,37 @@ import { ClipboardProvider } from './clipboard';
 import type { EditorViewProps } from './EditorView';
 import EditorView from './EditorView';
 
+import type { Theme } from '@seine/styles/mui-core.macro.d';
 import { ThemeProvider } from '@seine/styles';
-import type { BlockType } from '@seine/core';
+import type { Block } from '@seine/core';
 import { blockTypes, createBlock } from '@seine/core';
 import { useNormalizedBlocks } from '@seine/content';
 
+export const defaultEditorChildren = [createBlock(blockTypes.PAGE)];
+
 type Props = EditorViewProps & {
-  blockRenderMap?: (BlockType) => React.Node,
+  /**
+   * @description Array of block objects.
+   * @default {@link defaultEditorChildren}
+   */
+  children?: Block[],
+  /**
+   * @description Editor view component.
+   * @default {@link EditorView}
+   */
+  as?: React.ComponentType<EditorViewProps>,
+  /**
+   * @description Editor UI theme.
+   * @default {@link defaultTheme}
+   */
+  theme?: Theme,
 };
 
-const defaultEditorChildren = [createBlock(blockTypes.PAGE)];
-
-// eslint-disable-next-line
+/**
+ * @description Editor component.
+ * @param {Props} props
+ * @returns {React.Component}
+ */
 export default function Editor({
   children = defaultEditorChildren,
   as: View = EditorView,

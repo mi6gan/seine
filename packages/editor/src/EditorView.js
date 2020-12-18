@@ -38,11 +38,39 @@ const Contents = styled(Box).attrs({
 `;
 
 type Props = {
+  /**
+   * Function to be called on each edit or selection.
+   */
   onChange: (Block[]) => any,
+  /**
+   * Block components map.
+   *
+   * @default {@link defaultBlockRenderMap}
+   */
   blockRenderMap?: { [BlockType]: React.ComponentType },
+  /**
+   * Design panel component.
+   *
+   * @default {@link EditorDesign}
+   */
   designAs?: React.ComponentType,
+  /**
+   * Toolbar component.
+   *
+   * @default {@link EditorToolbar}
+   */
   toolbarAs?: React.ComponentType,
+  /**
+   * Custom structure tree panel component.
+   *
+   * @default {@link EditorTree}
+   */
   treeAs?: React.ComponentType,
+  /**
+   * Block context menu component.
+   *
+   * @default {@link EditorItemMenu}
+   */
   itemMenuAs?: React.ComponentType,
 };
 
