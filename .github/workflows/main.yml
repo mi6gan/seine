@@ -56,6 +56,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           working-directory: storybook/
+          install-command: yarn
           start: yarn start --ci
           wait-on: http://localhost:3000
 
