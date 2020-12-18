@@ -18,7 +18,7 @@
     "release:storybook": "yarn workspace seine-storybook build -o $(pwd)/docs",
     "test": "yarn run-s test:'*'",
     "test:eslint": "yarn eslint --max-warnings=0 --format unix ./packages/*/src ./storybook/*.js",
-    "test:jest": "yarn workspace seine-storybook jest",
+    "test:jest": "yarn workspace seine-storybook jest --silent",
     "build": "yarn workspaces foreach -t --include='@seine/*' exec yarn rollup --environment NODE_ENV:production -c ../../rollup.config.js"
   },
   "dependencies": {

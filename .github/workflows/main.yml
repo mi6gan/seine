@@ -53,12 +53,8 @@ jobs:
 
       - name: Run integration tests
         if: ${{ github.event_name == 'pull_request' }}
-        uses: cypress-io/github-action@v2
-        with:
-          working-directory: storybook/
-          install-command: yarn
-          start: yarn start --ci
-          wait-on: http://localhost:3000
+        run: yarn test:cypress
+        working-directory: storybook/
 
       - name: Release version
         if: ${{ github.event_name == 'push' }}
