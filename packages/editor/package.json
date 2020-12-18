@@ -2,7 +2,7 @@
   "name": "@seine/editor",
   "main": "./index.cjs.js",
   "module": "./index.es.js",
-  "version": "0.4.76",
+  "version": "0.4.77",
   "description": "React components for editing block contents.",
   "repository": "mi6gan/seine",
   "author": "Mikhail Boyarov",
@@ -16,7 +16,6 @@
     "draft-js-buttons": "^2.0.2",
     "hooks.macro": "^1.0.1",
     "react-color": "^2.18.1",
-    "react-color.macro": "^1.0.186",
     "rollup-plugin-pnp-resolve": "^2.0.0",
     "svg-patterns": "^1.0.0",
     "virtual-dom-stringify": "^3.0.1"
