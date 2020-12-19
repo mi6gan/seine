@@ -6,6 +6,7 @@ import builtins from 'rollup-plugin-node-builtins';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import flowEntry from 'rollup-plugin-flow-entry';
+import cleanup from 'rollup-plugin-cleanup';
 import { getPluginConfiguration } from '@yarnpkg/cli';
 import { Configuration, Project } from '@yarnpkg/core';
 
@@ -71,6 +72,7 @@ async function rollupConfig() {
       }),
       builtins({ crypto: false }),
       commonjs(),
+      cleanup(),
     ],
 
     external: (id) =>

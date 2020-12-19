@@ -5,7 +5,7 @@ const { Configuration, Project } = require('@yarnpkg/core');
 const pluginConfiguration = getPluginConfiguration();
 
 // eslint-disable-next-line
-async function yarn2Config({ resolve, resolveLoader, ...config }, mode) {
+async function yarn2Config({ resolve, resolveLoader, ...config }) {
   const configuration = await Configuration.find(
     __dirname,
     pluginConfiguration
@@ -21,18 +21,15 @@ async function yarn2Config({ resolve, resolveLoader, ...config }, mode) {
       ...resolve,
       extensions: ['.mjs', '.js', '.json'],
       plugins: [...((resolve && resolve.plugins) || []), PnpWebpackPlugin],
-      alias:
-        mode.configType.toLowerCase() === 'development'
-          ? project.workspaces
-              .filter(({ manifest }) => !manifest.raw.private)
-              .reduce(
-                (acc, { manifest, cwd }) => ({
-                  ...acc,
-                  [manifest.raw.name]: require.resolve(`${cwd}/src/index.js`),
-                }),
-                resolve.alias || {}
-              )
-          : resolve.alias,
+      alias: project.workspaces
+        .filter(({ manifest }) => !manifest.raw.private)
+        .reduce(
+          (acc, { manifest, cwd }) => ({
+            ...acc,
+            [manifest.raw.name]: require.resolve(`${cwd}/src/index.js`),
+          }),
+          resolve.alias || {}
+        ),
     },
     resolveLoader: {
       ...resolveLoader,
