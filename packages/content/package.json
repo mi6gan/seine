@@ -30,6 +30,8 @@
     "@devexpress/dx-react-chart": "2.7.2",
     "core-js": "^3.0.1",
     "draft-js": "^0.11.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "resize-observer-polyfill": "^1.5.1",
     "rollup": "^2.18.2",
     "styled-components": "^5.2.0"

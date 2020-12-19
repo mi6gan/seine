@@ -14,8 +14,6 @@
     "dev": "yarn workspace seine-storybook start",
     "start": "yarn workspace seine-storybook serve",
     "release": "yarn run-s release:'*'",
-    "release:library": "yarn workspaces foreach -t --include='@seine/*' exec npm publish",
-    "release:storybook": "yarn workspace seine-storybook build -o $(pwd)/docs",
     "test": "yarn run-s test:'*'",
     "test:eslint": "yarn eslint --max-warnings=0 --format unix ./packages/*/src ./storybook/*.js",
     "test:jest": "yarn workspace seine-storybook jest --silent",
@@ -23,9 +21,9 @@
   },
   "dependencies": {
     "@babel/core": "7",
-    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-env": "^7.12.7",
     "@babel/preset-flow": "^7.12.1",
-    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-react": "^7.12.7",
     "@babel/register": "^7.12.10",
     "@devexpress/dx-chart-core": "^2.7.1",
     "@devexpress/dx-react-core": "^2.7.1",
@@ -86,10 +84,19 @@
     "storybook"
   ],
   "dependenciesMeta": {
+    "@babel/register@7.12.10": {
+      "unplugged": true
+    },
     "@storybook/core": {
       "unplugged": true
     },
+    "browser-env@3.3.0": {
+      "unplugged": true
+    },
     "flow-bin": {
+      "unplugged": true
+    },
+    "regenerator-runtime@0.13.7": {
       "unplugged": true
     }
   },
