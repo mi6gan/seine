@@ -10,19 +10,11 @@ on:
 
 jobs:
   build:
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/download-artifact@v2
-        if: ${{ github.event_name == 'pull_request' }}
-        with:
-          path: storybook/cypress
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -36,52 +28,74 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 12.x
 
-      - name: Install dependencies
-        run: yarn
-
-      - name: Build sources
-        run: yarn build
-
-      - name: Run eslint tests
-        if: ${{ github.event_name == 'pull_request' }}
-        run: yarn test:eslint
-
-      - name: Run unit tests
-        if: ${{ github.event_name == 'pull_request' }}
-        run: yarn test:jest
-
-      - name: Run integration tests
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
+      - run: yarn
+      - run: yarn build
+      - run: yarn test:eslint
+      - run: yarn test:jest
+      - run: |
           yarn start-storybook --quiet --ci -p 3000 &
           yarn wait-on http://localhost:3000
           yarn cypress run
         working-directory: storybook/
 
-      - name: Upload artifacts
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v2
+      - run: yarn build-storybook --quiet --loglevel warn -o ../docs
+        working-directory: storybook/
+
+      - uses: actions/upload-artifact@v2
         with:
           name: cypress
           path: |
             storybook/cypress/snapshots
             storybook/cypress/videos
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: packages
+          path: packages/**/index.*
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: docs
+          path: docs
+
+  deploy:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: cypress
+          path: storybook/cypress
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: packages
+          path: packages
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: docs
+          path: docs
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: 'https://registry.npmjs.org'
+
       - name: Release version
-        if: ${{ github.event_name == 'push' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GIT_EMAIL}"
           yarn workspaces foreach -t version patch
-          yarn release
+          yarn workspaces foreach -t --include='@seine/*' exec npm publish
           git add docs
           git commit -am "Release $(node -p -e "require('./package.json').version")"
           git push -f origin HEAD:latest
