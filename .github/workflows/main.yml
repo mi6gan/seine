@@ -21,6 +21,9 @@ jobs:
 
       - uses: actions/download-artifact@v2
         if: ${{ github.event_name == 'pull_request' }}
+        with:
+          name: cypress
+          path: storybook/cypress
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -68,8 +71,8 @@ jobs:
         with:
           name: cypress
           path: |
-            storybook/cypress/snapshots/
-            storybook/cypress/videos/
+            storybook/cypress/snapshots
+            storybook/cypress/videos
 
       - name: Release version
         if: ${{ github.event_name == 'push' }}
