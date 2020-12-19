@@ -3,40 +3,22 @@ describe('Image snapshots of rendered content with', () => {
     cy.visitStorybook();
   });
 
-  it('text', () => {
-    cy.loadStory('Development/Content', 'Text');
-  });
+  const stories = [
+    'Text',
+    'Image',
+    'Table',
+    'Flex',
+    'NestedFlex',
+    'PieChart',
+    'BarChart',
+    'ColumnChart',
+    'LineChart',
+  ];
 
-  it('image', () => {
-    cy.loadStory('Development/Content', 'Image');
-  });
-
-  it('table', () => {
-    cy.loadStory('Development/Content', 'Table');
-  });
-
-  it('flex', () => {
-    cy.loadStory('Development/Content', 'Flex');
-  });
-
-  it('nested flex', () => {
-    cy.loadStory('Development/Content', 'NestedFlex');
-  });
-
-  it('pie chart', () => {
-    cy.loadStory('Development/Content', 'PieChart');
-  });
-
-  it('Bar chart', () => {
-    cy.loadStory('Development/Content', 'BarChart');
-  });
-
-  it('Column chart', () => {
-    cy.loadStory('Development/Content', 'ColumnChart');
-  });
-
-  it('line chart', () => {
-    cy.loadStory('Development/Content', 'LineChart');
+  stories.forEach((story) => {
+    it(story, () => {
+      cy.loadStory('Development/Content', story);
+    });
   });
 
   afterEach(() => {
