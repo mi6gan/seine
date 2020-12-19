@@ -36,6 +36,7 @@ jobs:
         run: yarn
 
       - name: Build sources
+        if: ${{ github.event_name == 'push' }}
         run: yarn build
 
       - name: Run eslint tests
