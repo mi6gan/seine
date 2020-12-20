@@ -1,30 +1,43 @@
-import { Meta, Story, ArgsTable, Title } from '@storybook/addon-docs/blocks';
 import {
-  EditorView,
+  Meta,
+  Title,
+  Subtitle,
+  Primary,
+  ArgsTable,
+  Stories,
+} from '@storybook/addon-docs/blocks';
+import {
   Editor,
+  EditorView,
   EditorDesign,
   EditorToolbar,
   EditorTree,
   EditorItemMenu,
 } from '@seine/editor';
-import { action } from '@storybook/addon-actions';
-
 import Description from './Description';
-import SubDocs from './SubDocs';
 
-<Meta title="Documentation/Reference" component={Editor} />
+<Meta
+  title="Documentation/Editor"
+  component={Editor}
+  subcomponents={{
+    EditorView,
+    EditorDesign,
+    EditorToolbar,
+    EditorTree,
+    EditorItemMenu,
+  }}
+  parameters={{
+    previewTabs: {
+      docs: {
+        hidden: false,
+      },
+    },
+  }}
+/>
 
-<Title>Editor</Title>
-
-<Description of={'.'} />
-<ArgsTable of={'.'} />
-
-<Story name="Editor">
-  <Editor onChange={action('onChange')} />
-</Story>
-
-<SubDocs of={EditorView} />
-<SubDocs of={EditorDesign} />
-<SubDocs of={EditorToolbar} />
-<SubDocs of={EditorTree} />
-<SubDocs of={EditorItemMenu} />
+<Title />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable />
+<Stories />
