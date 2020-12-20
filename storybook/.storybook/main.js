@@ -1,4 +1,7 @@
 module.exports = {
+  typescript: {
+    reactDocgen: 'react-docgen',
+  },
   stories: [`${__dirname}/../*.stories.@(js|mdx)`],
   addons: [
     require.resolve('./yarn-preset.js'),

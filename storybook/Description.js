@@ -7,7 +7,7 @@ import {
 } from '@storybook/addon-docs/blocks';
 
 // eslint-disable-next-line
-export default function Description({ of }) {
+export default function Description({ of = '.' }) {
   const { parameters } = React.useContext(DocsContext);
   const { tags } = doctrine.parse(
     (of === '.' ? parameters.component : of).__docgenInfo.description
