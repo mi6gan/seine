@@ -70,6 +70,9 @@ export default function EditorView({
   const dispatch = useBlocksDispatch();
   const blocks = useEditorSelector(allBlocksSelector);
   const device = useEditorSelector(deviceSelector);
+  const stopPropagation = useAutoCallback((event) => {
+    event.stopPropagation();
+  });
 
   useBlocksChange(onChange);
 
@@ -77,7 +80,7 @@ export default function EditorView({
     <>
       <DeleteConfirmationDialog />
       <ItemMenu />
-      <Toolbar />
+      {Toolbar && <Toolbar />}
 
       <Box
         onClick={useAutoCallback(() => {
@@ -92,14 +95,16 @@ export default function EditorView({
         minHeight={'100%'}
       >
         <Contents>
-          <Sidebar open anchor={'left'}>
-            <SidebarSection>
-              <SidebarHeading>Structure</SidebarHeading>
-              <SidebarGroup>
-                <Tree />
-              </SidebarGroup>
-            </SidebarSection>
-          </Sidebar>
+          {Tree && (
+            <Sidebar open anchor={'left'}>
+              <SidebarSection>
+                <SidebarHeading>Structure</SidebarHeading>
+                <SidebarGroup>
+                  <Tree />
+                </SidebarGroup>
+              </SidebarSection>
+            </Sidebar>
+          )}
 
           <EditorContent
             device={device}
@@ -115,15 +120,11 @@ export default function EditorView({
             {blocks}
           </EditorContent>
 
-          <Sidebar
-            open
-            anchor={'right'}
-            onClick={useAutoCallback((event) => {
-              event.stopPropagation();
-            })}
-          >
-            <Design />
-          </Sidebar>
+          {Design && (
+            <Sidebar open anchor={'right'} onClick={stopPropagation}>
+              <Design />
+            </Sidebar>
+          )}
         </Contents>
       </Box>
     </>

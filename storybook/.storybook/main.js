@@ -4,9 +4,10 @@ module.exports = {
   },
   stories: [`${__dirname}/../*.stories.@(js|mdx)`],
   addons: [
-    require.resolve('./yarn-preset.js'),
+    '@storybook/addon-docs',
+    '@storybook/addon-controls',
     '@storybook/addon-viewport',
     '@storybook/addon-actions',
-    '@storybook/addon-docs',
+    require.resolve('./yarn-preset.js'),
   ],
 };

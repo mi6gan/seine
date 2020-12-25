@@ -5,12 +5,10 @@ import './index.css';
 import 'cypress-storybook/react';
 
 export const parameters = {
+  viewMode: 'story',
   previewTabs: {
-    canvas: {
+    'storybook/docs/panel': {
       hidden: true,
     },
-  },
-  docs: {
-    inlineStories: false,
   },
 };
