@@ -31,9 +31,9 @@ type Props = EditorViewProps & {
  * @returns {React.Component}
  */
 export default function Editor({
-  children = defaultEditorChildren,
   as: View = EditorView,
   theme = defaultTheme,
+  children = defaultEditorChildren,
   ...viewProps
 }: Props) {
   return (

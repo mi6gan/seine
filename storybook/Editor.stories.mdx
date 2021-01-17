@@ -1,43 +1,98 @@
 import {
-  Meta,
   Title,
-  Subtitle,
-  Primary,
+  Meta,
+  Story,
+  Canvas,
   ArgsTable,
-  Stories,
 } from '@storybook/addon-docs/blocks';
-import {
-  Editor,
-  EditorView,
-  EditorDesign,
-  EditorToolbar,
-  EditorTree,
-  EditorItemMenu,
-} from '@seine/editor';
+import { action } from '@storybook/addon-actions';
+import { defaultTheme, Editor, EditorView } from '@seine/editor';
+import { ThemeProvider } from '@seine/styles';
 import Description from './Description';
+
+export const views = {
+  EditorView,
+  CustomEditorView: (args) => (
+    <EditorView {...args} designAs={null} treeAs={null} toolbarAs={null} />
+  ),
+};
 
 <Meta
   title="Documentation/Editor"
   component={Editor}
-  subcomponents={{
-    EditorView,
-    EditorDesign,
-    EditorToolbar,
-    EditorTree,
-    EditorItemMenu,
+  subcomponents={{ EditorView }}
+  argTypes={{
+    as: {
+      control: {
+        type: 'select',
+        options: Object.keys(views),
+      },
+    },
+    children: {
+      control: 'object',
+    },
   }}
   parameters={{
+    viewMode: 'docs',
     previewTabs: {
-      docs: {
+      canvas: {
+        hidden: true,
+      },
+      'storybook/docs/panel': {
         hidden: false,
       },
     },
   }}
 />
 
+export const Template = ({ as, children, ...args }) => (
+  <ThemeProvider>
+    <Editor {...args} onChange={action('onChange')} as={views[as]} />
+  </ThemeProvider>
+);
+
 <Title />
-<Subtitle />
 <Description />
-<Primary />
 <ArgsTable />
-<Stories />
+
+<Canvas>
+  <Story
+    name="Default layout"
+    args={{
+      children: [
+        {
+          id: 'f47a6c38-0c09-45b0-8412-2377aedaee8f',
+          type: 'page',
+          body: null,
+          format: {
+            parentType: null,
+            alignSelf: 'auto',
+            justifySelf: 'auto',
+            maxWidth: '100%',
+            minWidth: '100%',
+            maxHeight: 'none',
+            minHeight: 'auto',
+            flexGrow: 0,
+            flexBasis: 'auto',
+            gridRow: '',
+            gridColumn: '',
+            version: '0.4',
+            whiteSpace: null,
+            kind: 'grid',
+            columns: 'repeat(auto-fit,minmax(25ch,1fr))',
+            columnGap: 0,
+            rowGap: 0,
+            rows: 'auto',
+            justify: 'auto',
+            alignItems: 'auto',
+            spacing: 0,
+          },
+          parent_id: null,
+        },
+      ],
+      theme: defaultTheme,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
