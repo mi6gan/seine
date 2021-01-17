@@ -992,3 +992,7 @@ a:focus {
   vertical-align: top;
   max-width: 100%;
 }
+
+.sbdocs-content.sbdocs-content {
+  max-width: none;
+}

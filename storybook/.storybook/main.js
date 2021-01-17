@@ -2,7 +2,9 @@ module.exports = {
   typescript: {
     reactDocgen: 'react-docgen',
   },
-  stories: [`${__dirname}/../*.stories.@(js|mdx)`],
+  stories: [
+    `${__dirname}/../**/*.stories.@(js|mdx)`,
+  ],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-controls',

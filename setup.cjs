@@ -6,9 +6,13 @@ module.exports = {
         if (/^test(:.+)?/.test(env['npm_lifecycle_event'])) {
           env.NODE_ENV = 'test';
         } else if (!env.NODE_ENV) {
-          env.NODE_ENV = 'production';
+          env.NODE_ENV = 'development';
         }
-        if (env.NODE_ENV === 'development') {
+        if (
+          process.cwd() === project.cwd &&
+          env.NODE_ENV === 'development' &&
+          !env['npm_lifecycle_event']
+        ) {
           env.NODE_OPTIONS = [
             ...(env.NODE_OPTIONS ? [env.NODE_OPTIONS] : []),
             `--require browser-env/register`,

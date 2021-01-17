@@ -3,26 +3,33 @@ import * as React from 'react';
 import { actions } from '@storybook/addon-actions';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
-import { Tooltip, Typography } from '@seine/styles/mui-core.macro';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Tooltip,
+  Button,
+  Typography,
+} from '@seine/styles/mui-core.macro';
 import type {
   EditorActionButtonProps,
   EditorTreeItemProps,
 } from '@seine/editor';
 import {
   defaultBlockRenderMap,
-  ItemDesign,
-  LayoutDesign,
+  Editor,
   EditorActionButton,
+  EditorDesign,
+  EditorItemMenu,
   EditorToolbar,
   EditorTree,
   EditorTreeItem,
-  EditorDesign,
-  Editor,
+  ItemDesign,
+  LayoutDesign,
+  MenuButton,
   SidebarInput,
   SidebarSelect,
   ToolbarToggleButtonGroup,
-  EditorItemMenu,
-  MenuButton,
 } from '@seine/editor';
 import { blockTypes } from '@seine/core';
 
@@ -31,8 +38,13 @@ const TutorialContext = React.createContext({
   next: () => void 0,
 });
 
+type TutorialProviderProps = {
+  children: React.Node,
+  scenario: Array<{ modal: string } | { tooltip: string, anchor: 'string' }>,
+};
+
 // eslint-disable-next-line
-function TutorialProvider({ children, scenario }) {
+function TutorialProvider({ children, scenario }: TutorialProviderProps) {
   const [index, setIndex] = React.useState(0);
 
   return (
@@ -72,6 +84,26 @@ const TutorialTooltip = React.forwardRef(function TutorialTooltip(
       }
     },
   }));
+
+  if (anchor.startsWith('#')) {
+    return (
+      <Dialog open={open}>
+        <DialogContent>{manual.tooltip}</DialogContent>
+        <DialogActions>
+          <Button
+            color={'primary'}
+            size={'small'}
+            onClick={() => {
+              manual.next();
+            }}
+          >
+            Next
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+
   return (
     <Tooltip
       {...tooltipProps}
@@ -279,7 +311,7 @@ const blockRenderMap = {
 };
 
 // eslint-disable-next-line
-export default function TutorialStory({ scenario, blocks }) {
+export default function Tutorial({ scenario, blocks }) {
   return (
     <TutorialProvider scenario={scenario}>
       <Editor
@@ -306,6 +338,7 @@ export default function TutorialStory({ scenario, blocks }) {
       >
         {blocks}
       </Editor>
+      <TutorialTooltip anchor={'#introduction'} />
     </TutorialProvider>
   );
 }
