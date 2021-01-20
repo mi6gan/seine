@@ -8,9 +8,7 @@ import { blockTypes, createBlock, createBlocksFromTree } from '@seine/core';
 import { toRawContent } from '@seine/content';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  title: 'Tutorial/Size And Position',
-};
+export default {};
 
 // eslint-disable-next-line
 export const ItemRelativeWidth = () => {

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Box } from '@material-ui/core';
 
-import * as data from './data';
+import * as data from '../data';
 
 import { blockTypes, layoutTypes, chartTypes } from '@seine/core';
 import { Content } from '@seine/content';
@@ -10,7 +10,6 @@ import { ThemeProvider } from '@seine/styles';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  title: 'Development/Content',
   decorators: [
     (Story) => (
       <ThemeProvider>

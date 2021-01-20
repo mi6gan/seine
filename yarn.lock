@@ -7560,6 +7560,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-storybook-csf-title@github:mi6gan/babel-plugin-storybook-csf-title":
+  version: 2.0.0
+  resolution: "babel-plugin-storybook-csf-title@https://github.com/mi6gan/babel-plugin-storybook-csf-title.git#commit=4d133e925c13614663da5fe71cc774f32463a522"
+  peerDependencies:
+    "@babel/core": ^7.0.0
+  checksum: ad75d5e417201273ca4ef52a9ac881e32d2494ef307dbbdd84c333ee34f2d3ce288d300a5b19a81190b25dba924397cdc2a1239048d3e24b88d441e77452a483
+  languageName: node
+  linkType: hard
+
 "babel-plugin-styled-components@npm:>= 1":
   version: 1.11.1
   resolution: "babel-plugin-styled-components@npm:1.11.1"
@@ -20761,6 +20770,7 @@ resolve@^1.18.1:
     babel-plugin-inline-import-data-uri: ^1.0.1
     babel-plugin-macros: ^2.6.1
     babel-plugin-named-asset-import: ^0.3.2
+    babel-plugin-storybook-csf-title: "github:mi6gan/babel-plugin-storybook-csf-title"
     babel-plugin-transform-assets: ^1.0.2
     babel-preset-react-app: ^9.0.1
     core-js: ^3.0.1
@@ -20831,6 +20841,7 @@ resolve@^1.18.1:
     babel-plugin-inline-import-data-uri: ^1.0.1
     babel-plugin-macros: ^2.6.1
     babel-plugin-named-asset-import: ^0.3.2
+    babel-plugin-storybook-csf-title: "github:mi6gan/babel-plugin-storybook-csf-title"
     babel-plugin-transform-assets: ^1.0.2
     babel-preset-react-app: ^9.0.1
     core-js: ^3.0.1

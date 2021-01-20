@@ -4,11 +4,14 @@ import { actions } from '@storybook/addon-actions';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
 import {
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
+  Step,
+  StepLabel,
+  Stepper,
   Tooltip,
-  Button,
   Typography,
 } from '@seine/styles/mui-core.macro';
 import type {
@@ -51,6 +54,9 @@ function TutorialProvider({ children, scenario }: TutorialProviderProps) {
     <TutorialContext.Provider
       value={useAutoMemo({
         ...scenario[index],
+        steps: [...new Set(scenario.map(({ step }) => step))],
+        setStep: (step) =>
+          setIndex(scenario.findIndex((item) => item.step === step)),
         find: (fn) => scenario.find(fn),
         back: () => setIndex(index - 1),
         next: () => {
@@ -311,9 +317,46 @@ const blockRenderMap = {
 };
 
 // eslint-disable-next-line
-export default function Tutorial({ scenario, blocks }) {
+function Navigation() {
+  const manual = React.useContext(TutorialContext);
+  const changeStep = useAutoCallback((event) => {
+    manual.setStep(event.currentTarget.dataset.step);
+  });
+
+  const stepIndex = useAutoMemo(
+    manual.steps.findIndex((step) => step === manual.step)
+  );
+
+  return (
+    <Stepper>
+      {manual.steps.map((step, index) => (
+        <Step
+          key={index}
+          active={stepIndex === index}
+          completed={stepIndex > index}
+          onClick={changeStep}
+          data-step={step}
+        >
+          <StepLabel>{step}</StepLabel>
+        </Step>
+      ))}
+    </Stepper>
+  );
+}
+
+type Props = {
+  scenario: Array<{
+    step: string,
+    anchor: string,
+    tooltip: string,
+  }>,
+};
+
+// eslint-disable-next-line
+export default function Tutorial({ scenario, blocks }: Props) {
   return (
     <TutorialProvider scenario={scenario}>
+      <Navigation />
       <Editor
         {...actions('onChange')}
         blockRenderMap={blockRenderMap}

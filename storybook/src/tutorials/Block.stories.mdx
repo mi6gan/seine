@@ -1,0 +1,55 @@
+import { Canvas, Story, Title } from '@storybook/addon-docs/blocks';
+import { blockTypes, CREATE_BLOCK, createBlock } from '@seine/core';
+import Tutorial from './Tutorial';
+import Meta from './TutorialMeta';
+
+<Meta />
+
+<Title />
+
+<Canvas>
+  <Story name="Adding new blocks">
+    {({ rootBlock = createBlock(blockTypes.PAGE) }) => (
+      <Tutorial
+        scenario={[
+          {
+            step: 'Introduction',
+            anchor: '#introduction',
+            tooltip: 'Some introduction information content',
+          },
+          {
+            step: 'Add text block',
+            anchor: `tree-item#${rootBlock.id}`,
+            tooltip: 'Select your empty document in tree view.',
+          },
+          {
+            step: 'Add text block',
+            anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.RICH_TEXT}&kind=null)`,
+            tooltip: 'Add new text by clicking corresponding toolbar button',
+          },
+          {
+            step: 'Add text block',
+            anchor: `block#${blockTypes.RICH_TEXT}`,
+            tooltip: 'Click on newly added block to edit its text',
+          },
+          {
+            step: 'Add table block',
+            anchor: `tree-item#${rootBlock.id}`,
+            tooltip: 'Select your empty document in tree view.',
+          },
+          {
+            step: 'Add table block',
+            anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.TABLE}&kind=null)`,
+            tooltip: 'Add new table by clicking corresponding toolbar button',
+          },
+          {
+            step: 'Add table block',
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Click on newly added block to edit the table',
+          },
+        ]}
+        blocks={[rootBlock]}
+      />
+    )}
+  </Story>
+</Canvas>
