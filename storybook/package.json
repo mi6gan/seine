@@ -40,7 +40,6 @@
     "babel-plugin-inline-import-data-uri": "^1.0.1",
     "babel-plugin-macros": "^2.6.1",
     "babel-plugin-named-asset-import": "^0.3.2",
-    "babel-plugin-storybook-csf-title": "github:mi6gan/babel-plugin-storybook-csf-title",
     "babel-plugin-transform-assets": "^1.0.2",
     "babel-preset-react-app": "^9.0.1",
     "core-js": "^3.0.1",

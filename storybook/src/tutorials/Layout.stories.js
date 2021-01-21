@@ -14,7 +14,9 @@ import {
 import { toRawContent } from '@seine/content';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {};
+export default {
+  title: 'Tutorials/Layout',
+};
 
 const rootBlock = createBlock(blockTypes.PAGE);
 

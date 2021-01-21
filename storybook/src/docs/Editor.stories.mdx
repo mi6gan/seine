@@ -1,16 +1,11 @@
-import {
-  Title,
-  Meta,
-  Story,
-  Canvas,
-  ArgsTable,
-} from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import { defaultTheme, Editor } from '@seine/editor';
 import { ThemeProvider } from '@seine/styles';
 import Description from '../Description';
 
 <Meta
+  title={'Docs/Editor/API'}
   component={Editor}
   parameters={{
     viewMode: 'docs',
@@ -25,7 +20,6 @@ import Description from '../Description';
   }}
 />
 
-<Title />
 <Description />
 <ArgsTable />
 

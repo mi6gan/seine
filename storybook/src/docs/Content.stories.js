@@ -10,6 +10,7 @@ import { ThemeProvider } from '@seine/styles';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  title: 'Docs/Content',
   decorators: [
     (Story) => (
       <ThemeProvider>
