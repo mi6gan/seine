@@ -95,6 +95,12 @@ export type UpgradeBlockVersionAction = {
   id?: BlockId,
 };
 
+export const RESET_BLOCKS = '@seine/core/resetBlocks';
+export type ResetBlocksAction = {
+  type: typeof RESET_BLOCKS,
+  blocks: Block[],
+};
+
 //
 // Memoize editor's inner state.
 //
@@ -120,7 +126,8 @@ export type BlocksAction =
   | SetBlockParentAction
   | SetDeviceAction
   | MoveBlockAction
-  | UpgradeBlockVersionAction;
+  | UpgradeBlockVersionAction
+  | ResetBlocksAction;
 
 /**
  * @description Reduce Content editor actions
@@ -356,6 +363,13 @@ export function reduceBlocks(
             !isBlockContainer(block) ||
             blocks.slice(index).some((child) => child.parent_id === block.id)
         ),
+      };
+    }
+
+    case RESET_BLOCKS: {
+      return {
+        ...state,
+        blocks: action.blocks,
       };
     }
 

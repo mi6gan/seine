@@ -1,44 +1,67 @@
 // @flow
 import * as React from 'react';
 import { actions } from '@storybook/addon-actions';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 
-import { Tooltip, Typography } from '@seine/styles/mui-core.macro';
+import useEditorDispatch from '../../../packages/editor/src/blocks/useEditorDispatch';
+
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Step,
+  StepLabel,
+  Stepper,
+  Tooltip,
+  Typography,
+} from '@seine/styles/mui-core.macro';
 import type {
   EditorActionButtonProps,
   EditorTreeItemProps,
 } from '@seine/editor';
 import {
+  allBlocksSelector,
   defaultBlockRenderMap,
-  ItemDesign,
-  LayoutDesign,
+  Editor,
   EditorActionButton,
+  EditorDesign,
+  EditorItemMenu,
   EditorToolbar,
   EditorTree,
   EditorTreeItem,
-  EditorDesign,
-  Editor,
+  ItemDesign,
+  LayoutDesign,
+  MenuButton,
   SidebarInput,
   SidebarSelect,
   ToolbarToggleButtonGroup,
-  EditorItemMenu,
-  MenuButton,
+  useEditorSelector,
 } from '@seine/editor';
-import { blockTypes } from '@seine/core';
+import { blockTypes, RESET_BLOCKS } from '@seine/core';
+import { defaultBlockRenderMap as disabledBlockRenderMap } from '@seine/content';
 
 const TutorialContext = React.createContext({
   back: () => void 0,
   next: () => void 0,
 });
 
+type TutorialProviderProps = {
+  children: React.Node,
+  scenario: Array<{ modal: string } | { tooltip: string, anchor: 'string' }>,
+};
+
 // eslint-disable-next-line
-function TutorialProvider({ children, scenario }) {
+function TutorialProvider({ children, scenario }: TutorialProviderProps) {
   const [index, setIndex] = React.useState(0);
 
   return (
     <TutorialContext.Provider
       value={useAutoMemo({
         ...scenario[index],
+        steps: [...new Set(scenario.map(({ step }) => step))],
+        setStep: (step) =>
+          setIndex(scenario.findIndex((item) => item.step === step)),
         find: (fn) => scenario.find(fn),
         back: () => setIndex(index - 1),
         next: () => {
@@ -72,6 +95,26 @@ const TutorialTooltip = React.forwardRef(function TutorialTooltip(
       }
     },
   }));
+
+  if (anchor.startsWith('#')) {
+    return (
+      <Dialog open={open}>
+        <DialogContent>{manual.tooltip}</DialogContent>
+        <DialogActions>
+          <Button
+            color={'primary'}
+            size={'small'}
+            onClick={() => {
+              manual.next();
+            }}
+          >
+            Next
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+
   return (
     <Tooltip
       {...tooltipProps}
@@ -93,17 +136,16 @@ function TutorialActionButton(props: EditorActionButtonProps) {
     type,
     block: { type: blockType = null, format: { kind = null } = {} } = {},
   } = props;
-  const manualRef = React.useRef(null);
+  const anchor = `action-button#${type}(type=${blockType}&kind=${kind})`;
+  const manual = React.useContext(TutorialContext);
   return (
-    <TutorialTooltip
-      ref={manualRef}
-      anchor={`action-button#${type}(type=${blockType}&kind=${kind})`}
-    >
+    <TutorialTooltip anchor={anchor}>
       <EditorActionButton
         {...props}
+        disabled={manual.anchor !== anchor}
         blockId={blockType}
         onClick={useAutoCallback(() => {
-          manualRef.current.next();
+          manual.next();
         })}
       />
     </TutorialTooltip>
@@ -112,14 +154,16 @@ function TutorialActionButton(props: EditorActionButtonProps) {
 
 // eslint-disable-next-line
 function TutorialTreeItem({ id, ...props }: EditorTreeItemProps) {
-  const manualRef = React.useRef(null);
+  const manual = React.useContext(TutorialContext);
+  const anchor = `tree-item#${id}`;
   return (
-    <TutorialTooltip ref={manualRef} anchor={`tree-item#${id}`}>
+    <TutorialTooltip anchor={anchor}>
       <EditorTreeItem
         {...props}
+        disabled={manual.anchor !== anchor}
         id={id}
         onClick={useAutoCallback(() => {
-          manualRef.current.next();
+          manual.next();
         })}
       />
     </TutorialTooltip>
@@ -127,15 +171,19 @@ function TutorialTreeItem({ id, ...props }: EditorTreeItemProps) {
 }
 
 // eslint-disable-next-line
-function TutorialBlock({ type, kind, anchor, ...props }) {
-  const Block = defaultBlockRenderMap[type];
-  const manualRef = React.useRef(null);
+function TutorialBlock({ type, kind, ...props }) {
+  const manual = React.useContext(TutorialContext);
+  const anchor = `block#${props.id}`;
+  const Block =
+    anchor === manual.anchor
+      ? defaultBlockRenderMap[type]
+      : disabledBlockRenderMap[type];
   const next = useAutoCallback(() => {
-    manualRef.current.next();
+    manual.next();
   });
 
   return (
-    <TutorialTooltip ref={manualRef} anchor={`block#${props.id}`}>
+    <TutorialTooltip anchor={anchor}>
       <Block
         type={type}
         kind={kind}
@@ -149,18 +197,17 @@ function TutorialBlock({ type, kind, anchor, ...props }) {
 
 // eslint-disable-next-line
 const TutorialItemDesignInput = ({ name, onChange, ...props }) => {
-  const manualRef = React.useRef(null);
+  const manual = React.useContext(TutorialContext);
+  const anchor = `design#input(name=${name})`;
   return (
-    <TutorialTooltip ref={manualRef} anchor={`design#input(name=${name})`}>
+    <TutorialTooltip anchor={anchor}>
       <SidebarInput
         {...props}
+        disabled={anchor !== manual.anchor}
         name={name}
         onChange={useAutoCallback((event) => {
-          if (
-            'value' in manualRef.current &&
-            manualRef.current.value === event.currentTarget.value
-          ) {
-            manualRef.current.next();
+          if ('value' in manual && manual.value === event.currentTarget.value) {
+            manual.next();
           }
           onChange(event);
         })}
@@ -171,18 +218,17 @@ const TutorialItemDesignInput = ({ name, onChange, ...props }) => {
 
 // eslint-disable-next-line
 const TutorialItemDesignSelect = ({ name, onChange, ...props }) => {
-  const manualRef = React.useRef(null);
+  const manual = React.useContext(TutorialContext);
+  const anchor = `design#select(name=${name})`;
   return (
-    <TutorialTooltip ref={manualRef} anchor={`design#select(name=${name})`}>
+    <TutorialTooltip anchor={anchor}>
       <SidebarSelect
         {...props}
+        disabled={anchor !== manual.anchor}
         name={name}
         onChange={useAutoCallback((event) => {
-          if (
-            'value' in manualRef.current &&
-            manualRef.current.value === event.target.value
-          ) {
-            manualRef.current.next();
+          if ('value' in manual && manual.value === event.target.value) {
+            manual.next();
           }
           onChange && onChange(event);
         })}
@@ -203,18 +249,17 @@ const TutorialItemDesign = (props) => {
 };
 
 const TutorialLayoutToggleButton = ({ name, onChange, ...props }) => {
-  const manualRef = React.useRef(null);
+  const manual = React.useContext(TutorialContext);
+  const anchor = `design#toggle(name=${name})`;
   return (
-    <TutorialTooltip ref={manualRef} anchor={`layout#toggle(name=${name})`}>
+    <TutorialTooltip anchor={anchor}>
       <ToolbarToggleButtonGroup
         {...props}
+        disabled={anchor !== manual.anchor}
         name={name}
         onChange={useAutoCallback((event, value) => {
-          if (
-            'value' in manualRef.current &&
-            manualRef.current.value === value
-          ) {
-            manualRef.current.next();
+          if ('value' in manual && manual === value) {
+            manual.next();
           }
           if (onChange) {
             onChange(event, value);
@@ -231,31 +276,34 @@ const TutorialLayoutDesign = (props) => {
     <LayoutDesign
       {...props}
       toggleAs={TutorialLayoutToggleButton}
+      inputAs={TutorialItemDesignInput}
       selectAs={TutorialItemDesignSelect}
     />
   );
 };
 
 // eslint-disable-next-line
-const TutorialItemMenuButton = ({ onClick, ...props }) => {
-  const manualRef = React.useRef(null);
-  return (
-    <TutorialTooltip
-      ref={manualRef}
-      anchor={`item-menu#${
-        typeof props.children === 'string' ? props.children : 'null'
-      }`}
-    >
-      <MenuButton
-        {...props}
-        onClick={useAutoCallback((event) => {
-          manualRef.current.next();
-          onClick && onClick(event);
-        })}
-      />
-    </TutorialTooltip>
-  );
-};
+const TutorialItemMenuButton = React.forwardRef(
+  ({ onClick, ...props }, ref) => {
+    const manual = React.useContext(TutorialContext);
+    return (
+      <TutorialTooltip
+        anchor={`item-menu#${
+          typeof props.children === 'string' ? props.children : 'null'
+        }`}
+      >
+        <MenuButton
+          {...props}
+          ref={ref}
+          onClick={useAutoCallback((event) => {
+            manual.next();
+            onClick && onClick(event);
+          })}
+        />
+      </TutorialTooltip>
+    );
+  }
+);
 
 // eslint-disable-next-line
 const TutorialItemMenu = (props) => {
@@ -279,7 +327,65 @@ const blockRenderMap = {
 };
 
 // eslint-disable-next-line
-export default function TutorialStory({ scenario, blocks }) {
+function Navigation() {
+  const stepBlocksRef = React.useRef({});
+  const { current: stepBlocks } = stepBlocksRef;
+  const dispatch = useEditorDispatch();
+
+  const manual = React.useContext(TutorialContext);
+  const step = manual.step;
+
+  const changeStep = useAutoCallback((event) => {
+    const { step: nextStep } = event.currentTarget.dataset;
+    manual.setStep(nextStep);
+    const blocks = stepBlocks[nextStep];
+    if (blocks) {
+      dispatch({
+        type: RESET_BLOCKS,
+        blocks,
+      });
+    }
+  });
+
+  const stepIndex = useAutoMemo(
+    manual.steps.findIndex((step) => step === manual.step)
+  );
+
+  const blocks = useEditorSelector(allBlocksSelector);
+
+  useAutoEffect(() => {
+    if (!(step in stepBlocks)) {
+      stepBlocks[step] = blocks.map((block) => ({ ...block }));
+    }
+  });
+
+  return (
+    <Stepper>
+      {manual.steps.map((step, index) => (
+        <Step
+          key={index}
+          active={stepIndex === index}
+          completed={stepIndex > index}
+          onClick={changeStep}
+          data-step={step}
+        >
+          <StepLabel>{step}</StepLabel>
+        </Step>
+      ))}
+    </Stepper>
+  );
+}
+
+type Props = {
+  scenario: Array<{
+    step: string,
+    anchor: string,
+    tooltip: string,
+  }>,
+};
+
+// eslint-disable-next-line
+export default function Tutorial({ scenario, blocks }: Props) {
   return (
     <TutorialProvider scenario={scenario}>
       <Editor
@@ -303,9 +409,11 @@ export default function TutorialStory({ scenario, blocks }) {
           />
         ))}
         itemMenuAs={TutorialItemMenu}
+        header={<Navigation />}
       >
         {blocks}
       </Editor>
+      <TutorialTooltip anchor={'#introduction'} />
     </TutorialProvider>
   );
 }

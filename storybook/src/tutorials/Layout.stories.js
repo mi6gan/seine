@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 
-import TutorialStory from './TutorialStory';
+import Tutorial from './Tutorial';
 
 import {
   blockTypes,
@@ -14,9 +14,7 @@ import {
 import { toRawContent } from '@seine/content';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  title: 'Tutorial/Layout',
-};
+export default {};
 
 const rootBlock = createBlock(blockTypes.PAGE);
 
@@ -39,7 +37,7 @@ export const FlexLayout = () => {
     ])
   );
   return (
-    <TutorialStory
+    <Tutorial
       scenario={useAutoMemo([
         {
           anchor: `tree-item#${blocks[2].id}`,
@@ -83,7 +81,7 @@ FlexLayout.parameters = {
 // eslint-disable-next-line
 export const GridLayout = () => {
   return (
-    <TutorialStory
+    <Tutorial
       scenario={useAutoMemo([
         {
           anchor: `tree-item#${rootBlock.id}`,

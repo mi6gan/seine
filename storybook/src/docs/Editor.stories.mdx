@@ -6,32 +6,12 @@ import {
   ArgsTable,
 } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
-import { defaultTheme, Editor, EditorView } from '@seine/editor';
+import { defaultTheme, Editor } from '@seine/editor';
 import { ThemeProvider } from '@seine/styles';
-import Description from './Description';
-
-export const views = {
-  EditorView,
-  CustomEditorView: (args) => (
-    <EditorView {...args} designAs={null} treeAs={null} toolbarAs={null} />
-  ),
-};
+import Description from '../Description';
 
 <Meta
-  title="Documentation/Editor"
   component={Editor}
-  subcomponents={{ EditorView }}
-  argTypes={{
-    as: {
-      control: {
-        type: 'select',
-        options: Object.keys(views),
-      },
-    },
-    children: {
-      control: 'object',
-    },
-  }}
   parameters={{
     viewMode: 'docs',
     previewTabs: {
@@ -44,12 +24,6 @@ export const views = {
     },
   }}
 />
-
-export const Template = ({ as, children, ...args }) => (
-  <ThemeProvider>
-    <Editor {...args} onChange={action('onChange')} as={views[as]} />
-  </ThemeProvider>
-);
 
 <Title />
 <Description />
@@ -93,6 +67,10 @@ export const Template = ({ as, children, ...args }) => (
       theme: defaultTheme,
     }}
   >
-    {Template.bind({})}
+    {() => (
+      <ThemeProvider>
+        <Editor onChange={action('onChange')} />
+      </ThemeProvider>
+    )}
   </Story>
 </Canvas>

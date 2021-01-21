@@ -74,7 +74,11 @@ const RichTextEditor = React.forwardRef(function RichTextEditor(
         document.activeElement &&
         (document.activeElement instanceof HTMLInputElement ||
           document.activeElement instanceof HTMLSelectElement ||
-          document.activeElement.getAttribute('role') === 'option' ||
+          ['presentation', 'option'].some((value) =>
+            (document.activeElement.getAttribute('role') || '')
+              .split(' ')
+              .includes(value)
+          ) ||
           [...document.activeElement.classList].some(
             (className) => className === 'MuiMenu-paper'
           ))

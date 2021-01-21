@@ -2,15 +2,13 @@
 import * as React from 'react';
 import { useAutoMemo } from 'hooks.macro';
 
-import TutorialStory from './TutorialStory';
+import Tutorial from './Tutorial';
 
 import { blockTypes, createBlock, createBlocksFromTree } from '@seine/core';
 import { toRawContent } from '@seine/content';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  title: 'Tutorial/Size And Position',
-};
+export default {};
 
 // eslint-disable-next-line
 export const ItemRelativeWidth = () => {
@@ -32,7 +30,7 @@ export const ItemRelativeWidth = () => {
     blocks.filter((block) => block['parent_id'] === rootBlock.id)
   );
   return (
-    <TutorialStory
+    <Tutorial
       scenario={useAutoMemo([
         {
           anchor: `tree-item#${leftBlock.id}`,
@@ -82,7 +80,7 @@ export const ItemAbsoluteHeight = () => {
     blocks.filter((block) => block['parent_id'] === rootBlock.id)
   );
   return (
-    <TutorialStory
+    <Tutorial
       scenario={useAutoMemo([
         {
           anchor: `tree-item#${leftBlock.id}`,
@@ -133,7 +131,7 @@ export const LayoutAlignment = () => {
   );
 
   return (
-    <TutorialStory
+    <Tutorial
       scenario={useAutoMemo([
         {
           anchor: `tree-item#${rootBlock.id}`,

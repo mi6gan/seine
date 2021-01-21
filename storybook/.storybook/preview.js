@@ -11,4 +11,7 @@ export const parameters = {
       hidden: true,
     },
   },
+  docs: {
+    inlineStories: false,
+  },
 };
