@@ -1,7 +1,8 @@
 import { Canvas, Story, Title } from '@storybook/addon-docs/blocks';
-import { blockTypes, CREATE_BLOCK, createBlock } from '@seine/core';
+import { blockTypes, chartTypes, CREATE_BLOCK } from '@seine/core';
 import Tutorial from './Tutorial';
 import Meta from './TutorialMeta';
+import { rootBlock } from '../data';
 
 <Meta />
 
@@ -9,7 +10,7 @@ import Meta from './TutorialMeta';
 
 <Canvas>
   <Story name="Adding new blocks">
-    {({ rootBlock = createBlock(blockTypes.PAGE) }) => (
+    {() => (
       <Tutorial
         scenario={[
           {
@@ -20,32 +21,49 @@ import Meta from './TutorialMeta';
           {
             step: 'Add text block',
             anchor: `tree-item#${rootBlock.id}`,
-            tooltip: 'Select your empty document in tree view.',
+            tooltip: 'Select your empty document root in tree view',
           },
           {
             step: 'Add text block',
             anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.RICH_TEXT}&kind=null)`,
-            tooltip: 'Add new text by clicking corresponding toolbar button',
+            tooltip: 'Click on text toolbar button',
           },
           {
             step: 'Add text block',
             anchor: `block#${blockTypes.RICH_TEXT}`,
-            tooltip: 'Click on newly added block to edit its text',
+            tooltip: 'This is a new block of text. Its content is editable',
           },
           {
             step: 'Add table block',
             anchor: `tree-item#${rootBlock.id}`,
-            tooltip: 'Select your empty document in tree view.',
+            tooltip: 'Select your document root in tree view',
           },
           {
             step: 'Add table block',
             anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.TABLE}&kind=null)`,
-            tooltip: 'Add new table by clicking corresponding toolbar button',
+            tooltip:
+              'This is a new table with editable structure and cells content',
           },
           {
             step: 'Add table block',
             anchor: `block#${blockTypes.TABLE}`,
             tooltip: 'Click on newly added block to edit the table',
+          },
+          {
+            step: 'Add bar chart',
+            anchor: `tree-item#${rootBlock.id}`,
+            tooltip: 'Select your document root in tree view',
+          },
+          {
+            step: 'Add bar chart',
+            anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.CHART}&kind=${chartTypes.BAR})`,
+            tooltip: 'Click to add bar chart',
+          },
+          {
+            step: 'Add bar chart',
+            anchor: `block#${blockTypes.CHART}`,
+            tooltip:
+              'This is a new bar chart. To add chart of other types use corresponding toolbar buttons',
           },
         ]}
         blocks={[rootBlock]}

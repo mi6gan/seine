@@ -64,6 +64,7 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
   const itemMenu = React.useContext(ItemMenuContext);
   const openItemMenu = useAutoCallback((event) => {
     event.preventDefault();
+    event.stopPropagation();
     itemMenu.open(event.currentTarget);
   });
   const isLayout = block && isBlockContainer(block);

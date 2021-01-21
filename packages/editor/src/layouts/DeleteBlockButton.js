@@ -10,18 +10,17 @@ import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 import { DELETE_SELECTED_BLOCKS } from '@seine/core';
 
 // eslint-disable-next-line
-export default function DeleteBlockButton({
-  as: Button = MuiButton,
-  onClick = null,
-  children,
-  ...buttonProps
-}) {
+const DeleteBlockButton = React.forwardRef(function DeleteBlockButton(
+  { as: Button = MuiButton, onClick = null, children, ...buttonProps },
+  ref
+) {
   const clipboard = React.useContext(ClipboardContext);
   const { items } = useSelectedLayoutItems();
 
   return (
     <Button
       {...buttonProps}
+      ref={ref}
       onClick={useAutoCallback((event) => {
         clipboard.push({ type: DELETE_SELECTED_BLOCKS });
         if (onClick) {
@@ -33,4 +32,6 @@ export default function DeleteBlockButton({
       {children}
     </Button>
   );
-}
+});
+
+export default DeleteBlockButton;

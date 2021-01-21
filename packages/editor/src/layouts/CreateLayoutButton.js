@@ -17,12 +17,10 @@ import {
 } from '@seine/core';
 
 // eslint-disable-next-line
-export default function CreateLayoutButton({
-  as: Button = MuiButton,
-  children,
-  onClick = null,
-  ...buttonProps
-}) {
+const CreateLayoutButton = React.forwardRef(function CreateLayoutButton(
+  { as: Button = MuiButton, children, onClick = null, ...buttonProps },
+  ref
+) {
   const dispatch = useBlocksDispatch();
   const { items } = useSelectedLayoutItems();
   const parentIds = [
@@ -33,6 +31,7 @@ export default function CreateLayoutButton({
   return (
     <Button
       {...buttonProps}
+      ref={ref}
       onClick={useAutoCallback((event) => {
         const block = createBlock(
           blockTypes.LAYOUT,
@@ -63,4 +62,6 @@ export default function CreateLayoutButton({
       {children}
     </Button>
   );
-}
+});
+
+export default CreateLayoutButton;

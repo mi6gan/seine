@@ -153,18 +153,21 @@ function TableCellText({
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Table({
-  id,
-  title,
-  header,
-  rows,
-  textAlignment,
-  onChange,
-  readOnly = true,
-  ...itemProps
-}: Props) {
+const Table = React.forwardRef(function Table(
+  {
+    id,
+    title,
+    header,
+    rows,
+    textAlignment,
+    onChange,
+    readOnly = true,
+    ...itemProps
+  }: Props,
+  ref
+) {
   return (
-    <Item {...itemProps}>
+    <Item {...itemProps} ref={ref}>
       <StyledTable>
         <thead>
           <tr>
@@ -205,4 +208,6 @@ export default function Table({
       </StyledTable>
     </Item>
   );
-}
+});
+
+export default Table;

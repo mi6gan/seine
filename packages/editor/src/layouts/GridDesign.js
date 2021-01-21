@@ -27,11 +27,20 @@ import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 const MAX_GAP = 19;
 
+type Props = {
+  inputAs?: React.ComponentType,
+  toggleAs?: React.ComponentType,
+};
+
 /**
  * @description Grid design.
+ * @param {Props} props
  * @returns {React.Node}
  */
-export default function GridDesign() {
+export default function GridDesign({
+  inputAs: Input = SidebarInput,
+  toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
+}: Props) {
   const dispatch = useBlocksDispatch();
   const {
     layout: {
@@ -48,7 +57,7 @@ export default function GridDesign() {
         <Box display={'flex'} width={1}>
           <Box width={1 / 2}>
             <SidebarLabel mr={1}>x:</SidebarLabel>
-            <SidebarInput
+            <Input
               value={columnGap}
               onChange={useAutoCallback(({ currentTarget }) => {
                 dispatch({
@@ -66,7 +75,7 @@ export default function GridDesign() {
 
           <Box width={1 / 2}>
             <SidebarLabel mr={1}>y:</SidebarLabel>
-            <SidebarInput
+            <Input
               value={rowGap}
               onChange={useAutoCallback(({ currentTarget }) => {
                 dispatch({
@@ -84,7 +93,7 @@ export default function GridDesign() {
 
       <SidebarGroup>
         <SidebarLabel>Justify</SidebarLabel>
-        <ToolbarToggleButtonGroup
+        <ToggleButtonGroup
           value={justify}
           onChange={useAutoCallback((event, justify) =>
             dispatch({
@@ -109,12 +118,12 @@ export default function GridDesign() {
           <ToolbarToggleButton value={'space-between'}>
             <FormatAlignJustify />
           </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+        </ToggleButtonGroup>
       </SidebarGroup>
 
       <SidebarGroup>
         <SidebarLabel>Align</SidebarLabel>
-        <ToolbarToggleButtonGroup
+        <ToggleButtonGroup
           value={alignItems}
           onChange={useAutoCallback((event, alignItems) =>
             dispatch({
@@ -135,7 +144,7 @@ export default function GridDesign() {
           <ToolbarToggleButton value={'end'}>
             <VerticalAlignBottom />
           </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+        </ToggleButtonGroup>
       </SidebarGroup>
     </>
   );

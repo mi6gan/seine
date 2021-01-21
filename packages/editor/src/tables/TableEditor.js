@@ -16,15 +16,21 @@ type Props = TableProps & BlockEditor;
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function TableEditor({ id, ...tableProps }: Props) {
+const TableEditor = React.forwardRef(function TableEditor(
+  { id, ...tableProps }: Props,
+  ref
+) {
   const { item } = useSelectedLayoutItems();
   return (
     <Frame
       {...tableProps}
+      ref={ref}
       id={id}
       as={Table}
       onChange={useBlocksDispatch()}
       readOnly={!(item && item.id === id)}
     />
   );
-}
+});
+
+export default TableEditor;

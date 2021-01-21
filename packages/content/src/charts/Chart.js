@@ -19,12 +19,10 @@ type Props = $Shape<ChartFormat> & ChartBody;
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Chart({
-  kind,
-  elements,
-  as: ChartItem = Item,
-  ...chartProps
-}: Props) {
+const Chart = React.forwardRef(function Chart(
+  { kind, elements, as: ChartItem = Item, ...chartProps }: Props,
+  ref
+) {
   const data = (chartProps.data = useAutoMemo(
     kind === chartTypes.PIE
       ? elements
@@ -65,12 +63,19 @@ export default function Chart({
   }
 
   return kind === chartTypes.PIE ? (
-    <PieChart {...chartProps} as={ChartItem} data-type={'pie'} />
+    <PieChart {...chartProps} as={ChartItem} data-type={'pie'} ref={ref} />
   ) : kind === chartTypes.COLUMN ? (
-    <ColumnChart {...chartProps} as={ChartItem} data-type={'column'} />
+    <ColumnChart
+      {...chartProps}
+      as={ChartItem}
+      data-type={'column'}
+      ref={ref}
+    />
   ) : kind === chartTypes.BAR ? (
-    <BarChart {...chartProps} as={ChartItem} data-type={'bar'} />
+    <BarChart {...chartProps} as={ChartItem} data-type={'bar'} ref={ref} />
   ) : (
-    <LineChart {...chartProps} as={ChartItem} data-type={'line'} />
+    <LineChart {...chartProps} as={ChartItem} data-type={'line'} ref={ref} />
   );
-}
+});
+
+export default Chart;

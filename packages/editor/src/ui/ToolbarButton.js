@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoCallback } from 'hooks.macro';
-import { palette, color, borders } from '@material-ui/system';
+import { borders, color, palette } from '@material-ui/system';
 
 import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 
@@ -21,9 +21,6 @@ const StyledToolbarButton = styled(MuiButton).attrs(
   &&&& {
     border: none;
     border-radius: 0;
-  }
-  &:disabled {
-    display: none;
   }
 `;
 

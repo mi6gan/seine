@@ -34,6 +34,7 @@ export default function Editor({
   as: View = EditorView,
   theme = defaultTheme,
   children = defaultEditorChildren,
+  header = null,
   ...viewProps
 }: Props) {
   return (
@@ -41,6 +42,7 @@ export default function Editor({
       <EditorProvider blocks={useNormalizedBlocks(children)}>
         <ClipboardProvider>
           <ItemMenuProvider>
+            {header}
             <View {...viewProps} />
           </ItemMenuProvider>
         </ClipboardProvider>
