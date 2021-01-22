@@ -3,7 +3,7 @@ describe('Image snapshots of rendered content with', () => {
     cy.visitStorybook();
   });
 
-  const stories = [
+  const contentStories = [
     'Text',
     'Image',
     'Table',
@@ -15,9 +15,27 @@ describe('Image snapshots of rendered content with', () => {
     'LineChart',
   ];
 
-  stories.forEach((story) => {
+  contentStories.forEach((story) => {
     it(story, () => {
-      cy.loadStory('Development/Content', story);
+      cy.loadStory('Docs/Content', story);
+    });
+  });
+
+  const editorStories = [
+    'EditorOfText',
+    'EditorOfImage',
+    'EditorOfTable',
+    'EditorOfFlex',
+    'EditorOfNestedFlex',
+    'EditorOfPieChart',
+    'EditorOfBarChart',
+    'EditorOfColumnChart',
+    'EditorOfLineChart',
+  ];
+
+  editorStories.forEach((story) => {
+    it(story, () => {
+      cy.loadStory('Docs/Editor', story);
     });
   });
 
