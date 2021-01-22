@@ -130,13 +130,17 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
         </ListItemIcon>
         <ListItemText disableTypography>
           <Typography variant={'caption'}>
-            {id ? id.slice(0, 6) : block.type}
+            {process.env.NODE_ENV === 'test'
+              ? block.type
+              : id
+              ? id.slice(0, 6)
+              : block.type}
           </Typography>
         </ListItemText>
         {blockIndex > 0 && (
           <Box
             data-position={'before'}
-            data-target-id={id}
+            data-target-id={process.env.NODE_ENV === 'test' ? 'mock' : id}
             position={'absolute'}
             width={1}
             height={1 / 2}
@@ -158,7 +162,7 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
         {blockIndex > 0 && (
           <Box
             data-position={'after'}
-            data-target-id={id}
+            data-target-id={process.env.NODE_ENV === 'test' ? 'mock' : id}
             position={'absolute'}
             width={1}
             height={1 / 2}

@@ -8,7 +8,9 @@ import { blockTypes, createBlock, createBlocksFromTree } from '@seine/core';
 import { toRawContent } from '@seine/content';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {};
+export default {
+  title: 'Tutorials/Constraints',
+};
 
 // eslint-disable-next-line
 export const ItemRelativeWidth = () => {

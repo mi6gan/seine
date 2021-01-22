@@ -5033,6 +5033,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/cheerio@npm:^0.22.22":
+  version: 0.22.23
+  resolution: "@types/cheerio@npm:0.22.23"
+  dependencies:
+    "@types/node": "*"
+  checksum: bcfa751bb0e6c974bb38422913b369da89368dfda87452373d0e2e360c6967a1ada4fa1eee4413792796c32e14369f930380fbddc1438d891d81a1bd3107fa8f
+  languageName: node
+  linkType: hard
+
 "@types/emscripten@npm:^1.38.0":
   version: 1.39.4
   resolution: "@types/emscripten@npm:1.39.4"
@@ -11025,6 +11034,19 @@ __metadata:
     has: ^1.0.3
     object-is: ^1.1.2
   checksum: fabf31a440572c0fd30a0543a88c1bc8823266fc698cd24cbd1a3a391a1f367c9a6a24c5ba136d3b1bd3b17d448bcfc5f8f2e23df6afe17c3a8bc6b97f494a82
+  languageName: node
+  linkType: hard
+
+"enzyme-to-json@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "enzyme-to-json@npm:3.6.1"
+  dependencies:
+    "@types/cheerio": ^0.22.22
+    lodash: ^4.17.15
+    react-is: ^16.12.0
+  peerDependencies:
+    enzyme: ^3.4.0
+  checksum: 13a2384950bb80f1ee58b1c0a9b6a28781915f09f4b2367f2208a9a482f54bc5b254d1f71da4c93ac64e469a2ec3f8c7a4ded9740c48072ef6ec33f279d391bb
   languageName: node
   linkType: hard
 
@@ -20853,6 +20875,7 @@ resolve@^1.18.1:
     draft-js: ^0.11.0
     enzyme: ^3.11.0
     enzyme-adapter-react-16: ^1.15.5
+    enzyme-to-json: ^3.6.1
     hooks.macro: ^1.0.1
     identity-obj-proxy: ^3.0.0
     jest: ^26.6.3
@@ -20903,7 +20926,6 @@ resolve@^1.18.1:
     babel-plugin-inline-import-data-uri: ^1.0.1
     babel-plugin-macros: ^2.6.1
     babel-plugin-named-asset-import: ^0.3.2
-    babel-plugin-storybook-csf-title: "github:mi6gan/babel-plugin-storybook-csf-title"
     babel-preset-react-app: ^9.0.1
     browser-env: ^3.3.0
     commander: ^6.2.1

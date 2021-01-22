@@ -10,6 +10,7 @@ import { ThemeProvider } from '@seine/styles';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  title: 'Docs/Content',
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -653,6 +654,10 @@ export const Data = ({ as: Container = Content, children = [], ...props }) =>
     </Box>
   ));
 
+Data.parameters = {
+  storyshots: { disable: true },
+};
+
 export const DataV03 = ({ as: Container = Content, children = [], ...props }) =>
   Object.entries(data).map(([key, blocks]) => (
     <Box key={key} p={8} borderBottom={'1px dashed currentColor'}>
@@ -664,3 +669,7 @@ export const DataV03 = ({ as: Container = Content, children = [], ...props }) =>
       </Container>
     </Box>
   ));
+
+DataV03.parameters = {
+  storyshots: { disable: true },
+};

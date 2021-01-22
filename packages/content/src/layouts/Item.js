@@ -1,4 +1,5 @@
 // @flow
+import * as React from 'react';
 import type { ComponentType } from 'react';
 import styled from 'styled-components/macro';
 
@@ -9,7 +10,9 @@ type Props = ItemBody & $Shape<ItemFormat>;
 
 export type { Props as ItemProps };
 
-const Item = styled.div.attrs((format: Props) => ({
+const Item = styled(
+  React.forwardRef(({ id, ...props }, ref) => <div ref={ref} {...props} />)
+).attrs((format: Props) => ({
   ...defaultItemFormat,
   ...format,
 }))`
