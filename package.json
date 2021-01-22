@@ -46,7 +46,6 @@
     "babel-plugin-macros": "^2.6.1",
     "babel-plugin-named-asset-import": "^0.3.2",
     "babel-preset-react-app": "^9.0.1",
-    "browser-env": "^3.3.0",
     "commander": "^6.2.1",
     "eslint": "7.x",
     "eslint-config-react-app": "6.x",
@@ -88,9 +87,6 @@
       "unplugged": true
     },
     "@storybook/core": {
-      "unplugged": true
-    },
-    "browser-env@3.3.0": {
       "unplugged": true
     },
     "flow-bin": {
