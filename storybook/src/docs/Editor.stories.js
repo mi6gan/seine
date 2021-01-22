@@ -49,14 +49,23 @@ export const EditorOfImage = () => (
 export const EditorOfFlex = () => <Flex as={Editor} {...actions('onChange')} />;
 
 export const EditorOfData = () => <Data as={Editor} {...actions('onChange')} />;
+EditorOfData.parameters = {
+  storyshots: { disable: true },
+};
 
 export const EditorOfData_v0_3 = () => (
   <DataV03 as={Editor} {...actions('onChange')} />
 );
+EditorOfData_v0_3.parameters = {
+  storyshots: { disable: true },
+};
 
 export const EditorOfNestedFlex = () => (
   <NestedFlex as={Editor} {...actions('onChange')} />
 );
+EditorOfNestedFlex.parameters = {
+  storyshots: { disable: true },
+};
 
 export const EditorOfPieChart = () => (
   <PieChart as={Editor} {...actions('onChange')} />
@@ -65,6 +74,9 @@ export const EditorOfPieChart = () => (
 export const EditorOfLineChart = () => (
   <LineChart as={Editor} {...actions('onChange')} />
 );
+EditorOfLineChart.parameters = {
+  storyshots: { disable: true },
+};
 
 export const EditorOfColumnChart = () => (
   <ColumnChart as={Editor} {...actions('onChange')} />
