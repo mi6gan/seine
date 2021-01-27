@@ -10,12 +10,9 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  Step,
-  StepLabel,
-  Stepper,
+  Paper,
   Tooltip,
   Typography,
-  Paper,
 } from '@seine/styles/mui-core.macro';
 import type {
   EditorActionButtonProps,
@@ -24,8 +21,11 @@ import type {
 import {
   allBlocksSelector,
   defaultBlockRenderMap,
+  DeleteConfirmationDialog,
+  deviceSelector,
   Editor,
   EditorActionButton,
+  EditorContent,
   EditorDesign,
   EditorItemMenu,
   EditorToolbar,
@@ -33,19 +33,15 @@ import {
   EditorTreeItem,
   ItemDesign,
   LayoutDesign,
-  RichTextDesign,
   MenuButton,
+  RichTextDesign,
+  SidebarHeading,
   SidebarInput,
+  SidebarSection,
   SidebarSelect,
   ToolbarToggleButtonGroup,
-  useBlocksDispatch,
-  useEditorSelector,
-  EditorContent,
-  DeleteConfirmationDialog,
-  deviceSelector,
   useBlocksChange,
-  SidebarSection,
-  SidebarHeading,
+  useEditorSelector,
 } from '@seine/editor';
 import { blockTypes } from '@seine/core';
 import { defaultBlockRenderMap as disabledBlockRenderMap } from '@seine/content';
@@ -62,29 +58,20 @@ type TutorialProviderProps = {
 };
 
 // eslint-disable-next-line
-function TutorialProvider({
-  children,
-  scenario,
-  states,
-}: TutorialProviderProps) {
+function TutorialProvider({ children, scenario }: TutorialProviderProps) {
   const [index, setIndex] = React.useState(0);
-  const steps = [...new Set(scenario.map(({ step }) => step))];
 
   return (
     <TutorialContext.Provider
       value={useAutoMemo({
-        ...scenario[index],
-        blocks: states[scenario[index].step],
-        steps,
-        setStep: (step) =>
-          setIndex(scenario.findIndex((item) => item.step === step)),
-        find: (fn) => scenario.find(fn),
-        back: () => setIndex(index - 1),
         next: () => {
           setIndex((index) =>
             index < scenario.length - 1 ? index + 1 : index
           );
         },
+        ...scenario[index],
+        find: (fn) => scenario.find(fn),
+        back: () => setIndex(index - 1),
       })}
     >
       {children}
@@ -359,55 +346,21 @@ const blockRenderMap = {
   ),
 };
 
-// eslint-disable-next-line
-function Navigation() {
-  const manual = React.useContext(TutorialContext);
-
-  const changeStep = useAutoCallback((event) => {
-    const { step: nextStep } = event.currentTarget.dataset;
-    manual.setStep(nextStep);
-  });
-
-  const stepIndex = useAutoMemo(
-    manual.steps.findIndex((step) => step === manual.step)
-  );
-
-  return (
-    <SidebarSection pl={2}>
-      <SidebarHeading>Tutorial</SidebarHeading>
-      <Stepper orientation={'vertical'}>
-        {manual.steps.map((step, index) => (
-          <Step
-            key={index}
-            active={stepIndex === index}
-            completed={stepIndex > index}
-            onClick={changeStep}
-            data-step={step}
-          >
-            <StepLabel>{step}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-    </SidebarSection>
-  );
-}
-
 type Props = {
   scenario: Array<{
-    step: string,
     anchor: string,
     tooltip: string,
   }>,
 };
 
 // eslint-disable-next-line
-const MenuContext = React.createContext({
+const SideBarContext = React.createContext({
   current: null,
 });
 
 // eslint-disable-next-line
-function MenuExtension({ children }) {
-  const container = React.useContext(MenuContext);
+function SideBarExtension({ children }) {
+  const container = React.useContext(SideBarContext);
   return container && ReactDOM.createPortal(children, container);
 }
 
@@ -438,7 +391,7 @@ function EditorView({ onChange }) {
     <>
       <DeleteConfirmationDialog />
       <TutorialItemMenu />
-      <MenuExtension>
+      <SideBarExtension>
         <SidebarSection pl={2}>
           <SidebarHeading>Structure</SidebarHeading>
           <EditorTree itemAs={TutorialTreeItem} />
@@ -450,7 +403,7 @@ function EditorView({ onChange }) {
             layoutDesignAs={TutorialLayoutDesign}
           />
         </Box>
-      </MenuExtension>
+      </SideBarExtension>
       <Container>
         <EditorToolbarContainer>
           <EditorToolbar
@@ -466,48 +419,44 @@ function EditorView({ onChange }) {
   );
 }
 
-// eslint-disable-next-line
-function TutorialEditor() {
-  const { blocks, step } = React.useContext(TutorialContext);
-
-  return (
-    <Editor
-      {...actions('onChange')}
-      key={step}
-      as={EditorView}
-      blockRenderMap={blockRenderMap}
-    >
-      {blocks}
-    </Editor>
-  );
-}
+const SideBar = styled(Box).attrs({
+  as: Paper,
+  bgcolor: 'common.white',
+  minHeight: '100vh',
+  variant: 'outlined',
+  width: '300px',
+})`
+  .MuiStepLabel-iconContainer,
+  .MuiStepLabel-labelContainer {
+    cursor: pointer;
+  }
+`;
 
 // eslint-disable-next-line
-export default function Tutorial({ scenario, states }: Props) {
-  const [menuContainer, setMenuContainer] = React.useState(null);
+export default function Tutorial({ scenario, states, blocks }: Props) {
+  const [sidebarContainer, setSidebarContainer] = React.useState(null);
   return (
     <ThemeProvider>
       <TutorialProvider scenario={scenario} states={states}>
         <Box display={'flex'} width={1}>
-          <Box
-            as={Paper}
-            bgcolor={'common.white'}
-            minHeight={'100vh'}
-            variant={'outlined'}
-            width={'300px'}
+          <SideBar
             ref={useAutoCallback((element) => {
               if (element) {
-                setMenuContainer(element);
+                setSidebarContainer(element);
               }
             })}
-          >
-            <Navigation />
-          </Box>
-          <MenuContext.Provider value={menuContainer}>
-            <TutorialEditor />
+          />
+          <SideBarContext.Provider value={sidebarContainer}>
+            <Editor
+              {...actions('onChange')}
+              as={EditorView}
+              blockRenderMap={blockRenderMap}
+            >
+              {blocks}
+            </Editor>
             <TutorialTooltip anchor={'#introduction'} />
             <TutorialTooltip anchor={'#layout'} />
-          </MenuContext.Provider>
+          </SideBarContext.Provider>
         </Box>
       </TutorialProvider>
     </ThemeProvider>
