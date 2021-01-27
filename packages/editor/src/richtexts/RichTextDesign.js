@@ -39,13 +39,18 @@ const SvgText = styled.text.attrs({
   y: '50%',
 })``;
 
+type Props = {
+  toggleAs?: React.ComponentType,
+};
+
 /**
  * @description Rich text design panel.
+ * @param {Props} props
  * @returns {React.Node}
  */
 export default function RichTextDesign({
   toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
-}) {
+}: Props) {
   const {
     item: {
       id,
