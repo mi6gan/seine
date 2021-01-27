@@ -996,3 +996,7 @@ a:focus {
 .sbdocs-content.sbdocs-content {
   max-width: none;
 }
+
+.sb-show-main.sb-main-padded {
+  padding: 0;
+}

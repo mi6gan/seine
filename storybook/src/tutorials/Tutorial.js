@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
+import styled from 'styled-components/macro';
 import { actions } from '@storybook/addon-actions';
 import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
-
-import useEditorDispatch from '../../../packages/editor/src/blocks/useEditorDispatch';
+import ReactDOM from 'react-dom';
 
 import {
   Button,
@@ -15,6 +15,7 @@ import {
   Stepper,
   Tooltip,
   Typography,
+  Paper,
 } from '@seine/styles/mui-core.macro';
 import type {
   EditorActionButtonProps,
@@ -32,14 +33,23 @@ import {
   EditorTreeItem,
   ItemDesign,
   LayoutDesign,
+  RichTextDesign,
   MenuButton,
   SidebarInput,
   SidebarSelect,
   ToolbarToggleButtonGroup,
+  useBlocksDispatch,
   useEditorSelector,
+  EditorContent,
+  DeleteConfirmationDialog,
+  deviceSelector,
+  useBlocksChange,
+  SidebarSection,
+  SidebarHeading,
 } from '@seine/editor';
-import { blockTypes, RESET_BLOCKS } from '@seine/core';
+import { blockTypes } from '@seine/core';
 import { defaultBlockRenderMap as disabledBlockRenderMap } from '@seine/content';
+import { Box, ThemeProvider } from '@seine/styles';
 
 const TutorialContext = React.createContext({
   back: () => void 0,
@@ -52,20 +62,28 @@ type TutorialProviderProps = {
 };
 
 // eslint-disable-next-line
-function TutorialProvider({ children, scenario }: TutorialProviderProps) {
+function TutorialProvider({
+  children,
+  scenario,
+  states,
+}: TutorialProviderProps) {
   const [index, setIndex] = React.useState(0);
+  const steps = [...new Set(scenario.map(({ step }) => step))];
 
   return (
     <TutorialContext.Provider
       value={useAutoMemo({
         ...scenario[index],
-        steps: [...new Set(scenario.map(({ step }) => step))],
+        blocks: states[scenario[index].step],
+        steps,
         setStep: (step) =>
           setIndex(scenario.findIndex((item) => item.step === step)),
         find: (fn) => scenario.find(fn),
         back: () => setIndex(index - 1),
         next: () => {
-          setTimeout(() => setIndex(index + 1), 500);
+          setIndex((index) =>
+            index < scenario.length - 1 ? index + 1 : index
+          );
         },
       })}
     >
@@ -96,6 +114,17 @@ const TutorialTooltip = React.forwardRef(function TutorialTooltip(
     },
   }));
 
+  useAutoEffect(() => {
+    if (manual.duration) {
+      const timeoutId = setTimeout(() => {
+        manual.next();
+      }, manual.duration);
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
+  });
+
   if (anchor.startsWith('#')) {
     return (
       <Dialog open={open}>
@@ -108,7 +137,7 @@ const TutorialTooltip = React.forwardRef(function TutorialTooltip(
               manual.next();
             }}
           >
-            Next
+            Ok
           </Button>
         </DialogActions>
       </Dialog>
@@ -175,22 +204,21 @@ function TutorialBlock({ type, kind, ...props }) {
   const manual = React.useContext(TutorialContext);
   const anchor = `block#${props.id}`;
   const Block =
-    anchor === manual.anchor
+    anchor === manual.anchor || manual.anchor.startsWith('design#')
       ? defaultBlockRenderMap[type]
       : disabledBlockRenderMap[type];
   const next = useAutoCallback(() => {
     manual.next();
   });
 
+  if (anchor === manual.anchor) {
+    props.onClick = next;
+    props.onMousDown = next;
+  }
+
   return (
     <TutorialTooltip anchor={anchor}>
-      <Block
-        type={type}
-        kind={kind}
-        onClick={next}
-        onMouseDown={next}
-        {...props}
-      />
+      <Block type={type} kind={kind} {...props} />
     </TutorialTooltip>
   );
 }
@@ -248,7 +276,7 @@ const TutorialItemDesign = (props) => {
   );
 };
 
-const TutorialLayoutToggleButton = ({ name, onChange, ...props }) => {
+const TutorialToggle = ({ name, onChange, ...props }) => {
   const manual = React.useContext(TutorialContext);
   const anchor = `design#toggle(name=${name})`;
   return (
@@ -258,7 +286,7 @@ const TutorialLayoutToggleButton = ({ name, onChange, ...props }) => {
         disabled={anchor !== manual.anchor}
         name={name}
         onChange={useAutoCallback((event, value) => {
-          if ('value' in manual && manual === value) {
+          if ('value' in manual && manual.value === value) {
             manual.next();
           }
           if (onChange) {
@@ -275,11 +303,16 @@ const TutorialLayoutDesign = (props) => {
   return (
     <LayoutDesign
       {...props}
-      toggleAs={TutorialLayoutToggleButton}
+      toggleAs={TutorialToggle}
       inputAs={TutorialItemDesignInput}
       selectAs={TutorialItemDesignSelect}
     />
   );
+};
+
+// eslint-disable-next-line
+const TutorialRichTextDesign = (props) => {
+  return <RichTextDesign {...props} toggleAs={TutorialToggle} />;
 };
 
 // eslint-disable-next-line
@@ -328,51 +361,34 @@ const blockRenderMap = {
 
 // eslint-disable-next-line
 function Navigation() {
-  const stepBlocksRef = React.useRef({});
-  const { current: stepBlocks } = stepBlocksRef;
-  const dispatch = useEditorDispatch();
-
   const manual = React.useContext(TutorialContext);
-  const step = manual.step;
 
   const changeStep = useAutoCallback((event) => {
     const { step: nextStep } = event.currentTarget.dataset;
     manual.setStep(nextStep);
-    const blocks = stepBlocks[nextStep];
-    if (blocks) {
-      dispatch({
-        type: RESET_BLOCKS,
-        blocks,
-      });
-    }
   });
 
   const stepIndex = useAutoMemo(
     manual.steps.findIndex((step) => step === manual.step)
   );
 
-  const blocks = useEditorSelector(allBlocksSelector);
-
-  useAutoEffect(() => {
-    if (!(step in stepBlocks)) {
-      stepBlocks[step] = blocks.map((block) => ({ ...block }));
-    }
-  });
-
   return (
-    <Stepper>
-      {manual.steps.map((step, index) => (
-        <Step
-          key={index}
-          active={stepIndex === index}
-          completed={stepIndex > index}
-          onClick={changeStep}
-          data-step={step}
-        >
-          <StepLabel>{step}</StepLabel>
-        </Step>
-      ))}
-    </Stepper>
+    <SidebarSection pl={2}>
+      <SidebarHeading>Tutorial</SidebarHeading>
+      <Stepper orientation={'vertical'}>
+        {manual.steps.map((step, index) => (
+          <Step
+            key={index}
+            active={stepIndex === index}
+            completed={stepIndex > index}
+            onClick={changeStep}
+            data-step={step}
+          >
+            <StepLabel>{step}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+    </SidebarSection>
   );
 }
 
@@ -385,35 +401,115 @@ type Props = {
 };
 
 // eslint-disable-next-line
-export default function Tutorial({ scenario, blocks }: Props) {
+const MenuContext = React.createContext({
+  current: null,
+});
+
+// eslint-disable-next-line
+function MenuExtension({ children }) {
+  const container = React.useContext(MenuContext);
+  return container && ReactDOM.createPortal(children, container);
+}
+
+const Container = styled(Box)`
+  && {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+`;
+
+const EditorToolbarContainer = styled(Box)`
+  &&& .MuiAppBar-root {
+    position: relative;
+  }
+`;
+
+// eslint-disable-next-line
+function EditorView({ onChange }) {
+  const device = useEditorSelector(deviceSelector);
+  const blocks = useEditorSelector(allBlocksSelector);
+
+  useBlocksChange(onChange);
+
   return (
-    <TutorialProvider scenario={scenario}>
-      <Editor
-        {...actions('onChange')}
-        blockRenderMap={blockRenderMap}
-        treeAs={useAutoCallback((props) => (
-          <EditorTree {...props} itemAs={TutorialTreeItem} />
-        ))}
-        toolbarAs={useAutoCallback((props) => (
-          <EditorToolbar
-            {...props}
-            position={'relative'}
-            actionButtonAs={TutorialActionButton}
-          />
-        ))}
-        designAs={useAutoCallback((props) => (
+    <>
+      <DeleteConfirmationDialog />
+      <TutorialItemMenu />
+      <MenuExtension>
+        <SidebarSection pl={2}>
+          <SidebarHeading>Structure</SidebarHeading>
+          <EditorTree itemAs={TutorialTreeItem} />
+        </SidebarSection>
+        <Box pl={2}>
           <EditorDesign
-            {...props}
+            richTextDesignAs={TutorialRichTextDesign}
             itemDesignAs={TutorialItemDesign}
             layoutDesignAs={TutorialLayoutDesign}
           />
-        ))}
-        itemMenuAs={TutorialItemMenu}
-        header={<Navigation />}
-      >
-        {blocks}
-      </Editor>
-      <TutorialTooltip anchor={'#introduction'} />
-    </TutorialProvider>
+        </Box>
+      </MenuExtension>
+      <Container>
+        <EditorToolbarContainer>
+          <EditorToolbar
+            position={'relative'}
+            actionButtonAs={TutorialActionButton}
+          />
+        </EditorToolbarContainer>
+        <EditorContent device={device} blockRenderMap={blockRenderMap}>
+          {blocks}
+        </EditorContent>
+      </Container>
+    </>
+  );
+}
+
+// eslint-disable-next-line
+function TutorialEditor() {
+  const { blocks, step } = React.useContext(TutorialContext);
+
+  return (
+    <Editor
+      {...actions('onChange')}
+      key={step}
+      as={EditorView}
+      blockRenderMap={blockRenderMap}
+    >
+      {blocks}
+    </Editor>
+  );
+}
+
+// eslint-disable-next-line
+export default function Tutorial({ scenario, states }: Props) {
+  const [menuContainer, setMenuContainer] = React.useState(null);
+  return (
+    <ThemeProvider>
+      <TutorialProvider scenario={scenario} states={states}>
+        <Box display={'flex'} width={1}>
+          <Box
+            as={Paper}
+            bgcolor={'common.white'}
+            minHeight={'100vh'}
+            variant={'outlined'}
+            width={'300px'}
+            ref={useAutoCallback((element) => {
+              if (element) {
+                setMenuContainer(element);
+              }
+            })}
+          >
+            <Navigation />
+          </Box>
+          <MenuContext.Provider value={menuContainer}>
+            <TutorialEditor />
+            <TutorialTooltip anchor={'#introduction'} />
+            <TutorialTooltip anchor={'#layout'} />
+          </MenuContext.Provider>
+        </Box>
+      </TutorialProvider>
+    </ThemeProvider>
   );
 }

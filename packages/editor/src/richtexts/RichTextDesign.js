@@ -43,7 +43,9 @@ const SvgText = styled.text.attrs({
  * @description Rich text design panel.
  * @returns {React.Node}
  */
-export default function RichTextDesign() {
+export default function RichTextDesign({
+  toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
+}) {
   const {
     item: {
       id,
@@ -78,7 +80,11 @@ export default function RichTextDesign() {
       <SidebarHeading>Rich text</SidebarHeading>
       <SidebarGroup>
         <SidebarLabel>heading</SidebarLabel>
-        <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
+        <ToggleButtonGroup
+          value={blockType}
+          onChange={toggleBlockType}
+          name={'header'}
+        >
           <ToolbarToggleButton value={'header-one'}>
             <SvgIcon>
               <SvgText>H1</SvgText>
@@ -96,7 +102,7 @@ export default function RichTextDesign() {
               <SvgText>H3</SvgText>
             </SvgIcon>
           </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+        </ToggleButtonGroup>
       </SidebarGroup>
       <SidebarGroup alignItems={'center'}>
         <SidebarLabel>&nbsp;</SidebarLabel>
@@ -117,7 +123,11 @@ export default function RichTextDesign() {
 
       <SidebarGroup>
         <SidebarLabel>list</SidebarLabel>
-        <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
+        <ToolbarToggleButtonGroup
+          value={blockType}
+          onChange={toggleBlockType}
+          name={'list'}
+        >
           <ToolbarToggleButton value={'ordered-list-item'}>
             <FormatListNumbered />
           </ToolbarToggleButton>
@@ -130,7 +140,7 @@ export default function RichTextDesign() {
 
       <SidebarGroup>
         <SidebarLabel>style</SidebarLabel>
-        <ToolbarToggleButtonGroup
+        <ToggleButtonGroup
           value={useAutoMemo(
             editorState ? [...editorState.getCurrentInlineStyle()] : []
           )}
@@ -143,6 +153,7 @@ export default function RichTextDesign() {
               },
             });
           })}
+          name={'weight'}
         >
           <ToolbarToggleButton value={'BOLD'}>
             <FormatBold />
@@ -155,12 +166,12 @@ export default function RichTextDesign() {
           <ToolbarToggleButton value={'UNDERLINE'}>
             <FormatUnderlined />
           </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+        </ToggleButtonGroup>
       </SidebarGroup>
 
       <SidebarGroup alignItems={'center'}>
         <SidebarLabel>alignment</SidebarLabel>
-        <ToolbarToggleButtonGroup
+        <ToggleButtonGroup
           value={textAlignment}
           onChange={useAutoCallback((event, textAlignment) => {
             dispatch({
@@ -169,6 +180,7 @@ export default function RichTextDesign() {
               format: { textAlignment },
             });
           })}
+          name={'alignment'}
         >
           <ToolbarToggleButton value={'left'}>
             <FormatAlignLeft />
@@ -181,7 +193,7 @@ export default function RichTextDesign() {
           <ToolbarToggleButton value={'right'}>
             <FormatAlignRight />
           </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+        </ToggleButtonGroup>
       </SidebarGroup>
     </SidebarSection>
   );
