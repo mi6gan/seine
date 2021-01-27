@@ -1,8 +1,15 @@
 import { Canvas, Story } from '@storybook/addon-docs/blocks';
-import { blockTypes, chartTypes, CREATE_BLOCK } from '@seine/core';
+import {
+  blockTypes,
+  chartTypes,
+  CREATE_BLOCK,
+  createBlock,
+  defaultRichTextFormat,
+} from '@seine/core';
 import Tutorial from './Tutorial';
 import Meta from './TutorialMeta';
-import rootBlock from '../data/rootBlock';
+import { rootBlock, richTextBlock, tableBlock } from '../data/richTextBlock';
+import { useAutoMemo } from 'hooks.macro';
 
 <Meta title={'Tutorials/Block'} />
 
@@ -10,61 +17,98 @@ import rootBlock from '../data/rootBlock';
   <Story name="Adding new blocks">
     {() => (
       <Tutorial
+        states={useAutoMemo({
+          Introduction: [rootBlock],
+          'Text block': [rootBlock],
+          'Table block': [rootBlock, richTextBlock],
+          'Bar chart': [rootBlock, richTextBlock, tableBlock],
+        })}
         scenario={[
           {
             step: 'Introduction',
             anchor: '#introduction',
-            tooltip: 'Some introduction information content',
+            tooltip: (
+              <>
+                Editor content is based on blocks tree structure.
+                <br />
+                Let's try to create some blocks.
+              </>
+            ),
           },
           {
-            step: 'Add text block',
+            step: 'Text block',
             anchor: `tree-item#${rootBlock.id}`,
             tooltip: 'Select your empty document root in tree view',
           },
           {
-            step: 'Add text block',
+            step: 'Text block',
             anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.RICH_TEXT}&kind=null)`,
             tooltip: 'Click on text toolbar button',
           },
           {
-            step: 'Add text block',
+            step: 'Text block',
             anchor: `block#${blockTypes.RICH_TEXT}`,
-            tooltip: 'This is a new block of text. Its content is editable',
+            tooltip:
+              'This is a new block of text. Its content is editable. Select some text.',
           },
           {
-            step: 'Add table block',
+            step: 'Text block',
+            anchor: `design#toggle(name=header)`,
+            tooltip: 'Click to format text as heading.',
+            value: 'header-one',
+          },
+          {
+            step: 'Table block',
             anchor: `tree-item#${rootBlock.id}`,
             tooltip: 'Select your document root in tree view',
           },
           {
-            step: 'Add table block',
+            step: 'Table block',
             anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.TABLE}&kind=null)`,
+            tooltip: 'Click on table toolbar button',
+          },
+          {
+            step: 'Table block',
+            anchor: `block#${blockTypes.TABLE}`,
             tooltip:
               'This is a new table with editable structure and cells content',
+            duration: 1000 * 5,
           },
           {
-            step: 'Add table block',
-            anchor: `block#${blockTypes.TABLE}`,
-            tooltip: 'Click on newly added block to edit the table',
-          },
-          {
-            step: 'Add bar chart',
+            step: 'Bar chart',
             anchor: `tree-item#${rootBlock.id}`,
             tooltip: 'Select your document root in tree view',
           },
           {
-            step: 'Add bar chart',
+            step: 'Bar chart',
             anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.CHART}&kind=${chartTypes.BAR})`,
             tooltip: 'Click to add bar chart',
           },
           {
-            step: 'Add bar chart',
+            step: 'Bar chart',
             anchor: `block#${blockTypes.CHART}`,
             tooltip:
               'This is a new bar chart. To add chart of other types use corresponding toolbar buttons',
+            duration: 1000 * 5,
+          },
+          {
+            step: 'Layout',
+            anchor: '#layout',
+            tooltip: (
+              <>
+                Each parent block may render children in two modes: flex and
+                grid.
+                <br />
+                Let's those layout strategies.
+              </>
+            ),
+          },
+          {
+            step: 'Layout',
+            anchor: `tree-item#${rootBlock.id}`,
+            tooltip: 'Select your document root in tree view',
           },
         ]}
-        blocks={[rootBlock]}
       />
     )}
   </Story>

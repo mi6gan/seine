@@ -202,16 +202,18 @@ export function normalizeBlock(block: Block, device: ?ScreenDevice = 'any') {
  * @param {?BlockBody} body
  * @param {?BlockFormat} format
  * @param {?BlockId} parent_id
+ * @param {?BlockId} id
  * @returns {Block}
  */
 export function createBlock(
   type: BlockType,
   body: ?BlockBody = null,
   format: ?BlockFormat = null,
-  parent_id: ?BlockId = null
+  parent_id: ?BlockId = null,
+  id: ?BlockId = uuid()
 ): Block {
   return normalizeBlock({
-    id: uuid(),
+    id,
     type,
     body,
     format,
