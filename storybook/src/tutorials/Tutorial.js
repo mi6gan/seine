@@ -25,6 +25,7 @@ import {
   deviceSelector,
   Editor,
   EditorActionButton,
+  EditorActionIconButton,
   EditorContent,
   EditorDesign,
   EditorItemMenu,
@@ -39,6 +40,7 @@ import {
   SidebarInput,
   SidebarSection,
   SidebarSelect,
+  TableDesign,
   ToolbarToggleButtonGroup,
   useBlocksChange,
   useEditorSelector,
@@ -70,6 +72,8 @@ function TutorialProvider({ children, scenario }: TutorialProviderProps) {
           );
         },
         ...scenario[index],
+        index,
+        length: scenario.length,
         find: (fn) => scenario.find(fn),
         back: () => setIndex(index - 1),
       })}
@@ -137,9 +141,28 @@ const TutorialTooltip = React.forwardRef(function TutorialTooltip(
       placement={manual.placement || 'bottom'}
       open={open}
       arrow
-      title={<Typography>{manual.tooltip}</Typography>}
+      title={
+        <Box pointerEvents={'all'}>
+          <Typography>{manual.tooltip}</Typography>
+          {manual.index === manual.length - 1 && (
+            <Box display={'flex'} justifyContent={'flex-end'}>
+              <Button
+                color={'primary'}
+                size={'small'}
+                onClick={() => {
+                  manual.next();
+                }}
+              >
+                Next tutorial
+              </Button>
+            </Box>
+          )}
+        </Box>
+      }
       onClick={onClick}
-      popperProps={{ keepMounted: true }}
+      PopperProps={{
+        popperOptions: { eventsEnabled: true },
+      }}
     >
       {open && Open ? <Open>{children}</Open> : children}
     </Tooltip>
@@ -302,6 +325,51 @@ const TutorialRichTextDesign = (props) => {
   return <RichTextDesign {...props} toggleAs={TutorialToggle} />;
 };
 
+const TutorialActionIconButton = ({ value, ...props }) => {
+  const manual = React.useContext(TutorialContext);
+  const anchor = `design#action-button(value=${value})`;
+  return (
+    <TutorialTooltip anchor={anchor}>
+      <EditorActionIconButton
+        {...props}
+        disabled={anchor !== manual.anchor}
+        value={value}
+        onClick={useAutoCallback(() => {
+          manual.next();
+        })}
+      />
+    </TutorialTooltip>
+  );
+};
+
+const TutorialSection = ({ id, ...props }) => {
+  const manual = React.useContext(TutorialContext);
+  const anchor = `design#${id}`;
+  return (
+    <TutorialTooltip anchor={anchor}>
+      <SidebarSection
+        {...props}
+        id={id}
+        disabled={anchor !== manual.anchor}
+        onClick={useAutoCallback(() => {
+          manual.next();
+        })}
+      />
+    </TutorialTooltip>
+  );
+};
+
+// eslint-disable-next-line
+const TutorialTableDesign = (props) => {
+  return (
+    <TableDesign
+      {...props}
+      actionIconButtonAs={TutorialActionIconButton}
+      sectionAs={TutorialSection}
+    />
+  );
+};
+
 // eslint-disable-next-line
 const TutorialItemMenuButton = React.forwardRef(
   ({ onClick, ...props }, ref) => {
@@ -401,6 +469,7 @@ function EditorView({ onChange }) {
             richTextDesignAs={TutorialRichTextDesign}
             itemDesignAs={TutorialItemDesign}
             layoutDesignAs={TutorialLayoutDesign}
+            tableDesignAs={TutorialTableDesign}
           />
         </Box>
       </SideBarExtension>

@@ -8,10 +8,14 @@ import EditorActionButton from './EditorActionButton';
 import { blockTypes, CREATE_BLOCK } from '@seine/core';
 
 // eslint-disable-next-line
-export default function EditorActionIconButton({ Icon, ...action }) {
+const EditorActionIconButton = React.forwardRef(function EditorActionIconButton(
+  { Icon, ...action },
+  ref
+) {
   return (
     <ToolbarButton
       as={EditorActionButton}
+      ref={ref}
       title={
         action.type === CREATE_BLOCK
           ? `Add ${
@@ -28,4 +32,6 @@ export default function EditorActionIconButton({ Icon, ...action }) {
       <Icon />
     </ToolbarButton>
   );
-}
+});
+
+export default EditorActionIconButton;

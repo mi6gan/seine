@@ -69,8 +69,47 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
           {
             anchor: `block#${blockTypes.TABLE}`,
             tooltip:
-              'This is a new table with editable structure and cells content',
-            duration: 1000 * 5,
+              'This is a new table with editable structure and cells content. Select any cell',
+          },
+          {
+            anchor: `design#action-button(value=add-column-after)`,
+            tooltip: 'Click to add new column before current.',
+          },
+          {
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Column is added',
+            duration: 2 * 1000,
+          },
+          {
+            anchor: `design#action-button(value=add-row-after)`,
+            tooltip: 'Click to add new row after current.',
+          },
+          {
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Column is added',
+            duration: 2 * 1000,
+          },
+          {
+            anchor: `design#action-button(value=remove-row)`,
+            tooltip: 'Click to remove current row.',
+          },
+          {
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Column is added',
+            duration: 2 * 1000,
+          },
+          {
+            anchor: `design#action-button(value=remove-column)`,
+            tooltip: 'Click to remove current column.',
+          },
+          {
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Column is added',
+            duration: 2 * 1000,
+          },
+          {
+            anchor: `design#table-design-section-text`,
+            tooltip: 'You may format cell using rich text toolbar.',
             next: linkTo('Tutorials/Block', 'Bar chart'),
           },
         ]}
