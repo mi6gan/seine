@@ -306,7 +306,8 @@ const TutorialToggle = ({ name, onChange, ...props }) => {
         {...props}
         disabled={
           anchor !== manual.anchor &&
-          !manual.anchor.startsWith(`design#toggle-button(name=${name}&`)
+          !manual.anchor.startsWith(`design#toggle-button(name=${name}&`) &&
+          !/^design#.+-section$/.test(manual.anchor)
         }
         name={name}
         onChange={useAutoCallback((event, value) => {
@@ -332,7 +333,8 @@ const TutorialToggleButton = ({ name, value, ...props }) => {
         name={name}
         disabled={
           anchor !== manual.anchor &&
-          manual.anchor !== `design#toggle(name=${name})`
+          manual.anchor !== `design#toggle(name=${name})` &&
+          !/^design#.+-section$/.test(manual.anchor)
         }
         value={value}
         onClick={useAutoCallback((event, value) => {
@@ -366,6 +368,7 @@ const TutorialRichTextDesign = (props) => {
       {...props}
       toggleAs={TutorialToggle}
       toggleButtonAs={TutorialToggleButton}
+      sectionAs={TutorialSection}
     />
   );
 };

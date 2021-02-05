@@ -42,6 +42,7 @@ const SvgText = styled.text.attrs({
 type Props = {
   toggleAs?: React.ComponentType,
   toggleButtonAs?: React.ComponentType,
+  sectionAs?: React.ComponentType,
 };
 
 /**
@@ -52,6 +53,7 @@ type Props = {
 export default function RichTextDesign({
   toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
   toggleButtonAs: ToggleButton = ToolbarToggleButton,
+  sectionAs: Section = SidebarSection,
 }: Props) {
   const {
     item: {
@@ -83,7 +85,7 @@ export default function RichTextDesign({
   });
 
   return (
-    <SidebarSection>
+    <Section id={'rich-text-section'}>
       <SidebarHeading>Rich text</SidebarHeading>
       <SidebarGroup>
         <SidebarLabel>heading</SidebarLabel>
@@ -202,6 +204,6 @@ export default function RichTextDesign({
           </ToggleButton>
         </ToggleButtonGroup>
       </SidebarGroup>
-    </SidebarSection>
+    </Section>
   );
 }

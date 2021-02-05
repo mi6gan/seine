@@ -79,7 +79,6 @@ export type FlexFormat = ItemFormat & {
 };
 
 export const defaultFlexFormat = {
-  ...defaultItemFormat,
   kind: layoutTypes.FLEX,
   direction: 'row',
   wrap: 'nowrap',
@@ -90,7 +89,6 @@ export const defaultFlexFormat = {
 };
 
 export const defaultGridFormat = {
-  ...defaultItemFormat,
   kind: layoutTypes.GRID,
   columnGap: 2,
   rowGap: 2,
