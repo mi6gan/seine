@@ -19,9 +19,8 @@ export type { Props as GridProps };
  */
 const Grid = styled(Item)`
   display: grid;
-  ${({ columns, rows, columnGap, rowGap, theme }: Props) => ({
-    ...(columns && { gridTemplateColumns: columns }),
-    ...(rows && { gridTemplateRows: rows }),
+  ${({ columnSize, columnGap, rowGap, theme }: Props) => ({
+    gridTemplateColumns: `repeat(auto-fit,minmax(${columnSize},1fr))`,
     ...(rowGap && { gridRowGap: theme.spacing(rowGap) }),
     ...(columnGap && { gridColumnGap: theme.spacing(columnGap) }),
     padding: theme.spacing(rowGap, columnGap),

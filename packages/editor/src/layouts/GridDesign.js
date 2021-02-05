@@ -2,26 +2,12 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import {
-  SidebarGroup,
-  SidebarInput,
-  SidebarLabel,
-  ToolbarToggleButton,
-  ToolbarToggleButtonGroup,
-} from '../ui';
+import { SidebarGroup, SidebarInput, SidebarLabel, SidebarSelect } from '../ui';
 import { useBlocksDispatch } from '../blocks';
+import ConstraintInput from '../ui/ConstraintInput';
 
 import useSelectedLayoutItems from './useSelectedLayoutItems';
 
-import {
-  FormatAlignCenter,
-  FormatAlignJustify,
-  FormatAlignLeft,
-  FormatAlignRight,
-  VerticalAlignBottom,
-  VerticalAlignCenter,
-  VerticalAlignTop,
-} from '@seine/styles/mui-icons.macro';
 import { Box } from '@seine/styles';
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
 
@@ -29,7 +15,6 @@ const MAX_GAP = 19;
 
 type Props = {
   inputAs?: React.ComponentType,
-  toggleAs?: React.ComponentType,
 };
 
 /**
@@ -39,13 +24,13 @@ type Props = {
  */
 export default function GridDesign({
   inputAs: Input = SidebarInput,
-  toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
+  selectAs: Select = SidebarSelect,
 }: Props) {
   const dispatch = useBlocksDispatch();
   const {
     layout: {
       id,
-      format: { columnGap, rowGap, justify, alignItems },
+      format: { columnGap, rowGap, columnSize },
     },
   } = useSelectedLayoutItems();
 
@@ -59,6 +44,7 @@ export default function GridDesign({
             <SidebarLabel mr={1}>x:</SidebarLabel>
             <Input
               value={columnGap}
+              name={'column-gap'}
               onChange={useAutoCallback(({ currentTarget }) => {
                 dispatch({
                   type: UPDATE_BLOCK_FORMAT,
@@ -77,6 +63,7 @@ export default function GridDesign({
             <SidebarLabel mr={1}>y:</SidebarLabel>
             <Input
               value={rowGap}
+              name={'row-gap'}
               onChange={useAutoCallback(({ currentTarget }) => {
                 dispatch({
                   type: UPDATE_BLOCK_FORMAT,
@@ -91,60 +78,17 @@ export default function GridDesign({
         </Box>
       </SidebarGroup>
 
-      <SidebarGroup>
-        <SidebarLabel>Justify</SidebarLabel>
-        <ToggleButtonGroup
-          value={justify}
-          onChange={useAutoCallback((event, justify) =>
-            dispatch({
-              type: UPDATE_BLOCK_FORMAT,
-              id,
-              format: { justify },
-            })
-          )}
-        >
-          <ToolbarToggleButton value={'start'}>
-            <FormatAlignLeft />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'center'}>
-            <FormatAlignCenter />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'end'}>
-            <FormatAlignRight />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'space-between'}>
-            <FormatAlignJustify />
-          </ToolbarToggleButton>
-        </ToggleButtonGroup>
-      </SidebarGroup>
-
-      <SidebarGroup>
-        <SidebarLabel>Align</SidebarLabel>
-        <ToggleButtonGroup
-          value={alignItems}
-          onChange={useAutoCallback((event, alignItems) =>
-            dispatch({
-              type: UPDATE_BLOCK_FORMAT,
-              id,
-              format: { alignItems },
-            })
-          )}
-        >
-          <ToolbarToggleButton value={'start'}>
-            <VerticalAlignTop />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'center'}>
-            <VerticalAlignCenter />
-          </ToolbarToggleButton>
-
-          <ToolbarToggleButton value={'end'}>
-            <VerticalAlignBottom />
-          </ToolbarToggleButton>
-        </ToggleButtonGroup>
+      <SidebarGroup mb={0} as={'form'}>
+        <SidebarLabel mr={1}>Column limit</SidebarLabel>
+        <ConstraintInput
+          id={id}
+          inputAs={Input}
+          inputProps={{ placeholder: 'width', min: 0 }}
+          selectAs={Select}
+          name={'columnSize'}
+          units={['ch', 'fr', 'px', '%']}
+          value={columnSize}
+        />
       </SidebarGroup>
     </>
   );

@@ -42,6 +42,7 @@ import {
   SidebarSelect,
   TableDesign,
   ToolbarToggleButtonGroup,
+  ToolbarToggleButton,
   useBlocksChange,
   useEditorSelector,
 } from '@seine/editor';
@@ -138,14 +139,24 @@ const TutorialTooltip = React.forwardRef(function TutorialTooltip(
   return (
     <Tooltip
       {...tooltipProps}
+      disableFocusListener
       placement={manual.placement || 'bottom'}
       open={open}
       arrow
       title={
         <Box pointerEvents={'all'}>
           <Typography>{manual.tooltip}</Typography>
-          {manual.index === manual.length - 1 && (
-            <Box display={'flex'} justifyContent={'flex-end'}>
+          <Box display={'flex'} justifyContent={'flex-end'}>
+            <Button
+              color={'secondary'}
+              size={'small'}
+              onClick={() => {
+                manual.back();
+              }}
+            >
+              Back
+            </Button>
+            {(manual.showNext || manual.index === manual.length - 1) && (
               <Button
                 color={'primary'}
                 size={'small'}
@@ -153,10 +164,10 @@ const TutorialTooltip = React.forwardRef(function TutorialTooltip(
                   manual.next();
                 }}
               >
-                Next tutorial
+                {manual.showNext ? 'next' : 'next tutorial'}
               </Button>
-            </Box>
-          )}
+            )}
+          </Box>
         </Box>
       }
       onClick={onClick}
@@ -293,7 +304,10 @@ const TutorialToggle = ({ name, onChange, ...props }) => {
     <TutorialTooltip anchor={anchor}>
       <ToolbarToggleButtonGroup
         {...props}
-        disabled={anchor !== manual.anchor}
+        disabled={
+          anchor !== manual.anchor &&
+          !manual.anchor.startsWith(`design#toggle-button(name=${name}&`)
+        }
         name={name}
         onChange={useAutoCallback((event, value) => {
           if ('value' in manual && manual.value === value) {
@@ -308,14 +322,36 @@ const TutorialToggle = ({ name, onChange, ...props }) => {
   );
 };
 
+const TutorialToggleButton = ({ name, value, ...props }) => {
+  const manual = React.useContext(TutorialContext);
+  const anchor = `design#toggle-button(name=${name}&value=${value})`;
+  return (
+    <TutorialTooltip anchor={anchor}>
+      <ToolbarToggleButton
+        {...props}
+        name={name}
+        disabled={anchor !== manual.anchor}
+        value={value}
+        onClick={useAutoCallback((event, value) => {
+          if ('value' in manual && manual.value === value) {
+            manual.next();
+          }
+        })}
+      />
+    </TutorialTooltip>
+  );
+};
+
 // eslint-disable-next-line
 const TutorialLayoutDesign = (props) => {
   return (
     <LayoutDesign
       {...props}
+      toggleButtonAs={TutorialToggleButton}
       toggleAs={TutorialToggle}
       inputAs={TutorialItemDesignInput}
       selectAs={TutorialItemDesignSelect}
+      sectionAs={TutorialSection}
     />
   );
 };
@@ -347,14 +383,7 @@ const TutorialSection = ({ id, ...props }) => {
   const anchor = `design#${id}`;
   return (
     <TutorialTooltip anchor={anchor}>
-      <SidebarSection
-        {...props}
-        id={id}
-        disabled={anchor !== manual.anchor}
-        onClick={useAutoCallback(() => {
-          manual.next();
-        })}
-      />
+      <SidebarSection {...props} id={id} disabled={anchor !== manual.anchor} />
     </TutorialTooltip>
   );
 };

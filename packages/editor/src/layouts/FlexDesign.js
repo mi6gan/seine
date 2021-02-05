@@ -31,8 +31,10 @@ const MAX_SPACING = 19;
 
 type Props = {
   defaults?: FlexFormat,
+  selectAs?: React.ComponentType,
   inputAs?: React.ComponentType,
   toggleAs?: React.ComponentType,
+  toggleButtonAs?: React.ComponentType,
 };
 
 /**
@@ -44,6 +46,7 @@ export default function FlexDesign({
   inputAs: Input = SidebarInput,
   selectAs: Select = SidebarSelect,
   toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
+  toggleButtonAs: ToggleButton = ToolbarToggleButton,
 }: Props) {
   const {
     layout: {
@@ -68,6 +71,7 @@ export default function FlexDesign({
               format: { spacing: +currentTarget.value },
             });
           })}
+          name={'spacing'}
           type={'number'}
           inputProps={{ min: 0, max: MAX_SPACING }}
         />
@@ -107,21 +111,21 @@ export default function FlexDesign({
             })
           )}
         >
-          <ToolbarToggleButton value={'flex-start'}>
+          <ToggleButton value={'flex-start'}>
             <FormatAlignLeft {...iconProps} />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'center'}>
+          <ToggleButton value={'center'}>
             <FormatAlignCenter {...iconProps} />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'flex-end'}>
+          <ToggleButton value={'flex-end'}>
             <FormatAlignRight {...iconProps} />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'space-between'}>
+          <ToggleButton value={'space-between'}>
             <FormatAlignJustify {...iconProps} />
-          </ToolbarToggleButton>
+          </ToggleButton>
         </ToggleButtonGroup>
       </SidebarGroup>
 
@@ -138,17 +142,17 @@ export default function FlexDesign({
             })
           )}
         >
-          <ToolbarToggleButton value={'flex-start'}>
+          <ToggleButton value={'flex-start'}>
             <VerticalAlignTop {...iconProps} />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'center'}>
+          <ToggleButton value={'center'}>
             <VerticalAlignCenter {...iconProps} />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'flex-end'}>
+          <ToggleButton value={'flex-end'}>
             <VerticalAlignBottom {...iconProps} />
-          </ToolbarToggleButton>
+          </ToggleButton>
         </ToggleButtonGroup>
       </SidebarGroup>
 
@@ -165,12 +169,12 @@ export default function FlexDesign({
             })
           )}
         >
-          <ToolbarToggleButton
+          <ToggleButton
             selected={wrap === 'wrap'}
             value={wrap === 'wrap' ? 'nowrap' : 'wrap'}
           >
             <WrapText />
-          </ToolbarToggleButton>
+          </ToggleButton>
         </ToggleButtonGroup>
       </SidebarGroup>
     </>

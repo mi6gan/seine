@@ -117,30 +117,6 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
       />
     )}
   </Story>
-  <Story name="Bar chart">
-    {() => (
-      <Tutorial
-        scenario={[
-          {
-            anchor: `tree-item#${rootBlock.id}`,
-            tooltip: 'Select your document root in tree view',
-          },
-          {
-            anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.CHART}&kind=${chartTypes.BAR})`,
-            tooltip: 'Click to add bar chart',
-          },
-          {
-            anchor: `block#${blockTypes.CHART}`,
-            tooltip:
-              'This is a new bar chart. To add chart of other types use corresponding toolbar buttons',
-            duration: 1000 * 5,
-            next: linkTo('Tutorials/Block', 'Layout'),
-          },
-        ]}
-        blocks={[rootBlock, richTextBlock, tableBlock]}
-      />
-    )}
-  </Story>
   <Story name="Layout">
     {() => (
       <Tutorial
@@ -158,10 +134,87 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
           },
           {
             anchor: `tree-item#${rootBlock.id}`,
-            tooltip: 'Select your document root in tree view',
+            tooltip: 'Select layout block in tree view.',
+          },
+          {
+            anchor: `design#layout-section-layout`,
+            tooltip: (
+              <>
+                This is layout toolbar. Like in CSS there is two types of auto
+                layout display modes:
+                <a
+                  target={'_blank'}
+                  href={
+                    'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout'
+                  }
+                >
+                  flex
+                </a> and <a
+                  target={'_blank'}
+                  href={
+                    'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout'
+                  }
+                >
+                  grid
+                </a>. By default, grid is used.
+              </>
+            ),
+            placement: 'right',
+            showNext: true,
+          },
+          {
+            anchor: `design#input(name=column-gap)`,
+            tooltip:
+              'You may change horizontal spacing (gap) between layout items.',
+            showNext: true,
+          },
+          {
+            anchor: `design#input(name=row-gap)`,
+            tooltip: 'And vertical spacing (gap) too.',
+            showNext: true,
+          },
+          {
+            anchor: `design#toggle-button(name=justify&value=center)`,
+            tooltip: 'Item alignment may be justified to the center of layout block.',
+          },
+          {
+            anchor: `design#toggle-button(name=justify&value=end)`,
+            tooltip: 'Or to it right-most side.',
+          },
+          {
+            anchor: `design#select(name=kind)`,
+            tooltip: "Let's Change grid to flex.",
+            value: 'flex',
+          },
+          {
+            anchor: `design#input(name=spacing)`,
+            tooltip: 'In flex mode horizontal and vertical spacings are equal.',
+            showNext: true,
           },
         ]}
-        blocks={[rootBlock]}
+        blocks={[rootBlock, richTextBlock, tableBlock]}
+      />
+    )}
+  </Story>
+  <Story name="Bar chart">
+    {() => (
+      <Tutorial
+        scenario={[
+          {
+            anchor: `tree-item#${rootBlock.id}`,
+            tooltip: 'Select your document root in tree view',
+          },
+          {
+            anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.CHART}&kind=${chartTypes.BAR})`,
+            tooltip: 'Click to add bar chart',
+          },
+          {
+            anchor: `block#${blockTypes.CHART}`,
+            tooltip:
+              'This is a new bar chart. To add chart of other types use corresponding toolbar buttons',
+          },
+        ]}
+        blocks={[rootBlock, richTextBlock, tableBlock]}
       />
     )}
   </Story>
