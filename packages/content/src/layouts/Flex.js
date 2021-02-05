@@ -22,8 +22,9 @@ export type { Props as FlexProps };
  */
 const Flex = styled((props) => (
   <Item {...useElementOnlyProps(props, defaultFlexFormat)} />
-)).attrs(({ theme, spacing }: FlexFormat) => ({
+)).attrs(({ theme, spacing, ...format }: FlexFormat) => ({
   ...defaultFlexFormat,
+  ...format,
   spacing: theme.spacing(spacing),
 }))`
   display: flex;

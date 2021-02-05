@@ -214,10 +214,6 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
             ),
           },
           {
-            anchor: `design#toggle-button(name=justify&value=end)`,
-            tooltip: 'Or to it right-most side.',
-          },
-          {
             anchor: `design#select(name=kind)`,
             tooltip: "Let's Change grid to flex.",
             value: 'flex',
@@ -226,6 +222,77 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
             anchor: `design#input(name=spacing)`,
             tooltip: 'In flex mode horizontal and vertical spacings are equal.',
             showNext: true,
+          },
+          {
+            anchor: '#layout',
+            tooltip: (
+              <>In flex layout we set constraints for each item individually.</>
+            ),
+          },
+          {
+            anchor: `block#${blockTypes.RICH_TEXT}`,
+            tooltip: 'Select first flex item',
+          },
+          {
+            anchor: `design#input(name=minWidth.value)`,
+            tooltip: 'Set minimum width value to 65%',
+            value: '65',
+          },
+          {
+            anchor: '#layout',
+            tooltip: (
+              <>
+                Now first block is guaranteed to take minimum 65% of container
+                width
+              </>
+            ),
+          },
+          {
+            anchor: `design#input(name=minWidth.value)`,
+            tooltip: 'Now set it to 5%',
+            value: '5',
+          },
+          {
+            anchor: `design#select(name=maxWidth.units)`,
+            tooltip: 'Select pixels',
+            value: 'px',
+          },
+          {
+            anchor: `design#input(name=maxWidth.value)`,
+            tooltip: 'Set maximum width value to 100px',
+            value: '100',
+          },
+          {
+            anchor: '#layout',
+            tooltip: <>Block width is limited to 100px maximum now</>,
+          },
+          {
+            anchor: `design#select(name=direction)`,
+            tooltip: 'Select column to align items from top to bottom',
+            value: 'column',
+          },
+          {
+            anchor: `design#toggle(name=wrap)`,
+            tooltip: 'Toggle wrap mode on.',
+            value: 'wrap',
+          },
+          {
+            anchor: '#layout',
+            tooltip: (
+              <>
+                Now blocks are wrapped to the next row if they do not fit
+                container.
+              </>
+            ),
+          },
+          {
+            anchor: '#layout',
+            tooltip: (
+              <>
+                Now blocks are wrapped to the next row if they do not fit
+                container.
+              </>
+            ),
           },
         ]}
         blocks={[rootBlock, richTextBlock, tableBlock]}

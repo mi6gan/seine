@@ -170,6 +170,7 @@ export default function FlexDesign({
           )}
         >
           <ToggleButton
+            name={'wrap'}
             selected={wrap === 'wrap'}
             value={wrap === 'wrap' ? 'nowrap' : 'wrap'}
           >

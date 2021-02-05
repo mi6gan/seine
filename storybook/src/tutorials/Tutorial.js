@@ -330,7 +330,10 @@ const TutorialToggleButton = ({ name, value, ...props }) => {
       <ToolbarToggleButton
         {...props}
         name={name}
-        disabled={anchor !== manual.anchor}
+        disabled={
+          anchor !== manual.anchor &&
+          manual.anchor !== `design#toggle(name=${name})`
+        }
         value={value}
         onClick={useAutoCallback((event, value) => {
           if ('value' in manual && manual.value === value) {
