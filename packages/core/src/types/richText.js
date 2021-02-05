@@ -2,7 +2,6 @@
 import type { RawDraftContentState } from 'draft-js/lib/RawDraftContentState';
 
 import type { ItemFormat } from './layout';
-import { defaultItemFormat } from './layout';
 
 export type RichTextBody = RawDraftContentState;
 
@@ -14,6 +13,9 @@ export type RichTextFormat = ItemFormat & {
   verticalAlignment: VerticalAlignment,
 };
 
-export const defaultRichTextFormat = defaultItemFormat;
+export const defaultRichTextFormat = {
+  textAlignment: 'left',
+  verticalAlignment: 'start',
+};
 
 export const RICH_TEXT = 'draft';

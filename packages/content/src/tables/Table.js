@@ -6,9 +6,14 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { Item } from '../layouts';
 import useBlock from '../useBlock';
 import { RichText, toDraftEditor, toRawContent } from '../richtexts';
+import useElementOnlyProps from '../useElementOnlyProps';
 
 import type { TableBody, TableFormat, defaultTableBody } from '@seine/core';
-import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
+import {
+  defaultTableFormat,
+  UPDATE_BLOCK_BODY,
+  UPDATE_BLOCK_EDITOR,
+} from '@seine/core';
 
 export type Props = TableBody &
   TableFormat & {
@@ -167,7 +172,7 @@ const Table = React.forwardRef(function Table(
   ref
 ) {
   return (
-    <Item {...itemProps} ref={ref}>
+    <Item {...useElementOnlyProps(itemProps, defaultTableFormat)} ref={ref}>
       <StyledTable>
         <thead>
           <tr>

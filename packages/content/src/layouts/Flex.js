@@ -2,9 +2,12 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 
+import useElementOnlyProps from '../useElementOnlyProps';
+
 import Item from './Item';
 
 import type { FlexBody, FlexFormat } from '@seine/core';
+import { defaultFlexFormat } from '@seine/core';
 
 type Props = (FlexBody & FlexFormat) & {
   children: React.ChildrenArray<React.Node>,
@@ -17,7 +20,11 @@ export type { Props as FlexProps };
  * @param {Props} props
  * @returns {React.Node}
  */
-const Flex = styled(Item).attrs(({ theme, spacing }: FlexFormat) => ({
+const Flex = styled((props) => (
+  <Item {...useElementOnlyProps(props, defaultFlexFormat)} />
+)).attrs(({ theme, spacing, ...format }: FlexFormat) => ({
+  ...defaultFlexFormat,
+  ...format,
   spacing: theme.spacing(spacing),
 }))`
   display: flex;
