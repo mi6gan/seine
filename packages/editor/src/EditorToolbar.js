@@ -72,8 +72,14 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
 
   return (
     <AppBar position={position} ref={ref}>
-      <Toolbar {...boxProps} ref={menuAnchorRef}>
-        <Box width={'40%'}>
+      <Toolbar
+        {...boxProps}
+        ref={menuAnchorRef}
+        flexDirection={{ xs: 'column', md: 'row' }}
+        alignItems={'center'}
+        justifyContent={'space-between'}
+      >
+        <Box flexGrow={0.25}>
           <ToolbarButton
             onClick={useAutoCallback(() => {
               if (itemMenu) {
@@ -294,7 +300,7 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
           </ToolbarButton>
         </Box>
 
-        <Box width={'20%'} textAlign={'center'}>
+        <Box flexGrow={0.75}>
           <ToolbarSelect
             native
             width={'5rem'}
@@ -328,7 +334,6 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
             <option value={'desktop'}>Desktop only</option>
           </ToolbarSelect>
         </Box>
-        <Box width={'40%'} />
       </Toolbar>
     </AppBar>
   );

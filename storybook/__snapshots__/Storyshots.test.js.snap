@@ -4,9 +4,9 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -543,9 +543,9 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -1068,9 +1068,9 @@ exports[`Storyshots Docs/Content Flex 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -2033,9 +2033,9 @@ exports[`Storyshots Docs/Content Image 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -2079,9 +2079,9 @@ exports[`Storyshots Docs/Content Line Chart 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -2849,9 +2849,9 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -3895,9 +3895,9 @@ exports[`Storyshots Docs/Content Page 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -3920,9 +3920,9 @@ exports[`Storyshots Docs/Content Pie Chart 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -4198,9 +4198,9 @@ exports[`Storyshots Docs/Content Table 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -4956,9 +4956,9 @@ exports[`Storyshots Docs/Content Text 1`] = `
 <div
   alignitems="auto"
   alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
   columngap="0"
-  columns="repeat(auto-fit,minmax(25ch,1fr))"
+  columnsize="25ch"
   flexbasis="auto"
   flexgrow="0"
   gridcolumn=""
@@ -5168,14 +5168,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -5347,8 +5346,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -5440,10 +5438,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -5639,9 +5633,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -5700,14 +5694,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -5879,8 +5872,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -5972,10 +5964,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -6172,9 +6160,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -6728,14 +6716,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -6907,8 +6894,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -7000,10 +6986,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -7199,9 +7181,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -7741,14 +7723,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -7920,8 +7901,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -8013,10 +7993,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -8376,9 +8352,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -9347,14 +9323,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -9526,8 +9501,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -9619,10 +9593,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -9818,9 +9788,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -9881,14 +9851,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -10060,8 +10029,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -10153,10 +10121,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -10352,9 +10316,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -10647,14 +10611,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -10826,8 +10789,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -10919,10 +10881,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -11118,9 +11076,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -11893,14 +11851,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -12072,8 +12029,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -12165,10 +12121,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -12364,9 +12316,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -12577,14 +12529,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -12756,8 +12707,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -12849,10 +12799,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -12965,9 +12911,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""
@@ -13004,14 +12950,13 @@ Array [
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
     <div
-      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 fyCYfX"
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
       color="grey.50"
       display="flex"
       width="100%"
     >
       <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
+        class="Box-cmayus-0 ekZQvI"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
@@ -13183,8 +13128,7 @@ Array [
         </button>
       </div>
       <div
-        class="Box-cmayus-0 hZUGaE"
-        width="20%"
+        class="Box-cmayus-0 hxUShx"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
@@ -13276,10 +13220,6 @@ Array [
           </svg>
         </div>
       </div>
-      <div
-        class="Box-cmayus-0 flENQx"
-        width="40%"
-      />
     </div>
   </header>,
   <div
@@ -13392,9 +13332,9 @@ Array [
           <div
             alignitems="auto"
             alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi cuERzl"
+            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
             columngap="0"
-            columns="repeat(auto-fit,minmax(25ch,1fr))"
+            columnsize="25ch"
             flexbasis="auto"
             flexgrow="0"
             gridcolumn=""

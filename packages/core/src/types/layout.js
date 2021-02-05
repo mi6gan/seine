@@ -48,10 +48,9 @@ export type GridBody = {};
 
 export type GridFormat = ItemFormat & {
   kind: 'grid',
-  columns?: string,
   columnGap?: string,
-  rows?: string,
   rowGap?: string,
+  columnSize?: number,
 };
 
 export type FlexBody = {};
@@ -92,12 +91,11 @@ export const defaultFlexFormat = {
 export const defaultGridFormat = {
   ...defaultItemFormat,
   kind: layoutTypes.GRID,
-  columns: 'repeat(auto-fit,minmax(25ch,1fr))',
   columnGap: 2,
   rowGap: 2,
-  rows: 'auto',
   justify: 'auto',
   alignItems: 'auto',
+  columnSize: '25ch',
 };
 
 export const defaultLayoutFormat = defaultGridFormat;

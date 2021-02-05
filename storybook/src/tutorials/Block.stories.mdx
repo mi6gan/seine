@@ -1,98 +1,127 @@
 import { Canvas, Story } from '@storybook/addon-docs/blocks';
-import {
-  blockTypes,
-  chartTypes,
-  CREATE_BLOCK,
-  createBlock,
-  defaultRichTextFormat,
-} from '@seine/core';
+import { blockTypes, chartTypes, CREATE_BLOCK } from '@seine/core';
+import { linkTo } from '@storybook/addon-links';
 import Tutorial from './Tutorial';
 import Meta from './TutorialMeta';
-import { rootBlock, richTextBlock, tableBlock } from '../data/richTextBlock';
-import { useAutoMemo } from 'hooks.macro';
+import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
 
 <Meta title={'Tutorials/Block'} />
 
 <Canvas>
-  <Story name="Adding new blocks">
+  <Story name="Introduction">
+    <Tutorial
+      scenario={[
+        {
+          anchor: '#introduction',
+          tooltip: (
+            <>
+              Editor content is based on blocks tree structure.
+              <br />
+              Let's try to create some blocks.
+            </>
+          ),
+          next: linkTo('Tutorials/Block', 'Text'),
+        },
+      ]}
+      blocks={[rootBlock]}
+    />
+  </Story>
+  <Story name="Text">
     {() => (
       <Tutorial
-        states={useAutoMemo({
-          Introduction: [rootBlock],
-          'Text block': [rootBlock],
-          'Table block': [rootBlock, richTextBlock],
-          'Bar chart': [rootBlock, richTextBlock, tableBlock],
-        })}
         scenario={[
           {
-            step: 'Introduction',
-            anchor: '#introduction',
-            tooltip: (
-              <>
-                Editor content is based on blocks tree structure.
-                <br />
-                Let's try to create some blocks.
-              </>
-            ),
-          },
-          {
-            step: 'Text block',
             anchor: `tree-item#${rootBlock.id}`,
             tooltip: 'Select your empty document root in tree view',
           },
           {
-            step: 'Text block',
             anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.RICH_TEXT}&kind=null)`,
             tooltip: 'Click on text toolbar button',
           },
           {
-            step: 'Text block',
             anchor: `block#${blockTypes.RICH_TEXT}`,
             tooltip:
               'This is a new block of text. Its content is editable. Select some text.',
           },
           {
-            step: 'Text block',
             anchor: `design#toggle(name=header)`,
             tooltip: 'Click to format text as heading.',
             value: 'header-one',
+            next: linkTo('Tutorials/Block', 'Table'),
           },
+        ]}
+        blocks={[rootBlock]}
+      />
+    )}
+  </Story>
+  <Story name="Table">
+    {() => (
+      <Tutorial
+        scenario={[
           {
-            step: 'Table block',
             anchor: `tree-item#${rootBlock.id}`,
             tooltip: 'Select your document root in tree view',
           },
           {
-            step: 'Table block',
             anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.TABLE}&kind=null)`,
             tooltip: 'Click on table toolbar button',
           },
           {
-            step: 'Table block',
             anchor: `block#${blockTypes.TABLE}`,
             tooltip:
-              'This is a new table with editable structure and cells content',
-            duration: 1000 * 5,
+              'This is a new table with editable structure and cells content. Select any cell',
           },
           {
-            step: 'Bar chart',
-            anchor: `tree-item#${rootBlock.id}`,
-            tooltip: 'Select your document root in tree view',
+            anchor: `design#action-button(value=add-column-after)`,
+            tooltip: 'Click to add new column before current.',
           },
           {
-            step: 'Bar chart',
-            anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.CHART}&kind=${chartTypes.BAR})`,
-            tooltip: 'Click to add bar chart',
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Column is added',
+            duration: 2 * 1000,
           },
           {
-            step: 'Bar chart',
-            anchor: `block#${blockTypes.CHART}`,
-            tooltip:
-              'This is a new bar chart. To add chart of other types use corresponding toolbar buttons',
-            duration: 1000 * 5,
+            anchor: `design#action-button(value=add-row-after)`,
+            tooltip: 'Click to add new row after current.',
           },
           {
-            step: 'Layout',
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Column is added',
+            duration: 2 * 1000,
+          },
+          {
+            anchor: `design#action-button(value=remove-row)`,
+            tooltip: 'Click to remove current row.',
+          },
+          {
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Column is added',
+            duration: 2 * 1000,
+          },
+          {
+            anchor: `design#action-button(value=remove-column)`,
+            tooltip: 'Click to remove current column.',
+          },
+          {
+            anchor: `block#${blockTypes.TABLE}`,
+            tooltip: 'Column is added',
+            duration: 2 * 1000,
+          },
+          {
+            anchor: `design#table-design-section-text`,
+            tooltip: 'You may format cell using rich text toolbar.',
+            next: linkTo('Tutorials/Block', 'Bar chart'),
+          },
+        ]}
+        blocks={[rootBlock, richTextBlock]}
+      />
+    )}
+  </Story>
+  <Story name="Layout">
+    {() => (
+      <Tutorial
+        scenario={[
+          {
             anchor: '#layout',
             tooltip: (
               <>
@@ -104,11 +133,88 @@ import { useAutoMemo } from 'hooks.macro';
             ),
           },
           {
-            step: 'Layout',
+            anchor: `tree-item#${rootBlock.id}`,
+            tooltip: 'Select layout block in tree view.',
+          },
+          {
+            anchor: `design#layout-section-layout`,
+            tooltip: (
+              <>
+                This is layout toolbar. Like in CSS there is two types of auto
+                layout display modes:
+                <a
+                  target={'_blank'}
+                  href={
+                    'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout'
+                  }
+                >
+                  flex
+                </a> and <a
+                  target={'_blank'}
+                  href={
+                    'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout'
+                  }
+                >
+                  grid
+                </a>. By default, grid is used.
+              </>
+            ),
+            placement: 'right',
+            showNext: true,
+          },
+          {
+            anchor: `design#input(name=column-gap)`,
+            tooltip:
+              'You may change horizontal spacing (gap) between layout items.',
+            showNext: true,
+          },
+          {
+            anchor: `design#input(name=row-gap)`,
+            tooltip: 'And vertical spacing (gap) too.',
+            showNext: true,
+          },
+          {
+            anchor: `design#toggle-button(name=justify&value=center)`,
+            tooltip: 'Item alignment may be justified to the center of layout block.',
+          },
+          {
+            anchor: `design#toggle-button(name=justify&value=end)`,
+            tooltip: 'Or to it right-most side.',
+          },
+          {
+            anchor: `design#select(name=kind)`,
+            tooltip: "Let's Change grid to flex.",
+            value: 'flex',
+          },
+          {
+            anchor: `design#input(name=spacing)`,
+            tooltip: 'In flex mode horizontal and vertical spacings are equal.',
+            showNext: true,
+          },
+        ]}
+        blocks={[rootBlock, richTextBlock, tableBlock]}
+      />
+    )}
+  </Story>
+  <Story name="Bar chart">
+    {() => (
+      <Tutorial
+        scenario={[
+          {
             anchor: `tree-item#${rootBlock.id}`,
             tooltip: 'Select your document root in tree view',
           },
+          {
+            anchor: `action-button#${CREATE_BLOCK}(type=${blockTypes.CHART}&kind=${chartTypes.BAR})`,
+            tooltip: 'Click to add bar chart',
+          },
+          {
+            anchor: `block#${blockTypes.CHART}`,
+            tooltip:
+              'This is a new bar chart. To add chart of other types use corresponding toolbar buttons',
+          },
         ]}
+        blocks={[rootBlock, richTextBlock, tableBlock]}
       />
     )}
   </Story>

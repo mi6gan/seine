@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoMemo, useAutoEffect } from 'hooks.macro';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import {
@@ -14,6 +14,7 @@ import {
   ToolbarToggleButtonGroup,
 } from '../ui';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
+import ConstraintInput from '../ui/ConstraintInput';
 
 import useSelectedLayoutItems from './useSelectedLayoutItems';
 
@@ -73,41 +74,6 @@ type Props = {
   selectAs?: React.ComponentType,
 };
 
-const ConstrainInput = ({
-  inputAs: Input,
-  selectAs: Select,
-  name,
-  value,
-  onChange,
-  ...InputProps
-}) => (
-  <Input
-    {...InputProps}
-    type={'number'}
-    name={`${name}.value`}
-    onChange={onChange}
-    defaultValue={parseFloat(value) || ''}
-    width={'5.5rem'}
-    mr={0}
-    endAdornment={
-      <Select
-        native
-        width={'4ch'}
-        textAlign={'right'}
-        fontSize={'0.75rem'}
-        name={`${name}.units`}
-        onChange={onChange}
-        defaultValue={`${value}`.replace(/\d/g, '')}
-        disableUnderline
-      >
-        <option value={'%'}>%</option>
-        <option value={'px'}>px</option>
-        <option value={'rem'}>rem</option>
-      </Select>
-    }
-  />
-);
-
 const ItemDesign = React.forwardRef(function ItemDesign(
   {
     inputAs: Input = SidebarInput,
@@ -155,7 +121,6 @@ const ItemDesign = React.forwardRef(function ItemDesign(
       },
     });
   });
-  const timeoutsRef = React.useRef({});
 
   let position = [justifySelf, alignSelf];
   if (layoutType === 'flex' && layoutDirection === 'column') {
@@ -163,105 +128,59 @@ const ItemDesign = React.forwardRef(function ItemDesign(
   }
   position = position.join(' ');
 
-  const changeConstraint = useAutoCallback(({ currentTarget }) => {
-    const { form } = currentTarget;
-
-    const [name, field] = currentTarget.name.split('.');
-
-    const valueElement: HTMLInputElement = form.elements.namedItem(
-      `${name}.value`
-    );
-    const unitsElement = form.elements.namedItem(`${name}.units`);
-
-    const { value } = valueElement;
-    const { value: units } = unitsElement;
-
-    const submit = () => {
-      dispatch({
-        id,
-        type: UPDATE_BLOCK_FORMAT,
-        format: {
-          [name]: field === 'value' && value ? `${value}${units}` : null,
-        },
-      });
-    };
-
-    if (field === 'units') {
-      submit();
-      valueElement.value = '';
-      valueElement.focus();
-    } else {
-      const {
-        current: { [name]: timeout = null, ...timeouts },
-      } = timeoutsRef;
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-      timeoutsRef.current = {
-        ...timeouts,
-        [name]: setTimeout(submit, 500),
-      };
-    }
-  });
-
-  useAutoEffect(() => () => {
-    Object.values(timeoutsRef.current).forEach((timeout) => {
-      clearTimeout(timeout);
-    });
-    timeoutsRef.current = {};
-  });
-
   return (
     <SidebarSection {...sectionProps} as={'form'} ref={ref} key={id}>
       <SidebarHeading>Constraints</SidebarHeading>
 
-      <SidebarGroup alignItems={'baseline'} mb={0}>
-        <SidebarLabel>width</SidebarLabel>
-        <Box display={'flex'} mr={1}>
-          <ConstrainInput
-            inputAs={Input}
-            inputProps={{ placeholder: 'min', min: 0 }}
-            selectAs={Select}
-            name={'minWidth'}
-            value={minWidth}
-            onChange={changeConstraint}
-          />
-        </Box>
-        {type !== blockTypes.IMAGE && (
-          <Box display={'flex'}>
-            <ConstrainInput
+      {layoutType === 'flex' && (
+        <SidebarGroup alignItems={'baseline'} mb={0}>
+          <SidebarLabel>width</SidebarLabel>
+          <Box display={'flex'} mr={1}>
+            <ConstraintInput
+              id={id}
               inputAs={Input}
-              inputProps={{ placeholder: 'max', min: 0 }}
+              inputProps={{ placeholder: 'min', min: 0 }}
               selectAs={Select}
-              name={'maxWidth'}
-              value={maxWidth}
-              onChange={changeConstraint}
+              name={'minWidth'}
+              value={minWidth}
             />
           </Box>
-        )}
-      </SidebarGroup>
+          {type !== blockTypes.IMAGE && (
+            <Box display={'flex'}>
+              <ConstraintInput
+                id={id}
+                inputAs={Input}
+                inputProps={{ placeholder: 'max', min: 0 }}
+                selectAs={Select}
+                name={'maxWidth'}
+                value={maxWidth}
+              />
+            </Box>
+          )}
+        </SidebarGroup>
+      )}
 
       <SidebarGroup alignItems={'baseline'} mb={0}>
         <SidebarLabel>height</SidebarLabel>
         <Box display={'flex'} mr={1}>
-          <ConstrainInput
+          <ConstraintInput
+            id={id}
             inputAs={Input}
             inputProps={{ placeholder: 'min', min: 0 }}
             selectAs={Select}
             name={'minHeight'}
             value={minHeight}
-            onChange={changeConstraint}
           />
         </Box>
         {type !== blockTypes.IMAGE && (
           <Box display={'flex'}>
-            <ConstrainInput
+            <ConstraintInput
+              id={id}
               inputAs={Input}
               inputProps={{ placeholder: 'max', min: 0 }}
               selectAs={Select}
               name={'maxHeight'}
               value={maxHeight}
-              onChange={changeConstraint}
             />
           </Box>
         )}

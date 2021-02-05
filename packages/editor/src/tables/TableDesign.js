@@ -41,16 +41,7 @@ import {
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 import { SvgIcon } from '@seine/styles/mui-core.macro';
-
-const StructureActionButton = styled(EditorActionIconButton).attrs({
-  borderColor: 'transparent',
-  variant: 'outlined',
-  size: 'small',
-})`
-  && {
-    padding: 7px;
-  }
-`;
+import { Box } from '@seine/styles';
 
 const SvgText = styled.text.attrs({
   textAnchor: 'middle',
@@ -61,11 +52,24 @@ const SvgText = styled.text.attrs({
   y: '50%',
 })``;
 
+type Props = {
+  inputAs?: React.ComponentType,
+  toggleAs?: React.ComponentType,
+  sectionAs?: React.ComponentType,
+  actionIconButtonAs?: React.ComponentType,
+};
+
 /**
  * @description Table design panel.
+ * @param {Props} props
  * @returns {React.Node}
  */
-export default function TableDesign() {
+export default function TableDesign({
+  toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
+  actionIconButtonAs: ActionButton = EditorActionIconButton,
+  sectionAs: Section = SidebarSection,
+  inputAs: Input = SidebarInput,
+}: Props) {
   const dispatch = useBlocksDispatch();
   const {
     item: {
@@ -104,143 +108,158 @@ export default function TableDesign() {
 
   return (
     <>
-      <SidebarSection {...(columnIndex === -1 && { display: 'none' })}>
+      <Section
+        {...(columnIndex === -1 && { display: 'none' })}
+        id={'table-design-section-table'}
+      >
         <SidebarHeading>Table</SidebarHeading>
         <SidebarGroup>
           <SidebarLabel>structure</SidebarLabel>
-          <SidebarButtonGroup>
-            <StructureActionButton
-              color={'success.light'}
-              Icon={TableColumnPlusBeforeIcon}
-              body={useAutoMemo(
-                columnIndex > -1
-                  ? {
-                      header: [
-                        ...header.slice(0, columnIndex),
-                        defaultTableCell,
-                        ...header.slice(columnIndex),
-                      ],
-                      rows: rows.map((row) => [
-                        ...row.slice(0, columnIndex),
-                        defaultTableCell,
-                        ...row.slice(columnIndex),
-                      ]),
-                    }
-                  : {
-                      header: [defaultTableCell, ...header],
-                      rows: rows.map((row) => [defaultTableCell, ...row]),
-                    }
-              )}
-              id={id}
-              type={UPDATE_BLOCK_BODY}
-              dispatch={dispatch}
-              title={'Add column before'}
-            />
-
-            <StructureActionButton
-              color={'success.light'}
-              Icon={TableColumnPlusAfterIcon}
-              body={useAutoMemo(
-                columnIndex > -1
-                  ? {
-                      header: [
-                        ...header.slice(0, columnIndex + 1),
-                        defaultTableCell,
-                        ...header.slice(columnIndex + 1),
-                      ],
-                      rows: rows.map((row) => [
-                        ...row.slice(0, columnIndex + 1),
-                        defaultTableCell,
-                        ...row.slice(columnIndex + 1),
-                      ]),
-                    }
-                  : {
-                      header: [...header, defaultTableCell],
-                      rows: rows.map((row) => [...row, defaultTableCell]),
-                    }
-              )}
-              id={id}
-              type={UPDATE_BLOCK_BODY}
-              dispatch={dispatch}
-              title={'Add column after'}
-            />
-
-            <StructureActionButton
-              color={'error.light'}
-              Icon={TableColumnRemoveIcon}
-              disabled={!(rows.length && rows[0].length > 1)}
-              body={useAutoMemo({
-                header: [
-                  ...header.slice(0, columnIndex),
-                  ...header.slice(columnIndex + 1),
-                ],
-                rows: rows.map((row) => [
-                  ...row.slice(0, columnIndex),
-                  ...row.slice(columnIndex + 1),
-                ]),
-              })}
-              id={id}
-              type={UPDATE_BLOCK_BODY}
-              dispatch={dispatch}
-              title={'Remove column'}
-            />
-
-            <StructureActionButton
-              color={'success.light'}
-              Icon={TableRowPlusBeforeIcon}
-              body={useAutoMemo({
-                rows:
+          <Box>
+            <SidebarButtonGroup>
+              <ActionButton
+                color={'success.light'}
+                Icon={TableColumnPlusBeforeIcon}
+                body={useAutoMemo(
                   columnIndex > -1
-                    ? [
-                        ...rows.slice(0, rowIndex),
-                        rows[0].map(() => defaultTableCell),
-                        ...rows.slice(rowIndex),
-                      ]
-                    : [rows[0].map(() => defaultTableCell), ...rows],
-              })}
-              id={id}
-              type={UPDATE_BLOCK_BODY}
-              dispatch={dispatch}
-              title={'Add row before'}
-            />
+                    ? {
+                        header: [
+                          ...header.slice(0, columnIndex),
+                          defaultTableCell,
+                          ...header.slice(columnIndex),
+                        ],
+                        rows: rows.map((row) => [
+                          ...row.slice(0, columnIndex),
+                          defaultTableCell,
+                          ...row.slice(columnIndex),
+                        ]),
+                      }
+                    : {
+                        header: [defaultTableCell, ...header],
+                        rows: rows.map((row) => [defaultTableCell, ...row]),
+                      }
+                )}
+                id={id}
+                type={UPDATE_BLOCK_BODY}
+                dispatch={dispatch}
+                title={'Add column before'}
+                value={'add-column-before'}
+              />
 
-            <StructureActionButton
-              color={'success.light'}
-              Icon={TableRowPlusAfterIcon}
-              body={useAutoMemo({
-                rows:
+              <ActionButton
+                color={'success.light'}
+                Icon={TableColumnPlusAfterIcon}
+                body={useAutoMemo(
                   columnIndex > -1
-                    ? [
-                        ...rows.slice(0, rowIndex + 1),
-                        rows[0].map(() => defaultTableCell),
-                        ...rows.slice(rowIndex + 1),
-                      ]
-                    : [...rows, rows.map(() => defaultTableCell)],
-              })}
-              id={id}
-              type={UPDATE_BLOCK_BODY}
-              dispatch={dispatch}
-              title={'Add row after'}
-            />
+                    ? {
+                        header: [
+                          ...header.slice(0, columnIndex + 1),
+                          defaultTableCell,
+                          ...header.slice(columnIndex + 1),
+                        ],
+                        rows: rows.map((row) => [
+                          ...row.slice(0, columnIndex + 1),
+                          defaultTableCell,
+                          ...row.slice(columnIndex + 1),
+                        ]),
+                      }
+                    : {
+                        header: [...header, defaultTableCell],
+                        rows: rows.map((row) => [...row, defaultTableCell]),
+                      }
+                )}
+                id={id}
+                type={UPDATE_BLOCK_BODY}
+                dispatch={dispatch}
+                title={'Add column after'}
+                value={'add-column-after'}
+              />
 
-            <StructureActionButton
-              color={'error.light'}
-              Icon={TableRowRemoveIcon}
-              body={useAutoMemo({
-                rows: [...rows.slice(0, rowIndex), ...rows.slice(rowIndex + 1)],
-              })}
-              disabled={!(rows.length > 1)}
-              id={id}
-              type={UPDATE_BLOCK_BODY}
-              dispatch={dispatch}
-              title={'Remove row'}
-            />
-          </SidebarButtonGroup>
+              <ActionButton
+                color={'error.light'}
+                Icon={TableColumnRemoveIcon}
+                disabled={!(rows.length && rows[0].length > 1)}
+                body={useAutoMemo({
+                  header: [
+                    ...header.slice(0, columnIndex),
+                    ...header.slice(columnIndex + 1),
+                  ],
+                  rows: rows.map((row) => [
+                    ...row.slice(0, columnIndex),
+                    ...row.slice(columnIndex + 1),
+                  ]),
+                })}
+                id={id}
+                type={UPDATE_BLOCK_BODY}
+                dispatch={dispatch}
+                title={'Remove column'}
+                value={'remove-column'}
+              />
+            </SidebarButtonGroup>
+
+            <SidebarButtonGroup>
+              <ActionButton
+                color={'success.light'}
+                Icon={TableRowPlusBeforeIcon}
+                body={useAutoMemo({
+                  rows:
+                    columnIndex > -1
+                      ? [
+                          ...rows.slice(0, rowIndex),
+                          rows[0].map(() => defaultTableCell),
+                          ...rows.slice(rowIndex),
+                        ]
+                      : [rows[0].map(() => defaultTableCell), ...rows],
+                })}
+                id={id}
+                type={UPDATE_BLOCK_BODY}
+                dispatch={dispatch}
+                title={'Add row before'}
+                value={'add-row-before'}
+              />
+
+              <ActionButton
+                color={'success.light'}
+                Icon={TableRowPlusAfterIcon}
+                body={useAutoMemo({
+                  rows:
+                    columnIndex > -1
+                      ? [
+                          ...rows.slice(0, rowIndex + 1),
+                          rows[0].map(() => defaultTableCell),
+                          ...rows.slice(rowIndex + 1),
+                        ]
+                      : [...rows, rows.map(() => defaultTableCell)],
+                })}
+                id={id}
+                type={UPDATE_BLOCK_BODY}
+                dispatch={dispatch}
+                value={'add-row-after'}
+              />
+
+              <ActionButton
+                color={'error.light'}
+                Icon={TableRowRemoveIcon}
+                body={useAutoMemo({
+                  rows: [
+                    ...rows.slice(0, rowIndex),
+                    ...rows.slice(rowIndex + 1),
+                  ],
+                })}
+                disabled={!(rows.length > 1)}
+                id={id}
+                type={UPDATE_BLOCK_BODY}
+                dispatch={dispatch}
+                title={'Remove row'}
+                value={'remove-row'}
+              />
+            </SidebarButtonGroup>
+          </Box>
         </SidebarGroup>
 
         <SidebarGroup>
           <SidebarLabel>column %</SidebarLabel>
-          <SidebarInput
+          <Input
             type={'number'}
             inputProps={{ min: 0, max: 100 }}
             value={header[columnIndex] ? header[columnIndex].width : ''}
@@ -261,15 +280,12 @@ export default function TableDesign() {
             )}
           />
         </SidebarGroup>
-      </SidebarSection>
-      <SidebarSection>
+      </Section>
+      <Section id={'table-design-section-text'}>
         <SidebarHeading>Rich text</SidebarHeading>
         <SidebarGroup>
           <SidebarLabel>heading</SidebarLabel>
-          <ToolbarToggleButtonGroup
-            value={blockType}
-            onChange={toggleBlockType}
-          >
+          <ToggleButtonGroup value={blockType} onChange={toggleBlockType}>
             <ToolbarToggleButton value={'header-one'}>
               <SvgIcon>
                 <SvgText>H1</SvgText>
@@ -287,14 +303,11 @@ export default function TableDesign() {
                 <SvgText>H3</SvgText>
               </SvgIcon>
             </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
+          </ToggleButtonGroup>
         </SidebarGroup>
         <SidebarGroup alignItems={'center'}>
           <SidebarLabel>&nbsp;</SidebarLabel>
-          <ToolbarToggleButtonGroup
-            value={blockType}
-            onChange={toggleBlockType}
-          >
+          <ToggleButtonGroup value={blockType} onChange={toggleBlockType}>
             <ToolbarToggleButton value={'header-four'}>
               <SvgIcon>
                 <SvgText>H4</SvgText>
@@ -306,15 +319,11 @@ export default function TableDesign() {
                 <SvgText>H5</SvgText>
               </SvgIcon>
             </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
+          </ToggleButtonGroup>
         </SidebarGroup>
-
         <SidebarGroup>
           <SidebarLabel>list</SidebarLabel>
-          <ToolbarToggleButtonGroup
-            value={blockType}
-            onChange={toggleBlockType}
-          >
+          <ToggleButtonGroup value={blockType} onChange={toggleBlockType}>
             <ToolbarToggleButton value={'ordered-list-item'}>
               <FormatListNumbered />
             </ToolbarToggleButton>
@@ -322,12 +331,12 @@ export default function TableDesign() {
             <ToolbarToggleButton value={'unordered-list-item'}>
               <FormatListBulleted />
             </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
+          </ToggleButtonGroup>
         </SidebarGroup>
 
         <SidebarGroup>
           <SidebarLabel>style</SidebarLabel>
-          <ToolbarToggleButtonGroup
+          <ToggleButtonGroup
             value={useAutoMemo(
               editorState ? [...editorState.getCurrentInlineStyle()] : []
             )}
@@ -352,13 +361,12 @@ export default function TableDesign() {
             <ToolbarToggleButton value={'UNDERLINE'}>
               <FormatUnderlined />
             </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
+          </ToggleButtonGroup>
         </SidebarGroup>
-
         <SidebarGroup>
           <SidebarLabel>alignment</SidebarLabel>
 
-          <ToolbarToggleButtonGroup
+          <ToggleButtonGroup
             value={cell && cell.align}
             onChange={useAutoCallback((event, align) => {
               const { align: lastAlign, ...value } = cell;
@@ -400,9 +408,9 @@ export default function TableDesign() {
             <ToolbarToggleButton value={'right'} selected={isRight}>
               <FormatAlignRight />
             </ToolbarToggleButton>
-          </ToolbarToggleButtonGroup>
+          </ToggleButtonGroup>
         </SidebarGroup>
-      </SidebarSection>
+      </Section>
     </>
   );
 }

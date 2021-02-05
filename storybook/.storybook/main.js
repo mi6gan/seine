@@ -10,6 +10,7 @@ module.exports = {
     '@storybook/addon-controls',
     '@storybook/addon-viewport',
     '@storybook/addon-actions',
+    '@storybook/addon-links',
     require.resolve('./yarn-preset.js'),
   ],
 };
