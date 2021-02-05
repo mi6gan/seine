@@ -5,8 +5,8 @@
   "author": "Mikhail Boyarov",
   "private": true,
   "scripts": {
-    "start": "yarn start-storybook --port 3000",
-    "build": "yarn build-storybook --quiet --loglevel warn"
+    "start": "yarn start-storybook -s public --port 3000",
+    "build": "yarn build-storybook -s public --quiet --loglevel warn"
   },
   "license": "MIT",
   "dependencies": {

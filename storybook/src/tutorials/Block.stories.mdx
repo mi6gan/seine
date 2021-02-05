@@ -44,9 +44,10 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
               'This is a new block of text. Its content is editable. Select some text.',
           },
           {
-            anchor: `design#toggle-button(name=header&value=header-one)`,
-            tooltip: 'Click to format text as heading.',
-            value: 'header-one',
+            anchor: `design#rich-text-section`,
+            tooltip:
+              'Try to type a text and format it using following toolbar.',
+            showNext: true,
             next: linkTo('Tutorials/Block', 'Table'),
           },
         ]}
@@ -315,6 +316,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
             anchor: `block#${blockTypes.CHART}`,
             tooltip:
               'This is a new bar chart. To add chart of other types use corresponding toolbar buttons',
+            next: linkTo('Tutorials/Video'),
           },
         ]}
         blocks={[rootBlock, richTextBlock, tableBlock]}
