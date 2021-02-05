@@ -44,7 +44,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
               'This is a new block of text. Its content is editable. Select some text.',
           },
           {
-            anchor: `design#toggle(name=header)`,
+            anchor: `design#toggle-button(name=header&value=header-one)`,
             tooltip: 'Click to format text as heading.',
             value: 'header-one',
             next: linkTo('Tutorials/Block', 'Table'),
@@ -72,12 +72,12 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
               'This is a new table with editable structure and cells content. Select any cell',
           },
           {
-            anchor: `design#action-button(value=add-column-after)`,
+            anchor: `design#action-button(value=add-column-before)`,
             tooltip: 'Click to add new column before current.',
           },
           {
             anchor: `block#${blockTypes.TABLE}`,
-            tooltip: 'Column is added',
+            tooltip: 'Column added',
             duration: 2 * 1000,
           },
           {
@@ -86,7 +86,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
           },
           {
             anchor: `block#${blockTypes.TABLE}`,
-            tooltip: 'Column is added',
+            tooltip: 'Row added',
             duration: 2 * 1000,
           },
           {
@@ -95,7 +95,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
           },
           {
             anchor: `block#${blockTypes.TABLE}`,
-            tooltip: 'Column is added',
+            tooltip: 'Row removed',
             duration: 2 * 1000,
           },
           {
@@ -104,7 +104,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
           },
           {
             anchor: `block#${blockTypes.TABLE}`,
-            tooltip: 'Column is added',
+            tooltip: 'Column removed',
             duration: 2 * 1000,
           },
           {
@@ -174,8 +174,44 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
             showNext: true,
           },
           {
-            anchor: `design#toggle-button(name=justify&value=center)`,
-            tooltip: 'Item alignment may be justified to the center of layout block.',
+            anchor: `design#select(name=minSize.units)`,
+            tooltip: 'Select pixels to use as cell size constraint unit',
+            value: 'px',
+          },
+          {
+            anchor: `design#input(name=minSize.value)`,
+            tooltip:
+              'This value corresponds to the minimum width of grid column. Set it to 900px',
+            value: '900',
+          },
+          {
+            anchor: '#layout',
+            tooltip: (
+              <>
+                Second grid cell is wrapped to the new row. <br />
+                It happens because 900px does not fit in parent container width.
+              </>
+            ),
+          },
+          {
+            anchor: `design#select(name=maxSize.units)`,
+            tooltip: 'Select percentage to use as cell size constraint unit',
+            value: '%',
+          },
+          {
+            anchor: `design#input(name=maxSize.value)`,
+            tooltip:
+              'This value corresponds to the maximum width of grid column. Set it to 50%',
+            value: '50',
+          },
+          {
+            anchor: '#layout',
+            tooltip: (
+              <>
+                Setting maximum width to a value allows cells to overflow the
+                parent to prevent wrapping to the new row.
+              </>
+            ),
           },
           {
             anchor: `design#toggle-button(name=justify&value=end)`,

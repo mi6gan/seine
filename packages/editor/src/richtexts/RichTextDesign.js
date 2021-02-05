@@ -41,6 +41,7 @@ const SvgText = styled.text.attrs({
 
 type Props = {
   toggleAs?: React.ComponentType,
+  toggleButtonAs?: React.ComponentType,
 };
 
 /**
@@ -50,6 +51,7 @@ type Props = {
  */
 export default function RichTextDesign({
   toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
+  toggleButtonAs: ToggleButton = ToolbarToggleButton,
 }: Props) {
   const {
     item: {
@@ -90,57 +92,57 @@ export default function RichTextDesign({
           onChange={toggleBlockType}
           name={'header'}
         >
-          <ToolbarToggleButton value={'header-one'}>
+          <ToggleButton name={'header'} value={'header-one'}>
             <SvgIcon>
               <SvgText>H1</SvgText>
             </SvgIcon>
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'header-two'}>
+          <ToggleButton name={'header'} value={'header-two'}>
             <SvgIcon>
               <SvgText>H2</SvgText>
             </SvgIcon>
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'header-three'}>
+          <ToggleButton name={'header'} value={'header-three'}>
             <SvgIcon>
               <SvgText>H3</SvgText>
             </SvgIcon>
-          </ToolbarToggleButton>
+          </ToggleButton>
         </ToggleButtonGroup>
       </SidebarGroup>
       <SidebarGroup alignItems={'center'}>
         <SidebarLabel>&nbsp;</SidebarLabel>
         <ToolbarToggleButtonGroup value={blockType} onChange={toggleBlockType}>
-          <ToolbarToggleButton value={'header-four'}>
+          <ToggleButton value={'header-four'}>
             <SvgIcon>
               <SvgText>H4</SvgText>
             </SvgIcon>
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'header-five'}>
+          <ToggleButton value={'header-five'}>
             <SvgIcon>
               <SvgText>H5</SvgText>
             </SvgIcon>
-          </ToolbarToggleButton>
+          </ToggleButton>
         </ToolbarToggleButtonGroup>
       </SidebarGroup>
 
       <SidebarGroup>
         <SidebarLabel>list</SidebarLabel>
-        <ToolbarToggleButtonGroup
+        <ToggleButtonGroup
           value={blockType}
           onChange={toggleBlockType}
           name={'list'}
         >
-          <ToolbarToggleButton value={'ordered-list-item'}>
+          <ToggleButton value={'ordered-list-item'}>
             <FormatListNumbered />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'unordered-list-item'}>
+          <ToggleButton value={'unordered-list-item'}>
             <FormatListBulleted />
-          </ToolbarToggleButton>
-        </ToolbarToggleButtonGroup>
+          </ToggleButton>
+        </ToggleButtonGroup>
       </SidebarGroup>
 
       <SidebarGroup>
@@ -160,17 +162,17 @@ export default function RichTextDesign({
           })}
           name={'weight'}
         >
-          <ToolbarToggleButton value={'BOLD'}>
+          <ToggleButton value={'BOLD'}>
             <FormatBold />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'ITALIC'}>
+          <ToggleButton value={'ITALIC'}>
             <FormatItalic />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'UNDERLINE'}>
+          <ToggleButton value={'UNDERLINE'}>
             <FormatUnderlined />
-          </ToolbarToggleButton>
+          </ToggleButton>
         </ToggleButtonGroup>
       </SidebarGroup>
 
@@ -187,17 +189,17 @@ export default function RichTextDesign({
           })}
           name={'alignment'}
         >
-          <ToolbarToggleButton value={'left'}>
+          <ToggleButton value={'left'}>
             <FormatAlignLeft />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'center'}>
+          <ToggleButton value={'center'}>
             <FormatAlignCenter />
-          </ToolbarToggleButton>
+          </ToggleButton>
 
-          <ToolbarToggleButton value={'right'}>
+          <ToggleButton value={'right'}>
             <FormatAlignRight />
-          </ToolbarToggleButton>
+          </ToggleButton>
         </ToggleButtonGroup>
       </SidebarGroup>
     </SidebarSection>

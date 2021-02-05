@@ -102,7 +102,6 @@ export default function GridDesign({
             value={maxSize}
           />
         </Box>
-        )}
       </SidebarGroup>
     </>
   );

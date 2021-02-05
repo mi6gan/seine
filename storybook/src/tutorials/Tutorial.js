@@ -358,7 +358,13 @@ const TutorialLayoutDesign = (props) => {
 
 // eslint-disable-next-line
 const TutorialRichTextDesign = (props) => {
-  return <RichTextDesign {...props} toggleAs={TutorialToggle} />;
+  return (
+    <RichTextDesign
+      {...props}
+      toggleAs={TutorialToggle}
+      toggleButtonAs={TutorialToggleButton}
+    />
+  );
 };
 
 const TutorialActionIconButton = ({ value, ...props }) => {
