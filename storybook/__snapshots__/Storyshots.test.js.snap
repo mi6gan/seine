@@ -2,7 +2,7 @@
 
 exports[`Storyshots Docs/Content Bar Chart 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -523,7 +523,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
 
 exports[`Storyshots Docs/Content Column Chart 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -1030,7 +1030,7 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
 
 exports[`Storyshots Docs/Content Flex 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -1787,7 +1787,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
 
 exports[`Storyshots Docs/Content Image 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -1802,7 +1802,7 @@ exports[`Storyshots Docs/Content Image 1`] = `
 
 exports[`Storyshots Docs/Content Line Chart 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -2554,7 +2554,7 @@ exports[`Storyshots Docs/Content Line Chart 1`] = `
 
 exports[`Storyshots Docs/Content Nested Flex 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -3359,14 +3359,14 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
 
 exports[`Storyshots Docs/Content Page 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 />
 `;
 
 exports[`Storyshots Docs/Content Pie Chart 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -3626,7 +3626,7 @@ exports[`Storyshots Docs/Content Pie Chart 1`] = `
 
 exports[`Storyshots Docs/Content Table 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -4209,7 +4209,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
 
 exports[`Storyshots Docs/Content Text 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
 >
   <div
@@ -4854,7 +4854,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           >
             <div
@@ -5350,7 +5350,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           >
             <div
@@ -6353,7 +6353,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           >
             <div
@@ -7506,7 +7506,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           >
             <div
@@ -8748,7 +8748,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           >
             <div
@@ -9245,7 +9245,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           >
             <div
@@ -9987,7 +9987,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           >
             <div
@@ -11052,7 +11052,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           >
             <div
@@ -11629,7 +11629,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           />
         </div>
@@ -12032,7 +12032,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
           />
         </div>
@@ -12047,4 +12047,13 @@ Array [
     </div>
   </div>,
 ]
+`;
+
+exports[`Storyshots Tutorials/Video Table and column charts 1`] = `
+<video
+  autoplay=""
+  controls=""
+  src="/tutorial-layout-one.mp4"
+  width="100%"
+/>
 `;
