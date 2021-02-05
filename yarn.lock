@@ -20801,6 +20801,7 @@ resolve@^1.18.1:
     "@storybook/addon-actions": ^6.1.14
     "@storybook/addon-controls": ^6.1.14
     "@storybook/addon-docs": ^6.1.14
+    "@storybook/addon-links": ^6.1.15
     "@storybook/addon-storyshots": ^6.1.14
     "@storybook/addon-viewport": ^6.1.14
     "@storybook/addons": ^6.1.14
