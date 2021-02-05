@@ -6,6 +6,7 @@ import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import { Item } from '../layouts';
 import useBlock from '../useBlock';
 import { RichText, toDraftEditor, toRawContent } from '../richtexts';
+import useElementOnlyProps from '../useElementOnlyProps';
 
 import type { TableBody, TableFormat, defaultTableBody } from '@seine/core';
 import {
@@ -13,7 +14,6 @@ import {
   UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
-import useElementOnlyProps from '../useElementOnlyProps';
 
 export type Props = TableBody &
   TableFormat & {
