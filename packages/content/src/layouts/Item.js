@@ -3,6 +3,8 @@ import * as React from 'react';
 import type { ComponentType } from 'react';
 import styled from 'styled-components/macro';
 
+import useElementOnlyProps from '../useElementOnlyProps';
+
 import type { ItemBody, ItemFormat } from '@seine/core';
 import { defaultItemFormat } from '@seine/core';
 
@@ -11,7 +13,9 @@ type Props = ItemBody & $Shape<ItemFormat>;
 export type { Props as ItemProps };
 
 const Item = styled(
-  React.forwardRef(({ id, ...props }, ref) => <div ref={ref} {...props} />)
+  React.forwardRef(({ id, ...props }, ref) => (
+    <div ref={ref} {...useElementOnlyProps(props, defaultItemFormat)} />
+  ))
 ).attrs((format: Props) => ({
   ...defaultItemFormat,
   ...format,

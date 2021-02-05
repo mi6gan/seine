@@ -10,8 +10,12 @@ import { useSelectedLayoutItems } from '../layouts';
 import { ItemMenuContext } from '../EditorItemMenu';
 
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';
-import { UPDATE_BLOCK_BODY, UPDATE_BLOCK_EDITOR } from '@seine/core';
-import { defaultDraftBody, defaultDraftFormat, RichText } from '@seine/content';
+import {
+  defaultRichTextFormat,
+  UPDATE_BLOCK_BODY,
+  UPDATE_BLOCK_EDITOR,
+} from '@seine/core';
+import { defaultDraftBody, RichText } from '@seine/content';
 
 type Props = (RichTextBody & RichTextFormat & BlockEditor) & {
   id: string,
@@ -39,7 +43,7 @@ const RichTextEditor = React.forwardRef(function RichTextEditor(
     editor: { state = defaultDraftEditor.state } = defaultDraftEditor,
     blocks = defaultDraftBody.blocks,
     entityMap = defaultDraftBody.entityMap,
-    textAlignment = defaultDraftFormat.textAlignment,
+    textAlignment = defaultRichTextFormat.textAlignment,
     ...itemProps
   }: Props,
   ref

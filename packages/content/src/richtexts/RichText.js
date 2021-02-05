@@ -10,11 +10,13 @@ import {
 } from 'draft-js';
 
 import { Item } from '../layouts';
+import useElementOnlyProps from '../useElementOnlyProps';
 
 import { toDraftEditor } from './helpers';
 import RichTextStyle from './RichTextStyle';
 
 import type { RichTextBody, RichTextFormat } from '@seine/core';
+import { defaultRichTextFormat } from '@seine/core';
 
 export type Props = (RichTextBody & RichTextFormat) & {
   className: string,
@@ -26,7 +28,6 @@ export const defaultDraftBody = {
   blocks: defaultDraftBlocks,
   entityMap: defaultDraftEntityMap,
 };
-export const defaultDraftFormat: RichTextFormat = {};
 
 /**
  * @description Draft block component.
@@ -63,7 +64,7 @@ const Draft = React.forwardRef(function Draft(
           ''
         )}
         id={id}
-        {...editorProps}
+        {...useElementOnlyProps(editorProps, defaultRichTextFormat)}
       >
         <Editor
           {...editorProps}
