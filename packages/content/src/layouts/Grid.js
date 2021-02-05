@@ -24,8 +24,8 @@ const Grid = styled((props) => (
   <Item {...useElementOnlyProps(props, defaultGridFormat)} />
 ))`
   display: grid;
-  ${({ columnSize, columnGap, rowGap, theme }: Props) => ({
-    gridTemplateColumns: `repeat(auto-fit,minmax(${columnSize},1fr))`,
+  ${({ minSize, maxSize, columnGap, rowGap, theme }: Props) => ({
+    gridTemplateColumns: `repeat(auto-fit,minmax(${minSize},${maxSize}))`,
     ...(rowGap && { gridRowGap: theme.spacing(rowGap) }),
     ...(columnGap && { gridColumnGap: theme.spacing(columnGap) }),
     padding: theme.spacing(rowGap, columnGap),

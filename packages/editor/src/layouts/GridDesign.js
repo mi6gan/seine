@@ -30,7 +30,7 @@ export default function GridDesign({
   const {
     layout: {
       id,
-      format: { columnGap, rowGap, columnSize },
+      format: { columnGap, rowGap, minSize, maxSize },
     },
   } = useSelectedLayoutItems();
 
@@ -78,17 +78,31 @@ export default function GridDesign({
         </Box>
       </SidebarGroup>
 
-      <SidebarGroup mb={0} as={'form'}>
-        <SidebarLabel mr={1}>Column limit</SidebarLabel>
-        <ConstraintInput
-          id={id}
-          inputAs={Input}
-          inputProps={{ placeholder: 'width', min: 0 }}
-          selectAs={Select}
-          name={'columnSize'}
-          units={['ch', 'fr', 'px', '%']}
-          value={columnSize}
-        />
+      <SidebarGroup alignItems={'baseline'} mb={0} as={'form'}>
+        <SidebarLabel>Cell width</SidebarLabel>
+        <Box display={'flex'} mr={1}>
+          <ConstraintInput
+            id={id}
+            inputAs={Input}
+            inputProps={{ placeholder: 'min', min: 0 }}
+            selectAs={Select}
+            name={'minSize'}
+            units={['ch', 'fr', 'px', '%']}
+            value={minSize}
+          />
+        </Box>
+        <Box display={'flex'}>
+          <ConstraintInput
+            id={id}
+            inputAs={Input}
+            inputProps={{ placeholder: 'max', min: 0 }}
+            selectAs={Select}
+            name={'maxSize'}
+            units={['ch', 'fr', 'px', '%']}
+            value={maxSize}
+          />
+        </Box>
+        )}
       </SidebarGroup>
     </>
   );

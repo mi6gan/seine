@@ -2,26 +2,8 @@
 
 exports[`Storyshots Docs/Content Bar Chart 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
     class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
@@ -541,26 +523,8 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
 
 exports[`Storyshots Docs/Content Column Chart 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
     class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
@@ -1066,64 +1030,14 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
 
 exports[`Storyshots Docs/Content Flex 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
-    aligncontent="normal"
-    alignitems="normal"
-    alignself="auto"
-    class="Item-sc-19uvbvn-0 Flex-konc2n-0 gDtxbL eGkUTp"
-    direction="row"
-    flexbasis="auto"
-    flexgrow="0"
-    gridcolumn=""
-    gridrow=""
-    justify="normal"
-    justifyself="auto"
-    maxheight="none"
-    maxwidth="none"
-    minheight="0"
-    minwidth="0"
-    parenttype="grid"
-    spacing="16"
-    theme="[object Object]"
-    version="0.4"
-    wrap="nowrap"
+    class="Item-sc-19uvbvn-0 gDtxbL Flex-konc2n-0 eGkUTp Flex-konc2n-0 eGkUTp"
   >
     <div
-      alignself="auto"
       class="Item-sc-19uvbvn-0 gDtxbL"
-      flexbasis="auto"
-      flexgrow="0"
-      gridcolumn=""
-      gridrow=""
-      justifyself="auto"
-      maxheight="none"
-      maxwidth="none"
-      minheight="0"
-      minwidth="0"
-      parenttype="table"
-      theme="[object Object]"
-      version="0.4"
     >
       <table
         class="Table__StyledTable-sc-6pw6pn-0 ilEdCc"
@@ -1132,19 +1046,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
           <tr>
             <th>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1191,19 +1093,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
             </th>
             <th>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1250,19 +1140,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
             </th>
             <th>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1313,19 +1191,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
           <tr>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1371,19 +1237,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
             </td>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1429,19 +1283,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
             </td>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1489,19 +1331,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
           <tr>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1547,19 +1377,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
             </td>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1605,19 +1423,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
             </td>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1665,19 +1471,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
           <tr>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1723,19 +1517,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
             </td>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1781,19 +1563,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
             </td>
             <td>
               <div
-                alignself="auto"
                 class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                theme="[object Object]"
-                version="0.4"
               >
                 <div
                   class="DraftEditor-root"
@@ -1842,24 +1612,10 @@ exports[`Storyshots Docs/Content Flex 1`] = `
       </table>
     </div>
     <div
-      alignself="auto"
       class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-      flexbasis="auto"
-      flexgrow="0"
-      gridcolumn=""
-      gridrow=""
-      justifyself="auto"
-      maxheight="none"
-      maxwidth="none"
-      minheight="0"
-      minwidth="0"
-      parenttype="draft"
-      theme="[object Object]"
-      version="0.4"
-      verticalalignment="center"
     >
       <div
-        class="DraftEditor-root"
+        class="DraftEditor-root DraftEditor-alignLeft"
       >
         <div
           class="DraftEditor-editorContainer"
@@ -2031,42 +1787,11 @@ exports[`Storyshots Docs/Content Flex 1`] = `
 
 exports[`Storyshots Docs/Content Image 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
-    alignself="auto"
     class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL"
-    flexbasis="auto"
-    flexgrow="0"
-    gridcolumn=""
-    gridrow=""
-    justifyself="auto"
-    maxheight="none"
-    maxwidth="none"
-    minheight="0"
-    minwidth="0"
-    parenttype="image"
-    theme="[object Object]"
-    version="0.4"
   >
     <img
       src="https://via.placeholder.com/150/0000FF/808080?text=Image"
@@ -2077,26 +1802,8 @@ exports[`Storyshots Docs/Content Image 1`] = `
 
 exports[`Storyshots Docs/Content Line Chart 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
     class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
@@ -2847,90 +2554,20 @@ exports[`Storyshots Docs/Content Line Chart 1`] = `
 
 exports[`Storyshots Docs/Content Nested Flex 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
-    aligncontent="normal"
-    alignitems="normal"
-    alignself="auto"
-    class="Item-sc-19uvbvn-0 Flex-konc2n-0 gDtxbL eGkUTp"
-    direction="row"
-    flexbasis="auto"
-    flexgrow="0"
-    gridcolumn=""
-    gridrow=""
-    justify="normal"
-    justifyself="auto"
-    maxheight="none"
-    maxwidth="none"
-    minheight="0"
-    minwidth="0"
-    parenttype="grid"
-    spacing="16"
-    theme="[object Object]"
-    version="0.4"
-    wrap="nowrap"
+    class="Item-sc-19uvbvn-0 gDtxbL Flex-konc2n-0 eGkUTp Flex-konc2n-0 eGkUTp"
   >
     <div
-      aligncontent="normal"
-      alignitems="normal"
-      alignself="auto"
-      class="Item-sc-19uvbvn-0 Flex-konc2n-0 gDtxbL kZgFDw"
-      direction="column"
-      flexbasis="auto"
-      flexgrow="0"
-      gridcolumn=""
-      gridrow=""
-      justify="normal"
-      justifyself="auto"
-      maxheight="none"
-      maxwidth="none"
-      minheight="0"
-      minwidth="0"
-      parenttype="grid"
-      spacing="64"
-      theme="[object Object]"
-      version="0.4"
-      wrap="nowrap"
+      class="Item-sc-19uvbvn-0 gDtxbL Flex-konc2n-0 gqmkDY Flex-konc2n-0 gqmkDY"
     >
       <div
-        alignself="auto"
         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-        flexbasis="auto"
-        flexgrow="0"
-        gridcolumn=""
-        gridrow=""
-        justifyself="auto"
-        maxheight="none"
-        maxwidth="none"
-        minheight="0"
-        minwidth="0"
-        parenttype="draft"
-        theme="[object Object]"
-        version="0.4"
-        verticalalignment="center"
       >
         <div
-          class="DraftEditor-root"
+          class="DraftEditor-root DraftEditor-alignLeft"
         >
           <div
             class="DraftEditor-editorContainer"
@@ -2971,20 +2608,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
         </div>
       </div>
       <div
-        alignself="auto"
         class="Item-sc-19uvbvn-0 gDtxbL"
-        flexbasis="auto"
-        flexgrow="0"
-        gridcolumn=""
-        gridrow=""
-        justifyself="auto"
-        maxheight="none"
-        maxwidth="none"
-        minheight="0"
-        minwidth="0"
-        parenttype="table"
-        theme="[object Object]"
-        version="0.4"
       >
         <table
           class="Table__StyledTable-sc-6pw6pn-0 ilEdCc"
@@ -2993,19 +2617,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
             <tr>
               <th>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3052,19 +2664,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
               </th>
               <th>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3111,19 +2711,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
               </th>
               <th>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3174,19 +2762,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
             <tr>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3232,19 +2808,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
               </td>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3290,19 +2854,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
               </td>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3350,19 +2902,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
             <tr>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3408,19 +2948,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
               </td>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3466,19 +2994,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
               </td>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3526,19 +3042,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
             <tr>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3584,19 +3088,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
               </td>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3642,19 +3134,7 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
               </td>
               <td>
                 <div
-                  alignself="auto"
                   class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                  flexbasis="auto"
-                  flexgrow="0"
-                  gridcolumn=""
-                  gridrow=""
-                  justifyself="auto"
-                  maxheight="none"
-                  maxwidth="none"
-                  minheight="0"
-                  minwidth="0"
-                  theme="[object Object]"
-                  version="0.4"
                 >
                   <div
                     class="DraftEditor-root"
@@ -3704,24 +3184,10 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
       </div>
     </div>
     <div
-      alignself="auto"
       class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-      flexbasis="auto"
-      flexgrow="0"
-      gridcolumn=""
-      gridrow=""
-      justifyself="auto"
-      maxheight="none"
-      maxwidth="none"
-      minheight="0"
-      minwidth="0"
-      parenttype="draft"
-      theme="[object Object]"
-      version="0.4"
-      verticalalignment="center"
     >
       <div
-        class="DraftEditor-root"
+        class="DraftEditor-root DraftEditor-alignLeft"
       >
         <div
           class="DraftEditor-editorContainer"
@@ -3893,51 +3359,15 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
 
 exports[`Storyshots Docs/Content Page 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 />
 `;
 
 exports[`Storyshots Docs/Content Pie Chart 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
     class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
@@ -4196,42 +3626,11 @@ exports[`Storyshots Docs/Content Pie Chart 1`] = `
 
 exports[`Storyshots Docs/Content Table 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
-    alignself="auto"
     class="Item-sc-19uvbvn-0 gDtxbL"
-    flexbasis="auto"
-    flexgrow="0"
-    gridcolumn=""
-    gridrow=""
-    justifyself="auto"
-    maxheight="none"
-    maxwidth="none"
-    minheight="0"
-    minwidth="0"
-    parenttype="table"
-    theme="[object Object]"
-    version="0.4"
   >
     <table
       class="Table__StyledTable-sc-6pw6pn-0 ilEdCc"
@@ -4240,19 +3639,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
         <tr>
           <th>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4299,19 +3686,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
           </th>
           <th>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4358,19 +3733,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
           </th>
           <th>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4421,19 +3784,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
         <tr>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4479,19 +3830,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
           </td>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4537,19 +3876,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
           </td>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4597,19 +3924,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
         <tr>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4655,19 +3970,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
           </td>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4713,19 +4016,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
           </td>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4773,19 +4064,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
         <tr>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4831,19 +4110,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
           </td>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4889,19 +4156,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
           </td>
           <td>
             <div
-              alignself="auto"
               class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              theme="[object Object]"
-              version="0.4"
             >
               <div
                 class="DraftEditor-root"
@@ -4954,46 +4209,14 @@ exports[`Storyshots Docs/Content Table 1`] = `
 
 exports[`Storyshots Docs/Content Text 1`] = `
 <div
-  alignitems="auto"
-  alignself="auto"
-  class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-  columngap="0"
-  columnsize="25ch"
-  flexbasis="auto"
-  flexgrow="0"
-  gridcolumn=""
-  gridrow=""
-  justify="auto"
-  justifyself="auto"
-  maxheight="none"
-  maxwidth="100%"
-  minheight="auto"
-  minwidth="100%"
-  parenttype="page"
-  rowgap="0"
+  class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
   spacing="0"
-  theme="[object Object]"
-  version="0.4"
 >
   <div
-    alignself="auto"
     class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-    flexbasis="auto"
-    flexgrow="0"
-    gridcolumn=""
-    gridrow=""
-    justifyself="auto"
-    maxheight="none"
-    maxwidth="none"
-    minheight="0"
-    minwidth="0"
-    parenttype="draft"
-    theme="[object Object]"
-    version="0.4"
-    verticalalignment="center"
   >
     <div
-      class="DraftEditor-root"
+      class="DraftEditor-root DraftEditor-alignLeft"
     >
       <div
         class="DraftEditor-editorContainer"
@@ -5631,45 +4854,14 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           >
             <div
-              alignself="auto"
               border="1"
               bordercolor="transparent"
               class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL"
               cursor="pointer"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              parenttype="image"
-              theme="[object Object]"
-              version="0.4"
             >
               <img />
             </div>
@@ -6158,26 +5350,8 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           >
             <div
               border="1"
@@ -7179,26 +6353,8 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           >
             <div
               border="1"
@@ -8350,67 +7506,17 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           >
             <div
-              aligncontent="normal"
-              alignitems="normal"
-              alignself="auto"
-              class="Item-sc-19uvbvn-0 Flex-konc2n-0 gDtxbL eGkUTp"
-              direction="row"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justify="normal"
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              parenttype="grid"
-              spacing="16"
-              theme="[object Object]"
-              version="0.4"
-              wrap="nowrap"
+              class="Item-sc-19uvbvn-0 gDtxbL Flex-konc2n-0 eGkUTp Flex-konc2n-0 eGkUTp"
             >
               <div
-                alignself="auto"
                 border="1"
                 bordercolor="transparent"
                 class="Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL"
                 cursor="pointer"
-                flexbasis="auto"
-                flexgrow="0"
-                gridcolumn=""
-                gridrow=""
-                justifyself="auto"
-                maxheight="none"
-                maxwidth="none"
-                minheight="0"
-                minwidth="0"
-                parenttype="table"
-                theme="[object Object]"
-                version="0.4"
               >
                 <table
                   class="Table__StyledTable-sc-6pw6pn-0 ilEdCc"
@@ -8419,19 +7525,7 @@ Array [
                     <tr>
                       <th>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8478,19 +7572,7 @@ Array [
                       </th>
                       <th>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8537,19 +7619,7 @@ Array [
                       </th>
                       <th>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8600,19 +7670,7 @@ Array [
                     <tr>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8658,19 +7716,7 @@ Array [
                       </td>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8716,19 +7762,7 @@ Array [
                       </td>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8776,19 +7810,7 @@ Array [
                     <tr>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8834,19 +7856,7 @@ Array [
                       </td>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8892,19 +7902,7 @@ Array [
                       </td>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -8952,19 +7950,7 @@ Array [
                     <tr>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -9010,19 +7996,7 @@ Array [
                       </td>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -9068,19 +8042,7 @@ Array [
                       </td>
                       <td>
                         <div
-                          alignself="auto"
                           class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                          flexbasis="auto"
-                          flexgrow="0"
-                          gridcolumn=""
-                          gridrow=""
-                          justifyself="auto"
-                          maxheight="none"
-                          maxwidth="none"
-                          minheight="0"
-                          minwidth="0"
-                          theme="[object Object]"
-                          version="0.4"
                         >
                           <div
                             class="DraftEditor-root"
@@ -9135,7 +8097,7 @@ Array [
                 version="0.4"
               >
                 <div
-                  class="DraftEditor-root"
+                  class="DraftEditor-root DraftEditor-alignLeft"
                 >
                   <div
                     class="DraftEditor-editorContainer"
@@ -9786,45 +8748,14 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           >
             <div
-              alignself="auto"
               border="1"
               bordercolor="transparent"
               class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL"
               cursor="pointer"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              parenttype="image"
-              theme="[object Object]"
-              version="0.4"
             >
               <img
                 src="https://via.placeholder.com/150/0000FF/808080?text=Image"
@@ -10314,26 +9245,8 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           >
             <div
               border="1"
@@ -11074,45 +9987,14 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           >
             <div
-              alignself="auto"
               border="1"
               bordercolor="transparent"
               class="Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL"
               cursor="pointer"
-              flexbasis="auto"
-              flexgrow="0"
-              gridcolumn=""
-              gridrow=""
-              justifyself="auto"
-              maxheight="none"
-              maxwidth="none"
-              minheight="0"
-              minwidth="0"
-              parenttype="table"
-              theme="[object Object]"
-              version="0.4"
             >
               <table
                 class="Table__StyledTable-sc-6pw6pn-0 ilEdCc"
@@ -11121,19 +10003,7 @@ Array [
                   <tr>
                     <th>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11180,19 +10050,7 @@ Array [
                     </th>
                     <th>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11239,19 +10097,7 @@ Array [
                     </th>
                     <th>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11302,19 +10148,7 @@ Array [
                   <tr>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11360,19 +10194,7 @@ Array [
                     </td>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11418,19 +10240,7 @@ Array [
                     </td>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11478,19 +10288,7 @@ Array [
                   <tr>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11536,19 +10334,7 @@ Array [
                     </td>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11594,19 +10380,7 @@ Array [
                     </td>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11654,19 +10428,7 @@ Array [
                   <tr>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11712,19 +10474,7 @@ Array [
                     </td>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -11770,19 +10520,7 @@ Array [
                     </td>
                     <td>
                       <div
-                        alignself="auto"
                         class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
-                        flexbasis="auto"
-                        flexgrow="0"
-                        gridcolumn=""
-                        gridrow=""
-                        justifyself="auto"
-                        maxheight="none"
-                        maxwidth="none"
-                        minheight="0"
-                        minwidth="0"
-                        theme="[object Object]"
-                        version="0.4"
                       >
                         <div
                           class="DraftEditor-root"
@@ -12314,26 +11052,8 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           >
             <div
               class="Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
@@ -12342,7 +11062,7 @@ Array [
               version="0.4"
             >
               <div
-                class="DraftEditor-root"
+                class="DraftEditor-root DraftEditor-alignLeft"
               >
                 <div
                   class="DraftEditor-editorContainer"
@@ -12909,26 +11629,8 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           />
         </div>
       </div>
@@ -13330,26 +12032,8 @@ Array [
           scale="100"
         >
           <div
-            alignitems="auto"
-            alignself="auto"
-            class="Item-sc-19uvbvn-0 Grid-sc-2glams-0 LeBHi lbNgAi"
-            columngap="0"
-            columnsize="25ch"
-            flexbasis="auto"
-            flexgrow="0"
-            gridcolumn=""
-            gridrow=""
-            justify="auto"
-            justifyself="auto"
-            maxheight="none"
-            maxwidth="100%"
-            minheight="auto"
-            minwidth="100%"
-            parenttype="page"
-            rowgap="0"
+            class="Item-sc-19uvbvn-0 gDtxbL Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
             spacing="0"
-            theme="[object Object]"
-            version="0.4"
           />
         </div>
       </div>
