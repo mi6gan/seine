@@ -202,8 +202,8 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
           {
             anchor: `design#input(name=maxSize.value)`,
             tooltip:
-              'This value corresponds to the maximum width of grid column. Set it to 50%',
-            value: '50',
+              'This value corresponds to the maximum width of grid column. Set it to 25%',
+            value: '25',
           },
           {
             anchor: '#layout',
@@ -268,6 +268,10 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
             tooltip: <>Block width is limited to 100px maximum now</>,
           },
           {
+            anchor: `tree-item#${rootBlock.id}`,
+            tooltip: 'Select layout block in tree view.',
+          },
+          {
             anchor: `design#select(name=direction)`,
             tooltip: 'Select column to align items from top to bottom',
             value: 'column',
@@ -294,6 +298,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
                 container.
               </>
             ),
+            next: linkTo('Tutorials/Block', 'Bar chart'),
           },
         ]}
         blocks={[rootBlock, richTextBlock, tableBlock]}
@@ -341,7 +346,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
             anchor: `design#button(name=remove-item)`,
             tooltip: 'Click to remove selected bar',
             placement: 'right',
-            next: linkTo('Tutorials/Column chart'),
+            next: linkTo('Tutorials/Block', 'Column chart'),
           },
         ]}
         blocks={[rootBlock]}
@@ -415,7 +420,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
             anchor: `design#button(name=remove-group)`,
             tooltip: 'Click to remove selected group',
             placement: 'right',
-            next: linkTo('Tutorials/Line chart'),
+            next: linkTo('Tutorials/Block', 'Line chart'),
           },
         ]}
         blocks={[rootBlock]}
@@ -477,7 +482,7 @@ import { rootBlock, richTextBlock, tableBlock } from '../data/tutorial';
             anchor: `design#button(name=remove-group)`,
             tooltip: 'Click to remove selected point',
             placement: 'right',
-            next: linkTo('Tutorials/Pie chart'),
+            next: linkTo('Tutorials/Block', 'Pie chart'),
           },
         ]}
         blocks={[rootBlock]}
