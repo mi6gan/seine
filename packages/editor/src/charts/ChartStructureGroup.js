@@ -13,7 +13,7 @@ import { useSelectedLayoutItems } from '../layouts';
 
 import useElementSelector from './useElementSelector';
 
-import { Button } from '@seine/styles/mui-core.macro';
+import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 import {
   Add,
   ControlPoint,
@@ -28,7 +28,7 @@ import {
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(MuiButton)`
   && {
     min-width: 0;
     padding: 0;
@@ -38,7 +38,7 @@ const StyledButton = styled(Button)`
 `;
 
 // eslint-disable-next-line
-export default function ChartStructureGroup() {
+export default function ChartStructureGroup({ buttonAs: Button }) {
   const {
     item: {
       id,
@@ -57,7 +57,9 @@ export default function ChartStructureGroup() {
     <SidebarGroup alignItems={'flex-start'} my={0}>
       <EditorActionButton
         as={StyledButton}
+        forwardedAs={Button}
         id={id}
+        name={'add-item'}
         dispatch={dispatch}
         type={UPDATE_BLOCK_BODY}
         body={useAutoMemo(
@@ -105,7 +107,9 @@ export default function ChartStructureGroup() {
           return (
             <>
               <EditorActionButton
+                name={'add-group'}
                 as={StyledButton}
+                forwardedAs={Button}
                 id={id}
                 title={kind === chartTypes.LINE ? 'Add point' : 'Add group'}
                 dispatch={dispatch}
@@ -125,24 +129,31 @@ export default function ChartStructureGroup() {
               >
                 <ControlPoint />
               </EditorActionButton>
-              {element && kind === chartTypes.COLUMN && (
-                <EditorActionButton
-                  as={StyledButton}
-                  id={id}
-                  title={'Remove group'}
-                  dispatch={dispatch}
-                  type={UPDATE_BLOCK_BODY}
-                  stroke={'error'}
-                  body={{
-                    elements: elements.filter(
-                      ({ group }) => group !== element.group
-                    ),
-                  }}
-                  variant={'text'}
-                >
-                  <HighlightOff />
-                </EditorActionButton>
-              )}
+              {element &&
+                (kind === chartTypes.COLUMN || kind === chartTypes.LINE) && (
+                  <EditorActionButton
+                    name={'remove-group'}
+                    as={StyledButton}
+                    forwardedAs={Button}
+                    id={id}
+                    title={
+                      kind === chartTypes.COLUMN
+                        ? 'Remove group'
+                        : 'Remove point'
+                    }
+                    dispatch={dispatch}
+                    type={UPDATE_BLOCK_BODY}
+                    stroke={'error'}
+                    body={{
+                      elements: elements.filter(
+                        ({ group }) => group !== element.group
+                      ),
+                    }}
+                    variant={'text'}
+                  >
+                    <HighlightOff />
+                  </EditorActionButton>
+                )}
             </>
           );
         }
@@ -150,10 +161,12 @@ export default function ChartStructureGroup() {
       })}
       <EditorCompositeActionButton
         as={StyledButton}
+        forwardedAs={Button}
         disabled={selection === -1 || count <= 1}
         dispatch={dispatch}
         stroke={'error'}
         light
+        name={'remove-item'}
         title={kind === chartTypes.LINE ? 'remove line' : 'remove selected'}
         actions={useAutoMemo([
           {

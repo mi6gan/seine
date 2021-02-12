@@ -20,6 +20,7 @@ export type { Props as EditorActionButtonProps };
 const EditorActionButton = React.forwardRef(function EditorActionButton(
   {
     as: Button = MuiButton,
+    forwardedAs: as,
     block,
     body,
     editor,
@@ -40,6 +41,7 @@ const EditorActionButton = React.forwardRef(function EditorActionButton(
   return (
     <Button
       {...buttonProps}
+      as={as}
       ref={ref}
       type={'button'}
       onClick={useAutoCallback((event) => {

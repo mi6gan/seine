@@ -8,8 +8,9 @@ import {
   SidebarInput,
   SidebarLabel,
   SidebarSection,
+  SidebarSelect,
 } from '../ui';
-import { useBlocksDispatch } from '../blocks';
+import { EditorActionButton, useBlocksDispatch } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
 
 import ChartPaletteSelect from './ChartPaletteSelect';
@@ -27,11 +28,24 @@ import {
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
 
+type Props = {
+  buttonAs?: React.ComponentType,
+  colorButtonAs?: React.ComponentType,
+  selectAs?: React.ComponentType,
+  inputAs?: React.ComponentType,
+};
+
 /**
  * @description Chart design panel.
+ * @param {Props} props
  * @returns {React.Node}
  */
-export default function ChartDesign() {
+export default function ChartDesign({
+  buttonAs: Button = EditorActionButton,
+  colorButtonAs: ColorButton = ChartElementColorButton,
+  selectAs: Select = SidebarSelect,
+  inputAs: Input = SidebarInput,
+}: Props) {
   const {
     item: {
       id,
@@ -57,7 +71,7 @@ export default function ChartDesign() {
         <SidebarHeading>Chart</SidebarHeading>
         <SidebarGroup>
           <SidebarLabel>units</SidebarLabel>
-          <SidebarInput
+          <Input
             disabled={!id}
             value={units}
             name={'units'}
@@ -67,7 +81,7 @@ export default function ChartDesign() {
 
         <SidebarGroup>
           <SidebarLabel>fraction</SidebarLabel>
-          <SidebarInput
+          <Input
             disabled={!id}
             value={fraction}
             name={'fraction'}
@@ -76,7 +90,7 @@ export default function ChartDesign() {
           />
         </SidebarGroup>
 
-        <ChartPaletteSelect />
+        <ChartPaletteSelect selectAs={Select} />
 
         <SidebarGroup>
           <SidebarLabel>legend</SidebarLabel>
@@ -125,13 +139,14 @@ export default function ChartDesign() {
           justifyContent={'space-between'}
         >
           Element
-          <ChartStructureGroup />
+          <ChartStructureGroup buttonAs={Button} />
         </Box>
-        <ChartElementColorButton />
+        <ColorButton />
         <SidebarGroup {...(element === null && { display: 'none' })}>
           <SidebarLabel>value</SidebarLabel>
-          <SidebarInput
+          <Input
             type={'number'}
+            name={'value'}
             value={element && element.value}
             onChange={useAutoCallback((event) => {
               dispatchElements({
@@ -145,9 +160,10 @@ export default function ChartDesign() {
 
         <SidebarGroup {...(element === null && { display: 'none' })}>
           <SidebarLabel>title</SidebarLabel>
-          <SidebarInput
+          <Input
             multiline
             width={'100%'}
+            name={'title'}
             value={element && element.title}
             onChange={useAutoCallback((event) => {
               dispatchElements({
@@ -161,8 +177,9 @@ export default function ChartDesign() {
 
         <SidebarGroup {...(group === 'null' && { display: 'none' })}>
           <SidebarLabel>group</SidebarLabel>
-          <SidebarInput
+          <Input
             value={group}
+            name={'group'}
             onChange={useAutoCallback((event) => {
               dispatchElements({
                 type: UPDATE_BLOCK_ELEMENT_BY_GROUP,
