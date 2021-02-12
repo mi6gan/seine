@@ -9,8 +9,7 @@ const elementSelector = (block) => {
   return {
     selection,
     element:
-      (selection >= 0 &&
-        elements.find(({ id }, index) => index === selection)) ||
+      (selection >= 0 && elements.find((_, index) => index === selection)) ||
       null,
   };
 };
