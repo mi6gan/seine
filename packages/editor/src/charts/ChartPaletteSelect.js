@@ -2,10 +2,15 @@
 import * as React from 'react';
 import { useAutoCallback } from 'hooks.macro';
 
-import { SidebarGroup, SidebarLabel, SidebarSelectLabel } from '../ui';
+import {
+  SidebarGroup,
+  SidebarLabel,
+  SidebarSelect,
+  SidebarSelectLabel,
+} from '../ui';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
-import { MenuItem, Select } from '@seine/styles/mui-core.macro';
+import { MenuItem } from '@seine/styles/mui-core.macro';
 import {
   blockTypes,
   chartPaletteKeyValues,
@@ -13,11 +18,19 @@ import {
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
 
+type Props = {
+  selectAs?: React.ComponentType,
+};
+
 /**
  * @description Buttons to select chart's default palette
+ * param {Props} props
  * @returns {*}
  */
-export default function ChartPaletteSelect() {
+const ChartPaletteSelect = React.forwardRef(function ChartPaletteSelect(
+  { selectAs: Select = SidebarSelect }: Props,
+  ref
+) {
   const device = useEditorSelector((state) => state.device);
   const dispatch = useBlocksDispatch();
   const block =
@@ -28,10 +41,11 @@ export default function ChartPaletteSelect() {
     block.format ||
     defaultChartFormat;
   return (
-    <SidebarGroup>
+    <SidebarGroup ref={ref}>
       <SidebarLabel>palette</SidebarLabel>
       <Select
         value={paletteKey}
+        name={'palette'}
         onChange={useAutoCallback((event) => {
           const paletteKey = event.target.value;
           dispatch({
@@ -76,4 +90,6 @@ export default function ChartPaletteSelect() {
       </Select>
     </SidebarGroup>
   );
-}
+});
+
+export default ChartPaletteSelect;

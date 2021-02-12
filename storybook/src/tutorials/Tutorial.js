@@ -45,6 +45,8 @@ import {
   ToolbarToggleButton,
   useBlocksChange,
   useEditorSelector,
+  ChartDesign,
+  ChartElementColorButton,
 } from '@seine/editor';
 import { blockTypes } from '@seine/core';
 import { defaultBlockRenderMap as disabledBlockRenderMap } from '@seine/content';
@@ -203,6 +205,25 @@ function TutorialActionButton(props: EditorActionButtonProps) {
 }
 
 // eslint-disable-next-line
+function TutorialDesignButton({ name, onClick, ...props }) {
+  const anchor = `design#button(name=${name})`;
+  const manual = React.useContext(TutorialContext);
+  return (
+    <TutorialTooltip anchor={anchor}>
+      <Button
+        {...props}
+        name={name}
+        disabled={manual.anchor !== anchor}
+        onClick={useAutoCallback((event) => {
+          manual.next();
+          onClick && onClick(event);
+        })}
+      />
+    </TutorialTooltip>
+  );
+}
+
+// eslint-disable-next-line
 function TutorialTreeItem({ id, ...props }: EditorTreeItemProps) {
   const manual = React.useContext(TutorialContext);
   const anchor = `tree-item#${id}`;
@@ -245,7 +266,7 @@ function TutorialBlock({ type, kind, ...props }) {
 }
 
 // eslint-disable-next-line
-const TutorialItemDesignInput = ({ name, onChange, ...props }) => {
+const TutorialDesignInput = ({ name, onChange, ...props }) => {
   const manual = React.useContext(TutorialContext);
   const anchor = `design#input(name=${name})`;
   return (
@@ -266,7 +287,7 @@ const TutorialItemDesignInput = ({ name, onChange, ...props }) => {
 };
 
 // eslint-disable-next-line
-const TutorialItemDesignSelect = ({ name, onChange, ...props }) => {
+const TutorialDesignSelect = ({ name, onChange, ...props }) => {
   const manual = React.useContext(TutorialContext);
   const anchor = `design#select(name=${name})`;
   return (
@@ -276,10 +297,36 @@ const TutorialItemDesignSelect = ({ name, onChange, ...props }) => {
         disabled={anchor !== manual.anchor}
         name={name}
         onChange={useAutoCallback((event) => {
-          if ('value' in manual && manual.value === event.target.value) {
+          if (
+            'value' in manual &&
+            (manual.value === event.target.value || manual.value === '*')
+          ) {
             manual.next();
           }
           onChange && onChange(event);
+        })}
+      />
+    </TutorialTooltip>
+  );
+};
+
+// eslint-disable-next-line
+const TutorialColorButton = (props) => {
+  const manual = React.useContext(TutorialContext);
+  const anchor = `design#button(name=color)`;
+  return (
+    <TutorialTooltip anchor={anchor}>
+      <ChartElementColorButton
+        {...props}
+        disabled={anchor !== manual.anchor}
+        onChange={useAutoCallback((event) => {
+          if (
+            'value' in manual &&
+            (manual.value === event.target.value || manual.value === '*')
+          ) {
+            event.target.setOpen(false);
+            manual.next();
+          }
         })}
       />
     </TutorialTooltip>
@@ -291,8 +338,21 @@ const TutorialItemDesign = (props) => {
   return (
     <ItemDesign
       {...props}
-      inputAs={TutorialItemDesignInput}
-      selectAs={TutorialItemDesignSelect}
+      inputAs={TutorialDesignInput}
+      selectAs={TutorialDesignSelect}
+    />
+  );
+};
+
+// eslint-disable-next-line
+const TutorialChartDesign = (props) => {
+  return (
+    <ChartDesign
+      {...props}
+      buttonAs={TutorialDesignButton}
+      selectAs={TutorialDesignSelect}
+      colorButtonAs={TutorialColorButton}
+      inputAs={TutorialDesignInput}
     />
   );
 };
@@ -354,8 +414,8 @@ const TutorialLayoutDesign = (props) => {
       {...props}
       toggleButtonAs={TutorialToggleButton}
       toggleAs={TutorialToggle}
-      inputAs={TutorialItemDesignInput}
-      selectAs={TutorialItemDesignSelect}
+      inputAs={TutorialDesignInput}
+      selectAs={TutorialDesignSelect}
       sectionAs={TutorialSection}
     />
   );
@@ -511,6 +571,7 @@ function EditorView({ onChange }) {
             itemDesignAs={TutorialItemDesign}
             layoutDesignAs={TutorialLayoutDesign}
             tableDesignAs={TutorialTableDesign}
+            chartDesignAs={TutorialChartDesign}
           />
         </Box>
       </SideBarExtension>

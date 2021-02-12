@@ -19,12 +19,14 @@ type Props = {
 export default function EditorCompositeActionButton({
   actions,
   as: Button = MuiButton,
+  forwardedAs: as,
   dispatch,
   ...buttonProps
 }: Props) {
   return (
     <Button
       {...buttonProps}
+      as={as}
       onClick={useAutoCallback(() => actions.forEach(dispatch))}
     />
   );

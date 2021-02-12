@@ -92,6 +92,9 @@
     "flow-bin": {
       "unplugged": true
     },
+    "open@7.3.0": {
+      "unplugged": true
+    },
     "regenerator-runtime@0.13.7": {
       "unplugged": true
     }
