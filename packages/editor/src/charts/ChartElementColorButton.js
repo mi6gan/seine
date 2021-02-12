@@ -107,6 +107,7 @@ const ChartElementColorButton = React.forwardRef(
                   format: {
                     palette: [
                       ...palette.slice(0, colorIndex),
+                      value,
                       ...palette.slice(colorIndex + 1),
                     ],
                   },

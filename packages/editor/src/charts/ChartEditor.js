@@ -28,7 +28,8 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
 
   const dispatchElements = useChartDispatchElements();
 
-  const isGrouped = data.length > 1 && 'group' in data[0];
+  const isGrouped =
+    data.length > 1 && 'group' in data[0] && data[0]['group'] !== 'null';
 
   const size = useAutoMemo(() => {
     const valueFieldsSet = new Set();
@@ -74,16 +75,7 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
           select(targets);
         })}
       />
-      <SelectionState
-        selection={useAutoMemo(
-          isGrouped && selection.length === 1
-            ? data.map((_, point) => ({
-                ...selection[0],
-                point,
-              }))
-            : selection
-        )}
-      />
+      <SelectionState selection={selection} />
     </Frame>
   );
 });
