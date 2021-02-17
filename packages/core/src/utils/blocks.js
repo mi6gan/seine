@@ -30,6 +30,7 @@ import {
   defaultRichTextFormat,
   defaultTableFormat,
   layoutTypes,
+  shapeTypes,
 } from '../types';
 
 type Blocks = $ReadOnlyArray<Block>;
@@ -73,6 +74,9 @@ export function isBlockContainer(block: Block) {
   return (
     block.type === blockTypes.PAGE ||
     block.type === blockTypes.LAYOUT ||
+    (block.type === blockTypes.SHAPE &&
+      (block.format.kind === shapeTypes.ROOT ||
+        block.format.kind === shapeTypes.GROUP)) ||
     block.type === blockTypes_v0_3.PAGE ||
     block.type === blockTypes_v0_3.LAYOUT
   );

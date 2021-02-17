@@ -5,6 +5,7 @@ import { Chart } from './charts';
 import { Image } from './images';
 import { RichText } from './richtexts';
 import { Table } from './tables';
+import { Shape } from './shapes';
 
 import { blockTypes } from '@seine/core';
 
@@ -15,6 +16,7 @@ const defaultBlockRenderMap = {
   [blockTypes.CHART]: Chart,
   [blockTypes.RICH_TEXT]: RichText,
   [blockTypes.IMAGE]: Image,
+  [blockTypes.SHAPE]: Shape,
 };
 
 export default defaultBlockRenderMap;

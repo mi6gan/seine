@@ -14,6 +14,8 @@ import type { TableBody, TableFormat } from './tables';
 import { TABLE } from './tables';
 import type { ItemBody, LayoutBody, LayoutFormat } from './layout';
 import { LAYOUT } from './layout';
+import type { ShapeBody, ShapeFormat } from './shapes';
+import { SHAPE } from './shapes';
 
 export * from './charts';
 export * from './richText';
@@ -21,6 +23,7 @@ export * from './layout';
 export * from './images';
 export * from './page';
 export * from './tables';
+export * from './shapes';
 
 export const blockTypes = {
   CHART,
@@ -29,6 +32,7 @@ export const blockTypes = {
   PAGE,
   RICH_TEXT,
   TABLE,
+  SHAPE,
 };
 
 export const blockTypes_v0_3 = {
@@ -50,7 +54,15 @@ export type BlockElement = ChartElement;
 export type BlockType = $Values<typeof blockTypes>;
 
 export type BlockBody = ItemBody &
-  (ChartBody | RichTextBody | ImageBody | PageBody | TableBody | LayoutBody);
+  (
+    | ChartBody
+    | RichTextBody
+    | ImageBody
+    | PageBody
+    | TableBody
+    | LayoutBody
+    | ShapeBody
+  );
 
 export type BlockFormat =
   | ChartFormat
@@ -58,7 +70,8 @@ export type BlockFormat =
   | ImageFormat
   | PageFormat
   | TableFormat
-  | LayoutFormat;
+  | LayoutFormat
+  | ShapeFormat;
 
 export type BlockId = string | null;
 

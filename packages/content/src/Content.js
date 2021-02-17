@@ -10,12 +10,11 @@ import defaultBlockRenderMap from './blockRenderMap';
 import useNormalizedBlocks from './useNormalizedBlocks';
 
 import { ThemeProvider } from '@seine/styles';
-import type { Block, ScreenDevice } from '@seine/core';
+import type { ScreenDevice } from '@seine/core';
 
 export type Props = {
   blockRenderMap?: { [string]: ({ [string]: any }) => React.Node },
   device?: ScreenDevice | 'auto',
-  children: Array<Block>,
 };
 
 /**
