@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
 
-// eslint-disable-next-line
-export default function RectShape(props) {
-  return <rect {...props} />;
-}
+const ReactShape = React.forwardRef(function RectShape(props, ref) {
+  return <rect {...props} ref={ref} />;
+});
+
+export default ReactShape;

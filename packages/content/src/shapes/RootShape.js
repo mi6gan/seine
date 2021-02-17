@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
 
-// eslint-disable-next-line
-export default function RootShape(props) {
-  return <svg {...props} />;
-}
+const RootShape = React.forwardRef(function RootShape(props, ref) {
+  return <svg {...props} ref={ref} />;
+});
+
+export default RootShape;

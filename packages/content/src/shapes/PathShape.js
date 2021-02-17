@@ -2,6 +2,8 @@
 import * as React from 'react';
 
 // eslint-disable-next-line
-export default function PathShape(props) {
-  return <path {...props} />;
-}
+const PathShape = React.forwardRef(function PathShape(props, ref) {
+  return <path {...props} ref={ref} />;
+});
+
+export default PathShape;

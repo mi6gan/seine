@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
 
-// eslint-disable-next-line
-export default function GroupShape(props) {
-  return <g {...props} />;
-}
+const GroupShape = React.forwardRef(function GroupShape(props, ref) {
+  return <g {...props} ref={ref} />;
+});
+
+export default GroupShape;

@@ -12,21 +12,26 @@ import { shapeTypes } from '@seine/core';
 
 export type Props = ShapeBody & ShapeFormat;
 
+const Shape = React.forwardRef(function Shape(
+  { kind, parentType, ...shapeProps }: Props,
+  ref
+) {
+  return kind === shapeTypes.ROOT ? (
+    <RootShape {...shapeProps} ref={ref} />
+  ) : kind === shapeTypes.GROUP ? (
+    <GroupShape {...shapeProps} ref={ref} />
+  ) : kind === shapeTypes.PATH ? (
+    <PathShape {...shapeProps} ref={ref} />
+  ) : kind === shapeTypes.RECT ? (
+    <RectShape {...shapeProps} ref={ref} />
+  ) : kind === shapeTypes.ELLIPSE ? (
+    <EllipseShape {...shapeProps} ref={ref} />
+  ) : null;
+});
+
 /**
  * @description Shape block default render component.
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Shape({ kind, parentType, ...shapeProps }: Props) {
-  return kind === shapeTypes.ROOT ? (
-    <RootShape {...shapeProps} />
-  ) : kind === shapeTypes.GROUP ? (
-    <GroupShape {...shapeProps} />
-  ) : kind === shapeTypes.PATH ? (
-    <PathShape {...shapeProps} />
-  ) : kind === shapeTypes.RECT ? (
-    <RectShape {...shapeProps} />
-  ) : kind === shapeTypes.ELLIPSE ? (
-    <EllipseShape {...shapeProps} />
-  ) : null;
-}
+export default Shape;
