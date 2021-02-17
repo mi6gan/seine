@@ -7,6 +7,7 @@ export * from './layouts';
 export * from './charts';
 export * from './richtexts';
 export * from './tables';
+export * from './shapes';
 
 export { default as defaultTheme } from './defaultTheme';
 export { default as EditorDesign } from './EditorDesign';

@@ -19,6 +19,7 @@ import {
   defaultBlockFormat,
   defaultChartFormat,
   defaultColumnChartFormat,
+  defaultEllipseShapeFormat,
   defaultFlexFormat,
   defaultGridFormat,
   defaultImageFormat,
@@ -26,7 +27,9 @@ import {
   defaultLayoutFormat,
   defaultLineChartFormat,
   defaultPageFormat,
+  defaultPathShapeFormat,
   defaultPieChartFormat,
+  defaultRectShapeFormat,
   defaultRichTextFormat,
   defaultTableFormat,
   layoutTypes,
@@ -66,19 +69,31 @@ export function filterBlockAncestors(id: BlockId, blocks: Block[]): Block {
 }
 
 /**
+ * @description  Return true if block is a layout.
+ * @param {Block} block
+ * @returns {boolean}
+ */
+export function isBlockLayout(block: Block) {
+  return (
+    block.type === blockTypes.PAGE ||
+    block.type === blockTypes.LAYOUT ||
+    block.type === blockTypes_v0_3.PAGE ||
+    block.type === blockTypes_v0_3.LAYOUT
+  );
+}
+
+/**
  * @description  Return true if block is a container (may have children blocks).
  * @param {Block} block
  * @returns {boolean}
  */
 export function isBlockContainer(block: Block) {
   return (
-    block.type === blockTypes.PAGE ||
-    block.type === blockTypes.LAYOUT ||
+    isBlockLayout(block) ||
     (block.type === blockTypes.SHAPE &&
-      (block.format.kind === shapeTypes.ROOT ||
-        block.format.kind === shapeTypes.GROUP)) ||
-    block.type === blockTypes_v0_3.PAGE ||
-    block.type === blockTypes_v0_3.LAYOUT
+      block.format &&
+      (block.format['kind'] === shapeTypes.ROOT ||
+        block.format['kind'] === shapeTypes.GROUP))
   );
 }
 
@@ -105,6 +120,19 @@ export function getDefaultBlockFormat(
           return defaultLineChartFormat;
         default:
           return defaultChartFormat;
+      }
+    }
+
+    case blockTypes.SHAPE: {
+      switch (kind) {
+        case shapeTypes.PATH:
+          return defaultPathShapeFormat;
+        case shapeTypes.RECT:
+          return defaultRectShapeFormat;
+        case shapeTypes.ELLIPSE:
+          return defaultEllipseShapeFormat;
+        default:
+          return defaultPathShapeFormat;
       }
     }
 

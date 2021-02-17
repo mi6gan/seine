@@ -5,17 +5,21 @@ import { useAutoMemo } from 'hooks.macro';
 
 import {
   BarChart as ColumnChartIcon,
-  TableChart as TableIcon,
-  ShowChart as LineChart,
-  PieChart,
-  Title as RichTextIcon,
-  ViewCompact as LayoutIcon,
+  Crop54 as RectShapeIcon,
   Description as PageIcon,
   Image as ImageIcon,
+  LinearScale as PathShapeIcon,
   Lock as LockIcon,
+  PieChart,
+  RadioButtonUnchecked as EllipseShapeIcon,
+  ShowChart as LineChart,
+  TableChart as TableIcon,
+  Title as RichTextIcon,
+  ViewCompact as LayoutIcon,
+  Wallpaper as RootShapeIcon,
 } from '@seine/styles/mui-icons.macro';
 import type { BlockType } from '@seine/core';
-import { blockTypes, chartTypes } from '@seine/core';
+import { blockTypes, chartTypes, shapeTypes } from '@seine/core';
 
 type Props = {
   type: BlockType,
@@ -59,6 +63,21 @@ export default function BlockTypeIcon({ type, kind, ...iconProps }: Props) {
             return LineChart;
           case chartTypes.PIE:
             return PieChart;
+          default:
+            return null;
+        }
+
+      case blockTypes.SHAPE:
+        switch (kind) {
+          case shapeTypes.PATH:
+            return PathShapeIcon;
+          case shapeTypes.RECT:
+            return RectShapeIcon;
+          case shapeTypes.ELLIPSE:
+            return EllipseShapeIcon;
+          case shapeTypes.ROOT:
+          case shapeTypes.GROUP:
+            return RootShapeIcon;
           default:
             return null;
         }

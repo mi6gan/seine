@@ -5,6 +5,7 @@ export * from './charts';
 export * from './images';
 export * from './richtexts';
 export * from './tables';
+export * from './shapes';
 export * from './v0.3';
 
 export { default as BlocksContext } from './BlocksContext';

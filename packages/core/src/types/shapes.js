@@ -51,8 +51,28 @@ export type ShapeFormat =
 
 export const SHAPE = 'shape';
 
-export const defaultShape = {
-  kind: shapeTypes.GROUP,
+export const defaultPathShapeFormat = {
+  kind: shapeTypes.PATH,
+  d: '',
 };
 
-export const defaultShapeFormat = defaultItemFormat;
+export const defaultRectShapeFormat = {
+  kind: shapeTypes.RECT,
+  x: 0,
+  y: 0,
+  width: 10,
+  height: 10,
+};
+
+export const defaultEllipseShapeFormat = {
+  kind: shapeTypes.ELLIPSE,
+  cx: 5,
+  cy: 5,
+  rx: 5,
+  ry: 5,
+};
+
+export const defaultShapeFormat = {
+  ...defaultItemFormat,
+  kind: shapeTypes.ROOT,
+};

@@ -63,7 +63,10 @@ export const box = breakpoints(
     style({ prop: 'textTransform' }),
     style({ prop: 'textDecoration' }),
     style({ prop: 'filter' }),
-    style({ prop: 'transform' })
+    style({ prop: 'transform' }),
+    style({ prop: 'stroke', themeKey: 'palette' }),
+    style({ prop: 'fill', themeKey: 'palette' }),
+    style({ prop: 'strokeWidth' })
   )
 );
 

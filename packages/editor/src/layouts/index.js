@@ -1,6 +1,7 @@
 // @flow
 export { default as useSelectedLayoutItems } from './useSelectedLayoutItems';
 export { default as useSelectedLayoutIds } from './useSelectedLayoutIds';
+export { default as useSelectedContainerIds } from './useSelectedContainerIds';
 export { default as DeleteBlockButton } from './DeleteBlockButton';
 export { default as CreateLayoutButton } from './CreateLayoutButton';
 export { default as LayoutDesign } from './LayoutDesign';

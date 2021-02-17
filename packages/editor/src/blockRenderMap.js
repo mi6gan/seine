@@ -5,6 +5,7 @@ import { TableEditor } from './tables';
 import { ImageEditor } from './images';
 import PageEditor from './pages/PageEditor';
 import PageEditor_v0_3 from './v0.3/PageEditor';
+import { ShapeEditor } from './shapes';
 
 import { blockTypes, blockTypes_v0_3 } from '@seine/core';
 import { blockRenderMap as defaultBlockRenderMap } from '@seine/content';
@@ -17,6 +18,7 @@ export const blockRenderMap = {
   [blockTypes.CHART]: ChartEditor,
   [blockTypes.RICH_TEXT]: RichTextEditor,
   [blockTypes.TABLE]: TableEditor,
+  [blockTypes.SHAPE]: ShapeEditor,
 };
 
 export default blockRenderMap;
