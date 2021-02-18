@@ -92,16 +92,17 @@ const RichTextEditor = React.forwardRef(function RichTextEditor(
     }
   });
 
-  React.useEffect(() => {
-    if (editorState && !selected) {
+  const content = editorState && editorState.getCurrentContent();
+
+  useAutoEffect(() => {
+    if (content) {
       dispatch({
         id,
         type: UPDATE_BLOCK_BODY,
-        body: convertToRaw(editorState.getCurrentContent()),
+        body: convertToRaw(content),
       });
     }
-    // eslint-disable-next-line
-  }, [selected]);
+  });
 
   return (
     <RichText
