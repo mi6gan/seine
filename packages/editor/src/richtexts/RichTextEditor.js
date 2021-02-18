@@ -7,7 +7,6 @@ import styled from 'styled-components/macro';
 import { Frame } from '../ui';
 import { useBlocksDispatch } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
-import { ItemMenuContext } from '../EditorItemMenu';
 
 import type { BlockEditor, RichTextBody, RichTextFormat } from '@seine/core';
 import {
@@ -49,7 +48,6 @@ const RichTextEditor = React.forwardRef(function RichTextEditor(
   ref
 ) {
   const { item } = useSelectedLayoutItems();
-  const itemMenu = React.useContext(ItemMenuContext);
   const selected = !!(item && item.id === id);
   const dispatch = useBlocksDispatch();
 
@@ -121,10 +119,6 @@ const RichTextEditor = React.forwardRef(function RichTextEditor(
           editor: { state },
         })
       )}
-      onContextMenu={useAutoCallback((event) => {
-        event.preventDefault();
-        itemMenu.open(event.currentTarget);
-      })}
       readOnly={!selected}
     />
   );
