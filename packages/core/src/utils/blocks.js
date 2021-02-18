@@ -146,6 +146,7 @@ export function getBlockFormat(
     return format;
   }
   format = {
+    version: defaultItemFormat.version,
     ...getDefaultBlockFormat(type, format && format.kind),
     ...format,
   };
