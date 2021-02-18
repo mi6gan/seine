@@ -58,16 +58,16 @@ export const defaultPathShapeFormat = {
 
 export const defaultRectShapeFormat = {
   kind: shapeTypes.RECT,
-  x: 0,
-  y: 0,
+  x: 30,
+  y: 30,
   width: 10,
   height: 10,
 };
 
 export const defaultEllipseShapeFormat = {
   kind: shapeTypes.ELLIPSE,
-  cx: 5,
-  cy: 5,
+  cx: 30,
+  cy: 30,
   rx: 5,
   ry: 5,
 };
