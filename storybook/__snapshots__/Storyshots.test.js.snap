@@ -3624,6 +3624,52 @@ exports[`Storyshots Docs/Content Pie Chart 1`] = `
 </div>
 `;
 
+exports[`Storyshots Docs/Content Shape 1`] = `
+<div
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  spacing="0"
+>
+  <svg
+    d=""
+    fill="transparent"
+    id="shape-root"
+    stroke="rgba(0,0,0,1.0)"
+    version="0.4"
+  >
+    <path
+      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+      fill="transparent"
+      id="shape-path"
+      stroke="rgba(0,0,0,1.0)"
+      version="0.4"
+    />
+    <ellipse
+      cx="30"
+      cy="15"
+      fill="transparent"
+      id="shape-ellipse"
+      rx="10"
+      ry="10"
+      shape-rendering="geometricPrecision"
+      stroke="rgba(0,0,0,1.0)"
+      version="0.4"
+    />
+    <rect
+      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+      fill="transparent"
+      height="20"
+      id="shape-rect"
+      shape-rendering="crispEdges"
+      stroke="rgba(0,0,0,1.0)"
+      version="0.4"
+      width="20"
+      x="40"
+      y="10"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Storyshots Docs/Content Table 1`] = `
 <div
   class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
@@ -4419,10 +4465,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -4440,10 +4494,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -4461,10 +4551,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -4487,6 +4585,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -4508,6 +4607,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -4546,11 +4646,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -4562,7 +4670,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -4914,10 +5066,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -4935,10 +5095,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -4956,10 +5152,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -4982,6 +5186,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -5003,6 +5208,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -5041,11 +5247,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -5057,7 +5271,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -5918,10 +6176,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -5939,10 +6205,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -5960,10 +6262,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -5986,6 +6296,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -6007,6 +6318,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -6045,11 +6357,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -6061,7 +6381,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -6907,10 +7271,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -6928,10 +7300,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -6949,10 +7357,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -6975,6 +7391,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -6996,6 +7413,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -7034,11 +7452,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -7050,7 +7476,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -8313,10 +8783,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -8334,10 +8812,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -8355,10 +8869,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -8381,6 +8903,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -8402,6 +8925,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -8440,11 +8964,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -8456,7 +8988,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -8810,10 +9386,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -8831,10 +9415,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -8852,10 +9472,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -8878,6 +9506,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -8899,6 +9528,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -8937,11 +9567,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -8953,7 +9591,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -9552,10 +10234,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -9573,10 +10263,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -9594,10 +10320,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -9620,6 +10354,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -9641,6 +10376,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -9679,11 +10415,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -9695,7 +10439,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -10617,10 +11405,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -10638,10 +11434,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -10659,10 +11491,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -10685,6 +11525,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -10706,6 +11547,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -10744,11 +11586,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -10760,7 +11610,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -11277,10 +12171,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -11298,10 +12200,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -11319,10 +12257,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -11345,6 +12291,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -11366,6 +12313,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -11404,11 +12352,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -11420,7 +12376,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
@@ -11680,10 +12680,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Text"
           type="button"
         >
           <span
@@ -11701,10 +12709,46 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
           type="button"
         >
           <span
@@ -11722,10 +12766,18 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Bar chart"
           type="button"
         >
           <span
@@ -11748,6 +12800,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Line chart"
           type="button"
         >
           <span
@@ -11769,6 +12822,7 @@ Array [
           class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
+          title="Column chart"
           type="button"
         >
           <span
@@ -11807,11 +12861,19 @@ Array [
             </svg>
           </span>
         </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
           disabled=""
           tabindex="-1"
           type="button"
+          value="ellipse"
         >
           <span
             class="MuiButton-label"
@@ -11823,7 +12885,51 @@ Array [
               viewBox="0 0 24 24"
             >
               <path
-                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
               />
             </svg>
           </span>
