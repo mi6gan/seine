@@ -243,7 +243,6 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
           data-mode={'resize(-1,0,-1,0)'}
         />
       </g>
-      )}
       <Box
         as={'rect'}
         shapeRendering={'crispEdges'}
