@@ -1,21 +1,33 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
 import styled from 'styled-components/macro';
+
+import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import { Box } from '@seine/styles';
 import { Shape } from '@seine/content';
-import { useBlocksDispatch, useEditorSelector } from '@seine/editor';
-import { DESELECT_ALL_BLOCKS, SELECT_BLOCK, shapeTypes } from '@seine/core';
+import {
+  DESELECT_ALL_BLOCKS,
+  SELECT_BLOCK,
+  shapeTypes,
+  UPDATE_BLOCK_FORMAT,
+} from '@seine/core';
 
-const MIN_WIDTH = 20;
-const MIN_HEIGHT = 20;
+const MIN_WIDTH = 40;
+const MIN_HEIGHT = 40;
 
 const ResizePath = styled(Box).attrs({
-  as: 'path',
-  d: `M -${MIN_WIDTH / 6} -${MIN_HEIGHT / 12} 0 ${MIN_HEIGHT / 12} ${
-    MIN_WIDTH / 6
-  } -${MIN_HEIGHT / 12}`,
+  as: 'rect',
+  x: -MIN_WIDTH / 10,
+  y: -MIN_HEIGHT / 10,
+  width: MIN_WIDTH / 5,
+  height: MIN_HEIGHT / 5,
+  stroke: 'primary.main',
+  strokeWidth: 1,
+  fill: 'primary.main',
+  opacity: 0.75,
+  shapeRendering: 'crispEdges',
 })``;
 
 const ShapeFrame = React.forwardRef(function ShapeFrame(props, ref) {
@@ -26,110 +38,210 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(props, ref) {
       ({ selection }) => selection.length === 1 && selection.includes(id)
     )
   );
-  const box = useAutoMemo(() => {
-    const result =
-      kind === shapeTypes.ELLIPSE
-        ? {
-            x: cx - rx,
-            y: cy - ry,
-            width: 2 * rx,
-            height: 2 * ry,
-          }
-        : kind === shapeTypes.RECT
-        ? {
-            x,
-            y,
-            width,
-            height,
-          }
-        : {};
-    if (result.width < MIN_WIDTH) {
-      result.x -= (MIN_WIDTH - result.width) / 2;
-      result.width = MIN_WIDTH;
-    }
-    if (result.height < MIN_HEIGHT) {
-      result.y -= (MIN_HEIGHT - result.height) / 2;
-      result.height = MIN_HEIGHT;
-    }
+  const box = useAutoMemo(() =>
+    kind === shapeTypes.ELLIPSE
+      ? {
+          x: cx - rx,
+          y: cy - ry,
+          width: 2 * rx,
+          height: 2 * ry,
+        }
+      : kind === shapeTypes.RECT
+      ? {
+          x,
+          y,
+          width,
+          height,
+        }
+      : {}
+  );
+
+  const bound = useAutoMemo(() => {
+    const result = {
+      ...box,
+      ...(box.width < MIN_WIDTH && {
+        x: box.x - (MIN_WIDTH - box.width) / 2,
+        width: MIN_WIDTH,
+      }),
+      ...(box.height < MIN_HEIGHT && {
+        y: box.y - (MIN_HEIGHT - box.height) / 2,
+        height: MIN_HEIGHT,
+      }),
+    };
     result.x -= 2;
-    result.width += 3;
+    result.width += 4;
     result.y -= 2;
-    result.height += 3;
+    result.height += 4;
     return result;
+  });
+
+  const setBox = useAutoCallback((box) => {
+    boxRef.current = box;
+    switch (kind) {
+      case shapeTypes.ELLIPSE:
+        return dispatch({
+          type: UPDATE_BLOCK_FORMAT,
+          format: {
+            cx: box.x + box.width / 2,
+            cy: box.y + box.height / 2,
+            rx: box.width / 2,
+            ry: box.height / 2,
+          },
+        });
+      case shapeTypes.RECT:
+        return dispatch({
+          type: UPDATE_BLOCK_FORMAT,
+          format: box,
+        });
+      default:
+        return dispatch({
+          type: UPDATE_BLOCK_FORMAT,
+          format: { transform: `translate(${box.x}, ${box.y})` },
+        });
+    }
+  });
+
+  const boxRef = React.useRef(box);
+
+  const [mode, setMode] = React.useState(null);
+
+  useAutoEffect(() => {
+    const move = (event) => {
+      const {
+        current: { x, y, width, height },
+      } = boxRef;
+      const dx = event.movementX;
+      const dy = event.movementY;
+      if (mode === 'move') {
+        setBox({
+          width,
+          height,
+          x: x + dx,
+          y: y + dy,
+        });
+      } else if (mode) {
+        const resize = mode.match(/^resize\((.+),(.+),(.+),(.+)\)$/);
+        if (resize) {
+          const [, kx, ky, kw, kh] = resize;
+          return setBox({
+            x: x - kx * dx,
+            y: y - ky * dy,
+            width: width + kw * dx,
+            height: height + kh * dy,
+          });
+        }
+      }
+    };
+    document.addEventListener('mousemove', move);
+    return () => {
+      document.removeEventListener('mousemove', move);
+    };
+  });
+
+  const selectResizeMode = useAutoCallback((event) => {
+    setMode(event.currentTarget.dataset.mode);
+  });
+
+  useAutoEffect(() => {
+    const clearMode = () => {
+      setMode(null);
+    };
+    document.addEventListener('mouseup', clearMode);
+    return () => {
+      document.removeEventListener('mouseup', clearMode);
+    };
   });
 
   return (
     <>
       <Shape {...props} ref={ref} />
-      {selected && (
-        <>
-          <ResizePath
-            transform={`translate(${box.x}, ${box.y}) rotate(135)`}
-            cursor={'nwse-resize'}
-          />
-          <ResizePath
-            transform={`translate(${box.x + box.width / 2}, ${
-              box.y
-            }) rotate(180)`}
-            cursor={'ns-resize'}
-          />
-          <ResizePath
-            transform={`translate(${box.x + box.width}, ${box.y}) rotate(225)`}
-            cursor={'nesw-resize'}
-          />
-          <ResizePath
-            transform={`translate(${box.x + box.width}, ${
-              box.y + box.height / 2
-            }) rotate(270)`}
-            cursor={'ew-resize'}
-          />
-          <ResizePath
-            transform={`translate(${box.x + box.width}, ${
-              box.y + box.height
-            }) rotate(315)`}
-            cursor={'nwse-resize'}
-          />
-          <ResizePath
-            transform={`translate(${box.x + box.width / 2}, ${
-              box.y + box.height
-            })`}
-            cursor={'ns-resize'}
-          />
-          <ResizePath
-            transform={`translate(${box.x}, ${box.y + box.height}) rotate(45)`}
-            cursor={'nesw-resize'}
-          />
-          <ResizePath
-            transform={`translate(${box.x}, ${
-              box.y + box.height / 2
-            }) rotate(90)`}
-            cursor={'ew-resize'}
-          />
-        </>
+      <g {...(!selected && { display: 'none' })}>
+        <ResizePath
+          onMouseDown={selectResizeMode}
+          transform={`translate(${bound.x}, ${bound.y})`}
+          cursor={'nwse-resize'}
+          data-mode={'resize(-1,-1,-1,-1)'}
+        />
+        <ResizePath
+          onMouseDown={selectResizeMode}
+          transform={`translate(${bound.x + bound.width / 2}, ${bound.y})`}
+          cursor={'ns-resize'}
+          data-mode={'resize(0,-1,0,-1)'}
+        />
+        <ResizePath
+          onMouseDown={selectResizeMode}
+          transform={`translate(${bound.x + bound.width}, ${bound.y})`}
+          cursor={'nesw-resize'}
+          data-mode={'resize(0,-1,1,-1)'}
+        />
+        <ResizePath
+          onMouseDown={selectResizeMode}
+          transform={`translate(${bound.x + bound.width}, ${
+            bound.y + bound.height / 2
+          })`}
+          cursor={'ew-resize'}
+          data-mode={'resize(0,0,1,0)'}
+        />
+        <ResizePath
+          onMouseDown={selectResizeMode}
+          transform={`translate(${bound.x + bound.width}, ${
+            bound.y + bound.height
+          })`}
+          cursor={'nwse-resize'}
+          data-mode={'resize(0,0,1,1)'}
+        />
+        <ResizePath
+          onMouseDown={selectResizeMode}
+          transform={`translate(${bound.x + bound.width / 2}, ${
+            bound.y + bound.height
+          })`}
+          cursor={'ns-resize'}
+          data-mode={'resize(0,0,0,1)'}
+        />
+        <ResizePath
+          onMouseDown={selectResizeMode}
+          transform={`translate(${bound.x}, ${bound.y + bound.height})`}
+          cursor={'nesw-resize'}
+          data-mode={'resize(-1,0,-1,1)'}
+        />
+        <ResizePath
+          onMouseDown={selectResizeMode}
+          transform={`translate(${bound.x}, ${bound.y + bound.height / 2})`}
+          cursor={'ew-resize'}
+          data-mode={'resize(-1,0,-1,0)'}
+        />
+      </g>
       )}
       <Box
         as={'rect'}
+        shapeRendering={'crispEdges'}
         stroke={selected ? 'primary.main' : 'transparent'}
         fill={'transparent'}
-        cursor={selected ? 'move' : 'pointer'}
-        onClick={useAutoCallback((event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          dispatch({
-            type: DESELECT_ALL_BLOCKS,
-          });
-          dispatch({
-            type: SELECT_BLOCK,
-            id,
-            ...(event.ctrlKey && {
-              modifier: selected ? 'sub' : 'add',
-            }),
-          });
+        strokeDasharray={'6 3'}
+        cursor={selected ? mode || 'move' : 'pointer'}
+        onMouseDown={useAutoCallback(() => {
+          setMode('move');
         })}
-        x={box.x + 2}
-        y={box.y + 2}
-        width={box.width - 3}
-        height={box.height - 3}
+        onClick={useAutoCallback((event) => {
+          if (!selected) {
+            event.preventDefault();
+            event.stopPropagation();
+            dispatch({
+              type: DESELECT_ALL_BLOCKS,
+            });
+            dispatch({
+              type: SELECT_BLOCK,
+              id,
+              ...(event.ctrlKey && {
+                modifier: selected ? 'sub' : 'add',
+              }),
+            });
+          }
+        })}
+        x={bound.x + 2}
+        y={bound.y + 2}
+        width={bound.width - 4}
+        height={bound.height - 4}
       />
     </>
   );

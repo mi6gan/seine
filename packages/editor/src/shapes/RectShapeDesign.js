@@ -19,11 +19,11 @@ import { UPDATE_BLOCK_FORMAT } from '@seine/core';
  * @description Chart design panel.
  * @returns {React.Node}
  */
-export default function EllipseShapeDesign() {
+export default function RectShapeDesign() {
   const {
     item: {
       id,
-      format: { cx, cy, rx, ry },
+      format: { x, y, width, height },
     },
   } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
@@ -38,50 +38,50 @@ export default function EllipseShapeDesign() {
   );
   return (
     <SidebarSection>
-      <SidebarHeading>Ellipse</SidebarHeading>
+      <SidebarHeading>Rectangle</SidebarHeading>
       <SidebarGroup>
         <SidebarLabel minWidth={'auto'} mr={1}>
-          cx
+          x
         </SidebarLabel>
         <SidebarInput
           disabled={!id}
-          value={cx}
-          name={'cx'}
+          value={x}
+          name={'x'}
           onChange={formatInput}
           type={'number'}
         />
         <SidebarLabel minWidth={'auto'} mr={1}>
-          cy
+          width
+        </SidebarLabel>
+        <SidebarInput
+          disabled={!id}
+          value={width}
+          name={'width'}
+          onChange={formatInput}
+          type={'number'}
+        />
+      </SidebarGroup>
+      <SidebarGroup>
+        <SidebarLabel minWidth={'auto'} mr={1}>
+          y
         </SidebarLabel>
         <Box display={'flex'}>
           <SidebarInput
             disabled={!id}
-            value={cy}
-            name={'cy'}
+            value={y}
+            name={'y'}
             onChange={formatInput}
             type={'number'}
           />
         </Box>
-      </SidebarGroup>
-      <SidebarGroup>
         <SidebarLabel minWidth={'auto'} mr={1}>
-          rx
-        </SidebarLabel>
-        <SidebarInput
-          disabled={!id}
-          value={rx}
-          name={'rx'}
-          onChange={formatInput}
-          type={'number'}
-        />
-        <SidebarLabel minWidth={'auto'} mr={1}>
-          ry
+          height
         </SidebarLabel>
         <Box display={'flex'}>
           <SidebarInput
             disabled={!id}
-            value={ry}
-            name={'ry'}
+            value={height}
+            name={'height'}
             onChange={formatInput}
             type={'number'}
           />

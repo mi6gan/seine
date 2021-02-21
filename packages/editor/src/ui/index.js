@@ -24,3 +24,4 @@ export { default as ToolbarToggleButton } from './ToolbarToggleButton';
 export { default as ToolbarToggleButtonGroup } from './ToolbarToggleButtonGroup';
 export { default as ToolbarSelect } from './ToolbarSelect';
 export { default as MenuButton } from './MenuButton';
+export { default as ColorButton } from './ColorButton';

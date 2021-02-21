@@ -74,6 +74,8 @@ function useCopyCallback() {
       clone['parent_id'] = parent && parent.id;
 
       clones.push(clone);
+    }
+    for (const clone of clones.reverse()) {
       clipboard.push(createBlocksAction(CREATE_BLOCK, clone));
     }
   });

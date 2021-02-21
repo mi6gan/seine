@@ -42,21 +42,26 @@ export type PathFormat = ItemFormat & {
   d: string,
 };
 
-export type ShapeFormat =
-  | ItemFormat
-  | GroupFormat
-  | RectFormat
-  | EllipseFormat
-  | PathFormat;
+export type ShapeFormat = {
+  fill: string,
+  stroke: string,
+} & (ItemFormat | GroupFormat | RectFormat | EllipseFormat | PathFormat);
 
 export const SHAPE = 'shape';
 
+const baseShapeFormat = {
+  stroke: 'rgba(0,0,0,1.0)',
+  fill: 'transparent',
+};
+
 export const defaultPathShapeFormat = {
+  ...baseShapeFormat,
   kind: shapeTypes.PATH,
   d: '',
 };
 
 export const defaultRectShapeFormat = {
+  ...baseShapeFormat,
   kind: shapeTypes.RECT,
   x: 30,
   y: 30,
@@ -65,6 +70,7 @@ export const defaultRectShapeFormat = {
 };
 
 export const defaultEllipseShapeFormat = {
+  ...baseShapeFormat,
   kind: shapeTypes.ELLIPSE,
   cx: 30,
   cy: 30,

@@ -176,8 +176,13 @@ const Table = React.forwardRef(function Table(
       <StyledTable>
         <thead>
           <tr>
-            {header.map(({ text }, index) => (
-              <th key={index}>
+            {header.map(({ text, width }, index) => (
+              <th
+                key={index}
+                {...(width && {
+                  width: typeof width === 'number' ? `${width}%` : width,
+                })}
+              >
                 <TableCellText
                   id={id}
                   rowIndex={-1}

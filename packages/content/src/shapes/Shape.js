@@ -23,9 +23,13 @@ const Shape = React.forwardRef(function Shape(
   ) : kind === shapeTypes.PATH ? (
     <PathShape {...shapeProps} ref={ref} />
   ) : kind === shapeTypes.RECT ? (
-    <RectShape {...shapeProps} ref={ref} />
+    <RectShape {...shapeProps} ref={ref} shapeRendering={'crispEdges'} />
   ) : kind === shapeTypes.ELLIPSE ? (
-    <EllipseShape {...shapeProps} ref={ref} />
+    <EllipseShape
+      {...shapeProps}
+      ref={ref}
+      shapeRendering={'geometricPrecision'}
+    />
   ) : null;
 });
 
