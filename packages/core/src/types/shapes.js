@@ -57,7 +57,7 @@ const baseShapeFormat = {
 export const defaultPathShapeFormat = {
   ...baseShapeFormat,
   kind: shapeTypes.PATH,
-  d: '',
+  d: 'M10,10 L50,50',
 };
 
 export const defaultRectShapeFormat = {

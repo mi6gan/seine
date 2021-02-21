@@ -30,31 +30,59 @@ const ResizePath = styled(Box).attrs({
   shapeRendering: 'crispEdges',
 })``;
 
-const ShapeFrame = React.forwardRef(function ShapeFrame(props, ref) {
-  const { id, x, y, width, height, cx, cy, rx, ry, kind } = props;
+const ShapeFrame = React.forwardRef(function ShapeFrame(
+  { transform, ...props },
+  ref
+) {
+  const { id, x, y, width, height, cx, cy, rx, ry, kind, d } = props;
   const dispatch = useBlocksDispatch();
   const selected = useEditorSelector(
     useAutoCallback(
       ({ selection }) => selection.length === 1 && selection.includes(id)
     )
   );
-  const box = useAutoMemo(() =>
-    kind === shapeTypes.ELLIPSE
-      ? {
+  const box = useAutoMemo(() => {
+    switch (kind) {
+      case shapeTypes.ELLIPSE:
+        return {
           x: cx - rx,
           y: cy - ry,
           width: 2 * rx,
           height: 2 * ry,
-        }
-      : kind === shapeTypes.RECT
-      ? {
+        };
+      case shapeTypes.RECT:
+        return {
           x,
           y,
           width,
           height,
-        }
-      : {}
-  );
+        };
+      case shapeTypes.PATH: {
+        const [values, args] = d
+          .match(/\d+(,\d+)?/g)
+          .map((p) => p.split(',').map((v) => +v))
+          .reduce(
+            (acc, [x, y]) => [
+              [...acc[0], x],
+              [...acc[1], y],
+            ],
+            [[], []]
+          );
+        const x = Math.min(...values);
+        const y = Math.min(...args);
+        const width = Math.max(...values) - x;
+        const height = Math.max(...args) - y;
+        return {
+          x,
+          y,
+          width,
+          height,
+        };
+      }
+      default:
+        return {};
+    }
+  });
 
   const bound = useAutoMemo(() => {
     const result = {
@@ -157,7 +185,7 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(props, ref) {
   });
 
   return (
-    <>
+    <g transform={transform}>
       <Shape {...props} ref={ref} />
       <g {...(!selected && { display: 'none' })}>
         <ResizePath
@@ -247,7 +275,7 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(props, ref) {
         width={bound.width - 4}
         height={bound.height - 4}
       />
-    </>
+    </g>
   );
 });
 
