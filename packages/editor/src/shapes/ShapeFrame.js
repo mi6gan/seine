@@ -76,28 +76,32 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(props, ref) {
   });
 
   const setBox = useAutoCallback((box) => {
-    boxRef.current = box;
-    switch (kind) {
-      case shapeTypes.ELLIPSE:
-        return dispatch({
-          type: UPDATE_BLOCK_FORMAT,
-          format: {
-            cx: box.x + box.width / 2,
-            cy: box.y + box.height / 2,
-            rx: box.width / 2,
-            ry: box.height / 2,
-          },
-        });
-      case shapeTypes.RECT:
-        return dispatch({
-          type: UPDATE_BLOCK_FORMAT,
-          format: box,
-        });
-      default:
-        return dispatch({
-          type: UPDATE_BLOCK_FORMAT,
-          format: { transform: `translate(${box.x}, ${box.y})` },
-        });
+    if (box.width < 0 || box.height < 0) {
+      setMode(null);
+    } else {
+      boxRef.current = box;
+      switch (kind) {
+        case shapeTypes.ELLIPSE:
+          return dispatch({
+            type: UPDATE_BLOCK_FORMAT,
+            format: {
+              cx: box.x + box.width / 2,
+              cy: box.y + box.height / 2,
+              rx: box.width / 2,
+              ry: box.height / 2,
+            },
+          });
+        case shapeTypes.RECT:
+          return dispatch({
+            type: UPDATE_BLOCK_FORMAT,
+            format: box,
+          });
+        default:
+          return dispatch({
+            type: UPDATE_BLOCK_FORMAT,
+            format: { transform: `translate(${box.x}, ${box.y})` },
+          });
+      }
     }
   });
 
