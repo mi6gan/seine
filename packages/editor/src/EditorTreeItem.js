@@ -23,7 +23,7 @@ import {
 } from '@seine/styles/mui-core.macro';
 import {
   createBlocksAction,
-  isBlockContainer,
+  isBlockLayout,
   MOVE_BLOCK,
   SET_BLOCKS_SELECTION,
 } from '@seine/core';
@@ -67,7 +67,7 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
     event.stopPropagation();
     itemMenu.open(event.currentTarget);
   });
-  const isLayout = block && isBlockContainer(block);
+  const isLayout = block && isBlockLayout(block);
 
   const clipboard = React.useContext(ClipboardContext);
 

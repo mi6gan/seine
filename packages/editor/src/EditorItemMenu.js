@@ -13,11 +13,12 @@ import { ClipboardContext } from './clipboard';
 
 import type { Block } from '@seine/core';
 import {
+  blockTypes,
   cloneBlock,
   CREATE_BLOCK,
   createBlocksAction,
   DELETE_SELECTED_BLOCKS,
-  isBlockContainer,
+  isBlockLayout,
 } from '@seine/core';
 
 type ItemMenuType = {
@@ -142,7 +143,10 @@ export default function EditorItemMenu({
   );
   const { isOpen, close, anchorEl } = React.useContext(ItemMenuContext);
 
-  const isContainer = selectionBlocks.some(isBlockContainer);
+  const isContainer = selectionBlocks.some(isBlockLayout);
+  const isShape = selectionBlocks.some(
+    (block) => block.type === blockTypes.SHAPE
+  );
 
   return (
     <ToolbarMenu
@@ -163,7 +167,7 @@ export default function EditorItemMenu({
           )
         }
         onClick={close}
-        {...(isContainer && { display: 'none' })}
+        {...((isContainer || isShape) && { display: 'none' })}
       >
         Create layout
       </CreateLayoutButton>

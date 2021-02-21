@@ -3,7 +3,7 @@ import { useAutoMemo } from 'hooks.macro';
 
 import { defaultEditorSelector, useEditorSelector } from '../blocks';
 
-import { blockTypes, isBlockContainer } from '@seine/core';
+import { blockTypes, isBlockLayout } from '@seine/core';
 
 // eslint-disable-next-line
 export default function useSelectedLayoutItems(includeObsolete = false) {
@@ -12,7 +12,7 @@ export default function useSelectedLayoutItems(includeObsolete = false) {
       ({ type }) => includeObsolete || !/^.+\//.test(type)
     )
   );
-  const layouts = useAutoMemo(blocks.filter(isBlockContainer));
+  const layouts = useAutoMemo(blocks.filter(isBlockLayout));
   const items = useAutoMemo(
     layouts.length
       ? blocks.filter((block) =>

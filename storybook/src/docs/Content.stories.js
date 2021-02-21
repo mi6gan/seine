@@ -4,7 +4,7 @@ import { Box } from '@material-ui/core';
 
 import * as data from '../data';
 
-import { blockTypes, layoutTypes, chartTypes } from '@seine/core';
+import { blockTypes, layoutTypes, chartTypes, shapeTypes } from '@seine/core';
 import { Content } from '@seine/content';
 import { ThemeProvider } from '@seine/styles';
 
@@ -642,6 +642,59 @@ export const LineChart = ({ children = [], ...props }) => (
           ],
         },
         format: { kind: chartTypes.LINE },
+      },
+    ]}
+  </Page>
+);
+
+export const Shape = ({ parent_id = 'root', ...props }) => (
+  <Page {...props}>
+    {[
+      {
+        id: 'shape-root',
+        parent_id,
+        type: blockTypes.SHAPE,
+        body: {},
+        format: {
+          kind: shapeTypes.ROOT,
+        },
+      },
+      {
+        id: 'shape-path',
+        parent_id: 'shape-root',
+        type: blockTypes.SHAPE,
+        body: {},
+        format: {
+          kind: shapeTypes.PATH,
+          d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+        },
+      },
+      {
+        id: 'shape-ellipse',
+        parent_id: 'shape-root',
+        type: blockTypes.SHAPE,
+        body: {},
+        format: {
+          kind: shapeTypes.ELLIPSE,
+          cx: 30,
+          cy: 15,
+          rx: 10,
+          ry: 10,
+        },
+      },
+      {
+        id: 'shape-rect',
+        parent_id: 'shape-root',
+        type: blockTypes.SHAPE,
+        body: {},
+        format: {
+          kind: shapeTypes.RECT,
+          x: 40,
+          y: 10,
+          width: 20,
+          height: 20,
+          d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+        },
       },
     ]}
   </Page>

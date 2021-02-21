@@ -10,13 +10,17 @@ import { Box } from '@seine/styles';
 
 // eslint-disable-next-line
 const Frame = React.forwardRef(function Frame(
-  { children, id, onClick, as, ...props },
+  { children, id, onClick, as, selected = null, ...props },
   ref
 ) {
   const dispatch = useBlocksDispatch();
-  const selected = useEditorSelector(
+  const blockSelected = useEditorSelector(
     useAutoCallback(({ selection }) => selection.includes(id))
   );
+  const forcedSelection = selected !== null;
+  if (selected === null) {
+    selected = blockSelected;
+  }
 
   return (
     <Item
@@ -31,19 +35,21 @@ const Frame = React.forwardRef(function Frame(
       onClick={useAutoCallback((event) => {
         event.preventDefault();
         event.stopPropagation();
-        if (selected) {
+        if (!forcedSelection) {
+          if (selected) {
+            dispatch({
+              type: DESELECT_ALL_BLOCKS,
+            });
+          }
           dispatch({
-            type: DESELECT_ALL_BLOCKS,
+            type: SELECT_BLOCK,
+            id,
+            ...(event.ctrlKey && {
+              modifier: selected ? 'sub' : 'add',
+            }),
           });
+          onClick && onClick(event);
         }
-        dispatch({
-          type: SELECT_BLOCK,
-          id,
-          ...(event.ctrlKey && {
-            modifier: selected ? 'sub' : 'add',
-          }),
-        });
-        onClick && onClick(event);
       })}
       children={children}
     />

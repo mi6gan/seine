@@ -12,12 +12,12 @@ import {
 } from './blocks';
 import {
   BlockTypeIcon,
-  ToolbarSelect,
   Toolbar,
   ToolbarButton,
+  ToolbarSelect,
   ToolbarSeparator,
 } from './ui';
-import { useSelectedLayoutIds } from './layouts';
+import { useSelectedContainerIds, useSelectedLayoutIds } from './layouts';
 import type { EditorActionButtonProps } from './blocks/EditorActionButton';
 import { defaultPageEditor } from './pages/PageEditor';
 
@@ -34,6 +34,7 @@ import {
   createTitleIdentityBlockElements,
   defaultImageFormat,
   SET_DEVICE,
+  shapeTypes,
   UPDATE_BLOCK_EDITOR,
 } from '@seine/core';
 import { defaultTableCell, toRawContent } from '@seine/content';
@@ -61,7 +62,8 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
   const menuAnchorRef = React.useRef(null);
   const itemMenu = React.useContext(ItemMenuContext);
 
-  const [parentId = null] = useSelectedLayoutIds();
+  const [layoutId = null] = useSelectedLayoutIds();
+  const [containerId = null] = useSelectedContainerIds();
 
   const dispatch = useBlocksDispatch();
   const device = useEditorSelector(deviceSelector);
@@ -69,6 +71,32 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
     id: pageId,
     editor: { scale } = defaultPageEditor,
   } = useEditorSelector(pageSelector);
+
+  const createShape = useAutoCallback((event) => {
+    const block = layoutId
+      ? createBlock(
+          blockTypes.SHAPE,
+          {},
+          { kind: shapeTypes.ROOT },
+          containerId
+        )
+      : null;
+    if (block) {
+      dispatch({
+        type: CREATE_BLOCK,
+        block,
+      });
+    }
+    dispatch({
+      type: CREATE_BLOCK,
+      block: createBlock(
+        blockTypes.SHAPE,
+        {},
+        { kind: event.currentTarget.value },
+        block ? block.id : containerId
+      ),
+    });
+  });
 
   return (
     <AppBar position={position} ref={ref}>
@@ -91,27 +119,49 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
             <MenuIcon />
           </ToolbarButton>
 
-          {parentId !== null && <ToolbarSeparator />}
+          <ToolbarSeparator />
 
           <ToolbarButton
             as={ActionButton}
-            disabled={parentId === null}
+            disabled={layoutId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
               createBlock(blockTypes.RICH_TEXT, toRawContent('Rich text'), {
                 verticalAlignment: 'center',
               })
             )}
-            id={parentId}
+            id={layoutId}
+            title={'Text'}
           >
             <BlockTypeIcon type={blockTypes.RICH_TEXT} />
           </ToolbarButton>
 
-          {parentId !== null && <ToolbarSeparator />}
+          <ToolbarSeparator />
 
           <ToolbarButton
             as={ActionButton}
-            disabled={parentId === null}
+            disabled={layoutId === null}
+            type={CREATE_BLOCK}
+            block={useAutoMemo(
+              createBlock(
+                blockTypes.IMAGE,
+                {
+                  file:
+                    'https://via.placeholder.com/150/0000FF/808080?text=empty%20image',
+                },
+                defaultImageFormat
+              )
+            )}
+            id={layoutId}
+          >
+            <BlockTypeIcon type={blockTypes.IMAGE} />
+          </ToolbarButton>
+
+          <ToolbarSeparator />
+
+          <ToolbarButton
+            as={ActionButton}
+            disabled={layoutId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
               createBlock(
@@ -129,16 +179,17 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
                 null
               )
             )}
-            id={parentId}
+            id={layoutId}
+            title={'Table'}
           >
             <BlockTypeIcon type={blockTypes.TABLE} />
           </ToolbarButton>
 
-          {parentId !== null && <ToolbarSeparator />}
+          <ToolbarSeparator />
 
           <ToolbarButton
             as={ActionButton}
-            disabled={parentId === null}
+            disabled={layoutId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
               createBlock(
@@ -161,14 +212,15 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
                 }
               )
             )}
-            id={parentId}
+            id={layoutId}
+            title={'Bar chart'}
           >
             <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.BAR} />
           </ToolbarButton>
 
           <ToolbarButton
             as={ActionButton}
-            disabled={parentId === null}
+            disabled={layoutId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
               createBlock(
@@ -203,14 +255,15 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
                 }
               )
             )}
-            id={parentId}
+            id={layoutId}
+            title={'Line chart'}
           >
             <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.LINE} />
           </ToolbarButton>
 
           <ToolbarButton
             as={ActionButton}
-            disabled={parentId === null}
+            disabled={layoutId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
               createBlock(
@@ -245,14 +298,15 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
                 }
               )
             )}
-            id={parentId}
+            id={layoutId}
+            title={'Column chart'}
           >
             <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.COLUMN} />
           </ToolbarButton>
 
           <ToolbarButton
             as={ActionButton}
-            disabled={parentId === null}
+            disabled={layoutId === null}
             type={CREATE_BLOCK}
             block={useAutoMemo(
               createBlock(
@@ -275,28 +329,35 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
                 }
               )
             )}
-            id={parentId}
+            id={layoutId}
           >
             <BlockTypeIcon type={blockTypes.CHART} kind={chartTypes.PIE} />
           </ToolbarButton>
 
+          <ToolbarSeparator />
+
           <ToolbarButton
-            as={ActionButton}
-            disabled={parentId === null}
-            type={CREATE_BLOCK}
-            block={useAutoMemo(
-              createBlock(
-                blockTypes.IMAGE,
-                {
-                  file:
-                    'https://via.placeholder.com/150/0000FF/808080?text=empty%20image',
-                },
-                defaultImageFormat
-              )
-            )}
-            id={parentId}
+            disabled={containerId === null}
+            value={shapeTypes.ELLIPSE}
+            onClick={createShape}
           >
-            <BlockTypeIcon type={blockTypes.IMAGE} />
+            <BlockTypeIcon type={blockTypes.SHAPE} kind={shapeTypes.ELLIPSE} />
+          </ToolbarButton>
+
+          <ToolbarButton
+            disabled={containerId === null}
+            value={shapeTypes.RECT}
+            onClick={createShape}
+          >
+            <BlockTypeIcon type={blockTypes.SHAPE} kind={shapeTypes.RECT} />
+          </ToolbarButton>
+
+          <ToolbarButton
+            disabled={containerId === null}
+            value={shapeTypes.PATH}
+            onClick={createShape}
+          >
+            <BlockTypeIcon type={blockTypes.SHAPE} kind={shapeTypes.PATH} />
           </ToolbarButton>
         </Box>
 

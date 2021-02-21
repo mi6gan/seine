@@ -7,8 +7,9 @@ import * as layoutDefaults from './layouts';
 import * as chartDefaults from './charts';
 import * as imageDefaults from './images';
 import ObsoleteDesign from './v0.3/ObsoleteDesign';
+import { ShapeDesign } from './shapes';
 
-import { blockTypes } from '@seine/core';
+import { blockTypes, shapeTypes } from '@seine/core';
 
 type Props = {
   itemDesignAs?: React.ComponentType,
@@ -41,7 +42,12 @@ export default function EditorDesign({
   return (
     <>
       {isObsolete && <ObsoleteDesign />}
-      {item && item.type !== blockTypes.PAGE && !isObsolete && <ItemDesign />}
+      {item &&
+        item.type !== blockTypes.PAGE &&
+        !(
+          item.type === blockTypes.SHAPE && item.format.kind !== shapeTypes.ROOT
+        ) &&
+        !isObsolete && <ItemDesign />}
       {layout && !isObsolete && <LayoutDesign />}
       {item && !isObsolete && item.type === blockTypes.RICH_TEXT && (
         <RichTextDesign />
@@ -49,6 +55,7 @@ export default function EditorDesign({
       {item && !isObsolete && item.type === blockTypes.TABLE && <TableDesign />}
       {item && !isObsolete && item.type === blockTypes.CHART && <ChartDesign />}
       {item && !isObsolete && item.type === blockTypes.IMAGE && <ImageDesign />}
+      {item && !isObsolete && item.type === blockTypes.SHAPE && <ShapeDesign />}
       {children}
     </>
   );
