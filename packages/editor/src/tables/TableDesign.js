@@ -8,7 +8,6 @@ import {
   SidebarButtonGroup,
   SidebarGroup,
   SidebarHeading,
-  SidebarInput,
   SidebarLabel,
   SidebarSection,
   ToolbarToggleButton,
@@ -16,6 +15,7 @@ import {
 } from '../ui';
 import { EditorActionIconButton, useBlocksDispatch } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
+import ConstraintInput from '../ui/ConstraintInput';
 
 import TableColumnPlusAfterIcon from './TableColumnPlusAfterIcon';
 import TableColumnPlusBeforeIcon from './TableColumnPlusBeforeIcon';
@@ -68,7 +68,6 @@ export default function TableDesign({
   toggleAs: ToggleButtonGroup = ToolbarToggleButtonGroup,
   actionIconButtonAs: ActionButton = EditorActionIconButton,
   sectionAs: Section = SidebarSection,
-  inputAs: Input = SidebarInput,
 }: Props) {
   const dispatch = useBlocksDispatch();
   const {
@@ -257,28 +256,33 @@ export default function TableDesign({
           </Box>
         </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarLabel>column %</SidebarLabel>
-          <Input
-            type={'number'}
-            inputProps={{ min: 0, max: 100 }}
-            value={header[columnIndex] ? header[columnIndex].width : ''}
-            onChange={useAutoCallback((event) =>
-              dispatch({
-                type: UPDATE_BLOCK_BODY,
-                body: {
-                  header: [
-                    ...header.slice(0, columnIndex),
-                    {
-                      ...header[columnIndex],
-                      width: +event.currentTarget.value,
-                    },
-                    ...header.slice(columnIndex + 1),
-                  ],
-                },
-              })
-            )}
-          />
+        <SidebarGroup {...(!cell && { display: 'none' })}>
+          <SidebarLabel>cell size</SidebarLabel>
+          <Box display={'flex'} mr={1} as={'form'}>
+            <ConstraintInput
+              id={id}
+              key={columnIndex}
+              inputProps={{ placeholder: 'min', min: 0 }}
+              units={['%', 'px', 'rem']}
+              value={header[columnIndex] && header[columnIndex].width}
+              onSubmit={useAutoCallback((value) => {
+                const { __, ...cell } = header[columnIndex];
+                dispatch({
+                  type: UPDATE_BLOCK_BODY,
+                  body: {
+                    header: [
+                      ...header.slice(0, columnIndex),
+                      {
+                        ...cell,
+                        ...(value !== null && { width: value }),
+                      },
+                      ...header.slice(columnIndex + 1),
+                    ],
+                  },
+                });
+              })}
+            />
+          </Box>
         </SidebarGroup>
       </Section>
       <Section id={'table-design-section-text'}>

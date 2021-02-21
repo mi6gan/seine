@@ -3,18 +3,19 @@ import * as React from 'react';
 import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 
 import { UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { useBlocksDispatch } from '@seine/editor';
+import { SidebarInput, SidebarSelect, useBlocksDispatch } from '@seine/editor';
 
 const defaultUnits = ['%', 'px', 'rem'];
 
 // eslint-disable-next-line
 export default function ConstraintInput({
   id,
-  inputAs: Input,
-  selectAs: Select,
+  inputAs: Input = SidebarInput,
+  selectAs: Select = SidebarSelect,
   name,
   value,
   onChange,
+  onSubmit = null,
   units = defaultUnits,
   ...InputProps
 }) {
@@ -46,18 +47,22 @@ export default function ConstraintInput({
         const { value } = valueElement;
         const { value: units } = unitsElement;
 
-        const submit = () => {
-          dispatch({
-            id,
-            type: UPDATE_BLOCK_FORMAT,
-            format: {
-              [name]: field === 'value' && value ? `${value}${units}` : null,
-            },
+        const submit =
+          onSubmit ||
+          ((value) => {
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format: {
+                [name]: value,
+              },
+            });
           });
-        };
 
+        const valueToSubmit =
+          field === 'value' && value ? `${value}${units}` : null;
         if (field === 'units') {
-          submit();
+          submit(valueToSubmit);
           valueElement.value = '';
           valueElement.focus();
         } else {
@@ -69,7 +74,7 @@ export default function ConstraintInput({
           }
           timeoutsRef.current = {
             ...timeouts,
-            [name]: setTimeout(submit, 500),
+            [name]: setTimeout(() => submit(valueToSubmit), 500),
           };
         }
       })}
