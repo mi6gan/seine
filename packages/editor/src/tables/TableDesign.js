@@ -266,7 +266,7 @@ export default function TableDesign({
               units={['%', 'px', 'rem']}
               value={header[columnIndex] && header[columnIndex].width}
               onSubmit={useAutoCallback((value) => {
-                const { __, ...cell } = header[columnIndex];
+                const { width: __, ...cell } = header[columnIndex];
                 dispatch({
                   type: UPDATE_BLOCK_BODY,
                   body: {
