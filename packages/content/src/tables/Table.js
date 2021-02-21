@@ -179,7 +179,7 @@ const Table = React.forwardRef(function Table(
             {header.map(({ text, width }, index) => (
               <th
                 key={index}
-                {...(width !== null && {
+                {...(width && {
                   width: typeof width === 'number' ? `${width}%` : width,
                 })}
               >
