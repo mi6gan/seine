@@ -6,7 +6,11 @@ import { useAutoCallback } from 'hooks.macro';
 
 import { SidebarGroup, SidebarLabel } from '../ui';
 
-import { Button, ClickAwayListener } from '@seine/styles/mui-core.macro';
+import {
+  Button,
+  ClickAwayListener,
+  Checkbox,
+} from '@seine/styles/mui-core.macro';
 
 const StyledColorButton = styled(Button).attrs(({ children = '' }) => ({
   children,
@@ -36,14 +40,21 @@ const ColorPickerContainer = styled.div`
 
 // eslint-disable-next-line
 const ColorButton = React.forwardRef(function ColorButton(
-  { onChange = null, value, props, label = 'color' },
+  { onChange = null, value = null, label = 'color', ...props },
   ref
 ) {
   const [open, setOpen] = React.useState(false);
   const buttonRef = React.useRef(null);
   return (
-    <SidebarGroup ref={ref} mr={1}>
-      <SidebarLabel minWidth={'auto'} textAlign={'right'} mr={1}>
+    <SidebarGroup ref={ref}>
+      <SidebarLabel component={'label'}>
+        <Checkbox
+          color={'primary'}
+          checked={value !== null}
+          onChange={useAutoCallback((_, checked) => {
+            onChange({ target: { value: checked ? 'rgba(0,0,0,1.0)' : null } });
+          })}
+        />
         {label}
       </SidebarLabel>
       <StyledColorButton
@@ -53,6 +64,7 @@ const ColorButton = React.forwardRef(function ColorButton(
           setOpen(!open);
         })}
         size={'small'}
+        disabled={value === null}
         {...props}
       />
       <ClickAwayListener
@@ -74,7 +86,7 @@ const ColorButton = React.forwardRef(function ColorButton(
           })}
         >
           <SketchPicker
-            color={value}
+            color={value || 'rgba(0,0,0,1.0)'}
             onChange={useAutoCallback(({ rgb: { r, g, b, a = 1 } }) => {
               onChange &&
                 onChange({ target: { value: `rgba(${r},${g},${b},${a})` } });

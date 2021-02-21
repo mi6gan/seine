@@ -31,6 +31,7 @@ import {
   defaultPieChartFormat,
   defaultRectShapeFormat,
   defaultRichTextFormat,
+  defaultShapeFormat,
   defaultTableFormat,
   layoutTypes,
   shapeTypes,
@@ -132,7 +133,7 @@ export function getDefaultBlockFormat(
         case shapeTypes.ELLIPSE:
           return defaultEllipseShapeFormat;
         default:
-          return defaultPathShapeFormat;
+          return defaultShapeFormat;
       }
     }
 

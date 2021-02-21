@@ -10,7 +10,6 @@ import EllipseShapeDesign from './EllipseShapeDesign';
 import RectShapeDesign from './RectShapeDesign';
 
 import { shapeTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
-import { Box } from '@seine/styles';
 
 /**
  * @description Shape design panel.
@@ -19,6 +18,7 @@ import { Box } from '@seine/styles';
 export default function ShapeDesign() {
   const {
     item: {
+      id,
       format: { kind, fill, stroke },
     },
   } = useSelectedLayoutItems();
@@ -27,28 +27,28 @@ export default function ShapeDesign() {
     <>
       <SidebarSection>
         <SidebarHeading>Shape</SidebarHeading>
-        <Box display={'flex'}>
-          <ColorButton
-            label={'fill'}
-            value={fill}
-            onChange={useAutoCallback((event) => {
-              dispatch({
-                type: UPDATE_BLOCK_FORMAT,
-                format: { fill: event.target.value },
-              });
-            })}
-          />
-          <ColorButton
-            label={'stroke'}
-            value={stroke}
-            onChange={useAutoCallback((event) => {
-              dispatch({
-                type: UPDATE_BLOCK_FORMAT,
-                format: { stroke: event.target.value },
-              });
-            })}
-          />
-        </Box>
+        <ColorButton
+          label={'fill'}
+          value={fill}
+          onChange={useAutoCallback((event) => {
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format: { fill: event.target.value },
+            });
+          })}
+        />
+        <ColorButton
+          label={'stroke'}
+          value={stroke}
+          onChange={useAutoCallback((event) => {
+            dispatch({
+              id,
+              type: UPDATE_BLOCK_FORMAT,
+              format: { stroke: event.target.value },
+            });
+          })}
+        />
       </SidebarSection>
       {kind === shapeTypes.ELLIPSE ? <EllipseShapeDesign /> : null}
       {kind === shapeTypes.RECT ? <RectShapeDesign /> : null}
