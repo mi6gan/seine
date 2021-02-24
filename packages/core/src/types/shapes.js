@@ -49,19 +49,12 @@ export type ShapeFormat = {
 
 export const SHAPE = 'shape';
 
-const baseShapeFormat = {
-  stroke: 'rgba(0,0,0,1.0)',
-  fill: 'transparent',
-};
-
 export const defaultPathShapeFormat = {
-  ...baseShapeFormat,
   kind: shapeTypes.PATH,
   d: 'M10,10 L50,50',
 };
 
 export const defaultRectShapeFormat = {
-  ...baseShapeFormat,
   kind: shapeTypes.RECT,
   x: 30,
   y: 30,
@@ -70,7 +63,6 @@ export const defaultRectShapeFormat = {
 };
 
 export const defaultEllipseShapeFormat = {
-  ...baseShapeFormat,
   kind: shapeTypes.ELLIPSE,
   cx: 30,
   cy: 30,
@@ -80,5 +72,7 @@ export const defaultEllipseShapeFormat = {
 
 export const defaultShapeFormat = {
   ...defaultItemFormat,
+  stroke: 'rgba(0,0,0,1.0)',
+  fill: 'transparent',
   kind: shapeTypes.ROOT,
 };
