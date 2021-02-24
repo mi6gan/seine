@@ -34,13 +34,16 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
   { transform, ...props },
   ref
 ) {
-  const { id, x, y, width, height, cx, cy, rx, ry, kind, d } = props;
+  const { id, x, y, width, height, cx, cy, rx, ry, kind } = props;
   const dispatch = useBlocksDispatch();
   const selected = useEditorSelector(
     useAutoCallback(
       ({ selection }) => selection.length === 1 && selection.includes(id)
     )
   );
+  const initialRef = React.useRef(null);
+  ref = ref || initialRef;
+  const { current: shape } = ref;
   const box = useAutoMemo(() => {
     switch (kind) {
       case shapeTypes.ELLIPSE:
@@ -58,26 +61,16 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
           height,
         };
       case shapeTypes.PATH: {
-        const [values, args] = d
-          .match(/\d+(,\d+)?/g)
-          .map((p) => p.split(',').map((v) => +v))
-          .reduce(
-            (acc, [x, y]) => [
-              [...acc[0], x],
-              [...acc[1], y],
-            ],
-            [[], []]
-          );
-        const x = Math.min(...values);
-        const y = Math.min(...args);
-        const width = Math.max(...values) - x;
-        const height = Math.max(...args) - y;
-        return {
-          x,
-          y,
-          width,
-          height,
-        };
+        if (shape) {
+          const rect = shape.getBBox();
+          return {
+            x: rect.x,
+            y: rect.y,
+            width: rect.width,
+            height: rect.height,
+          };
+        }
+        return null;
       }
       default:
         return {};
@@ -85,22 +78,25 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
   });
 
   const bound = useAutoMemo(() => {
-    const result = {
-      ...box,
-      ...(box.width < MIN_WIDTH && {
-        x: box.x - (MIN_WIDTH - box.width) / 2,
-        width: MIN_WIDTH,
-      }),
-      ...(box.height < MIN_HEIGHT && {
-        y: box.y - (MIN_HEIGHT - box.height) / 2,
-        height: MIN_HEIGHT,
-      }),
-    };
-    result.x -= 2;
-    result.width += 4;
-    result.y -= 2;
-    result.height += 4;
-    return result;
+    if (box) {
+      const result = {
+        ...box,
+        ...(box.width < MIN_WIDTH && {
+          x: box.x - (MIN_WIDTH - box.width) / 2,
+          width: MIN_WIDTH,
+        }),
+        ...(box.height < MIN_HEIGHT && {
+          y: box.y - (MIN_HEIGHT - box.height) / 2,
+          height: MIN_HEIGHT,
+        }),
+      };
+      result.x -= 2;
+      result.width += 4;
+      result.y -= 2;
+      result.height += 4;
+      return result;
+    }
+    return null;
   });
 
   const setBox = useAutoCallback((box) => {
@@ -139,28 +135,30 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
 
   useAutoEffect(() => {
     const move = (event) => {
-      const {
-        current: { x, y, width, height },
-      } = boxRef;
-      const dx = event.movementX;
-      const dy = event.movementY;
-      if (mode === 'move') {
-        setBox({
-          width,
-          height,
-          x: x + dx,
-          y: y + dy,
-        });
-      } else if (mode) {
-        const resize = mode.match(/^resize\((.+),(.+),(.+),(.+)\)$/);
-        if (resize) {
-          const [, kx, ky, kw, kh] = resize;
-          return setBox({
-            x: x - kx * dx,
-            y: y - ky * dy,
-            width: width + kw * dx,
-            height: height + kh * dy,
+      if (boxRef.current) {
+        const {
+          current: { x, y, width, height },
+        } = boxRef;
+        const dx = event.movementX;
+        const dy = event.movementY;
+        if (mode === 'move') {
+          setBox({
+            width,
+            height,
+            x: x + dx,
+            y: y + dy,
           });
+        } else if (mode) {
+          const resize = mode.match(/^resize\((.+),(.+),(.+),(.+)\)$/);
+          if (resize) {
+            const [, kx, ky, kw, kh] = resize;
+            return setBox({
+              x: x - kx * dx,
+              y: y - ky * dy,
+              width: width + kw * dx,
+              height: height + kh * dy,
+            });
+          }
         }
       }
     };
@@ -184,97 +182,117 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
     };
   });
 
+  const move = useAutoCallback(() => {
+    setMode('move');
+  });
+  const select = useAutoCallback((event) => {
+    if (!selected) {
+      event.preventDefault();
+      event.stopPropagation();
+      dispatch({
+        type: DESELECT_ALL_BLOCKS,
+      });
+      dispatch({
+        type: SELECT_BLOCK,
+        id,
+        ...(event.ctrlKey && {
+          modifier: selected ? 'sub' : 'add',
+        }),
+      });
+    }
+  });
+
   return (
     <g transform={transform}>
       <Shape {...props} ref={ref} />
       <g {...(!selected && { display: 'none' })}>
-        <ResizePath
-          onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x}, ${bound.y})`}
-          cursor={'nwse-resize'}
-          data-mode={'resize(-1,-1,-1,-1)'}
-        />
-        <ResizePath
-          onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width / 2}, ${bound.y})`}
-          cursor={'ns-resize'}
-          data-mode={'resize(0,-1,0,-1)'}
-        />
-        <ResizePath
-          onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width}, ${bound.y})`}
-          cursor={'nesw-resize'}
-          data-mode={'resize(0,-1,1,-1)'}
-        />
-        <ResizePath
-          onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width}, ${
-            bound.y + bound.height / 2
-          })`}
-          cursor={'ew-resize'}
-          data-mode={'resize(0,0,1,0)'}
-        />
-        <ResizePath
-          onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width}, ${
-            bound.y + bound.height
-          })`}
-          cursor={'nwse-resize'}
-          data-mode={'resize(0,0,1,1)'}
-        />
-        <ResizePath
-          onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width / 2}, ${
-            bound.y + bound.height
-          })`}
-          cursor={'ns-resize'}
-          data-mode={'resize(0,0,0,1)'}
-        />
-        <ResizePath
-          onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x}, ${bound.y + bound.height})`}
-          cursor={'nesw-resize'}
-          data-mode={'resize(-1,0,-1,1)'}
-        />
-        <ResizePath
-          onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x}, ${bound.y + bound.height / 2})`}
-          cursor={'ew-resize'}
-          data-mode={'resize(-1,0,-1,0)'}
-        />
+        {bound && (
+          <ResizePath
+            onMouseDown={selectResizeMode}
+            transform={`translate(${bound.x}, ${bound.y})`}
+            cursor={'nwse-resize'}
+            data-mode={'resize(-1,-1,-1,-1)'}
+          />
+        )}
+        {bound && (
+          <ResizePath
+            onMouseDown={selectResizeMode}
+            transform={`translate(${bound.x + bound.width / 2}, ${bound.y})`}
+            cursor={'ns-resize'}
+            data-mode={'resize(0,-1,0,-1)'}
+          />
+        )}
+        {bound && (
+          <ResizePath
+            onMouseDown={selectResizeMode}
+            transform={`translate(${bound.x + bound.width}, ${bound.y})`}
+            cursor={'nesw-resize'}
+            data-mode={'resize(0,-1,1,-1)'}
+          />
+        )}
+        {bound && (
+          <ResizePath
+            onMouseDown={selectResizeMode}
+            transform={`translate(${bound.x + bound.width}, ${
+              bound.y + bound.height / 2
+            })`}
+            cursor={'ew-resize'}
+            data-mode={'resize(0,0,1,0)'}
+          />
+        )}
+        {bound && (
+          <ResizePath
+            onMouseDown={selectResizeMode}
+            transform={`translate(${bound.x + bound.width}, ${
+              bound.y + bound.height
+            })`}
+            cursor={'nwse-resize'}
+            data-mode={'resize(0,0,1,1)'}
+          />
+        )}
+        {bound && (
+          <ResizePath
+            onMouseDown={selectResizeMode}
+            transform={`translate(${bound.x + bound.width / 2}, ${
+              bound.y + bound.height
+            })`}
+            cursor={'ns-resize'}
+            data-mode={'resize(0,0,0,1)'}
+          />
+        )}
+        {bound && (
+          <ResizePath
+            onMouseDown={selectResizeMode}
+            transform={`translate(${bound.x}, ${bound.y + bound.height})`}
+            cursor={'nesw-resize'}
+            data-mode={'resize(-1,0,-1,1)'}
+          />
+        )}
+        {bound && (
+          <ResizePath
+            onMouseDown={selectResizeMode}
+            transform={`translate(${bound.x}, ${bound.y + bound.height / 2})`}
+            cursor={'ew-resize'}
+            data-mode={'resize(-1,0,-1,0)'}
+          />
+        )}
       </g>
+      {bound && (
+        <Box
+          as={'rect'}
+          shapeRendering={'crispEdges'}
+          stroke={selected ? 'primary.main' : 'transparent'}
+          fill={'transparent'}
+          strokeDasharray={'6 3'}
+          cursor={selected ? mode || 'move' : 'pointer'}
+          onMouseDown={move}
+          onClick={select}
+          x={bound.x + 2}
+          y={bound.y + 2}
+          width={bound.width - 4}
+          height={bound.height - 4}
+        />
       )}
-      <Box
-        as={'rect'}
-        shapeRendering={'crispEdges'}
-        stroke={selected ? 'primary.main' : 'transparent'}
-        fill={'transparent'}
-        strokeDasharray={'6 3'}
-        cursor={selected ? mode || 'move' : 'pointer'}
-        onMouseDown={useAutoCallback(() => {
-          setMode('move');
-        })}
-        onClick={useAutoCallback((event) => {
-          if (!selected) {
-            event.preventDefault();
-            event.stopPropagation();
-            dispatch({
-              type: DESELECT_ALL_BLOCKS,
-            });
-            dispatch({
-              type: SELECT_BLOCK,
-              id,
-              ...(event.ctrlKey && {
-                modifier: selected ? 'sub' : 'add',
-              }),
-            });
-          }
-        })}
-        x={bound.x + 2}
-        y={bound.y + 2}
-        width={bound.width - 4}
-        height={bound.height - 4}
-      />
     </g>
   );
 });
