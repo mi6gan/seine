@@ -48,8 +48,8 @@ const Frame = React.forwardRef(function Frame(
               modifier: selected ? 'sub' : 'add',
             }),
           });
-          onClick && onClick(event);
         }
+        onClick && onClick(event);
       })}
       children={children}
     />
