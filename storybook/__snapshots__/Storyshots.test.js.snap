@@ -2,15 +2,17 @@
 
 exports[`Storyshots Docs/Content Bar Chart 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
     class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
     data-type="bar"
+    header="[object Object]"
     id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
     style="height:100%px"
     theme="[object Object]"
+    titles="WFLA,Region A,Region B,Region C,Region D,Region E,Region F,Region G,Region H"
   >
     <div
       id="top-container"
@@ -75,7 +77,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
                   font-size="1rem"
                   font-weight="400"
                   letter-spacing="0.00938em"
-                  text="null"
+                  text=""
                   text-anchor="end"
                   x="-10"
                   y="0"
@@ -232,6 +234,19 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             style="width:0"
           />
           <div
+            style="position:relative;flex-grow:1"
+          >
+            <svg
+              height="0"
+              style="position:absolute;left:0;top:0;overflow:visible"
+              width="0"
+            >
+              <g
+                transform="translate(0 0)"
+              />
+            </svg>
+          </div>
+          <div
             id="bottom-right-axis"
             style="width:0"
           />
@@ -258,7 +273,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#71a2ff"
             fill="#71a2ff"
             height="1.5em"
-            name="WFLA"
+            name="0"
             width="1.5em"
           >
             <rect
@@ -287,7 +302,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#c0d4e2"
             fill="#c0d4e2"
             height="1.5em"
-            name="Region A"
+            name="1"
             width="1.5em"
           >
             <rect
@@ -316,7 +331,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#cbcbcb"
             fill="#cbcbcb"
             height="1.5em"
-            name="Region B"
+            name="2"
             width="1.5em"
           >
             <rect
@@ -345,7 +360,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#e57878"
             fill="#e57878"
             height="1.5em"
-            name="Region C"
+            name="3"
             width="1.5em"
           >
             <rect
@@ -374,7 +389,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#8adb96"
             fill="#8adb96"
             height="1.5em"
-            name="Region D"
+            name="4"
             width="1.5em"
           >
             <rect
@@ -403,7 +418,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#6895eb"
             fill="#6895eb"
             height="1.5em"
-            name="Region E"
+            name="5"
             width="1.5em"
           >
             <rect
@@ -432,7 +447,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#b8c8d8"
             fill="#b8c8d8"
             height="1.5em"
-            name="Region F"
+            name="6"
             width="1.5em"
           >
             <rect
@@ -461,7 +476,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#ebebeb"
             fill="#ebebeb"
             height="1.5em"
-            name="Region G"
+            name="7"
             width="1.5em"
           >
             <rect
@@ -490,7 +505,7 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
             color="#ff7171"
             fill="#ff7171"
             height="1.5em"
-            name="Region H"
+            name="8"
             width="1.5em"
           >
             <rect
@@ -523,15 +538,17 @@ exports[`Storyshots Docs/Content Bar Chart 1`] = `
 
 exports[`Storyshots Docs/Content Column Chart 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
     class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
     data-type="column"
+    header="[object Object]"
     id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
     style="height:100%px"
     theme="[object Object]"
+    titles="Maelstorm,Spring,Empty,Electro"
   >
     <div
       id="top-container"
@@ -875,7 +892,7 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
                   font-size="1rem"
                   font-weight="400"
                   letter-spacing="0.00938em"
-                  text="null"
+                  text=""
                   text-anchor="middle"
                   x="0"
                   y="10"
@@ -910,7 +927,7 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
             color="#71a2ff"
             fill="#71a2ff"
             height="1.5em"
-            name="Maelstorm"
+            name="0"
             width="1.5em"
           >
             <rect
@@ -939,7 +956,7 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
             color="#c0d4e2"
             fill="#c0d4e2"
             height="1.5em"
-            name="Spring"
+            name="1"
             width="1.5em"
           >
             <rect
@@ -968,7 +985,7 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
             color="#cbcbcb"
             fill="#cbcbcb"
             height="1.5em"
-            name="Empty"
+            name="2"
             width="1.5em"
           >
             <rect
@@ -997,7 +1014,7 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
             color="#e57878"
             fill="#e57878"
             height="1.5em"
-            name="Electro"
+            name="3"
             width="1.5em"
           >
             <rect
@@ -1030,7 +1047,7 @@ exports[`Storyshots Docs/Content Column Chart 1`] = `
 
 exports[`Storyshots Docs/Content Flex 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
@@ -1787,7 +1804,7 @@ exports[`Storyshots Docs/Content Flex 1`] = `
 
 exports[`Storyshots Docs/Content Image 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
@@ -1802,7 +1819,7 @@ exports[`Storyshots Docs/Content Image 1`] = `
 
 exports[`Storyshots Docs/Content Line Chart 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
@@ -2492,7 +2509,7 @@ exports[`Storyshots Docs/Content Line Chart 1`] = `
             color="#71a2ff"
             fill="#71a2ff"
             height="1.5em"
-            name="Easymode"
+            name="0"
             width="1.5em"
           >
             <rect
@@ -2521,7 +2538,7 @@ exports[`Storyshots Docs/Content Line Chart 1`] = `
             color="#c0d4e2"
             fill="#c0d4e2"
             height="1.5em"
-            name="Rest"
+            name="1"
             width="1.5em"
           >
             <rect
@@ -2554,7 +2571,7 @@ exports[`Storyshots Docs/Content Line Chart 1`] = `
 
 exports[`Storyshots Docs/Content Nested Flex 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
@@ -3359,22 +3376,24 @@ exports[`Storyshots Docs/Content Nested Flex 1`] = `
 
 exports[`Storyshots Docs/Content Page 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 />
 `;
 
 exports[`Storyshots Docs/Content Pie Chart 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
     class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
     data-type="pie"
+    header="[object Object]"
     id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
     style="height:100%px"
     theme="[object Object]"
+    titles="There is no space at the top. But big slices have enough space to contain text inside,repairs of something very long,consulting,training,others"
   >
     <div
       id="top-container"
@@ -3626,7 +3645,7 @@ exports[`Storyshots Docs/Content Pie Chart 1`] = `
 
 exports[`Storyshots Docs/Content Shape 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <svg
@@ -3675,7 +3694,7 @@ exports[`Storyshots Docs/Content Shape 1`] = `
 
 exports[`Storyshots Docs/Content Table 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
@@ -4258,7 +4277,7 @@ exports[`Storyshots Docs/Content Table 1`] = `
 
 exports[`Storyshots Docs/Content Text 1`] = `
 <div
-  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
   spacing="0"
 >
   <div
@@ -5019,7 +5038,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           >
             <div
@@ -5631,7 +5650,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           >
             <div
@@ -5640,9 +5659,11 @@ Array [
               class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 chykRJ Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
               cursor="pointer"
               data-type="bar"
+              header="[object Object]"
               id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
               style="height:100%px"
               theme="[object Object]"
+              titles="WFLA,Region A,Region B,Region C,Region D,Region E,Region F,Region G,Region H"
             >
               <div
                 id="top-container"
@@ -5707,7 +5728,7 @@ Array [
                             font-size="1rem"
                             font-weight="400"
                             letter-spacing="0.00938em"
-                            text="null"
+                            text=""
                             text-anchor="end"
                             x="-10"
                             y="0"
@@ -5864,6 +5885,19 @@ Array [
                       style="width:0"
                     />
                     <div
+                      style="position:relative;flex-grow:1"
+                    >
+                      <svg
+                        height="0"
+                        style="position:absolute;left:0;top:0;overflow:visible"
+                        width="0"
+                      >
+                        <g
+                          transform="translate(0 0)"
+                        />
+                      </svg>
+                    </div>
+                    <div
                       id="bottom-right-axis"
                       style="width:0"
                     />
@@ -5890,7 +5924,7 @@ Array [
                       color="#71a2ff"
                       fill="#71a2ff"
                       height="1.5em"
-                      name="WFLA"
+                      name="0"
                       width="1.5em"
                     >
                       <rect
@@ -5919,7 +5953,7 @@ Array [
                       color="#c0d4e2"
                       fill="#c0d4e2"
                       height="1.5em"
-                      name="Region A"
+                      name="1"
                       width="1.5em"
                     >
                       <rect
@@ -5948,7 +5982,7 @@ Array [
                       color="#cbcbcb"
                       fill="#cbcbcb"
                       height="1.5em"
-                      name="Region B"
+                      name="2"
                       width="1.5em"
                     >
                       <rect
@@ -5977,7 +6011,7 @@ Array [
                       color="#e57878"
                       fill="#e57878"
                       height="1.5em"
-                      name="Region C"
+                      name="3"
                       width="1.5em"
                     >
                       <rect
@@ -6006,7 +6040,7 @@ Array [
                       color="#8adb96"
                       fill="#8adb96"
                       height="1.5em"
-                      name="Region D"
+                      name="4"
                       width="1.5em"
                     >
                       <rect
@@ -6035,7 +6069,7 @@ Array [
                       color="#6895eb"
                       fill="#6895eb"
                       height="1.5em"
-                      name="Region E"
+                      name="5"
                       width="1.5em"
                     >
                       <rect
@@ -6064,7 +6098,7 @@ Array [
                       color="#b8c8d8"
                       fill="#b8c8d8"
                       height="1.5em"
-                      name="Region F"
+                      name="6"
                       width="1.5em"
                     >
                       <rect
@@ -6093,7 +6127,7 @@ Array [
                       color="#ebebeb"
                       fill="#ebebeb"
                       height="1.5em"
-                      name="Region G"
+                      name="7"
                       width="1.5em"
                     >
                       <rect
@@ -6122,7 +6156,7 @@ Array [
                       color="#ff7171"
                       fill="#ff7171"
                       height="1.5em"
-                      name="Region H"
+                      name="8"
                       width="1.5em"
                     >
                       <rect
@@ -6750,7 +6784,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           >
             <div
@@ -6759,9 +6793,11 @@ Array [
               class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 chykRJ Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
               cursor="pointer"
               data-type="column"
+              header="[object Object]"
               id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
               style="height:100%px"
               theme="[object Object]"
+              titles="Maelstorm,Spring,Empty,Electro"
             >
               <div
                 id="top-container"
@@ -7105,7 +7141,7 @@ Array [
                             font-size="1rem"
                             font-weight="400"
                             letter-spacing="0.00938em"
-                            text="null"
+                            text=""
                             text-anchor="middle"
                             x="0"
                             y="10"
@@ -7140,7 +7176,7 @@ Array [
                       color="#71a2ff"
                       fill="#71a2ff"
                       height="1.5em"
-                      name="Maelstorm"
+                      name="0"
                       width="1.5em"
                     >
                       <rect
@@ -7169,7 +7205,7 @@ Array [
                       color="#c0d4e2"
                       fill="#c0d4e2"
                       height="1.5em"
-                      name="Spring"
+                      name="1"
                       width="1.5em"
                     >
                       <rect
@@ -7198,7 +7234,7 @@ Array [
                       color="#cbcbcb"
                       fill="#cbcbcb"
                       height="1.5em"
-                      name="Empty"
+                      name="2"
                       width="1.5em"
                     >
                       <rect
@@ -7227,7 +7263,7 @@ Array [
                       color="#e57878"
                       fill="#e57878"
                       height="1.5em"
-                      name="Electro"
+                      name="3"
                       width="1.5em"
                     >
                       <rect
@@ -8029,7 +8065,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           >
             <div
@@ -9387,7 +9423,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           >
             <div
@@ -10000,7 +10036,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           >
             <div
@@ -10009,9 +10045,11 @@ Array [
               class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 chykRJ Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
               cursor="pointer"
               data-type="pie"
+              header="[object Object]"
               id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
               style="height:100%px"
               theme="[object Object]"
+              titles="There is no space at the top. But big slices have enough space to contain text inside,repairs of something very long,consulting,training,others"
             >
               <div
                 id="top-container"
@@ -10858,7 +10896,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           >
             <div
@@ -12039,7 +12077,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           >
             <div
@@ -12727,7 +12765,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           />
         </div>
@@ -13241,7 +13279,7 @@ Array [
           scale="100"
         >
           <div
-            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 lbNgAi Grid-sc-2glams-0 lbNgAi"
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
             spacing="0"
           />
         </div>

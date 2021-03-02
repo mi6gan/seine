@@ -51,6 +51,10 @@ type Props = {
   xAxis?: boolean,
 };
 
+function NullComponent() {
+  return null;
+}
+
 /**
  * @description Bar chart block renderer.
  * @param {Props} props
@@ -78,7 +82,10 @@ const ColumnChart = React.forwardRef(function ColumnChart(
           lineComponent={ChartAxisLine}
         />
       )}
-      {!!yAxis && <ValueAxis labelComponent={ChartLabel} showGrid={false} />}
+      <ValueAxis
+        labelComponent={yAxis ? ChartLabel : NullComponent}
+        showGrid={false}
+      />
       {valueFields.map((valueField, index) => (
         <BarSeries
           key={valueField}

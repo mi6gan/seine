@@ -5,7 +5,7 @@ import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
 import { useSelectedLayoutItems } from '../layouts';
-import useEditorDispatch from '../blocks/useEditorDispatch';
+import { useBlocksDispatch } from '../blocks';
 
 import { Chart } from '@seine/content';
 import type { BlockEditor, ChartBody, ChartFormat } from '@seine/core';
@@ -25,16 +25,27 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
   const selectionRef = React.useRef([]);
   const { current: selection } = selectionRef;
 
-  const dispatch = useEditorDispatch();
+  const dispatch = useBlocksDispatch();
 
   const select = useAutoCallback((selection) => {
     if (selectionRef.current !== selection) {
-      for (const target of selection) {
+      const isPie = frame['data-type'] === 'pie';
+      if (selection.length > 0) {
+        for (const target of selection) {
+          dispatch({
+            type: UPDATE_BLOCK_EDITOR,
+            editor: {
+              columnIndex: isPie ? target.order : target.point,
+              rowIndex: isPie ? target.point : target.order,
+            },
+          });
+        }
+      } else {
         dispatch({
           type: UPDATE_BLOCK_EDITOR,
           editor: {
-            columnIndex: target.point,
-            rowIndex: target.order,
+            columnIndex: null,
+            rowIndex: null,
           },
         });
       }
@@ -66,12 +77,25 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
  */
 const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
   const { item } = useSelectedLayoutItems();
+  const { id } = props;
+  const isSelected = !!(item && item.id === id);
+  const dispatch = useBlocksDispatch();
+
+  useAutoEffect(() => {
+    if (!isSelected) {
+      dispatch({
+        id,
+        type: UPDATE_BLOCK_EDITOR,
+        editor: {
+          rowIndex: null,
+          columnIndex: null,
+        },
+      });
+    }
+  });
+
   return (
-    <Chart
-      {...props}
-      as={item && item.id === props.id ? SelectionFrame : Frame}
-      ref={ref}
-    />
+    <Chart {...props} as={isSelected ? SelectionFrame : Frame} ref={ref} />
   );
 });
 

@@ -4,7 +4,11 @@ import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
 import { SidebarGroup } from '../ui';
-import { EditorActionButton, useBlocksDispatch } from '../blocks';
+import {
+  EditorActionButton,
+  EditorCompositeActionButton,
+  useBlocksDispatch,
+} from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
 
 import { Button as MuiButton } from '@seine/styles/mui-core.macro';
@@ -14,7 +18,11 @@ import {
   DeleteOutlined,
   HighlightOff,
 } from '@seine/styles/mui-icons.macro';
-import { chartTypes, UPDATE_BLOCK_BODY } from '@seine/core';
+import {
+  chartTypes,
+  UPDATE_BLOCK_BODY,
+  UPDATE_BLOCK_EDITOR,
+} from '@seine/core';
 
 const StyledButton = styled(MuiButton)`
   && {
@@ -39,7 +47,7 @@ export default function ChartStructureGroup({ buttonAs: Button }) {
   const addGroupBody = useAutoMemo(() => {
     const group = {
       value: header.length,
-      title: `Group ${header.length + 1}`,
+      text: `Group ${header.length + 1}`,
     };
     return {
       header: [...header, group],
@@ -63,6 +71,11 @@ export default function ChartStructureGroup({ buttonAs: Button }) {
       ...row.slice(0, columnIndex),
       ...row.slice(columnIndex + 1),
     ]),
+  });
+  const deselectAction = useAutoMemo({
+    type: UPDATE_BLOCK_EDITOR,
+    id,
+    editor: { rowIndex: null, columnIndex: null },
   });
   return (
     <SidebarGroup alignItems={'flex-start'} my={0}>
@@ -109,38 +122,40 @@ export default function ChartStructureGroup({ buttonAs: Button }) {
           {columnIndex !== null &&
             rowIndex !== null &&
             (kind === chartTypes.COLUMN || kind === chartTypes.LINE) && (
-              <EditorActionButton
+              <EditorCompositeActionButton
                 as={StyledButton}
                 forwardedAs={Button}
                 name={'remove-group'}
-                id={id}
                 stroke={'error'}
                 variant={'text'}
                 dispatch={dispatch}
-                type={UPDATE_BLOCK_BODY}
-                body={removeGroupBody}
+                actions={[
+                  deselectAction,
+                  { type: UPDATE_BLOCK_BODY, id, body: removeGroupBody },
+                ]}
               >
                 <HighlightOff />
-              </EditorActionButton>
+              </EditorCompositeActionButton>
             )}
         </>
       )}
-      <EditorActionButton
+      <EditorCompositeActionButton
         as={StyledButton}
         forwardedAs={Button}
         disabled={columnIndex === null || rowIndex === null}
         stroke={'error'}
         light
         name={'remove-item'}
-        id={id}
         title={kind === chartTypes.LINE ? 'remove line' : 'remove selected'}
         variant={'text'}
         dispatch={dispatch}
-        type={UPDATE_BLOCK_BODY}
-        body={removeRowBody}
+        actions={[
+          deselectAction,
+          { type: UPDATE_BLOCK_BODY, id, body: removeRowBody },
+        ]}
       >
         <DeleteOutlined />
-      </EditorActionButton>
+      </EditorCompositeActionButton>
     </SidebarGroup>
   );
 }

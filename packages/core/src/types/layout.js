@@ -94,7 +94,7 @@ export const defaultGridFormat = {
   rowGap: 2,
   justify: 'auto',
   alignItems: 'auto',
-  minSize: '25ch',
+  minSize: '35ch',
   maxSize: '1fr',
 };
 
