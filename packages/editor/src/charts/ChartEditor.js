@@ -28,13 +28,19 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
   const dispatch = useEditorDispatch();
 
   const select = useAutoCallback((selection) => {
-    for (const target of selection) {
-      dispatch({
-        type: UPDATE_BLOCK_EDITOR,
-        editor: { rowIndex: target.order, columnIndex: target.point },
-      });
+    if (selectionRef.current !== selection) {
+      const isPie = frame['data-type'] === 'pie';
+      for (const target of selection) {
+        dispatch({
+          type: UPDATE_BLOCK_EDITOR,
+          editor: {
+            rowIndex: isPie ? target.order : target.point,
+            columnIndex: isPie ? target.point : target.order,
+          },
+        });
+      }
+      selectionRef.current = selection;
     }
-    selectionRef.current = selection;
   });
 
   useAutoEffect(() => {
