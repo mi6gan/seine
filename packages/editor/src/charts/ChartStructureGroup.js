@@ -36,6 +36,34 @@ export default function ChartStructureGroup({ buttonAs: Button }) {
     },
   } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
+  const addGroupBody = useAutoMemo(() => {
+    const group = {
+      value: header.length,
+      title: `Group ${header.length + 1}`,
+    };
+    return {
+      header: [...header, group],
+      rows: rows.map((row, index) => [
+        ...row,
+        {
+          group: group.value,
+          value: row[row.length - 1] ? row[row.length - 1].value : 0,
+          text: titles[index],
+        },
+      ]),
+    };
+  });
+  const removeRowBody = useAutoMemo({
+    titles: [...titles.slice(0, rowIndex), ...titles.slice(rowIndex + 1)],
+    rows: [...rows.slice(0, rowIndex), ...rows.slice(rowIndex + 1)],
+  });
+  const removeGroupBody = useAutoMemo({
+    header: [...header.slice(0, columnIndex), ...header.slice(columnIndex + 1)],
+    rows: rows.map((row) => [
+      ...row.slice(0, columnIndex),
+      ...row.slice(columnIndex + 1),
+    ]),
+  });
   return (
     <SidebarGroup alignItems={'flex-start'} my={0}>
       <EditorActionButton
@@ -57,14 +85,7 @@ export default function ChartStructureGroup({ buttonAs: Button }) {
           }));
           return {
             titles: [...titles, title],
-            rows:
-              columnIndex > -1
-                ? [
-                    ...rows.slice(0, rowIndex + 1),
-                    row,
-                    ...rows.slice(rowIndex + 1),
-                  ]
-                : [...rows, row],
+            rows: [...rows, row],
           };
         })}
       >
@@ -72,41 +93,54 @@ export default function ChartStructureGroup({ buttonAs: Button }) {
       </EditorActionButton>
       {(kind === chartTypes.LINE || kind === chartTypes.COLUMN) && (
         <>
-          <StyledButton
+          <EditorActionButton
+            as={StyledButton}
+            forwardedAs={Button}
             name={'add-group'}
-            as={Button}
             id={id}
             title={kind === chartTypes.LINE ? 'Add point' : 'Add group'}
             variant={'text'}
+            dispatch={dispatch}
+            type={UPDATE_BLOCK_BODY}
+            body={addGroupBody}
           >
             <ControlPoint />
-          </StyledButton>
+          </EditorActionButton>
           {columnIndex !== null &&
             rowIndex !== null &&
             (kind === chartTypes.COLUMN || kind === chartTypes.LINE) && (
-              <StyledButton
+              <EditorActionButton
+                as={StyledButton}
+                forwardedAs={Button}
                 name={'remove-group'}
-                as={Button}
                 id={id}
                 stroke={'error'}
                 variant={'text'}
+                dispatch={dispatch}
+                type={UPDATE_BLOCK_BODY}
+                body={removeGroupBody}
               >
                 <HighlightOff />
-              </StyledButton>
+              </EditorActionButton>
             )}
         </>
       )}
-      <StyledButton
-        as={Button}
+      <EditorActionButton
+        as={StyledButton}
+        forwardedAs={Button}
         disabled={columnIndex === null || rowIndex === null}
         stroke={'error'}
         light
         name={'remove-item'}
+        id={id}
         title={kind === chartTypes.LINE ? 'remove line' : 'remove selected'}
         variant={'text'}
+        dispatch={dispatch}
+        type={UPDATE_BLOCK_BODY}
+        body={removeRowBody}
       >
         <DeleteOutlined />
-      </StyledButton>
+      </EditorActionButton>
     </SidebarGroup>
   );
 }

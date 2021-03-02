@@ -53,7 +53,7 @@ const Chart = React.forwardRef(function Chart(
   const forceRemount = valueFields.length !== newValueFields.length;
 
   chartProps.argumentAxisLabelAs = useAutoCallback(({ text, ...props }) => (
-    <ChartLabel {...props} text={header[text].text} />
+    <ChartLabel {...props} text={header[text] && header[text].text} />
   ));
   chartProps.legendLabelAs = useAutoCallback(({ text, ...props }) => (
     <ChartLabel {...props} text={titles[text]} />

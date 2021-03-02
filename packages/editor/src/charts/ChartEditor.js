@@ -29,13 +29,12 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
 
   const select = useAutoCallback((selection) => {
     if (selectionRef.current !== selection) {
-      const isPie = frame['data-type'] === 'pie';
       for (const target of selection) {
         dispatch({
           type: UPDATE_BLOCK_EDITOR,
           editor: {
-            rowIndex: isPie ? target.order : target.point,
-            columnIndex: isPie ? target.point : target.order,
+            columnIndex: target.point,
+            rowIndex: target.order,
           },
         });
       }

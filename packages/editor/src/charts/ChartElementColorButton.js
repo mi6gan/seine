@@ -42,11 +42,10 @@ const ChartElementColorButton = React.forwardRef(
     const {
       item: {
         id,
-        editor: { columnIndex = null } = {},
+        editor: { rowIndex: colorIndex = null } = {},
         format: { paletteKey, palette },
       },
     } = useSelectedLayoutItems();
-    const colorIndex = columnIndex;
     const dispatch = useBlocksDispatch();
     const [open, setOpen] = React.useState(false);
     const color = colorIndex > -1 ? palette[colorIndex % palette.length] : null;
