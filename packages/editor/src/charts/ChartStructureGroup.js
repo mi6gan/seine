@@ -3,15 +3,9 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { useAutoMemo } from 'hooks.macro';
 
-import {
-  EditorActionButton,
-  EditorCompositeActionButton,
-  useBlocksDispatch,
-} from '../blocks';
 import { SidebarGroup } from '../ui';
+import { EditorActionButton, useBlocksDispatch } from '../blocks';
 import { useSelectedLayoutItems } from '../layouts';
-
-import useElementSelector from './useElementSelector';
 
 import { Button as MuiButton } from '@seine/styles/mui-core.macro';
 import {
@@ -20,13 +14,7 @@ import {
   DeleteOutlined,
   HighlightOff,
 } from '@seine/styles/mui-icons.macro';
-import { groupElements } from '@seine/content';
-import {
-  chartTypes,
-  createBlockElement,
-  UPDATE_BLOCK_BODY,
-  UPDATE_BLOCK_EDITOR,
-} from '@seine/core';
+import { chartTypes, UPDATE_BLOCK_BODY } from '@seine/core';
 
 const StyledButton = styled(MuiButton)`
   && {
@@ -42,17 +30,12 @@ export default function ChartStructureGroup({ buttonAs: Button }) {
   const {
     item: {
       id,
-      body: { elements },
-      format: { minValue, maxValue, kind },
+      format: { kind },
+      body: { header, rows, titles },
+      editor: { columnIndex = null, rowIndex = null } = {},
     },
   } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
-  const values = useAutoMemo(elements.map(({ value }) => value));
-  const min = useAutoMemo(minValue || Math.min(...values));
-  const max = useAutoMemo(maxValue || Math.max(...values));
-  const { selection, element } = useElementSelector();
-  const groups = groupElements(elements);
-  const [[, { length: count }]] = groups;
   return (
     <SidebarGroup alignItems={'flex-start'} my={0}>
       <EditorActionButton
@@ -60,144 +43,70 @@ export default function ChartStructureGroup({ buttonAs: Button }) {
         forwardedAs={Button}
         id={id}
         name={'add-item'}
-        dispatch={dispatch}
-        type={UPDATE_BLOCK_BODY}
-        body={useAutoMemo(
-          kind === chartTypes.PIE
-            ? {
-                elements: [
-                  ...elements,
-                  createBlockElement({
-                    title: `Item ${elements.length + 1}`,
-                    value: Math.floor(min + (max - min) / 2),
-                  }),
-                ],
-              }
-            : {
-                elements: groups.reduce(
-                  (acc, [group, groupElements]) => [
-                    ...acc,
-                    ...groupElements.map(({ index }) => elements[index]),
-                    createBlockElement({
-                      group,
-                      title: `Item ${groupElements.length + 1}`,
-                      value: Math.floor(min + (max - min) / 2),
-                    }),
-                  ],
-                  []
-                ),
-              }
-        )}
         title={kind === chartTypes.LINE ? 'Add line' : 'add item'}
         variant={'text'}
+        dispatch={dispatch}
+        type={UPDATE_BLOCK_BODY}
+        body={useAutoMemo(() => {
+          const title = `Item ${titles.length + 1}`;
+          const row = header.map(({ value: group }, index) => ({
+            group,
+            text: title,
+            value:
+              rows.reduce((s, row) => s + row[index].value, 0) / rows.length,
+          }));
+          return {
+            titles: [...titles, title],
+            rows:
+              columnIndex > -1
+                ? [
+                    ...rows.slice(0, rowIndex + 1),
+                    row,
+                    ...rows.slice(rowIndex + 1),
+                  ]
+                : [...rows, row],
+          };
+        })}
       >
         <Add />
       </EditorActionButton>
-      {useAutoMemo(() => {
-        if (kind === chartTypes.LINE || kind === chartTypes.COLUMN) {
-          let groupNumber = 0;
-          while (true) {
-            const group = `Group #${groupNumber}`;
-            if (!groups.some(([otherGroup]) => otherGroup === group)) {
-              break;
-            }
-            groupNumber += 1;
-          }
-
-          return (
-            <>
-              <EditorActionButton
-                name={'add-group'}
-                as={StyledButton}
-                forwardedAs={Button}
+      {(kind === chartTypes.LINE || kind === chartTypes.COLUMN) && (
+        <>
+          <StyledButton
+            name={'add-group'}
+            as={Button}
+            id={id}
+            title={kind === chartTypes.LINE ? 'Add point' : 'Add group'}
+            variant={'text'}
+          >
+            <ControlPoint />
+          </StyledButton>
+          {columnIndex !== null &&
+            rowIndex !== null &&
+            (kind === chartTypes.COLUMN || kind === chartTypes.LINE) && (
+              <StyledButton
+                name={'remove-group'}
+                as={Button}
                 id={id}
-                title={kind === chartTypes.LINE ? 'Add point' : 'Add group'}
-                dispatch={dispatch}
-                type={UPDATE_BLOCK_BODY}
-                body={{
-                  elements: [
-                    ...elements,
-                    ...groups[0][1].map(({ index }) =>
-                      createBlockElement({
-                        ...elements[index],
-                        group: `Group #${groupNumber}`,
-                      })
-                    ),
-                  ],
-                }}
+                stroke={'error'}
                 variant={'text'}
               >
-                <ControlPoint />
-              </EditorActionButton>
-              {element &&
-                (kind === chartTypes.COLUMN || kind === chartTypes.LINE) && (
-                  <EditorActionButton
-                    name={'remove-group'}
-                    as={StyledButton}
-                    forwardedAs={Button}
-                    id={id}
-                    title={
-                      kind === chartTypes.COLUMN
-                        ? 'Remove group'
-                        : 'Remove point'
-                    }
-                    dispatch={dispatch}
-                    type={UPDATE_BLOCK_BODY}
-                    stroke={'error'}
-                    body={{
-                      elements: elements.filter(
-                        ({ group }) => group !== element.group
-                      ),
-                    }}
-                    variant={'text'}
-                  >
-                    <HighlightOff />
-                  </EditorActionButton>
-                )}
-            </>
-          );
-        }
-        return null;
-      })}
-      <EditorCompositeActionButton
-        as={StyledButton}
-        forwardedAs={Button}
-        disabled={selection === -1 || count <= 1}
-        dispatch={dispatch}
+                <HighlightOff />
+              </StyledButton>
+            )}
+        </>
+      )}
+      <StyledButton
+        as={Button}
+        disabled={columnIndex === null || rowIndex === null}
         stroke={'error'}
         light
         name={'remove-item'}
         title={kind === chartTypes.LINE ? 'remove line' : 'remove selected'}
-        actions={useAutoMemo([
-          {
-            editor: { selection: -1 },
-            id: id,
-            type: UPDATE_BLOCK_EDITOR,
-          },
-          {
-            body: {
-              elements:
-                kind === chartTypes.LINE
-                  ? element
-                    ? elements.filter(({ id }) => id !== element.id)
-                    : []
-                  : kind === chartTypes.COLUMN
-                  ? element
-                    ? elements.filter(({ title }) => title !== element.title)
-                    : []
-                  : [
-                      ...elements.slice(0, selection),
-                      ...elements.slice(selection + 1),
-                    ],
-            },
-            id: id,
-            type: UPDATE_BLOCK_BODY,
-          },
-        ])}
         variant={'text'}
       >
         <DeleteOutlined />
-      </EditorCompositeActionButton>
+      </StyledButton>
     </SidebarGroup>
   );
 }

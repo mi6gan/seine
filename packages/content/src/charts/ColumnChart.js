@@ -57,14 +57,24 @@ type Props = {
  * @returns {React.Node}
  */
 const ColumnChart = React.forwardRef(function ColumnChart(
-  { legend, palette, paletteKey, xAxis, yAxis, valueFields, ...itemProps },
+  {
+    legend,
+    palette,
+    paletteKey,
+    xAxis,
+    yAxis,
+    valueFields,
+    argumentAxisLabelAs: ArgumentAxisLabel = ChartLabel,
+    legendLabelAs: LegendLabel = ChartLabel,
+    ...itemProps
+  },
   ref
 ): Props {
   return (
     <Item forwardedAs={ChartBase} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
-          labelComponent={ChartLabel}
+          labelComponent={ArgumentAxisLabel}
           lineComponent={ChartAxisLine}
         />
       )}
@@ -80,7 +90,7 @@ const ColumnChart = React.forwardRef(function ColumnChart(
           valueFieldsLength={valueFields.length}
         />
       ))}
-      {!!legend && <ChartLegend />}
+      {!!legend && <ChartLegend labelComponent={LegendLabel} />}
       <Stack />
     </Item>
   );

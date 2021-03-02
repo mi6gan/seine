@@ -141,7 +141,7 @@ export default function ChartDesign({
           Element
           <ChartStructureGroup buttonAs={Button} />
         </Box>
-        <ColorButton />
+        {ColorButton && <ColorButton />}
         <SidebarGroup {...(element === null && { display: 'none' })}>
           <SidebarLabel>value</SidebarLabel>
           <Input

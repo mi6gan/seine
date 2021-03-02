@@ -195,12 +195,52 @@ export function getBlockFormat(
  * @returns {BlockFormat}
  */
 export function getBlockBody({ type, body }: Block) {
-  if (type === blockTypes.CHART) {
-    return {
-      ...body,
-      elements: body.elements.map((element) =>
-        element.group ? element : { ...element, group: 'null' }
+  if (type === blockTypes.CHART && !('header' in body)) {
+    const { elements, ...chartBody } = body;
+    const groups = [
+      ...elements.reduce(
+        (acc, { group = 'null' }) => acc.add(group),
+        new Set()
       ),
+    ];
+    const titles = [
+      ...elements.reduce(
+        (acc, { title = 'null' }) => acc.add(title),
+        new Set()
+      ),
+    ];
+
+    return {
+      ...chartBody,
+      header: groups.map((group, index) => ({
+        text: group === 'null' ? '' : group,
+        value: `${index}`,
+      })),
+      rows: Object.entries(
+        [...elements]
+          .sort(({ group: left }, { group: right }) =>
+            left < right ? -1 : left > right ? 1 : 0
+          )
+          .reduce(
+            (acc, { group = 'null', ...item }) => ({
+              ...acc,
+              [group]: acc[group] ? [...acc[group], item] : [item],
+            }),
+            {}
+          )
+      ).reduce(
+        (acc, [group, items]) =>
+          items.map(({ title, ...item }, index) => [
+            ...(acc[index] ? acc[index] : []),
+            {
+              ...item,
+              text: title,
+              group: `${groups.indexOf(group)}`,
+            },
+          ]),
+        []
+      ),
+      titles,
     };
   }
   return body;
