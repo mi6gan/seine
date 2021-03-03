@@ -13296,6 +13296,3732 @@ Array [
 ]
 `;
 
+exports[`Storyshots Tutorials/Block Bar chart 1`] = `
+<div
+  class="Box-cmayus-0 kSgppA"
+  display="flex"
+  width="1"
+>
+  <div
+    bgcolor="common.white"
+    class="MuiPaper-root Box-cmayus-0 Tutorial__SideBar-gaezb8-2 ddIUuj wZJVM MuiPaper-outlined MuiPaper-rounded"
+    minheight="100vh"
+    width="300px"
+  />
+  <div
+    class="Box-cmayus-0 Tutorial__Container-gaezb8-0 hQhuyP iEkIC"
+  >
+    <div
+      class="Box-cmayus-0 Tutorial__EditorToolbarContainer-gaezb8-1 hQhuyP eAsWkZ"
+    >
+      <header
+        class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      >
+        <div
+          class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+          color="grey.50"
+          display="flex"
+          width="100%"
+        >
+          <div
+            class="Box-cmayus-0 ekZQvI"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Text"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 4v3h5.5v12h3V7H19V4z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Table"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Bar chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+                  focusable="false"
+                  transform="rotate(90)"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Line chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Column chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="ellipse"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="rect"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="path"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="Box-cmayus-0 hxUShx"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+              width="5rem"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  selected=""
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="any"
+                >
+                  Any device
+                </option>
+                <option
+                  value="mobile"
+                >
+                  Mobile only
+                </option>
+                <option
+                  value="tablet"
+                >
+                  Tablet only
+                </option>
+                <option
+                  value="desktop"
+                >
+                  Desktop only
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-34 EditorContent-eh7ppe-0 hjUFUQ"
+    >
+      <div
+        class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+        scale="100"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+          spacing="0"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tutorials/Block Column chart 1`] = `
+<div
+  class="Box-cmayus-0 kSgppA"
+  display="flex"
+  width="1"
+>
+  <div
+    bgcolor="common.white"
+    class="MuiPaper-root Box-cmayus-0 Tutorial__SideBar-gaezb8-2 ddIUuj wZJVM MuiPaper-outlined MuiPaper-rounded"
+    minheight="100vh"
+    width="300px"
+  />
+  <div
+    class="Box-cmayus-0 Tutorial__Container-gaezb8-0 hQhuyP iEkIC"
+  >
+    <div
+      class="Box-cmayus-0 Tutorial__EditorToolbarContainer-gaezb8-1 hQhuyP eAsWkZ"
+    >
+      <header
+        class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      >
+        <div
+          class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+          color="grey.50"
+          display="flex"
+          width="100%"
+        >
+          <div
+            class="Box-cmayus-0 ekZQvI"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Text"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 4v3h5.5v12h3V7H19V4z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Table"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Bar chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+                  focusable="false"
+                  transform="rotate(90)"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Line chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Column chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="ellipse"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="rect"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="path"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="Box-cmayus-0 hxUShx"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+              width="5rem"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  selected=""
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="any"
+                >
+                  Any device
+                </option>
+                <option
+                  value="mobile"
+                >
+                  Mobile only
+                </option>
+                <option
+                  value="tablet"
+                >
+                  Tablet only
+                </option>
+                <option
+                  value="desktop"
+                >
+                  Desktop only
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-35 EditorContent-eh7ppe-0 hjUFUQ"
+    >
+      <div
+        class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+        scale="100"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+          spacing="0"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tutorials/Block Introduction 1`] = `
+<div
+  class="Box-cmayus-0 kSgppA"
+  display="flex"
+  width="1"
+>
+  <div
+    bgcolor="common.white"
+    class="MuiPaper-root Box-cmayus-0 Tutorial__SideBar-gaezb8-2 ddIUuj wZJVM MuiPaper-outlined MuiPaper-rounded"
+    minheight="100vh"
+    width="300px"
+  />
+  <div
+    class="Box-cmayus-0 Tutorial__Container-gaezb8-0 hQhuyP iEkIC"
+  >
+    <div
+      class="Box-cmayus-0 Tutorial__EditorToolbarContainer-gaezb8-1 hQhuyP eAsWkZ"
+    >
+      <header
+        class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      >
+        <div
+          class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+          color="grey.50"
+          display="flex"
+          width="100%"
+        >
+          <div
+            class="Box-cmayus-0 ekZQvI"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Text"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 4v3h5.5v12h3V7H19V4z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Table"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Bar chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+                  focusable="false"
+                  transform="rotate(90)"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Line chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Column chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="ellipse"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="rect"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="path"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="Box-cmayus-0 hxUShx"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+              width="5rem"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  selected=""
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="any"
+                >
+                  Any device
+                </option>
+                <option
+                  value="mobile"
+                >
+                  Mobile only
+                </option>
+                <option
+                  value="tablet"
+                >
+                  Tablet only
+                </option>
+                <option
+                  value="desktop"
+                >
+                  Desktop only
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-31 EditorContent-eh7ppe-0 hjUFUQ"
+    >
+      <div
+        class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+        scale="100"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+          spacing="0"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tutorials/Block Layout 1`] = `
+<div
+  class="Box-cmayus-0 kSgppA"
+  display="flex"
+  width="1"
+>
+  <div
+    bgcolor="common.white"
+    class="MuiPaper-root Box-cmayus-0 Tutorial__SideBar-gaezb8-2 ddIUuj wZJVM MuiPaper-outlined MuiPaper-rounded"
+    minheight="100vh"
+    width="300px"
+  />
+  <div
+    class="Box-cmayus-0 Tutorial__Container-gaezb8-0 hQhuyP iEkIC"
+  >
+    <div
+      class="Box-cmayus-0 Tutorial__EditorToolbarContainer-gaezb8-1 hQhuyP eAsWkZ"
+    >
+      <header
+        class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      >
+        <div
+          class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+          color="grey.50"
+          display="flex"
+          width="100%"
+        >
+          <div
+            class="Box-cmayus-0 ekZQvI"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Text"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 4v3h5.5v12h3V7H19V4z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Table"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Bar chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+                  focusable="false"
+                  transform="rotate(90)"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Line chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Column chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="ellipse"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="rect"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="path"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="Box-cmayus-0 hxUShx"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+              width="5rem"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  selected=""
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="any"
+                >
+                  Any device
+                </option>
+                <option
+                  value="mobile"
+                >
+                  Mobile only
+                </option>
+                <option
+                  value="tablet"
+                >
+                  Tablet only
+                </option>
+                <option
+                  value="desktop"
+                >
+                  Desktop only
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-38 EditorContent-eh7ppe-0 hjUFUQ"
+    >
+      <div
+        class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+        scale="100"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+          spacing="0"
+        >
+          <div
+            class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+            type="draft"
+          >
+            <div
+              class="DraftEditor-root DraftEditor-alignLeft"
+            >
+              <div
+                class="DraftEditor-editorContainer"
+              >
+                <div
+                  class="public-DraftEditor-content"
+                  contenteditable="false"
+                  spellcheck="false"
+                  style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                >
+                  <div
+                    data-contents="true"
+                  >
+                    <div
+                      class="RichText-sc-1sae58z-0"
+                      data-block="true"
+                      data-editor="draft"
+                      data-offset-key="bnjkc-0-0"
+                    >
+                      <div
+                        class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                        data-offset-key="bnjkc-0-0"
+                      >
+                        <span
+                          data-offset-key="bnjkc-0-0"
+                        >
+                          <span
+                            data-text="true"
+                          >
+                            Rich text
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="Item-sc-19uvbvn-0 gDtxbL"
+            type="table"
+            verticalalignment="start"
+          >
+            <table
+              class="Table__StyledTable-sc-6pw6pn-0 ilEdCc"
+            >
+              <thead>
+                <tr>
+                  <th>
+                    <div
+                      class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                    >
+                      <div
+                        class="DraftEditor-root"
+                      >
+                        <div
+                          class="DraftEditor-editorContainer"
+                        >
+                          <div
+                            class="public-DraftEditor-content"
+                            contenteditable="false"
+                            spellcheck="false"
+                            style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                          >
+                            <div
+                              data-contents="true"
+                            >
+                              <div
+                                class="RichText-sc-1sae58z-0"
+                                data-block="true"
+                                data-editor="mock"
+                                data-offset-key="mock-0-0"
+                              >
+                                <div
+                                  class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-offset-key="mock-0-0"
+                                    style="font-weight:bold"
+                                  >
+                                    <span
+                                      data-text="true"
+                                    >
+                                      Column 1
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <th>
+                    <div
+                      class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                    >
+                      <div
+                        class="DraftEditor-root"
+                      >
+                        <div
+                          class="DraftEditor-editorContainer"
+                        >
+                          <div
+                            class="public-DraftEditor-content"
+                            contenteditable="false"
+                            spellcheck="false"
+                            style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                          >
+                            <div
+                              data-contents="true"
+                            >
+                              <div
+                                class="RichText-sc-1sae58z-0"
+                                data-block="true"
+                                data-editor="mock"
+                                data-offset-key="mock-0-0"
+                              >
+                                <div
+                                  class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-offset-key="mock-0-0"
+                                    style="font-weight:bold"
+                                  >
+                                    <span
+                                      data-text="true"
+                                    >
+                                      Column 2
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div
+                      class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                    >
+                      <div
+                        class="DraftEditor-root"
+                      >
+                        <div
+                          class="DraftEditor-editorContainer"
+                        >
+                          <div
+                            class="public-DraftEditor-content"
+                            contenteditable="false"
+                            spellcheck="false"
+                            style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                          >
+                            <div
+                              data-contents="true"
+                            >
+                              <div
+                                class="RichText-sc-1sae58z-0"
+                                data-block="true"
+                                data-editor="mock"
+                                data-offset-key="mock-0-0"
+                              >
+                                <div
+                                  class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-offset-key="mock-0-0"
+                                  >
+                                    <br
+                                      data-text="true"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div
+                      class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                    >
+                      <div
+                        class="DraftEditor-root"
+                      >
+                        <div
+                          class="DraftEditor-editorContainer"
+                        >
+                          <div
+                            class="public-DraftEditor-content"
+                            contenteditable="false"
+                            spellcheck="false"
+                            style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                          >
+                            <div
+                              data-contents="true"
+                            >
+                              <div
+                                class="RichText-sc-1sae58z-0"
+                                data-block="true"
+                                data-editor="mock"
+                                data-offset-key="mock-0-0"
+                              >
+                                <div
+                                  class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-offset-key="mock-0-0"
+                                  >
+                                    <br
+                                      data-text="true"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div
+                      class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                    >
+                      <div
+                        class="DraftEditor-root"
+                      >
+                        <div
+                          class="DraftEditor-editorContainer"
+                        >
+                          <div
+                            class="public-DraftEditor-content"
+                            contenteditable="false"
+                            spellcheck="false"
+                            style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                          >
+                            <div
+                              data-contents="true"
+                            >
+                              <div
+                                class="RichText-sc-1sae58z-0"
+                                data-block="true"
+                                data-editor="mock"
+                                data-offset-key="mock-0-0"
+                              >
+                                <div
+                                  class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-offset-key="mock-0-0"
+                                  >
+                                    <br
+                                      data-text="true"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div
+                      class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                    >
+                      <div
+                        class="DraftEditor-root"
+                      >
+                        <div
+                          class="DraftEditor-editorContainer"
+                        >
+                          <div
+                            class="public-DraftEditor-content"
+                            contenteditable="false"
+                            spellcheck="false"
+                            style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                          >
+                            <div
+                              data-contents="true"
+                            >
+                              <div
+                                class="RichText-sc-1sae58z-0"
+                                data-block="true"
+                                data-editor="mock"
+                                data-offset-key="mock-0-0"
+                              >
+                                <div
+                                  class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-offset-key="mock-0-0"
+                                  >
+                                    <br
+                                      data-text="true"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tutorials/Block Line chart 1`] = `
+<div
+  class="Box-cmayus-0 kSgppA"
+  display="flex"
+  width="1"
+>
+  <div
+    bgcolor="common.white"
+    class="MuiPaper-root Box-cmayus-0 Tutorial__SideBar-gaezb8-2 ddIUuj wZJVM MuiPaper-outlined MuiPaper-rounded"
+    minheight="100vh"
+    width="300px"
+  />
+  <div
+    class="Box-cmayus-0 Tutorial__Container-gaezb8-0 hQhuyP iEkIC"
+  >
+    <div
+      class="Box-cmayus-0 Tutorial__EditorToolbarContainer-gaezb8-1 hQhuyP eAsWkZ"
+    >
+      <header
+        class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      >
+        <div
+          class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+          color="grey.50"
+          display="flex"
+          width="100%"
+        >
+          <div
+            class="Box-cmayus-0 ekZQvI"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Text"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 4v3h5.5v12h3V7H19V4z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Table"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Bar chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+                  focusable="false"
+                  transform="rotate(90)"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Line chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Column chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="ellipse"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="rect"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="path"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="Box-cmayus-0 hxUShx"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+              width="5rem"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  selected=""
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="any"
+                >
+                  Any device
+                </option>
+                <option
+                  value="mobile"
+                >
+                  Mobile only
+                </option>
+                <option
+                  value="tablet"
+                >
+                  Tablet only
+                </option>
+                <option
+                  value="desktop"
+                >
+                  Desktop only
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-36 EditorContent-eh7ppe-0 hjUFUQ"
+    >
+      <div
+        class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+        scale="100"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+          spacing="0"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tutorials/Block Pie chart 1`] = `
+<div
+  class="Box-cmayus-0 kSgppA"
+  display="flex"
+  width="1"
+>
+  <div
+    bgcolor="common.white"
+    class="MuiPaper-root Box-cmayus-0 Tutorial__SideBar-gaezb8-2 ddIUuj wZJVM MuiPaper-outlined MuiPaper-rounded"
+    minheight="100vh"
+    width="300px"
+  />
+  <div
+    class="Box-cmayus-0 Tutorial__Container-gaezb8-0 hQhuyP iEkIC"
+  >
+    <div
+      class="Box-cmayus-0 Tutorial__EditorToolbarContainer-gaezb8-1 hQhuyP eAsWkZ"
+    >
+      <header
+        class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      >
+        <div
+          class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+          color="grey.50"
+          display="flex"
+          width="100%"
+        >
+          <div
+            class="Box-cmayus-0 ekZQvI"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Text"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 4v3h5.5v12h3V7H19V4z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Table"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Bar chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+                  focusable="false"
+                  transform="rotate(90)"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Line chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Column chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="ellipse"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="rect"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="path"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="Box-cmayus-0 hxUShx"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+              width="5rem"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  selected=""
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="any"
+                >
+                  Any device
+                </option>
+                <option
+                  value="mobile"
+                >
+                  Mobile only
+                </option>
+                <option
+                  value="tablet"
+                >
+                  Tablet only
+                </option>
+                <option
+                  value="desktop"
+                >
+                  Desktop only
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-37 EditorContent-eh7ppe-0 hjUFUQ"
+    >
+      <div
+        class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+        scale="100"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+          spacing="0"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tutorials/Block Table 1`] = `
+<div
+  class="Box-cmayus-0 kSgppA"
+  display="flex"
+  width="1"
+>
+  <div
+    bgcolor="common.white"
+    class="MuiPaper-root Box-cmayus-0 Tutorial__SideBar-gaezb8-2 ddIUuj wZJVM MuiPaper-outlined MuiPaper-rounded"
+    minheight="100vh"
+    width="300px"
+  />
+  <div
+    class="Box-cmayus-0 Tutorial__Container-gaezb8-0 hQhuyP iEkIC"
+  >
+    <div
+      class="Box-cmayus-0 Tutorial__EditorToolbarContainer-gaezb8-1 hQhuyP eAsWkZ"
+    >
+      <header
+        class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      >
+        <div
+          class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+          color="grey.50"
+          display="flex"
+          width="100%"
+        >
+          <div
+            class="Box-cmayus-0 ekZQvI"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Text"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 4v3h5.5v12h3V7H19V4z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Table"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Bar chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+                  focusable="false"
+                  transform="rotate(90)"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Line chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Column chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="ellipse"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="rect"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="path"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="Box-cmayus-0 hxUShx"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+              width="5rem"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  selected=""
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="any"
+                >
+                  Any device
+                </option>
+                <option
+                  value="mobile"
+                >
+                  Mobile only
+                </option>
+                <option
+                  value="tablet"
+                >
+                  Tablet only
+                </option>
+                <option
+                  value="desktop"
+                >
+                  Desktop only
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-33 EditorContent-eh7ppe-0 hjUFUQ"
+    >
+      <div
+        class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+        scale="100"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+          spacing="0"
+        >
+          <div
+            class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+            type="draft"
+          >
+            <div
+              class="DraftEditor-root DraftEditor-alignLeft"
+            >
+              <div
+                class="DraftEditor-editorContainer"
+              >
+                <div
+                  class="public-DraftEditor-content"
+                  contenteditable="false"
+                  spellcheck="false"
+                  style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                >
+                  <div
+                    data-contents="true"
+                  >
+                    <div
+                      class="RichText-sc-1sae58z-0"
+                      data-block="true"
+                      data-editor="draft"
+                      data-offset-key="bnjkc-0-0"
+                    >
+                      <div
+                        class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                        data-offset-key="bnjkc-0-0"
+                      >
+                        <span
+                          data-offset-key="bnjkc-0-0"
+                        >
+                          <span
+                            data-text="true"
+                          >
+                            Rich text
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tutorials/Block Text 1`] = `
+<div
+  class="Box-cmayus-0 kSgppA"
+  display="flex"
+  width="1"
+>
+  <div
+    bgcolor="common.white"
+    class="MuiPaper-root Box-cmayus-0 Tutorial__SideBar-gaezb8-2 ddIUuj wZJVM MuiPaper-outlined MuiPaper-rounded"
+    minheight="100vh"
+    width="300px"
+  />
+  <div
+    class="Box-cmayus-0 Tutorial__Container-gaezb8-0 hQhuyP iEkIC"
+  >
+    <div
+      class="Box-cmayus-0 Tutorial__EditorToolbarContainer-gaezb8-1 hQhuyP eAsWkZ"
+    >
+      <header
+        class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      >
+        <div
+          class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+          color="grey.50"
+          display="flex"
+          width="100%"
+        >
+          <div
+            class="Box-cmayus-0 ekZQvI"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Text"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 4v3h5.5v12h3V7H19V4z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Table"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Bar chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+                  focusable="false"
+                  transform="rotate(90)"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Line chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              title="Column chart"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+              color="grey.500"
+              display="inline-block"
+              height="1em"
+              width="2px"
+            />
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="ellipse"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="rect"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+              value="path"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="Box-cmayus-0 hxUShx"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+              width="5rem"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  selected=""
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+            >
+              <select
+                class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+              >
+                <option
+                  selected=""
+                  value="any"
+                >
+                  Any device
+                </option>
+                <option
+                  value="mobile"
+                >
+                  Mobile only
+                </option>
+                <option
+                  value="tablet"
+                >
+                  Tablet only
+                </option>
+                <option
+                  value="desktop"
+                >
+                  Desktop only
+                </option>
+              </select>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-32 EditorContent-eh7ppe-0 hjUFUQ"
+    >
+      <div
+        class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+        scale="100"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+          spacing="0"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Tutorials/Video Table and column charts 1`] = `
 <video
   autoplay=""
