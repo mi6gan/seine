@@ -2,19 +2,14 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
 import SketchPicker from 'react-color/lib/Sketch';
-import { useAutoCallback, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback } from 'hooks.macro';
 
 import { useBlocksDispatch } from '../blocks';
 import { SidebarGroup, SidebarLabel } from '../ui';
 import { useSelectedLayoutItems } from '../layouts';
 
 import { Button, ClickAwayListener } from '@seine/styles/mui-core.macro';
-import {
-  UPDATE_BLOCK_FORMAT,
-  chartPaletteKeyValues,
-  initialElementsState,
-} from '@seine/core';
-import { groupElements } from '@seine/content';
+import { chartPaletteKeyValues, UPDATE_BLOCK_FORMAT } from '@seine/core';
 
 const StyledColorButton = styled(Button).attrs(({ children = '' }) => ({
   children,
@@ -47,27 +42,16 @@ const ChartElementColorButton = React.forwardRef(
     const {
       item: {
         id,
-        editor: { selection = initialElementsState.selection } = {},
+        editor: { rowIndex: colorIndex = null } = {},
         format: { paletteKey, palette },
-        body: { elements },
       },
     } = useSelectedLayoutItems();
-    const colorIndex = useAutoMemo(
-      groupElements(elements).reduce(
-        (acc, [_, group]) =>
-          acc === -1
-            ? group.findIndex(({ index }) => index === selection) %
-              palette.length
-            : acc,
-        -1
-      )
-    );
     const dispatch = useBlocksDispatch();
     const [open, setOpen] = React.useState(false);
-    const color = palette[colorIndex];
+    const color = colorIndex > -1 ? palette[colorIndex % palette.length] : null;
     const buttonRef = React.useRef(null);
     return (
-      <SidebarGroup display={selection > -1 ? 'flex' : 'none'} ref={ref}>
+      <SidebarGroup display={color ? 'flex' : 'none'} ref={ref}>
         <SidebarLabel>color</SidebarLabel>
         <StyledColorButton
           ref={buttonRef}

@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import {
-  Axis,
   ArgumentAxis,
+  Axis,
   LineSeries,
   Stack,
   ValueAxis,
@@ -93,7 +93,12 @@ const LineChart = React.forwardRef(function LineChart(
     fraction,
     units,
     legend,
+    titles,
     valueFields,
+    header,
+    rows,
+    argumentAxisLabelAs: ArgumentAxisLabel = ChartLabel,
+    legendLabelAs: LegendLabel = ChartLabel,
     ...itemProps
   },
   ref
@@ -102,7 +107,7 @@ const LineChart = React.forwardRef(function LineChart(
     <Item forwardedAs={ChartBase} {...itemProps} ref={ref}>
       {!!xAxis && (
         <ArgumentAxis
-          labelComponent={ChartLabel}
+          labelComponent={ArgumentAxisLabel}
           lineComponent={ChartAxisLine}
         />
       )}
@@ -126,9 +131,10 @@ const LineChart = React.forwardRef(function LineChart(
           valueFieldsLength={valueFields.length}
           fraction={fraction}
           units={units}
+          header={header}
         />
       ))}
-      {!!legend && <ChartLegend />}
+      {!!legend && <ChartLegend labelComponent={LegendLabel} />}
       <Stack />
     </Item>
   );

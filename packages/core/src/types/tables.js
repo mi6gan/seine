@@ -5,6 +5,7 @@ import { defaultItemFormat } from './layout';
 
 export type TableCell = {
   text: RichTextBody,
+  value?: number,
   align?: 'left' | 'center' | 'right',
   bold?: boolean,
   italic?: boolean,

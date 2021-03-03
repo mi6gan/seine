@@ -109,7 +109,6 @@ const RichTextEditor = React.forwardRef(function RichTextEditor(
       ref={editorRef}
       itemRef={ref}
       forwardedAs={StyledFrame}
-      selected={selected}
       textAlignment={textAlignment}
       editorState={editorState}
       onChange={useAutoCallback((state) =>

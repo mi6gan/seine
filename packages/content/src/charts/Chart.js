@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useAutoMemo, useAutoEffect } from 'hooks.macro';
+import { useAutoMemo, useAutoEffect, useAutoCallback } from 'hooks.macro';
 
 import { Item } from '../layouts';
 
@@ -8,6 +8,7 @@ import PieChart from './PieChart';
 import ColumnChart from './ColumnChart';
 import BarChart from './BarChart';
 import LineChart from './LineChart';
+import ChartLabel from './ChartLabel';
 
 import type { ChartBody, ChartFormat } from '@seine/core';
 import { chartTypes } from '@seine/core';
@@ -23,18 +24,19 @@ const Chart = React.forwardRef(function Chart(
   { kind, elements, as: ChartItem = Item, ...chartProps }: Props,
   ref
 ) {
+  const { header, rows, titles } = chartProps;
   const data = (chartProps.data = useAutoMemo(
     kind === chartTypes.PIE
-      ? elements
-      : Object.entries(
-          elements.reduce(
-            (acc, { group = null, title, value }) => ({
+      ? rows.reduce((acc, row) => [...acc, ...row], [])
+      : header.map(({ value: group }) =>
+          rows.reduce(
+            (acc, row, index) => ({
               ...acc,
-              [group]: { ...acc[group], [title]: value },
+              [index]: row.find((cell) => cell.group === group).value,
             }),
-            {}
+            { group }
           )
-        ).map(([group, values]) => ({ ...values, group }))
+        )
   ));
 
   const newValueFields = useAutoMemo(() => {
@@ -49,6 +51,13 @@ const Chart = React.forwardRef(function Chart(
 
   const [valueFields, setValueFields] = React.useState(newValueFields);
   const forceRemount = valueFields.length !== newValueFields.length;
+
+  chartProps.argumentAxisLabelAs = useAutoCallback(({ text, ...props }) => (
+    <ChartLabel {...props} text={header[text] && header[text].text} />
+  ));
+  chartProps.legendLabelAs = useAutoCallback(({ text, ...props }) => (
+    <ChartLabel {...props} text={titles[text]} />
+  ));
 
   useAutoEffect(() => {
     setValueFields(newValueFields);

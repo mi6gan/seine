@@ -79,16 +79,23 @@ type Props = ItemProps & ChartBody & $Shape<ChartFormat>;
  * @returns {React.Node}
  */
 const PieChart = React.forwardRef(function PieChart(
-  { legend, palette, units, fraction, ...itemProps },
+  {
+    legend,
+    palette,
+    units,
+    fraction,
+    legendLabelAs,
+    argumentAxisLabelAs,
+    ...itemProps
+  },
   ref
 ): Props {
   return (
     <Item ref={ref} forwardedAs={ChartBase} {...itemProps}>
       <Palette scheme={palette} />
       <PieSeries
-        name={'slices'}
         valueField={'value'}
-        argumentField={'title'}
+        argumentField={'text'}
         legend={legend}
         units={units}
         fraction={fraction}

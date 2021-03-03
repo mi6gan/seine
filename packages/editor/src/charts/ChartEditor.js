@@ -1,16 +1,15 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 import { EventTracker, SelectionState } from '@devexpress/dx-react-chart';
 
 import { Frame } from '../ui';
 import { useSelectedLayoutItems } from '../layouts';
-
-import useChartDispatchElements from './useChartDispatchElements';
+import { useBlocksDispatch } from '../blocks';
 
 import { Chart } from '@seine/content';
-import { DESELECT_BLOCK_ELEMENT, SELECT_BLOCK_ELEMENT } from '@seine/core';
 import type { BlockEditor, ChartBody, ChartFormat } from '@seine/core';
+import { UPDATE_BLOCK_EDITOR } from '@seine/core';
 
 export type Props = ChartBody &
   $Shape<ChartFormat> &
@@ -26,33 +25,32 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
   const selectionRef = React.useRef([]);
   const { current: selection } = selectionRef;
 
-  const dispatchElements = useChartDispatchElements();
-
-  const isGrouped =
-    data.length > 1 && 'group' in data[0] && data[0]['group'] !== 'null';
-
-  const size = useAutoMemo(() => {
-    const valueFieldsSet = new Set();
-    data.forEach(({ group, ...values }) => {
-      Object.keys(values).forEach((valueField) => {
-        valueFieldsSet.add(valueField);
-      });
-    });
-    return valueFieldsSet.size;
-  });
+  const dispatch = useBlocksDispatch();
 
   const select = useAutoCallback((selection) => {
-    for (const target of selection) {
-      dispatchElements({
-        type: SELECT_BLOCK_ELEMENT,
-        index: isGrouped
-          ? size * target.point + target.order
-          : target.series === 'slices'
-          ? target.point
-          : target.order,
-      });
+    if (selectionRef.current !== selection) {
+      const isPie = frame['data-type'] === 'pie';
+      if (selection.length > 0) {
+        for (const target of selection) {
+          dispatch({
+            type: UPDATE_BLOCK_EDITOR,
+            editor: {
+              columnIndex: isPie ? target.order : target.point,
+              rowIndex: isPie ? target.point : target.order,
+            },
+          });
+        }
+      } else {
+        dispatch({
+          type: UPDATE_BLOCK_EDITOR,
+          editor: {
+            columnIndex: null,
+            rowIndex: null,
+          },
+        });
+      }
+      selectionRef.current = selection;
     }
-    selectionRef.current = selection;
   });
 
   useAutoEffect(() => {
@@ -64,14 +62,6 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
       {children}
       <EventTracker
         onClick={useAutoCallback(({ targets }) => {
-          for (const target of selection) {
-            dispatchElements({
-              type: DESELECT_BLOCK_ELEMENT,
-              index: isGrouped
-                ? size * target.point + target.order
-                : target.point,
-            });
-          }
           select(targets);
         })}
       />
@@ -87,12 +77,25 @@ const SelectionFrame = React.forwardRef(function SelectionFrame(
  */
 const ChartEditor = React.forwardRef(function ChartEditor(props: Props, ref) {
   const { item } = useSelectedLayoutItems();
+  const { id } = props;
+  const isSelected = !!(item && item.id === id);
+  const dispatch = useBlocksDispatch();
+
+  useAutoEffect(() => {
+    if (!isSelected) {
+      dispatch({
+        id,
+        type: UPDATE_BLOCK_EDITOR,
+        editor: {
+          rowIndex: null,
+          columnIndex: null,
+        },
+      });
+    }
+  });
+
   return (
-    <Chart
-      {...props}
-      as={item && item.id === props.id ? SelectionFrame : Frame}
-      ref={ref}
-    />
+    <Chart {...props} as={isSelected ? SelectionFrame : Frame} ref={ref} />
   );
 });
 

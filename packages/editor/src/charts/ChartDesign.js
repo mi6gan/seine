@@ -16,15 +16,12 @@ import { useSelectedLayoutItems } from '../layouts';
 import ChartPaletteSelect from './ChartPaletteSelect';
 import ChartStructureGroup from './ChartStructureGroup';
 import ChartElementColorButton from './ChartElementColorButton';
-import useElementSelector from './useElementSelector';
-import useChartDispatchElements from './useChartDispatchElements';
 
 import { Checkbox } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
 import {
   chartTypes,
-  UPDATE_BLOCK_ELEMENT,
-  UPDATE_BLOCK_ELEMENT_BY_GROUP,
+  UPDATE_BLOCK_BODY,
   UPDATE_BLOCK_FORMAT,
 } from '@seine/core';
 
@@ -49,11 +46,12 @@ export default function ChartDesign({
   const {
     item: {
       id,
+      body: { rows, titles, header },
       format: { kind, units, fraction, legend, xAxis, yAxis },
+      editor: { rowIndex = null, columnIndex = null } = {},
     },
   } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
-  const dispatchElements = useChartDispatchElements();
   const formatInput = useAutoCallback(
     ({ currentTarget: { value, name, type } }) => {
       dispatch({
@@ -63,8 +61,6 @@ export default function ChartDesign({
       });
     }
   );
-  const { element, selection } = useElementSelector();
-  const group = `${(element && element.group) || null}`;
   return (
     <>
       <SidebarSection>
@@ -141,50 +137,96 @@ export default function ChartDesign({
           Element
           <ChartStructureGroup buttonAs={Button} />
         </Box>
-        <ColorButton />
-        <SidebarGroup {...(element === null && { display: 'none' })}>
+        {ColorButton && rowIndex !== null && columnIndex !== null && (
+          <ColorButton />
+        )}
+        <SidebarGroup
+          {...((rowIndex === null || columnIndex === null) && {
+            display: 'none',
+          })}
+        >
           <SidebarLabel>value</SidebarLabel>
           <Input
             type={'number'}
             name={'value'}
-            value={element && element.value}
+            value={
+              rows[rowIndex] && rows[rowIndex][columnIndex]
+                ? rows[rowIndex][columnIndex].value
+                : ''
+            }
             onChange={useAutoCallback((event) => {
-              dispatchElements({
-                index: selection,
-                type: UPDATE_BLOCK_ELEMENT,
-                body: { value: +event.currentTarget.value },
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_BODY,
+                body: {
+                  rows: [
+                    ...rows.slice(0, rowIndex),
+                    [
+                      ...rows[rowIndex].slice(0, columnIndex),
+                      {
+                        ...rows[rowIndex][columnIndex],
+                        value: +event.currentTarget.value,
+                      },
+                      ...rows[rowIndex].slice(columnIndex + 1),
+                    ],
+                    ...rows.slice(rowIndex + 1),
+                  ],
+                },
               });
             })}
           />
         </SidebarGroup>
 
-        <SidebarGroup {...(element === null && { display: 'none' })}>
+        <SidebarGroup {...(rowIndex === null && { display: 'none' })}>
           <SidebarLabel>title</SidebarLabel>
           <Input
             multiline
             width={'100%'}
             name={'title'}
-            value={element && element.title}
+            value={titles[rowIndex]}
             onChange={useAutoCallback((event) => {
-              dispatchElements({
-                index: selection,
-                type: UPDATE_BLOCK_ELEMENT,
-                body: { title: event.currentTarget.value },
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_BODY,
+                body: {
+                  titles: [
+                    ...titles.slice(0, rowIndex),
+                    event.currentTarget.value,
+                    ...titles.slice(rowIndex + 1),
+                  ],
+                  rows: [
+                    ...rows.slice(0, rowIndex),
+                    rows[rowIndex].map((item) => ({
+                      ...item,
+                      text: event.currentTarget.value,
+                    })),
+                    ...rows.slice(rowIndex + 1),
+                  ],
+                },
               });
             })}
           />
         </SidebarGroup>
-
-        <SidebarGroup {...(group === 'null' && { display: 'none' })}>
+        <SidebarGroup
+          {...((kind === chartTypes.PIE || columnIndex === null) && {
+            display: 'none',
+          })}
+        >
           <SidebarLabel>group</SidebarLabel>
           <Input
-            value={group}
+            value={header[columnIndex] && header[columnIndex].text}
             name={'group'}
             onChange={useAutoCallback((event) => {
-              dispatchElements({
-                type: UPDATE_BLOCK_ELEMENT_BY_GROUP,
-                group: element.group,
-                body: { group: event.currentTarget.value },
+              dispatch({
+                id,
+                type: UPDATE_BLOCK_BODY,
+                body: {
+                  header: [
+                    ...header.slice(0, columnIndex),
+                    { ...header[columnIndex], text: event.currentTarget.value },
+                    ...header.slice(columnIndex + 1),
+                  ],
+                },
               });
             })}
           />

@@ -37,14 +37,14 @@ export const LegendMarker = styled.svg.attrs([
 ])``;
 
 // eslint-disable-next-line
-export default function ChartLegend() {
+export default function ChartLegend({ labelComponent = ChartLabel }) {
   return (
     <Legend
       position={'bottom'}
       rootComponent={LegendRoot}
       markerComponent={LegendMarker}
-      labelComponent={ChartLabel}
       itemComponent={LegendItem}
+      labelComponent={labelComponent}
     />
   );
 }

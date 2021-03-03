@@ -7,7 +7,7 @@ module.exports = {
     '\\.(svg|css|less)$': 'identity-obj-proxy',
   },
   transform: {
-    '\\.[jt]sx?$': ['babel-jest', { rootMode: 'upward' }],
-    '\\.mdx?$': '@storybook/addon-docs/jest-transform-mdx',
+    '^.+\\.[tj]sx?$': ['babel-jest', { rootMode: 'upward' }],
+    '^.+\\.mdx?$': '@storybook/addon-docs/jest-transform-mdx',
   },
 };
