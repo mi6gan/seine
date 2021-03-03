@@ -20,9 +20,11 @@ export type { Props as GridProps };
  * @param {Props} props
  * @returns {React.Node}
  */
-const Grid = styled((props) => (
-  <Item {...useElementOnlyProps(props, defaultGridFormat)} />
-))`
+const Grid = styled(
+  React.forwardRef((props, ref) => (
+    <Item {...useElementOnlyProps(props, defaultGridFormat)} ref={ref} />
+  ))
+)`
   display: grid;
   ${({ minSize, maxSize, columnGap, rowGap, theme }: Props) => ({
     gridTemplateColumns: `repeat(auto-fit,minmax(${minSize},${maxSize}))`,
