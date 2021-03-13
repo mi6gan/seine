@@ -6,13 +6,7 @@ import styled from 'styled-components/macro';
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
 import { Box } from '@seine/styles';
-import { Shape } from '@seine/content';
-import {
-  DESELECT_ALL_BLOCKS,
-  SELECT_BLOCK,
-  shapeTypes,
-  UPDATE_BLOCK_FORMAT,
-} from '@seine/core';
+import { DESELECT_ALL_BLOCKS, SELECT_BLOCK } from '@seine/core';
 
 const MIN_WIDTH = 40;
 const MIN_HEIGHT = 40;
@@ -30,112 +24,29 @@ const ResizePath = styled(Box).attrs({
   shapeRendering: 'crispEdges',
 })``;
 
-const ShapeFrame = React.forwardRef(function ShapeFrame(
-  { transform, ...props },
-  ref
-) {
-  const { id, x, y, width, height, cx, cy, rx, ry, kind, d } = props;
+// eslint-disable-next-line
+export default function ShapeFrameBox({ id, onChange, x, y, width, height }) {
   const dispatch = useBlocksDispatch();
   const selected = useEditorSelector(
     useAutoCallback(
       ({ selection }) => selection.length === 1 && selection.includes(id)
     )
   );
-  const box = useAutoMemo(() => {
-    switch (kind) {
-      case shapeTypes.ELLIPSE:
-        return {
-          x: cx - rx,
-          y: cy - ry,
-          width: 2 * rx,
-          height: 2 * ry,
-        };
-      case shapeTypes.RECT:
-        return {
-          x,
-          y,
-          width,
-          height,
-        };
-      case shapeTypes.PATH: {
-        const [values, args] = d
-          .match(/\d+(,\d+)?/g)
-          .map((p) => p.split(',').map((v) => +v))
-          .reduce(
-            (acc, [x, y]) => [
-              [...acc[0], x],
-              [...acc[1], y],
-            ],
-            [[], []]
-          );
-        const x = Math.min(...values);
-        const y = Math.min(...args);
-        const width = Math.max(...values) - x;
-        const height = Math.max(...args) - y;
-        return {
-          x,
-          y,
-          width,
-          height,
-        };
-      }
-      default:
-        return {};
-    }
+
+  const bound = useAutoMemo({
+    x: (width < MIN_WIDTH ? x - (MIN_WIDTH - width) / 2 : x) - 2,
+    y: (height < MIN_HEIGHT ? y - (MIN_HEIGHT - height) / 2 : y) - 2,
+    width: Math.max(width, MIN_WIDTH) + 4,
+    height: Math.max(height, MIN_HEIGHT) + 4,
   });
 
-  const bound = useAutoMemo(() => {
-    const result = {
-      ...box,
-      ...(box.width < MIN_WIDTH && {
-        x: box.x - (MIN_WIDTH - box.width) / 2,
-        width: MIN_WIDTH,
-      }),
-      ...(box.height < MIN_HEIGHT && {
-        y: box.y - (MIN_HEIGHT - box.height) / 2,
-        height: MIN_HEIGHT,
-      }),
-    };
-    result.x -= 2;
-    result.width += 4;
-    result.y -= 2;
-    result.height += 4;
-    return result;
-  });
-
-  const setBox = useAutoCallback((box) => {
-    if (box.width < 0 || box.height < 0) {
-      setMode(null);
-    } else {
-      boxRef.current = box;
-      switch (kind) {
-        case shapeTypes.ELLIPSE:
-          return dispatch({
-            type: UPDATE_BLOCK_FORMAT,
-            format: {
-              cx: box.x + box.width / 2,
-              cy: box.y + box.height / 2,
-              rx: box.width / 2,
-              ry: box.height / 2,
-            },
-          });
-        case shapeTypes.RECT:
-          return dispatch({
-            type: UPDATE_BLOCK_FORMAT,
-            format: box,
-          });
-        default:
-          return dispatch({
-            type: UPDATE_BLOCK_FORMAT,
-            format: { transform: `translate(${box.x}, ${box.y})` },
-          });
-      }
-    }
-  });
-
-  const boxRef = React.useRef(box);
+  const boxRef = React.useRef({ x, y, width, height });
 
   const [mode, setMode] = React.useState(null);
+  const setBox = useAutoCallback((box) => {
+    boxRef.current = box;
+    onChange(box);
+  });
 
   useAutoEffect(() => {
     const move = (event) => {
@@ -185,8 +96,7 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
   });
 
   return (
-    <g transform={transform}>
-      <Shape {...props} ref={ref} />
+    <>
       <g {...(!selected && { display: 'none' })}>
         <ResizePath
           onMouseDown={selectResizeMode}
@@ -247,6 +157,7 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
         as={'rect'}
         shapeRendering={'crispEdges'}
         stroke={selected ? 'primary.main' : 'transparent'}
+        strokeWidth={1}
         fill={'transparent'}
         strokeDasharray={'6 3'}
         cursor={selected ? mode || 'move' : 'pointer'}
@@ -274,8 +185,6 @@ const ShapeFrame = React.forwardRef(function ShapeFrame(
         width={bound.width - 4}
         height={bound.height - 4}
       />
-    </g>
+    </>
   );
-});
-
-export default ShapeFrame;
+}

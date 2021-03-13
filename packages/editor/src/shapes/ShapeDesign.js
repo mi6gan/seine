@@ -4,12 +4,19 @@ import { useAutoCallback } from 'hooks.macro';
 
 import { useSelectedLayoutItems } from '../layouts';
 import { useBlocksDispatch } from '../blocks';
-import { ColorButton, SidebarHeading, SidebarSection } from '../ui';
+import {
+  ColorButton,
+  SidebarHeading,
+  SidebarLabel,
+  SidebarSection,
+} from '../ui';
+import ConstraintInput from '../ui/ConstraintInput';
 
 import EllipseShapeDesign from './EllipseShapeDesign';
 import RectShapeDesign from './RectShapeDesign';
 
 import { shapeTypes, UPDATE_BLOCK_FORMAT } from '@seine/core';
+import { Box } from '@seine/styles';
 
 /**
  * @description Shape design panel.
@@ -19,7 +26,7 @@ export default function ShapeDesign() {
   const {
     item: {
       id,
-      format: { kind, fill, stroke },
+      format: { kind, fill, stroke, strokeWidth },
     },
   } = useSelectedLayoutItems();
   const dispatch = useBlocksDispatch();
@@ -49,6 +56,16 @@ export default function ShapeDesign() {
             });
           })}
         />
+        <SidebarLabel>Stroke width</SidebarLabel>
+        <Box display={'flex'} mr={1} as={'form'}>
+          <ConstraintInput
+            id={id}
+            inputProps={{ placeholder: 'Stroke width', min: 0 }}
+            name={'strokeWidth'}
+            units={['pt', 'px']}
+            value={strokeWidth}
+          />
+        </Box>
       </SidebarSection>
       {kind === shapeTypes.ELLIPSE ? <EllipseShapeDesign /> : null}
       {kind === shapeTypes.RECT ? <RectShapeDesign /> : null}
