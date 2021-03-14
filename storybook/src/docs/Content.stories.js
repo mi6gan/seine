@@ -666,7 +666,8 @@ export const Shape = ({ parent_id = 'root', ...props }) => (
         body: {},
         format: {
           kind: shapeTypes.PATH,
-          d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+          d:
+            'M149 0.999988C149 0.999988 151.4061 21.8992 137.203 35.4023C123 48.9053 101.00001 46 101.00001 46',
         },
       },
       {
@@ -694,6 +695,34 @@ export const Shape = ({ parent_id = 'root', ...props }) => (
           width: 20,
           height: 20,
           d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+        },
+      },
+    ]}
+  </Page>
+);
+
+export const PathShape = ({ parent_id = 'root', ...props }) => (
+  <Page {...props}>
+    {[
+      {
+        id: 'shape-root',
+        parent_id,
+        type: blockTypes.SHAPE,
+        body: {},
+        format: {
+          kind: shapeTypes.ROOT,
+          minHeight: '500px',
+        },
+      },
+      {
+        id: 'shape-path',
+        parent_id: 'shape-root',
+        type: blockTypes.SHAPE,
+        body: {},
+        format: {
+          kind: shapeTypes.PATH,
+          d:
+            'M562.9280602800176,132.999988C562.9280602800176,132.999988,575.4061,172.22215558371482,501.74879317697514,197.56382162833214C428.09200495416314,222.9053,314.00001,217.45283779802958,314.00001,217.45283779802958',
         },
       },
     ]}

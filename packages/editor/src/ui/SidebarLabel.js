@@ -9,7 +9,8 @@ const SidebarLabel = styled(Box).attrs([
     as: Typography,
     variant: 'caption',
   },
-  ({ minWidth = '5rem' }) => ({ minWidth }),
-])``;
+])`
+  min-width: ${({ minWidth = '5rem' }) => minWidth};
+`;
 
 export default SidebarLabel;

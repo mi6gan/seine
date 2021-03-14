@@ -50,11 +50,13 @@ export type ShapeFormat = {
 export const SHAPE = 'shape';
 
 export const defaultPathShapeFormat = {
+  strokeWidth: '1pt',
   kind: shapeTypes.PATH,
   d: 'M10,10 L50,50',
 };
 
 export const defaultRectShapeFormat = {
+  strokeWidth: '1pt',
   kind: shapeTypes.RECT,
   x: 30,
   y: 30,
@@ -63,6 +65,7 @@ export const defaultRectShapeFormat = {
 };
 
 export const defaultEllipseShapeFormat = {
+  strokeWidth: '1pt',
   kind: shapeTypes.ELLIPSE,
   cx: 30,
   cy: 30,

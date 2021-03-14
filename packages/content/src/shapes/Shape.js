@@ -13,24 +13,37 @@ import { shapeTypes } from '@seine/core';
 export type Props = ShapeBody & ShapeFormat;
 
 const Shape = React.forwardRef(function Shape(
-  { kind, parentType, ...shapeProps }: Props,
+  {
+    kind,
+    parentType,
+    strokeWidth,
+    stroke,
+    fill,
+    transform,
+    children = null,
+    ...shapeProps
+  }: Props,
   ref
 ) {
+  const styleProps = { strokeWidth, stroke, fill, transform };
   return kind === shapeTypes.ROOT ? (
-    <RootShape {...shapeProps} ref={ref} />
-  ) : kind === shapeTypes.GROUP ? (
-    <GroupShape {...shapeProps} ref={ref} />
-  ) : kind === shapeTypes.PATH ? (
-    <PathShape {...shapeProps} ref={ref} />
-  ) : kind === shapeTypes.RECT ? (
-    <RectShape {...shapeProps} ref={ref} shapeRendering={'crispEdges'} />
-  ) : kind === shapeTypes.ELLIPSE ? (
-    <EllipseShape
-      {...shapeProps}
-      ref={ref}
-      shapeRendering={'geometricPrecision'}
-    />
-  ) : null;
+    <RootShape {...shapeProps} ref={ref}>
+      <g {...styleProps}>{children}</g>
+    </RootShape>
+  ) : (
+    <g {...styleProps}>
+      {kind === shapeTypes.GROUP ? (
+        <GroupShape {...shapeProps} ref={ref} />
+      ) : kind === shapeTypes.PATH ? (
+        <PathShape {...shapeProps} ref={ref} />
+      ) : kind === shapeTypes.RECT ? (
+        <RectShape {...shapeProps} ref={ref} />
+      ) : kind === shapeTypes.ELLIPSE ? (
+        <EllipseShape {...shapeProps} ref={ref} />
+      ) : null}
+      {children}
+    </g>
+  );
 });
 
 /**

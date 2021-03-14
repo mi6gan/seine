@@ -21,6 +21,50 @@ export default function ConstraintInput({
 }) {
   const dispatch = useBlocksDispatch();
   const timeoutsRef = React.useRef({});
+  const changeValue = useAutoCallback(({ currentTarget }) => {
+    const { form } = currentTarget;
+
+    const [name, field] = currentTarget.name.split('.');
+
+    const valueElement: HTMLInputElement = form.elements.namedItem(
+      `${name}.value`
+    );
+    const unitsElement = form.elements.namedItem(`${name}.units`);
+
+    const { value } = valueElement;
+    const { value: units } = unitsElement;
+
+    const submit =
+      onSubmit ||
+      ((value) => {
+        dispatch({
+          id,
+          type: UPDATE_BLOCK_FORMAT,
+          format: {
+            [name]: value,
+          },
+        });
+      });
+
+    const valueToSubmit =
+      field === 'value' && value ? `${value}${units}` : null;
+    if (field === 'units') {
+      submit(valueToSubmit);
+      valueElement.value = '';
+      valueElement.focus();
+    } else {
+      const {
+        current: { [name]: timeout = null, ...timeouts },
+      } = timeoutsRef;
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      timeoutsRef.current = {
+        ...timeouts,
+        [name]: setTimeout(() => submit(valueToSubmit), 500),
+      };
+    }
+  });
 
   useAutoEffect(() => () => {
     Object.values(timeoutsRef.current).forEach((timeout) => {
@@ -34,50 +78,7 @@ export default function ConstraintInput({
       {...InputProps}
       type={'number'}
       name={`${name}.value`}
-      onChange={useAutoCallback(({ currentTarget }) => {
-        const { form } = currentTarget;
-
-        const [name, field] = currentTarget.name.split('.');
-
-        const valueElement: HTMLInputElement = form.elements.namedItem(
-          `${name}.value`
-        );
-        const unitsElement = form.elements.namedItem(`${name}.units`);
-
-        const { value } = valueElement;
-        const { value: units } = unitsElement;
-
-        const submit =
-          onSubmit ||
-          ((value) => {
-            dispatch({
-              id,
-              type: UPDATE_BLOCK_FORMAT,
-              format: {
-                [name]: value,
-              },
-            });
-          });
-
-        const valueToSubmit =
-          field === 'value' && value ? `${value}${units}` : null;
-        if (field === 'units') {
-          submit(valueToSubmit);
-          valueElement.value = '';
-          valueElement.focus();
-        } else {
-          const {
-            current: { [name]: timeout = null, ...timeouts },
-          } = timeoutsRef;
-          if (timeout) {
-            clearTimeout(timeout);
-          }
-          timeoutsRef.current = {
-            ...timeouts,
-            [name]: setTimeout(() => submit(valueToSubmit), 500),
-          };
-        }
-      })}
+      onChange={changeValue}
       defaultValue={parseFloat(value) || ''}
       width={'5.5rem'}
       mr={0}
@@ -85,10 +86,9 @@ export default function ConstraintInput({
         <Select
           native
           width={'4ch'}
-          textAlign={'right'}
           fontSize={'0.75rem'}
           name={`${name}.units`}
-          onChange={onChange}
+          onChange={changeValue}
           defaultValue={`${value}`.replace(/\d/g, '')}
           disableUnderline
         >

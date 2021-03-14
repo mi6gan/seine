@@ -14,6 +14,8 @@ import {
   LineChart,
   ColumnChart,
   BarChart,
+  Shape,
+  PathShape,
   DataV03,
 } from './Content.stories';
 
@@ -84,4 +86,12 @@ export const EditorOfColumnChart = () => (
 
 export const EditorOfBarChart = () => (
   <BarChart as={Editor} {...actions('onChange')} />
+);
+
+export const EditorOfShape = () => (
+  <Shape as={Editor} {...actions('onChange')} />
+);
+
+export const EditorOfPathShape = () => (
+  <PathShape as={Editor} {...actions('onChange')} />
 );
