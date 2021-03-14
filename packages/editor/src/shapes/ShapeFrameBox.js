@@ -83,29 +83,28 @@ export default function ShapeFrameBox({ id, onChange, x, y, width, height }) {
     if (isMoveOrResize) {
       const move = (event) => {
         if (stateRef.current === 'off') {
+          actionRef.current = 'move';
+          stateRef.current = 'on';
+          modeRef.current = 'box';
           setMode(`move(box,on)`);
-        } else {
-          const {
-            current: { x, y, width, height },
-          } = boxRef;
-          const dx = event.movementX;
-          const dy = event.movementY;
-          if (actionRef.current === 'move') {
-            setBox({
-              width,
-              height,
-              x: x + dx,
-              y: y + dy,
-            });
-          } else if (actionRef.current === 'resize') {
-            const [, , , , kx, ky, kw, kh] = match;
-            return setBox({
-              x: x - kx * dx,
-              y: y - ky * dy,
-              width: width + kw * dx,
-              height: height + kh * dy,
-            });
-          }
+        }
+        const dx = event.movementX;
+        const dy = event.movementY;
+        if (actionRef.current === 'move') {
+          setBox({
+            width: boxRef.current.width,
+            height: boxRef.current.height,
+            x: boxRef.current.x + dx,
+            y: boxRef.current.y + dy,
+          });
+        } else if (actionRef.current === 'resize') {
+          const [, , , , kx, ky, kw, kh] = match;
+          return setBox({
+            x: boxRef.current.x - kx * dx,
+            y: boxRef.current.y - ky * dy,
+            width: boxRef.current.width + kw * dx,
+            height: boxRef.current.height + kh * dy,
+          });
         }
       };
       document.addEventListener('mousemove', move);
