@@ -1,12 +1,23 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
+import {
+  useAutoCallback,
+  useAutoEffect,
+  useAutoLayoutEffect,
+  useAutoMemo,
+} from 'hooks.macro';
 import styled from 'styled-components/macro';
 
 import { useBlocksDispatch, useEditorSelector } from '../blocks';
 
+import { shapeEditorModeSelector } from './selectors';
+
 import { Box } from '@seine/styles';
-import { DESELECT_ALL_BLOCKS, SELECT_BLOCK } from '@seine/core';
+import {
+  DESELECT_ALL_BLOCKS,
+  SELECT_BLOCK,
+  UPDATE_BLOCK_EDITOR,
+} from '@seine/core';
 
 const MIN_WIDTH = 40;
 const MIN_HEIGHT = 40;
@@ -32,6 +43,17 @@ export default function ShapeFrameBox({ id, onChange, x, y, width, height }) {
       ({ selection }) => selection.length === 1 && selection.includes(id)
     )
   );
+  const match = useEditorSelector(shapeEditorModeSelector);
+  const { action, mode, state } = match.groups;
+  const setMode = useAutoCallback((value) => {
+    dispatch({
+      id,
+      type: UPDATE_BLOCK_EDITOR,
+      editor: { mode: value },
+    });
+  });
+
+  const boxRef = React.useRef({ x, y, width, height });
 
   const bound = useAutoMemo({
     x: (width < MIN_WIDTH ? x - (MIN_WIDTH - width) / 2 : x) - 2,
@@ -40,117 +62,141 @@ export default function ShapeFrameBox({ id, onChange, x, y, width, height }) {
     height: Math.max(height, MIN_HEIGHT) + 4,
   });
 
-  const boxRef = React.useRef({ x, y, width, height });
-
-  const [mode, setMode] = React.useState(null);
-  const setBox = useAutoCallback((box) => {
-    boxRef.current = box;
-    onChange(box);
+  const setBox = useAutoCallback((value) => {
+    boxRef.current = value;
+    onChange(value);
   });
 
+  const isMoveOrResize = selected && (action === 'move' || action === 'resize');
+
+  const actionRef = React.useRef(action);
+  const stateRef = React.useRef(state);
+  const modeRef = React.useRef(mode);
+
   useAutoEffect(() => {
-    const move = (event) => {
-      const {
-        current: { x, y, width, height },
-      } = boxRef;
-      const dx = event.movementX;
-      const dy = event.movementY;
-      if (mode === 'move') {
-        setBox({
-          width,
-          height,
-          x: x + dx,
-          y: y + dy,
-        });
-      } else if (mode) {
-        const resize = mode.match(/^resize\((.+),(.+),(.+),(.+)\)$/);
-        if (resize) {
-          const [, kx, ky, kw, kh] = resize;
-          return setBox({
-            x: x - kx * dx,
-            y: y - ky * dy,
-            width: width + kw * dx,
-            height: height + kh * dy,
-          });
+    actionRef.current = action;
+    stateRef.current = state;
+    modeRef.current = mode;
+  });
+
+  useAutoLayoutEffect(() => {
+    if (isMoveOrResize) {
+      const move = (event) => {
+        if (stateRef.current === 'off') {
+          setMode(`move(box,on)`);
+        } else {
+          const {
+            current: { x, y, width, height },
+          } = boxRef;
+          const dx = event.movementX;
+          const dy = event.movementY;
+          if (actionRef.current === 'move') {
+            setBox({
+              width,
+              height,
+              x: x + dx,
+              y: y + dy,
+            });
+          } else if (actionRef.current === 'resize') {
+            const [, , , , kx, ky, kw, kh] = match;
+            return setBox({
+              x: x - kx * dx,
+              y: y - ky * dy,
+              width: width + kw * dx,
+              height: height + kh * dy,
+            });
+          }
         }
-      }
-    };
-    document.addEventListener('mousemove', move);
-    return () => {
-      document.removeEventListener('mousemove', move);
-    };
+      };
+      document.addEventListener('mousemove', move);
+      return () => {
+        document.removeEventListener('mousemove', move);
+      };
+    }
+  });
+
+  useAutoLayoutEffect(() => {
+    if (isMoveOrResize) {
+      const update = () => {
+        setMode(
+          `edit(${
+            stateRef.current === 'on' || modeRef.current === 'shape'
+              ? 'box'
+              : 'shape'
+          },off)`
+        );
+      };
+      document.addEventListener('mouseup', update);
+      return () => {
+        document.removeEventListener('mouseup', update);
+      };
+    }
   });
 
   const selectResizeMode = useAutoCallback((event) => {
     setMode(event.currentTarget.dataset.mode);
   });
 
-  useAutoEffect(() => {
-    const clearMode = () => {
-      setMode(null);
-    };
-    document.addEventListener('mouseup', clearMode);
-    return () => {
-      document.removeEventListener('mouseup', clearMode);
-    };
-  });
-
   return (
     <>
-      <g {...(!selected && { display: 'none' })}>
+      <g
+        {...((!selected || mode === 'shape') && {
+          display: 'none',
+        })}
+      >
         <ResizePath
           onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x}, ${bound.y})`}
+          transform={`translate(${bound.x - 2}, ${bound.y - 2})`}
           cursor={'nwse-resize'}
-          data-mode={'resize(-1,-1,-1,-1)'}
+          data-mode={'resize(box,on,-1,-1,-1,-1)'}
         />
         <ResizePath
           onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width / 2}, ${bound.y})`}
+          transform={`translate(${bound.x + bound.width / 2}, ${bound.y - 2})`}
           cursor={'ns-resize'}
-          data-mode={'resize(0,-1,0,-1)'}
+          data-mode={'resize(box,on,0,-1,0,-1)'}
         />
         <ResizePath
           onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width}, ${bound.y})`}
+          transform={`translate(${bound.x + 2 + bound.width}, ${bound.y - 2})`}
           cursor={'nesw-resize'}
-          data-mode={'resize(0,-1,1,-1)'}
+          data-mode={'resize(box,on,0,-1,1,-1)'}
         />
         <ResizePath
           onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width}, ${
+          transform={`translate(${bound.x + 2 + bound.width}, ${
             bound.y + bound.height / 2
           })`}
           cursor={'ew-resize'}
-          data-mode={'resize(0,0,1,0)'}
+          data-mode={'resize(box,on,0,0,1,0)'}
         />
         <ResizePath
           onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x + bound.width}, ${
-            bound.y + bound.height
+          transform={`translate(${bound.x + 2 + bound.width}, ${
+            bound.y + 2 + bound.height
           })`}
           cursor={'nwse-resize'}
-          data-mode={'resize(0,0,1,1)'}
+          data-mode={'resize(box,on,0,0,1,1)'}
         />
         <ResizePath
           onMouseDown={selectResizeMode}
           transform={`translate(${bound.x + bound.width / 2}, ${
-            bound.y + bound.height
+            bound.y + 2 + bound.height
           })`}
           cursor={'ns-resize'}
-          data-mode={'resize(0,0,0,1)'}
+          data-mode={'resize(box,on,0,0,0,1)'}
         />
         <ResizePath
           onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x}, ${bound.y + bound.height})`}
+          transform={`translate(${bound.x - 2}, ${bound.y + 2 + bound.height})`}
           cursor={'nesw-resize'}
-          data-mode={'resize(-1,0,-1,1)'}
+          data-mode={'resize(box,on,-1,0,-1,1)'}
         />
         <ResizePath
           onMouseDown={selectResizeMode}
-          transform={`translate(${bound.x}, ${bound.y + bound.height / 2})`}
+          transform={`translate(${bound.x - 2}, ${bound.y + bound.height / 2})`}
           cursor={'ew-resize'}
-          data-mode={'resize(-1,0,-1,0)'}
+          data-mode={'resize(box,on,-1,0,-1,0)'}
         />
       </g>
       <Box
@@ -160,9 +206,15 @@ export default function ShapeFrameBox({ id, onChange, x, y, width, height }) {
         strokeWidth={1}
         fill={'transparent'}
         strokeDasharray={'6 3'}
-        cursor={selected ? mode || 'move' : 'pointer'}
-        onMouseDown={useAutoCallback(() => {
-          setMode('move');
+        cursor={selected ? 'move' : 'pointer'}
+        x={bound.x + 2}
+        y={bound.y + 2}
+        width={bound.width - 4}
+        height={bound.height - 4}
+        onMouseDownCapture={useAutoCallback(() => {
+          if (selected && action === 'edit') {
+            setMode(`move(${mode},off)`);
+          }
         })}
         onClick={useAutoCallback((event) => {
           if (!selected) {
@@ -180,10 +232,6 @@ export default function ShapeFrameBox({ id, onChange, x, y, width, height }) {
             });
           }
         })}
-        x={bound.x + 2}
-        y={bound.y + 2}
-        width={bound.width - 4}
-        height={bound.height - 4}
       />
     </>
   );

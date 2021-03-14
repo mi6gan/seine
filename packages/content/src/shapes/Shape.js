@@ -25,18 +25,14 @@ const Shape = React.forwardRef(function Shape(
   }: Props,
   ref
 ) {
-  return (
-    <g
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill={fill}
-      transform={transform}
-    >
-      {kind === shapeTypes.ROOT ? (
-        <RootShape {...shapeProps} ref={ref}>
-          {children}
-        </RootShape>
-      ) : kind === shapeTypes.GROUP ? (
+  const styleProps = { strokeWidth, stroke, fill, transform };
+  return kind === shapeTypes.ROOT ? (
+    <RootShape {...shapeProps} ref={ref}>
+      <g {...styleProps}>{children}</g>
+    </RootShape>
+  ) : (
+    <g {...styleProps}>
+      {kind === shapeTypes.GROUP ? (
         <GroupShape {...shapeProps} ref={ref} />
       ) : kind === shapeTypes.PATH ? (
         <PathShape {...shapeProps} ref={ref} />
@@ -45,7 +41,7 @@ const Shape = React.forwardRef(function Shape(
       ) : kind === shapeTypes.ELLIPSE ? (
         <EllipseShape {...shapeProps} ref={ref} />
       ) : null}
-      {kind !== shapeTypes.ROOT && children}
+      {children}
     </g>
   );
 });

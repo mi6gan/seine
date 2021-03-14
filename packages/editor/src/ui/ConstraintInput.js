@@ -86,7 +86,6 @@ export default function ConstraintInput({
         <Select
           native
           width={'4ch'}
-          textAlign={'right'}
           fontSize={'0.75rem'}
           name={`${name}.units`}
           onChange={changeValue}

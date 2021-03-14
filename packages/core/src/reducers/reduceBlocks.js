@@ -111,6 +111,7 @@ export const UPDATE_BLOCK_EDITOR = '@seine/editor/updateBlockEditor';
 export type UpdateBlockEditorAction = {
   type: typeof UPDATE_BLOCK_EDITOR,
   editor: { [string]: any },
+  shallow?: boolean,
 };
 
 export type BlocksAction =
@@ -267,9 +268,11 @@ export function reduceBlocks(
       if (
         action.type !== UPDATE_BLOCK_EDITOR ||
         !block.editor ||
-        !Object.entries(action.editor).every(([key, value]) =>
-          equals(value, block.editor[key])
-        )
+        !(action.shallow
+          ? action.editor === block.editor
+          : Object.entries(action.editor).every(([key, value]) =>
+              equals(value, block.editor[key])
+            ))
       ) {
         return {
           ...state,
