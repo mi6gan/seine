@@ -51,7 +51,7 @@ const PathFrame = React.forwardRef(function PathShapeEditor(
         { [index - 1]: point }
       ) => {
         const commandSlug = command.toLowerCase();
-        const start = commandSlug === command ? point : [0, 0];
+        const start = (commandSlug === command && point) || [0, 0];
         const [xs, ys] =
           commandSlug === 'h'
             ? [[start[0] + point[0]], [start[1]]]

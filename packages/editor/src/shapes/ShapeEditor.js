@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { Frame } from '../ui';
 import { useEditorSelector } from '../blocks';
+import GroupShape from '../../../content/src/shapes/GroupShape';
 
 import PathFrame from './PathFrame';
 import EllipseFrame from './EllipseFrame';
@@ -34,6 +35,8 @@ const ShapeEditor = React.forwardRef(function ShapeEditor(props, ref) {
     <EllipseFrame {...props} ref={ref} />
   ) : props.kind === shapeTypes.RECT ? (
     <RectFrame {...props} ref={ref} />
+  ) : props.kind === shapeTypes.GROUP ? (
+    <GroupShape {...props} ref={ref} />
   ) : null;
 });
 

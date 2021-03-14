@@ -30,11 +30,13 @@ const Shape = React.forwardRef(function Shape(
     <RootShape {...shapeProps} ref={ref}>
       <g {...styleProps}>{children}</g>
     </RootShape>
+  ) : kind === shapeTypes.GROUP ? (
+    <GroupShape {...shapeProps} {...styleProps} ref={ref}>
+      {children}
+    </GroupShape>
   ) : (
     <g {...styleProps}>
-      {kind === shapeTypes.GROUP ? (
-        <GroupShape {...shapeProps} ref={ref} />
-      ) : kind === shapeTypes.PATH ? (
+      {kind === shapeTypes.PATH ? (
         <PathShape {...shapeProps} ref={ref} />
       ) : kind === shapeTypes.RECT ? (
         <RectShape {...shapeProps} ref={ref} />
