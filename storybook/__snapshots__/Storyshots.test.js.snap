@@ -3381,6 +3381,30 @@ exports[`Storyshots Docs/Content Page 1`] = `
 />
 `;
 
+exports[`Storyshots Docs/Content Path Shape 1`] = `
+<div
+  class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+  spacing="0"
+>
+  <svg
+    id="shape-root"
+  >
+    <g
+      fill="transparent"
+      stroke="rgba(0,0,0,1.0)"
+    >
+      <g
+        stroke-width="1pt"
+      >
+        <path
+          d="M562.9280602800176,132.999988C562.9280602800176,132.999988,575.4061,172.22215558371482,501.74879317697514,197.56382162833214C428.09200495416314,222.9053,314.00001,217.45283779802958,314.00001,217.45283779802958"
+        />
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
 exports[`Storyshots Docs/Content Pie Chart 1`] = `
 <div
   class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
@@ -3649,45 +3673,42 @@ exports[`Storyshots Docs/Content Shape 1`] = `
   spacing="0"
 >
   <svg
-    alignself="auto"
-    fill="transparent"
-    flexbasis="auto"
-    flexgrow="0"
-    gridcolumn=""
-    gridrow=""
     id="shape-root"
-    justifyself="auto"
-    maxheight="none"
-    maxwidth="none"
-    minheight="0"
-    minwidth="0"
-    stroke="rgba(0,0,0,1.0)"
-    version="0.4"
   >
-    <path
-      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-      id="shape-path"
-      version="0.4"
-    />
-    <ellipse
-      cx="30"
-      cy="15"
-      id="shape-ellipse"
-      rx="10"
-      ry="10"
-      shape-rendering="geometricPrecision"
-      version="0.4"
-    />
-    <rect
-      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-      height="20"
-      id="shape-rect"
-      shape-rendering="crispEdges"
-      version="0.4"
-      width="20"
-      x="40"
-      y="10"
-    />
+    <g
+      fill="transparent"
+      stroke="rgba(0,0,0,1.0)"
+    >
+      <g
+        stroke-width="1pt"
+      >
+        <path
+          d="M149 0.999988C149 0.999988 151.4061 21.8992 137.203 35.4023C123 48.9053 101.00001 46 101.00001 46"
+        />
+      </g>
+      <g
+        stroke-width="1pt"
+      >
+        <ellipse
+          cx="30"
+          cy="15"
+          rx="10"
+          ry="10"
+          shape-rendering="geometricPrecision"
+        />
+      </g>
+      <g
+        stroke-width="1pt"
+      >
+        <rect
+          height="20"
+          shape-rendering="crispEdges"
+          width="20"
+          x="40"
+          y="10"
+        />
+      </g>
+    </g>
   </svg>
 </div>
 `;
@@ -5043,8 +5064,7 @@ Array [
           >
             <div
               border="1"
-              bordercolor="transparent"
-              class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL"
+              class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv"
               cursor="pointer"
             >
               <img />
@@ -5655,8 +5675,7 @@ Array [
           >
             <div
               border="1"
-              bordercolor="transparent"
-              class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 chykRJ Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
+              class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 epVsUS Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 eBwAvc kOvlGv Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
               cursor="pointer"
               data-type="bar"
               header="[object Object]"
@@ -6789,8 +6808,7 @@ Array [
           >
             <div
               border="1"
-              bordercolor="transparent"
-              class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 chykRJ Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
+              class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 epVsUS Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 eBwAvc kOvlGv Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
               cursor="pointer"
               data-type="column"
               header="[object Object]"
@@ -8073,8 +8091,7 @@ Array [
             >
               <div
                 border="1"
-                bordercolor="transparent"
-                class="Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL"
+                class="Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv"
                 cursor="pointer"
               >
                 <table
@@ -8650,7 +8667,7 @@ Array [
                 </table>
               </div>
               <div
-                class="Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                class="Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
                 cursor="pointer"
                 id="text"
                 version="0.4"
@@ -9428,14 +9445,861 @@ Array [
           >
             <div
               border="1"
-              bordercolor="transparent"
-              class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL"
+              class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv"
               cursor="pointer"
             >
               <img
                 src="https://via.placeholder.com/150/0000FF/808080?text=Image"
               />
             </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Box-cmayus-0 Sidebar-sc-11bbcqu-0 gklctw"
+        color="grey.700"
+        height="760"
+        open=""
+        overflow="auto"
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`Storyshots Docs/Editor Editor Of Path Shape 1`] = `
+Array [
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+  >
+    <div
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+      color="grey.50"
+      display="flex"
+      width="100%"
+    >
+      <div
+        class="Box-cmayus-0 ekZQvI"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Text"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 4v3h5.5v12h3V7H19V4z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Bar chart"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+              focusable="false"
+              transform="rotate(90)"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Line chart"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Column chart"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="ellipse"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div
+        class="Box-cmayus-0 hxUShx"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+          width="5rem"
+        >
+          <select
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+          >
+            <option
+              value="25"
+            >
+              25%
+            </option>
+            <option
+              value="50"
+            >
+              50%
+            </option>
+            <option
+              selected=""
+              value="100"
+            >
+              100%
+            </option>
+            <option
+              value="125"
+            >
+              125%
+            </option>
+            <option
+              value="150"
+            >
+              150%
+            </option>
+            <option
+              value="200"
+            >
+              200%
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+        >
+          <select
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+          >
+            <option
+              selected=""
+              value="any"
+            >
+              Any device
+            </option>
+            <option
+              value="mobile"
+            >
+              Mobile only
+            </option>
+            <option
+              value="tablet"
+            >
+              Tablet only
+            </option>
+            <option
+              value="desktop"
+            >
+              Desktop only
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>,
+  <div
+    class="MuiBox-root MuiBox-root-31"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-32 EditorView__Contents-vasr1h-0 fjiNxD"
+    >
+      <div
+        class="Box-cmayus-0 Sidebar-sc-11bbcqu-0 gklctw"
+        color="grey.700"
+        height="760"
+        open=""
+        overflow="auto"
+      >
+        <div
+          class="Box-cmayus-0 SidebarSection-sc-1fltfa-0 fiPHaV kwDvRd"
+          display="block"
+        >
+          <span
+            class="MuiTypography-root SidebarHeading-sc-1afwkwt-0 cgCtfe MuiTypography-caption MuiTypography-colorTextPrimary"
+          >
+            Structure
+          </span>
+          <div
+            class="Box-cmayus-0 SidebarGroup-sc-1l7xely-0 kDyBgm"
+            display="flex"
+          >
+            <ul
+              class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+            >
+              <li
+                class="MuiListItem-container"
+              >
+                <div
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root EditorTreeItem__StyledListItem-sc-1k23n0m-0 fhimvh MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                  draggable="false"
+                  level="1"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiListItemIcon-root"
+                  >
+                    <svg
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                      />
+                      <title>
+                        page
+                      </title>
+                    </svg>
+                  </div>
+                  <div
+                    class="MuiListItemText-root MuiListItemText-dense"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-caption"
+                    >
+                      page
+                    </span>
+                    <input
+                      class="Box-cmayus-0 cVeQeE"
+                      cursor="pointer"
+                      opacity="0"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="MuiListItemSecondaryAction-root"
+                >
+                  <div
+                    aria-disabled="false"
+                    class="Box-cmayus-0 hQhuyP MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <ul
+                class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+              >
+                <li
+                  class="MuiListItem-container"
+                >
+                  <div
+                    aria-disabled="false"
+                    class="MuiButtonBase-root MuiListItem-root EditorTreeItem__StyledListItem-sc-1k23n0m-0 eqAMfq MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                    draggable="true"
+                    level="2"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiListItemIcon-root"
+                    >
+                      <svg
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M4 4h7V2H4c-1.1 0-2 .9-2 2v7h2V4zm6 9l-4 5h12l-3-4-2.03 2.71L10 13zm7-4.5c0-.83-.67-1.5-1.5-1.5S14 7.67 14 8.5s.67 1.5 1.5 1.5S17 9.33 17 8.5zM20 2h-7v2h7v7h2V4c0-1.1-.9-2-2-2zm0 18h-7v2h7c1.1 0 2-.9 2-2v-7h-2v7zM4 13H2v7c0 1.1.9 2 2 2h7v-2H4v-7z"
+                        />
+                        <title>
+                          shape
+                        </title>
+                      </svg>
+                    </div>
+                    <div
+                      class="MuiListItemText-root MuiListItemText-dense"
+                    >
+                      <span
+                        class="MuiTypography-root MuiTypography-caption"
+                      >
+                        shape
+                      </span>
+                      <input
+                        class="Box-cmayus-0 cVeQeE"
+                        cursor="pointer"
+                        opacity="0"
+                      />
+                    </div>
+                    <div
+                      class="Box-cmayus-0 gYMxoD"
+                      data-position="before"
+                      data-target-id="mock"
+                      height="0.5"
+                      width="1"
+                    />
+                    <div
+                      class="Box-cmayus-0 ibsPhP"
+                      data-position="after"
+                      data-target-id="mock"
+                      height="0.5"
+                      width="1"
+                    />
+                  </div>
+                  <div
+                    class="MuiListItemSecondaryAction-root"
+                  >
+                    <div
+                      aria-disabled="false"
+                      class="Box-cmayus-0 hOPWay MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                      display="none"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <ul
+                  class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+                >
+                  <li
+                    class="MuiListItem-container"
+                  >
+                    <div
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiListItem-root EditorTreeItem__StyledListItem-sc-1k23n0m-0 MexRP MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                      draggable="true"
+                      level="3"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root"
+                      >
+                        <svg
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                          />
+                          <title>
+                            shape
+                          </title>
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root MuiListItemText-dense"
+                      >
+                        <span
+                          class="MuiTypography-root MuiTypography-caption"
+                        >
+                          shape
+                        </span>
+                        <input
+                          class="Box-cmayus-0 cVeQeE"
+                          cursor="pointer"
+                          opacity="0"
+                        />
+                      </div>
+                      <div
+                        class="Box-cmayus-0 gYMxoD"
+                        data-position="before"
+                        data-target-id="mock"
+                        height="0.5"
+                        width="1"
+                      />
+                      <div
+                        class="Box-cmayus-0 ibsPhP"
+                        data-position="after"
+                        data-target-id="mock"
+                        height="0.5"
+                        width="1"
+                      />
+                    </div>
+                    <div
+                      class="MuiListItemSecondaryAction-root"
+                    >
+                      <div
+                        aria-disabled="false"
+                        class="Box-cmayus-0 hOPWay MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        display="none"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <ul
+                    class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+                  />
+                </ul>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-33 EditorContent-eh7ppe-0 hjUFUQ"
+      >
+        <div
+          class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+          scale="100"
+        >
+          <div
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+            spacing="0"
+          >
+            <svg
+              border="1"
+              class="Box-cmayus-0 itkLTg Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 dPCdgC eWOeLI"
+              cursor="pointer"
+              id="shape-root"
+              selected=""
+            >
+              <g
+                fill="transparent"
+                stroke="rgba(0,0,0,1.0)"
+              >
+                <g
+                  stroke-width="1pt"
+                >
+                  <path
+                    d="M562.9280602800176,132.999988C562.9280602800176,132.999988,575.4061,172.22215558371482,501.74879317697514,197.56382162833214C428.09200495416314,222.9053,314.00001,217.45283779802958,314.00001,217.45283779802958"
+                  />
+                  <g
+                    display="none"
+                  >
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 krEUXX"
+                      cursor="nwse-resize"
+                      data-mode="resize(box,on,-1,-1,-1,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(310.00001, 128.999988)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 jwVCna"
+                      cursor="ns-resize"
+                      data-mode="resize(box,on,0,-1,0,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(444.703055, 128.999988)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 cSKpmE"
+                      cursor="nesw-resize"
+                      data-mode="resize(box,on,0,-1,1,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(579.4061, 128.999988)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 bNvAqJ"
+                      cursor="ew-resize"
+                      data-mode="resize(box,on,0,0,1,0)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(579.4061, 177.95264400000002)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 bQkKUe"
+                      cursor="nwse-resize"
+                      data-mode="resize(box,on,0,0,1,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(579.4061, 226.9053)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 gUhxpk"
+                      cursor="ns-resize"
+                      data-mode="resize(box,on,0,0,0,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(444.703055, 226.9053)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 bJvcYF"
+                      cursor="nesw-resize"
+                      data-mode="resize(box,on,-1,0,-1,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(310.00001, 226.9053)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 ibpjPu"
+                      cursor="ew-resize"
+                      data-mode="resize(box,on,-1,0,-1,0)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(310.00001, 177.95264400000002)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                  </g>
+                  <rect
+                    class="Box-cmayus-0 kxHthK"
+                    cursor="pointer"
+                    fill="transparent"
+                    height="89.90531200000001"
+                    shape-rendering="crispEdges"
+                    stroke="transparent"
+                    stroke-dasharray="6 3"
+                    stroke-width="1"
+                    width="261.40609000000006"
+                    x="314.00001"
+                    y="132.999988"
+                  />
+                </g>
+              </g>
+            </svg>
           </div>
         </div>
       </div>
@@ -10041,8 +10905,7 @@ Array [
           >
             <div
               border="1"
-              bordercolor="transparent"
-              class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 chykRJ Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
+              class="ChartBase-fg9mvx-0 drIJnG Box-cmayus-0 epVsUS Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 eBwAvc kOvlGv Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
               cursor="pointer"
               data-type="pie"
               header="[object Object]"
@@ -10296,6 +11159,1324 @@ Array [
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Box-cmayus-0 Sidebar-sc-11bbcqu-0 gklctw"
+        color="grey.700"
+        height="760"
+        open=""
+        overflow="auto"
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`Storyshots Docs/Editor Editor Of Shape 1`] = `
+Array [
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
+  >
+    <div
+      class="Box-cmayus-0 Toolbar-sc-4h87hg-0 blEfpi"
+      color="grey.50"
+      display="flex"
+      width="100%"
+    >
+      <div
+        class="Box-cmayus-0 ekZQvI"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Text"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 4v3h5.5v12h3V7H19V4z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Table"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Bar chart"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root BlockTypeIcon__BarChartIcon-y52huk-0"
+              focusable="false"
+              transform="rotate(90)"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Line chart"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          title="Column chart"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="Box-cmayus-0 ToolbarSeparator-a4kc4f-0 daISia"
+          color="grey.500"
+          display="inline-block"
+          height="1em"
+          width="2px"
+        />
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="ellipse"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="rect"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX ToolbarButton__StyledToolbarButton-sc-3k3nry-0 bMwgyX MuiButton-colorInherit MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+          value="path"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div
+        class="Box-cmayus-0 hxUShx"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+          width="5rem"
+        >
+          <select
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+          >
+            <option
+              value="25"
+            >
+              25%
+            </option>
+            <option
+              value="50"
+            >
+              50%
+            </option>
+            <option
+              selected=""
+              value="100"
+            >
+              100%
+            </option>
+            <option
+              value="125"
+            >
+              125%
+            </option>
+            <option
+              value="150"
+            >
+              150%
+            </option>
+            <option
+              value="200"
+            >
+              200%
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline ToolbarSelect-sc-16gio4h-0 fvkKbM"
+        >
+          <select
+            class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+          >
+            <option
+              selected=""
+              value="any"
+            >
+              Any device
+            </option>
+            <option
+              value="mobile"
+            >
+              Mobile only
+            </option>
+            <option
+              value="tablet"
+            >
+              Tablet only
+            </option>
+            <option
+              value="desktop"
+            >
+              Desktop only
+            </option>
+          </select>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>,
+  <div
+    class="MuiBox-root MuiBox-root-28"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-29 EditorView__Contents-vasr1h-0 fjiNxD"
+    >
+      <div
+        class="Box-cmayus-0 Sidebar-sc-11bbcqu-0 gklctw"
+        color="grey.700"
+        height="760"
+        open=""
+        overflow="auto"
+      >
+        <div
+          class="Box-cmayus-0 SidebarSection-sc-1fltfa-0 fiPHaV kwDvRd"
+          display="block"
+        >
+          <span
+            class="MuiTypography-root SidebarHeading-sc-1afwkwt-0 cgCtfe MuiTypography-caption MuiTypography-colorTextPrimary"
+          >
+            Structure
+          </span>
+          <div
+            class="Box-cmayus-0 SidebarGroup-sc-1l7xely-0 kDyBgm"
+            display="flex"
+          >
+            <ul
+              class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+            >
+              <li
+                class="MuiListItem-container"
+              >
+                <div
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root EditorTreeItem__StyledListItem-sc-1k23n0m-0 fhimvh MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                  draggable="false"
+                  level="1"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiListItemIcon-root"
+                  >
+                    <svg
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                      />
+                      <title>
+                        page
+                      </title>
+                    </svg>
+                  </div>
+                  <div
+                    class="MuiListItemText-root MuiListItemText-dense"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-caption"
+                    >
+                      page
+                    </span>
+                    <input
+                      class="Box-cmayus-0 cVeQeE"
+                      cursor="pointer"
+                      opacity="0"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="MuiListItemSecondaryAction-root"
+                >
+                  <div
+                    aria-disabled="false"
+                    class="Box-cmayus-0 hQhuyP MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <ul
+                class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+              >
+                <li
+                  class="MuiListItem-container"
+                >
+                  <div
+                    aria-disabled="false"
+                    class="MuiButtonBase-root MuiListItem-root EditorTreeItem__StyledListItem-sc-1k23n0m-0 eqAMfq MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                    draggable="true"
+                    level="2"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiListItemIcon-root"
+                    >
+                      <svg
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M4 4h7V2H4c-1.1 0-2 .9-2 2v7h2V4zm6 9l-4 5h12l-3-4-2.03 2.71L10 13zm7-4.5c0-.83-.67-1.5-1.5-1.5S14 7.67 14 8.5s.67 1.5 1.5 1.5S17 9.33 17 8.5zM20 2h-7v2h7v7h2V4c0-1.1-.9-2-2-2zm0 18h-7v2h7c1.1 0 2-.9 2-2v-7h-2v7zM4 13H2v7c0 1.1.9 2 2 2h7v-2H4v-7z"
+                        />
+                        <title>
+                          shape
+                        </title>
+                      </svg>
+                    </div>
+                    <div
+                      class="MuiListItemText-root MuiListItemText-dense"
+                    >
+                      <span
+                        class="MuiTypography-root MuiTypography-caption"
+                      >
+                        shape
+                      </span>
+                      <input
+                        class="Box-cmayus-0 cVeQeE"
+                        cursor="pointer"
+                        opacity="0"
+                      />
+                    </div>
+                    <div
+                      class="Box-cmayus-0 gYMxoD"
+                      data-position="before"
+                      data-target-id="mock"
+                      height="0.5"
+                      width="1"
+                    />
+                    <div
+                      class="Box-cmayus-0 ibsPhP"
+                      data-position="after"
+                      data-target-id="mock"
+                      height="0.5"
+                      width="1"
+                    />
+                  </div>
+                  <div
+                    class="MuiListItemSecondaryAction-root"
+                  >
+                    <div
+                      aria-disabled="false"
+                      class="Box-cmayus-0 hOPWay MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                      display="none"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+                <ul
+                  class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+                >
+                  <li
+                    class="MuiListItem-container"
+                  >
+                    <div
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiListItem-root EditorTreeItem__StyledListItem-sc-1k23n0m-0 MexRP MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                      draggable="true"
+                      level="3"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root"
+                      >
+                        <svg
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"
+                          />
+                          <title>
+                            shape
+                          </title>
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root MuiListItemText-dense"
+                      >
+                        <span
+                          class="MuiTypography-root MuiTypography-caption"
+                        >
+                          shape
+                        </span>
+                        <input
+                          class="Box-cmayus-0 cVeQeE"
+                          cursor="pointer"
+                          opacity="0"
+                        />
+                      </div>
+                      <div
+                        class="Box-cmayus-0 gYMxoD"
+                        data-position="before"
+                        data-target-id="mock"
+                        height="0.5"
+                        width="1"
+                      />
+                      <div
+                        class="Box-cmayus-0 ibsPhP"
+                        data-position="after"
+                        data-target-id="mock"
+                        height="0.5"
+                        width="1"
+                      />
+                    </div>
+                    <div
+                      class="MuiListItemSecondaryAction-root"
+                    >
+                      <div
+                        aria-disabled="false"
+                        class="Box-cmayus-0 hOPWay MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        display="none"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <ul
+                    class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+                  />
+                  <li
+                    class="MuiListItem-container"
+                  >
+                    <div
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiListItem-root EditorTreeItem__StyledListItem-sc-1k23n0m-0 MexRP MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                      draggable="true"
+                      level="3"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root"
+                      >
+                        <svg
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                          />
+                          <title>
+                            shape
+                          </title>
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root MuiListItemText-dense"
+                      >
+                        <span
+                          class="MuiTypography-root MuiTypography-caption"
+                        >
+                          shape
+                        </span>
+                        <input
+                          class="Box-cmayus-0 cVeQeE"
+                          cursor="pointer"
+                          opacity="0"
+                        />
+                      </div>
+                      <div
+                        class="Box-cmayus-0 gYMxoD"
+                        data-position="before"
+                        data-target-id="mock"
+                        height="0.5"
+                        width="1"
+                      />
+                      <div
+                        class="Box-cmayus-0 ibsPhP"
+                        data-position="after"
+                        data-target-id="mock"
+                        height="0.5"
+                        width="1"
+                      />
+                    </div>
+                    <div
+                      class="MuiListItemSecondaryAction-root"
+                    >
+                      <div
+                        aria-disabled="false"
+                        class="Box-cmayus-0 hOPWay MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        display="none"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <ul
+                    class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+                  />
+                  <li
+                    class="MuiListItem-container"
+                  >
+                    <div
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiListItem-root EditorTreeItem__StyledListItem-sc-1k23n0m-0 MexRP MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                      draggable="true"
+                      level="3"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root"
+                      >
+                        <svg
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"
+                          />
+                          <title>
+                            shape
+                          </title>
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root MuiListItemText-dense"
+                      >
+                        <span
+                          class="MuiTypography-root MuiTypography-caption"
+                        >
+                          shape
+                        </span>
+                        <input
+                          class="Box-cmayus-0 cVeQeE"
+                          cursor="pointer"
+                          opacity="0"
+                        />
+                      </div>
+                      <div
+                        class="Box-cmayus-0 gYMxoD"
+                        data-position="before"
+                        data-target-id="mock"
+                        height="0.5"
+                        width="1"
+                      />
+                      <div
+                        class="Box-cmayus-0 ibsPhP"
+                        data-position="after"
+                        data-target-id="mock"
+                        height="0.5"
+                        width="1"
+                      />
+                    </div>
+                    <div
+                      class="MuiListItemSecondaryAction-root"
+                    >
+                      <div
+                        aria-disabled="false"
+                        class="Box-cmayus-0 hOPWay MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                        display="none"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <ul
+                    class="MuiList-root EditorTree__StyledList-sc-15ad2cr-0 jVNJsq"
+                  />
+                </ul>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-30 EditorContent-eh7ppe-0 hjUFUQ"
+      >
+        <div
+          class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
+          scale="100"
+        >
+          <div
+            class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+            spacing="0"
+          >
+            <svg
+              border="1"
+              class="Box-cmayus-0 cetVlM Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL eWOeLI"
+              cursor="pointer"
+              id="shape-root"
+              selected=""
+            >
+              <g
+                fill="transparent"
+                stroke="rgba(0,0,0,1.0)"
+              >
+                <g
+                  stroke-width="1pt"
+                >
+                  <path
+                    d="M149 0.999988C149 0.999988 151.4061 21.8992 137.203 35.4023C123 48.9053 101.00001 46 101.00001 46"
+                  />
+                  <g
+                    display="none"
+                  >
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 Bvhyp"
+                      cursor="nwse-resize"
+                      data-mode="resize(box,on,-1,-1,-1,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(97.00001, -3.000012)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 hNhjI"
+                      cursor="ns-resize"
+                      data-mode="resize(box,on,0,-1,0,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(126.203055, -3.000012)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 jiPCis"
+                      cursor="nesw-resize"
+                      data-mode="resize(box,on,0,-1,1,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(155.4061, -3.000012)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 faLEtG"
+                      cursor="ew-resize"
+                      data-mode="resize(box,on,0,0,1,0)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(155.4061, 24.952644)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 jRFoux"
+                      cursor="nwse-resize"
+                      data-mode="resize(box,on,0,0,1,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(155.4061, 52.9053)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 hwTyud"
+                      cursor="ns-resize"
+                      data-mode="resize(box,on,0,0,0,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(126.203055, 52.9053)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 JuHRE"
+                      cursor="nesw-resize"
+                      data-mode="resize(box,on,-1,0,-1,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(97.00001, 52.9053)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 iydzGH"
+                      cursor="ew-resize"
+                      data-mode="resize(box,on,-1,0,-1,0)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(97.00001, 24.952644)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                  </g>
+                  <rect
+                    class="Box-cmayus-0 krANdj"
+                    cursor="pointer"
+                    fill="transparent"
+                    height="47.905311999999995"
+                    shape-rendering="crispEdges"
+                    stroke="transparent"
+                    stroke-dasharray="6 3"
+                    stroke-width="1"
+                    width="50.406090000000006"
+                    x="101.00001"
+                    y="0.9999880000000001"
+                  />
+                </g>
+                <g
+                  stroke-width="1pt"
+                >
+                  <ellipse
+                    cx="30"
+                    cy="15"
+                    rx="10"
+                    ry="10"
+                    shape-rendering="geometricPrecision"
+                  />
+                  <g
+                    display="none"
+                  >
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 gpjUNZ"
+                      cursor="nwse-resize"
+                      data-mode="resize(box,on,-1,-1,-1,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(6, -9)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 jdWUNS"
+                      cursor="ns-resize"
+                      data-mode="resize(box,on,0,-1,0,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(30, -9)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 gmXAVC"
+                      cursor="nesw-resize"
+                      data-mode="resize(box,on,0,-1,1,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(54, -9)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 hUvoSv"
+                      cursor="ew-resize"
+                      data-mode="resize(box,on,0,0,1,0)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(54, 15)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 bYtpwU"
+                      cursor="nwse-resize"
+                      data-mode="resize(box,on,0,0,1,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(54, 39)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 ztomw"
+                      cursor="ns-resize"
+                      data-mode="resize(box,on,0,0,0,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(30, 39)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 fnhzWr"
+                      cursor="nesw-resize"
+                      data-mode="resize(box,on,-1,0,-1,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(6, 39)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 beiBHU"
+                      cursor="ew-resize"
+                      data-mode="resize(box,on,-1,0,-1,0)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(6, 15)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                  </g>
+                  <rect
+                    class="Box-cmayus-0 iQkdYC"
+                    cursor="pointer"
+                    fill="transparent"
+                    height="40"
+                    shape-rendering="crispEdges"
+                    stroke="transparent"
+                    stroke-dasharray="6 3"
+                    stroke-width="1"
+                    width="40"
+                    x="10"
+                    y="-5"
+                  />
+                </g>
+                <g
+                  stroke-width="1pt"
+                >
+                  <rect
+                    height="20"
+                    shape-rendering="crispEdges"
+                    width="20"
+                    x="40"
+                    y="10"
+                  />
+                  <g
+                    display="none"
+                  >
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 fqEtaW"
+                      cursor="nwse-resize"
+                      data-mode="resize(box,on,-1,-1,-1,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(26, -4)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 fCMpYB"
+                      cursor="ns-resize"
+                      data-mode="resize(box,on,0,-1,0,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(50, -4)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 fjjSBl"
+                      cursor="nesw-resize"
+                      data-mode="resize(box,on,0,-1,1,-1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(74, -4)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 gNfBYP"
+                      cursor="ew-resize"
+                      data-mode="resize(box,on,0,0,1,0)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(74, 20)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 icbysw"
+                      cursor="nwse-resize"
+                      data-mode="resize(box,on,0,0,1,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(74, 44)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 eQiHEI"
+                      cursor="ns-resize"
+                      data-mode="resize(box,on,0,0,0,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(50, 44)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 fCLfcH"
+                      cursor="nesw-resize"
+                      data-mode="resize(box,on,-1,0,-1,1)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(26, 44)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                    <rect
+                      class="Box-cmayus-0 ShapeFrameBox__ResizePath-zcmwcy-0 cPFuXY"
+                      cursor="ew-resize"
+                      data-mode="resize(box,on,-1,0,-1,0)"
+                      fill="primary.main"
+                      height="8"
+                      opacity="0.75"
+                      shape-rendering="crispEdges"
+                      stroke="primary.main"
+                      stroke-width="1"
+                      transform="translate(26, 20)"
+                      width="8"
+                      x="-4"
+                      y="-4"
+                    />
+                  </g>
+                  <rect
+                    class="Box-cmayus-0 iQkdYC"
+                    cursor="pointer"
+                    fill="transparent"
+                    height="40"
+                    shape-rendering="crispEdges"
+                    stroke="transparent"
+                    stroke-dasharray="6 3"
+                    stroke-width="1"
+                    width="40"
+                    x="30"
+                    y="0"
+                  />
+                </g>
+              </g>
+            </svg>
           </div>
         </div>
       </div>
@@ -10901,8 +13082,7 @@ Array [
           >
             <div
               border="1"
-              bordercolor="transparent"
-              class="Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL"
+              class="Item-sc-19uvbvn-0 gDtxbL Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv"
               cursor="pointer"
             >
               <table
@@ -12081,7 +14261,7 @@ Array [
             spacing="0"
           >
             <div
-              class="Box-cmayus-0 gxSpYy Item-sc-19uvbvn-0 gDtxbL RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+              class="Box-cmayus-0 fwNrKl Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL kOvlGv RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichTextEditor__StyledFrame-sc-1xpk7t8-0 fHTJmv RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
               cursor="pointer"
               id="text"
               version="0.4"
@@ -13167,10 +15347,10 @@ Array [
     </div>
   </header>,
   <div
-    class="MuiBox-root MuiBox-root-28"
+    class="MuiBox-root MuiBox-root-34"
   >
     <div
-      class="MuiBox-root MuiBox-root-29 EditorView__Contents-vasr1h-0 fjiNxD"
+      class="MuiBox-root MuiBox-root-35 EditorView__Contents-vasr1h-0 fjiNxD"
     >
       <div
         class="Box-cmayus-0 Sidebar-sc-11bbcqu-0 gklctw"
@@ -13272,7 +15452,7 @@ Array [
         </div>
       </div>
       <div
-        class="MuiBox-root MuiBox-root-30 EditorContent-eh7ppe-0 hjUFUQ"
+        class="MuiBox-root MuiBox-root-36 EditorContent-eh7ppe-0 hjUFUQ"
       >
         <div
           class="MuiPaper-root PageEditor__PageFrame-sc-1e0zlso-0 jyzHUa MuiPaper-elevation1"
