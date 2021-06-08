@@ -4476,6 +4476,23 @@ exports[`Storyshots Docs/Content Text 1`] = `
 
 exports[`Storyshots Docs/Custom Editor Custom Image Design Editor 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <div
+        class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL"
+      >
+        <img />
+      </div>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -5086,6 +5103,546 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Bar Chart 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <div
+        class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
+        data-type="bar"
+        header="[object Object]"
+        id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
+        style="height:100%px"
+        theme="[object Object]"
+        titles="WFLA,Region A,Region B,Region C,Region D,Region E,Region F,Region G,Region H"
+      >
+        <div
+          id="top-container"
+          style="display:flex;flex-direction:row"
+        >
+          <div
+            id="top-left"
+            style="width:0"
+          />
+          <div
+            id="top-right"
+            style="width:0"
+          />
+        </div>
+        <div
+          id="center-container"
+          style="display:flex;flex-direction:row;flex-grow:1"
+        >
+          <div
+            id="center-center"
+            style="display:flex;flex-direction:column;flex-grow:1"
+          >
+            <div
+              id="top-axis-container"
+              style="display:flex;flex-direction:row"
+            >
+              <div
+                id="top-left-axis"
+                style="width:0"
+              />
+              <div
+                id="top-right-axis"
+                style="width:0"
+              />
+            </div>
+            <div
+              id="center-axis-container"
+              style="display:flex;flex-direction:row;flex-grow:1"
+            >
+              <div
+                style="position:relative"
+              >
+                <svg
+                  height="0"
+                  style="position:absolute;left:0;top:0;overflow:visible"
+                  width="0"
+                >
+                  <g
+                    transform="translate(0 0)"
+                  >
+                    <path
+                      d="M 0 0 L -5 0"
+                    />
+                    <path
+                      class="ColumnChart__ChartAxisLine-sc-56874d-0 dtMIuy"
+                      d="M 0 0 L 0 0"
+                    />
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text=""
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div
+                style="flex:1;z-index:1;position:relative;width:100%"
+              >
+                <svg
+                  height="0"
+                  style="position:absolute;left:0;top:0;overflow:visible"
+                  width="0"
+                >
+                  <defs>
+                    <clipPath
+                      id="clip_path_9"
+                    >
+                      <rect
+                        height="2"
+                        width="2"
+                        x="-1"
+                        y="-1"
+                      />
+                    </clipPath>
+                  </defs>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    21
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    36
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    16
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    41
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    24
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    18
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    38
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    44
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    16
+                  </text>
+                </svg>
+              </div>
+            </div>
+            <div
+              id="bottom-axis-container"
+              style="display:flex;flex-direction:row"
+            >
+              <div
+                id="bottom-left-axis"
+                style="width:0"
+              />
+              <div
+                style="position:relative;flex-grow:1"
+              >
+                <svg
+                  height="0"
+                  style="position:absolute;left:0;top:0;overflow:visible"
+                  width="0"
+                >
+                  <g
+                    transform="translate(0 0)"
+                  />
+                </svg>
+              </div>
+              <div
+                id="bottom-right-axis"
+                style="width:0"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          id="bottom-container"
+          style="display:flex;flex-direction:row"
+        >
+          <div
+            id="bottom-left"
+            style="width:0"
+          />
+          <div
+            class="ChartLegend__LegendRoot-sbp2pp-0 eTrtSc"
+            name="legend-bottom"
+          >
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#71a2ff"
+                fill="#71a2ff"
+                height="1.5em"
+                name="0"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="WFLA"
+              >
+                WFLA
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#c0d4e2"
+                fill="#c0d4e2"
+                height="1.5em"
+                name="1"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Region A"
+              >
+                Region A
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#cbcbcb"
+                fill="#cbcbcb"
+                height="1.5em"
+                name="2"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Region B"
+              >
+                Region B
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#e57878"
+                fill="#e57878"
+                height="1.5em"
+                name="3"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Region C"
+              >
+                Region C
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#8adb96"
+                fill="#8adb96"
+                height="1.5em"
+                name="4"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Region D"
+              >
+                Region D
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#6895eb"
+                fill="#6895eb"
+                height="1.5em"
+                name="5"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Region E"
+              >
+                Region E
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#b8c8d8"
+                fill="#b8c8d8"
+                height="1.5em"
+                name="6"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Region F"
+              >
+                Region F
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#ebebeb"
+                fill="#ebebeb"
+                height="1.5em"
+                name="7"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Region G"
+              >
+                Region G
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#ff7171"
+                fill="#ff7171"
+                height="1.5em"
+                name="8"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Region H"
+              >
+                Region H
+              </text>
+            </div>
+          </div>
+          <div
+            id="bottom-right"
+            style="width:0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -5765,7 +6322,7 @@ Array [
                       >
                         <defs>
                           <clipPath
-                            id="clip_path_7"
+                            id="clip_path_10"
                           >
                             <rect
                               height="2"
@@ -6220,6 +6777,519 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Column Chart 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <div
+        class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
+        data-type="column"
+        header="[object Object]"
+        id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
+        style="height:100%px"
+        theme="[object Object]"
+        titles="Maelstorm,Spring,Empty,Electro"
+      >
+        <div
+          id="top-container"
+          style="display:flex;flex-direction:row"
+        >
+          <div
+            id="top-left"
+            style="width:0"
+          />
+          <div
+            id="top-right"
+            style="width:0"
+          />
+        </div>
+        <div
+          id="center-container"
+          style="display:flex;flex-direction:row;flex-grow:1"
+        >
+          <div
+            id="center-center"
+            style="display:flex;flex-direction:column;flex-grow:1"
+          >
+            <div
+              id="top-axis-container"
+              style="display:flex;flex-direction:row"
+            >
+              <div
+                id="top-left-axis"
+                style="width:0"
+              />
+              <div
+                id="top-right-axis"
+                style="width:0"
+              />
+            </div>
+            <div
+              id="center-axis-container"
+              style="display:flex;flex-direction:row;flex-grow:1"
+            >
+              <div
+                style="position:relative"
+              >
+                <svg
+                  height="0"
+                  style="position:absolute;left:0;top:0;overflow:visible"
+                  width="0"
+                >
+                  <g
+                    transform="translate(0 0)"
+                  >
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="0"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      0
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="5"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      5
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="10"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      10
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="15"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      15
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="20"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      20
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="25"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      25
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="30"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      30
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="35"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      35
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="40"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      40
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="45"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      45
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="50"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      50
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="55"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      55
+                    </text>
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="0.3em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text="60"
+                      text-anchor="end"
+                      x="-10"
+                      y="0"
+                    >
+                      60
+                    </text>
+                  </g>
+                </svg>
+              </div>
+              <div
+                style="flex:1;z-index:1;position:relative;width:100%"
+              >
+                <svg
+                  height="0"
+                  style="position:absolute;left:0;top:0;overflow:visible"
+                  width="0"
+                >
+                  <defs>
+                    <clipPath
+                      id="clip_path_7"
+                    >
+                      <rect
+                        height="2"
+                        width="2"
+                        x="-1"
+                        y="-1"
+                      />
+                    </clipPath>
+                  </defs>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    50
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    60
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    0
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                    dominant-baseline="middle"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    x="0"
+                    y="0"
+                  >
+                    13
+                  </text>
+                </svg>
+              </div>
+            </div>
+            <div
+              id="bottom-axis-container"
+              style="display:flex;flex-direction:row"
+            >
+              <div
+                id="bottom-left-axis"
+                style="width:0"
+              />
+              <div
+                style="position:relative;flex-grow:1"
+              >
+                <svg
+                  height="0"
+                  style="position:absolute;left:0;top:0;overflow:visible"
+                  width="0"
+                >
+                  <g
+                    transform="translate(0 0)"
+                  >
+                    <path
+                      d="M 0 0 L 0 5"
+                    />
+                    <path
+                      class="ColumnChart__ChartAxisLine-sc-56874d-0 dtMIuy"
+                      d="M 0 0 L 0 0"
+                    />
+                    <text
+                      class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                      dy="1em"
+                      font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                      font-size="1rem"
+                      font-weight="400"
+                      letter-spacing="0.00938em"
+                      text=""
+                      text-anchor="middle"
+                      x="0"
+                      y="10"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div
+                id="bottom-right-axis"
+                style="width:0"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          id="bottom-container"
+          style="display:flex;flex-direction:row"
+        >
+          <div
+            id="bottom-left"
+            style="width:0"
+          />
+          <div
+            class="ChartLegend__LegendRoot-sbp2pp-0 eTrtSc"
+            name="legend-bottom"
+          >
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#71a2ff"
+                fill="#71a2ff"
+                height="1.5em"
+                name="0"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Maelstorm"
+              >
+                Maelstorm
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#c0d4e2"
+                fill="#c0d4e2"
+                height="1.5em"
+                name="1"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Spring"
+              >
+                Spring
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#cbcbcb"
+                fill="#cbcbcb"
+                height="1.5em"
+                name="2"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Empty"
+              >
+                Empty
+              </text>
+            </div>
+            <div
+              class="ChartLegend__LegendItem-sbp2pp-1 eNgAwX"
+            >
+              <svg
+                class="ChartLegend__LegendMarker-sbp2pp-2"
+                color="#e57878"
+                fill="#e57878"
+                height="1.5em"
+                name="3"
+                width="1.5em"
+              >
+                <rect
+                  height="100%"
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              <text
+                class="ChartLabel-sc-193epg7-0 kOIdeZ"
+                font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                font-size="1rem"
+                font-weight="400"
+                letter-spacing="0.00938em"
+                text="Electro"
+              >
+                Electro
+              </text>
+            </div>
+          </div>
+          <div
+            id="bottom-right"
+            style="width:0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -7061,7 +8131,7 @@ Array [
                       >
                         <defs>
                           <clipPath
-                            id="clip_path_6"
+                            id="clip_path_8"
                           >
                             <rect
                               height="2"
@@ -7326,6 +8396,767 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Flex 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <div
+        class="Item-sc-19uvbvn-0 gDtxbL Flex-konc2n-0 eGkUTp Flex-konc2n-0 eGkUTp"
+      >
+        <div
+          class="Item-sc-19uvbvn-0 gDtxbL"
+        >
+          <table
+            class="Table__StyledTable-sc-6pw6pn-0 ilEdCc"
+          >
+            <thead>
+              <tr>
+                <th>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                  style="font-weight:bold"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    first column
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                  style="font-weight:bold"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    second column
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                  style="font-weight:bold"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    third column
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 1, column 1
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 1, column 2
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 1, column 3
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 2, column 1
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 2, column 2
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 2, column 3
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 3, column 1
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 3, column 2
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                  >
+                    <div
+                      class="DraftEditor-root"
+                    >
+                      <div
+                        class="DraftEditor-editorContainer"
+                      >
+                        <div
+                          class="public-DraftEditor-content"
+                          contenteditable="false"
+                          spellcheck="false"
+                          style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                        >
+                          <div
+                            data-contents="true"
+                          >
+                            <div
+                              class="RichText-sc-1sae58z-0"
+                              data-block="true"
+                              data-editor="mock"
+                              data-offset-key="mock-0-0"
+                            >
+                              <div
+                                class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-offset-key="mock-0-0"
+                                >
+                                  <span
+                                    data-text="true"
+                                  >
+                                    row 3, column 3
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+        >
+          <div
+            class="DraftEditor-root DraftEditor-alignLeft"
+          >
+            <div
+              class="DraftEditor-editorContainer"
+            >
+              <div
+                class="public-DraftEditor-content"
+                contenteditable="false"
+                spellcheck="false"
+                style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+              >
+                <div
+                  data-contents="true"
+                >
+                  <h1
+                    class="RichText-sc-1sae58z-0"
+                    data-block="true"
+                    data-editor="text"
+                    data-offset-key="h1-0-0"
+                  >
+                    <div
+                      class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                      data-offset-key="h1-0-0"
+                    >
+                      <span
+                        data-offset-key="h1-0-0"
+                      >
+                        <span
+                          data-text="true"
+                        >
+                          Header one
+                        </span>
+                      </span>
+                    </div>
+                  </h1>
+                  <h2
+                    class="RichText-sc-1sae58z-0"
+                    data-block="true"
+                    data-editor="text"
+                    data-offset-key="h2-0-0"
+                  >
+                    <div
+                      class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                      data-offset-key="h2-0-0"
+                    >
+                      <span
+                        data-offset-key="h2-0-0"
+                      >
+                        <span
+                          data-text="true"
+                        >
+                          Header two
+                        </span>
+                      </span>
+                    </div>
+                  </h2>
+                  <h3
+                    class="RichText-sc-1sae58z-0"
+                    data-block="true"
+                    data-editor="text"
+                    data-offset-key="h3-0-0"
+                  >
+                    <div
+                      class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                      data-offset-key="h3-0-0"
+                    >
+                      <span
+                        data-offset-key="h3-0-0"
+                      >
+                        <span
+                          data-text="true"
+                        >
+                          Header three
+                        </span>
+                      </span>
+                    </div>
+                  </h3>
+                  <h4
+                    class="RichText-sc-1sae58z-0"
+                    data-block="true"
+                    data-editor="text"
+                    data-offset-key="h4-0-0"
+                  >
+                    <div
+                      class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                      data-offset-key="h4-0-0"
+                    >
+                      <span
+                        data-offset-key="h4-0-0"
+                      >
+                        <span
+                          data-text="true"
+                        >
+                          Header four
+                        </span>
+                      </span>
+                    </div>
+                  </h4>
+                  <h5
+                    class="RichText-sc-1sae58z-0"
+                    data-block="true"
+                    data-editor="text"
+                    data-offset-key="h5-0-0"
+                  >
+                    <div
+                      class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                      data-offset-key="h5-0-0"
+                    >
+                      <span
+                        data-offset-key="h5-0-0"
+                      >
+                        <span
+                          data-text="true"
+                        >
+                          Header five
+                        </span>
+                      </span>
+                    </div>
+                  </h5>
+                  <h6
+                    class="RichText-sc-1sae58z-0"
+                    data-block="true"
+                    data-editor="text"
+                    data-offset-key="h6-0-0"
+                  >
+                    <div
+                      class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                      data-offset-key="h6-0-0"
+                    >
+                      <span
+                        data-offset-key="h6-0-0"
+                      >
+                        <span
+                          data-text="true"
+                        >
+                          Header six
+                        </span>
+                      </span>
+                    </div>
+                  </h6>
+                  <div
+                    class="RichText-sc-1sae58z-0"
+                    data-block="true"
+                    data-editor="text"
+                    data-offset-key="unstyled-0-0"
+                  >
+                    <div
+                      class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                      data-offset-key="unstyled-0-0"
+                    >
+                      <span
+                        data-offset-key="unstyled-0-0"
+                      >
+                        <span
+                          data-text="true"
+                        >
+                          This block is draft.js content.
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -8857,6 +10688,25 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Image 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <div
+        class="Item-sc-19uvbvn-0 gDtxbL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL Item-sc-19uvbvn-0 Image__StyledItem-sc-14qtalg-0 gDtxbL evHhDL"
+      >
+        <img
+          src="https://via.placeholder.com/150/0000FF/808080?text=Image"
+        />
+      </div>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -9469,6 +11319,34 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Path Shape 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <svg
+        id="shape-root"
+      >
+        <g
+          fill="transparent"
+          stroke="rgba(0,0,0,1.0)"
+        >
+          <g
+            stroke-width="1pt"
+          >
+            <path
+              d="M562.9280602800176,132.999988C562.9280602800176,132.999988,575.4061,172.22215558371482,501.74879317697514,197.56382162833214C428.09200495416314,222.9053,314.00001,217.45283779802958,314.00001,217.45283779802958"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -10317,6 +12195,272 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Pie Chart 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <div
+        class="ChartBase-fg9mvx-0 drIJnG Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc Item-sc-19uvbvn-0 eBwAvc"
+        data-type="pie"
+        header="[object Object]"
+        id="63d30846-a1dc-4c50-a32a-21ca99c38bce"
+        style="height:100%px"
+        theme="[object Object]"
+        titles="There is no space at the top. But big slices have enough space to contain text inside,repairs of something very long,consulting,training,others"
+      >
+        <div
+          id="top-container"
+          style="display:flex;flex-direction:row"
+        >
+          <div
+            id="top-left"
+            style="width:0"
+          />
+          <div
+            id="top-right"
+            style="width:0"
+          />
+        </div>
+        <div
+          id="center-container"
+          style="display:flex;flex-direction:row;flex-grow:1"
+        >
+          <div
+            id="center-center"
+            style="display:flex;flex-direction:column;flex-grow:1"
+          >
+            <div
+              id="top-axis-container"
+              style="display:flex;flex-direction:row"
+            >
+              <div
+                id="top-left-axis"
+                style="width:0"
+              />
+              <div
+                id="top-right-axis"
+                style="width:0"
+              />
+            </div>
+            <div
+              id="center-axis-container"
+              style="display:flex;flex-direction:row;flex-grow:1"
+            >
+              <div
+                style="flex:1;z-index:1;position:relative;width:100%"
+              >
+                <svg
+                  height="0"
+                  style="position:absolute;left:0;top:0;overflow:visible"
+                  width="0"
+                >
+                  <defs>
+                    <clipPath
+                      id="clip_path_5"
+                    >
+                      <rect
+                        height="2"
+                        width="2"
+                        x="-1"
+                        y="-1"
+                      />
+                    </clipPath>
+                  </defs>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 ijspDw"
+                    color="common.white"
+                    dominant-baseline="baseline"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    variant="body1"
+                    x="0"
+                    y="0"
+                  >
+                    64%
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 hKOvLe"
+                    color="common.white"
+                    dominant-baseline="hanging"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="0.8rem"
+                    font-weight="400"
+                    letter-spacing="0.01071em"
+                    text-anchor="middle"
+                    variant="body2"
+                    width="0"
+                    x="0"
+                    y="0"
+                  >
+                    There is no space at the top. But big slices have enough space to contain text inside
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 ijspDw"
+                    color="common.white"
+                    dominant-baseline="baseline"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    variant="body1"
+                    x="0"
+                    y="0"
+                  >
+                    12%
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 hKOvLe"
+                    color="common.white"
+                    dominant-baseline="hanging"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="0.8rem"
+                    font-weight="400"
+                    letter-spacing="0.01071em"
+                    text-anchor="middle"
+                    variant="body2"
+                    width="0"
+                    x="0"
+                    y="0"
+                  >
+                    repairs of something very long
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 ijspDw"
+                    color="common.white"
+                    dominant-baseline="baseline"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    variant="body1"
+                    x="0"
+                    y="0"
+                  >
+                    10%
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 hKOvLe"
+                    color="common.white"
+                    dominant-baseline="hanging"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="0.8rem"
+                    font-weight="400"
+                    letter-spacing="0.01071em"
+                    text-anchor="middle"
+                    variant="body2"
+                    width="0"
+                    x="0"
+                    y="0"
+                  >
+                    consulting
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 ijspDw"
+                    color="common.white"
+                    dominant-baseline="baseline"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    variant="body1"
+                    x="0"
+                    y="0"
+                  >
+                    8%
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 hKOvLe"
+                    color="common.white"
+                    dominant-baseline="hanging"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="0.8rem"
+                    font-weight="400"
+                    letter-spacing="0.01071em"
+                    text-anchor="middle"
+                    variant="body2"
+                    width="0"
+                    x="0"
+                    y="0"
+                  >
+                    training
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 ijspDw"
+                    color="common.white"
+                    dominant-baseline="baseline"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="1rem"
+                    font-weight="400"
+                    letter-spacing="0.00938em"
+                    text-anchor="middle"
+                    variant="body1"
+                    x="0"
+                    y="0"
+                  >
+                    6%
+                  </text>
+                  <text
+                    class="ChartLabel-sc-193epg7-0 hKOvLe"
+                    color="common.white"
+                    dominant-baseline="hanging"
+                    font-family="\\"Montserrat\\", \\"Helvetica Neue\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
+                    font-size="0.8rem"
+                    font-weight="400"
+                    letter-spacing="0.01071em"
+                    text-anchor="middle"
+                    variant="body2"
+                    width="0"
+                    x="0"
+                    y="0"
+                  >
+                    others
+                  </text>
+                </svg>
+              </div>
+            </div>
+            <div
+              id="bottom-axis-container"
+              style="display:flex;flex-direction:row"
+            >
+              <div
+                id="bottom-left-axis"
+                style="width:0"
+              />
+              <div
+                id="bottom-right-axis"
+                style="width:0"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          id="bottom-container"
+          style="display:flex;flex-direction:row"
+        >
+          <div
+            id="bottom-left"
+            style="width:0"
+          />
+          <div
+            id="bottom-right"
+            style="width:0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -10962,7 +13106,7 @@ Array [
                       >
                         <defs>
                           <clipPath
-                            id="clip_path_5"
+                            id="clip_path_6"
                           >
                             <rect
                               height="2"
@@ -11176,6 +13320,56 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Shape 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <svg
+        id="shape-root"
+      >
+        <g
+          fill="transparent"
+          stroke="rgba(0,0,0,1.0)"
+        >
+          <g
+            stroke-width="1pt"
+          >
+            <path
+              d="M149 0.999988C149 0.999988 151.4061 21.8992 137.203 35.4023C123 48.9053 101.00001 46 101.00001 46"
+            />
+          </g>
+          <g
+            stroke-width="1pt"
+          >
+            <ellipse
+              cx="30"
+              cy="15"
+              rx="10"
+              ry="10"
+              shape-rendering="geometricPrecision"
+            />
+          </g>
+          <g
+            stroke-width="1pt"
+          >
+            <rect
+              height="20"
+              shape-rendering="crispEdges"
+              width="20"
+              x="40"
+              y="10"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -12494,6 +14688,593 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Table 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <div
+        class="Item-sc-19uvbvn-0 gDtxbL"
+      >
+        <table
+          class="Table__StyledTable-sc-6pw6pn-0 ilEdCc"
+        >
+          <thead>
+            <tr>
+              <th>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                                style="font-weight:bold"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  first column
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th>
+              <th>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                                style="font-weight:bold"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  second column
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th>
+              <th>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                                style="font-weight:bold"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  third column
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 1, column 1
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 1, column 2
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 1, column 3
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 2, column 1
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 2, column 2
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 2, column 3
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 3, column 1
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 3, column 2
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div
+                  class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+                >
+                  <div
+                    class="DraftEditor-root"
+                  >
+                    <div
+                      class="DraftEditor-editorContainer"
+                    >
+                      <div
+                        class="public-DraftEditor-content"
+                        contenteditable="false"
+                        spellcheck="false"
+                        style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+                      >
+                        <div
+                          data-contents="true"
+                        >
+                          <div
+                            class="RichText-sc-1sae58z-0"
+                            data-block="true"
+                            data-editor="mock"
+                            data-offset-key="mock-0-0"
+                          >
+                            <div
+                              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                              data-offset-key="mock-0-0"
+                            >
+                              <span
+                                data-offset-key="mock-0-0"
+                              >
+                                <span
+                                  data-text="true"
+                                >
+                                  row 3, column 3
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -13674,6 +16455,188 @@ Array [
 
 exports[`Storyshots Docs/Editor Editor Of Text 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    >
+      <div
+        class="Item-sc-19uvbvn-0 gDtxbL RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align RichText-sc-1sae58z-0 DraftEditor/root DraftEditor/align"
+      >
+        <div
+          class="DraftEditor-root DraftEditor-alignLeft"
+        >
+          <div
+            class="DraftEditor-editorContainer"
+          >
+            <div
+              class="public-DraftEditor-content"
+              contenteditable="false"
+              spellcheck="false"
+              style="outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word"
+            >
+              <div
+                data-contents="true"
+              >
+                <h1
+                  class="RichText-sc-1sae58z-0"
+                  data-block="true"
+                  data-editor="text"
+                  data-offset-key="h1-0-0"
+                >
+                  <div
+                    class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                    data-offset-key="h1-0-0"
+                  >
+                    <span
+                      data-offset-key="h1-0-0"
+                    >
+                      <span
+                        data-text="true"
+                      >
+                        Header one
+                      </span>
+                    </span>
+                  </div>
+                </h1>
+                <h2
+                  class="RichText-sc-1sae58z-0"
+                  data-block="true"
+                  data-editor="text"
+                  data-offset-key="h2-0-0"
+                >
+                  <div
+                    class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                    data-offset-key="h2-0-0"
+                  >
+                    <span
+                      data-offset-key="h2-0-0"
+                    >
+                      <span
+                        data-text="true"
+                      >
+                        Header two
+                      </span>
+                    </span>
+                  </div>
+                </h2>
+                <h3
+                  class="RichText-sc-1sae58z-0"
+                  data-block="true"
+                  data-editor="text"
+                  data-offset-key="h3-0-0"
+                >
+                  <div
+                    class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                    data-offset-key="h3-0-0"
+                  >
+                    <span
+                      data-offset-key="h3-0-0"
+                    >
+                      <span
+                        data-text="true"
+                      >
+                        Header three
+                      </span>
+                    </span>
+                  </div>
+                </h3>
+                <h4
+                  class="RichText-sc-1sae58z-0"
+                  data-block="true"
+                  data-editor="text"
+                  data-offset-key="h4-0-0"
+                >
+                  <div
+                    class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                    data-offset-key="h4-0-0"
+                  >
+                    <span
+                      data-offset-key="h4-0-0"
+                    >
+                      <span
+                        data-text="true"
+                      >
+                        Header four
+                      </span>
+                    </span>
+                  </div>
+                </h4>
+                <h5
+                  class="RichText-sc-1sae58z-0"
+                  data-block="true"
+                  data-editor="text"
+                  data-offset-key="h5-0-0"
+                >
+                  <div
+                    class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                    data-offset-key="h5-0-0"
+                  >
+                    <span
+                      data-offset-key="h5-0-0"
+                    >
+                      <span
+                        data-text="true"
+                      >
+                        Header five
+                      </span>
+                    </span>
+                  </div>
+                </h5>
+                <h6
+                  class="RichText-sc-1sae58z-0"
+                  data-block="true"
+                  data-editor="text"
+                  data-offset-key="h6-0-0"
+                >
+                  <div
+                    class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                    data-offset-key="h6-0-0"
+                  >
+                    <span
+                      data-offset-key="h6-0-0"
+                    >
+                      <span
+                        data-text="true"
+                      >
+                        Header six
+                      </span>
+                    </span>
+                  </div>
+                </h6>
+                <div
+                  class="RichText-sc-1sae58z-0"
+                  data-block="true"
+                  data-editor="text"
+                  data-offset-key="unstyled-0-0"
+                >
+                  <div
+                    class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                    data-offset-key="unstyled-0-0"
+                  >
+                    <span
+                      data-offset-key="unstyled-0-0"
+                    >
+                      <span
+                        data-text="true"
+                      >
+                        This block is draft.js content.
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -14450,6 +17413,17 @@ Array [
 
 exports[`Storyshots Docs/Editor Initial Editor 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    />
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >
@@ -14964,6 +17938,17 @@ Array [
 
 exports[`Storyshots Docs/Editor/API Default layout 1`] = `
 Array [
+  <div
+    class="Box-cmayus-0 mWLIr"
+    height="768"
+    opacity="0"
+    width="1024"
+  >
+    <div
+      class="Item-sc-19uvbvn-0 LeBHi Grid-sc-2glams-0 hRHSZv Grid-sc-2glams-0 hRHSZv"
+      spacing="0"
+    />
+  </div>,
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4"
   >

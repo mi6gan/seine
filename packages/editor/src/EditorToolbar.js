@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 
-import { ItemMenuContext } from './EditorItemMenu';
 import {
   deviceSelector,
   EditorActionButton,
@@ -20,6 +19,7 @@ import {
 import { useSelectedContainerIds, useSelectedLayoutIds } from './layouts';
 import type { EditorActionButtonProps } from './blocks/EditorActionButton';
 import { defaultPageEditor } from './pages/PageEditor';
+import { MenuContext } from './MenuProvider';
 
 import { AppBar } from '@seine/styles/mui-core.macro';
 import { Box } from '@seine/styles';
@@ -60,7 +60,6 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
   ref
 ) {
   const menuAnchorRef = React.useRef(null);
-  const itemMenu = React.useContext(ItemMenuContext);
 
   const [layoutId = null] = useSelectedLayoutIds();
   const [containerId = null] = useSelectedContainerIds();
@@ -98,6 +97,8 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
     });
   });
 
+  const menu = React.useContext(MenuContext);
+
   return (
     <AppBar position={position} ref={ref}>
       <Toolbar
@@ -110,11 +111,11 @@ const EditorToolbar = React.forwardRef(function EditorToolbar(
         <Box flexGrow={0.25}>
           <ToolbarButton
             onClick={useAutoCallback(() => {
-              if (itemMenu) {
-                itemMenu.open(menuAnchorRef.current);
+              if (menu) {
+                menu.open('main', menuAnchorRef.current);
               }
             })}
-            selected={itemMenu.isOpen}
+            selected={menu.isOpen}
           >
             <MenuIcon />
           </ToolbarButton>

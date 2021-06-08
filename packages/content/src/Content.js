@@ -17,11 +17,6 @@ export type Props = {
   device?: ScreenDevice | 'auto',
 };
 
-/**
- * @description Content blocks renderer.
- * @param {Props} props
- * @returns {React.Node}
- */
 function ContentBlock({ id }): React.Node {
   const blockChildren = useBlockChildren(id);
   const { type, format, body, editor } = useBlock(id);
@@ -47,7 +42,7 @@ function ContentBlock({ id }): React.Node {
  * @param {Props} props
  * @returns {React.Node}
  */
-export default function Content({
+function ContentBase({
   children,
   device: initialDevice,
   blockRenderMap,
@@ -56,18 +51,29 @@ export default function Content({
   const device = useScreenDevice(initialDevice);
   const blocks = useNormalizedBlocks(children, device);
   return (
+    <BlocksContext.Provider
+      value={{
+        blockRenderMap: {
+          ...defaultBlockRenderMap,
+          ...blockRenderMap,
+        },
+        blocks,
+      }}
+    >
+      <ContentBlock id={rootBlock && rootBlock.id} />
+    </BlocksContext.Provider>
+  );
+}
+
+/**
+ * @description Content blocks renderer.
+ * @param {Props} props
+ * @returns {React.Node}
+ */
+export default function Content(props) {
+  return (
     <ThemeProvider>
-      <BlocksContext.Provider
-        value={{
-          blockRenderMap: {
-            ...defaultBlockRenderMap,
-            ...blockRenderMap,
-          },
-          blocks,
-        }}
-      >
-        <ContentBlock id={rootBlock && rootBlock.id} />
-      </BlocksContext.Provider>
+      <ContentBase {...props} />
     </ThemeProvider>
   );
 }

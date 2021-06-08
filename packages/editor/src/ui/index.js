@@ -18,7 +18,6 @@ export { default as SidebarSelectLabel } from './SidebarSelectLabel';
 export { default as Textarea } from './Textarea';
 export { default as Toolbar } from './Toolbar';
 export { default as ToolbarButton } from './ToolbarButton';
-export { default as ToolbarMenu } from './ToolbarMenu';
 export { default as ToolbarSeparator } from './ToolbarSeparator';
 export { default as ToolbarToggleButton } from './ToolbarToggleButton';
 export { default as ToolbarToggleButtonGroup } from './ToolbarToggleButtonGroup';
