@@ -51,6 +51,7 @@ export default function EditorMainMenu({
           })}
         >
           <a
+            href={'/'}
             download={'index.html'}
             target={'_blank'}
             ref={linkRef}
