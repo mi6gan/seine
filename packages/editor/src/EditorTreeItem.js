@@ -3,7 +3,7 @@ import { useAutoCallback } from 'hooks.macro';
 import * as React from 'react';
 import styled from 'styled-components/macro';
 
-import { ItemMenuContext } from './EditorItemMenu';
+import { MenuContext } from './MenuProvider';
 import BlockTypeIcon from './ui/BlockTypeIcon';
 import {
   selectionSelector,
@@ -66,11 +66,11 @@ const EditorTreeItem = React.forwardRef(function EditorTreeItem(
       return [index, blocks[index]];
     })
   );
-  const itemMenu = React.useContext(ItemMenuContext);
+  const menu = React.useContext(MenuContext);
   const openItemMenu = useAutoCallback((event) => {
     event.preventDefault();
     event.stopPropagation();
-    itemMenu.open(event.currentTarget);
+    menu.open('item', event.currentTarget);
   });
   const isLayout = block && isBlockLayout(block);
 

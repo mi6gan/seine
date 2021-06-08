@@ -11,11 +11,9 @@ export * from './shapes';
 
 export { default as defaultTheme } from './defaultTheme';
 export { default as EditorDesign } from './EditorDesign';
-export {
-  ItemMenuProvider,
-  ItemMenuContext,
-  default as EditorItemMenu,
-} from './EditorItemMenu';
+export { default as EditorItemMenu } from './EditorItemMenu';
+export { default as EditorMainMenu } from './EditorMainMenu';
+export { default as MenuProvider, MenuContext } from './MenuProvider';
 export { default as EditorToolbar } from './EditorToolbar';
 export { default as EditorTree } from './EditorTree';
 export { default as EditorTreeItem } from './EditorTreeItem';

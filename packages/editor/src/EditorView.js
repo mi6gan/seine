@@ -20,6 +20,7 @@ import {
   SidebarSection,
 } from './ui';
 import EditorItemMenu from './EditorItemMenu';
+import EditorMainMenu from './EditorMainMenu';
 import EditorToolbar from './EditorToolbar';
 import EditorTree from './EditorTree';
 import EditorContent from './EditorContent';
@@ -48,6 +49,8 @@ type Props = {
   toolbarAs?: React.ComponentType,
   /** Custom structure tree panel component. */
   treeAs?: React.ComponentType,
+  /** Main menu component. */
+  mainMenuAs?: React.ComponentType,
   /** Block context menu component. */
   itemMenuAs?: React.ComponentType,
 };
@@ -65,6 +68,7 @@ export default function EditorView({
   designAs: Design = EditorDesign,
   toolbarAs: Toolbar = EditorToolbar,
   treeAs: Tree = EditorTree,
+  mainMenuAs: MainMenu = EditorMainMenu,
   itemMenuAs: ItemMenu = EditorItemMenu,
 }: Props) {
   const dispatch = useBlocksDispatch();
@@ -80,6 +84,7 @@ export default function EditorView({
     <>
       <DeleteConfirmationDialog />
       <ItemMenu />
+      <MainMenu />
       {Toolbar && <Toolbar />}
 
       <Box

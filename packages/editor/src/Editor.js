@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 
-import { ItemMenuProvider } from './EditorItemMenu';
+import MenuProvider from './MenuProvider';
 import defaultTheme from './defaultTheme';
 import { EditorProvider } from './blocks';
 import { ClipboardProvider } from './clipboard';
@@ -41,10 +41,10 @@ export default function Editor({
     <ThemeProvider theme={theme}>
       <EditorProvider blocks={useNormalizedBlocks(children)}>
         <ClipboardProvider>
-          <ItemMenuProvider>
+          <MenuProvider>
             {header}
             <View {...viewProps} />
-          </ItemMenuProvider>
+          </MenuProvider>
         </ClipboardProvider>
       </EditorProvider>
     </ThemeProvider>

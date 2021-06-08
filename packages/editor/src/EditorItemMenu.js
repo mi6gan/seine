@@ -1,8 +1,10 @@
 // @flow
 import * as React from 'react';
-import { useAutoCallback, useAutoEffect, useAutoMemo } from 'hooks.macro';
+import { useAutoCallback, useAutoEffect } from 'hooks.macro';
 
-import { ToolbarMenu, MenuButton } from './ui';
+import { MenuContext } from './MenuProvider';
+import { MenuButton } from './ui';
+import ContextMenu from './ContextMenu';
 import { useBlocksDispatch, useEditorSelector } from './blocks';
 import {
   CreateLayoutButton,
@@ -20,45 +22,6 @@ import {
   DELETE_SELECTED_BLOCKS,
   isBlockLayout,
 } from '@seine/core';
-
-type ItemMenuType = {
-  isOpen: boolean,
-  close: () => void,
-  open: (anchorEl: HTMLElement) => void,
-  anchorEl: HTMLElement | null,
-};
-
-const defaultItemMenu: ItemMenuType = {
-  isOpen: false,
-  close: () => void 0,
-  open: () => void 0,
-  anchorEl: null,
-};
-export const ItemMenuContext = React.createContext<ItemMenuType>(
-  defaultItemMenu
-);
-
-// eslint-disable-next-line
-export function ItemMenuProvider({ children }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const close = useAutoCallback(() => {
-    setAnchorEl(null);
-  });
-  const isOpen = anchorEl !== null;
-
-  return (
-    <ItemMenuContext.Provider
-      value={useAutoMemo({
-        isOpen,
-        open: setAnchorEl,
-        close,
-        anchorEl,
-      })}
-    >
-      {children}
-    </ItemMenuContext.Provider>
-  );
-}
 
 // eslint-disable-next-line
 function useCopyCallback() {
@@ -141,7 +104,7 @@ export default function EditorItemMenu({
       blocks.filter(({ id }) => selection.includes(id))
     )
   );
-  const { isOpen, close, anchorEl } = React.useContext(ItemMenuContext);
+  const { close } = React.useContext(MenuContext);
 
   const isContainer = selectionBlocks.some(isBlockLayout);
   const isShape = selectionBlocks.some(
@@ -149,14 +112,7 @@ export default function EditorItemMenu({
   );
 
   return (
-    <ToolbarMenu
-      onClose={close}
-      open={isOpen}
-      anchorEl={anchorEl}
-      autoFocus
-      mt={3}
-      onClick={close}
-    >
+    <ContextMenu id={'item'}>
       <CreateLayoutButton
         as={ItemMenuButton}
         disabled={
@@ -196,6 +152,6 @@ export default function EditorItemMenu({
       <DeleteBlockButton as={ItemMenuButton} onClick={close}>
         Delete
       </DeleteBlockButton>
-    </ToolbarMenu>
+    </ContextMenu>
   );
 }
