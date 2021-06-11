@@ -32,6 +32,20 @@ export default function EditorMainMenu({
       <ContextMenu id={'main'}>
         <MainMenuButton
           onClick={useAutoCallback(() => {
+            const content = document.createElement('div');
+            content.innerHTML = contentRef.current.innerHTML;
+            for (const svg of content.querySelectorAll('svg')) {
+              const w = svg.getAttribute('width');
+              const h = svg.getAttribute('height');
+              if (!/.+\d$/.test(w) || !/.+\d$/.test(h)) {
+                continue;
+              }
+              svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+              svg.setAttribute('width', '100%');
+              svg.setAttribute('height', '100%');
+              svg.style.position = 'initial';
+              svg.style.overflow = 'visible';
+            }
             linkRef.current.href = URL.createObjectURL(
               new Blob(
                 [
@@ -41,7 +55,7 @@ export default function EditorMainMenu({
                     '<title>Content</title>' +
                     sheet.getStyleTags() +
                     '</head>' +
-                    `<body>${contentRef.current.innerHTML}</body>` +
+                    `<body>${content.innerHTML}</body>` +
                     '</html>',
                 ],
                 { type: 'text/html' }
