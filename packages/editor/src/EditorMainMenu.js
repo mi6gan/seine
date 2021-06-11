@@ -38,7 +38,7 @@ export default function EditorMainMenu({
             for (const svg of content.querySelectorAll('svg')) {
               const w = svg.getAttribute('width');
               const h = svg.getAttribute('height');
-              if (!/^\d+(\.\d+)?$/.test(w) || !/^\d+$/.test(h)) {
+              if ([w, h].some((v) => !/^\d+(\.\d+)?$/.test(v))) {
                 continue;
               }
               svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
