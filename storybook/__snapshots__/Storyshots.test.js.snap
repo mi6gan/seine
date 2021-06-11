@@ -3387,7 +3387,9 @@ exports[`Storyshots Docs/Content Path Shape 1`] = `
   spacing="0"
 >
   <svg
+    height="100%"
     id="shape-root"
+    width="100%"
   >
     <g
       fill="transparent"
@@ -3673,7 +3675,9 @@ exports[`Storyshots Docs/Content Shape 1`] = `
   spacing="0"
 >
   <svg
+    height="100%"
     id="shape-root"
+    width="100%"
   >
     <g
       fill="transparent"
@@ -11330,7 +11334,9 @@ Array [
       spacing="0"
     >
       <svg
+        height="100%"
         id="shape-root"
+        width="100%"
       >
         <g
           fill="transparent"
@@ -12025,8 +12031,10 @@ Array [
               border="1"
               class="Box-cmayus-0 itkLTg Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 dPCdgC eWOeLI"
               cursor="pointer"
+              height="100%"
               id="shape-root"
               selected=""
+              width="100%"
             >
               <g
                 fill="transparent"
@@ -13331,7 +13339,9 @@ Array [
       spacing="0"
     >
       <svg
+        height="100%"
         id="shape-root"
+        width="100%"
       >
         <g
           fill="transparent"
@@ -14222,8 +14232,10 @@ Array [
               border="1"
               class="Box-cmayus-0 cetVlM Item-sc-19uvbvn-0 Frame__StyledItem-fbz0lv-0 gDtxbL eWOeLI"
               cursor="pointer"
+              height="100%"
               id="shape-root"
               selected=""
+              width="100%"
             >
               <g
                 fill="transparent"
