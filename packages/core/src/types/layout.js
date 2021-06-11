@@ -30,6 +30,7 @@ export type ItemFormat = {
 
 export const defaultItemFormat = {
   parentType: null,
+  version: '0.4',
   alignSelf: 'auto',
   justifySelf: 'auto',
   maxWidth: 'none',
@@ -40,7 +41,6 @@ export const defaultItemFormat = {
   flexBasis: 'auto',
   gridRow: '',
   gridColumn: '',
-  version: '0.4',
   whiteSpace: null,
 };
 

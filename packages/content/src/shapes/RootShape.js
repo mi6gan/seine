@@ -1,18 +1,16 @@
 // @flow
 import * as React from 'react';
 
-import useElementOnlyProps from '../useElementOnlyProps';
+import { Box } from '@seine/styles';
 
-import { defaultItemFormat } from '@seine/core';
-
-const RootShape = React.forwardRef(function RootShape(props, ref) {
+const RootShape = React.forwardRef(function RootShape(
+  { children, parentType, version, ...props },
+  ref
+) {
   return (
-    <svg
-      {...useElementOnlyProps(props, defaultItemFormat)}
-      ref={ref}
-      width={'100%'}
-      height={'100%'}
-    />
+    <Box {...props} as={'svg'} ref={ref} width={'100%'} height={'100%'}>
+      {children}
+    </Box>
   );
 });
 

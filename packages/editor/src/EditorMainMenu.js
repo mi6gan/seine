@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react';
+import { useAutoCallback, useAutoMemo } from 'hooks.macro';
 import { ServerStyleSheet } from 'styled-components/macro';
-import { useAutoCallback } from 'hooks.macro';
 
 import { MenuButton } from './ui';
 import { allBlocksSelector, useEditorSelector } from './blocks';
 import ContextMenu from './ContextMenu';
 
-import { Box } from '@seine/styles';
 import { Content } from '@seine/content';
+import { Box } from '@seine/styles';
 
 type Props = {
   menuButtonAs?: React.ComponentType,
@@ -25,7 +25,8 @@ export default function EditorMainMenu({
   const blocks = useEditorSelector(allBlocksSelector);
   const linkRef = React.useRef(null);
   const contentRef = React.useRef(null);
-  const sheet = new ServerStyleSheet();
+
+  const sheet = useAutoMemo(blocks && new ServerStyleSheet());
 
   return (
     <>
@@ -37,13 +38,13 @@ export default function EditorMainMenu({
             for (const svg of content.querySelectorAll('svg')) {
               const w = svg.getAttribute('width');
               const h = svg.getAttribute('height');
-              if (!/.+\d$/.test(w) || !/.+\d$/.test(h)) {
+              if (!/^\d+$/.test(w) || !/^\d+$/.test(h)) {
                 continue;
               }
               svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
               svg.setAttribute('width', '100%');
               svg.setAttribute('height', '100%');
-              svg.style.position = 'initial';
+              svg.style.position = 'static';
               svg.style.overflow = 'visible';
             }
             linkRef.current.href = URL.createObjectURL(
